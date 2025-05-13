@@ -1,0 +1,122 @@
+<main>
+
+<section class="builders-ahmedabad position-relative">
+    <div class="container">
+      <div class="banner-small">
+        <h1 class="banner_title">Showing {{ allbuilderprojectcount }} Builders in {{ allbuilderproject[0].citysearch}}</h1>
+        <!-- <p class="banner_small">Builders inTop Localities</p> -->
+      </div>
+    </div>
+</section>
+<section class="ahmedabad-all-builders">
+    <div class="container">
+        <div class="topahmedabad" *ngFor="let item of allbuilderproject">
+            <div class="groups-companies">
+                <div class="row">
+                    <div class="col-lg-2 col-md-5 col-sm-12">
+                        <div class="group-logo">
+                            <img src="{{ item.builder_logo }}" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-md-7 col-sm-12">
+                        <a href="/builder-detail/{{ item.builderUrl }}" class="groups-companies-names">{{ item.name }}</a>
+                        <p class="opnesince">Operating since {{ item.year }}</p>
+                        <div class="row">
+                            <!-- <div class="col-lg-4 col-md-6 col-sm-12">
+                                <h6 class="project-titles">DEALS IN:</h6>
+                                <p class="project-text">{{ item.dealsin }}</p>
+                            </div> -->
+                            <div class="col-lg-4 col-md-6 col-sm-12 mt-lg-0 mt-md-0 mt-sm-3 ">
+                                <h6 class="project-titles">TOTAL PROJECTS</h6>
+                                <p class="project-text">{{ item.total_projects }} Projects in Ahmedabad</p>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 mt-lg-0 mt-md-3 mt-sm-3 info-project">
+                                <h6 class="project-titles">COMPLETED PROJECTS</h6>
+                                <p class="project-text">{{ item.completed_projects }} Completed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="builders-ahm-property">
+                    <div class="show-ahm-box">
+                        <a href="/project-details/{{ projects.firstUrlPart }}/{{ projects.secondUrlPart }}" class="links-taps" *ngFor="let projects of item.projects">
+                            <div class="ahow-ahm-items">
+                                <div class="property-details">
+                                    <div class="img-property">
+                                        <img src="{{ projects.project_banner_image }}" class="img-fluid" alt="banner-image">
+                                    </div>
+                                    <div class="deatles-areas">
+                                        <h5 class="property-names">{{ projects.project_name}}</h5>
+                                        <p class="location-property">{{ projects.project_address }}</p>
+                                        <p class="location-property">{{ projects.project_type }}</p>
+                                        <p class="location-property">{{ projects.project_localities }}</p>
+                                        <p class="location-property" *ngIf="projects.land_zone !== null">{{ projects.land_zone }}</p>
+                                        <p class="property-type" >
+                                            <!-- {{ projects.bedroom }} <span *ngIf="projects.bedroom !== null"> BHK Flat</span><br> -->
+                                           <span class="fw-bold" *ngIf="projects.project_price_show == '0'">₹ {{projects.project_minimum_price}} - ₹ {{ projects.project_maximum_price }}</span> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- <a href="" class="links-taps">
+                            <div class="ahow-ahm-items">
+                                <div class="property-details">
+                                    <div class="img-property">
+                                        <img src="../../../assets/images/sakar11.png" alt="">
+                                    </div>
+                                    <div class="deatles-areas">
+                                        <h5 class="property-names">Shaunak Apartments</h5>
+                                        <p class="location-property">Vejalpur, Ahmedabad</p>
+                                        <p class="property-type"><span class="fw-bold">2, 3 BHK</span> Apartment <br>
+                                           <span class="fw-bold"> ₹ 32.7 Lac - ₹ 38.6 Lac</span> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="" class="links-taps">
+                            <div class="ahow-ahm-items">
+                                <div class="property-details">
+                                    <div class="img-property">
+                                        <img src="../../../assets/images/sakar11.png" alt="">
+                                    </div>
+                                    <div class="deatles-areas">
+                                        <h5 class="property-names">Sarvesh</h5>
+                                        <p class="location-property">Ranip, Ahmedabad</p>
+                                        <p class="property-type"><span class="fw-bold">2, 3 BHK</span> Apartment <br>
+                                           <span class="fw-bold"> ₹ 38.6 Lac - ₹ 46.8 Lac</span> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a> -->
+                    </div>
+                </div>
+                <div class="mt-3" *ngIf="item.long_description !== null">
+                    <p class="text-titles" [class.expanded]="isExpanded" [innerHTML]="item.long_description"></p>
+                      <!-- <input type="checkbox" class="text-btn" /> -->
+                      <input type="checkbox" class="text-btn" [(ngModel)]="isExpanded" id="toggle" />
+                      <label for="toggle" class="text-label">
+                        {{ isExpanded ? 'Read Less' : 'Read More' }}
+                      </label>
+                </div>
+                <div class="all-over-propertys">
+                    <div class="all-projects">
+                        <a target="_blank" href="/builder-project-listing/{{item.builderUrl}}">SEE ALL PROJECTS</a>
+                    </div>
+                    <div class="explor-builders">
+                        <a target="_blank" href="/builder-detail/{{ item.builderUrl }}">EXPLORE BUILDER</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="loading-spinner" *ngIf="loading">
+          <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+    </div>
+</section>
+
+
+</main>

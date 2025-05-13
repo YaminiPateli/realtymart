@@ -1,0 +1,384 @@
+<main>
+  <section class="property-free position-relative">
+    <div class="container">
+      <div class="banner-small">
+        <h1 class="banner_title">Sell or Rent your Property</h1>
+        <p class="banner_small">
+          We've over 15 Lac buyers and tenants for you!
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="posting-prperty">
+    <div class="container">
+      <div class="posting-box">
+        <h2 class="posting-title">
+          You are posting this property for ₹5000
+          <span class="text-danger">FREE!</span>
+        </h2>
+        <div class="posting-functionalitys">
+          <p>
+            <span><img src="../../../assets/images/right.png" alt /></span>Free
+            Professional Photoshoot
+          </p>
+          <p>
+            <span><img src="../../../assets/images/right.png" alt /></span>Get
+            Contact Details of upto 5 Responses
+          </p>
+          <p>
+            <span><img src="../../../assets/images/right.png" alt /></span>Access
+            to 15 Lac Buyers & Tenants
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="posting-fileds">
+    <div class="container">
+      <div class="connect-fileds">
+        <form>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 mx-auto">
+              <div class="form-top-heading">
+                <h3>Personal Details</h3>
+              </div>
+              <div class="yourself">
+                <p class="Iam">I am</p>
+                <div class="types-yourself">
+                  <input
+                    type="radio"
+                    id="Property-Owner"
+                    name="fav_language"
+                    value="Property-Owner" />
+                  <label for="Property-Owner">Owner</label><br />
+                  <input
+                    type="radio"
+                    id="Property-Agent"
+                    name="fav_language"
+                    value="Property-Agent" />
+                  <label for="Property-Agent">Agent</label><br />
+                  <input
+                    type="radio"
+                    id="Property-Builder"
+                    name="fav_language"
+                    value="Property-Builder" />
+                  <label for="Property-Builder">Property-Builder</label><br />
+                </div>
+              </div>
+              <label for="humen-name">Name</label>
+              <input
+                type="text"
+                id="humen-name"
+                name="humen-name"
+                placeholder="Enter Your Name"
+                class="gold-form-input"
+                required /><br />
+              <div class="row">
+                <label for="humen-Num">Mobile</label>
+                <div class="col-md-3">
+                  <select
+                    name="number-code"
+                    id="number-code"
+                    class="gold-form-input">
+                    <option value="Ind +91">Ind +91</option>
+                    <option value="USA: +1">USA: +1</option>
+                    <option value="UK: +44">UK: +44</option>
+                    <option value="Mexico: +52">Mexico: +52</option>
+                    <option value="China: +86">China: +86</option>
+                  </select>
+                </div>
+                <div class="col-md-9">
+                  <input
+                    type="number"
+                    id="humen-Num"
+                    name="humen-Num"
+                    placeholder="Number"
+                    class="gold-form-input"
+                    required /><br />
+                </div>
+
+              </div>
+              <label for="humen-mail">Email</label>
+              <input
+                type="maill"
+                id="humen-mail"
+                name="humen-mail"
+                placeholder="Email"
+                class="gold-form-input"
+                required /><br />
+
+                <select name="Locality" id="Locality" class="gold-form-input">
+                  <option value="" disabled selected hidden>Select Property Type</option>
+                  <optgroup *ngFor="let group of propertytypeGroups">
+                    <ng-container *ngFor="let property of group.properties; let first = first">
+                      <option *ngIf="first" [value]="property.propertyId">
+                        {{ group.groupName }} - {{ property.propertyName }}
+                      </option>
+                      <option *ngIf="!first" [value]="property.propertyId">
+                        {{ property.propertyName }}
+                      </option>
+                    </ng-container>
+                  </optgroup>
+                </select>
+                
+                
+                
+
+              <div class="form-top-heading">
+                <h3>Property Details</h3>
+              </div>
+              <div class="yourself">
+                <p class="Iam">For</p>
+                <div class="types-yourself">
+                  <input
+                    type="radio"
+                    id="Property-Sale"
+                    name="fav_language"
+                    value="Property-Sale" />
+                  <label for="Property-Sale">Sale</label><br />
+                  <input
+                    type="radio"
+                    id="Property-Rent/Lease"
+                    name="fav_language"
+                    value="Property-Rent/Lease" />
+                  <label for="Property-Rent/Lease">Rent/Lease</label><br />
+                </div>
+              </div>
+
+              <div class="posting_count_inner">
+                <div>
+                  <p class="Iam">Bedroom(s)</p>
+                  <!-- <ul class="posting_conunt">
+                    <li (click)="selectBedroom('1')">1</li>
+                    <li (click)="selectBedroom('2')">2</li>
+                    <li (click)="selectBedroom('3')">3</li>
+                    <li (click)="selectBedroom('4')">4</li>
+                    <li>
+                      <select
+                        name="MainType"
+                        id="MainType"
+                        class="posting_count_plus"
+                        [(ngModel)]="selectedBedroom"
+                      >
+                        <option value="5"(click)="selectBedroom('4')">5+</option>
+                        <option value="6"(click)="selectBedroom('4')">6+</option>
+                        <option value="7"(click)="selectBedroom('4')">7+</option>
+                        <option value="8"(click)="selectBedroom('4')">8+</option>
+                        <option value="9"(click)="selectBedroom('4')">9+</option>
+                        <option value="10"(click)="selectBedroom('4')">>10+</option>
+                      </select>
+                    </li>
+                  </ul>
+                  <input type="hidden" name="bedroom" [value]="selectedBedroom"> -->
+                  
+                  
+                  
+                  
+
+                  <!-- <ul class="posting_conunt">
+                    <li>
+                      <input type="checkbox" value="1" id="bedroom1" onclick="selectBedroom(this.value, 'bedroom')" class="active">
+                      <label for="bedroom1">1</label>
+                    </li>
+                    <li>
+                      <input type="checkbox" value="2" id="bedroom2" onclick="selectBedroom(this.value, 'bedroom')">
+                      <label for="bedroom2">2</label>
+                    </li>
+                    <li>
+                      <input type="checkbox" value="3" id="bedroom3" onclick="selectBedroom(this.value, 'bedroom')">
+                      <label for="bedroom3">3</label>
+                    </li>
+                    <li>
+                      <input type="checkbox" value="4" id="bedroom4" onclick="selectBedroom(this.value, 'bedroom')">
+                      <label for="bedroom4">4</label>
+                    </li>
+                    <li>
+                      <select name="MainType" id="MainType" class="posting_count_plus" onchange="selectBedroom(this.value, 'bedroom')">
+                        <option value="5">5+</option>
+                        <option value="6">6+</option>
+                        <option value="7">7+</option>
+                        <option value="8">8+</option>
+                        <option value="9">9+</option>
+                        <option value="10">>10+</option>
+                      </select>
+                    </li>
+                  </ul> -->
+                  
+                </div>
+
+                <div>
+                  <p class="Iam" style="margin-left: 30px">Area</p>
+                  <ul class="posting_area_size">
+                    <a disabled="disabled" class="selectCount"><li class>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter"
+                          aria-label="enter" /></li></a>
+                    <li>
+                      <select
+                        name="MainType"
+                        id="MainType"
+                        class="property_select_drop">
+                        <option value disabled selected hidden>Sq-ft</option>
+                        <option value="Lorem">Sq-ft</option>
+                        <option value="Lorem2">Sq-ft</option>
+                        <option value="Lorem3">Sq-ft</option>
+                      </select>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="form-top-heading">
+                <h3>Add more details to get relevant responses</h3>
+              </div>
+              <div class="posting_count_inner">
+                <div>
+                  <p class="Iam">You're looking to</p>
+                <ul class="property_type_list">
+                  <a href="javascript:void(0)" onclick="selectProperty()"><li
+                      class="active">Sell</li></a>
+                  <a href="javascript:void(0)" disabled="disabled"><li>Rent</li></a>
+                </ul>
+                </div>
+                
+                <div>
+                  <p class="Iam" style="margin-left: 30px">Expected price</p>
+                  <ul class="posting_area_size">
+                    <a disabled="disabled" class="selectCount"><li class="wd_add">
+                        <input
+                          type="text"
+                          class="form-control wd_add"
+                          placeholder="Price"
+                          aria-label="price" /></li></a>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <p class="Iam">Constrution Status</p>
+                <ul class="property_type_list">
+                  <a href="javascript:void(0)" onclick="selectProperty()"><li
+                      class="">Ready to move</li></a>
+                  <a href="javascript:void(0)" disabled="disabled"><li>Under Constrution</li></a>
+                </ul>
+                </div>
+              </div>
+              <div class="form-top-heading">
+                <h3>Last few details!</h3>
+              </div>
+              <div class="posting_count_inner">
+                <div>
+                  <p class="Iam">BHK / Bathroom(s)</p>
+                  <ul class="posting_conunt">
+                    <li class onclick="selectBedroom('1', 'bedroom')">1</li>
+                    <li onclick="selectBedroom('2', 'bedroom')">2</li>
+                    <li onclick="selectBedroom('3', 'bedroom')">3</li>
+                    <li onclick="selectBedroom('4', 'bedroom')">4</li>
+                    <li>
+                      <select
+                        name="MainType"
+                        id="MainType"
+                        class="posting_count_plus">
+                        <option onclick="selectBedroom('5', 'bedroom')">5+</option>
+                        <option onclick="selectBedroom('6', 'bedroom')">6+</option>
+                        <option onclick="selectBedroom('7', 'bedroom')">7+</option>
+                        <option onclick="selectBedroom('8', 'bedroom')">8+</option>
+                        <option onclick="selectBedroom('9', 'bedroom')">9+</option>
+                        <option onclick="selectBedroom('10', 'bedroom')">>10+</option>
+                      </select>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <p class="Iam" style="margin-left: 30px">Furnished Status</p>
+                  <ul class="posting_area_size">
+                    <li class="wd_add">
+                      <select
+                        name="MainType"
+                        id="MainType"
+                        class="property_select_drop">
+                        <option value disabled selected hidden>
+                          Select
+                        </option>
+                        <option value="Lorem">Lorem</option>
+                        <option value="Lorem2">Lorem2</option>
+                        <option value="Lorem3">Lorem3</option>
+                        <option value="Lorem4">Lorem4</option>
+                      </select>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="floors_all">
+                <div class="custom-counter">
+                  <p class="Iam">Total Floor(s)</p>
+                  <button class="btn_size" (click)="decrement()">-</button>
+                  <span class="btns_value">{{ value }}</span>
+                  <button class="btn_size" (click)="increment()">+</button>
+                </div>
+
+                <div class="custom-counter">
+                  <p class="Iam">Floor(s)</p>
+                  <button class="btn_size" (click)="decrement()">-</button>
+                  <span class="btns_value">{{ value }}</span>
+                  <button class="btn_size" (click)="increment()">+</button>
+                </div>
+              </div>
+              
+              <div class="form-top-heading">
+                <h3>Property Location</h3>
+              </div>
+
+              <label for="Location-city" class="mt-3">City</label>
+              <select
+                name="Location-city"
+                id="Location-city"
+                class="gold-form-input"
+              >
+                <option value="" disabled selected hidden>
+                  Select Location
+                </option>
+
+                <option value="{{allcities.name}}" *ngFor="let allcities of allcities">{{allcities.name}}</option>
+              </select>
+              <label for="Location-city">Locality</label>
+
+              <select
+                name="Locality"
+                id="Locality"
+                class="gold-form-input"
+              >
+                <option value="" disabled selected hidden>
+                  Select Locality
+                </option>
+                <option value="{{locality.locality}}" *ngFor="let locality of locality">{{locality.locality}}</option>
+              </select>
+
+
+              <div class="form-top-heading">
+                <h3>Get 5X more buyers. Upload photos</h3>
+              </div>
+              <p class="upload_disc">You can upload upto 20 photos. Maximum size of each photo should not exceed 4MB. Format excepted: .jpg, .png, .gif & .bmp Minimum dimension: 600*400 pixel</p>
+
+              <div>
+                <label for="fileInput" class="custom-file-input">
+                  Upload Images
+                </label>
+                <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="image/*" multiple>
+                <div *ngFor="let image of images">
+                  <img [src]="image.url" [alt]="image.name">
+                </div>
+              </div>
+ 
+              <input class="post_sub" type="submit" value="Submit">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>

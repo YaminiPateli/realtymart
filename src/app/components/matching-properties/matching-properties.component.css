@@ -1,0 +1,133 @@
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.tabs_sortby {
+    position: relative;
+  }
+  
+  .tabs_sortby--title {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #eaeaea;
+    border: 1px solid #ccc;
+  }
+  
+  .tabs_sortby__dd {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+  
+  .tabs_sortby__dd__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .tabs_sortby__dd__list--item {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .tabs_sortby__dd__list--item:last-child {
+    border-bottom: none;
+  }
+  
+  .tabs_sortby__dd--show {
+    display: block;
+  }
+  
+  .facility_wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* gap: 20px; */
+  }
+  .facility_title {
+    margin: 0;
+    color: var(--red-E63525);
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    /* padding:0 10px; */
+  }
+  
+  .project-text {
+    font-size: 16px;
+    color: var(--grey-333333);
+    line-height: 20px;
+    margin: 0;
+    /* padding: 0 10px; */
+  }
+  
+  .facility_wrapper > div {
+    padding: 15px;
+    position: relative;
+  }
+  .facility_wrapper > div:first-child{padding-left: 0;}
+  .facility_wrapper > div:nth-child(4n+1){padding-left: 0;}
+  .facility_wrapper > div::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 90%;
+    border-left: 1px solid #cccc;
+  }
+  .facility_wrapper > div::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 85%;
+    border-bottom: 1px solid #cccc;
+  }
+  .mgs_error {
+    color: red;
+  }
+  .reg_sub {
+    width: 100%;
+    margin: 0 auto;
+    color: #fff;
+    text-decoration: none;
+    background-color: #ff5444;
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+  }
+  
+  #otpInput {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #666666;
+    margin-top: 12px;
+  }
+  #otpInput:focus {
+    outline: none;
+  }
+
+  
+  
+  
+  @media only screen and (max-width: 991px) {
+    .facility_wrapper {
+      grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .facility_wrapper {
+    grid-template-columns: repeat(2, 1fr);
+}
+}

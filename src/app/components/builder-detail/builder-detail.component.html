@@ -1,0 +1,733 @@
+<main>
+  <section class="provider_flow">
+    <ngx-slick-carousel
+      class="carousel m-0"
+      *ngIf="builderDetail?.builder_banner_image.length > 0"
+      #slickModal="slick-carousel"
+      [config]="slideConfig1">
+      <div ngxSlickItem class="slide" *ngFor="let image of builderDetail?.builder_banner_image">
+        <img src={{image}} alt="banner-image" width="100%">
+      </div>
+      <!-- <div ngxSlickItem class="slide">
+        <img src="../../../assets/images/provider.jpg" alt width="100%">
+      </div>
+      <div ngxSlickItem class="slide">
+        <img src="../../../assets/images/provider.jpg" alt width="100%">
+      </div>
+      <div ngxSlickItem class="slide">
+        <img src="../../../assets/images/provider.jpg" alt width="100%">
+      </div> -->
+    </ngx-slick-carousel>
+  </section>
+
+  <section class="top_flore" id="navbar">
+    <div class="container">
+      <ul class="nav_box">
+        <li><a style="cursor: pointer" [ngClass]="{ active: activeSection === 'overview' }" (click)="scrollToSection('overview')">Overview</a></li>
+        <li *ngIf="builderDetail?.completedproject !== null || builderDetail?.running_projects !== null" class="{'active': activeSection === 'projects'}"><a style="cursor: pointer" [ngClass]="{ active: activeSection === 'projects' }" (click)="scrollToSection('projects')">Projects</a></li>
+        <li class="{'active': activeSection === 'award'}" *ngIf="builderDetail?.awards_recognition.length > 0"><a style="cursor: pointer" [ngClass]="{ active: activeSection === 'award' }" (click)="scrollToSection('award')">Awards & Recognition</a></li>
+        <li *ngIf="builderDetail?.builder_faq != null" class="{'active': activeSection === 'faqs'}"><a style="cursor: pointer" [ngClass]="{ active: activeSection === 'faqs' }" (click)="scrollToSection('faqs')">Frequently Asked</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="company_overview">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8" *ngIf="builderDetail?.builder_logo !== null" id="overview">
+          <div class="company_llg">
+            <img src={{builderDetail?.builder_logo}} alt="logo"
+              class="img-fluid mb-2" />
+          </div>
+
+          <h3 class="companies-names" *ngIf="builderDetail?.name !== null">{{builderDetail?.name}}</h3>
+          <p class="ex_year" *ngIf="builderDetail?.year !== null">{{builderDetail?.year}}+ Years <br> <span>Experience</span></p>
+          <p class="text-titles" *ngIf="builderDetail?.long_description !== null" [innerHTML]="builderDetail?.long_description">
+          </p>
+          <input type="checkbox" class="text-btn" />
+
+          <button class="contact-buy-btn d-block mt-3" data-bs-toggle="modal" data-bs-target="#get-builder">Contact Us</button>
+
+
+          <div class="project_builders mt-3" id="projects">
+            <h3 class="companies-names mb-3" *ngIf="builderDetail?.name !== null">Projects by {{builderDetail?.name}}</h3>
+
+            <ul class="nav nav-pills mb-3 builder_pills" id="pills-tab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <!-- <button class="nav-link active" id="pills-Ongoing-tab" data-bs-toggle="pill" data-bs-target="#pills-Ongoing" (click)="activeTab = 'ongoing'" type="button" role="tab" aria-controls="pills-Ongoing" aria-selected="true">Ongoing Projects</button> -->
+                <button
+                class="nav-link"
+                id="pills-Ongoing-tab"
+                (click)="switchTab('ongoing')"
+                [ngClass]="{'active': activeTab === 'ongoing'}"
+                type="button"
+                role="tab"
+                aria-controls="pills-Ongoing"
+                aria-selected="true">Ongoing Projects</button>
+              </li>
+
+              <li class="nav-item" role="presentation">
+                <button
+                class="nav-link"
+                id="pills-Completed-tab"
+                (click)="switchTab('completed')"
+                [ngClass]="{'active': activeTab === 'completed'}"
+                type="button"
+                role="tab"
+                aria-controls="pills-Completed"
+                aria-selected="false">Completed Projects</button>
+                <!-- <button class="nav-link" id="pills-Completed-tab" data-bs-toggle="pill" data-bs-target="#pills-Completed" (click)="activeTab = 'completed'" type="button" role="tab" aria-controls="pills-Completed" aria-selected="false">Completed Projects</button> -->
+              </li>
+            </ul>
+
+            <div class="tab-content m-0" id="pills-tabContent">
+              <div class="tab-pane show active" id="pills-Ongoing" role="tabpanel" aria-labelledby="pills-Ongoing-tab">
+                <form>
+                  <div class="box">
+                    <input type="hidden" name="builderid">
+                    <select class="selectpicker project-control border-end-0" name="city" [(ngModel)]="formData.city">
+                      <option value="All Cities">All Cities</option>
+                      <option *ngFor="let city of builderDetail?.working_in_cities" [value]="city">{{ city }}</option>
+                    </select>
+                    <select class="selectpicker project-control" name="projecttype" [(ngModel)]="formData.projecttype">
+                      <option value="Project Type">Project Type</option>
+                      <option *ngFor="let type of builderDetail?.dealsin" [value]="type">{{type }}</option>
+                    </select>
+                    <div class="search-box-btn">
+                      <button type="button" (click)="onSearch()">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #ffffff"></i>
+                      </button>
+                    </div>
+                  </div>
+                  </form>
+                    <ngx-slick-carousel
+                    class="carousel pt-4"
+                    #slickModal="slick-carousel"
+                    [config]="slideConfig3"
+                    *ngIf="activeTab === 'completed' && filteredCompletedProjects.length > 0"
+                  >
+                    <div ngxSlickItem class="slide" *ngFor="let completedProj of filteredCompletedProjects">
+                      <div class="deal-slider-bar">
+                        <div class="main-deals" *ngIf="completedProj">
+                          <div class="deal-imgs">
+                            <img src={{completedProj.project_banner_image}} alt="" />
+                            <div class="hot-details">
+                            <a href="project-details/{{ completedProj.firstUrlPart }}/{{ completedProj.secondUrlPart }}" class="detail-head" *ngIf="completedProj.project_name">
+                            <div class="d-flex align-items-center justify-content-between flex-wrap">
+                              {{completedProj.project_name}}
+                              <p class="type_dis"><b>{{completedProj.project_type}}</b></p>
+                            </div>
+                              <p class="ongoing-location" *ngIf="completedProj.project_localities !==null">
+                                  <span class="locator-icon">
+                                    <i class="fa-sharp fa-solid fa-location-dot"
+                                      style="color: #000000"></i>
+                                    </span>{{completedProj.project_localities}}
+                                </p>
+                                <p class="pb-price py-3"><strong *ngIf="completedProj.project_price_show == '0'">₹ {{completedProj.project_minimum_price}} - ₹ {{completedProj.project_maximum_price}}</strong></p>
+                                <!-- <p class="type_aprt py-1">3,4 BHK Apartment</p>  -->
+                                <!-- <a href="javascript::void()"
+                                class="directions">Contact Us</a> -->
+                              </a>
+                              <button class="contact-buy-btn d-block mt-3" data-bs-toggle="modal" data-bs-target="#get-builder">Contact Us</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <div ngxSlickItem class="slide">
+                      <div class="deal-slider-bar">
+                        <div class="main-deals">
+                          <div class="deal-imgs">
+                            <img src="../../../assets/images/Clip.png" alt="" />
+                            <div class="hot-details">
+                            <a href="" class="detail-head">Saamarth Heaven 4 2</a>
+                              <p class="detail-pera"><b>Residential</b></p>
+                              <p class="ongoing-location">
+                                <span class="locator-icon">
+                                  <i class="fa-sharp fa-solid fa-location-dot"
+                                    style="color: #000000"></i>
+                                  </span>Chandkheda, Ahmedabad
+                              </p>
+                              <div class="area-detail">
+                                <div class="availabilty">
+                                  <p class="area-title">Availability:</p>
+                                  <p class="area-title">Area:</p>
+                                </div>
+                                <div class="area">
+                                  <p class="main-area">2,3 BHK Apartment</p>
+                                  <p class="main-area">1305 Sq. Ft. - 1980 Sq. Ft.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="deal-price">
+                              <p class="main-price-one">
+                                <span class="me-3">Price:</span>₹ 46.6 Lac - 70.4 Lac
+                              </p>
+                            </div>
+                          </div>
+
+                          <a href="#" class="show-deals"
+                            ><i
+                              class="fa fa-thin fa-chevron-right"
+                              style="color: #ffffff"
+                            ></i
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div ngxSlickItem class="slide">
+                      <div class="deal-slider-bar">
+                        <div class="main-deals">
+                          <div class="deal-imgs">
+                            <img src="../../../assets/images/Clip.png" alt="" />
+                            <div class="hot-details">
+                            <a href="" class="detail-head">Saamarth Heaven 4 2</a>
+                            <p class="detail-pera"><b>Residential</b></p>
+                              <p class="ongoing-location">
+                                <span class="locator-icon">
+                                  <i class="fa-sharp fa-solid fa-location-dot"
+                                    style="color: #000000"></i>
+                                  </span>Chandkheda, Ahmedabad
+                              </p>
+                              <div class="area-detail">
+                                <div class="availabilty">
+                                  <p class="area-title">Availability:</p>
+                                  <p class="area-title">Area:</p>
+                                </div>
+                                <div class="area">
+                                  <p class="main-area">2,3 BHK Apartment</p>
+                                  <p class="main-area">1305 Sq. Ft. - 1980 Sq. Ft.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="deal-price">
+                              <p class="main-price-one">
+                                <span class="me-3">Price:</span>₹ 46.6 Lac - 70.4 Lac
+                              </p>
+                            </div>
+                          </div>
+
+                          <a href="#" class="show-deals"
+                            ><i
+                              class="fa fa-thin fa-chevron-right"
+                              style="color: #ffffff"
+                            ></i
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div ngxSlickItem class="slide">
+                      <div class="deal-slider-bar">
+                        <div class="main-deals">
+                          <div class="deal-imgs">
+                            <img src="../../../assets/images/Clip.png" alt="" />
+                            <div class="hot-details">
+                            <a href="" class="detail-head">Saamarth Heaven 4 2</a>
+                            <p class="detail-pera"><b>Residential</b></p>
+                              <p class="ongoing-location">
+                                <span class="locator-icon">
+                                  <i class="fa-sharp fa-solid fa-location-dot"
+                                    style="color: #000000"></i>
+                                  </span>Chandkheda, Ahmedabad
+                              </p>
+                              <div class="area-detail">
+                                <div class="availabilty">
+                                  <p class="area-title">Availability:</p>
+                                  <p class="area-title">Area:</p>
+                                </div>
+                                <div class="area">
+                                  <p class="main-area">2,3 BHK Apartment</p>
+                                  <p class="main-area">1305 Sq. Ft. - 1980 Sq. Ft.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="deal-price">
+                              <p class="main-price-one">
+                                <span class="me-3">Price:</span>₹ 46.6 Lac - 70.4 Lac
+                              </p>
+                            </div>
+                          </div>
+
+                          <a href="#" class="show-deals"
+                            ><i
+                              class="fa fa-thin fa-chevron-right"
+                              style="color: #ffffff"
+                            ></i
+                          ></a>
+                        </div>
+                      </div>
+                    </div> -->
+
+                  </ngx-slick-carousel>
+                  <div *ngIf="activeTab === 'completed' && filteredCompletedProjects.length === 0" class="no-projects-message">
+                    <p style="font-size: 20px;
+                    font-weight: 800;
+                    text-align: center;
+                    margin-top: 20px;">No Projects Found.</p>
+                  </div>
+
+                  <ngx-slick-carousel
+                  class="carousel pt-4"
+                  #slickModal="slick-carousel"
+                  [config]="slideConfig3"
+                  *ngIf="activeTab === 'ongoing' &&  filteredRunningProjects.length > 0"
+                >
+                  <div ngxSlickItem class="slide" *ngFor="let runningProj of filteredRunningProjects">
+                    <div class="deal-slider-bar">
+                      <div class="main-deals" *ngIf="runningProj">
+                        <div class="deal-imgs">
+                          <img src={{runningProj.project_banner_image}} alt="" />
+                          <div class="hot-details">
+                          <a href="project-details/{{ runningProj.firstUrlPart }}/{{ runningProj.secondUrlPart }}" class="detail-head" *ngIf="runningProj.project_name">{{runningProj.project_name}}</a>
+                            <p class="detail-pera"><b>{{runningProj.project_type}}</b></p>
+                            <p class="ongoing-location" *ngIf="runningProj.project_localities !==null">
+                              <span class="locator-icon">
+                                <i class="fa-sharp fa-solid fa-location-dot"
+                                  style="color: #000000"></i>
+                                </span>{{runningProj.project_localities}}
+                            </p>
+                            <p class="pb-price py-3"><strong *ngIf="runningProj.project_price_show == '0'">₹ {{runningProj.project_minimum_price}} - ₹ {{runningProj.project_maximum_price}}</strong></p>
+                          </div>
+                        </div>
+
+                        <!-- <a href="#" class="show-deals"
+                          ><i
+                            class="fa fa-thin fa-chevron-right"
+                            style="color: #ffffff"
+                          ></i
+                        ></a> -->
+                      </div>
+                    </div>
+                  </div>
+
+                </ngx-slick-carousel>
+
+                <div *ngIf="activeTab === 'ongoing' && filteredRunningProjects.length === 0" class="no-projects-message">
+                  <p style="font-size: 20px;
+                  font-weight: 800;
+                  text-align: center;
+                  margin-top: 20px;" >No Projects Found.</p>
+                </div>
+              </div>
+
+              <!-- <div class="tab-pane fade" id="pills-Completed" role="tabpanel" aria-labelledby="pills-Completed-tab">...</div> -->
+            </div>
+
+
+          </div>
+
+          <div class="awards mt-3" id="award" *ngIf="builderDetail?.awards_recognition.length > 0">
+            <h3 class="companies-names">Awards & Recognition</h3>
+            <ngx-slick-carousel class="carousel project_slider pt-3"
+              #slickModal="slick-carousel"
+              [config]="slideConfig2">
+              <div ngxSlickItem class="slide" *ngFor="let award of builderDetail?.awards_recognition">
+                <div class="gallery_box">
+                  <div class="gallery">
+                    <a
+                      href={{award.awards_image}}
+                      data-fancybox="gallery">
+                      <img
+                        src={{award.awards_image}}
+                        alt={{award.awards_name}}
+                        class="img-fluid" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- <div ngxSlickItem class="slide">
+                <div class="gallery_box">
+                  <div class="gallery">
+                    <a
+                      href="../../../assets/images/Gallery1.png"
+                      data-fancybox="gallery">
+                      <img
+                        src="../../../assets/images/Gallery1.png"
+                        alt="Gallery Image"
+                        class="img-fluid" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div ngxSlickItem class="slide">
+                <div class="gallery_box">
+                  <div class="gallery">
+                    <a
+                      href="../../../assets/images/Gallery1.png"
+                      data-fancybox="gallery">
+                      <img
+                        src="../../../assets/images/Gallery1.png"
+                        alt="Gallery Image"
+                        class="img-fluid" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div ngxSlickItem class="slide">
+                <div class="gallery_box">
+                  <div class="gallery">
+                    <a
+                      href="../../../assets/images/Gallery1.png"
+                      data-fancybox="gallery">
+                      <img
+                        src="../../../assets/images/Gallery1.png"
+                        alt="Gallery Image"
+                        class="img-fluid" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div ngxSlickItem class="slide">
+                <div class="gallery_box">
+                  <div class="gallery">
+                    <a
+                      href="../../../assets/images/Gallery1.png"
+                      data-fancybox="gallery">
+                      <img
+                        src="../../../assets/images/Gallery1.png"
+                        alt="Gallery Image"
+                        class="img-fluid" />
+                    </a>
+                  </div>
+                </div>
+              </div> -->
+            </ngx-slick-carousel>
+          </div>
+
+          <div class="frequently_asked" *ngIf="builderDetail?.builder_faq != null" id="faqs">
+            <h3 class="companies-names">Frequently Asked</h3>
+            <div class="accordion pt-3" id="accordionExample">
+              <div class="accordion-item" *ngFor="let faq of builderDetail?.builder_faq; let i = index">
+                <h2 class="accordion-header" [id]="'heading' + i">
+                  <button class="accordion-button" type="button"
+                    data-bs-toggle="collapse"
+                    [attr.data-bs-target]="'#collapse' + i"
+                    aria-expanded="false"
+                    [attr.aria-controls]="'collapse' + i">
+                    <b>{{ faq.faq_que }}</b>
+                  </button>
+                </h2>
+                <div [id]="'collapse' + i" class="accordion-collapse collapse"
+                  [attr.aria-labelledby]="'heading' + i"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body" [innerHTML]="faq.faq_ans"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="other_builders mt-3">
+            <h3 class="companies-names">Other Builders</h3>
+             <div class="builders-swiper">
+        <ngx-slick-carousel
+          class="carousel"
+          #slickModal="slick-carousel"
+          [config]="slideConfig5"
+        >
+          <div
+            ngxSlickItem
+            class="slide"
+            *ngFor="let topbuilders of topbuilders"
+          >
+            <!-- <img src="{{ slide.img }}" alt="" width="100%" /> -->
+            <div class="builder-main-slid">
+              <a href="builder-detail/{{ topbuilders.builderUrl }}" class="builder-front">
+                <div class="builder-logos">
+                  <img
+                    src="{{ topbuilders.builder_logo }}"
+                    alt=""
+                    class="img-fluid"
+                  />
+                </div>
+                <div class="builder-details">
+                  <h4 class="builder-head">{{ topbuilders.name }}</h4>
+                  <p class="build-sells">
+                    Ongoing
+                    <span class="items-building">{{
+                      topbuilders.total_projects -
+                        topbuilders.completed_projects
+                    }}</span>
+                  </p>
+                  <p class="build-sells">
+                    Past
+                    <span class="items-building">{{
+                      topbuilders.completed_projects
+                    }}</span>
+                  </p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4 mt-3">
+          <div class="fill_info">
+            <h4 class="info-title mb-1" *ngIf="builderDetail?.office_address !== null">Address:</h4>
+            <p>{{builderDetail?.office_address}} </p>
+
+            <div class="d-flex align-items-center flex-wrap">
+              <a class="directions" target="_blank" [href]="'https://www.google.com/maps/place/' + builderDetail?.map_link?.replace(' ', '')">Get
+                Directions</a>
+            </div>
+
+            <div
+              class="some_info d-flex justify-content-between flex-wrap mt-3">
+              <div>
+                <p class="info-title m-0" *ngIf="builderDetail?.builder_number !== null">Contact Us:</p>
+                <a>{{builderDetail?.builder_number}}</a>
+              </div>
+              <div>
+                <p class="info-title m-0" *ngIf="builderDetail?.builder_email  !== null">Email Us:</p>
+                <a>{{builderDetail?.builder_email }}</a>
+              </div>
+            </div>
+
+            <div *ngIf="builderDetail?.builder_website !== null"
+              class="some_info d-flex justify-content-between flex-wrap">
+              <div>
+                <p class="info-title m-0">Visit Our
+                  Website:</p>
+                <a target="_blank"
+                  href={{builderDetail?.builder_website}}>{{builderDetail?.builder_website}}</a>
+              </div>
+            </div>
+
+            <div
+              class="some_info d-flex justify-content-between flex-wrap align-items-center">
+              <div *ngIf="builderDetail?.total_projects !==null">
+                <h4 class="info-title m-0">{{builderDetail?.total_projects}}</h4>
+                <p class="m-0">Total Projects</p>
+              </div>
+              <div class="all_view">
+                <a href="">View All <svg xmlns="http://www.w3.org/2000/svg" width="11" height="17" viewBox="0 0 11 17" fill="none">
+                  <path d="M1.075 0.668457L9 8.59344L1.075 16.3315" stroke="#E53726" stroke-width="1.5"/>
+                </svg></a>
+              </div>
+            </div>
+
+            <div
+              class="some_info d-flex justify-content-between flex-wrap align-items-center">
+              <div>
+                <h4 class="info-title m-0">{{builderDetail?.completed_projects}}</h4>
+                <p class="m-0">Ready to Move Projects</p>
+              </div>
+              <div class="all_view">
+                <a href="">View All <svg xmlns="http://www.w3.org/2000/svg" width="11" height="17" viewBox="0 0 11 17" fill="none">
+                  <path d="M1.075 0.668457L9 8.59344L1.075 16.3315" stroke="#E53726" stroke-width="1.5"/>
+                </svg></a>
+              </div>
+            </div>
+
+            <div
+              class="some_info d-flex justify-content-between flex-wrap align-items-center">
+              <div>
+                <h4 class="info-title m-0" *ngIf="builderDetail?.running_projects">{{builderDetail?.running_projects}}</h4>
+                <p class="m-0">Under Construction</p>
+              </div>
+              <div class="all_view">
+                <a href="">View All <svg xmlns="http://www.w3.org/2000/svg" width="11" height="17" viewBox="0 0 11 17" fill="none">
+                  <path d="M1.075 0.668457L9 8.59344L1.075 16.3315" stroke="#E53726" stroke-width="1.5"/>
+                </svg></a>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-2">
+              <div>
+                <p class="info-title mb-2">Share This:</p>
+
+
+                <a href="javascript::void()"
+                  class="directions d-flex align-items-center gap-2">Share
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24"
+                    viewBox="0 0 24 24" fill="none">
+                    <g clip-path="url(#clip0_1748_130)">
+                      <path
+                        d="M13.5531 11.9146V16.892L23.2969 9.02799L13.5531 0.993896V6.05236C6.45623 6.05241 0.703125 11.7999 0.703125 18.8899V23.006C1.4078 16.7269 6.69923 11.9649 13.0237 11.9184L13.5531 11.9146Z"
+                        stroke="white"
+                        stroke-width="1.40625"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </g>
+                    <defs>
+                      <clippath id="clip0_1748_130">
+                        <rect width="24" height="24"
+                          fill="white" />
+                      </clippath>
+                    </defs>
+                  </svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="modal fade" id="get-builder" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header sign-in-box">
+          <button type="button" class="btn-close" id="getphoneno" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h2 class="fill_one">Fill out this one - time contact form</h2>
+          <p class="detail_share">
+            We will share advertiser's details over email
+          </p>
+          <form (submit)="is_token ? submitFormPhone() : openContactOTPModal()">
+            <div class="mt-3">
+            <input type="text" id="Aname" name="contactusername" placeholder="Name" [(ngModel)]="formDataphone.contactusername"  (input)="validateContactName($event)" [disabled]="is_token"
+            (keypress)="validateContactCharInput($event)" required
+              class="gold-form-input my-0" />
+              <div *ngIf="nameContactError" class="mgs_error">
+                Please enter name.
+              </div>
+            </div>
+
+            <div class="mt-3">
+            <input type="email" id="usermail" [(ngModel)]="formDataphone.contactuseremail" (blur)="validateContactEmail($event)" required name="contactusermail" [disabled]="is_token"
+              placeholder="Email" class="gold-form-input my-0" />
+              <div *ngIf="emailContactError" class="mgs_error">
+                Please enter a valid email address.
+              </div>
+            </div>
+
+            <div class="mt-3">
+              <!-- <div class="gold-form-input mb-0"> -->
+                <!-- <select name="contactcountrycode" id="ownerISD" [(ngModel)]="formDataphone.contactcountrycode" required>
+                  <option value="+91" selected="selected">+91</option>
+                </select> -->
+                <!-- <select
+                        name="number-code"
+                        id="number-code"
+                        class="gold-form-input  my-0"
+                      >
+                        <option value="+91">+91</option>
+                        <option value="USA: +1">+1</option>
+                        <option value="UK: +44">+44</option>
+                        <option value="Mexico: +52">+52</option>
+                        <option value="China: +86">+86</option>
+                      </select> -->
+              <!-- </div> -->
+
+              <div class="d-flex align-items-center">
+              <input type="tel" id="contactcontact_no" name="contactcontact_no" placeholder="Enter Mobile Number"
+                [(ngModel)]="formDataphone.contactcontact_no" maxlength="10" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                (keypress)="validateContactNumberInput($event)"
+                [disabled]="is_token"
+                (blur)="validateContactPhoneNumber($event)" required class="gold-form-input mb-0 my-0" />
+                <!-- <span
+                class="verify-label"
+                (click)="openContactOTPModal()"
+                *ngIf="formDataphone
+                .contactcontact_no?.length === 10 && !phoneContactError"
+                style="cursor: pointer; color: #ff5444; font-weight: bold; margin-left: 10px;"
+              >
+                Verify
+              </span> -->
+            </div>
+            </div>
+            <div *ngIf="phoneContactError" class="mgs_error">
+              Please enter a valid 10-digit number.
+            </div>
+
+            <div class="check-compare">
+              <input type="checkbox" id="compare" (change)="onTermsContactChange($event)" [(ngModel)]="formDataphone.termsContactAccepted" [disabled]="is_token" name="termsContactAccepted" required class="mycheck" />
+              <label for="compare" class="compares">I Agree to realtymart</label>
+                <!-- <span><a routerLink="../terms-conditions">Terms of Use</a></span> <br /> -->
+            </div>
+            <div *ngIf="termsContactError" class="mgs_error">
+              Please agree to the terms and conditions.
+            </div>
+            <button type="submit" class="pp-form__cta" [disabled]="emailContactError">
+              {{is_token ? 'Submit Enquiry':'Continue'}}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</main>
+
+
+<div
+#otpContactModel
+class="modal fade"
+tabindex="-1"
+role="dialog"
+aria-bs-hidden="true"
+data-bs-backdrop="static"
+data-bs-keyboard="false"
+>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Verify Your Mobile Number</h5>
+      <button
+        type="button"
+        class="btn-close position-absolute top-0 end-0 mt-3 me-3"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <div>
+        You will receive an OTP on your mobile number.
+      </div>
+      <input
+        type="text"
+        id="otpInput"
+        name="otpInput"
+        placeholder="Enter OTP"
+        [(ngModel)]="formDataphone.contactotp"
+        (keypress)="validateContactNumberInput($event)"
+        maxlength="4"
+        style="border-color: #00000029"
+      />
+      <div *ngIf="otpError" class="mgs_error">
+        Please enter a valid OTP.
+      </div>
+    </div>
+    <div class="modal-footer border-0 flex-column text-center">
+      <button
+        type="button"
+        class="btn reg_sub"
+        (click)="verifyContactOTP()"
+      >
+      Verify
+      </button>
+      <div>
+        <label
+          *ngIf="!isResendEnabled"
+          class="resend-label mb-3"
+          style="cursor: pointer"
+        >
+          You will receive OTP within
+          <b style="color: #ff5444"> 00:{{ remainingTime }}</b>
+          seconds
+        </label>
+        <div class="mb-3"  *ngIf="isResendEnabled">Did not get Verification OTP ?</div>
+        <span
+          *ngIf="isResendEnabled"
+          style="cursor: pointer; border-bottom: 1px solid grey"
+          (click)="resendContactOTP()"
+          >Resend OTP</span
+        >
+      </div>
+      <!-- <button type="button" [disabled]="!isResendEnabled" class="btn reg_sub" (click)="sendOTPToMobile()">
+Resend OTP
+</button> -->
+    </div>
+  </div>
+</div>
+</div>

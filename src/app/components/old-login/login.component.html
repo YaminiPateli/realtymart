@@ -1,0 +1,54 @@
+<main>
+    <section class="login_sing">
+        <div class="login_brg">
+            <div class="login_box">
+                <form #myForm="ngForm" (ngSubmit)="onFormSubmit(myForm)">
+                    <h1 class="login_sign_head">Login</h1>
+                    <div class="otp-process">
+                        <div>
+                            <input
+                                type="email"
+                                class="gold-form-input"
+                                [(ngModel)]="email"
+                                name="email"
+                                placeholder="Enter Registered Email"
+                                [ngClass]="{ 'invalid-input': !isValidEmail() && email.length > 0 }" />
+
+                            <br>
+                            <button class="form-action-btn"
+                                *ngIf="!isOtpGenerated"
+                                (click)="generateOtp(email)">Generate
+                                OTP</button>
+                            <p
+                                *ngIf="!isValidEmail() && email.length > 0 && myForm.submitted"
+                                class="error-message-login">Invalid email
+                                address. Please enter a valid email.</p>
+
+                        </div>
+                        <div *ngIf="isOtpGenerated">
+                            <input
+                                type="number"
+                                class="gold-form-input"
+                                [(ngModel)]="enteredOtp"
+                                #otpInput
+                                placeholder="Enter OTP" />
+
+                            <button class="form-action-btn"
+                                *ngIf="isOtpGenerated"
+                                (click)="validateOtp(email, otpInput.value)">Submit
+                                OTP</button>
+
+                            <!-- <ng-container *ngIf="!isOtpValid">
+                                <p class="error-message-login">Invalid OTP.
+                                    Please try again.</p>
+                            </ng-container> -->
+                        </div>
+                        <div *ngIf="isOtpValid" class="success-message">
+                            OTP successfully validated!
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>

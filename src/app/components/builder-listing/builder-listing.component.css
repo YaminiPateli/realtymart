@@ -1,0 +1,77 @@
+/* 
+.text-titles {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 15px;
+    margin: 0;
+  }
+.text-btn {
+    appearance: none;
+    cursor: pointer;
+    width: fit-content;
+    font-weight: 600;
+    color: var(--red-E63525);
+    -webkit-border-radius: 0.25em;
+    -moz-border-radius: 0.25em;
+    -ms-border-radius: 0.25em;
+    -o-border-radius: 0.25em;
+  }
+  
+  .text-btn::before {
+    content: "Read More";
+    text-transform: capitalize;
+  }
+  
+  .text-btn:checked::before {
+    content: "Read Less";
+  }
+  
+  .text-titles:has(+ .text-btn:checked) {
+    -webkit-line-clamp: initial;
+  }
+   */
+   .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+   .text-titles {
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Show only 5 lines initially */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 15px;
+    margin: 0;
+    transition: max-height 0.3s ease; /* Smooth transition */
+  }
+  
+  .text-titles.expanded {
+    -webkit-line-clamp: unset; /* Show full text when expanded */
+  }
+  
+  .text-btn {
+    display: none; /* Hide the checkbox itself */
+  }
+  
+  .text-label {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--red-E63525);
+    display: inline-block;
+    text-transform: capitalize;
+  }
+  
+  
+  
+  /* .text-label::before {
+    content: "Read More";
+  }
+  
+  .text-btn:checked + .text-label::before {
+    content: "Read Less";
+  }
+   */

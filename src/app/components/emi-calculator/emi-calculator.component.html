@@ -1,0 +1,168 @@
+<main>
+<section class="home-loan position-relative">
+    <div class="container">
+        <div class="banner-small">
+            <h1 class="banner_title">Home Loan EMI Calculator</h1>
+        </div>
+    </div>
+</section>
+
+<section class="clc-box">
+  <div class="container">
+    <div class="home-loan-box">
+      <div class="spacer">
+       <div class="row">
+         <div class="col-lg-8  col-lg-offset-1">
+           <div class="well">
+   
+             <div class="form-group">
+               <!-- <div class="col-md-12">
+                 <span class="left-title">
+                   Home Loan Amount
+                 </span>
+                 <input type="text" style="width:44%;float:right;" class="form-control" (userChangeEnd)="update()"
+                   [(ngModel)]="query.amount" placeholder="Loan Amount" name="pemi.highValue" />
+               </div> -->
+               <div class="col-md-12">
+                <span class="left-title">
+                  Home Loan Amount
+                </span>
+                <input type="text" style="width:44%;float:right;" class="form-control" (blur)="tbupdate(0)"
+                [(ngModel)]="query.amount" placeholder="Loan Amount" name="pemi.highValue" />
+            </div>
+               <ngx-slider [(value)]="pemi.value" [options]="poptions" (userChangeEnd)="update()">
+               </ngx-slider>
+             </div>
+   
+             <hr />
+   
+             <div class="form-group">
+               <div class="col-md-12">
+                 <span class="left-title">
+                   Interest Rate
+                 </span>
+                 <input type="number" style="width:44%;float:right;" class="form-control" (blur)="tbupdate(1)" min="1"
+                   [(ngModel)]="query.interest" placeholder="Interest Rate" name="remi.highValue"/>
+               </div>
+               <ngx-slider [(value)]="remi.value" [options]="roptions" (userChangeEnd)="update()">
+               </ngx-slider>
+             </div>
+             <hr />
+   
+             <div class="form-group">
+               <div class="col-md-10">
+                 <span class="left-title">Loan Tenure</span>
+                 <input type="text" *ngIf="yrToggel" class="form-control" (blur)="tbupdate(2)"
+                   placeholder="Loan Tenure in Yr" [(ngModel)]="query.tenureYr" style="width:30%;float:right;">
+                 <input type="text" *ngIf="!yrToggel" class="form-control" (blur)="tbupdate(3)"
+                   placeholder="Loan Tenure in Mo" [(ngModel)]="query.tenureMo" style="width:30%;float:right;">
+               </div>
+               <div class="col-md-2">
+                 <div class="input-group-append">
+                   <button class="btn btn-outline-secondary" [ngClass]="{'active':yrToggel}"
+                     (click)="yrToggel=true;update()" type="button">Yr</button>
+                   <button class="btn btn-outline-secondary" [ngClass]="{'active':!yrToggel}"
+                     (click)="yrToggel=false;update()" type="button">Mo</button>
+                 </div>
+               </div>
+               <ngx-slider *ngIf="yrToggel" [(value)]="temi.value" [options]="toptions" (userChangeEnd)="update()">
+               </ngx-slider>
+               <ngx-slider *ngIf="!yrToggel" [(value)]="memi.value" [options]="moptions" (userChangeEnd)="update()">
+               </ngx-slider>
+             </div>
+   
+   
+   
+           </div>
+   
+         </div>
+         <div class="col-lg-3">
+           <div class="well">
+   
+             <div class="jusify-center">
+               <h5>
+                 Loan EMI
+               </h5>
+               <span class="result">
+                 {{result.emi || "--"}}
+               </span>
+             </div>
+   
+             <hr />
+   
+             <div>
+               <h5>
+                 Total Interest Payable
+               </h5>
+               <span class="result">
+                 {{result.interest || "--"}}
+               </span>
+             </div>
+   
+             <hr />
+             <div>
+               <h5>
+                 Total Payment
+               </h5>
+               <h6>
+                 (Principal + Interest)
+               </h6>
+               <span class="result">
+                 {{result.total || "--"}}
+               </span>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div> 
+   </div>
+  </div>
+</section>
+
+<section class="home-loan-clc">
+    <div class="container">       
+        <h2 class="home-loantitle">Home Loan EMI Calculator</h2>
+        <p class="emi-text">A home loan EMI calculator is a tool that helps you calculate your monthly instalments (EMIs) with just one click. Home loan calculator is really helpful and can be used easily by any individual who wants to know their Home Loan EMIs in advance.</p>
+        <p class="emi-text">To calculate your Home loan EMI, you need to enter the loan amount, interest rate, and the tenure of the loan.</p>
+
+        <h2 class="home-loantitle">How to use Home Loan EMI Calculator</h2>
+        <p class="emi-text">realtymart Home loan calculator is very easy to use. Any individual who is looking to get a home loan or has already taken a loan can use it to check their EMIs. Take the following steps to check EMIs using this calculator:</p>
+
+        <p class="emi-steps"><strong>Step 1:</strong> Enter the amount you want to borrow<br>
+          <strong>Step 2:</strong> Enter the tenure (in years) for which you want to borrow<br>
+          <strong>Step 3:</strong> Enter the rate of interest <br>
+          <strong>Step 4:</strong> Click on “Calculate Your EMI”</p>
+        
+        <p class="emi-text">After you take all these steps, you will be able to view your monthly instalment on your home loan.</p>
+
+        <h2 class="emi-help-pont">How the Home Loan Calculator Helps You</h2>
+        <p class="emi-text">Using the EMI calculator to know your EMIs in advance can be helpful in many ways. Check out some of the reasons why you should use it:</p>
+
+        <p class="emi-text"><strong>How much should you borrow?</strong> The calculator can help you decide the home loan amount, based on how much EMI you can afford to pay from your income. In other words, you can plan your finances better.</p>
+
+        <p class="emi-text"><strong>How long should the tenure be?</strong> Knowing the EMI you can afford to pay every month, you can determine the right tenure for your loan.</p>
+
+        <p class="emi-text"><strong>How much down payment should you make?</strong> Using the home loan EMI calculator, you can figure out how much you should pay as the down payment, in order to save maximum on your interest while keeping your EMIs to minimum.</p>
+
+        <h2 class="emi-help-pont">Factors Affecting Home Loan EMI</h2>
+        <p class="emi-text">There are multiple factors that can affect your home loan EMI. Check out some of the key factors below:</p>
+
+        <p class="emi-text"><strong>Loan amount:</strong> The loan amount your borrow affects your EMI. Higher the amount you borrow, the higher your EMI.</p>
+
+        <p class="emi-text"><strong>Loan tenure:</strong> The tenure for which you take a home loan also affects your instalments. If the tenure is longer, your EMI will be lower. Remember, longer tenure also means you pay more interest over the period as compared to a shorter tenure loan.</p>
+
+        <p class="emi-text"><strong>Interest rate:</strong> In case of floating interest rate loans, your EMI will change in line with the fluctuations in interest rates. If the rate goes up, your EMI also goes up.</p>
+
+        <h2 class="emi-help-pont">How to Reduce Your Home Loan EMI</h2>
+        <p class="emi-text">If you are looking to get a new home loan or if you already have one, here are some tips to help you reduce your home loan EMI:</p>
+        <ul>
+          <li>Check with multiple lenders before finalizing your loan. Choose the one that offers you the best deal.</li>
+          <li>Don’t borrow more than you can afford. If you can’t afford to repay on time, don’t borrow.</li>
+          <li>Make a higher down payment. Lower the amount you borrow, lower the EMI.</li>
+          <li>Choose a longer tenure (but this also means you will be paying more interest over the period).</li>
+          <li>Make a prepayment on your loan, if and when possible.</li>
+          <li>Apply for a balance transfer home loan to get a better deal.</li>
+        </ul>
+    </div>
+</section>
+</main>

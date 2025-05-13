@@ -1,0 +1,43 @@
+<main>
+  <section class="property-service position-relative">
+    <div class="container">
+      <div class="banner-small">
+        <h1 class="banner_title">Property Related Services</h1>
+        <p class="banner_small">
+          One-stop destination for all your property-related needs
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="all-service-poperty">
+    <div class="container">
+      <div class="control-section">
+        <ejs-autocomplete
+          id="atcelement"
+          [dataSource]="searchdata"
+          (change)="onServiceSelect($event)"
+        >
+          <!-- <input type="text" id='atcelement' [(ngModel)]="selectedService" name="selectedService"> -->
+        </ejs-autocomplete>
+      </div>
+      <div class="service-box">
+        <div class="loans-details" *ngFor="let result of result">
+          <img
+            src="{{ result.image }}"
+            alt="Interior Designer"
+            class="img-fluid"
+          />
+          <p class="loan-title">{{ result.name }}</p>
+          <div>
+            <a
+              routerLink="/property-services/{{ result.prpsrcurl }}"
+              class="inner-loan-btn"
+              ><i class="fa fa-thin fa-chevron-right" style="color: #ffffff"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

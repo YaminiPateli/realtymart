@@ -1,0 +1,41 @@
+.badge{
+    display: inline-block;
+    font-size: 10px;
+    color: #303030;
+    text-transform: uppercase;
+    height: 16px;
+    padding: 0 8px;
+    border-radius: 8px;
+    background-color: #ffc72c;
+    line-height: 18px;
+    font-weight: 600;
+    margin-left: 4px;
+}
+.register{
+    text-decoration: none;
+    color: #e53726;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 700;
+    border: 2px solid #e53726 ;
+    border-radius: 5px;
+    padding: 10px 24px;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+.register {
+    text-decoration: none;
+    color: #e53726;
+    font-size: 14px;
+    line-height: 28px;
+    font-weight: 700;
+    border: 2px solid #e53726;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+.desk_logo{
+    width: 200px;
+}
+}

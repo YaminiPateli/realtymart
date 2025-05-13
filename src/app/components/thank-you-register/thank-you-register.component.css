@@ -1,0 +1,36 @@
+.reg_sec{
+  background-image: url(../../../10-1-24assets/images/formbackground.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+  height: 100vh;
+}
+.reg_logo img{width: 27%;}
+.reg_dis{color: white; text-align: center; width: 500px; margin: 0 auto; padding-top: 20px;}
+.reg_dis a{
+  color: #fff;
+    text-decoration: none;
+    background-color: var(--red-E63525);
+    padding: 20px 30px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+    line-height: 0;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.progress-container {
+  color: white;
+  width: 47%;
+  text-align: center;
+  padding-top: 30px;
+  margin: 0 auto;
+}
+.progress-bar {
+  height: 10px;
+  background-color: var(--red-E63525);
+  transition: width 1s linear;
+}

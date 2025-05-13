@@ -1,0 +1,41 @@
+.tabs_sortby {
+    position: relative;
+  }
+  
+  .tabs_sortby--title {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #eaeaea;
+    border: 1px solid #ccc;
+  }
+  
+  .tabs_sortby__dd {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+  
+  .tabs_sortby__dd__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .tabs_sortby__dd__list--item {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .tabs_sortby__dd__list--item:last-child {
+    border-bottom: none;
+  }
+  
+  .tabs_sortby__dd--show {
+    display: block;
+  }

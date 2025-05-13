@@ -1,0 +1,118 @@
+.pg-prop-details__info__uspdetails {
+  font-size: 14px;
+  line-height: 16px;
+  color: #606060;
+  font-weight: 600;
+  padding-left: 18px;
+  position: relative;
+  margin-top: 10px;
+}
+
+.pg-prop-details__info__uspdetails:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 0;
+  top: 2px;
+  border: 1px solid #009681;
+  background-color: #e0f2f0;
+  border-radius: 100%;
+  box-sizing: border-box;
+}
+
+.pg-prop-details__info__uspdetails:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 5px;
+  height: 2px;
+  top: 6px;
+  left: 3px;
+  border-left: 1px solid #009681;
+  border-bottom: 1px solid #009681;
+  transform: rotate(-45deg);
+}
+
+.groups-companies-names {
+  width: 100%;
+}
+
+.properties_buy_rent_box {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+ul.occupancy_card {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+li.occupancy {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.occupancy_list,
+.occupancy_detail span {
+  color: #909090;
+  font-weight: normal;
+}
+
+.occupancy_detail p {
+  margin: 0;
+  color: black;
+  font-weight: 600;
+}
+
+.occupancy_detail {
+  text-align: end;
+}
+
+ul.amenit_occ {
+  margin: 0;
+  padding: 0;
+  padding-top: 9px;
+}
+
+ul.amenit_occ li {
+  width: auto;
+  height: auto;
+  display: inline-block;
+  padding: 0 15px 14px 22px;
+  color: #606060;
+  font-weight: 400;
+  position: relative;
+}
+
+ul.amenit_occ li::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  left: 0;
+  top: 6px;
+  border: 1px solid #1bba14;
+  border-radius: 50%;
+  background-clip: padding-box;
+}
+
+ul.amenit_occ li::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 6px;
+  height: 3px;
+  top: 11px;
+  left: 4px;
+  border-left: 1px solid #1bba14;
+  border-bottom: 1px solid #1bba14;
+  transform: rotate(-45deg);
+}
+
+.properties_buy_rent_box {
+  margin: 30px 30px 30px 0;
+}

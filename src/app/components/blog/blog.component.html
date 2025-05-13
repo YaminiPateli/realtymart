@@ -1,0 +1,37 @@
+<main>
+  <section class="blog-banner position-relative">
+    <div class="container">
+      <div class="banner-action">
+        <h1 class="banner_title">Blog</h1>
+      </div>
+    </div>
+  </section>
+  <section class="blog-listings">
+    <div class="container">
+      <div class="search-results-container">
+        <div class="list-group">
+          <div class="blog-list-box">
+            <div
+              class="blog-list"
+              *ngFor="let blog of bloglist.slice(0, initialBlogCount)"
+            >
+              <div class="blog-main-image">
+                <img [src]="blog.image" alt="" class="img-fluid" />
+              </div>
+              <div class="blog-list-info">
+                <a href="blog-details/{{ blog.url }}" class="blog-list-head">{{
+                  blog.title
+                }}</a>
+                <p class="date">{{ blog.publish_date }}</p>
+                <p class="rg_small">{{ blog.short_description }}</p>
+                <a href="blog-details/{{ blog.url }}" class="blog-read"
+                  >Read More</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

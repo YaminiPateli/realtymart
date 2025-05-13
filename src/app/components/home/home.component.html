@@ -1,0 +1,2976 @@
+<main>
+  <section>
+    <div class="banner_bg">
+      <div class="container">
+        <div class="banner_content">
+          <p class="banner_small text-center" style="color: #666666">
+            Find some of the best tips from around the city
+          </p>
+          <h1 class="banner_title text-center" style="color: #000">
+            Find your Dream <span class="font-mody">Property</span>
+          </h1>
+
+          <ul class="nav nav-pills" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="pills-buy-tab" data-bs-toggle="pill" data-bs-target="#pills-buy"
+                (click)="handleTabClick('buy')" type="button" role="tab" aria-controls="pills-buy" aria-selected="true">
+                Buy
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-rent-tab" data-bs-toggle="pill" data-bs-target="#pills-rent"
+                type="button" role="tab" aria-controls="pills-rent" (click)="handleTabClick('rent')"
+                aria-selected="false">
+                Rent
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-Farmhouse-tab" data-bs-toggle="pill" data-bs-target="#pills-Farmhouse"
+                type="button" role="tab" aria-controls="pills-Farmhouse" (click)="handleTabClick('farm house')"
+                aria-selected="false">
+                Farm House
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-Plots-tab" data-bs-toggle="pill" data-bs-target="#pills-Plots"
+                type="button" role="tab" aria-controls="pills-Plots" (click)="handleTabClick('plots')"
+                aria-selected="false">
+                Plots
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-pg-tab" data-bs-toggle="pill" data-bs-target="#pills-pg" type="button"
+                role="tab" aria-controls="pills-pg" aria-selected="false" (click)="handleTabClick('pg')">
+                PG
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-Hostel-tab" data-bs-toggle="pill" data-bs-target="#pills-Hostel"
+                type="button" role="tab" aria-controls="pills-Hostel" aria-selected="false"
+                (click)="handleTabClick('hostel')">
+                Hostel
+              </button>
+            </li>
+          </ul>
+          <form (ngSubmit)="onSubmit()" [formGroup]="myForm">
+            <div class="tab-content profile-content" id="pills-tabContent">
+              <div class="tab-pane show active" id="pills-buy" role="tabpanel" aria-labelledby="pills-buy-tab">
+                <div class="search_wrapper">
+                  <div class="location">
+                    <img src="../../../assets/images/location-icon.svg" alt="" class="me-2" />
+                    <div class="location_select">
+                      <!-- <ng-select
+                        placeholder="Enter Your City"
+                        bindLabel="name"
+                        [multiple]="true"
+                        [closeOnSelect]="true"
+                        bindValue="id"
+                        [searchable]="true"
+                        name="city"
+                        id="city"
+                        formControlName="selectcitysearch"
+                      >
+                      </ng-select> -->
+
+                      <ng-select [items]="city1" bindLabel="cname" bindValue="cid" placeholder="Enter Your City"
+                        [multiple]="false" formControlName="selectcitysearch">
+                      </ng-select>
+
+                      <!-- <ng-select placeholder="Enter Your City"
+           bindLabel="name"
+           [multiple]="true"
+           [closeOnSelect]="true"
+           [closeOnOutsideClick]="true"
+           bindValue="id"
+           [searchable]="true"
+           name="city" id="city" formControlName="selectcitysearch">
+          <ng-option *ngFor="let car of cars" [value]="car.id">
+            {{ car.name }}
+          </ng-option>
+        </ng-select> -->
+                    </div>
+                  </div>
+
+                  <div class="property_drop">
+                    <img src="../../../assets/images/property-icon.svg" class="me-2" alt="" />
+
+                    <div (click)="toggleDisplayDiv()" class="property_wrapper">
+                      <label class="property_tabs"> {{ propertyLabel }}</label>
+                      <!-- Property Type -->
+                    </div>
+                    <div *ngIf="visible" class="ccc property_inner">
+                      <div class="serch-propert">
+                        <div class="mb-search-residential">
+                          <div class="mb-search__property__title" (click)="residencial()">
+                            <label for="Residential">Residential </label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="Residencialvisible">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="
+                                  let propertyresidential of propertyresidential
+                                ">
+                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
+                                    selectedResidentialItems.includes(
+                                      propertyresidential.id
+                                    )
+                                  " name="bar_propertyType_new_buy" id="{{ propertyresidential.id }}"
+                                  title="{{ propertyresidential.name }}" (change)="
+                                    handleResidentialCheckboxChange(
+                                      $event,
+                                      +propertyresidential.id
+                                    )
+                                  " />
+                                <label class="mb-search__property__item__label" for="{{ propertyresidential.id }}"
+                                  id="{{ propertyresidential.id }}">{{ propertyresidential.name }}</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-search-commercial">
+                          <div class="mb-search__property__title" (click)="commercial()">
+                            <label for="">Commercial</label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="Commercialvisible">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="
+                                  let propertycommercial of propertycommercial
+                                ">
+                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
+                                    selectedCommercialItems.includes(
+                                      propertycommercial.id
+                                    )
+                                  " name="bar_propertyType_new_buy" id="{{ propertycommercial.id }}"
+                                  title="{{ propertycommercial.name }}" (change)="
+                                    handleCommercialCheckboxChange(
+                                      $event,
+                                      propertycommercial.id
+                                    )
+                                  " />
+                                <label class="mb-search__property__item__label" for="{{ propertycommercial.id }}"
+                                  id="{{ propertycommercial.id }}">{{ propertycommercial.name }}</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-search-other w-100">
+                          <div class="mb-search__property__title" (click)="OtherPropertyTypes()">
+                            <label for="">Other Property Types</label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="otherproperytypes">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="let propertyother of propertyother">
+                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
+                                    selectedOtherItems.includes(
+                                      propertyother.id
+                                    )
+                                  " name="bar_propertyType_new_buy" id="{{ propertyother.id }}"
+                                  title="{{ propertyother.name }}" (change)="
+                                    handleOtherCheckboxChange(
+                                      $event,
+                                      propertyother.id
+                                    )
+                                  " />
+                                <label class="mb-search__property__item__label" for="{{ propertyother.id }}"
+                                  id="{{ propertyother.id }}">{{ propertyother.name }}</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="budget_dorp">
+                    <img src="../../../assets/images/budget-icon.svg" alt="" class="me-2" />
+
+                    <div class="mb-search__property__title budget-inner" (click)="toggleBudget()">
+                      <label for="Budget">{{ togglebudget ? (minBudget !== null && minBudget !== "" ? minBudget : "Min
+                        Price") + " - " + (maxBudget !== null && maxBudget !== "" ? maxBudget : "Max Price") :
+                        (minBudget || "Min Price") + " - " + (maxBudget || "Max Price") }}</label>
+                    </div>
+
+                    <div class="mb-search__property__data property_inner" *ngIf="togglebudget">
+                      <div class="serch-propert-price">
+                        <div class="mb-search__relative">
+                          <div class="mb-search__dropdown" onclick="event.stopPropagation();">
+                            <div class="wrap-budget">
+                              <ul class="budget-mm nav-pills" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                    aria-selected="true">
+                                    <input type="text" class="mb-search__budget__fld-min-max" id="budgetMin"
+                                      maxlength="8" value="" placeholder="Min Price" />
+                                  </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profile" type="button" role="tab"
+                                    aria-controls="pills-profile" aria-selected="false">
+                                    <input type="text" class="mb-search__budget__fld-min-max" id="budgetMax"
+                                      maxlength="9" value="" placeholder="Max Price" />
+                                  </button>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="tab-content profile-content" id="pills-tabContent">
+                              <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                                aria-labelledby="pills-home-tab">
+                                <div class="mb-search__min-max webkit__scroll-search left-budget" id="minBudjetbuy">
+                                  <div class="mb-search__min-max__item">Min</div>
+                                  <div class="mb-search__min-max__item" data-actualindex="0"
+                                    (click)="getvaluemin('₹5 Lac', 'buy')">
+                                    ₹5 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="1"
+                                    (click)="getvaluemin('₹10 Lac', 'buy')">
+                                    ₹10 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="2"
+                                    (click)="getvaluemin('₹20 Lac', 'buy')">
+                                    ₹20 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="3"
+                                    (click)="getvaluemin('₹30 Lac', 'buy')">
+                                    ₹30 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="4"
+                                    (click)="getvaluemin('₹40 Lac', 'buy')">
+                                    ₹40 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="5"
+                                    (click)="getvaluemin('₹50 Lac', 'buy')">
+                                    ₹50 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="6"
+                                    (click)="getvaluemin('₹60 Lac', 'buy')">
+                                    ₹60 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="7"
+                                    (click)="getvaluemin('₹70 Lac', 'buy')">
+                                    ₹70 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="8"
+                                    (click)="getvaluemin('₹80 Lac', 'buy')">
+                                    ₹80 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="9"
+                                    (click)="getvaluemin('₹90 Lac', 'buy')">
+                                    ₹90 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="10"
+                                    (click)="getvaluemin('₹1 Cr', 'buy')">
+                                    ₹1 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="11"
+                                    (click)="getvaluemin('₹1.2 Cr', 'buy')">
+                                    ₹1.2 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="12"
+                                    (click)="getvaluemin('₹1.4 Cr', 'buy')">
+                                    ₹1.4 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="13"
+                                    (click)="getvaluemin('₹1.6 Cr', 'buy')">
+                                    ₹1.6 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="14"
+                                    (click)="getvaluemin('₹1.8 Cr', 'buy')">
+                                    ₹1.8 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="15"
+                                    (click)="getvaluemin('₹2 Cr', 'buy')">
+                                    ₹2 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="16"
+                                    (click)="getvaluemin('₹2.3 Cr', 'buy')">
+                                    ₹2.3 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="17"
+                                    (click)="getvaluemin('₹2.6 Cr', 'buy')">
+                                    ₹2.6 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="18"
+                                    (click)="getvaluemin('₹3 Cr', 'buy')">
+                                    ₹3 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="19"
+                                    (click)="getvaluemin('₹3.5 Cr', 'buy')">
+                                    ₹3.5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="20"
+                                    (click)="getvaluemin('₹4 Cr', 'buy')">
+                                    ₹4 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="21"
+                                    (click)="getvaluemin('₹4.5 Cr', 'buy')">
+                                    ₹4.5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="22"
+                                    (click)="getvaluemin('₹5 Cr', 'buy')">
+                                    ₹5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="23"
+                                    (click)="getvaluemin('₹10 Cr', 'buy')">
+                                    ₹10 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="24"
+                                    (click)="getvaluemin('₹20 Cr', 'buy')">
+                                    ₹20 Cr
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                aria-labelledby="pills-profile-tab">
+                                <div class="mb-search__min-max webkit__scroll-search right-budget" id="maxBudjetbuy">
+                                  <div class="mb-search__min-max__item">
+                                    Max
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="0" id="maxBhkIndex_0"
+                                    (click)="getvaluemax('₹5 Lac', 'buy')">
+                                    ₹5 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="1" id="maxBhkIndex_1"
+                                    (click)="getvaluemax('₹10 Lac', 'buy')">
+                                    ₹10 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="2" id="maxBhkIndex_2"
+                                    (click)="getvaluemax('₹20 Lac', 'buy')">
+                                    ₹20 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="3" id="maxBhkIndex_3"
+                                    (click)="getvaluemax('₹30 Lac', 'buy')">
+                                    ₹30 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="4" id="maxBhkIndex_4"
+                                    (click)="getvaluemax('₹40 Lac', 'buy')">
+                                    ₹40 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="5" id="maxBhkIndex_5"
+                                    (click)="getvaluemax('₹50 Lac', 'buy')">
+                                    ₹50 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="6" id="maxBhkIndex_6"
+                                    (click)="getvaluemax('₹60 Lac', 'buy')">
+                                    ₹60 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="7" id="maxBhkIndex_7"
+                                    (click)="getvaluemax('₹70 Lac', 'buy')">
+                                    ₹70 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="8" id="maxBhkIndex_8"
+                                    (click)="getvaluemax('₹80 Lac', 'buy')">
+                                    ₹80 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="9" id="maxBhkIndex_9"
+                                    (click)="getvaluemax('₹90 Lac', 'buy')">
+                                    ₹90 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="10" id="maxBhkIndex_10"
+                                    (click)="getvaluemax('₹1 Cr', 'buy')">
+                                    ₹1 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="11" id="maxBhkIndex_11"
+                                    (click)="getvaluemax('₹1.2 Cr', 'buy')">
+                                    ₹1.2 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="12" id="maxBhkIndex_12"
+                                    (click)="getvaluemax('₹1.4 Cr', 'buy')">
+                                    ₹1.4 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="13" id="maxBhkIndex_13"
+                                    (click)="getvaluemax('₹1.6 Cr', 'buy')">
+                                    ₹1.6 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="14" id="maxBhkIndex_14"
+                                    (click)="getvaluemax('₹1.8 Cr', 'buy')">
+                                    ₹1.8 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="15" id="maxBhkIndex_15"
+                                    (click)="getvaluemax('₹2 Cr', 'buy')">
+                                    ₹2 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="16" id="maxBhkIndex_16"
+                                    (click)="getvaluemax('₹2.3 Cr', 'buy')">
+                                    ₹2.3 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="17" id="maxBhkIndex_17"
+                                    (click)="getvaluemax('₹2.6 Cr', 'buy')">
+                                    ₹2.6 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="18" id="maxBhkIndex_18"
+                                    (click)="getvaluemax('₹3 Cr', 'buy')">
+                                    ₹3 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="19" id="maxBhkIndex_19"
+                                    (click)="getvaluemax('₹3.5 Cr', 'buy')">
+                                    ₹3.5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="20" id="maxBhkIndex_20"
+                                    (click)="getvaluemax('₹4 Cr', 'buy')">
+                                    ₹4 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="21" id="maxBhkIndex_21"
+                                    (click)="getvaluemax('₹4.5 Cr', 'buy')">
+                                    ₹4.5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="22" id="maxBhkIndex_22"
+                                    (click)="getvaluemax('₹5 Cr', 'buy')">
+                                    ₹5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="23" id="maxBhkIndex_23"
+                                    (click)="getvaluemax('₹10 Cr', 'buy')">
+                                    ₹10 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="24" id="maxBhkIndex_24"
+                                    (click)="getvaluemax('₹20 Cr', 'buy')">
+                                    ₹20 Cr
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="search_btn">
+                    <button class="main_search_btn gap-2 d-flex align-items-center">
+                      <img src="../../../assets/images/search-icon.svg" alt="" />
+                      &nbsp;Search
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane" id="pills-rent" role="tabpanel" aria-labelledby="pills-rent-tab">
+                <div class="search_wrapper">
+                  <div class="location">
+                    <img src="../../../assets/images/location-icon.svg" alt="" class="me-2" />
+                    <div class="location_select">
+                      <!-- <ng-select
+                      placeholder="Enter Your City"
+                      bindLabel="name"
+                      [multiple]="true"
+                      bindValue="id"
+                      name="city"
+                      id="city"
+                      formControlName="selectcitysearch"
+                    >
+                    </ng-select> -->
+
+                      <ng-select [multiple]="false" [items]="city1" bindLabel="cname" bindValue="cid"
+                        placeholder="Enter Your City" formControlName="selectcitysearch">
+                      </ng-select>
+                    </div>
+                  </div>
+                  <!-- <div class="location_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="What are you looking for?"
+                      aria-label="location" aria-describedby="basic-addon1" />
+                  </div>
+                </div> -->
+                  <div class="property_drop">
+                    <img src="../../../assets/images/property-icon.svg" class="me-2" alt="" />
+
+                    <div (click)="renttoggleDisplayDiv()" class="property_wrapper">
+                      <label class="property_tabs" id="property_tabs_rent">{{ propertyLabel }}</label>
+
+                      <!-- <label class="property_check_rent">Property Type</label> -->
+                    </div>
+                    <div *ngIf="visible" class="ccc property_inner">
+                      <div class="serch-propert">
+                        <div class="mb-search-residential">
+                          <div class="mb-search__property__title" (click)="residencial()">
+                            <label for="Residential">Residential </label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="Residencialvisible">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="
+                                  let propertyresidential of propertyresidential
+                                ">
+                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
+                                    selectedResidentialItems.includes(
+                                      propertyresidential.id
+                                    )
+                                  " name="bar_propertyType_new_rent" id="rent_{{ propertyresidential.id }}"
+                                  title="{{ propertyresidential.name }}" (change)="
+                                    rentCheckboxChange(
+                                      $event,
+                                      +propertyresidential.id,
+                                      'rent'
+                                    )
+                                  " />
+                                <label class="mb-search__property__item__label" for="rent_{{ propertyresidential.id }}"
+                                  id="rent_{{ propertyresidential.id }}">{{ propertyresidential.name }}</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-search-commercial">
+                          <div class="mb-search__property__title" (click)="commercial()">
+                            <label for="">Commercial</label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="Commercialvisible">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="
+                                  let propertycommercial of propertycommercial
+                                ">
+                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
+                                    selectedCommercialItems.includes(
+                                      propertycommercial.id
+                                    )
+                                  " name="bar_propertyType_new_buy" id="rent_{{ propertycommercial.id }}"
+                                  title="{{ propertycommercial.name }}" (change)="
+                                    renthandleCommercialCheckboxChange(
+                                      $event,
+                                      +propertycommercial.id,
+                                      'rent'
+                                    )
+                                  " />
+                                <label class="mb-search__property__item__label" for="rent_{{ propertycommercial.id }}"
+                                  id="rent_{{ propertycommercial.id }}">{{ propertycommercial.name }}</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-search-other  w-100">
+                          <div class="mb-search__property__title" (click)="OtherPropertyTypes()">
+                            <label for="">Other Property Types</label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="otherproperytypes">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="let propertyother of propertyother">
+                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
+                                    selectedOtherItems.includes(
+                                      propertyother.id
+                                    )
+                                  " name="bar_propertyType_new_buy" id="rent_{{ propertyother.id }}"
+                                  title="{{ propertyother.name }}" (change)="
+                                    renthandleOtherCheckboxChange(
+                                      $event,
+                                      +propertyother.id,
+                                      'rent'
+                                    )
+                                  " />
+                                <label class="mb-search__property__item__label" for="rent_{{ propertyother.id }}"
+                                  id="rent_{{ propertyother.id }}">{{ propertyother.name }}</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="budget_dorp">
+                    <img src="../../../assets/images/budget-icon.svg" alt="" class="me-2" />
+
+                    <div class="mb-search__property__title budget-inner" (click)="toggleBudget()">
+                      <label for="Budget">
+                        {{
+                        togglebudget
+                        ? (minBudget !== null && minBudget !== ""
+                        ? minBudget
+                        : "Min Price") +
+                        " - " +
+                        (maxBudget !== null && maxBudget !== ""
+                        ? maxBudget
+                        : "Max Price")
+                        : (minBudget || "Min Price") +
+                        " - " +
+                        (maxBudget || "Max Price")
+                        }}
+                      </label>
+                    </div>
+
+                    <div class="mb-search__property__data property_inner" *ngIf="togglebudget">
+                      <div class="serch-propert-price">
+                        <div class="mb-search__relative">
+                          <div class="mb-search__dropdown" onclick="event.stopPropagation();">
+                            <div class="wrap-budget">
+                              <ul class="budget-mm nav-pills" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-homerent" type="button" role="tab" aria-controls="pills-home"
+                                    aria-selected="true">
+                                    <input type="text" class="mb-search__budget__fld-min-max" id="minBudjetrent"
+                                      maxlength="8" value="" placeholder="Min Price" />
+                                  </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profilerent" type="button" role="tab"
+                                    aria-controls="pills-profile" aria-selected="false">
+                                    <input type="text" class="mb-search__budget__fld-min-max" id="maxBudjetrent"
+                                      maxlength="9" value="" placeholder="Max Price" />
+                                  </button>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="tab-content profile-content" id="pills-tabContent">
+                              <div class="tab-pane fade show active" id="pills-homerent" role="tabpanel"
+                                aria-labelledby="pills-home-tab">
+                                <div class="mb-search__min-max webkit__scroll-search left-budget" id="minBudjetrent">
+                                  <div class="mb-search__min-max__item">
+                                    Min
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="0"
+                                    (click)="getvaluemin('₹5000', 'rent')">
+                                    ₹5000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="1"
+                                    (click)="getvaluemin('₹10000', 'rent')">
+                                    ₹10000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="2"
+                                    (click)="getvaluemin('₹15000', 'rent')">
+                                    ₹15000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="3"
+                                    (click)="getvaluemin('₹20000', 'rent')">
+                                    ₹20000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="4"
+                                    (click)="getvaluemin('₹25000', 'rent')">
+                                    ₹25000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="5"
+                                    (click)="getvaluemin('₹30000', 'rent')">
+                                    ₹30000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="6"
+                                    (click)="getvaluemin('₹35000', 'rent')">
+                                    ₹35000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="7"
+                                    (click)="getvaluemin('₹40000', 'rent')">
+                                    ₹40000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="8"
+                                    (click)="getvaluemin('₹50000', 'rent')">
+                                    ₹50000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="9"
+                                    (click)="getvaluemin('₹60000', 'rent')">
+                                    ₹60000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="9"
+                                    (click)="getvaluemin('₹850000', 'rent')">
+                                    ₹850000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="10"
+                                    (click)="getvaluemin('₹1 Lac', 'rent')">
+                                    ₹1 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="11"
+                                    (click)="getvaluemin('₹1.5 Lac', 'rent')">
+                                    ₹1.5 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="15"
+                                    (click)="getvaluemin('₹2 Lac', 'rent')">
+                                    ₹2 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="16"
+                                    (click)="getvaluemin('₹4 Lac', 'rent')">
+                                    ₹4 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="17"
+                                    (click)="getvaluemin('₹7 Lac', 'rent')">
+                                    ₹7 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="23"
+                                    (click)="getvaluemin('₹10 Lac', 'rent')">
+                                    ₹10 Lac
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="tab-pane fade" id="pills-profilerent" role="tabpanel"
+                                aria-labelledby="pills-profile-tab">
+                                <div class="mb-search__min-max webkit__scroll-search right-budget" id="maxBudjetrent">
+                                  <div class="mb-search__min-max__item">
+                                    Max
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="0" id="maxBhkIndex_0"
+                                    (click)="getvaluemax('₹5000', 'rent')">
+                                    ₹5000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="1" id="maxBhkIndex_1"
+                                    (click)="getvaluemax('₹10000', 'rent')">
+                                    ₹10000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="2" id="maxBhkIndex_2"
+                                    (click)="getvaluemax('₹15000', 'rent')">
+                                    ₹15000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="3" id="maxBhkIndex_3"
+                                    (click)="getvaluemax('₹20000', 'rent')">
+                                    ₹20000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="4" id="maxBhkIndex_4"
+                                    (click)="getvaluemax('₹25000', 'rent')">
+                                    ₹25000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="5" id="maxBhkIndex_5"
+                                    (click)="getvaluemax('₹30000', 'rent')">
+                                    ₹30000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="6" id="maxBhkIndex_6"
+                                    (click)="getvaluemax('₹35000', 'rent')">
+                                    ₹35000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="7" id="maxBhkIndex_7"
+                                    (click)="getvaluemax('₹40000', 'rent')">
+                                    ₹40000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="8" id="maxBhkIndex_8"
+                                    (click)="getvaluemax('₹50000', 'rent')">
+                                    ₹50000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="9" id="maxBhkIndex_9"
+                                    (click)="getvaluemax('₹60000', 'rent')">
+                                    ₹60000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="10" id="maxBhkIndex_10"
+                                    (click)="getvaluemax('₹850000', 'rent')">
+                                    ₹850000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="11" id="maxBhkIndex_11"
+                                    (click)="getvaluemax('₹1 Lac', 'rent')">
+                                    ₹1 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="12" id="maxBhkIndex_12"
+                                    (click)="getvaluemax('₹1.5 Lac', 'rent')">
+                                    ₹1.5 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="13" id="maxBhkIndex_13"
+                                    (click)="getvaluemax('₹2 Lac', 'rent')">
+                                    ₹2 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="14" id="maxBhkIndex_14"
+                                    (click)="getvaluemax('₹4 Lac', 'rent')">
+                                    ₹4 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="15" id="maxBhkIndex_15"
+                                    (click)="getvaluemax('₹7 Lac', 'rent')">
+                                    ₹7 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="16" id="maxBhkIndex_16"
+                                    (click)="getvaluemax('₹10 Lac', 'rent')">
+                                    ₹10 Lac
+                                  </div>
+                                  <!-- <div class="mb-search__min-max__item" data-actualindex="17" id="maxBhkIndex_17" (click)="getvaluemax('₹2.6 Cr','rent')">₹2.6 Cr</div>
+                                <div class="mb-search__min-max__item" data-actualindex="18" id="maxBhkIndex_18" (click)="getvaluemax('₹3 Cr','rent')">₹3 Cr</div>
+                                <div class="mb-search__min-max__item" data-actualindex="19" id="maxBhkIndex_19" (click)="getvaluemax('₹3.5 Cr','rent')">₹3.5 Cr</div>
+                                <div class="mb-search__min-max__item" data-actualindex="20" id="maxBhkIndex_20" (click)="getvaluemax('₹4 Cr','rent')">₹4 Cr</div>
+                                <div class="mb-search__min-max__item" data-actualindex="21" id="maxBhkIndex_21" (click)="getvaluemax('₹4.5 Cr','rent')">₹4.5 Cr</div>
+                                <div class="mb-search__min-max__item" data-actualindex="22" id="maxBhkIndex_22" (click)="getvaluemax('₹5 Cr','rent')">₹5 Cr</div>
+                                <div class="mb-search__min-max__item" data-actualindex="23" id="maxBhkIndex_23" (click)="getvaluemax('₹10 Cr','rent')">₹10 Cr</div>
+                                <div class="mb-search__min-max__item" data-actualindex="24" id="maxBhkIndex_24" (click)="getvaluemax('₹20 Cr','rent')">₹20 Cr</div> -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="search_btn">
+                    <button class="main_search_btn gap-2 d-flex align-items-center">
+                      <img src="../../../assets/images/search-icon.svg" alt="" />
+                      &nbsp; Search
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane" id="pills-Farmhouse" role="tabpanel" aria-labelledby="pills-Farmhouse-tab">
+                <div class="search_wrapper">
+                  <div class="location">
+                    <img src="../../../assets/images/location-icon.svg" alt="" class="me-2" />
+                    <div class="location_select">
+                      <!-- <ng-select
+                      placeholder="Enter Your City"
+                      bindLabel="name"
+                      [multiple]="true"
+                      [closeOnSelect]="true"
+                      bindValue="id"
+                      [searchable]="true"
+                      name="city"
+                      id="city"
+                      formControlName="selectcitysearch"
+                    >
+                    </ng-select> -->
+
+                      <ng-select [multiple]="false" [items]="city1" bindLabel="cname" bindValue="cid"
+                        placeholder="Enter Your City" formControlName="selectcitysearch">
+                      </ng-select>
+                    </div>
+                  </div>
+                  <!-- <div class="location_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="What are you looking for?"
+                      aria-label="location" aria-describedby="basic-addon1" />
+                  </div>
+                </div> -->
+                  <div class="property_drop">
+                    <img src="../../../assets/images/property-icon.svg" class="me-2" alt="" />
+
+                    <div (click)="farmhousetoggleDisplayDiv()" class="property_wrapper">
+                      <label class="property_tabs" id="property_tabs_farmhouse"> {{ propertyLabel }}</label>
+
+                      <!-- <label class="property_check_rent">Property Type</label> -->
+                    </div>
+                    <div *ngIf="visible" class="ccc property_inner">
+                      <div class="serch-propert">
+                        <div class="mb-search-residential">
+                          <div class="mb-search__property__title" (click)="residencial()">
+                            <label for="Residential">Residential </label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="Residencialvisible">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="
+                                  let propertyresidential of propertyresidential
+                                ">
+                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
+                                    selectedResidentialItems.includes(
+                                      propertyresidential.id
+                                    )
+                                  " name="bar_propertyType_new_rent" id="farmhouse_{{ propertyresidential.id }}"
+                                  title="{{ propertyresidential.name }}" (change)="
+                                    farmhouseCheckboxChange(
+                                      $event,
+                                      +propertyresidential.id,
+                                      'farmhouse'
+                                    )
+                                  " />
+                                <label class="mb-search__property__item__label"
+                                  for="farmhouse_{{ propertyresidential.id }}"
+                                  id="farmhouse_{{ propertyresidential.id }}">{{ propertyresidential.name }}</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-search-commercial">
+                          <div class="mb-search__property__title" (click)="commercial()">
+                            <label for="">Commercial</label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="Commercialvisible">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="
+                                  let propertycommercial of propertycommercial
+                                ">
+                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
+                                    selectedCommercialItems.includes(
+                                      propertycommercial.id
+                                    )
+                                  " name="bar_propertyType_new_buy" id="farmhouse_{{ propertycommercial.id }}"
+                                  title="{{ propertycommercial.name }}" (change)="
+                                    farmhousehandleCommercialCheckboxChange(
+                                      $event,
+                                      propertycommercial.id,
+                                      'farmhouse'
+                                    )
+                                  " />
+                                <label class="mb-search__property__item__label"
+                                  for="farmhouse_{{ propertycommercial.id }}"
+                                  id="farmhouse_{{ propertycommercial.id }}">{{ propertycommercial.name }}</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-search-other  w-100">
+                          <div class="mb-search__property__title  " (click)="OtherPropertyTypes()">
+                            <label for="">Other Property Types</label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="otherproperytypes">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="let propertyother of propertyother">
+                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
+                                    selectedOtherItems.includes(
+                                      propertyother.id
+                                    )
+                                  " name="bar_propertyType_new_buy" id="farmhouse_{{ propertyother.id }}"
+                                  title="{{ propertyother.name }}" (change)="
+                                    farmhousehandleOtherCheckboxChange(
+                                      $event,
+                                      propertyother.id,
+                                      'farmhouse'
+                                    )
+                                  " />
+                                <label class="mb-search__property__item__label" for="farmhouse_{{ propertyother.id }}"
+                                  id="farmhouse_{{ propertyother.id }}">{{ propertyother.name }}</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="budget_dorp">
+                    <img src="../../../assets/images/budget-icon.svg" alt="" class="me-2" />
+
+                    <div class="mb-search__property__title budget-inner" (click)="toggleBudget()">
+                      <label for="Budget">
+                        {{
+                        togglebudget
+                        ? (minBudget !== null && minBudget !== ""
+                        ? minBudget
+                        : "Min Price") +
+                        " - " +
+                        (maxBudget !== null && maxBudget !== ""
+                        ? maxBudget
+                        : "Max Price")
+                        : (minBudget || "Min Price") +
+                        " - " +
+                        (maxBudget || "Max Price")
+                        }}
+                      </label>
+                    </div>
+
+                    <div class="mb-search__property__data property_inner" *ngIf="togglebudget">
+                      <div class="serch-propert-price">
+                        <div class="mb-search__relative">
+                          <div class="mb-search__dropdown" onclick="event.stopPropagation();">
+                            <div class="wrap-budget">
+                              <ul class="budget-mm nav-pills" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-homefarm" type="button" role="tab" aria-controls="pills-home"
+                                    aria-selected="true">
+                                    <input type="text" class="mb-search__budget__fld-min-max" id="minBudjetfarm"
+                                      maxlength="8" value="" placeholder="Min Price" />
+                                  </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profilefarm" type="button" role="tab"
+                                    aria-controls="pills-profile" aria-selected="false">
+                                    <input type="text" class="mb-search__budget__fld-min-max" id="maxBudjetfarm"
+                                      maxlength="9" value="" placeholder="Max Price" />
+                                  </button>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="tab-content profile-content" id="pills-tabContent">
+                              <div class="tab-pane fade show active" id="pills-homefarm" role="tabpanel"
+                                aria-labelledby="pills-home-tab">
+                                <div class="mb-search__min-max webkit__scroll-search left-budget" id="minBudjetfarm">
+                                  <div class="mb-search__min-max__item">
+                                    Min
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="0"
+                                    (click)="getvaluemin('₹5 Lac', 'farm')">
+                                    ₹5 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="1"
+                                    (click)="getvaluemin('₹10 Lac', 'farm')">
+                                    ₹10 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="2"
+                                    (click)="getvaluemin('₹20 Lac', 'farm')">
+                                    ₹20 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="3"
+                                    (click)="getvaluemin('₹30 Lac', 'farm')">
+                                    ₹30 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="4"
+                                    (click)="getvaluemin('₹40 Lac', 'farm')">
+                                    ₹40 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="5"
+                                    (click)="getvaluemin('₹50 Lac', 'farm')">
+                                    ₹50 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="6"
+                                    (click)="getvaluemin('₹60 Lac', 'farm')">
+                                    ₹60 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="7"
+                                    (click)="getvaluemin('₹70 Lac', 'farm')">
+                                    ₹70 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="8"
+                                    (click)="getvaluemin('₹80 Lac', 'farm')">
+                                    ₹80 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="9"
+                                    (click)="getvaluemin('₹90 Lac', 'farm')">
+                                    ₹90 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="10"
+                                    (click)="getvaluemin('₹1 Cr', 'farm')">
+                                    ₹1 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="11"
+                                    (click)="getvaluemin('₹1.2 Cr', 'farm')">
+                                    ₹1.2 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="12"
+                                    (click)="getvaluemin('₹1.4 Cr', 'farm')">
+                                    ₹1.4 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="13"
+                                    (click)="getvaluemin('₹1.6 Cr', 'farm')">
+                                    ₹1.6 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="14"
+                                    (click)="getvaluemin('₹1.8 Cr', 'farm')">
+                                    ₹1.8 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="15"
+                                    (click)="getvaluemin('₹2 Cr', 'farm')">
+                                    ₹2 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="16"
+                                    (click)="getvaluemin('₹2.3 Cr', 'farm')">
+                                    ₹2.3 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="17"
+                                    (click)="getvaluemin('₹2.6 Cr', 'farm')">
+                                    ₹2.6 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="18"
+                                    (click)="getvaluemin('₹3 Cr', 'farm')">
+                                    ₹3 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="19"
+                                    (click)="getvaluemin('₹3.5 Cr', 'farm')">
+                                    ₹3.5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="20"
+                                    (click)="getvaluemin('₹4 Cr', 'farm')">
+                                    ₹4 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="21"
+                                    (click)="getvaluemin('₹4.5 Cr', 'farm')">
+                                    ₹4.5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="22"
+                                    (click)="getvaluemin('₹5 Cr', 'farm')">
+                                    ₹5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="23"
+                                    (click)="getvaluemin('₹10 Cr', 'farm')">
+                                    ₹10 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="24"
+                                    (click)="getvaluemin('₹20 Cr', 'farm')">
+                                    ₹20 Cr
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="tab-pane fade" id="pills-profilefarm" role="tabpanel"
+                                aria-labelledby="pills-profile-tab">
+                                <div class="mb-search__min-max webkit__scroll-search right-budget" id="maxBudjetfarm">
+                                  <div class="mb-search__min-max__item">
+                                    Max
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="0" id="maxBhkIndex_0"
+                                    (click)="getvaluemax('₹5 Lac', 'farm')">
+                                    ₹5 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="1" id="maxBhkIndex_1"
+                                    (click)="getvaluemax('₹10 Lac', 'farm')">
+                                    ₹10 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="2" id="maxBhkIndex_2"
+                                    (click)="getvaluemax('₹20 Lac', 'farm')">
+                                    ₹20 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="3" id="maxBhkIndex_3"
+                                    (click)="getvaluemax('₹30 Lac', 'farm')">
+                                    ₹30 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="4" id="maxBhkIndex_4"
+                                    (click)="getvaluemax('₹40 Lac', 'farm')">
+                                    ₹40 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="5" id="maxBhkIndex_5"
+                                    (click)="getvaluemax('₹50 Lac', 'farm')">
+                                    ₹50 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="6" id="maxBhkIndex_6"
+                                    (click)="getvaluemax('₹60 Lac', 'farm')">
+                                    ₹60 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="7" id="maxBhkIndex_7"
+                                    (click)="getvaluemax('₹70 Lac', 'farm')">
+                                    ₹70 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="8" id="maxBhkIndex_8"
+                                    (click)="getvaluemax('₹80 Lac', 'farm')">
+                                    ₹80 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="9" id="maxBhkIndex_9"
+                                    (click)="getvaluemax('₹90 Lac', 'farm')">
+                                    ₹90 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="10" id="maxBhkIndex_10"
+                                    (click)="getvaluemax('₹1 Cr', 'farm')">
+                                    ₹1 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="11" id="maxBhkIndex_11"
+                                    (click)="getvaluemax('₹1.2 Cr', 'farm')">
+                                    ₹1.2 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="12" id="maxBhkIndex_12"
+                                    (click)="getvaluemax('₹1.4 Cr', 'farm')">
+                                    ₹1.4 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="13" id="maxBhkIndex_13"
+                                    (click)="getvaluemax('₹1.6 Cr', 'farm')">
+                                    ₹1.6 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="14" id="maxBhkIndex_14"
+                                    (click)="getvaluemax('₹1.8 Cr', 'farm')">
+                                    ₹1.8 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="15" id="maxBhkIndex_15"
+                                    (click)="getvaluemax('₹2 Cr', 'farm')">
+                                    ₹2 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="16" id="maxBhkIndex_16"
+                                    (click)="getvaluemax('₹2.3 Cr', 'farm')">
+                                    ₹2.3 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="17" id="maxBhkIndex_17"
+                                    (click)="getvaluemax('₹2.6 Cr', 'farm')">
+                                    ₹2.6 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="18" id="maxBhkIndex_18"
+                                    (click)="getvaluemax('₹3 Cr', 'farm')">
+                                    ₹3 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="19" id="maxBhkIndex_19"
+                                    (click)="getvaluemax('₹3.5 Cr', 'farm')">
+                                    ₹3.5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="20" id="maxBhkIndex_20"
+                                    (click)="getvaluemax('₹4 Cr', 'farm')">
+                                    ₹4 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="21" id="maxBhkIndex_21"
+                                    (click)="getvaluemax('₹4.5 Cr', 'farm')">
+                                    ₹4.5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="22" id="maxBhkIndex_22"
+                                    (click)="getvaluemax('₹5 Cr', 'farm')">
+                                    ₹5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="23" id="maxBhkIndex_23"
+                                    (click)="getvaluemax('₹10 Cr', 'farm')">
+                                    ₹10 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="24" id="maxBhkIndex_24"
+                                    (click)="getvaluemax('₹20 Cr', 'farm')">
+                                    ₹20 Cr
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="search_btn">
+                    <button class="main_search_btn gap-2 d-flex align-items-center">
+                      <img src="../../../assets/images/search-icon.svg" alt="" />
+                      &nbsp; Search
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane" id="pills-Plots" role="tabpanel" aria-labelledby="pills-Plots-tab">
+                <div class="search_wrapper">
+                  <div class="location">
+                    <img src="../../../assets/images/location-icon.svg" alt="" class="me-2" />
+                    <div class="location_select">
+                      <!-- <ng-select
+                      placeholder="Enter Your City"
+                      bindLabel="name"
+                      [multiple]="true"
+                      [closeOnSelect]="true"
+                      bindValue="id"
+                      [searchable]="true"
+                      name="city"
+                      id="city"
+                      formControlName="selectcitysearch"
+                    >
+                    </ng-select> -->
+
+                      <ng-select [multiple]="false" [items]="city1" bindLabel="cname" bindValue="cid"
+                        placeholder="Enter Your City" formControlName="selectcitysearch">
+                      </ng-select>
+                    </div>
+                  </div>
+                  <!-- <div class="location_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="What are you looking for?"
+                      aria-label="location" aria-describedby="basic-addon1" />
+                  </div>
+                </div> -->
+
+                  <div class="property_drop">
+                    <img src="../../../assets/images/property-icon.svg" class="me-2" alt="" />
+
+                    <div (click)="plotstoggleDisplayDiv()" class="property_wrapper">
+                      <label class="property_tabs" id="property_tabs_plots"> {{ propertyLabel }}</label>
+
+                      <!-- <label class="property_check_rent">Property Type</label> -->
+                    </div>
+                    <div *ngIf="visible" class="ccc property_inner">
+                      <div class="serch-propert">
+                        <div class="mb-search-residential">
+                          <div class="mb-search__property__title" (click)="residencial()">
+                            <label for="Residential">Residential </label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="Residencialvisible">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="
+                                  let propertyresidential of propertyresidential
+                                ">
+                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
+                                    selectedResidentialItems.includes(
+                                      propertyresidential.id
+                                    )
+                                  " name="bar_propertyType_new_rent" id="plots_{{ propertyresidential.id }}"
+                                  title="{{ propertyresidential.name }}" (change)="
+                                    plotsCheckboxChange(
+                                      $event,
+                                      +propertyresidential.id,
+                                      'plots'
+                                    )
+                                  " />
+                                <label class="mb-search__property__item__label" for="plots_{{ propertyresidential.id }}"
+                                  id="plots_{{ propertyresidential.id }}">{{ propertyresidential.name }}</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-search-commercial">
+                          <div class="mb-search__property__title" (click)="commercial()">
+                            <label for="">Commercial</label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="Commercialvisible">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="
+                                  let propertycommercial of propertycommercial
+                                ">
+                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
+                                    selectedCommercialItems.includes(
+                                      propertycommercial.id
+                                    )
+                                  " name="bar_propertyType_new_buy" id="plots_{{ propertycommercial.id }}"
+                                  title="{{ propertycommercial.name }}" (change)="
+                                    plotshandleCommercialCheckboxChange(
+                                      $event,
+                                      propertycommercial.id,
+                                      'plots'
+                                    )
+                                  " />
+                                <label class="mb-search__property__item__label" for="plots_{{ propertycommercial.id }}"
+                                  id="plots_{{ propertycommercial.id }}">{{ propertycommercial.name }}</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-search-other  w-100">
+                          <div class="mb-search__property__title " (click)="OtherPropertyTypes()">
+                            <label for="">Other Property Types</label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="otherproperytypes">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="let propertyother of propertyother">
+                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
+                                    selectedOtherItems.includes(
+                                      propertyother.id
+                                    )
+                                  " name="bar_propertyType_new_buy" id="plots_{{ propertyother.id }}"
+                                  title="{{ propertyother.name }}" (change)="
+                                    plotshandleOtherCheckboxChange(
+                                      $event,
+                                      propertyother.id,
+                                      'plots'
+                                    )
+                                  " />
+                                <label class="mb-search__property__item__label" for="plots_{{ propertyother.id }}"
+                                  id="plots_{{ propertyother.id }}">{{ propertyother.name }}</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="budget_dorp">
+                    <img src="../../../assets/images/budget-icon.svg" alt="" class="me-2" />
+
+                    <div class="mb-search__property__title budget-inner" (click)="toggleBudget()">
+                      <label for="Budget">
+                        {{
+                        togglebudget
+                        ? (minBudget !== null && minBudget !== ""
+                        ? minBudget
+                        : "Min Price") +
+                        " - " +
+                        (maxBudget !== null && maxBudget !== ""
+                        ? maxBudget
+                        : "Max Price")
+                        : (minBudget || "Min Price") +
+                        " - " +
+                        (maxBudget || "Max Price")
+                        }}
+                      </label>
+                    </div>
+
+                    <div class="mb-search__property__data property_inner" *ngIf="togglebudget">
+                      <div class="serch-propert-price">
+                        <div class="mb-search__relative">
+                          <div class="mb-search__dropdown" onclick="event.stopPropagation();">
+                            <div class="wrap-budget">
+                              <ul class="budget-mm nav-pills" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-homeplot" type="button" role="tab" aria-controls="pills-home"
+                                    aria-selected="true">
+                                    <input type="text" class="mb-search__budget__fld-min-max" id="minBudjetplot"
+                                      maxlength="8" value="" placeholder="Min Price" />
+                                  </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profileplot" type="button" role="tab"
+                                    aria-controls="pills-profile" aria-selected="false">
+                                    <input type="text" class="mb-search__budget__fld-min-max" id="maxBudjetplot"
+                                      maxlength="9" value="" placeholder="Max Price" />
+                                  </button>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="tab-content profile-content" id="pills-tabContent">
+                              <div class="tab-pane fade show active" id="pills-homeplot" role="tabpanel"
+                                aria-labelledby="pills-home-tab">
+                                <div class="mb-search__min-max webkit__scroll-search left-budget" id="minBudjetplot">
+                                  <div class="mb-search__min-max__item">
+                                    Min
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="0"
+                                    (click)="getvaluemin('₹5 Lac', 'plot')">
+                                    ₹5 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="1"
+                                    (click)="getvaluemin('₹10 Lac', 'plot')">
+                                    ₹10 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="2"
+                                    (click)="getvaluemin('₹20 Lac', 'plot')">
+                                    ₹20 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="3"
+                                    (click)="getvaluemin('₹30 Lac', 'plot')">
+                                    ₹30 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="4"
+                                    (click)="getvaluemin('₹40 Lac', 'plot')">
+                                    ₹40 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="5"
+                                    (click)="getvaluemin('₹50 Lac', 'plot')">
+                                    ₹50 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="6"
+                                    (click)="getvaluemin('₹60 Lac', 'plot')">
+                                    ₹60 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="7"
+                                    (click)="getvaluemin('₹70 Lac', 'plot')">
+                                    ₹70 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="8"
+                                    (click)="getvaluemin('₹80 Lac', 'plot')">
+                                    ₹80 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="9"
+                                    (click)="getvaluemin('₹90 Lac', 'plot')">
+                                    ₹90 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="10"
+                                    (click)="getvaluemin('₹1 Cr', 'plot')">
+                                    ₹1 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="11"
+                                    (click)="getvaluemin('₹1.2 Cr', 'plot')">
+                                    ₹1.2 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="12"
+                                    (click)="getvaluemin('₹1.4 Cr', 'plot')">
+                                    ₹1.4 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="13"
+                                    (click)="getvaluemin('₹1.6 Cr', 'plot')">
+                                    ₹1.6 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="14"
+                                    (click)="getvaluemin('₹1.8 Cr', 'plot')">
+                                    ₹1.8 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="15"
+                                    (click)="getvaluemin('₹2 Cr', 'plot')">
+                                    ₹2 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="16"
+                                    (click)="getvaluemin('₹2.3 Cr', 'plot')">
+                                    ₹2.3 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="17"
+                                    (click)="getvaluemin('₹2.6 Cr', 'plot')">
+                                    ₹2.6 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="18"
+                                    (click)="getvaluemin('₹3 Cr', 'plot')">
+                                    ₹3 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="19"
+                                    (click)="getvaluemin('₹3.5 Cr', 'plot')">
+                                    ₹3.5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="20"
+                                    (click)="getvaluemin('₹4 Cr', 'plot')">
+                                    ₹4 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="21"
+                                    (click)="getvaluemin('₹4.5 Cr', 'plot')">
+                                    ₹4.5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="22"
+                                    (click)="getvaluemin('₹5 Cr', 'plot')">
+                                    ₹5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="23"
+                                    (click)="getvaluemin('₹10 Cr', 'plot')">
+                                    ₹10 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="24"
+                                    (click)="getvaluemin('₹20 Cr', 'plot')">
+                                    ₹20 Cr
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="tab-pane fade" id="pills-profileplot" role="tabpanel"
+                                aria-labelledby="pills-profile-tab">
+                                <div class="mb-search__min-max webkit__scroll-search right-budget" id="maxBudjetplot">
+                                  <div class="mb-search__min-max__item">
+                                    Max
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="0" id="maxBhkIndex_0"
+                                    (click)="getvaluemax('₹5 Lac', 'plot')">
+                                    ₹5 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="1" id="maxBhkIndex_1"
+                                    (click)="getvaluemax('₹10 Lac', 'plot')">
+                                    ₹10 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="2" id="maxBhkIndex_2"
+                                    (click)="getvaluemax('₹20 Lac', 'plot')">
+                                    ₹20 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="3" id="maxBhkIndex_3"
+                                    (click)="getvaluemax('₹30 Lac', 'plot')">
+                                    ₹30 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="4" id="maxBhkIndex_4"
+                                    (click)="getvaluemax('₹40 Lac', 'plot')">
+                                    ₹40 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="5" id="maxBhkIndex_5"
+                                    (click)="getvaluemax('₹50 Lac', 'plot')">
+                                    ₹50 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="6" id="maxBhkIndex_6"
+                                    (click)="getvaluemax('₹60 Lac', 'plot')">
+                                    ₹60 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="7" id="maxBhkIndex_7"
+                                    (click)="getvaluemax('₹70 Lac', 'plot')">
+                                    ₹70 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="8" id="maxBhkIndex_8"
+                                    (click)="getvaluemax('₹80 Lac', 'plot')">
+                                    ₹80 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="9" id="maxBhkIndex_9"
+                                    (click)="getvaluemax('₹90 Lac', 'plot')">
+                                    ₹90 Lac
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="10" id="maxBhkIndex_10"
+                                    (click)="getvaluemax('₹1 Cr', 'plot')">
+                                    ₹1 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="11" id="maxBhkIndex_11"
+                                    (click)="getvaluemax('₹1.2 Cr', 'plot')">
+                                    ₹1.2 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="12" id="maxBhkIndex_12"
+                                    (click)="getvaluemax('₹1.4 Cr', 'plot')">
+                                    ₹1.4 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="13" id="maxBhkIndex_13"
+                                    (click)="getvaluemax('₹1.6 Cr', 'plot')">
+                                    ₹1.6 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="14" id="maxBhkIndex_14"
+                                    (click)="getvaluemax('₹1.8 Cr', 'plot')">
+                                    ₹1.8 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="15" id="maxBhkIndex_15"
+                                    (click)="getvaluemax('₹2 Cr', 'plot')">
+                                    ₹2 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="16" id="maxBhkIndex_16"
+                                    (click)="getvaluemax('₹2.3 Cr', 'plot')">
+                                    ₹2.3 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="17" id="maxBhkIndex_17"
+                                    (click)="getvaluemax('₹2.6 Cr', 'plot')">
+                                    ₹2.6 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="18" id="maxBhkIndex_18"
+                                    (click)="getvaluemax('₹3 Cr', 'plot')">
+                                    ₹3 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="19" id="maxBhkIndex_19"
+                                    (click)="getvaluemax('₹3.5 Cr', 'plot')">
+                                    ₹3.5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="20" id="maxBhkIndex_20"
+                                    (click)="getvaluemax('₹4 Cr', 'plot')">
+                                    ₹4 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="21" id="maxBhkIndex_21"
+                                    (click)="getvaluemax('₹4.5 Cr', 'plot')">
+                                    ₹4.5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="22" id="maxBhkIndex_22"
+                                    (click)="getvaluemax('₹5 Cr', 'plot')">
+                                    ₹5 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="23" id="maxBhkIndex_23"
+                                    (click)="getvaluemax('₹10 Cr', 'plot')">
+                                    ₹10 Cr
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="24" id="maxBhkIndex_24"
+                                    (click)="getvaluemax('₹20 Cr', 'plot')">
+                                    ₹20 Cr
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="search_btn">
+                    <button class="main_search_btn gap-2 d-flex align-items-center">
+                      <img src="../../../assets/images/search-icon.svg" alt="" />
+                      &nbsp; Search
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane" id="pills-pg" role="tabpanel" aria-labelledby="pills-pg-tab">
+                <div class="search_wrapper">
+                  <div class="location">
+                    <img src="../../../assets/images/location-icon.svg" alt="" class="me-2" />
+                    <div class="location_select">
+                      <!-- <ng-select
+                      placeholder="Enter Your City"
+                      bindLabel="name"
+                      [multiple]="true"
+                      [closeOnSelect]="true"
+                      bindValue="id"
+                      [searchable]="true"
+                      name="city"
+                      id="city"
+                      formControlName="selectcitysearch"
+                    >
+                    </ng-select> -->
+
+                      <ng-select [multiple]="false" [items]="city1" bindLabel="cname" bindValue="cid"
+                        placeholder="Enter Your City" formControlName="selectcitysearch">
+                      </ng-select>
+                    </div>
+                  </div>
+
+                  <div class="property_drop">
+                    <img src="../../../assets/images/property-icon.svg" class="me-2" alt="" />
+
+                    <div (click)="toggleDisplayDiv()" class="property_wrapper">
+                      <p class="property_tabs" id="property_tabs_pg">
+                        {{ propertyLabel }}
+                      </p>
+                    </div>
+                    <div *ngIf="visible" class="ccc property_inner">
+                      <div class="serch-propert">
+                        <div class="mb-search-residential">
+                          <div class="mb-search__property__title" (click)="residencial()">
+                            <label for="Gender">Gender</label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="Residencialvisible">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="let gender of genderOptions">
+                                <input class="mb-search__property__item__input" type="checkbox"
+                                  [id]="'gender_' + gender.id"
+                                  (change)="pgCheckboxChange($event, gender.id, gender.name)" />
+                                <label class="mb-search__property__item__label" [for]="'gender_' + gender.id">{{
+                                  gender.name }}</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Section for Commercial checkboxes -->
+                        <div class="mb-search-commercial">
+                          <div class="mb-search__property__title" (click)="commercial()">
+                            <label for="Looking For">Looking For</label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="Commercialvisible">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="let propertypg of propertypg">
+                                <input class="mb-search__property__item__input" type="checkbox"
+                                  name="bar_propertyType_new_pg" [id]="'pg_' + propertypg.id"
+                                  title="pg_{{ propertypg.name }}"
+                                  (change)="pgCheckboxChange($event, propertypg.id, propertypg.name)" />
+                                <label class="mb-search__property__item__label" [for]="'pg_' + propertypg.id"
+                                  [id]="'pg_label_' + propertypg.id">{{ propertypg.name }}</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="budget_dorp">
+                    <img src="../../../assets/images/budget-icon.svg" alt="" class="me-2" />
+
+                    <div class="mb-search__property__title budget-inner" (click)="toggleBudget()">
+                      <label for="Budget">
+                        {{
+                        togglebudget
+                        ? (minBudget !== null
+                        ? minBudget == ""
+                        ? "Min Price"
+                        : minBudget
+                        : "Min Price") +
+                        " - " +
+                        (maxBudget !== null
+                        ? maxBudget == ""
+                        ? "Max Price"
+                        : maxBudget
+                        : "Max Price")
+                        : (minBudget || "Min Price") +
+                        " - " +
+                        (maxBudget || "Max Price")
+                        }}
+                      </label>
+                    </div>
+
+                    <div class="mb-search__property__data property_inner" *ngIf="togglebudget">
+                      <div class="serch-propert-price">
+                        <div class="mb-search__relative">
+                          <div class="mb-search__dropdown" onclick="event.stopPropagation();">
+                            <div class="wrap-budget">
+                              <ul class="budget-mm nav-pills" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-homepg" type="button" role="tab" aria-controls="pills-home"
+                                    aria-selected="true">
+                                    <input type="text" class="mb-search__budget__fld-min-max" id="minBudjetpg"
+                                      maxlength="8" value="" placeholder="Min Price" />
+                                  </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profilepg" type="button" role="tab"
+                                    aria-controls="pills-profile" aria-selected="false">
+                                    <input type="text" class="mb-search__budget__fld-min-max" id="maxBudjetpg"
+                                      maxlength="9" value="" placeholder="Max Price" />
+                                  </button>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="tab-content profile-content" id="pills-tabContent">
+                              <div class="tab-pane fade show active" id="pills-homepg" role="tabpanel"
+                                aria-labelledby="pills-home-tab">
+                                <div class="mb-search__min-max webkit__scroll-search left-budget" id="minBudjetpg">
+                                  <div class="mb-search__min-max__item">
+                                    Min
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="0"
+                                    (click)="getvaluemin('₹4000', 'pg')">
+                                    ₹4000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="1"
+                                    (click)="getvaluemin('₹6000', 'pg')">
+                                    ₹6000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="2"
+                                    (click)="getvaluemin('₹8000', 'pg')">
+                                    ₹8000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="3"
+                                    (click)="getvaluemin('₹10000', 'pg')">
+                                    ₹10000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="4"
+                                    (click)="getvaluemin('₹12000', 'pg')">
+                                    ₹12000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="5"
+                                    (click)="getvaluemin('₹15000', 'pg')">
+                                    ₹15000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="6"
+                                    (click)="getvaluemin('₹20000', 'pg')">
+                                    ₹20000
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="tab-pane fade" id="pills-profilepg" role="tabpanel"
+                                aria-labelledby="pills-profile-tab">
+                                <div class="mb-search__min-max webkit__scroll-search right-budget" id="maxBudjetpg">
+                                  <div class="mb-search__min-max__item">
+                                    Max
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="0" id="maxBhkIndex_0"
+                                    (click)="getvaluemax('₹4000', 'pg')">
+                                    ₹4000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="1" id="maxBhkIndex_1"
+                                    (click)="getvaluemax('₹6000', 'pg')">
+                                    ₹6000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="2" id="maxBhkIndex_2"
+                                    (click)="getvaluemax('₹8000', 'pg')">
+                                    ₹8000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="3" id="maxBhkIndex_3"
+                                    (click)="getvaluemax('₹10000', 'pg')">
+                                    ₹10000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="4" id="maxBhkIndex_4"
+                                    (click)="getvaluemax('₹12000', 'pg')">
+                                    ₹12000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="5" id="maxBhkIndex_5"
+                                    (click)="getvaluemax('₹15000', 'pg')">
+                                    ₹15000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="6" id="maxBhkIndex_6"
+                                    (click)="getvaluemax('₹20000', 'pg')">
+                                    ₹20000
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="search_btn">
+                    <button class="main_search_btn gap-2 d-flex align-items-center">
+                      <img src="../../../assets/images/search-icon.svg" alt="" />
+                      &nbsp; Search
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane" id="pills-Hostel" role="tabpanel" aria-labelledby="pills-Hostel-tab">
+                <div class="search_wrapper">
+                  <div class="location">
+                    <img src="../../../assets/images/location-icon.svg" alt="" class="me-2" />
+                    <div class="location_select">
+                      <!-- <ng-select
+                      placeholder="Enter Your City"
+                      bindLabel="name"
+                      [multiple]="true"
+                      [closeOnSelect]="true"
+                      bindValue="id"
+                      [searchable]="true"
+                      name="city"
+                      id="city"
+                      formControlName="selectcitysearch"
+                    >
+                    </ng-select> -->
+
+                      <ng-select [multiple]="false" [items]="city1" bindLabel="cname" bindValue="cid"
+                        placeholder="Enter Your City" formControlName="selectcitysearch">
+                      </ng-select>
+                    </div>
+                  </div>
+
+                  <!-- <div class="location_search">
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="What are you looking for?"
+                      aria-label="location"
+                      aria-describedby="basic-addon1"
+                    />
+                  </div>
+                </div> -->
+
+                  <div class="property_drop">
+                    <img src="../../../assets/images/property-icon.svg" class="me-2" alt="" />
+
+                    <div (click)="toggleDisplayDiv()" class="property_wrapper">
+                      <p class="property_tabs" id="property_tabs_hostel">
+                        {{ propertyLabel }}
+                      </p>
+                    </div>
+                    <div *ngIf="visible" class="ccc property_inner">
+                      <div class="serch-propert">
+                        <div class="mb-search-residential">
+                          <div class="mb-search__property__title" (click)="residencial()">
+                            <label for="Gender">Gender</label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="Residencialvisible">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="let gender of genderHostelOptions">
+                                <input class="mb-search__property__item__input" type="checkbox"
+                                  [id]="'gender_hstl' + gender.id"
+                                  (change)="hostelCheckboxChange($event, gender.id, gender.name)" />
+                                <label class="mb-search__property__item__label" [for]="'gender_hstl' + gender.id">{{
+                                  gender.name }}</label>
+                              </div>
+                              <!-- <div class="mb-search__property__item">
+                                <input
+                                  class="mb-search__property__item__input"
+                                  type="checkbox"
+                                  name="bar_propertyType_new_pg"
+                                  id="hostel_2"
+                                  title="Girls"
+                                  (change)="
+                                    hostelCheckboxChange($event, 2, 'hostel')
+                                  "
+                                />
+                                <label
+                                  class="mb-search__property__item__label"
+                                  for="hostel_2"
+                                  id="hostel_label_2"
+                                  >Girls</label
+                                >
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Section for Commercial checkboxes -->
+                        <div class="mb-search-commercial">
+                          <div class="mb-search__property__title" (click)="commercial()">
+                            <label for="Looking For">Looking For</label>
+                          </div>
+                          <div class="mb-search__property__data" *ngIf="Commercialvisible">
+                            <div class="data-overflow">
+                              <div class="mb-search__property__item" *ngFor="let propertyhostel of propertyhostel">
+                                <input class="mb-search__property__item__input" type="checkbox"
+                                  name="bar_propertyType_new_hostel" [id]="'hostel_' + propertyhostel.id"
+                                  title="hostel_{{ propertyhostel.name }}" (change)="
+                                    hostelCheckboxChange(
+                                      $event,
+                                      propertyhostel.id,
+                                      propertyhostel.name
+                                    )
+                                  " />
+                                <label class="mb-search__property__item__label" [for]="'hostel_' + propertyhostel.id"
+                                  [id]="'hostel_label_' + propertyhostel.id">{{ propertyhostel.name }}</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="budget_dorp">
+                    <img src="../../../assets/images/budget-icon.svg" alt="" class="me-2" />
+
+                    <div class="mb-search__property__title budget-inner" (click)="toggleBudget()">
+                      <label for="Budget">
+                        {{
+                        togglebudget
+                        ? (minBudget !== null
+                        ? minBudget == ""
+                        ? "Min Price"
+                        : minBudget
+                        : "Min Price") +
+                        " - " +
+                        (maxBudget !== null
+                        ? maxBudget == ""
+                        ? "Max Price"
+                        : maxBudget
+                        : "Max Price")
+                        : (minBudget || "Min Price") +
+                        " - " +
+                        (maxBudget || "Max Price")
+                        }}
+                      </label>
+                    </div>
+
+                    <div class="mb-search__property__data property_inner" *ngIf="togglebudget">
+                      <div class="serch-propert-price">
+                        <div class="mb-search__relative">
+                          <div class="mb-search__dropdown" onclick="event.stopPropagation();">
+                            <div class="wrap-budget">
+                              <ul class="budget-mm nav-pills" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-homehostel" type="button" role="tab"
+                                    aria-controls="pills-home" aria-selected="true">
+                                    <input type="text" class="mb-search__budget__fld-min-max" id="minBudjetpg"
+                                      maxlength="8" value="" placeholder="Min Price" />
+                                  </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profilehostel" type="button" role="tab"
+                                    aria-controls="pills-profile" aria-selected="false">
+                                    <input type="text" class="mb-search__budget__fld-min-max" id="maxBudjethostel"
+                                      maxlength="9" value="" placeholder="Max Price" />
+                                  </button>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="tab-content profile-content" id="pills-tabContent">
+                              <div class="tab-pane fade show active" id="pills-homehostel" role="tabpanel"
+                                aria-labelledby="pills-home-tab">
+                                <div class="mb-search__min-max webkit__scroll-search left-budget" id="minBudjethostel">
+                                  <div class="mb-search__min-max__item">
+                                    Min
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="0"
+                                    (click)="getvaluemin('₹4000', 'hostel')">
+                                    ₹4000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="1"
+                                    (click)="getvaluemin('₹6000', 'hostel')">
+                                    ₹6000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="2"
+                                    (click)="getvaluemin('₹8000', 'hostel')">
+                                    ₹8000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="3"
+                                    (click)="getvaluemin('₹10000', 'hostel')">
+                                    ₹10000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="4"
+                                    (click)="getvaluemin('₹12000', 'hostel')">
+                                    ₹12000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="5"
+                                    (click)="getvaluemin('₹15000', 'hostel')">
+                                    ₹15000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="6"
+                                    (click)="getvaluemin('₹20000', 'hostel')">
+                                    ₹20000
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="tab-pane fade" id="pills-profilehostel" role="tabpanel"
+                                aria-labelledby="pills-profile-tab">
+                                <div class="mb-search__min-max webkit__scroll-search right-budget" id="maxBudjethostel">
+                                  <div class="mb-search__min-max__item">
+                                    Max
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="0" id="maxBhkIndex_0"
+                                    (click)="getvaluemax('₹4000', 'hostel')">
+                                    ₹4000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="1" id="maxBhkIndex_1"
+                                    (click)="getvaluemax('₹6000', 'hostel')">
+                                    ₹6000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="2" id="maxBhkIndex_2"
+                                    (click)="getvaluemax('₹8000', 'hostel')">
+                                    ₹8000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="3" id="maxBhkIndex_3"
+                                    (click)="getvaluemax('₹10000', 'hostel')">
+                                    ₹10000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="4" id="maxBhkIndex_4"
+                                    (click)="getvaluemax('₹12000', 'hostel')">
+                                    ₹12000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="5" id="maxBhkIndex_5"
+                                    (click)="getvaluemax('₹15000', 'hostel')">
+                                    ₹15000
+                                  </div>
+                                  <div class="mb-search__min-max__item" data-actualindex="6" id="maxBhkIndex_6"
+                                    (click)="getvaluemax('₹20000', 'hostel')">
+                                    ₹20000
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="search_btn">
+                    <button class="main_search_btn gap-2 d-flex align-items-center">
+                      <img src="../../../assets/images/search-icon.svg" alt="" />
+                      &nbsp; Search
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="searchError" class="error-message-login pt-2" style="color: red; font-size: 20px">
+                Please Select Your City.
+              </div>
+            </div>
+          </form>
+
+          <div class="related-property">
+            <h4 class="title-property text-center">
+              Property Related Services
+            </h4>
+            <div class="propertyes">
+              <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig4">
+                <div ngxSlickItem class="slide" *ngFor="let property of propertyServices">
+                  <div class="allpropertyes">
+                    <a routerLink="property-services/{{ property.prpsrcurl }}"><img src={{property.image}}
+                        alt={{property.name}} />
+                      <p class="title-img-property">{{property.name}}</p>
+                    </a>
+                  </div>
+                </div>
+                <!-- <div ngxSlickItem class="slide">
+                  <div class="allpropertyes">
+                    <a routerLink="/property-services/Architect"
+                      ><img
+                        src="../../../assets/images/Architect.png"
+                        alt="Architect"
+                      />
+                      <p class="title-img-property">Architect</p>
+                    </a>
+                  </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                  <div class="allpropertyes">
+                    <a routerLink="/property-services/Civil"
+                      ><img
+                        src="../../../assets/images/Civil-Contractor.png"
+                        alt="Civil Contractor"
+                      />
+                      <p class="title-img-property">Civil Contractor</p>
+                    </a>
+                  </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                  <div class="allpropertyes">
+                    <a routerLink="/property-services/Property%20Lawyer"
+                      ><img
+                        src="../../../assets/images/Property-Lawyer.png"
+                        alt="Property Lawyer"
+                      />
+                      <p class="title-img-property">Property Lawyer</p>
+                    </a>
+                  </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                  <div class="allpropertyes">
+                    <a
+                      routerLink="/property-services/Building%20Material%20Supplier"
+                      ><img
+                        src="../../../assets/images/Building-Material.png"
+                        alt="Building Material "
+                      />
+                      <p class="title-img-property">
+                        Building Material Supplier
+                      </p>
+                    </a>
+                  </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                  <div class="allpropertyes">
+                    <a routerLink="/property-services/Home%20Loan%20Agency"
+                      ><img
+                        src="../../../assets/images/Home-Agency.png"
+                        alt="Home Loan Agency"
+                      />
+                      <p class="title-img-property">Home Loan Agency</p>
+                    </a>
+                  </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                  <div class="allpropertyes">
+                    <a routerLink="/property-services/Furniture"
+                      ><img
+                        src="../../../assets/images/Furniture.png"
+                        alt="Furniture"
+                      />
+                      <p class="title-img-property">Furniture</p>
+                    </a>
+                  </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                  <div class="allpropertyes">
+                    <a routerLink="/property-services/HSAC"
+                      ><img src="../../../assets/images/HSAC.png" alt="HSAC" />
+                      <p class="title-img-property">HVAC</p>
+                    </a>
+                  </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                  <div class="allpropertyes">
+                    <a routerLink="/property-services/Sanitary%20Ware"
+                      ><img
+                        src="../../../assets/images/Sanitary-Wear.png"
+                        alt="Sanitary Wear"
+                      />
+                      <p class="title-img-property">Sanitary Wear</p>
+                    </a>
+                  </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                  <div class="allpropertyes">
+                    <a routerLink="/property-services/RERA%20Consultants"
+                      ><img
+                        src="../../../assets/images/RERA-Consultants.png"
+                        alt="RERA Consultants"
+                      />
+                      <p class="title-img-property">RERA Consultants</p>
+                    </a>
+                  </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                  <div class="allpropertyes">
+                    <a routerLink="/property-services/Planters"
+                      ><img
+                        src="../../../assets/images/Planters.png"
+                        alt="Planters"
+                      />
+                      <p class="title-img-property">Planters</p>
+                    </a>
+                  </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                  <div class="allpropertyes">
+                    <a routerLink="/property-services/Plumber"
+                      ><img
+                        src="../../../assets/images/Plumber.png"
+                        alt="Plumber"
+                      />
+                      <p class="title-img-property">Plumber</p>
+                    </a>
+                  </div>
+                </div> -->
+              </ngx-slick-carousel>
+            </div>
+            <div class="property-services mt-5 mt-md-2">
+              <a routerLink="/property-services">All Property Services</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hot-deals" *ngIf="hotdeals">
+    <div class="container">
+      <div class="all-deals">
+        <h2 class="titles-heading">Hot Deals</h2>
+        <div class="all-main-hots">
+          <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig2">
+            <div ngxSlickItem class="slide" *ngFor="let hotdeal of hotdeals">
+              <div class="deal-slider-bar">
+                <div class="main-deals">
+                  <div class="deal-imgs">
+                    <img src="{{ hotdeal.property_main_img }}" class="img-fluid" alt="" />
+                    <div class="hot-details">
+                      <a routerLink="/property-details/{{
+                          hotdeal.propertyfirstUrlPart
+                        }}/{{ hotdeal.propertysecondUrlPart }}" class="detail-head">
+                        <h2 class="proj-Mhead">{{ hotdeal.projectName }}</h2>
+
+                        <!-- <p class="detail-head">{{ hotdeal.builderName }}</p> -->
+                        <p class="detail-pera">
+                          {{ hotdeal.property_type }}
+                        </p>
+                        <p class="ongoing-location">
+                          <span class="locator-icon">
+                            <i class="fa-sharp fa-solid fa-location-dot" style="color: #000000"></i> </span>{{
+                          hotdeal.locality }}
+                        </p>
+                        <div class="area-detail">
+                          <div class="availabilty">
+                            <p class="area-title">Availability:</p>
+                            <p class="area-title">Area:</p>
+                          </div>
+                          <div class="area">
+                            <p class="main-area">
+                              {{ getFormattedDate(hotdeal.available_from) }}
+                            </p>
+                            <p class="main-area">
+                              {{ hotdeal.property_sqfoot }}
+                            </p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="deal-price">
+                      <p class="main-price-one" *ngIf="hotdeal.property_price_show == 0">
+                        <span class="me-3">Price:</span>₹
+                        {{ hotdeal.total_price !== null ? hotdeal.totalprice : hotdeal.rent_amount.toLocaleString()}}
+                      </p>
+                      <p style="cursor:pointer" class="main-price-one text-center"
+                        *ngIf="hotdeal.property_price_show == 1" data-bs-toggle="modal"
+                        data-bs-target="#contact-owner-prop"
+                        (click)="contactowner( hotdeal.propertysecondUrlPart); fetchProperty(hotdeal)">
+                        <span class="me-3">call for price</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <a routerLink="/property-details/{{ hotdeal.propertyfirstUrlPart }}/{{
+                      hotdeal.propertysecondUrlPart
+                    }}" class="show-deals"><i class="fa fa-thin fa-chevron-right" style="color: #ffffff"></i></a>
+                </div>
+              </div>
+            </div>
+          </ngx-slick-carousel>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="builders" *ngIf="featuredResidentals">
+    <div class="container">
+      <h2 class="titles-heading">Featured Residential Projects</h2>
+      <div class="feature-main-slide-item">
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig1">
+          <div ngxSlickItem class="slide" *ngFor="let featuredResidentals of featuredResidentals">
+            <div class="proj-gallery__card">
+              <div class="proj-link">
+                <a routerLink="/project-details/{{ featuredResidentals?.firstUrlPart }}/{{ featuredResidentals?.secondUrlPart }}">
+                  <div class="proj-gallery-image">
+                    <img src="{{ featuredResidentals?.project_banner_image }}" alt="" />
+                  </div>
+                </a>
+                <div class="proj-gallery-desc">
+                  <a routerLink="/project-details/{{
+                    featuredResidentals.firstUrlPart
+                  }}/{{ featuredResidentals.secondUrlPart }}">
+                    <h3 class="proj-Mhead">
+                      {{ featuredResidentals.project_name }}</h3>
+                    <p class="mb-para-by">
+                      {{ featuredResidentals.project_localities }}
+                    </p>
+                    <p class="detail-pera">
+                      <strong>{{ featuredResidentals.prjtypeNames }}</strong>
+                    </p>
+                    <p class="mb-para">{{ featuredResidentals.company_name }}</p>
+                    <p class="mb-para-by">
+                      {{ featuredResidentals.locality }}
+                    </p>
+                    <p class="pb-types" *ngIf="featuredResidentals.property_type !== '3'">
+                      {{ featuredResidentals.bedroom }}
+                      <span *ngIf="featuredResidentals.property_type === '1'">
+                        BHK Flat
+                      </span>
+                      <!-- <span *ngIf="featuredResidentals.property_type === '1'">
+                    {{ featuredResidentals.Property_bhk }} Flat
+                  </span> -->
+                      <span *ngIf="featuredResidentals.property_type === '3'">
+                        {{ featuredResidentals.Property_bhk }} Villa
+                      </span>
+                    </p>
+
+                    <p class="pb-price" *ngIf="featuredResidentals.project_price_show == '0' ">
+                      <strong>₹ {{ featuredResidentals.project_minimum_price }} - ₹
+                        {{ featuredResidentals.project_maximum_price }}</strong>
+                    </p>
+                    <p class="pb-marketed">
+                      Marketed by: <br />
+                      {{ featuredResidentals.builderName }}
+                    </p>
+                  </a>
+                  <a *ngIf="featuredResidentals.project_price_show == '1' " class="get_enq" style="cursor:pointer"
+                    (click)="contactowner( featuredResidentals.secondUrlPart);fetchProperty(featuredResidentals)"
+                    data-bs-toggle="modal" data-bs-target="#contact-owner">Get a Quote</a>
+                  <!-- <button class="get_enq" data-bs-toggle="modal" data-bs-target="#contact-owner" >Get a Quote</button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlight-group" *ngIf="bannerbuilder">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-lg-3 col-md-12 col-sm-12 pe-0 pe-lg-0 pe-md-3">
+          <div class="group-of-box">
+            <div class="group-view-project">
+              <img src="{{ bannerbuilder[0].logo }}" alt="" class="img-fluid" />
+            </div>
+
+            <div class="grouop-of-info">
+              <h3 class="group-property-names">{{ bannerbuilder[0].project_name }}</h3>
+              <p class="group-property-location">{{ bannerbuilder[0].super_area }}</p>
+              <p class="group-property-prices"><strong class="luxurious-price">₹ {{ bannerbuilder[0].price }}*</strong> <br />
+                {{ bannerbuilder[0].property_bhk }}</p>
+            </div>
+            <div class="group-view">
+              <a href="project-details/{{ bannerbuilder[0].project_name }}/{{ bannerbuilder[0].id }}/{{ bannerbuilder[0].property_type }}">View projects</a>
+            </div>
+          </div>
+        </div> -->
+        <div class="col-lg-12 col-md-12 col-sm-12 ps-0 ps-lg-0 ps-md-3">
+          <a
+            href="project-details/{{ bannerbuilder[0].projectfirstUrlPart }}/{{ bannerbuilder[0].projectsecondUrlPart }}">
+            <img src="{{ bannerbuilder[0].project_banner_img }}" alt="" class="img-fluid group-main-img" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="builders">
+    <div class="container">
+      <h2 class="titles-heading">Featured Commercial Projects</h2>
+      <div class="feature-main-slide-item">
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig3">
+          <div ngxSlickItem class="slide" *ngFor="let featuredcommercials of featuredcommercials">
+            <div class="proj-gallery__card">
+              <div class="proj-link">
+                <a routerLink="/project-details/{{
+                  featuredcommercials.firstUrlPart
+                }}/{{ featuredcommercials.secondUrlPart }}">
+                  <div class="proj-gallery-image-tow">
+                    <img src="{{ featuredcommercials.project_banner_image }}" alt="" />
+                  </div>
+                </a>
+                <div class="proj-gallery-desc">
+                  <a routerLink="/project-details/{{
+                    featuredcommercials.firstUrlPart
+                  }}/{{ featuredcommercials.secondUrlPart }}">
+                    <h3 class="proj-Mhead">
+                      {{ featuredcommercials.project_name }}
+                    </h3>
+                    <p class="mb-para">{{ featuredcommercials.company_name }}</p>
+                    <p class="mb-para-by">
+                      {{ featuredcommercials.project_localities }}
+                    </p>
+                    <p class="pb-price">
+                      <strong>{{ featuredcommercials.prjtypeNames }}</strong>
+                    </p>
+                    <p class="pb-price" *ngIf="featuredcommercials.project_price_show == '0' ">
+                      <strong>₹ {{ featuredcommercials.project_minimum_price }} - ₹
+                        {{ featuredcommercials.project_maximum_price }}</strong>
+                    </p>
+                    <p class="pb-marketed">
+                      Marketed by: <br />{{ featuredcommercials.builderName }}
+                    </p>
+                  </a>
+                  <a *ngIf="featuredcommercials.project_price_show == '1' " class="get_enq" style="cursor:pointer"
+                    data-bs-toggle="modal"
+                    (click)="contactowner( featuredcommercials.secondUrlPart);fetchProperty(featuredcommercials)"
+                    data-bs-target="#contact-owner">Get a Quote</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlight-group" *ngIf="bannerbuilder">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-lg-3 col-md-12 col-sm-12 pe-0 pe-lg-0 pe-md-3">
+          <div class="group-of-box">
+            <div class="group-view-project">
+              <img src="{{ bannerbuilder[1].logo }}" alt="" class="img-fluid" />
+            </div>
+
+            <div class="grouop-of-info">
+              <h3 class="group-property-names">{{ bannerbuilder[1].project_name }}</h3>
+              <p class="group-property-location">{{ bannerbuilder[1].super_area }}</p>
+              <p class="group-property-prices"><strong class="luxurious-price">₹ {{ bannerbuilder[1].price }}*</strong> <br />
+                {{ bannerbuilder[1].property_bhk }}</p>
+            </div>
+            <div class="group-view">
+              <a href="project-details/{{ bannerbuilder[1].project_name }}/{{ bannerbuilder[1].id }}/{{ bannerbuilder[1].property_type }}">View projects</a>
+            </div>
+          </div>
+        </div> -->
+        <div class="col-lg-12 col-md-12 col-sm-12 ps-0 ps-lg-0 ps-md-3">
+          <a
+            href="project-details/{{ bannerbuilder[1].projectfirstUrlPart }}/{{ bannerbuilder[1].projectsecondUrlPart }}">
+            <img src="{{ bannerbuilder[1].project_banner_img }}" alt="" class="img-fluid group-main-img" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="builders">
+    <div class="container">
+      <h2 class="titles-heading">Featured Bungalows & Villas Projects</h2>
+      <div class="feature-main-slide-item">
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig1">
+          <div ngxSlickItem class="slide" *ngFor="let featuredBunglowss of featuredBunglowss">
+            <div class="proj-gallery__card">
+              <div class="proj-link">
+                <a routerLink="/project-details/{{
+                  featuredBunglowss.firstUrlPart
+                }}/{{ featuredBunglowss.secondUrlPart }}">
+                  <div class="proj-gallery-image">
+                    <img src="{{ featuredBunglowss.project_banner_image }}" alt="" />
+                  </div>
+                </a>
+                <div class="proj-gallery-desc">
+                  <a routerLink="/project-details/{{
+                    featuredBunglowss.firstUrlPart
+                  }}/{{ featuredBunglowss.secondUrlPart }}">
+                    <h3 class="proj-Mhead">
+                      {{ featuredBunglowss.project_name }}
+                    </h3>
+                    <p class="mb-para">{{ featuredBunglowss.company_name }}</p>
+                    <p class="mb-para-by">
+                      {{ featuredBunglowss.project_localities }}
+                    </p>
+                    <p class="pb-types">
+                      {{ featuredBunglowss.property_bhk }}
+                      <span *ngIf="featuredBunglowss.property_type === '3'">
+                        Villa
+                      </span>
+                    </p>
+                    <p class="pb-price" *ngIf="featuredBunglowss.project_price_show == '0' ">
+                      <strong>₹ {{ featuredBunglowss.project_minimum_price }} - ₹
+                        {{ featuredBunglowss.project_maximum_price }}</strong>
+                    </p>
+                    <p class="pb-marketed">
+                      Marketed by: <br />{{ featuredBunglowss.builderName }}
+                    </p>
+                  </a>
+                  <a *ngIf="featuredBunglowss.project_price_show == '1' " class="get_enq" style="cursor:pointer"
+                    data-bs-toggle="modal"
+                    (click)="contactowner( featuredBunglowss.secondUrlPart);fetchProperty(featuredBunglowss)"
+                    data-bs-target="#contact-owner">Get a Quote</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </section>
+
+  <section class="builders">
+    <div class="container">
+      <h2 class="titles-heading">Featured Farm Houses Projects</h2>
+      <div class="feature-main-slide-item">
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig3">
+          <div ngxSlickItem class="slide" *ngFor="let featurefarmhouse of featurefarmhouse">
+            <div class="proj-gallery__card">
+              <div class="proj-link">
+                <a routerLink="/project-details/{{
+                  featurefarmhouse.firstUrlPart
+                }}/{{ featurefarmhouse.secondUrlPart }}">
+                  <div class="proj-gallery-image-tow">
+                    <img src="{{ featurefarmhouse.project_banner_image }}" alt="" />
+                  </div>
+                </a>
+                <div class="proj-gallery-desc">
+                  <a routerLink="/project-details/{{
+                    featurefarmhouse.firstUrlPart
+                  }}/{{ featurefarmhouse.secondUrlPart }}">
+                    <h3 class="proj-Mhead">
+                      {{ featurefarmhouse.project_name }}
+                    </h3>
+                    <p class="mb-para">{{ featurefarmhouse.company_name }}</p>
+                    <p class="mb-para-by">
+                      {{ featurefarmhouse.project_localities }}
+                    </p>
+                    <!-- <p class="pb-types">{{ featurefarmhouse.property_bhk }}</p> -->
+                    <p class="pb-price"><strong>Farm House</strong></p>
+                    <p class="pb-price" *ngIf="featurefarmhouse.project_price_show == '0' ">
+                      <strong>₹ {{ featurefarmhouse.project_minimum_price }} - ₹
+                        {{ featurefarmhouse.project_maximum_price }}</strong>
+                    </p>
+                    <p class="pb-marketed">
+                      Marketed by: <br />{{ featurefarmhouse.builderName }}
+                    </p>
+                  </a>
+                  <a *ngIf="featurefarmhouse.project_price_show == '1' " class="get_enq" style="cursor:pointer"
+                    data-bs-toggle="modal"
+                    (click)="contactowner( featurefarmhouse.secondUrlPart);fetchProperty(featurefarmhouse)"
+                    data-bs-target="#contact-owner">Get a Quote</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlight-group" *ngIf="bannerbuilder">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-lg-3 col-md-12 col-sm-12 pe-0 pe-lg-0 pe-md-3">
+          <div class="group-of-box">
+            <div class="group-view-project">
+              <img src="{{ bannerbuilder[2].logo }}" alt="" class="img-fluid" />
+            </div>
+
+            <div class="grouop-of-info">
+              <h3 class="group-property-names">{{ bannerbuilder[2].project_name }}</h3>
+              <p class="group-property-location">{{ bannerbuilder[2].super_area }}</p>
+              <p class="group-property-prices"><strong class="luxurious-price">₹ {{ bannerbuilder[2].price }}*</strong> <br />
+                {{ bannerbuilder[2].property_bhk }}</p>
+            </div>
+            <div class="group-view">
+              <a href="project-details/{{ bannerbuilder[2].project_name }}/{{ bannerbuilder[2].id }}/{{ bannerbuilder[2].property_type }}">View projects</a>
+            </div>
+          </div>
+        </div> -->
+        <div class="col-lg-12 col-md-12 col-sm-12 ps-0 ps-lg-0 ps-md-3">
+          <a
+            href="project-details/{{ bannerbuilder[2].projectfirstUrlPart }}/{{ bannerbuilder[2].projectsecondUrlPart }}">
+            <img src="{{ bannerbuilder[2].project_banner_img }}" alt="" class="img-fluid group-main-img" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="builders">
+    <div class="container">
+      <h2 class="titles-heading">Featured Plots</h2>
+      <div class="feature-main-slide-item">
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig1">
+          <div ngxSlickItem class="slide" *ngFor="let featurePlots of featurePlotss">
+            <div class="proj-gallery__card">
+              <div class="proj-link">
+                <a routerLink="/project-details/{{ featurePlots.firstUrlPart }}/{{
+                  featurePlots.secondUrlPart
+                }}">
+                  <div class="proj-gallery-image">
+                    <img src="{{ featurePlots.project_banner_image }}" alt="" />
+                  </div>
+                </a>
+                <div class="proj-gallery-desc">
+                  <a routerLink="/project-details/{{ featurePlots.firstUrlPart }}/{{
+                  featurePlots.secondUrlPart
+                }}">
+                    <h3 class="proj-Mhead">{{ featurePlots.project_name }}</h3>
+                    <!-- <p class="mb-para">{{ featurePlots.company_name }}</p> -->
+                    <p class="mb-para-by">
+                      {{ featurePlots.project_localities }}
+                    </p>
+                    <!-- <p class="pb-types">{{ featurePlots.property_bhk }}</p> -->
+                    <p class="pb-price"><strong>Plots</strong></p>
+                    <p class="pb-price" *ngIf="featurePlots.project_price_show == '0' ">
+                      <strong>₹ {{ featurePlots.project_minimum_price }} - ₹
+                        {{ featurePlots.project_maximum_price }}</strong>
+                      onwards
+                    </p>
+                    <p class="pb-marketed">
+                      Marketed by: <br />{{ featurePlots.builderName }}
+                    </p>
+                  </a>
+                  <a *ngIf="featurePlots.project_price_show == '1' " class="get_enq" style="cursor:pointer"
+                    data-bs-toggle="modal"
+                    (click)="contactowner( featurePlots.secondUrlPart);fetchProperty(featurePlots)"
+                    data-bs-target="#contact-owner">Get a Quote</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="free-post">
+    <div class="container">
+      <div class="free-post-box">
+        <div class="free-you-Prt">
+          <h2>
+            Post your Property for <span class="free-text-property">Free</span>
+          </h2>
+          <p>Get authentic leads by listing it on realtymart.</p>
+        </div>
+        <div class="free-post-btn">
+          <a routerLink="/selling-guide"
+            >Post Property <span class="fw-bold">FREE</span></a
+          >
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- <section class="propertyloans">
+    <div class="container">
+      <div class="all-loans">
+        <div class="loans-details">
+          <img
+            src="../../../assets/images/home-loan.png"
+            alt="home loan"
+            class="img-fluid"
+          />
+          <p class="loan-title">Home Loans at Best Rates</p>
+          <div>
+            <a href="javascript::void()" class="inner-loan-btn"
+              ><i class="fa fa-thin fa-chevron-right" style="color: #ffffff"></i
+            ></a>
+          </div>
+        </div>
+        <div class="loans-details">
+          <img
+            src="../../../assets/images/property-value.png"
+            alt="property value"
+            class="img-fluid"
+          />
+          <p class="loan-title">Get the Value of any Property</p>
+          <div>
+            <a href="/property-valuation" class="inner-loan-btn"
+              ><i class="fa fa-thin fa-chevron-right" style="color: #ffffff"></i
+            ></a>
+          </div>
+        </div>
+        <div class="loans-details">
+          <img
+            src="../../../assets/images/home-clc.png"
+            alt="Home Loan Calculator"
+            class="img-fluid"
+          />
+          <p class="loan-title">Home Loan Calculator</p>
+          <div>
+            <a routerLink="../emi-calculator" class="inner-loan-btn"
+              ><i class="fa fa-thin fa-chevron-right" style="color: #ffffff"></i
+            ></a>
+          </div>
+        </div>
+        <div class="loans-details">
+          <img
+            src="../../../assets/images/property-service.png"
+            alt="property service"
+            class="img-fluid"
+          />
+          <p class="loan-title">Property Services</p>
+          <div>
+            <a routerLink="/property-services" class="inner-loan-btn"
+              ><i class="fa fa-thin fa-chevron-right" style="color: #ffffff"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <section class="builders">
+    <div class="container">
+      <h2 class="titles-heading-pg">Top Builders</h2>
+      <div class="builders-swiper">
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig5">
+          <div ngxSlickItem class="slide" *ngFor="let topbuilders of topbuilders">
+            <!-- <img src="{{ slide.img }}" alt="" width="100%" /> -->
+            <div class="builder-main-slid">
+              <a href="builder-detail/{{ topbuilders.builderUrl }}" class="builder-front">
+                <div class="builder-logos">
+                  <img src="{{ topbuilders.builder_logo }}" alt="" class="img-fluid" />
+                </div>
+                <div class="builder-details">
+                  <h4 class="builder-head">{{ topbuilders.name }}</h4>
+                  <p class="build-sells">
+                    Ongoing
+                    <span class="items-building">{{
+                      topbuilders.total_projects -
+                      topbuilders.completed_projects
+                      }}</span>
+                  </p>
+                  <p class="build-sells">
+                    Past
+                    <span class="items-building">{{
+                      topbuilders.completed_projects
+                      }}</span>
+                  </p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+
+<div class="modal fade" id="contact-owner-prop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header sign-in-box">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2 class="fill_one">Fill out this one - time contact form</h2>
+        <p class="detail_share">We will share advertiser's details over
+          email</p>
+        <div class="contact-form__prjInfo prj-top-info">
+          <div class="contact-form__prjInfo__fig"><img src="{{ contact?.property?.property_main_img }}"
+              class="contact-form__prjInfo__fig--graphic">
+          </div>
+          <div class="contact-form__prjInfo__name">{{ contact?.property?.project_name }}</div>
+          <div class="contact-form__prjInfo__loc">
+            {{ contact?.property?.property_locality}}
+          </div>
+          <div class="contact-form__prjInfo__content">
+            <div class="contact-form__prjInfo__bhk" *ngIf="contact?.property?.bedroom !== null">{{
+              contact?.property?.bedroom }} BHK</div>
+            <div class="contact-form__prjInfo__bhk" *ngIf="contact?.property?.property_typeName !== null">{{
+              contact?.property?.property_type }}</div>
+            <!-- <div class="contact-form__prjInfo__bhk">2 BHK Flats</div> -->
+            <div class="contact-form__prjInfo__price" *ngIf="contact?.property?.property_price_show =='0'">
+              <span> ₹ {{ contact?.property?.total_price !== null ? contact?.property?.total_price
+                :contact?.property?.rent_amount.toLocaleString() }}</span>
+            </div>
+          </div>
+        </div>
+        <form (submit)="is_token ? submitForm () : openOTPModal()">
+          <div class="mt-3">
+            <input type="text" id="Aname" [(ngModel)]="formData.username" name="name" placeholder="Name"
+              (input)="validateName($event)" (keypress)="validateCharInput($event)" required [disabled]="is_token"
+              class="gold-form-input my-0" />
+            <div *ngIf="nameError" class="mgs_error">
+              Please enter name.
+            </div>
+          </div>
+          <div class="mt-3">
+            <input type="mail" id="useremail" [(ngModel)]="formData.useremail" (blur)="validateEmail($event)"
+              name="useremail" placeholder="Email" [disabled]="is_token" required class="gold-form-input my-0" />
+            <div *ngIf="emailError" class="mgs_error">
+              Please enter a valid email address.
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <div class="row">
+              <!-- <div class="col-md-4">
+                                  <select
+                                    name="number-code"
+                                    id="number-code"
+                                    class="gold-form-input  my-0"
+                                  >
+                                    <option value="+91">+91</option>
+                                    <option value="USA: +1">+1</option>
+                                    <option value="UK: +44">+44</option>
+                                    <option value="Mexico: +52">+52</option>
+                                    <option value="China: +86">+86</option>
+                                  </select>
+                                </div> -->
+              <div class="d-flex">
+                <input type="tel" [(ngModel)]="formData.contact_no" id="goldNum" name="contact_no" maxlength="10"
+                  placeholder="Mobile No." required [disabled]="is_token" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                  (keypress)="validateNumberInput($event)" (blur)="validatePhoneNumber($event)"
+                  class="gold-form-input  my-0" />
+              </div>
+              <div *ngIf="phoneError" class="mgs_error">
+                Please enter a valid 10-digit number.
+              </div>
+            </div>
+          </div>
+          <div class="check-compare mt-3">
+            <input type="checkbox" [(ngModel)]="formData.termsAccepted" (change)="onTermsChange($event)"
+              name="termsAccepted" id="compare" [disabled]="is_token" value="compare add" class="mycheck" />
+            <label for="compare" class="compares" style="display: inline-flex; gap:5px;">I Agree to realtymart
+              <!-- <span class="d-block"
+                                ><a
+                                  routerlink="../terms-conditions"
+                                  href="/terms-conditions"
+                                  >Terms of Use</a
+                                ></span> -->
+            </label>
+            <br />
+          </div>
+          <div *ngIf="termsError" class="mgs_error">
+            Please agree to the terms and conditions.
+          </div>
+
+          <button type="submit" class="pp-form__cta" [disabled]="emailError">
+            {{ is_token ? 'Submit Enquiry' : 'Continue' }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="contact-owner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header sign-in-box">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2 class="fill_one">Fill out this one - time contact form</h2>
+        <p class="detail_share">We will share advertiser's details over
+          email</p>
+        <div class="contact-form__prjInfo prj-top-info">
+          <div class="contact-form__prjInfo__fig"><img src="{{ contact?.project?.project_banner_image }}"
+              class="contact-form__prjInfo__fig--graphic">
+          </div>
+          <div class="contact-form__prjInfo__name">{{ contact?.project?.project_name }}</div>
+          <div class="contact-form__prjInfo__loc">
+            {{ contact?.project?.project_localities}}
+          </div>
+          <div class="contact-form__prjInfo__content">
+            <div class="contact-form__prjInfo__bhk" *ngIf="contact?.project?.project_type !== null">{{
+              contact?.project?.project_type }}</div>
+            <!-- <div class="contact-form__prjInfo__bhk" *ngIf="contact?.property?.bedroom !== null">{{ contact?.project?.bedroom }} BHK</div> -->
+            <!-- <div class="contact-form__prjInfo__bhk">2 BHK Flats</div> -->
+            <!-- <div class="contact-form__prjInfo__price" *ngIf="contact?.project?.project_price_show =='0'">
+                          <span> ₹ {{ contact?.project?.project_minimum_price }} - ₹ {{contact?.project?.project_maximum_price }}</span>
+                        </div> -->
+          </div>
+        </div>
+        <form (submit)="is_token ? submitForm() : openOTPModal()">
+          <div class="mt-3">
+            <input type="text" id="Aname" [(ngModel)]="formData.username" name="name" placeholder="Name"
+              (input)="validateName($event)" (keypress)="validateCharInput($event)" required [disabled]="is_token"
+              class="gold-form-input my-0" />
+            <div *ngIf="nameError" class="mgs_error">
+              Please enter name.
+            </div>
+          </div>
+          <div class="mt-3">
+            <input type="mail" id="useremail" [(ngModel)]="formData.useremail" (blur)="validateEmail($event)"
+              name="useremail" [disabled]="is_token" placeholder="Email" required class="gold-form-input my-0" />
+            <div *ngIf="emailError" class="mgs_error">
+              Please enter a valid email address.
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <div class="row">
+              <!-- <div class="col-md-4">
+                        <select
+                          name="number-code"
+                          id="number-code"
+                          class="gold-form-input  my-0"
+                        >
+                          <option value="+91">+91</option>
+                          <option value="USA: +1">+1</option>
+                          <option value="UK: +44">+44</option>
+                          <option value="Mexico: +52">+52</option>
+                          <option value="China: +86">+86</option>
+                        </select>
+                      </div> -->
+              <div class="d-flex">
+                <input type="tel" [(ngModel)]="formData.contact_no" id="goldNum" name="contact_no" maxlength="10"
+                  placeholder="Mobile No." required [disabled]="is_token" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                  (keypress)="validateNumberInput($event)" (blur)="validatePhoneNumber($event)"
+                  class="gold-form-input  my-0" />
+                <!-- <span
+                          class="verify-label"
+                          (click)="openOTPModal()"
+                          *ngIf="formData.contact_no?.length === 10 && !phoneError && !is_token"
+                          style="cursor: pointer; color: #ff5444; font-weight: bold; margin-left: 10px;"
+                        >
+                          Verify
+                        </span> -->
+              </div>
+              <div *ngIf="phoneError" class="mgs_error">
+                Please enter a valid 10-digit number.
+              </div>
+            </div>
+          </div>
+          <div class="check-compare mt-3">
+            <input type="checkbox" [(ngModel)]="formData.termsAccepted" (change)="onTermsChange($event)"
+              name="termsAccepted" id="compare" [disabled]="is_token" value="compare add" class="mycheck" />
+            <label for="compare" class="compares" style="display: inline-flex; gap:5px;">I Agree to realtymart
+
+            </label>
+            <br />
+          </div>
+          <div *ngIf="termsError" class="mgs_error">
+            Please agree to the terms and conditions.
+          </div>
+          <button type="submit" class=" pp-form__cta" [disabled]="emailError">
+            {{is_token ? 'Submit Enquiry':'Continue'}}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div #otpModel class="modal fade" tabindex="-1" role="dialog" aria-bs-hidden="true" data-bs-backdrop="static"
+  data-bs-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Verify Your Mobile Number</h5>
+        <button type="button" class="btn-close position-absolute top-0 end-0 mt-3 me-3" data-bs-dismiss="modal"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          You will receive a 4-digit verification code on your registered mobile number.
+        </div>
+        <input type="text" id="otpInput" name="otpInput" placeholder="Enter OTP" [(ngModel)]="formData.otp"
+          (keypress)="validateNumberInput($event)" maxlength="4" style="border-color: #00000029" />
+
+        <div *ngIf="otpError" class="mgs_error">
+          Please enter a valid OTP.
+        </div>
+      </div>
+      <div class="modal-footer border-0 flex-column text-center">
+        <button type="button" class="btn reg_sub" (click)="verifyOTP()">
+          Verify
+        </button>
+        <div>
+          <label *ngIf="!isResendEnabled" class="resend-label mb-3" style="cursor: pointer">
+            You will receive OTP within
+            <b style="color: #ff5444"> 00:{{ remainingTime }}</b>
+            seconds
+          </label>
+          <div class="mb-3" *ngIf="isResendEnabled">Did not get Verification Code?</div>
+          <span *ngIf="isResendEnabled" style="cursor: pointer; border-bottom: 1px solid grey"
+            (click)="resendOTP()">Resend Code</span>
+        </div>
+        <!-- <button type="button" [disabled]="!isResendEnabled" class="btn reg_sub" (click)="sendOTPToMobile()">
+Resend OTP
+</button> -->
+      </div>
+    </div>
+  </div>
+</div>

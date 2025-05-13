@@ -1,0 +1,390 @@
+<!-- <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-scale-pulse-out" [fullScreen] = "true"></ngx-spinner> -->
+
+<header class="header_wrapper scrolled">
+  <div class="container">
+    <div class="menu_wrapper">
+      <div class="main_logo">
+        <a routerLink="/"><img src="../assets/images/logo.svg" class="img-fluid desk_logo" alt="" /></a>
+        <a class="navbar-brand" href="#"><img src="../../../assets/images/mobile-logo.png" class="mobile-logo"
+            alt="" /></a>
+      </div>
+      <!-- <img src="../assets/images/My-Realty.png" class="img-fluid" alt="" -->
+      <div class="header_btn gap-2">
+        <!-- <a routerLink="/register" class="register ms-3"
+          > SIGN UP</a
+        > -->
+        <a target="_blank" routerLink="/selling-guide" class="post_btn">POST PROPERTY <span>FREE</span></a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" data-bs-toggle="dropdown"
+              role="button" aria-expanded="false">
+              Buy
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                  <li class="dropdown-item menu_inner_title">
+                    Popular Choices
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/owner-property-buy/{{ city }}">Owner Properties</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/verified-property-buy/{{ city }}">Verified
+                      Properties</a>
+                  </li>
+                  <!-- <li>
+                    <a class="dropdown-item" href="/project-featured">Project Featured </a>
+                  </li> -->
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/paying-guest-for/boys/{{ city }}">Pg For Boys {{
+                      city }}</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/newly-launched">Newly Launched <span
+                        class="badge">NEW</span></a>
+                  </li>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                  <li class="dropdown-item menu_inner_title">Property Types</li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/property-for-buy/flat/{{ city }}">Flats in {{ city
+                      }}</a>
+                  </li>
+                  <!-- <li>
+                    <a class="dropdown-item" href="#"
+                      >House for sale in Ahmedabad</a
+                    >
+                  </li> -->
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/property-for-buy/house-villa/{{ city }}">House/Villa
+                      in {{
+                      city }}</a>
+                  </li>
+                  <!-- <li>
+                    <a class="dropdown-item" href="#">Villa in Ahmedabad</a>
+                  </li> -->
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/property-for-buy/plot/{{ city }}">Plot in {{ city
+                      }}</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/property-for-buy/office-space/{{ city }}">Office
+                      Space in {{ city }}</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item"
+                      href="/property-for-buy/commercial-land/{{ city }}">Commercial Land in {{ city }}</a>
+                  </li>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                  <li class="dropdown-item menu_inner_title">Explore</li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/builder-listing/{{ city }}">Builders in {{ city
+                      }}</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/explore-localities/{{ city }}">Localities in {{ city
+                      }}</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/projects-in-city/{{ city }}">Projects in {{ city
+                      }}</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/investment-hotspot">Investment Hotspot</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" routerLink="/agents/{{ city }}">Find an Agent</a>
+                  </li>
+                </div>
+              </div>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" data-bs-toggle="dropdown"
+              role="button" aria-expanded="false">
+              Rent
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                  <li class="dropdown-item menu_inner_title">
+                    Popular Choices
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/owner-property-rent/{{ city }}">Owner Properties</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/verified-property-rent/{{ city }}">Verified
+                      Properties</a>
+                  </li>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                  <li class="dropdown-item menu_inner_title">Property Types</li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/property-for-rent/flat/{{ city }}">Flats in {{ city
+                      }}</a>
+                  </li>
+                  <!-- <li>
+                    <a class="dropdown-item" href="#"
+                      >House for sale in Ahmedabad</a
+                    >
+                  </li> -->
+                  <li>
+                    <a target="_blank" class="dropdown-item"
+                      href="/property-for-rent/house-villa/{{ city }}">House/Villa in
+                      {{ city }}</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/property-for-rent/plot/{{ city }}">Plot in {{ city
+                      }}</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/property-for-rent/office-space/{{ city }}">Office
+                      Space in {{ city }}</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item"
+                      href="/property-for-rent/commercial-land/{{ city }}">Commercial Space in {{ city }}</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="#">Hostel in {{ city }}</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="#">PG in {{ city }}</a>
+                  </li>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                  <li class="dropdown-item menu_inner_title">
+                    Popular Choices
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/explore-localities/{{ city }}">Localities in {{ city
+                      }}</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" routerLink="/agents/{{ city }}">Find an Agent</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" routerLink="/property-services">Property Services</a>
+                  </li>
+                </div>
+              </div>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" data-bs-toggle="dropdown"
+              role="button" aria-expanded="false">
+              Sell
+            </a>
+            <ul class="dropdown-menu sell_custom_dropdown" aria-labelledby="navbarDropdown">
+              <div class="row">
+                <div class="">
+                  <li class="dropdown-item menu_inner_title">For Owner</li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" routerLink="/selling-guide">Post Property <span
+                        class="badge">NEW</span></a>
+                  </li>
+                  <li></li>
+                </div>
+              </div>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" data-bs-toggle="dropdown"
+              role="button" aria-expanded="false">
+              Tools
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                  <li class="dropdown-item menu_inner_title">
+                    Popular Service
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/property-valuation">Property Valuation</a>
+                  </li>
+                  <!-- <li>
+                    <a class="dropdown-item" href="/title-check"
+                      >Legal Title Check</a
+                    >
+                  </li> -->
+                  <!-- <li>
+                    <a class="dropdown-item" href="#">Rates & Trends</a>
+                  </li> -->
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                  <li class="dropdown-item menu_inner_title">
+                    Popular Choices
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" routerLink="/emi-calculator">EMI Calculator</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/investment-hotspot">Investment Hotspot</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" routerLink="/research-insights">Research Insights</a>
+                  </li>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                  <li class="dropdown-item menu_inner_title">Buying Tools</li>
+                  <!-- <li>
+                    <a class="dropdown-item" href="/find-pincode">Find Pincode</a>
+                  </li> -->
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/tips-and-guides">Tips and Guides</a>
+                  </li>
+                </div>
+              </div>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" routerLink="/property-services" id="navbarDropdown"
+              data-bs-toggle="dropdown" role="button" aria-expanded="false">
+              Property Services
+            </a>
+            <ul class="dropdown-menu property_service_custom_dropdown" aria-labelledby="navbarDropdown">
+              <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12" *ngFor="let results of result">
+                  <li>
+                    <a class="dropdown-item" target="_blank" routerLink="property-services/{{ results.prpsrcurl }}">
+                      {{ results.name }}
+                    </a>
+                  </li>
+                </div>
+              </div>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a target="_blank" class="nav-link" href="top-builders" aria-expanded="false">Top Builders</a>
+          </li>
+          <li class="nav-item">
+            <a target="_blank" class="nav-link" href="emi-calculator" aria-expanded="false">EMI Calculator</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a target="_blank" class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown"
+              data-bs-toggle="dropdown" role="button" aria-expanded="false">
+              Help
+            </a>
+            <ul class="dropdown-menu help_custom_dropdown" aria-labelledby="navbarDropdown">
+              <div class="row">
+                <div class="">
+                  <li>
+                    <a target="_blank" class="dropdown-item" routerLink="/contact">Sales Enquiry</a>
+                  </li>
+                </div>
+              </div>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a target="_blank" class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown"
+              data-bs-toggle="dropdown" role="button" aria-expanded="false" *ngIf="checkToken == null">
+              Login
+            </a>
+            <a class="nav-link dropdown-toggle" href="javascript:void(0)" (click)="logout()" id="navbarDropdown"
+              role="button" aria-expanded="false" *ngIf="checkToken != null">
+              Logout
+            </a>
+            <ul class="dropdown-menu login-custom-dropdown" aria-labelledby="navbarDropdown">
+              <div class="row">
+                <div class="">
+                  <li>
+                    <a target="_blank" class="dropdown-item" *ngIf="checkToken != null" routerLink="/profiles">My
+                      Profile</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" *ngIf="checkToken != null"
+                      routerLink="/shortlisted-properties">Shortlisted Properties</a>
+                  </li>
+                  <li *ngIf="checkToken != null">
+                    <a class="dropdown-item" (click)="logout()">Logout</a>
+                  </li>
+
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/login" *ngIf="checkToken == null">Login</a>
+                  </li>
+                  <li>
+                    <a target="_blank" class="dropdown-item" href="/registration" *ngIf="checkToken == null">New to
+                      realtymart ? <span> Sign Up </span></a>
+                  </li>
+                </div>
+              </div>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- sign up modal popup  -->
+<!-- <div class="modal fade" id="sign-up" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="sign-upLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header sign-up-box">
+        <button type="button" class="btn-close" id="btncloseregister" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body signup-body">
+        <div class="row">
+          <div class="col-lg-5 col-md-6 col-sm-12">
+            <img src="../../../assets/images/login-bg.png" alt="" class="img-fluid">
+          </div>
+          <div class="col-lg-7 col-md-6 col-sm-12">
+            <form #submitForm="ngForm" (ngSubmit)="getregistereddata(submitForm.value)">
+              <h2 class="head-sign">Sign Up</h2>
+              <div class="signup-are">
+                <p class="Iam">I am</p>
+                <div class="types-contact">
+                    <input type="radio" id="Buyer/Owner" ngModel name="role" value="User" (change)="onChange($event)">
+                     <label for="Buyer/Owner">Buyer/Owner</label><br>
+                     <input type="radio" id="signAgent" ngModel name="role" value="Agent" (change)="onChange($event)">
+                     <label for="signAgent">Agent</label><br>
+                     <input type="radio" id="signBuilder" ngModel name="role" value="Builder" (change)="onChange($event)">
+                     <label for="signBuilder">Builder</label><br>
+                </div>
+             </div>
+             <input type="text" id="Aname" ngModel name="name" placeholder="Name" class="gold-form-input"required><br>
+             <input type="maill" id="agentmail" ngModel name="email" placeholder="Email" class="gold-form-input"required><br>
+             <div class="psd-showHide">
+              <input
+              id="myInputPSW"
+              class="gold-form-input"
+              [type]="showPassword ? 'text' : 'password'"
+              placeholder="Password"
+              name="password"
+              ngModel
+            />
+            <button class="shoh-hide-btn" (click)="togglePasswordVisibility()">
+              {{ showPassword ? 'Hide' : 'Show' }}
+            </button>
+             </div>
+          <p class="agree-you">I Agree to My Realitys’ <a routerLink="../terms-conditions">Terms & Condition</a></p>
+          <div class="btn-submit">
+            <button>Sign up</button>
+          </div>
+          <p class="sign-already">Already Registered? <a href="/login">Sign In</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- sign up modal popup -->

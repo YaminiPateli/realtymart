@@ -1,0 +1,98 @@
+<main>
+
+<section class="builders-ahmedabad position-relative">
+    <div class="container">
+        <div class="banner-small">
+            <h1 class="banner_title">{{ allbuilderproperty[0]?.name }}</h1>
+            <p class="banner_small">New Projects in Ahmedabad</p>
+        </div>
+    </div>
+</section>
+
+<section class="godrej-projects">
+    <div class="container">
+        <div class="godrej-tab">
+              
+              <div class="tab-content" id="pills-tabContent">
+
+                <div class="tab-pane fade show active" id="pills-gogrej" role="tabpanel" aria-labelledby="pills-godrej-tab">
+                <div class="projections">
+                    <div class="head-projections">
+                        <div class="new-projection">
+                            <p>New Projects in Ahmedabad</p>
+                        </div>
+                        <div class="sort-by">
+                            <label for="cars">Sort By:</label>
+                            <select id="cars" name="carlist" class="sort-select" form="carform">
+                            <option value="" disabled selected hidden>Relevance</option>
+                            <option value="Lorem">Lorem</option>
+                            <option value="Lorem">Lorem</option>
+                            <option value="Lorem">Lorem</option>
+                            <option value="Lorem">Lorem</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="godrej-citys">
+                        <div class="citiys-planes" *ngFor="let allbuilderproperty of allbuilderproperty">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="city-images">
+                                        <img src="{{ allbuilderproperty.project_images }}" alt="" class="img-fluid">
+                                    </div>
+                                    
+                                    <div class="property-verified" *ngIf="allbuilderproperty.properties[0].is_exclusive === '1'"><p>EXCLUSIVE PROPERTY</p></div>
+                                    <!-- <div class="check-compare">
+                                        <input type="checkbox" id="compare" name="compare" value="compare add" class="mycheck">
+                                        <label for="compare" class="compares"> Add to Compare</label><br>
+                                    </div> -->
+                                </div>
+                                <div class="col-lg-10 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <a href="property-details/{{ allbuilderproperty.project_name }}/{{ allbuilderproperty.properties[0].propertyid }}" class="groups-companies-names">{{ allbuilderproperty.project_name}}</a>
+                                            <p class="opnesince">{{ allbuilderproperty.totalfloor }} Floor Plan  |  By: {{ allbuilderproperty.name}}</p>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>in {{ allbuilderproperty.prjlocalities }}</p>
+                                                </div>
+                                                <div class="col-md-6 border-add">
+                                                    <div class="city-price">
+                                                    <p class="our-price">₹ {{ allbuilderproperty.minprice }} to {{ allbuilderproperty.maxprice }}</p>
+                                                    <!-- <p class="since-oct"><span class="me-2"><i class="fa-solid fa-arrow-up" style="color: #25c600;"></i></span>5% since Oct '15</p> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <h6 class="possession">Possession in 2022</h6> -->
+                                    <p class="text-titles" [innerHTML]="allbuilderproperty.prjdescription"></p>
+                                      <input type="checkbox" class="text-btn" />
+                                    <div class="deatel-table">
+                                        <table class="table-responsive">
+                                          <tbody *ngFor="let flat of allbuilderproperty.properties ">
+                                            <tr class="table-data">
+                                                <td>{{ flat.property_bhk }}</td>
+                                                <td>{{ flat.property_sqfoot }}</td>
+                                                <td>{{ flat.minprice }} to {{ flat.maxprice }}</td>
+                                                <td class="contact-godrej"><a href="#">CONTACT NOW</a></td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>                                      
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-godarej-two" role="tabpanel" aria-labelledby="pills-godarej-two-tab">...</div>
+                
+              </div>
+        </div>
+    </div>
+</section>
+
+</main>

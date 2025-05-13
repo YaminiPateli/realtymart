@@ -1,0 +1,628 @@
+<main>
+    <section class="provider_flow">
+        <ngx-slick-carousel
+            class="carousel m-0"
+            #slickModal="slick-carousel"
+            *ngIf="singlecompany.prtsrc_banner_image?.length > 0"
+            [config]="slideConfig1">
+            <div ngxSlickItem class="slide slider_mg" *ngFor="let banner of singlecompany.prtsrc_banner_image"> 
+                <img src={{banner}} alt="banner-image" width="100%">
+            </div>
+        </ngx-slick-carousel>
+    </section>
+
+    <section class="top_flore" id="navbar">
+        <div class="container">
+            <ul class="nav_box">
+                <li><a  style="cursor: pointer" [ngClass]="{ active: activeSection === 'about' }" (click)="scrollToSection('about')">About</a></li>
+                <li class="{'active': activeSection === 'gallery'}"><a  style="cursor: pointer" [ngClass]="{ active: activeSection === 'gallery' }" (click)="scrollToSection('gallery')">Gallery</a></li>
+                <li  *ngIf="singlecompany?.PrtSrcSevices?.length > 0" class="{'active': activeSection === 'services'}"><a  style="cursor: pointer" [ngClass]="{ active: activeSection === 'services' }" (click)="scrollToSection('services')">Services</a></li>
+                <li *ngIf="singlecompany?.PrtSrcProducts?.length > 0" class="{'active': activeSection === 'products'}"><a  style="cursor: pointer"  [ngClass]="{ active: activeSection === 'products' }" (click)="scrollToSection('products')">Products</a></li>
+                <li class="{'active': activeSection === 'catalogues'}"><a  style="cursor: pointer" [ngClass]="{ active: activeSection === 'catalogues' }" (click)="scrollToSection('catalogues')">Catalogues</a></li>
+                <li class="{'active': activeSection === 'testimonials'}"><a  style="cursor: pointer" [ngClass]="{ active: activeSection === 'testimonials' }" (click)="scrollToSection('testimonials')">Testimonials</a></li>
+                <li class="{'active': activeSection === 'reviews'}"><a  style="cursor: pointer" [ngClass]="{ active: activeSection === 'reviews' }" (click)="scrollToSection('reviews')">Reviews</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="company_overview">
+        <div class="container">
+            <div class="row" id="about">
+                <div class="col-lg-8">
+                    <div class="company_llg" *ngIf="singlecompany.company_logo !== null" >
+                        <img src={{singlecompany.company_logo}} alt="logo"
+                            class="img-fluid mb-2" />
+                    </div>
+
+                    <h3 class="companies-names" *ngIf="singlecompany.company_name !== null">About {{singlecompany.company_name}}</h3>
+                    <p class="text-titles" *ngIf="singlecompany.description !== null"  [innerHTML]="singlecompany.description">
+                    </p>
+                    <input type="checkbox" class="text-btn" *ngIf="singlecompany?.description !== null && singlecompany?.description?.length > 300" />
+
+                    <div class="gallery mt-3" id="gallery" *ngIf="singlecompany.PrtSrcGallerys?.length > 0">
+                        <h3 class="companies-names">Gallery</h3>
+                        <ngx-slick-carousel class="carousel project_slider"
+                            #slickModal="slick-carousel"
+                            
+                            [config]="slideConfig2">
+                            <div ngxSlickItem class="slide" *ngFor="let gallery of singlecompany.PrtSrcGallerys">
+                                <div class="gallery_box">
+                                    <div class="gallery">
+                                        <a
+                                            href={{gallery}}
+                                            data-fancybox="gallery">
+                                            <img
+                                                src={{gallery}}
+                                                alt="Gallery Image"
+                                                class="img-fluid" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div ngxSlickItem class="slide">
+                                <div class="gallery_box">
+                                    <div class="gallery">
+                                        <a
+                                            href="../../../assets/images/Gallery1.png"
+                                            data-fancybox="gallery">
+                                            <img
+                                                src="../../../assets/images/Gallery1.png"
+                                                alt="Gallery Image"
+                                                class="img-fluid" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ngxSlickItem class="slide">
+                                <div class="gallery_box">
+                                    <div class="gallery">
+                                        <a
+                                            href="../../../assets/images/Gallery1.png"
+                                            data-fancybox="gallery">
+                                            <img
+                                                src="../../../assets/images/Gallery1.png"
+                                                alt="Gallery Image"
+                                                class="img-fluid" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ngxSlickItem class="slide">
+                                <div class="gallery_box">
+                                    <div class="gallery">
+                                        <a
+                                            href="../../../assets/images/Gallery1.png"
+                                            data-fancybox="gallery">
+                                            <img
+                                                src="../../../assets/images/Gallery1.png"
+                                                alt="Gallery Image"
+                                                class="img-fluid" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ngxSlickItem class="slide">
+                                <div class="gallery_box">
+                                    <div class="gallery">
+                                        <a
+                                            href="../../../assets/images/Gallery1.png"
+                                            data-fancybox="gallery">
+                                            <img
+                                                src="../../../assets/images/Gallery1.png"
+                                                alt="Gallery Image"
+                                                class="img-fluid" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </ngx-slick-carousel>
+                    </div>
+
+                    <div class="services_flow mt-3" id="services" *ngIf="singlecompany.PrtSrcSevices?.length > 0">
+                        <h3 class="companies-names">Services</h3>
+                        <div class="row mt-3">
+                            <div class="col-lg-3 col-md-6 mb-3 text-center" *ngFor="let service of singlecompany.PrtSrcSevices">
+                                <img class="img-fluid pb-2"
+                                    src={{service.services_image}}
+                                    alt>
+                                <p>{{service.services_name}}</p>
+                            </div>
+
+                            <!-- <div class="col-lg-3 col-md-6 mb-3 text-center">
+                                <img class="img-fluid pb-2"
+                                    src="../../../assets/images/Residential.jpg"
+                                    alt>
+                                <p>Residential and Villas</p>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-3 text-center">
+                                <img src="../../../assets/images/Urban.jpg" alt
+                                    class="img-fluid pb-2">
+                                <p>Urban Design and Master Training</p>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-3 text-center">
+                                <img class="img-fluid pb-2"
+                                    src="../../../assets/images/Laisaning.jpg"
+                                    alt>
+                                <p>Government Approval and Laisaning</p>
+                            </div> -->
+                            
+                        </div>
+                    </div>
+
+                    <div class="services_flow mt-3" id="products" *ngIf="singlecompany.PrtSrcProducts?.length > 0">
+                        <h3 class="companies-names">Products</h3>
+                        <div class="row mt-3">
+                            <div class="col-lg-3 col-md-6 mb-3 text-center" *ngFor="let product of singlecompany.PrtSrcProducts">
+                                <img class="img-fluid pb-2"
+                                    src={{product.products_image}}
+                                    alt>
+                                <p>{{product.products_name}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="catalogues_flow mt-3" id="catalogues" *ngIf="singlecompany.PrtSrccatelogues?.length > 0">
+                        <h3 class="companies-names">Catalogues</h3>
+                        <ngx-slick-carousel class="carousel project_slider pt-3"
+                            #slickModal="slick-carousel"
+                            [config]="slideConfig3">
+                            <div ngxSlickItem class="slide" *ngFor="let catlogue of singlecompany.PrtSrccatelogues">
+                                <div class="catalogues_box">
+                                    <div>
+                                        <img
+                                            src="../../../assets/images/pdf.png"
+                                            alt>
+                                    </div>
+                                    <div class="catalogues_info">
+                                        <h4>{{catlogue.catalogues_name}}</h4>
+                                        <a target="_blank" href={{catlogue.catalogues_pdf}}>Download</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </ngx-slick-carousel>
+                    </div>
+
+                    <div class="testimonials_flow mt-3" id="testimonials" *ngIf="singlecompany.PrtSrcTestimonials?.length > 0">
+                        <h3 class="companies-names">Testimonials</h3>
+                        <ngx-slick-carousel class="carousel project_slider pt-3"
+                        
+                            #slickModal="slick-carousel"
+                            [config]="slideConfig4">
+                            <div ngxSlickItem class="slide" *ngFor="let testimonial of singlecompany.PrtSrcTestimonials">
+                                <div class="our_say">
+                                    <div
+                                    *ngIf="testimonial.testimonials_logo !== null"
+                                        class="says_mg d-flex justify-content-between align-items-center mb-2">
+                                        <img
+                                            src={{testimonial.testimonials_logo}}
+                                            alt
+                                            class="img-fluid testimonials_logo">
+                                        <img
+                                            src="../../../assets/images/Testimonials.png"
+                                            alt class="img-fluid">
+                                    </div>
+                                    <p *ngIf="testimonial.testimonials_description !== null">{{testimonial.testimonials_description}}</p>
+                                </div>
+                            </div>
+                            <!-- <div ngxSlickItem class="slide">
+                                <div class="our_say">
+                                    <div
+                                        class="says_mg d-flex justify-content-between align-items-center mb-2">
+                                        <img
+                                            src="../../../assets/images/shivalik-img.png"
+                                            alt
+                                            class="img-fluid  testimonials_logo ">
+                                        <img
+                                            src="../../../assets/images/Testimonials.png"
+                                            alt class="img-fluid">
+                                    </div>
+                                    <p>My experience with Noorani Architects has
+                                        been extremely positive and productive.
+                                        The NA team is a very talented and
+                                        innovative group of people with a huge
+                                        position for what they do. They provided
+                                        service with personal attention every
+                                        step of the way. I appreciate the team
+                                        for their marvelous work.</p>
+                                </div>
+                            </div>
+                            <div ngxSlickItem class="slide">
+                                <div class="our_say">
+                                    <div
+                                        class="says_mg d-flex justify-content-between align-items-center mb-2">
+                                        <img
+                                            src="../../../assets/images/shaligram-group.png"
+                                            alt
+                                            class="img-fluid testimonials_logo">
+                                        <img
+                                            src="../../../assets/images/Testimonials.png"
+                                            alt class="img-fluid">
+                                    </div>
+                                    <p>My experience with Noorani Architects has
+                                        been extremely positive and productive.
+                                        The NA team is a very talented and
+                                        innovative group of people with a huge
+                                        position for what they do. They provided
+                                        service with personal attention every
+                                        step of the way. I appreciate the team
+                                        for their marvelous work.</p>
+                                </div>
+                            </div> -->
+                        </ngx-slick-carousel>
+                    </div>
+
+                    <div class="review_head" id="reviews" *ngIf="googleReviews !==null">
+                        <h3 class="companies-names">Reviews</h3>
+                        <div class="review_box">
+                          <div class="row align-items-center">
+                            <div class="col-md-6 mb-2">
+                              <img src={{singlecompany.company_logo}} alt="" class="img-fluid">
+                            </div>
+                            <div class="col-md-6">
+                              <h4> Rating</h4>
+                              <div class="rating">
+                                <span class="rating-number">{{googleReviews?.rating}}</span>
+                                <div class="stars">
+                                  <div class="filled-stars" [ngStyle]="{ width: (googleReviews?.rating * 20) + '%' }"></div>
+                                  <div class="empty-stars"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row" *ngFor="let item of reviews">
+                          <div class="col-lg-2 mb-3">
+                              <img class="profile_photo_url img-fluid" [src]="item.profile_photo_url" alt="profile_photo">
+                          </div>
+                          <div class="col-lg-10 mb-3">
+                            <div class="info_write">
+                                <h3 class="author_name">{{item.author_name}}</h3>
+                                <div class="rating">
+                                    <div class="stars">
+                                      <div class="filled-stars"  [ngStyle]="{ width: (item.rating * 20) + '%' }"></div>
+                                      <div class="empty-stars"></div>
+                                    </div>
+                                    <span class="time_of_review">{{item.relative_time_description}}</span>
+                                  </div>
+                            </div>
+                              <p>{{item.text}}</p>
+                          </div>
+                          <!-- <div class="col-lg-2 mb-3">
+                              <img class="profile_photo_url img-fluid" src="../../../assets/images/demouser.png" alt="profile_photo_url">
+                          </div>
+                          <div class="col-lg-10 mb-3">
+                            <div class="info_write">
+                                <h3 class="author_name">Sammy Wiegand</h3>
+                                <div class="rating">
+                                    <div class="stars">
+                                      <div class="filled-stars" style="width: 96%;"></div>
+                                      <div class="empty-stars"></div>
+                                    </div>
+                                    <span class="time_of_review">a year ago</span>
+                                  </div>
+                            </div>
+                              <p>Lorem ipsum dolor sit amet consectetur. Enim ac lobortis euismod massa sed velit arcu eu et. Lorem ipsum rutrum id tortor massa. Sollicitudin morbi feugiat augue at mauris quam sagittis nunc sit. Faucibus vulputate tortor diam varius est. Pulvinar.</p>
+                          </div> -->
+                        </div>
+                      </div>         
+                </div>
+
+                <div class="col-lg-4 mt-3">
+                    <div class="form_sticky">
+                        <div class="fill_info">
+                            <h4 *ngIf="singlecompany.company_address !== null" class="info-title mb-1">Address:</h4>
+                            <p *ngIf="singlecompany.company_address !== null">{{singlecompany.company_address}} </p>
+
+                            <div class="d-flex align-items-center flex-wrap our_time">
+                                <a class="directions" target="_blank" [href]="'https://www.google.com/maps/place/' + singlecompany?.company_map?.replace(' ', '')">Get Directions</a>
+                                    <ul class="dropdown list-unstyled" *ngIf="singlecompany.bussiness_hours !== null">
+                                        <p class="m-0"><b>Business Hours</b></p>
+                                        <div *ngFor="let businessHour of reorderBusinessHours()">
+                                          <div class="d-flex gap-3 mt-2 justify-content-between">
+                                            <span>
+                                              {{ getDayName(businessHour?.day) }}
+                                              <span *ngIf="isToday(businessHour?.day)"> <strong>(Today)</strong></span>
+                                            </span>
+                                            <span>
+                                              {{ businessHour?.closed === 'off' ? 'Closed - Closed' : businessHour?.open_hour + ' - ' + businessHour?.close_hour }}
+                                            </span>
+                                          </div>
+                                        </div>      
+                                      </ul>
+                                <!-- <ul class="business_hours list-unstyled">
+                                    <li>
+                                        <a>Business Hours</a>
+                                        <ul class="dropdown list-unstyled">
+                                            <p class="m-0"><b>Business
+                                                    Hours</b></p>
+                                            <div
+                                                class="d-flex gap-3 mt-2 justify-content-between">
+                                                <span>SAT (Today)</span>
+                                                <span>9:00 am - 10:00 pm</span>
+                                            </div>
+                                            <div
+                                                class="d-flex gap-3 mt-2 justify-content-between">
+                                                <span>SUN</span>
+                                                <span>9:00 am - 10:00 pm</span>
+                                            </div>
+                                            <div
+                                                class="d-flex gap-3 mt-2 justify-content-between">
+                                                <span>MON</span>
+                                                <span>9:00 am - 10:00 pm</span>
+                                            </div>
+                                            <div
+                                                class="d-flex gap-3 mt-2 justify-content-between">
+                                                <span>TUE</span>
+                                                <span>9:00 am - 10:00 pm</span>
+                                            </div>
+                                            <div
+                                                class="d-flex gap-3 mt-2 justify-content-between">
+                                                <span>WED</span>
+                                                <span>9:00 am - 10:00 pm</span>
+                                            </div>
+                                            <div
+                                                class="d-flex gap-3 mt-2 justify-content-between">
+                                                <span>THU</span>
+                                                <span>9:00 am - 10:00 pm</span>
+                                            </div>
+                                            <div
+                                                class="d-flex gap-3 mt-2 justify-content-between">
+                                                <span>FRI</span>
+                                                <span>9:00 am - 10:00 pm</span>
+                                            </div>
+                                        </ul>
+                                    </li>
+                                </ul> -->
+                            </div>
+
+                            <div class="some_info d-flex justify-content-between flex-wrap mt-3">
+                                <div *ngIf="singlecompany.company_contactno !== null">
+                                    <p class="info-title m-0">Contact Us:</p>
+                                    <a href="tel:">{{singlecompany.company_contactno }}</a>
+                                </div>
+                                <div *ngIf="singlecompany.company_email !== null">
+                                    <p class="info-title m-0">Email Us:</p>
+                                    <a
+                                        href="mailto:">{{singlecompany.company_email}}</a>
+                                </div>
+                            </div>
+
+                            <div
+                            *ngIf="singlecompany.company_website !== null"
+                                class="some_info d-flex justify-content-between flex-wrap">
+                                <div>
+                                    <p class="info-title m-0">Visit Our
+                                        Website:</p>
+                                    <a
+                                        href={{singlecompany.company_website}}>{{singlecompany.company_website}}</a>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-2" data-bs-toggle="modal" data-bs-target="#shareModal" (click)="getUrl(serviceName, serviceId)">
+                                <div> 
+                                    <p class="info-title mb-2">Share This:</p>
+                                    <a href="javascript::void()"
+                                        class="directions d-flex align-items-center gap-2">Share
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <g clip-path="url(#clip0_1748_130)">
+                                                <path
+                                                    d="M13.5531 11.9146V16.892L23.2969 9.02799L13.5531 0.993896V6.05236C6.45623 6.05241 0.703125 11.7999 0.703125 18.8899V23.006C1.4078 16.7269 6.69923 11.9649 13.0237 11.9184L13.5531 11.9146Z"
+                                                    stroke="white"
+                                                    stroke-width="1.40625"
+                                                    stroke-miterlimit="10"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clippath id="clip0_1748_130">
+                                                    <rect width="24" height="24"
+                                                        fill="white" />
+                                                </clippath>
+                                            </defs>
+                                        </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="ft_area">
+        <div class="container">
+            <div class="ft_box">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <h3 class="companies-names" *ngIf="singlecompany.company_name !== null">{{singlecompany.company_name}}</h3>
+                    </div>
+                    <div class="col-lg-7 d-flex align-items-center justify-content-between">
+                        <a href="javascript::void()"
+                            class="directions d-inline-flex gap-2 align-items-center"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none">
+                                <g clip-path="url(#clip0_1748_273)">
+                                    <mask id="mask0_1748_273"
+                                        style="mask-type:luminance"
+                                        maskUnits="userSpaceOnUse" x="-1" y="-1"
+                                        width="25" height="25">
+                                        <path
+                                            d="M-0.00320435 -0.000120163H23.9968V23.9999H-0.00320435V-0.000120163Z"
+                                            fill="white" />
+                                    </mask>
+                                    <g mask="url(#mask0_1748_273)">
+                                        <path
+                                            d="M13.4493 0.703003C18.8772 0.703003 23.293 5.11882 23.293 10.5468"
+                                            stroke="white"
+                                            stroke-width="1.40625"
+                                            stroke-miterlimit="10"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M13.4493 3.5155C17.3261 3.5155 20.4805 6.66996 20.4805 10.5468"
+                                            stroke="white"
+                                            stroke-width="1.40625"
+                                            stroke-miterlimit="10"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M13.4493 6.328C15.7756 6.328 17.668 8.22039 17.668 10.5468"
+                                            stroke="white"
+                                            stroke-width="1.40625"
+                                            stroke-miterlimit="10"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M13.4493 9.1405C14.2259 9.1405 14.8555 9.77013 14.8555 10.5468"
+                                            stroke="white"
+                                            stroke-width="1.40625"
+                                            stroke-miterlimit="10"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M18.862 22.0045L13.8907 17.0325"
+                                            stroke="white"
+                                            stroke-width="1.40625"
+                                            stroke-miterlimit="10"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M8.91876 8.08333L3.94692 3.11149L1.94395 5.11432C0.703543 6.35467 0.342043 8.23614 1.0784 9.82825C2.70998 13.3557 6.43036 19.4374 14.1953 22.9465C15.7608 23.654 17.6088 23.2581 18.8235 22.0434L20.8512 20.0158L15.8793 15.0439L12.8962 18.027C9.97162 16.4023 7.56037 13.991 5.93564 11.0665L8.91876 8.08333Z"
+                                            stroke="white"
+                                            stroke-width="1.40625"
+                                            stroke-miterlimit="10"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M6.92842 10.072L1.95709 5.10004"
+                                            stroke="white"
+                                            stroke-width="1.40625"
+                                            stroke-miterlimit="10"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                </g>
+                                <defs>
+                                    <clippath id="clip0_1748_273">
+                                        <rect width="24" height="24"
+                                            fill="white" />
+                                    </clippath>
+                                </defs>
+                            </svg> Contact us</a>
+
+                        <a href="javascript:void(0)" (click)="shareonWhatsapp()" class="wp_box d-inline-flex gap-2 align-items-center"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none">
+                                <g clip-path="url(#clip0_1748_296)">
+                                    <path
+                                        d="M12.003 0H11.997C5.3805 0 0 5.382 0 12C0 14.625 0.846 17.058 2.2845 19.0335L0.789 23.4915L5.4015 22.017C7.299 23.274 9.5625 24 12.003 24C18.6195 24 24 18.6165 24 12C24 5.3835 18.6195 0 12.003 0Z"
+                                        fill="#4CAF50" />
+                                    <path
+                                        d="M18.9848 16.9455C18.6953 17.763 17.5463 18.441 16.6298 18.639C16.0028 18.7725 15.1838 18.879 12.4268 17.736C8.90034 16.275 6.62934 12.6915 6.45234 12.459C6.28284 12.2265 5.02734 10.5615 5.02734 8.83953C5.02734 7.11753 5.90184 6.27903 6.25434 5.91903C6.54384 5.62353 7.02234 5.48853 7.48134 5.48853C7.62984 5.48853 7.76334 5.49603 7.88334 5.50203C8.23584 5.51703 8.41284 5.53803 8.64534 6.09453C8.93484 6.79203 9.63984 8.51403 9.72384 8.69103C9.80934 8.86803 9.89484 9.10803 9.77484 9.34053C9.66234 9.58053 9.56334 9.68703 9.38634 9.89103C9.20934 10.095 9.04134 10.251 8.86434 10.47C8.70234 10.6605 8.51934 10.8645 8.72334 11.217C8.92734 11.562 9.63234 12.7125 10.6703 13.6365C12.0098 14.829 13.0958 15.21 13.4843 15.372C13.7738 15.492 14.1188 15.4635 14.3303 15.2385C14.5988 14.949 14.9303 14.469 15.2678 13.9965C15.5078 13.6575 15.8108 13.6155 16.1288 13.7355C16.4528 13.848 18.1673 14.6955 18.5198 14.871C18.8723 15.048 19.1048 15.132 19.1903 15.2805C19.2743 15.429 19.2743 16.1265 18.9848 16.9455Z"
+                                        fill="#FAFAFA" />
+                                </g>
+                                <defs>
+                                    <clippath id="clip0_1748_296">
+                                        <rect width="24" height="24"
+                                            fill="white" />
+                                    </clippath>
+                                </defs>
+                            </svg> WhatsApp us</a>
+
+                        <a href="javascript::void()" class="send_enquiry d-inline-flex gap-2 align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <g clip-path="url(#clip0_1748_301)">
+                                  <mask id="mask0_1748_301" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-1" y="-1" width="25" height="25">
+                                    <path d="M-0.00320435 -0.000120163H23.9968V23.9999H-0.00320435V-0.000120163Z" fill="white"/>
+                                  </mask>
+                                  <g mask="url(#mask0_1748_301)">
+                                    <path d="M9.31842 17.6229C9.96042 20.8579 12.814 23.2968 16.2376 23.2968C17.6532 23.2968 18.9712 22.8795 20.0759 22.1618L22.9532 22.9576L22.1573 20.0803C22.8751 18.9756 23.2923 17.6576 23.2923 16.2421C23.2923 12.8185 20.8535 9.96485 17.6184 9.32285" stroke="white" stroke-width="1.40625" stroke-miterlimit="10"/>
+                                    <path d="M9.16022 0.703004C4.48739 0.703004 0.69928 4.49111 0.69928 9.16394C0.69928 10.8392 1.18626 12.4006 2.02617 13.7146L1.03842 17.2857L4.60955 16.298C5.92359 17.1379 7.485 17.6249 9.16022 17.6249C13.833 17.6249 17.6212 13.8368 17.6212 9.16394C17.6212 4.49111 13.833 0.703004 9.16022 0.703004Z" stroke="white" stroke-width="1.40625" stroke-miterlimit="10"/>
+                                    <path d="M9.86398 14.1093H8.45773V12.703H9.86398V14.1093Z" fill="white"/>
+                                    <path d="M7.05084 7.03113C7.05084 5.86614 7.99523 4.92175 9.16022 4.92175C10.3252 4.92175 11.2696 5.86614 11.2696 7.03113C11.2696 7.64753 11.0051 8.20211 10.5835 8.58775L9.16022 9.8905V11.2968" stroke="white" stroke-width="1.40625" stroke-miterlimit="10"/>
+                                  </g>
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_1748_301">
+                                    <rect width="24" height="24" fill="white"/>
+                                  </clipPath>
+                                </defs>
+                              </svg> Send Enquiry
+                        </a>
+
+                        <a href="javascript::void()" data-bs-toggle="modal" data-bs-target="#shareModal" class="share d-inline-flex gap-2 align-items-center" (click)="getUrl(singlecompany.propertyfirstUrlPart, singlecompany.propertysecondUrlPart)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <g clip-path="url(#clip0_1748_317)">
+                                  <path d="M13.5531 11.9146V16.892L23.2969 9.02799L13.5531 0.993896V6.05236C6.45623 6.05241 0.703125 11.7999 0.703125 18.8899V23.006C1.4078 16.7269 6.69923 11.9649 13.0237 11.9184L13.5531 11.9146Z" stroke="#E53726" stroke-width="1.40625" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_1748_317">
+                                    <rect width="24" height="24" fill="white"/>
+                                  </clipPath>
+                                </defs>
+                              </svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="m-0">Share Property Service</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+         
+          <div class="d-flex justify-content-around my-3">
+            <div>
+              <button class="btn">
+                <svg viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="32" fill="#7f7f7f"></circle><path d="M17,22v20h30V22H17z M41.1,25L32,32.1L22.9,25H41.1z M20,39V26.6l12,9.3l12-9.3V39H20z" fill="white"></path></svg>
+                <div>Email</div>
+              </button>
+            </div>
+            <div>
+              <button class="btn" (click)="whatsappShare()">
+                <svg viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="32" fill="#25D366"></circle><path d="m42.32286,33.93287c-0.5178,-0.2589 -3.04726,-1.49644 -3.52105,-1.66732c-0.4712,-0.17346 -0.81554,-0.2589 -1.15987,0.2589c-0.34175,0.51004 -1.33075,1.66474 -1.63108,2.00648c-0.30032,0.33658 -0.60064,0.36247 -1.11327,0.12945c-0.5178,-0.2589 -2.17994,-0.80259 -4.14759,-2.56312c-1.53269,-1.37217 -2.56312,-3.05503 -2.86603,-3.57283c-0.30033,-0.5178 -0.03366,-0.80259 0.22524,-1.06149c0.23301,-0.23301 0.5178,-0.59547 0.7767,-0.90616c0.25372,-0.31068 0.33657,-0.5178 0.51262,-0.85437c0.17088,-0.36246 0.08544,-0.64725 -0.04402,-0.90615c-0.12945,-0.2589 -1.15987,-2.79613 -1.58964,-3.80584c-0.41424,-1.00971 -0.84142,-0.88027 -1.15987,-0.88027c-0.29773,-0.02588 -0.64208,-0.02588 -0.98382,-0.02588c-0.34693,0 -0.90616,0.12945 -1.37736,0.62136c-0.4712,0.5178 -1.80194,1.76053 -1.80194,4.27186c0,2.51134 1.84596,4.945 2.10227,5.30747c0.2589,0.33657 3.63497,5.51458 8.80262,7.74113c1.23237,0.5178 2.1903,0.82848 2.94111,1.08738c1.23237,0.38836 2.35599,0.33657 3.24402,0.20712c0.99159,-0.15534 3.04985,-1.24272 3.47963,-2.45956c0.44013,-1.21683 0.44013,-2.22654 0.31068,-2.45955c-0.12945,-0.23301 -0.46601,-0.36247 -0.98382,-0.59548m-9.40068,12.84407l-0.02589,0c-3.05503,0 -6.08417,-0.82849 -8.72495,-2.38189l-0.62136,-0.37023l-6.47252,1.68286l1.73463,-6.29129l-0.41424,-0.64725c-1.70875,-2.71846 -2.6149,-5.85116 -2.6149,-9.07706c0,-9.39809 7.68934,-17.06155 17.15993,-17.06155c4.58253,0 8.88029,1.78642 12.11655,5.02268c3.23625,3.21036 5.02267,7.50812 5.02267,12.06476c-0.0078,9.3981 -7.69712,17.06155 -17.14699,17.06155m14.58906,-31.58846c-3.93529,-3.80584 -9.1133,-5.95471 -14.62789,-5.95471c-11.36055,0 -20.60848,9.2065 -20.61625,20.52564c0,3.61684 0.94757,7.14565 2.75211,10.26282l-2.92557,10.63564l10.93337,-2.85309c3.0136,1.63108 6.4052,2.4958 9.85634,2.49839l0.01037,0c11.36574,0 20.61884,-9.2091 20.62403,-20.53082c0,-5.48093 -2.14111,-10.64081 -6.03239,-14.51915" fill="white"></path></svg>
+                <div>WhatsApp</div>
+              </button>
+            </div>
+            <div>
+              <button class="btn">
+                <svg viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="32" fill="#0965FE"></circle><path d="M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z" fill="white"></path></svg>
+                <div>Facebook</div>
+              </button>
+            </div>
+            <div>
+              <button class="btn">
+                <svg viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="32" fill="#000000"></circle><path d="M 41.116 18.375 h 4.962 l -10.8405 12.39 l 12.753 16.86 H 38.005 l -7.821 -10.2255 L 21.235 47.625 H 16.27 l 11.595 -13.2525 L 15.631 18.375 H 25.87 l 7.0695 9.3465 z m -1.7415 26.28 h 2.7495 L 24.376 21.189 H 21.4255 z" fill="white"></path></svg>
+                <div>Twitter</div>
+              </button>
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="input-group">
+              <input type="text" class="form-control" [value]="dynamicUrl" readonly>
+              <button class="btn btn-outline-secondary" (click)="copyLink($event)">
+                Copy
+              </button>
+              <div
+              class="tooltip m-2"
+              [class.show]="tooltipVisible"
+              style="font-weight: 600;"
+              [ngStyle]="{ top: tooltipPosition.top, left: tooltipPosition.left }"
+            >
+              Copied!
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

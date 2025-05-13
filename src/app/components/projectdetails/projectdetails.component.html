@@ -1,0 +1,330 @@
+<main>
+    <section class="buy-projects position-relative">
+      <div class="container">
+        <div class="banner-small">
+          <h1 class="banner_title">{{ singleproject.type }}</h1>
+          <p class="banner_small">For {{ singleproject.property_for }} in {{ singleproject.project_name }}</p>
+        </div>
+      </div>
+    </section>
+    <section class="buy-products" >
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="buy-image">
+              <img
+                src="{{ singleproject.project_images }}"
+                alt=""
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div class="col-lg-8 col-md-6 col-sm-12">
+            <div class="owner-buy">
+              <div class="row">
+                <div class="col-lg-7">
+                  <a class="buy-heading" *ngIf="singleproject.bedroom !== null">{{ singleproject.bedroom }} BHK Flat
+                    <span>
+                      Flat in
+                    </span>
+                    </a>
+                    <a class="buy-heading">{{ singleproject.project_name }}</a><br>
+                  <p class="buy-location">
+                    <span class="locator-icon">
+                      <i
+                        class="fa-sharp fa-solid fa-location-dot"
+                        style="color: #000000"
+                      ></i> </span
+                    >{{ singleproject.super_area }}</p>
+                  <div class="row mt-2">
+                    <div class="col-md-3" *ngIf="singleproject.property_type !== '4'">
+                      <h6 class="project-titles">FLOOR</h6>
+                      <p class="project-text">{{ singleproject.floor_no }} out of {{ singleproject.total_floor }}</p>
+                    </div>
+                    <div class="col-md-3 border-add" *ngIf="singleproject.super_area !== null">
+                      <h6 class="project-titles">SUPER AREA</h6>
+                      <p class="project-text">{{ singleproject.super_area }}</p>
+                    </div>
+                    <div class="col-md-3 border-add" *ngIf="singleproject.covered_area !== null">
+                      <h6 class="project-titles">COVERED AREA</h6>
+                      <p class="project-text">{{ singleproject.covered_area }}</p>
+                    </div>
+                    <div class="col-md-3 border-add" *ngIf="singleproject.built_up_area !== null">
+                      <h6 class="project-titles">BUILT-UP AREA</h6>
+                      <p class="project-text">{{ singleproject.built_up_area }}</p>
+                    </div>
+                    <div class="col-md-3 border-add" *ngIf="singleproject.carpet_area !== null">
+                      <h6 class="project-titles">CARPET AREA</h6>
+                      <p class="project-text">{{ singleproject.carpet_area }}</p>
+                    </div>
+                    <div class="col-md-3 border-add" *ngIf="singleproject.ploat_area !== null">
+                      <h6 class="project-titles">PLOT AREA</h6>
+                      <p class="project-text">{{ singleproject.ploat_area }}</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-lg-5">
+                  <div class="contact-buy-owner">
+                    <div class="name-owner">
+                      <h6 class="project-titles"><strong>OWNER</strong></h6>
+                      <p class="project-text">{{ singleproject.owner_name }}</p>
+                    </div>
+                    <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+            <div class="properties-allinfo">
+              <div class="part-areas" *ngIf="singleproject.ploat_area !== null">
+                  <h6 class="project-titles">Plot Area</h6>
+                  <p class="project-text">{{ singleproject.ploat_area }}</p>
+              </div>
+              <div class="part-areas" *ngIf="singleproject.suitablefor">
+                  <h6 class="project-titles">Suitable For</h6>
+                  <p class="project-text">{{ singleproject.suitablefor }}</p>
+              </div>
+          </div>
+            <div class="buy-fcc">
+              <div class="row">
+                <div class="col-md-3 border-add" *ngIf="singleproject.property_city !== null">
+                    <h6 class="project-titles">PROPERTY CITY</h6>
+                    <p class="project-text">{{ singleproject.property_city }}</p>
+                </div>
+                <div class="col-md-3 border-add" *ngIf="singleproject.total_no_of_flats !== null">
+                    <h6 class="project-titles">TOTAL NO OF FLATS</h6>
+                    <p class="project-text">{{ singleproject.total_no_of_flats }}</p>
+                </div>
+                <div class="col-md-3 border-add" *ngIf="singleproject.total_towers !== null">
+                  <h6 class="project-titles">TOTAL TOWERS</h6>
+                  <p class="project-text">{{ singleproject.total_towers }}</p>
+                </div>
+                <div class="col-md-3 border-add" *ngIf="singleproject.is_corner_property !== null">
+                  <h6 class="project-titles">CORNER PROPERTY</h6>
+                  <p class="project-text">{{ singleproject.is_corner_property == 1 ? 'Yes' : 'No' }}</p>
+                </div>
+              </div>
+            </div>
+                <div class="buy-fcc">
+                  <div class="row">
+                <div class="col-md-3 border-add" *ngIf="singleproject.possession_status !== null">
+                  <h6 class="project-titles">POSSESION STATUS</h6>
+                  <p class="project-text">{{ singleproject.possession_status }}</p>
+                </div>
+                <div class="col-md-3 border-add" *ngIf="singleproject.land_zone !== null">
+                  <h6 class="project-titles">LAND ZONE</h6>
+                  <p class="project-text">{{ singleproject.land_zone }}</p>
+                </div>
+                <div class="col-md-3 border-add" *ngIf="singleproject.overlooking !== null">
+                  <h6 class="project-titles">OVERLOOKING</h6>
+                  <p class="project-text">{{ singleproject.overlooking }}</p>
+                </div>
+                <div class="col-md-3 border-add">
+                  <h6 class="project-titles">FURNISHED STATUS</h6>
+                  <p class="project-text">{{ singleproject.furnishing_status }}</p>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="buy-fcc">
+              <div class="row">
+                <div class="col-md-3">
+                  <h6 class="project-titles">CAR PARKING</h6>
+                  <p class="project-text">{{ singleproject.parking }}</p>
+                </div>
+                <div class="col-md-3 border-add" *ngIf="singleproject.property_type !== null">
+                  <h6 class="project-titles">UNITS AVAILABLE</h6>
+                  <p class="project-text">{{ singleproject.units_avalible }}</p>
+                </div>
+              </div>
+            </div> -->
+            <p class="buy-price">₹ {{ singleproject.total_price }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="save-descriptions" >
+      <div class="container">
+        <div class="description-box">
+          <div class="row">
+            <div class="col-lg-8 col-md-6 col-sm-12">
+              <div class="bullate-disc">
+                <div class="bullets-agents-details">
+                  <h4>Description</h4>
+                  <table>
+                    <tr class="bullet-agent-box" *ngIf="singleproject.total_price !== null">
+                      <th class="agent-bullet-head">Price Breakup</th>
+                      <td class="agent-bullet-descrip">₹ {{ singleproject.total_price }}</td>
+                    </tr>
+                    <tr class="bullet-agent-box" *ngIf="singleproject.flooring !== null">
+                      <th class="agent-bullet-head">Flooring</th>
+                      <td class="agent-bullet-descrip">{{ singleproject.flooring }}</td>
+                    </tr>
+                    <tr class="bullet-agent-box" *ngIf="singleproject.balconies !== null">
+                      <th class="agent-bullet-head">Balconies</th>
+                      <td class="agent-bullet-descrip">{{ singleproject.balconies }}</td>
+                    </tr>
+                    <tr class="bullet-agent-box" *ngIf="singleproject.additional_rooms !== null">
+                      <th class="agent-bullet-head">Additional Rooms</th>
+                      <td class="agent-bullet-descrip">{{ singleproject.additional_rooms }}</td>
+                    </tr>
+                    <tr class="bullet-agent-box" *ngIf="singleproject.car_parking !== null">
+                      <th class="agent-bullet-head">Car Parking</th>
+                      <td class="agent-bullet-descrip">{{ singleproject.car_parking }}</td>
+                    </tr>
+                    <tr class="bullet-agent-box" *ngIf="singleproject.washroom !== null">
+                      <th class="agent-bullet-head">Washroom</th>
+                      <td class="agent-bullet-descrip">{{ singleproject.washroom }}</td>
+                    </tr>
+                    <tr class="bullet-agent-box" *ngIf="singleproject.personal_washroom !== null">
+                      <th class="agent-bullet-head">Personal Washroom {{ singleproject.personal_washroom }}</th>
+                      <td class="agent-bullet-descrip">{{  singleproject.personal_washroom == 1 ? 'Yes' : 'No'  }}</td>
+                    </tr>
+                    <tr class="bullet-agent-box" *ngIf="singleproject.property_facilities !== null">
+                      <th class="agent-bullet-head">Facilities</th>
+                      <td class="agent-bullet-descrip">
+                        {{ singleproject.property_facilities }}
+                      </td>
+                    </tr>
+                    <tr class="bullet-agent-box" *ngIf="singleproject.project_address !== ''">
+                      <th class="agent-bullet-head">Address</th>
+                      <td class="agent-bullet-descrip">
+                        {{ singleproject.project_address }}
+                      </td>
+                    </tr>
+                    <tr class="bullet-agent-box" *ngIf="singleproject.age_of_construction !== null">
+                      <th class="agent-bullet-head">Age of Construction</th>
+                      <td class="agent-bullet-descrip" *ngIf="singleproject.age_of_construction == 0">Under Construction</td>
+                      <td class="agent-bullet-descrip" *ngIf="singleproject.age_of_construction > 0">{{ singleproject.age_of_construction }} Years</td>
+                    </tr>
+                    <tr class="bullet-agent-box" *ngIf="singleproject.property_type !== null">
+                      <th class="agent-bullet-head">Furnishing</th>
+                      <td class="agent-bullet-descrip">{{ singleproject.furnishing_status }}</td>
+                    </tr>
+                    <tr class="bullet-agent-box" *ngIf="singleproject.transaction_type !== null">
+                      <th class="agent-bullet-head">Transaction Type</th>
+                      <td class="agent-bullet-descrip">{{ singleproject.transaction_type }}</td>
+                    </tr>
+                    <!-- <button class="contact-buy-btn">CONTACT OWNER</button> -->
+                  </table>
+                </div>
+              </div>
+              <!-- <div class="disclamer-box">
+                <h4>Disclaimer</h4>
+                <div [innerHTML]="singleproject.description"><p></p></div>
+                 <input type="checkbox" class="text-btn" />
+              </div> -->
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <!-- <div class="save-owners">
+                  <div class="owner-direct">
+                      <img src="../../../assets/images/demouser.png" alt="">
+                      <div class="owner-buys">
+                      <h5>Owner</h5>
+                      <p>{{ singleproject.owner_name }} <br> +91-{{ singleproject.owner_contact_no.slice(0, 2) }}xxxxxx{{ singleproject.owner_contact_no.slice(-2) }}</p>
+                      </div>
+                  </div>
+                  <button class="contact-buy-btn">Save For Later</button>
+              </div> -->
+              <div class="enq-buy-form">
+                <h4>Enquiry Now</h4>
+                <form (submit)="submitForm()">
+                  <input type="text" id="Aname" name="Aname" placeholder="Name" class="gold-form-input" [(ngModel)]="formData.username" required><br>
+                  <input type="email" id="agentmail" name="agentmail" placeholder="Email" class="gold-form-input" [(ngModel)]="formData.useremail" required><br>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <select name="number-code" id="number-code" class="gold-form-input" [(ngModel)]="formData.countrycode" required>
+                        <option value="Ind +91">Ind +91</option>
+                        <option value="USA: +1">USA: +1</option>
+                        <option value="UK: +44">UK: +44</option>
+                        <option value="Mexico: +52">Mexico: +52</option>
+                        <option value="China: +86">China: +86</option>
+                      </select>
+                    </div>
+                    <div class="col-md-8">
+                      <input type="tel" id="agentNum"  maxlength="10" name="agentNum" placeholder="Number" class="gold-form-input" [(ngModel)]="formData.phone_number" required><br>
+                      <input type="hidden" name="propertyfor" [value]="singleproject.propertyFor" [(ngModel)]="formData.property_for"><br>
+                    </div>
+                  </div>
+                  <div class="get-callback-btn m-0">
+                    <input class="enquire-submit" type="submit" value="ENQUIRE NOW">
+                  </div>
+                  <p class="agree-you">I Agree to My Realtys’ <a href="./terms-conditions" target="_blank">Terms of Use</a></p>
+                </form>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="plus-ponts">
+      <div class="container">
+          <div class="proparti-ponts">
+              <div class="first-pont">
+                  <h3 class="pont-heads">Home Inspections</h3>
+                  <ul class="pont-bullats">
+                      <li><span><img src="" alt=""></span>Renegotiate property price</li>
+                      <li><span><img src="" alt=""></span>Avoid expensive repairs</li>
+                      <li><span><img src="" alt=""></span>Protect your investment</li>
+                  </ul>
+                  <button class="contact-buy-btn">KNOW MORE</button>
+              </div>
+              <div class="second-pont">
+                  <h3 class="pont-heads">Legal Services </h3>
+                  <ul class="pont-bullats">
+                      <li><span><img src="" alt=""></span>Property Verification</li>
+                      <li><span><img src="" alt=""></span>Drafting/vetting Sale Deed & Agreement</li>
+                      <li><span><img src="" alt=""></span>Property Registration</li>
+                  </ul>
+                  <button class="contact-buy-btn">KNOW MORE</button>
+              </div>
+              <div class="three-pont">
+                  <h3 class="pont-heads">Home Cleaning</h3>
+                  <ul class="pont-bullats">
+                      <li><span><img src="" alt=""></span>Verified & trusted cleaning experts</li>
+                      <li><span><img src="" alt=""></span>Intensive cleaning of all areas</li>
+                      <li><span><img src="" alt=""></span>Lowest prices</li>
+                  </ul>
+                  <button class="contact-buy-btn">KNOW MORE</button>
+              </div>
+          </div>
+      </div>
+    </section>
+
+    <section class="buy-proj-eq">
+      <div class="container">
+          <h4>Verified on myrealityunlimited</h4>
+          <div class="buy-proj">
+              <div class="ongoing-img" *ngFor="let verifys of verify">
+                <img src="{{ verifys.project_images }}" alt="" class="img-fluid">
+                <div class="ongoing-deatils">
+                  <a href="/project-details/{{ verifys.project_name }}/{{ verifys.project_id }}/{{verifys.property_type}}" class="detail-head">{{ verifys.project_name }}</a>
+                  <p class="ongoing-location">
+                    <span class="locator-icon">
+                      <i class="fa-sharp fa-solid fa-location-dot"
+                        style="color: #000000"></i>
+                      </span>{{ verifys.project_localities }}
+                  </p>
+                  <div class="area-detail">
+                      <div class="availabilty">
+                        <p class="area-title">Price:</p>
+                        <p class="area-title">Area:</p>
+                      </div>
+                      <div class="area">
+                        <p class="main-area">₹ {{ verifys.total_price }}</p>
+                        <p class="main-area"*ngIf="verifys.super_area !== null">{{ verifys.super_area }}</p>
+                        <p class="main-area"*ngIf="verifys.covered_area !== null">{{ verifys.covered_area }}</p>
+                        <p class="main-area"*ngIf="verifys.built_up_area !== null">{{ verifys.built_up_area }}</p>
+                        <p class="main-area"*ngIf="verifys.carpet_area !== null">{{ verifys.carpet_area }}</p>
+                        <p class="main-area"*ngIf="verifys.ploat_area !== null">{{ verifys.ploat_area }}</p>
+                      </div>
+                    </div>
+                  <div class="proj-builder">
+                    <a href="">ENQUIRE NOW</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+    </section>
+  </main>

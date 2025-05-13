@@ -1,0 +1,58 @@
+<main>
+    <section class="login_sing">
+        <div class="login_brg">
+            <div class="login_box">
+                <form #myForm="ngForm" (ngSubmit)="onFormSubmit(myForm)">
+                    <h1 class="login_sign_head">Login</h1>
+                    <div class="otp-process">
+                        <div>
+                            <input
+                                type="tel"
+                                maxlength="10"
+                                class="gold-form-input"
+                                [(ngModel)]="contact_no"
+                                [disabled]="isMobileNumberDisabled"
+                                maxlength="10"
+                                name="contact_no"
+                                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                                placeholder="Mobile No."
+                                (keypress)="validateNumberInput($event)"
+                                (input)="validContactNumber($event)"
+                />
+                                  <p *ngIf="showContactError" class="error-message-login">
+                                    Invalid mobile number. Please enter at least 10 digits.
+                                  </p>
+                            <button class="form-action-btn mt-3"
+                                *ngIf="!isOtpGenerated || showContactError"
+                                (click)="generateOtp(contact_no)">Generate
+                                OTP</button>
+                        </div>
+
+                        <div *ngIf="isOtpGenerated && !showContactError" class="mt-3">
+                            <input
+                                type="number"
+                                class="gold-form-input"
+                                [(ngModel)]="enteredOtp"
+                                #otpInput
+                                (keypress)="validateNumberInput($event)"
+                                placeholder="Enter OTP" />
+
+                            <button class="form-action-btn mt-3"
+                            *ngIf="isOtpGenerated && !showContactError"
+                                (click)="validateOtp(contact_no, otpInput.value)">Submit
+                                OTP</button>
+
+                            <!-- <ng-container *ngIf="!isOtpValid">
+                                <p class="error-message-login">Invalid OTP.
+                                    Please try again.</p>
+                            </ng-container> -->
+                        </div>
+                        <div *ngIf="isOtpValid" class="success-message">
+                            OTP successfully validated!
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>

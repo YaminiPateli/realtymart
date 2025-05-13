@@ -1,0 +1,501 @@
+<main>
+
+    <section class="builders-ahmedabad position-relative">
+        <div class="container">
+            <div class="banner-small">
+                <h1 class="banner_title">New Projects in {{ projectincity[0].searchcity }}</h1>
+                <!-- <p class="banner_small">New Projects in Ahmedabad</p> -->
+            </div>
+        </div>
+    </section>
+
+    <section class="godrej-projects">
+        <div class="container">
+            <div class="godrej-tab">
+                <ul class="godrej nav-pills mb-3" id="pills-tab" role="tablist">
+                    <!-- <li class="nav-item" role="presentation">
+                      <button class="godrej-link active" id="pills-godrej-tab" data-bs-toggle="pill" data-bs-target="#pills-gogrej" type="button" role="tab" aria-controls="pills-gogrej" aria-selected="true">NEW PROJECTS ({{ projectincity.length }})</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="godrej-link" id="pills-godarej-two-tab" data-bs-toggle="pill" data-bs-target="#pills-godarej-two" type="button" role="tab" aria-controls="pills-godarej-two" aria-selected="false">COMPLETE PROJECT</button>
+                    </li> -->
+                  </ul>
+
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-gogrej" role="tabpanel" aria-labelledby="pills-godrej-tab">
+                    <div class="projections">
+                        <div class="head-projections">
+                            <!-- <div class="new-projection">
+                                <p>New Projects in {{projectincity[0].searchcity}}</p>
+                            </div> -->
+                            <!-- <div class="sort-by">
+                                <label for="cars">Sort By:</label>
+                                <select id="cars" name="carlist" class="sort-select" form="carform">
+                                <option value="" disabled selected hidden>Relevance</option>
+                                <option value="Lorem">Lorem</option>
+                                <option value="Lorem">Lorem</option>
+                                <option value="Lorem">Lorem</option>
+                                <option value="Lorem">Lorem</option>
+                                </select>
+                            </div> -->
+
+                            <div class="tabs_sortby ">
+                                <div class="tabs_sortby--title"
+                                    (click)="toggleDropdown()">Sort by: <span>{{
+                                        selectedSortOption }}</span></div>
+                                <div class="tabs_sortby__dd box-shadow z-1"
+                                    [class.tabs_sortby__dd--show]="isDropdownOpen">
+                                    <ul class="tabs_sortby__dd__list">
+                                        <li *ngFor="let option of sortOptions"
+                                            class="tabs_sortby__dd__list--item"
+                                            [class.active]="option === selectedSortOption"
+                                            (click)="changeSortOption(option)">
+                                            {{ option }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="godrej-citys">
+                            <div class="citiys-planes" *ngFor="let projectincity of projectincity">
+                                <!-- <div class="citiys-planes"  *ngFor="let projectincity of projectincity | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }; let i = index"> -->
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-6 col-sm-12">
+                                        <div class="city-images">
+                                            <img src="{{ projectincity.project_images }}" alt="" class="img-fluid">
+                                        </div>
+                                        <!-- <div class="check-compare">
+                                            <input type="checkbox" id="compare" name="compare" value="compare add" class="mycheck">
+                                            <label for="compare" class="compares"> Add to Compare</label><br>
+                                        </div> -->
+                                    </div>
+                                    <div class="col-lg-10 col-md-6 col-sm-12">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <a href="project-details/{{ projectincity.firstUrlPart }}/{{ projectincity.secondUrlPart }}" class="groups-companies-names">{{ projectincity.project_name}}</a>
+                                                <p class="opnesince">{{ projectincity.totalfloor }} Floor Plan  |  By: {{ projectincity.builder_name}}</p>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>in {{ projectincity.prjlocalities }}</p>
+                                                    </div>
+                                                    <div class="col-md-6" [ngClass]="{'border-add':projectincity.project_price_show == '0'}">
+                                                        <div class="city-price">
+                                                        <p class="our-price" *ngIf="projectincity.project_price_show == '0'">₹ {{ projectincity.project_minimum_price }} -  {{ projectincity.project_maximum_price }}</p>
+                                                        <!-- <p class="since-oct"><span class="me-2"><i class="fa-solid fa-arrow-up" style="color: #25c600;"></i></span>5% since Oct '15</p> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6 class="possession" >Possession in {{ getFormattedDate(projectincity.project_possession_date) }}</h6>
+                                        <p class="text-titles" [innerHTML]="projectincity.project_about"></p>
+                                          <input type="checkbox" class="text-btn" *ngIf="projectincity.project_about !== null" />
+                                        <div class="deatel-table">
+                                            <table class="table-responsive">
+                                                <!-- <tbody>
+                                                    <tr class="table-data">
+                                                        <td>1 BHK Flat</td>
+                                                        <td>315 - 600 sqft (Carpet Area)</td>
+                                                        <td>` ₹ 22 Lac - ` 27 Lac</td>
+                                                        <td class="contact-godrej"><a href="#">CONTACT NOW</a></td>
+                                                    </tr>
+                                              </tbody> -->
+                                              <tbody *ngFor="let flat of projectincity.properties ">
+                                                <tr class="table-data">
+                                                    <td>{{ flat.property_bhk }}</td>
+                                                    <td>{{ flat.property_sqfoot }}</td>
+                                                    <td>{{ flat.price }}</td>
+                                                    <td class="contact-godrej"><a href="#">CONTACT NOW</a></td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="loading-spinner" *ngIf="loading">
+                                <div class="spinner-border text-danger" role="status">
+                                  <span class="visually-hidden">Loading...</span>
+                                </div>
+                              </div>
+                            <!-- <div class="pagination-container">
+                                <button (click)="previousPageGroup()" [disabled]="visiblePageStart === 1">«</button>
+                                
+                                <button *ngFor="let page of getVisiblePages()" 
+                                        [class.active]="page === currentPage" 
+                                        (click)="goToPage(page)">
+                                  {{ page }}
+                                </button>
+                              
+                                <button (click)="nextPageGroup()" 
+                                        [disabled]="visiblePageStart + visiblePageCount - 1 >= getTotalPages()">»</button>
+                              </div> -->
+                            <!-- <div class="citiys-planes">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-6 col-sm-12">
+                                        <div class="city-images">
+                                            <img src="../../../assets/images/city-1.png" alt="" class="img-fluid">
+                                        </div>
+                                        <div class="check-compare">
+                                            <input type="checkbox" id="compare" name="compare" value="compare add" class="mycheck">
+                                            <label for="compare" class="compares"> Add to Compare</label><br>
+                                        </div>
+                                        <div class="offers">
+                                            <div class="offer-img">
+                                                <img src="../../../assets/images/offer.png" alt="Offers">
+                                            </div>
+                                            <div class="offer-text">View Deal by <br>
+                                                1 Advertiser(s)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 col-md-6 col-sm-12">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <a href="" class="groups-companies-names">Godrej Garden City</a>
+                                                <p class="opnesince">44 Floor Plan  |  By: Godrej Properties</p>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>in SG Highway, Ahmedabad</p>
+                                                    </div>
+                                                    <div class="col-md-6 border-add">
+                                                        <div class="city-price">
+                                                        <p class="our-price">₹ 22 Lac - 97 Lac</p>
+                                                        <p class="since-oct"><span class="me-2"><i class="fa-solid fa-arrow-up" style="color: #25c600;"></i></span>5% since Oct '15</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6 class="possession">Possession in 2022</h6>
+                                        <p class="text-titles">
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.  Necessitatibus
+                                               veniam sit facilis cum soluta amet ullam vel nisi ipsa eum, facere porro
+                                               error voluptates, voluptatem repellat quisquam tenetur, officia earum
+                                               cumque quia nam mollitia magnam nihil? Voluptatum assumenda, eum sequi
+                                               ex autem voluptate ab, placeat voluptatibus laudant Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem repudiandae ipsam doloribus omnis doloremque dolor? Fugiat eum perspiciatis ad ipsa odio nostrum laborum dolorem et aliquam, quas rem accusamus labore fuga! Natus harum suscipit eius doloribus tempora? Necessitatibus fugiat, numquam dignissimos commodi sed cum veritatis. Vitae, earum repellat! Provident eius laborum asperiores, quasi ex id culpa eum cum maiores labore quaerat eligendi voluptas odio rerum earum facilis saepe debitis commodi repellat animi quae nisi perferendis vitae. Itaque, illo. Quis, odio exercitationem. Numquam ut commodi amet aspernatur temporibus. Maiores eos repellendus consequuntur officia dignissimos natus repudiandae exercitationem autem error? Nisi, facilis?
+                                          </p>
+                                          <input type="checkbox" class="text-btn" />
+                                        <div class="deatel-table">
+                                            <table class="table-responsive">
+                                                <tbody>
+                                                    <tr class="table-data">
+                                                        <td>1 BHK Flat</td>
+                                                        <td>315 - 600 sqft (Carpet Area)</td>
+                                                        <td>` ₹ 22 Lac - ` 27 Lac</td>
+                                                        <td class="contact-godrej"><a href="#">CONTACT NOW</a></td>
+                                                    </tr>
+                                              </tbody>
+                                              <tbody>
+                                                <tr class="table-data">
+                                                    <td>1 BHK Flat</td>
+                                                    <td>315 - 600 sqft (Carpet Area)</td>
+                                                    <td>` ₹ 22 Lac - ` 27 Lac</td>
+                                                    <td class="contact-godrej"><a href="#">CONTACT NOW</a></td>
+                                                </tr>
+                                              </tbody>
+                                              <tbody>
+                                                    <tr class="table-data">
+                                                        <td>1 BHK Flat</td>
+                                                        <td>315 - 600 sqft (Carpet Area)</td>
+                                                        <td>` ₹ 22 Lac - ` 27 Lac</td>
+                                                        <td class="contact-godrej"><a href="#">CONTACT NOW</a></td>
+                                                    </tr>
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+
+                        <!-- <div class="sponsored">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                   <a href="" class="links-taps">
+                                     <div class="sponsored-box">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="sponsored-image">
+                                            <img src="../../../assets/images/Sponsored.png" alt="" class="img-fluid">
+                                            <p class="sponsored-text">Sponsored</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="right-box-sponsored">
+                                                <div class="sponsored-details">
+                                                    <div class="sponsored-side-box">
+                                                     <div class="left-box">
+                                                         <h5 class="property-names">Swati Crimson</h5>
+                                                         <p class="location-property">Thaltej, Ahmedabad</p>
+                                                     </div>
+                                                     <div class="right-box">
+                                                         <p class="marketed">Marketed by <br>Swati Procon</p>
+                                                     </div>
+                                                    </div>
+                                                 </div>
+                                                 <p class="sponsored-reat"><span class="fw-bold">4 BHK</span> Flats   |   <span class="fw-bold">₹ 1.70 Cr</span> onwards</p>
+                                                 <div class="sponsored-builder-contact">
+                                                    <a href="#">Contact Builder</a>
+                                                 </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                   </a>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                   <a href="" class="links-taps">
+                                    <div class="sponsored-box">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="sponsored-image">
+                                                <img src="../../../assets/images/Sponsored.png" alt="" class="img-fluid">
+                                                <p class="sponsored-text">Sponsored</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="right-box-sponsored">
+                                                    <div class="sponsored-details">
+                                                        <div class="sponsored-side-box">
+                                                         <div class="left-box">
+                                                             <h5 class="property-names">Swati Crimson</h5>
+                                                             <p class="location-property">Thaltej, Ahmedabad</p>
+                                                         </div>
+                                                         <div class="right-box">
+                                                             <p class="marketed">Marketed by <br>Swati Procon</p>
+                                                         </div>
+                                                        </div>
+                                                     </div>
+                                                     <p class="sponsored-reat"><span class="fw-bold">4 BHK</span> Flats   |   <span class="fw-bold">₹ 1.70 Cr</span> onwards</p>
+                                                     <div class="sponsored-builder-contact">
+                                                        <a href="#">Contact Builder</a>
+                                                     </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                   </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="citiys-planes">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="city-images">
+                                        <img src="../../../assets/images/city-1.png" alt="" class="img-fluid">
+                                    </div>
+                                    <div class="check-compare">
+                                        <input type="checkbox" id="compare" name="compare" value="compare add" class="mycheck">
+                                        <label for="compare" class="compares"> Add to Compare</label><br>
+                                    </div>
+                                    <div class="offers">
+                                        <div class="offer-img">
+                                            <img src="../../../assets/images/offer.png" alt="Offers">
+                                        </div>
+                                        <div class="offer-text">View Deal by <br>
+                                            1 Advertiser(s)</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <a href="" class="groups-companies-names">Godrej Garden City</a>
+                                            <p class="opnesince">44 Floor Plan  |  By: Godrej Properties</p>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>in SG Highway, Ahmedabad</p>
+                                                </div>
+                                                <div class="col-md-6 border-add">
+                                                    <div class="city-price">
+                                                    <p class="our-price">₹ 22 Lac - 97 Lac</p>
+                                                    <p class="since-oct"><span class="me-2"><i class="fa-solid fa-arrow-up" style="color: #25c600;"></i></span>5% since Oct '15</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6 class="possession">Possession in 2022</h6>
+                                    <p class="text-titles">
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.  Necessitatibus
+                                           veniam sit facilis cum soluta amet ullam vel nisi ipsa eum, facere porro
+                                           error voluptates, voluptatem repellat quisquam tenetur, officia earum
+                                           cumque quia nam mollitia magnam nihil? Voluptatum assumenda, eum sequi
+                                           ex autem voluptate ab, placeat voluptatibus laudant Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident ab, cumque impedit quibusdam distinctio rem iusto officia. Culpa deserunt iste rerum dolorum autem quo natus, impedit et velit mollitia nihil suscipit, molestiae sed qui sapiente. Doloremque quo veniam impedit temporibus totam expedita, sed perferendis quibusdam nemo quod, corrupti iste consequatur facere laborum itaque ab ut quia, aperiam quam blanditiis! Ex obcaecati nulla porro, consectetur commodi beatae pariatur numquam praesentium doloribus non possimus eaque nisi rem rerum maiores eligendi recusandae sunt tenetur magnam soluta error neque vel minima laboriosam. Debitis illo, tenetur repellendus cupiditate quasi pariatur quisquam nihil error quibusdam harum.
+                                      </p>
+                                      <input type="checkbox" class="text-btn" />
+                                    <div class="deatel-table">
+                                        <table class="table-responsive">
+                                            <tbody>
+                                                <tr class="table-data">
+                                                    <td>1 BHK Flat</td>
+                                                    <td>315 - 600 sqft (Carpet Area)</td>
+                                                    <td>` ₹ 22 Lac - ` 27 Lac</td>
+                                                    <td class="contact-godrej"><a href="#">CONTACT NOW</a></td>
+                                                </tr>
+                                          </tbody>
+                                          <tbody>
+                                            <tr class="table-data">
+                                                <td>1 BHK Flat</td>
+                                                <td>315 - 600 sqft (Carpet Area)</td>
+                                                <td>` ₹ 22 Lac - ` 27 Lac</td>
+                                                <td class="contact-godrej"><a href="#">CONTACT NOW</a></td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="citiys-planes">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="city-images">
+                                        <img src="../../../assets/images/city-1.png" alt="" class="img-fluid">
+                                    </div>
+                                    <div class="check-compare">
+                                        <input type="checkbox" id="compare" name="compare" value="compare add" class="mycheck">
+                                        <label for="compare" class="compares"> Add to Compare</label><br>
+                                    </div>
+                                    <div class="offers">
+                                        <div class="offer-img">
+                                            <img src="../../../assets/images/offer.png" alt="Offers">
+                                        </div>
+                                        <div class="offer-text">View Deal by <br>
+                                            1 Advertiser(s)</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <a href="" class="groups-companies-names">Godrej Garden City</a>
+                                            <p class="opnesince">44 Floor Plan  |  By: Godrej Properties</p>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>in SG Highway, Ahmedabad</p>
+                                                </div>
+                                                <div class="col-md-6 border-add">
+                                                    <div class="city-price">
+                                                    <p class="our-price">₹ 22 Lac - 97 Lac</p>
+                                                    <p class="since-oct"><span class="me-2"><i class="fa-solid fa-arrow-down" style="color: #ff0000;"></i></span>5% since Oct '15</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6 class="possession">Possession in 2022</h6>
+                                    <p class="text-titles">
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.  Necessitatibus
+                                           veniam sit facilis cum soluta amet ullam vel nisi ipsa eum, facere porro
+                                           error voluptates, voluptatem repellat quisquam tenetur, officia earum
+                                           cumque quia nam mollitia magnam nihil? Voluptatum assumenda, eum sequi
+                                           ex autem voluptate ab, placeat voluptatibus laudant Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nobis, explicabo unde quam adipisci exercitationem voluptatibus beatae quaerat, vero, est corrupti velit obcaecati. Iste ratione dolorum neque cum dolorem non?
+                                      </p>
+                                      <input type="checkbox" class="text-btn" />
+                                    <div class="deatel-table">
+                                        <table class="table-responsive">
+                                            <tbody>
+                                                <tr class="table-data">
+                                                    <td>1 BHK Flat</td>
+                                                    <td>315 - 600 sqft (Carpet Area)</td>
+                                                    <td>` ₹ 22 Lac - ` 27 Lac</td>
+                                                    <td class="contact-godrej"><a href="#">CONTACT NOW</a></td>
+                                                </tr>
+                                          </tbody>
+                                          <tbody>
+                                            <tr class="table-data">
+                                                <td>1 BHK Flat</td>
+                                                <td>315 - 600 sqft (Carpet Area)</td>
+                                                <td>` ₹ 22 Lac - ` 27 Lac</td>
+                                                <td class="contact-godrej"><a href="#">CONTACT NOW</a></td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="citiys-planes">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="city-images">
+                                        <img src="../../../assets/images/city-1.png" alt="" class="img-fluid">
+                                    </div>
+                                    <div class="check-compare">
+                                        <input type="checkbox" id="compare" name="compare" value="compare add" class="mycheck">
+                                        <label for="compare" class="compares"> Add to Compare</label><br>
+                                    </div>
+                                    <div class="offers">
+                                        <div class="offer-img">
+                                            <img src="../../../assets/images/offer.png" alt="Offers">
+                                        </div>
+                                        <div class="offer-text">View Deal by <br>
+                                            1 Advertiser(s)</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <a href="" class="groups-companies-names">Godrej Garden City</a>
+                                            <p class="opnesince">44 Floor Plan  |  By: Godrej Properties</p>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>in SG Highway, Ahmedabad</p>
+                                                </div>
+                                                <div class="col-md-6 border-add">
+                                                    <div class="city-price">
+                                                    <p class="our-price">₹ 22 Lac - 97 Lac</p>
+                                                    <p class="since-oct"><span class="me-2"><i class="fa-solid fa-arrow-up" style="color: #25c600;"></i></span>5% since Oct '15</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6 class="possession">Possession in 2022</h6>
+                                    <p class="text-titles">
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.  Necessitatibus
+                                           veniam sit facilis cum soluta amet ullam vel nisi ipsa eum, facere porro
+                                           error voluptates, voluptatem repellat quisquam tenetur, officia earum
+                                           cumque quia nam mollitia magnam nihil? Voluptatum assumenda, eum sequi
+                                           ex autem voluptate ab, placeat voluptatibus laudant Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis eum asperiores ipsa, non illo modi debitis voluptates iusto quibusdam ab dolores voluptas omnis. Numquam rem, repudiandae laudantium id nesciunt excepturi.
+                                      </p>
+                                      <input type="checkbox" class="text-btn" />
+                                    <div class="deatel-table">
+                                        <table class="table-responsive">
+                                            <tbody>
+                                                <tr class="table-data">
+                                                    <td>1 BHK Flat</td>
+                                                    <td>315 - 600 sqft (Carpet Area)</td>
+                                                    <td>` ₹ 22 Lac - ` 27 Lac</td>
+                                                    <td class="contact-godrej"><a href="#">CONTACT NOW</a></td>
+                                                </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                    </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-godarej-two" role="tabpanel" aria-labelledby="pills-godarej-two-tab">...</div>
+
+                  </div>
+            </div>
+        </div>
+    </section>
+
+    </main>

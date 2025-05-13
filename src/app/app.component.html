@@ -1,0 +1,45 @@
+<ng-container *ngIf="!isRegisterRoute && !isRegisterThankyouRoute">
+  <app-header></app-header>
+</ng-container>
+
+<router-outlet></router-outlet>
+
+<ng-container *ngIf="!isRegisterRoute && !isRegisterThankyouRoute">
+  <app-footer></app-footer>
+</ng-container>
+
+<ng-container *ngIf="!isRegisterRoute">
+  <app-custom-autocomplete></app-custom-autocomplete>
+
+  <!-- Uncomment components as needed -->
+  <!-- <ngx-spinner bdColor="rgba(0,0,0,0.9)" size="medium">
+       <img src='../../../assets/images/mobile-logo.png' class="loader_anime" width='50px' height='50px' />
+     </ngx-spinner> -->
+  <!-- <app-home></app-home> -->
+  <!-- <app-property-services></app-property-services> -->
+  <!-- <app-interior-designers></app-interior-designers> -->
+  <!-- <app-ahmedabad-builder-listing></app-ahmedabad-builder-listing> -->
+  <!-- <app-godrej-properties></app-godrej-properties> -->
+  <!-- <app-explore-builders></app-explore-builders> -->
+  <!-- <app-explore-localities></app-explore-localities> -->
+  <!-- <app-buy-new-projects></app-buy-new-projects> -->
+  <!-- <app-gold-package></app-gold-package> -->
+  <!-- <app-your-cart></app-your-cart> -->
+  <!-- <app-ad-packages></app-ad-packages> -->
+  <!-- <app-profiles></app-profiles> -->
+  <!-- <app-selling-guide></app-selling-guide> -->
+
+  <!-- Cookie Section (if needed) -->
+  <!-- <div style="text-align: center;">
+       <h5>Cookies In Angular</h5>
+       <h5>Cookie Data:</h5>
+       <p>Name: {{cookie_name}}</p>
+       <p>Cookie Object: {{all_cookies | json}}</p>
+       <br>
+       <button (click)="setCookie()">Set Cookies</button>
+       <br><br>
+       <button (click)="deleteCookie()">Delete</button>
+       <br><br>
+       <button (click)="deleteAll()">Delete All</button>
+     </div> -->
+</ng-container>

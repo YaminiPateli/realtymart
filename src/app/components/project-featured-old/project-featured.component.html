@@ -1,0 +1,1392 @@
+<main>
+  <section class="project_banner">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="p-0" [ngClass]=" !latitude && !longitude ? 'col-lg-12' :'col-lg-8'" *ngIf="singleproject?.project_banner_image">
+          <img
+            src="{{ singleproject?.project_banner_image }}"
+            alt
+            class="img-fluid"
+          />
+        </div>
+        <div class="col-lg-4 p-0" *ngIf="latitude && longitude">
+          <!-- <app-map [latitude]="singleproject?.latitude" [longitude]="singleproject?.longitude"></app-map> -->
+          <google-map
+            [center]="center"
+            [zoom]="zoom"
+            width="100%"
+            height="100%"
+          >
+            <map-marker [position]="center"></map-marker>
+          </google-map>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="product_showing">
+      <div class="container">
+        <div class="product_dd">
+          <div class="box_ddd_one">
+            <img
+              src="../../../assets/images/Rera.png"
+              alt="project-rera"
+              class="img-fluid"
+            />
+          </div>
+          <div class="box_ddd_two">
+            <a
+              class="photos"
+              mat-raised-button
+              color="primary"
+              (click)="openLightbox()"
+            >
+              <span>
+                <img src="../../../assets/images/photo_mg.png" alt="Photos" />
+              </span>
+              Photos
+            </a>
+            <ngx-lightbox></ngx-lightbox>
+            <a
+              class="brochure"
+              data-bs-toggle="modal"
+              data-bs-target="#Brochure"
+              style="cursor: pointer"
+              ><span><img src="../../../assets/images/Brochure.png" alt /></span
+              >Download Brochure</a
+            >
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </section>
+
+  <section class="top_flore" id="navbar">
+    <div class="container">
+      <ul class="flore_links">
+        <li>
+          <a
+            style="cursor: pointer"
+            (click)="scrollToSection('overview')"
+            [ngClass]="{ active: activeSection === 'overview' }"
+            >Overview</a
+          >
+        </li>
+        <li class="{'active': activeSection === 'properties'}"  *ngIf="this.singleproject.propertybuilder.length >0">
+          <a
+            style="cursor: pointer"
+            (click)="scrollToSection('properties')"
+            [ngClass]="{ active: activeSection === 'properties' }"
+            >Properties</a
+          >
+        </li>
+        <li class="{'active': activeSection === 'aboutProject'}"  *ngIf="this.hasKeysOrValues(this.singleproject.project_about)">
+          <a
+            style="cursor: pointer"
+            (click)="scrollToSection('aboutProject')"
+            [ngClass]="{ active: activeSection === 'aboutProject' }"
+            >About Project</a
+          >
+        </li>
+        <li class="{'active': activeSection === 'amenities'}"  *ngIf="this.singleproject.amenitiess.length > 0">
+          <a
+            style="cursor: pointer"
+            (click)="scrollToSection('amenities')"
+            [ngClass]="{ active: activeSection === 'amenities' }"
+            >Amenities</a
+          >
+        </li>
+        <!-- <li class="{'active': activeSection === 'advertiser'}">
+                <a style="cursor:pointer" (click)="scrollToSection('advertiser')" [ngClass]="{'active': activeSection === 'advertiser'}">Top Advertiser</a>
+              </li>
+              <li class="{'active': activeSection === 'floor-plan'}">
+                <a style="cursor:pointer" (click)="scrollToSection('floor-plan')" [ngClass]="{'active': activeSection === 'floor-plan'}">Floor Plan & Units</a>
+              </li> -->
+        <li class="{'active': activeSection === 'project-detail'}"  *ngIf="this.singleproject.project_specification">
+          <a
+            style="cursor: pointer"
+            (click)="scrollToSection('project-detail')"
+            [ngClass]="{ active: activeSection === 'project-detail' }"
+            >Project Details</a
+          >
+        </li>
+        <li class="{'active': activeSection === 'locality'}" *ngIf="hasKeysOrValues(this.singleproject.nearByProject)">
+          <a
+            style="cursor: pointer"
+            (click)="scrollToSection('locality')"
+            [ngClass]="{ active: activeSection === 'locality' }"
+            >About Locality</a
+          >
+        </li>
+        <li class="{'active': activeSection === 'developer'}"  *ngIf="hasKeysOrValues(singleproject.aboutdeveloper)">
+          <a
+            style="cursor: pointer"
+            (click)="scrollToSection('developer')"
+            [ngClass]="{ active: activeSection === 'developer' }"
+            >About Developer</a
+          >
+        </li>
+
+        <!-- <li class="{'active': activeSection === 'nearProject'}">
+                <a style="cursor:pointer" (click)="scrollToSection('nearProject')" [ngClass]="{'active': activeSection === 'nearProject'}">Nearby Projects</a>
+              </li> -->
+
+        <!-- <li class="{'active': activeSection === 'faq'}">
+                <a style="cursor:pointer" (click)="scrollToSection('faq')" [ngClass]="{'active': activeSection === 'faq'}">Other Projects</a>
+              </li>
+              <li class="{'active': activeSection === 'faq'}">
+                <a style="cursor:pointer" (click)="scrollToSection('faq')" [ngClass]="{'active': activeSection === 'faq'}">Similar Projects</a>
+              </li>
+              <li class="{'active': activeSection === 'faq'}">
+                <a style="cursor:pointer" (click)="scrollToSection('faq')" [ngClass]="{'active': activeSection === 'faq'}">FAQ</a>
+              </li> -->
+      </ul>
+    </div>
+  </section>
+
+  <section class="company_overview">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="company_llg" *ngIf="this.singleproject.project_logo">
+            <img src="{{ this.singleproject.project_logo }}" alt="logo" class="img-fluid"/>
+          </div>
+
+          <div class="dtl_box" id="overview">
+            <div class="row align-items-end">
+              <div class="col-lg-8">
+                <h3 class="companies-names">
+                  {{ this.singleproject?.project_name }}
+                </h3>
+                <p class="by_group">{{ this.singleproject.builderName }}</p>
+                <p class="buy-location" style="color: #666666" *ngIf="this.singleproject.project_localities">
+                  <span class="locator-icon"
+                    ><i
+                      class="fa-sharp fa-solid fa-location-dot"
+                      style="color: #666666"
+                    ></i> </span
+                  >{{ this.singleproject.project_localities }}
+                </p>
+                <div class="pos-status">
+                  <div class="pos-status__item" *ngIf="this.singleproject.project_status">
+                    <p>{{ this.singleproject.project_status }}</p>
+                  </div>
+                  <div class="pos-status__item" *ngIf="this.singleproject?.project_possession_date">
+                    <p>
+                      Possession by
+                      {{
+                        getFormattedDate(
+                          this.singleproject?.project_possession_date
+                        )
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <p class="buy-price p-0" *ngIf=" this.singleproject.project_minimum_price &&  this.singleproject.project_maximum_price">
+                  ₹{{ this.singleproject.project_minimum_price }} - ₹
+                  {{ this.singleproject.project_maximum_price }}
+                </p>
+                <!-- <p class="by_group">{{this.singleproject.projectBHK}} Flats</p> -->
+              </div>
+              <div class="col-lg-4">
+                <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#get-builder">Contact Builder</button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="properties_buy_rent"
+            id="properties"
+            *ngIf="this.singleproject.propertybuilder.length >0"
+          >
+            <h3>Properties in The {{ this.singleproject.project_name }}</h3>
+            <!-- <div class="propertySlider_tabs">
+
+                            <button class="swipe_btn"
+                            [ngClass]="{'active': activeButton === 'buy'}"
+                            (click)="setActiveButton('buy')">Buy</button>
+
+                          <button class="swipe_btn ms-3"
+                            [ngClass]="{'active': activeButton === 'rent'}"
+                            (click)="setActiveButton('rent')">Rent</button>
+
+                          <button class="swipe_btn ms-3"
+                            [ngClass]="{'active': activeButton === 'advertisers'}"
+                            (click)="setActiveButton('advertisers')">Top Advertisers</button>
+
+                        </div> -->
+
+            <ngx-slick-carousel
+              class="carousel project_slider property_arrow"
+              #slickModal="slick-carousel"
+              [config]="slideConfig1"
+            >
+              <div
+                ngxSlickItem
+                class="slide"
+                *ngFor="let item of this.singleproject.propertybuilder"
+              >
+                <a class="properties_buy_rent_box" routerLink="/property-details/{{ singleproject.project_name }}/{{ item.id }}">
+                  <div class="buy_rent_mg">
+                    <img
+                      src="{{ item.property_main_img }}"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="buy_rent_intro">
+                    <!-- <a routerLink>
+                                            <h3>2 BHK Flat 150 Sqyrd</h3>
+                                            <p class="construction_status">Under
+                                                Construction</p>
+                                            <p class="price_status">Call for
+                                                Price</p> -->
+                    <!-- </a> -->
+                    <!-- <p class="mb-0" *ngIf="item.total_price">₹ {{item.total_price}}</p> -->
+                    <p class="mb-0 text-dark fw-bold" *ngIf="item.bedroom && item.built_up_area">{{item.bedroom}}BHK   {{item.built_up_area}}</p>
+                    <p class="mb-0 text-dark fw-bold" *ngIf="singleproject.project_possession_date"> {{getFormattedDate(singleproject.project_possession_date)}}</p>
+                    <p class="about_status" *ngIf=" item.property_description"  #descriptionElem>{{ item.property_description }}</p>
+                    <input  type="checkbox" class="text-btn" />
+                    <p class="owner_for" *ngIf="this.singleproject.builderName ">
+                      Builder: {{ this.singleproject.builderName }}
+                    </p>
+                    <button class="contact-builder" data-bs-toggle="modal" data-bs-target="#get-builder">Contact Builder</button>
+                  </div>
+                </a>
+              </div>
+              <!-- <div ngxSlickItem class="slide">
+                                <div class="properties_buy_rent_box">
+                                    <div class="buy_rent_mg">
+                                        <img
+                                            src="../../../assets/images/demomg.png"
+                                            alt class="img-fluid">
+                                    </div>
+                                    <div class="buy_rent_intro">
+                                        <a routerLink>
+                                            <h3>2 BHK Flat 150 Sqyrd</h3>
+                                            <p class="construction_status">Under
+                                                Construction</p>
+                                            <p class="price_status">Call for
+                                                Price</p>
+                                            <p class="about_status">There comes
+                                                a time in your life, when you
+                                                feel your success, status and
+                                                lifestyle deserves...</p>
+                                            <p class="owner_for">Builder:
+                                                Parmeshwar Group</p>
+                                        </a>
+                                        <button class="contact-builder">Contact
+                                            Builder</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ngxSlickItem class="slide">
+                                <div class="properties_buy_rent_box">
+                                    <div class="buy_rent_mg">
+                                        <img
+                                            src="../../../assets/images/project-banner.png"
+                                            alt class="img-fluid">
+                                    </div>
+                                    <div class="buy_rent_intro">
+                                        <a routerLink>
+                                            <h3>2 BHK Flat 150 Sqyrd</h3>
+                                            <p class="construction_status">Under
+                                                Construction</p>
+                                            <p class="price_status">Call for
+                                                Price</p>
+                                            <p class="about_status">There comes
+                                                a time in your life, when you
+                                                feel your success, status and
+                                                lifestyle deserves...</p>
+                                            <p class="owner_for">Builder:
+                                                Parmeshwar Group</p>
+                                        </a>
+                                        <button class="contact-builder">Contact
+                                            Builder</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ngxSlickItem class="slide">
+                                <div class="properties_buy_rent_box">
+                                    <div class="buy_rent_mg">
+                                        <img
+                                            src="../../../assets/images/demomg.png"
+                                            alt class="img-fluid">
+                                    </div>
+                                    <div class="buy_rent_intro">
+                                        <a routerLink>
+                                            <h3>2 BHK Flat 150 Sqyrd</h3>
+                                            <p class="construction_status">Under
+                                                Construction</p>
+                                            <p class="price_status">Call for
+                                                Price</p>
+                                            <p class="about_status">There comes
+                                                a time in your life, when you
+                                                feel your success, status and
+                                                lifestyle deserves...</p>
+                                            <p class="owner_for">Builder:
+                                                Parmeshwar Group</p>
+                                        </a>
+                                        <button class="contact-builder">Contact
+                                            Builder</button>
+                                    </div>
+                                </div>
+                            </div> -->
+            </ngx-slick-carousel>
+          </div>
+
+          <div class="product_about" id="aboutProject" *ngIf="this.hasKeysOrValues(this.singleproject.project_about)">
+            <h3 class="companies-names" *ngIf="this.singleproject.project_name">
+              About {{ this.singleproject.project_name }}
+            </h3>
+            <div
+            *ngIf="this.singleproject.project_about"
+              class="about-text-titles"
+              [innerHTML]="this.singleproject.project_about"
+            ></div>
+            <input type="checkbox" class="text-btn" />
+            <div class="address_point">
+              <h4 *ngIf="this.singleproject.project_address">Address:</h4>
+              <p *ngIf="this.singleproject.project_address">{{ this.singleproject.project_address }}</p>
+              <div class="row mt-4 gap-4 container">
+                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject.project_size_in_sqft ">
+                  <p>Project Size :</p>
+                  <p class="about-project-value">
+                    {{ this.singleproject.project_size_in_sqft }} Sq-yrd
+                  </p>
+                </div>
+                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject.project_launch_date">
+                  <p>Launch Date :</p>
+                  <p class="about-project-value">
+                    {{
+                      getFormattedDate(this.singleproject.project_launch_date)
+                    }}
+                  </p>
+                </div>
+                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject.project_status">
+                  <p>Status :</p>
+                  <p class="about-project-value">
+                    {{ this.singleproject.project_status }}
+                  </p>
+                </div>
+                <!-- <div class="col-md-3 col-sm-12 mb-3 about_box">
+                                    <p>Price per Sqft :</p>
+                                    <p>{{this.singleproject?.price_per_sq_ft}}</p>
+                                </div> -->
+                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject?.project_possession_date">
+                  <p>Possession by :</p>
+                  <p class="about-project-value">
+                    {{
+                      getFormattedDate(
+                        this.singleproject?.project_possession_date
+                      )
+                    }}
+                  </p>
+                </div>
+                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject.project_total_units">
+                  <p>Total Units :</p>
+                  <p class="about-project-value">
+                    {{ this.singleproject.project_total_units }}
+                  </p>
+                </div>
+                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject.project_total_tower">
+                  <p>Total Towers :</p>
+                  <p class="about-project-value">
+                    {{ this.singleproject.project_total_tower }}
+                  </p>
+                </div>
+                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject.project_type">
+                  <p>Project Type :</p>
+                  <p class="about-project-value">
+                    {{ this.singleproject.project_type }}
+                  </p>
+                </div>
+                <!-- <div class="col-md-3 col-sm-12 mb-3 about_box">
+                                    <p>Property Type :</p>
+                                    <p class="about-project-value">Flat</p>
+                                </div>
+                                <div class="col-md-3 col-sm-12 mb-3 about_box">
+                                    <p>Occupancy Certificate :</p>
+                                    <p class="about-project-value">No</p>
+                                </div>
+                                <div class="col-md-3 col-sm-12 mb-3 about_box">
+                                    <p>Commencement Certificate :</p>
+                                    <p class="about-project-value">Yes</p>
+                                </div> -->
+                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject.project_pincode">
+                  <p>Pincode :</p>
+                  <p class="about-project-value">
+                    {{ this.singleproject.project_pincode }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="about_investing">
+                <h3>
+                  What makes investing in The
+                  {{ this.singleproject.project_name }} a compelling choice?
+                </h3>
+
+                <div
+                  [innerHTML]="this.singleproject.project_why_buy_sell"
+                  class="mt-3"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="reraRecords" id="mbRera">
+                        <div class="reraRecords__header">
+                        <div class="reraRecords__ic"></div>
+                        <div class="reraRecords__txtsec">
+                        <span class="reraRecords__title">RERA Records</span>
+                        <span class="reraRecords__update">Updated on Sep 27, '24</span>
+                        </div>
+                        </div>
+                        <div class="reraRecords__slidersec">
+                        <div class="proj-detail-slider sub-wrap clearfix no-proj-swiper" id="reraPreviews">
+                        <div class="swiper-button-next"><a href="javascript:void(0);"></a></div>
+                        <div class="swiper-button-prev"><a href="javascript:void(0);"></a></div>
+                        <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                        <div class="swiper-slide docsCard">
+                        <div class="reraRecords__preview" onclick="openRera('LegalDoc')">
+                        <img src="https://cdn.staticmb.com/propertydetailstatic/images//sanction-letter.png" class="reraRecords__preview__img">
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="reraRecords__ctasec">
+                        <span class="reraRecords__cta">View All Documents</span>
+                        </div>
+                        </div> -->
+
+          <div class="amenities container" id="amenities" *ngIf="this.singleproject.amenitiess.length > 0">
+            <div class="">
+              <h3 class="companies-names">
+                Amenities at {{ this.singleproject.project_name }}
+              </h3>
+              <!-- <p>
+                The Green Parmeshwar offers distinctive amenities like power
+                backup, swimming pool, and security, setting it apart from other
+                projects in Jagatpur.
+              </p> -->
+              <div class="row">
+                <div
+                  class="col-md-2"
+                  *ngFor="let amenities of this.singleproject.amenitiess"
+                >
+                  <div class="amenit_box">
+                    <img src="{{ amenities.image }}" alt class="img-fluid" />
+                  </div>
+                  <p class="amenit_title">{{ amenities.name }}</p>
+                </div>
+              </div>
+              <!-- <button class="contact-builder" data-bs-toggle="modal" data-bs-target="#get-builder">Contact Builder</button> -->
+            </div>
+          </div>
+
+          <!-- <div class="advertiser" id="advertiser">
+                        <div class="container">
+                            <h3 class="companies-names">
+                                Top Advertisers</h3>
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-md-2">
+                                    <div class="top-adver_card swiper-slide">
+                                        <span class="agent-tag builder">Builder</span>
+                                        <div class="top-adver__card__details">
+                                        <div class="top-adver__card__info">
+                                        <div class="top-adver__card__heading ellipsis">PARSHWA AKSHARDHAM INFRA LLP</div>
+                                        </div>
+                                        <div class="top-adver__card__media">
+                                        <img class="img-fluid" src="https://img.staticmb.com/mbimages/project/parshwaakshardhamdevlogojv.jpg" alt="">
+                                        </div>
+                                        </div>
+                                        <div class="reraRecords__ctasec">
+                                            <span class="contact_builder_btn">Contact
+                                                Builder</span>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+          <!-- <div class="units_featured" id="floor-plan">
+                        <div class="container">
+                            <h3 class="companies-names" style="font-size: 35px;">The  {{this.singleproject.project_name}}
+                                Floor Plan & Units</h3>
+                            <ngx-slick-carousel class="carousel project_slider"
+                                #slickModal="slick-carousel"
+                                [config]="slideConfig2">
+
+                                <div ngxSlickItem class="slide">
+                                    <div class="flat_unity_box">
+                                        <div class="flats_mg">
+                                            <img
+                                                src="../../../assets/images/project-banner.png"
+                                                alt class="img-fluid">
+                                        </div>
+                                        <div class="flat_contain">
+                                            <h3>2 BHK Flat</h3>
+                                            <p>1350 Sq-ft</p>
+                                            <p>Sale : ₹ 59 Lac <br><span>Rent:
+                                                    --</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ngxSlickItem class="slide">
+                                    <div class="flat_unity_box">
+                                        <div class="flats_mg">
+                                            <img
+                                                src="../../../assets/images/flat1.png"
+                                                alt class="img-fluid">
+                                        </div>
+                                        <div class="flat_contain">
+                                            <h3>2 BHK Flat</h3>
+                                            <p>1350 Sq-ft</p>
+                                            <p>Sale : ₹ 59 Lac <br><span>Rent:
+                                                    --</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ngxSlickItem class="slide">
+                                    <div class="flat_unity_box">
+                                        <div class="flats_mg">
+                                            <img
+                                                src="../../../assets/images/flat2.png"
+                                                alt class="img-fluid">
+                                        </div>
+                                        <div class="flat_contain">
+                                            <h3>2 BHK Flat</h3>
+                                            <p>1350 Sq-ft</p>
+                                            <p>Sale : ₹ 59 Lac <br><span>Rent:
+                                                    --</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ngx-slick-carousel>
+                        </div>
+                    </div> -->
+
+          <div class="gallery" *ngIf=" this.singleproject.project_images_3d.length > 0">
+            <div class="container">
+              <h3 class="companies-names">Gallery</h3>
+              <ngx-slick-carousel
+                class="carousel project_slider"
+                #slickModal="slick-carousel"
+                [config]="slideConfig3"
+              >
+                <div
+                  ngxSlickItem
+                  class="slide"
+                  *ngFor="let gallery of this.singleproject.project_images"
+                >
+                  <div class="gallery_box">
+                    <div class="gallery">
+                      <img src="{{ gallery }}" alt class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </ngx-slick-carousel>
+            </div>
+          </div>
+
+          <div class="specifications" id="project-detail" *ngIf="this.singleproject.project_specification">
+            <div class="conatiner">
+              <h3 class="companies-names">
+                Specifications of The {{ this.singleproject.project_name }}
+              </h3>
+              <div class="specifications_box">
+                <div
+                  [innerHTML]="this.singleproject.project_specification"
+                ></div>
+              </div>
+              <!-- <h3 class="companies-names review">{{this.singleproject.project_name}} Reviews & Ratings</h3>
+                            <button class="developer_builder_btn mt-3">Write a review</button> -->
+            </div>
+          </div>
+
+          <div class="about-locality" id="locality" *ngIf="hasKeysOrValues(this.singleproject.nearByProject)">
+            <div class="">
+              <h3 class="companies-names">
+                About {{ this.singleproject.project_localities }}
+              </h3>
+              <div class="about-locality-wrapper">
+                <div class="proj-rating proj-rating--threecol">
+                  <!-- <div class="proj-rating__column">
+                                    <div class="proj-rating__row">
+                                    <span class="proj-rating__number">4.0</span>
+                                    <span class="proj-rating__starGroup">
+                                    <span class="proj-rating__star full"></span>
+                                    <span class="proj-rating__star full"></span>
+                                    <span class="proj-rating__star full"></span>
+                                    <span class="proj-rating__star full"></span>
+                                    <span class="proj-rating__star"></span>
+                                    </span>
+                                    </div>
+                                    <div class="proj-rating__text">154
+                                    reviews</div>
+                                    </div> -->
+                  <!-- <div class="proj-rating__column">
+                    <div class="proj-rating__title">
+                      Rank {{ this.singleproject.nearByProject.rank }}
+                    </div> -->
+                    <!-- <div class="proj-rating__text">out of
+                                    1759 Localities</div> -->
+                  <!-- </div> -->
+                  <!-- <div class="proj-rating__column">
+                                    <div class="proj-rating__locavgprice">
+                                    <div class="proj-rating__locavgprice__heading">Locality Average Price</div>
+                                    <div class="proj-rating__locavgprice__price">
+                                    <span class="rupees">₹</span> 4458/Sqft
+                                    <span class="proj-rating__locavgprice__price--green">+ <span class="rupees">₹</span>141 (3.3% <span class="proj-rating__locavgprice__price__toparrow"></span>)</span>
+                                    <span class="proj-rating__locavgprice__price--sm">QoQ</span>
+                                    </div>
+                                    </div>
+                                    </div> -->
+                </div>
+                <div class="proj-details__descheading" *ngIf="this.singleproject.nearByProject.locality_introduction_and_neighbourhood">
+                  Locality introduction and neighbourhood
+                </div>
+                <div class="detail-full-pop" id="locPopupSection" *ngIf="this.singleproject.nearByProject
+                        .locality_introduction_and_neighbourhood">
+                  <div
+                    class="proj-info-inner text-titles"
+                    [innerHTML]="
+                      this.singleproject.nearByProject
+                        .locality_introduction_and_neighbourhood
+                    "
+                  >
+                    <!-- Chandkheda is acommercial cum residential locality of Ahmedabad. The locality is well planned and has BRTS connectivity to other parts of the city. Kali Gaam, Tragad, Nigam Nagar, Jagatpur are the nearby localities of Chandkheda. The area has various malls and some renowned companies like TCS, Amar Infotech, ONGC. In terms of residential projects, it mainly has Government colonies, affordable housing projects and a few Grade A developers like Sangath IPL Posh etc. -->
+                  </div>
+                  <!-- <br>
+                                    <div class="heading-2">Physical infrastructure</div>
+                                    <div class="proj-info__about__text">The locality is well connected through the SG (Sarkhej Gandhinagar) highway and BRTS which is a significant medium of transportation for daily commuters and connects Chandkheda to other key locations like Gandhinagar junction, ONGC etc. The locality has easy access to autos, rickshaws and local bus services. The nearest bus stops in the area are GSRTC Bus Stop, Chandkheda Gam BRTS bus stop and Padma Prabhu Nagar bus stop, which are within a range of 0.5 to 2.5 km.Ahmedabad junction railway station is located about 11 km from Chandkheda and the easy accessibility to the airport within 14 km has given uplift to the residential market of the region. In addition to this Chandkheda is one of the proposed locations to have a metro station by end of 2025.</div>
+                                    <br>
+                                    <div class="heading-2">Social &amp; retail infra</div>
+                                    <div class="proj-info__about__text">Chandkheda has developed by the presence of good social infrastructure comprising of various Shopping malls, eminent Garment showrooms, Healthcare facilities and food joints. Some of the prominent amenities in Chandkheda are easily accessible from the location are ONGC, IIT Ghandhinagar, NIRMA University, 4D Mall, Vishwakarma Government Engineering College, SMS Multispecialty hospital, PVR and OYO.The nearest police station is Chandkheda police station, which is 1.4 km away and provides the locality with proper vigilance.</div>
+                                    <br>
+                                    <div class="heading-2">Nearby employment hubs</div>
+                                    <div class="proj-info__about__text">Chandkheda is a commercial hub with the presence of ONGC, Commissionerate Of Commercial Tax, and State Sales Tax office are all within a 2km radius. With smooth accessibility through road, railways and airport to neighbouring cities and localities, the location has attracted many companies especially, in the IT sector. It also shares boundaries with the key employment centres of Gandhinagar, Chharodi and Motera. Upcoming commercial projects like Gandhinagar Electronic SEZ are close to Chandkheda and are expected to boost the real estate demand in the region.Source : Magicbricks Research</div> -->
+                </div>
+                <input type="checkbox" class="text-btn" *ngIf="this.singleproject.nearByProject
+                        .locality_introduction_and_neighbourhood"/>
+                <div class="projthings" *ngIf="this.singleproject.nearByProject
+                          .keep_in_mind_advantage || this.singleproject.nearByProject
+                          .keep_in_mind_disadvantage">
+                  <div class="projthings__title" *ngIf="this.singleproject.nearByProject
+                          .keep_in_mind_advantage">Things to keep in mind</div>
+                  <ul class="projthings__list">
+                    <div
+                      *ngFor="
+                        let item of this.singleproject.nearByProject
+                          .keep_in_mind_advantage
+                      "
+                    >
+                      <li
+                        class="projthings__list__val"
+                        [innerHTML]="item.keep_in_mind_advantage"
+                      ></li>
+                    </div>
+                    <div
+                      *ngFor="
+                        let item of this.singleproject.nearByProject
+                          .keep_in_mind_disadvantage
+                      "
+                    >
+                      <li
+                        class="projthings__list__val projthings__list__val--neg"
+                        [innerHTML]="item.keep_in_mind_disadvantage"
+                      ></li>
+                    </div>
+                  </ul>
+                </div>
+                <!-- <div class="review-locality">
+                                    <div class="review-locality__title">Review Of Chandkheda</div>
+                                    <div class="review-block__wrap">
+                                    <div class="review-block" *ngFor="let item of [1,2,3,4]">
+                                    <div class="review__user-rating">
+                                    <div class="review__user-pic">V</div>
+                                    <div class="review__name-block">
+                                    <a href="https://www.magicbricks.com/property-agent-details/broker-V-Real-Estate-in-Ahmedabad-agentid-4d423438373835353731" target="_blank">
+                                    <div class="review__name ellipsis">Vishal</div>
+                                    </a>
+                                    <div class="review__type">Agent
+                                    (Local Guide)
+                                    </div>
+                                    </div>
+                                    <div class="review__posted">
+                                    <span class="proj-rating__starGroup">
+                                    <span class="rating__star full"></span>
+                                    <span class="rating__star full"></span>
+                                    <span class="rating__star full"></span>
+                                    <span class="rating__star full"></span>
+                                    <span class="rating__star full"></span>
+                                    </span>
+                                    <div class="review__date">31/01/2024</div>
+                                    </div>
+                                    </div>
+                                    <div class="review__user-msg">
+                                    <div class="heading-2 ellipsis">Nice Locality.</div>
+                                    <div class="review__msg">It is a prime location for main road entry nearby all developed areas.</div>
+                                    </div>
+                                    <div class="review-block__overlay">
+                                    <span class="review-block__overlay__close"></span>
+                                    It is a prime location for main road entry nearby all developed areas.
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="clearfix review__text-btn">
+                                    <div class="review__show-msg">Show More Reviews</div>
+                                    <button class="developer_builder_btn mt-3">Explore Chandkheda
+                                    </button>
+                                    </div>
+                                    </div> -->
+              </div>
+            </div>
+          </div>
+          <!-- <div>
+                        <div class="container">
+                            <h3 class="companies-names">
+                                Landmarks Near {{this.singleproject.project_name}}</h3>
+                            </div>
+
+                            <div class="pdp__landmarks__wrap">
+                                <div class="pdp__landmarks__card">
+                                    <div class="pdp__landmarks__card__inner">
+                                        <div class="pdp__landmarks__card__head__ic eduins">
+                                        </div>
+                                        <div class="pdp__landmarks__content">
+                                            <div class="pdp__landmarks__card__head">Educational Institute</div>
+                                            <div class="pdp__landmarks__card__action"><span>+ </span>3 more</div>
+                                            <div class="pdp__landmarks__card__body"><div class="pdp__landmarks__card--wrap">
+                                                <div class="pdp__landmarks__card__item">Manikrupa School</div>
+                                                <span class="pdp__landmarks__card__item--bold"> (1.7 Km)</span></div>
+                                                <div class="pdp__landmarks__card--wrap">
+                                                    <div class="pdp__landmarks__card__item">Ananya Vidyalaya</div><span class="pdp__landmarks__card__item--bold"> (2.9 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Sakar English School</div><span class="pdp__landmarks__card__item--bold"> (2.1 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Vishwakarma Government Engineering College</div><span class="pdp__landmarks__card__item--bold"> (2.6 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Gujarat Technological University</div><span class="pdp__landmarks__card__item--bold"> (2.6 Km)</span></div></div></div></div></div><div class="pdp__landmarks__card"><div class="pdp__landmarks__card__inner"><div class="pdp__landmarks__card__head__ic transport"></div><div class="pdp__landmarks__content"><div class="pdp__landmarks__card__head">Transportation Hub</div><div class="pdp__landmarks__card__body"><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Mansarovar Metro Station</div><span class="pdp__landmarks__card__item--bold"> (1.2 Km)</span></div></div></div></div></div><div class="pdp__landmarks__card"><div class="pdp__landmarks__card__inner"><div class="pdp__landmarks__card__head__ic shopping"></div><div class="pdp__landmarks__content"><div class="pdp__landmarks__card__head">Shopping Centre</div><div class="pdp__landmarks__card__action"><span>+ </span>3 more</div><div class="pdp__landmarks__card__body"><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">4D Square Mall</div><span class="pdp__landmarks__card__item--bold"> (2.9 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Sangath Mall 1</div><span class="pdp__landmarks__card__item--bold"> (3.0 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Hind Super Market</div><span class="pdp__landmarks__card__item--bold"> (1.7 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Aapka Bazar</div><span class="pdp__landmarks__card__item--bold"> (3.4 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Highway Mall</div><span class="pdp__landmarks__card__item--bold"> (1.3 Km)</span></div></div></div></div></div><div class="pdp__landmarks__card"><div class="pdp__landmarks__card__inner"><div class="pdp__landmarks__card__head__ic hospital"></div><div class="pdp__landmarks__content"><div class="pdp__landmarks__card__head">Hospital</div><div class="pdp__landmarks__card__body"><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Jincy Multispeciality Hospital</div><span class="pdp__landmarks__card__item--bold"> (1.4 Km)</span></div></div></div></div></div><div class="pdp__landmarks__card"><div class="pdp__landmarks__card__inner"><div class="pdp__landmarks__card__head__ic commhub"></div><div class="pdp__landmarks__content"><div class="pdp__landmarks__card__head">Commercial Hub</div><div class="pdp__landmarks__card__action"><span>+ </span>1 more</div><div class="pdp__landmarks__card__body"><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Ongc</div><span class="pdp__landmarks__card__item--bold"> (1.3 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Commissionerate Of Commercial Tax</div><span class="pdp__landmarks__card__item--bold"> (8.9 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">State Sales Tax</div><span class="pdp__landmarks__card__item--bold"> (8.9 Km)</span></div></div></div></div></div></div>
+                    </div> -->
+          <div>
+            <div class=" landmark" id="landmark" *ngIf="hasKeysOrValues(this.singleproject.landmarksnearproject)">
+              <h3 class="companies-names">
+                Landmarks Near {{ singleproject.project_name }}
+              </h3>
+            </div>
+
+            <div class="pdp__landmarks__wrap mt-2" *ngIf="hasKeysOrValues(this.singleproject.landmarksnearproject)">
+              <ng-container *ngFor="let category of ['educationalinstitute', 'shoppingcentre', 'hospital', 'commercialhub']">
+                <div class="pdp__landmarks__card" *ngIf="this.singleproject.landmarksnearproject[category]?.length > 0">
+                  <div class="pdp__landmarks__card__inner">
+                    <div
+                      class=""
+                      [ngClass]="{
+                        eduins: category === 'educationalinstitute',
+                        shopping: category === 'shoppingcentre',
+                        hospital: category === 'hospital',
+                        commhub: category === 'commercialhub'
+                      }"
+                    ></div>
+                    <div class="pdp__landmarks__content">
+                      <div class="pdp__landmarks__card__head">
+                        {{ categoryDisplayNames[category] }}
+                      </div>
+                      <div class="pdp__landmarks__card__action" *ngIf="this.singleproject.landmarksnearproject[category].length > 3">
+                        <span>+
+                          {{ this.singleproject.landmarksnearproject[category].length - 3 }}
+                          more
+                        </span>
+                      </div>
+                      <div class="pdp__landmarks__card__body">
+                        <ng-container *ngFor="let item of this.singleproject.landmarksnearproject[category].slice(0, 3)">
+                          <div class="pdp__landmarks__card--wrap flex-wrap align-items-center">
+                            <div class="pdp__landmarks__card__item">
+                              {{ item.name }}
+                            </div>
+                            <span class="pdp__landmarks__card__item--bold">
+                              ({{ item.distance_km }} Km)
+                            </span>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+
+          </div>
+
+          <div class="developer" id="developer" *ngIf="hasKeysOrValues(singleproject.aboutdeveloper)">
+            <div class="">
+              <h3 class="companies-names">About Developer</h3>
+              <div
+                class="about-devloper-wrapper d-flex align-items-center justify-content-between"
+              >
+                <div>
+                  <h3>
+                    {{ singleproject.aboutdeveloper.builderName }}
+                  </h3>
+                  <div>Years of Experiance - {{singleproject.aboutdeveloper.year}}</div>
+                </div>
+                <div class="about-developer__builder__logo">
+                  <img
+                    class="img-fluid"
+                    alt="{{ this.singleproject.aboutdeveloper.builderName }}"
+                    data-src="{{
+                      this.singleproject.aboutdeveloper.builderLogo
+                    }}"
+                    src="{{ this.singleproject.aboutdeveloper.builderLogo }}"
+                  />
+                </div>
+              </div>
+              <div class="about-developer__table">
+                <div class="about-developer__table__item">Total Projects</div>
+                <div class="about-developer__table__item">
+                  {{ this.singleproject.aboutdeveloper.totalProjects }}
+                </div>
+                <div class="about-developer__table__item">
+                  Projects Completed
+                </div>
+                <div class="about-developer__table__item">
+                  {{ this.singleproject.aboutdeveloper.completedProjects }}
+                </div>
+                <div class="about-developer__table__item">Projects Ongoing</div>
+                <div class="about-developer__table__item">
+                  {{ this.singleproject.aboutdeveloper.ongoingProjects }}
+                </div>
+                <div class="about-developer__table__item">Operating in</div>
+                <div class="about-developer__table__item">
+                  <span class="develop-city-name">{{
+                    this.singleproject.aboutdeveloper.Operatingin || "Ahmedabad"
+                  }}</span>
+                </div>
+              </div>
+              <div class="proj-info__about__text">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="proj-info__about__text">
+                          <p class="m-0">
+                            {{ this.singleproject.aboutdeveloper.builderName }}
+                          </p>
+                          <p
+                            class=""
+                            [innerHTML]="
+                              this.singleproject.aboutdeveloper
+                                .developerDescription
+                            "
+                          ></p>
+                          <!-- <input type="checkbox" class="text-btn" /> -->
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- <div class="d-flex justify-content-start gap-4 mt-3 mb-3">
+                <span class="developer_builder_btn">Explore Builder</span>
+                <button class="contact-now-btn">Contact Now</button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form_sticky">
+            <div class="fill_info">
+              <h3>
+                Searching for a property in The
+                {{ this.singleproject.project_name }}
+              </h3>
+              <form>
+                <!-- <div class="pp-form__fieldset">
+                                <div class="pp-form__fieldset__heading">I
+                                    am</div>
+                                <input type="hidden" id="user__type" value>
+                                <input type="hidden" id="prop__type" value>
+                                <input type="hidden" id="ownerdashboardUrl"
+                                    value>
+                                <div class="pp-form__fieldset__wrap">
+                                    <div class="pp-form__elem-radio"
+                                        style="width:90px; height:44px;">
+
+                                        <input
+                                            class="pp-form__elem-radio__input"
+                                            name="youAre" type="radio"
+                                            id="Individual" autocomplete="off">
+                                        <label
+                                            class="pp-form__elem-radio__label"
+                                            for="Individual"> Individual
+                                        </label>
+                                    </div>
+                                    <div class="pp-form__elem-radio"
+                                        style="width:86px; height:44px;">
+                                        <input
+                                            class="pp-form__elem-radio__input"
+                                            name="youAre" type="radio"
+                                            id="Agent" autocomplete="off">
+                                        <label
+                                            class="pp-form__elem-radio__label"
+                                            for="Agent"> Agent </label>
+                                    </div>
+                                </div>
+                            </div> -->
+                <input
+                  type="text"
+                  id="Aname"
+                  ngmodel
+                  name="name"
+                  placeholder="Name"
+                  required
+                  class="gold-form-input"
+                />
+                <input
+                  type="maill"
+                  id="agentmail"
+                  ngmodel
+                  name="email"
+                  placeholder="Email"
+                  required
+                  class="gold-form-input"
+                />
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <select
+                      name="number-code"
+                      id="number-code"
+                      class="gold-form-input"
+                    >
+                      <option value="+91">+91</option>
+                      <option value="USA: +1">+1</option>
+                      <option value="UK: +44">+44</option>
+                      <option value="Mexico: +52">+52</option>
+                      <option value="China: +86">+86</option>
+                    </select>
+                  </div>
+                  <div class="col-md-8">
+                    <input
+                      type="number"
+                      id="goldNum"
+                      name="goldNum"
+                      maxlength="10"
+                      placeholder="Mobile No."
+                      required
+                      class="gold-form-input"
+                    /><br />
+                  </div>
+                </div>
+                <div class="check-compare m-0">
+                  <input
+                    type="checkbox"
+                    id="compare"
+                    name="compare"
+                    value="compare add"
+                    class="mycheck"
+                  />
+                  <label for="compare" class="compares" style="display: inline-flex; gap:5px;"
+                    >I Agree to realtymart
+                    <!-- <span class="d-block"
+                      ><a
+                        routerlink="../terms-conditions"
+                        href="/terms-conditions"
+                        >Terms of Use</a
+                      ></span> -->
+                       </label
+                  ><br />
+                </div>
+                <input
+                  class="sub_phone"
+                  type="submit"
+                  value="Get Contact Details"
+                />
+              </form>
+            </div>
+            <!-- <a href="" class="brochure_more">
+            <span
+              ><img
+                src="../../../assets/images/Brochure.png"
+                alt="Download" /></span
+            >Download Brochure</a
+          > -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="near_project" id="nearProject">
+        <div class="container">
+            <h3 class="companies-names">Nearby Projects</h3>
+
+            <ngx-slick-carousel class="carousel project_slider"
+                #slickModal="slick-carousel"
+                [config]="slideConfig4">
+
+                <div ngxSlickItem class="slide">
+                    <div class="properties_buy_rent_box near_shed">
+                        <div class="buy_rent_mg">
+                            <img src="../../../assets/images/demomg.png" alt
+                                class="img-fluid">
+                        </div>
+                        <div class="buy_rent_intro">
+                            <a routerLink>
+                                <h3>2 BHK Flat 150 Sqyrd</h3>
+                                <p class="construction_status">Under
+                                    Construction</p>
+                                <p class="price_status">Call for Price</p>
+                                <p class="about_status">There comes a time in
+                                    your life, when you feel your success,
+                                    status and lifestyle deserves...</p>
+                                <p class="owner_for">Builder: Parmeshwar
+                                    Group</p>
+                            </a>
+                            <button class="contact-builder">Contact
+                                Builder</button>
+                        </div>
+                    </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                    <div class="properties_buy_rent_box near_shed">
+                        <div class="buy_rent_mg">
+                            <img src="../../../assets/images/demomg.png" alt
+                                class="img-fluid">
+                        </div>
+                        <div class="buy_rent_intro">
+                            <a routerLink>
+                                <h3>2 BHK Flat 150 Sqyrd</h3>
+                                <p class="construction_status">Under
+                                    Construction</p>
+                                <p class="price_status">Call for Price</p>
+                                <p class="about_status">There comes a time in
+                                    your life, when you feel your success,
+                                    status and lifestyle deserves...</p>
+                                <p class="owner_for">Builder: Parmeshwar
+                                    Group</p>
+                            </a>
+                            <button class="contact-builder">Contact
+                                Builder</button>
+                        </div>
+                    </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                    <div class="properties_buy_rent_box near_shed">
+                        <div class="buy_rent_mg">
+                            <img src="../../../assets/images/project-banner.png"
+                                alt class="img-fluid">
+                        </div>
+                        <div class="buy_rent_intro">
+                            <a routerLink>
+                                <h3>2 BHK Flat 150 Sqyrd</h3>
+                                <p class="construction_status">Under
+                                    Construction</p>
+                                <p class="price_status">Call for Price</p>
+                                <p class="about_status">There comes a time in
+                                    your life, when you feel your success,
+                                    status and lifestyle deserves...</p>
+                                <p class="owner_for">Builder: Parmeshwar
+                                    Group</p>
+                            </a>
+                            <button class="contact-builder">Contact
+                                Builder</button>
+                        </div>
+                    </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                    <div class="properties_buy_rent_box near_shed">
+                        <div class="buy_rent_mg">
+                            <img src="../../../assets/images/demomg.png" alt
+                                class="img-fluid">
+                        </div>
+                        <div class="buy_rent_intro">
+                            <a routerLink>
+                                <h3>2 BHK Flat 150 Sqyrd</h3>
+                                <p class="construction_status">Under
+                                    Construction</p>
+                                <p class="price_status">Call for Price</p>
+                                <p class="about_status">There comes a time in
+                                    your life, when you feel your success,
+                                    status and lifestyle deserves...</p>
+                                <p class="owner_for">Builder: Parmeshwar
+                                    Group</p>
+                            </a>
+                            <button class="contact-builder">Contact
+                                Builder</button>
+                        </div>
+                    </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                    <div class="properties_buy_rent_box near_shed">
+                        <div class="buy_rent_mg">
+                            <img src="../../../assets/images/demomg.png" alt
+                                class="img-fluid">
+                        </div>
+                        <div class="buy_rent_intro">
+                            <a routerLink>
+                                <h3>2 BHK Flat 150 Sqyrd</h3>
+                                <p class="construction_status">Under
+                                    Construction</p>
+                                <p class="price_status">Call for Price</p>
+                                <p class="about_status">There comes a time in
+                                    your life, when you feel your success,
+                                    status and lifestyle deserves...</p>
+                                <p class="owner_for">Builder: Parmeshwar
+                                    Group</p>
+                            </a>
+                            <button class="contact-builder">Contact
+                                Builder</button>
+                        </div>
+                    </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                    <div class="properties_buy_rent_box near_shed">
+                        <div class="buy_rent_mg">
+                            <img src="../../../assets/images/demomg.png" alt
+                                class="img-fluid">
+                        </div>
+                        <div class="buy_rent_intro">
+                            <a routerLink>
+                                <h3>2 BHK Flat 150 Sqyrd</h3>
+                                <p class="construction_status">Under
+                                    Construction</p>
+                                <p class="price_status">Call for Price</p>
+                                <p class="about_status">There comes a time in
+                                    your life, when you feel your success,
+                                    status and lifestyle deserves...</p>
+                                <p class="owner_for">Builder: Parmeshwar
+                                    Group</p>
+                            </a>
+                            <button class="contact-builder">Contact
+                                Builder</button>
+                        </div>
+                    </div>
+                </div>
+            </ngx-slick-carousel>
+        </div>
+    </section> -->
+
+  <!-- <section class="faqs" id="faq">
+        <div class="container">
+            <h3 class="companies-names">Frequently asked questions</h3>
+            <div class="faq-wrapper">
+
+            </div>
+        </div>
+    </section> -->
+
+  <section class="instruments">
+    <div class="container">
+      <h3 class="companies-names">
+        Instruments to Assist You in Making Informed Decisions
+      </h3>
+      <div class="row mt-3">
+        <div class="col-md-3 col-sm-12">
+          <a href="" class="instruments_box">
+            <div class="instrunment_mg mb-2">
+              <img
+                src="../../../assets/images/Instruments1.png"
+                alt="'Instruments"
+                class="img-fluid"
+              />
+            </div>
+            <h5>EMI Calculator</h5>
+            <p>Understand the monthly payments on your loan.</p>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <a href="" class="instruments_box">
+            <div class="instrunment_mg mb-2">
+              <img
+                src="../../../assets/images/Instruments2.png"
+                alt="'Instruments"
+                class="img-fluid"
+              />
+            </div>
+            <h5>Property Valuation</h5>
+            <p>
+              Determine the accurate value of your property before buying or
+              selling.
+            </p>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <a href="" class="instruments_box">
+            <div class="instrunment_mg mb-2">
+              <img
+                src="../../../assets/images/Instruments3.png"
+                alt="Instruments"
+                class="img-fluid"
+              />
+            </div>
+            <h5>Legal Title Check</h5>
+            <p>
+              Verify property for a clear title and no legal claims or bank
+              attachments.
+            </p>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <a href="" class="instruments_box">
+            <div class="instrunment_mg mb-2">
+              <img
+                src="../../../assets/images/Instruments4.png"
+                alt="Instruments"
+                class="img-fluid"
+              />
+            </div>
+            <h5>Property Services</h5>
+            <p>Your go-to for all-encompassing property solutions.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div
+  class="modal fade"
+  id="Brochure"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable"
+  >
+    <div class="modal-content">
+      <div class="modal-header sign-in-box">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-contact__covidmsg--heading">Download Brochure</div>
+        <div class="m-contact__covidmsg--text">
+          Fill your details &amp; get a great deal from the undefined Directly
+        </div>
+        <input
+          type="text"
+          id="Aname"
+          name="name"
+          placeholder="Name"
+          required=""
+          class="gold-form-input"
+        />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required=""
+          class="gold-form-input"
+        />
+
+        <div class="row">
+          <div class="col-md-4">
+            <select name="number-code" id="number-code" class="gold-form-input">
+              <option value="Ind +91">Ind +91</option>
+              <option value="USA: +1">USA: +1</option>
+              <option value="UK: +44">UK: +44</option>
+              <option value="Mexico: +52">Mexico: +52</option>
+              <option value="China: +86">China: +86</option>
+            </select>
+          </div>
+          <div class="col-md-8">
+            <input
+              type="number"
+              id="goldNum"
+              name="goldNum"
+              maxlength="10"
+              placeholder="Mobile No."
+              required
+              class="gold-form-input"
+            /><br />
+          </div>
+        </div>
+        <div class="check-compare m-0">
+          <input
+            type="checkbox"
+            id="Terms"
+            name="Terms"
+            value="compare add"
+            class="mycheck"
+          />
+          <label for="Terms" class="compares"
+            >I Agree to realtymart
+            <!-- <span
+              ><a routerlink="../terms-conditions" href="/terms-conditions"
+                >Terms of Use</a
+              ></span> -->
+            </label
+          ><br />
+        </div>
+        <div *ngIf="showOTP">
+          <input
+            type="text"
+            id="otp"
+            name="otp"
+            placeholder="Enter OTP"
+            [(ngModel)]="otp"
+            required
+            class="gold-form-input"
+          />
+          <button type="button" class="btn btn-primary" (click)="verifyOTP()">
+            Verify OTP
+          </button>
+        </div>
+        <input class="sub_phone" type="submit" value="Download Now" />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="get-builder" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header sign-in-box">
+        <button type="button" class="btn-close" id="getphoneno" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2 class="fill_one">Fill out this one - time contact form</h2>
+        <p class="detail_share">
+          We will share advertiser's details over email
+        </p>
+        <form (submit)="submitFormPhone()">
+          <input type="text" id="Aname" name="username" placeholder="Name" [(ngModel)]="formDataphone.username" required
+            class="gold-form-input" />
+
+          <input type="email" id="usermail" [(ngModel)]="formDataphone.useremail" required name="usermail"
+            placeholder="Email" class="gold-form-input" />
+
+          <div class="pp-form__field pp-form__field--mobile">
+            <div class="gold-form-input mb-0">
+              <select name="countrycode" id="ownerISD" [(ngModel)]="formDataphone.countrycode" required>
+                <option value="+91" selected="selected">+91</option>
+              </select>
+            </div>
+            <input type="tel" id="usernumber" name="usernumber" placeholder="Mobile No."
+              [(ngModel)]="formDataphone.phone_number" required class="gold-form-input mb-0" />
+          </div>
+
+          <div class="check-compare">
+            <input type="checkbox" id="compare" ngModel name="compare" required class="mycheck" />
+            <label for="compare" class="compares">I Agree to RealtyMart</label>
+              <!-- <span><a routerLink="../terms-conditions">Terms of Use</a></span> <br /> -->
+          </div>
+
+          <button type="submit" class="pp-form__cta">
+            Continue
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

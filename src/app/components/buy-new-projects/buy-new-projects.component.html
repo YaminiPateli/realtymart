@@ -1,0 +1,1539 @@
+<main>
+<section class="buy-projects position-relative">
+    <div class="container">
+        <div class="banner-small">
+            <h1 class="banner_title">New Projects</h1>
+            <p class="banner_small">New Projects in Ahmedabad</p>
+        </div>
+    </div>
+</section>
+
+<section class="Amb-new-projects">
+    <div class="container">
+        <div class="all-new-projections">
+            <ul class="projection nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="project-link active" id="pills-project-one-tab" data-bs-toggle="pill" data-bs-target="#pills-project-one" type="button" role="tab" aria-controls="pills-project-one" aria-selected="true">PROPERTIES (9250)</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="project-link" id="pills-project-tow-tab" data-bs-toggle="pill" data-bs-target="#pills-project-tow" type="button" role="tab" aria-controls="pills-project-tow" aria-selected="false">NEW PROJECTS (154)</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="project-link" id="pills-project-three-tab" data-bs-toggle="pill" data-bs-target="#pills-project-three" type="button" role="tab" aria-controls="pills-project-three" aria-selected="false">TOP AGENTS</button>
+                </li>
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-project-one" role="tabpanel" aria-labelledby="pills-project-one-tab">
+                    <div class="projects-area">
+                        <div class="head-projections">
+                            <div class="new-projection">
+                                <p>9270 Owner Properties for Sale in Ahmedabad</p>
+                            </div>
+                            <div class="sort-by">
+                                <label for="cars">Sort By:</label>
+                                <select id="cars" name="carlist" class="sort-select" form="carform">
+                                <option value="" disabled selected hidden>Relevance</option>
+                                <option value="Lorem">Lorem</option>
+                                <option value="Lorem">Lorem</option>
+                                <option value="Lorem">Lorem</option>
+                                <option value="Lorem">Lorem</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box" *ngFor="let result of result">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="{{ result.property_main_img }}" alt="" class="img-fluid">
+                                    </div>
+                                   <div class="property-verified">
+                                    <img src="../../../assets/images/verified-property.png" alt="">
+                                   </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">{{ result.property_type_name }}</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>{{ result.address }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">Lift</h6>
+                                            <p class="project-text">{{ result.lift }}</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">Total Floor</h6>
+                                            <p class="project-text">{{ result.total_floor }}</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">Total Number Of Flates</h6>
+                                            <p class="project-text">{{ result.total_num_flates }}</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">Bathroom</h6>
+                                            <p class="project-text">{{ result.bathroom }}</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">Bedroom</h6>
+                                            <p class="project-text">{{ result.bedroom }}</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">Furnish</h6>
+                                            <p class="project-text">{{ result.furnishing_status }}</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">Facing</h6>
+                                            <p class="project-text">{{ result.facing }}</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        {{ result.description }}
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ {{ result.price }}</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">{{ result.name }}</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                        <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                    <div class="property-verified">
+                                        <p>EXCLUSIVE PROPERTY</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-project-tow" role="tabpanel" aria-labelledby="pills-project-tow-tab">
+                    <div class="projects-area">
+                        <div class="head-projections">
+                            <div class="new-projection">
+                                <p>9270 Owner Properties for Sale in Ahmedabad</p>
+                            </div>
+                            <div class="sort-by">
+                                <label for="cars">Sort By:</label>
+                                <select id="cars" name="carlist" class="sort-select" form="carform">
+                                <option value="" disabled selected hidden>Relevance</option>
+                                <option value="Lorem">Lorem</option>
+                                <option value="Lorem">Lorem</option>
+                                <option value="Lorem">Lorem</option>
+                                <option value="Lorem">Lorem</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                   <div class="property-verified">
+                                    <img src="../../../assets/images/verified-property.png" alt="">
+                                   </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                    <div class="property-verified">
+                                        <p>EXCLUSIVE PROPERTY</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-project-three" role="tabpanel" aria-labelledby="pills-project-three-tab">
+                    <div class="projects-area">
+                        <div class="head-projections">
+                            <div class="new-projection">
+                                <p>9270 Owner Properties for Sale in Ahmedabad</p>
+                            </div>
+                            <div class="sort-by">
+                                <label for="cars">Sort By:</label>
+                                <select id="cars" name="carlist" class="sort-select" form="carform">
+                                <option value="" disabled selected hidden>Relevance</option>
+                                <option value="Lorem">Lorem</option>
+                                <option value="Lorem">Lorem</option>
+                                <option value="Lorem">Lorem</option>
+                                <option value="Lorem">Lorem</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                   <div class="property-verified">
+                                    <img src="../../../assets/images/verified-property.png" alt="">
+                                   </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                    <div class="property-verified">
+                                        <p>EXCLUSIVE PROPERTY</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owner-properties-box">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="property-image">
+                                        <img src="../../../assets/images/img-1.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="" class="groups-companies-names">Office Space</a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p class="posted">Posted: Today</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>for Sale in Anand Nagar, Ranip</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-projects">
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas border-right">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                        <div class="part-areas">
+                                            <h6 class="project-titles">CARPET AREA</h6>
+                                            <p class="project-text">1000 sqft</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-titles">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias quaerat nihil adipisci, quod distinctio laborum iusto nulla repudiandae temporibus laudantium delectus, ab, modi vel ipsam consequatur eos mollitia accusantium nam est. Quidem, optio neque totam voluptas quaerat porro consequatur hic amet voluptate quo provident dignissimos. Eveniet labore totam nihil est maiores quas numquam placeat laudantium omnis blanditiis. Non reiciendis sapiente omnis deserunt, ratione harum obcaecati accusamus vero repellendus? Quis, debitis molestias nam et, voluptatibus at eligendi ullam maiores tempora aspernatur deleniti doloribus praesentium nostrum atque velit illum obcaecati id magnam maxime temporibus. Aliquam porro, aspernatur
+                                      </p> <input type="checkbox" class="text-btn" />
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12 border-add">
+                                  <div class="verifide-owner">
+                                    <p class="groups-companies-names">₹ 1.75 Cr</p>
+                                    <img src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
+                                    <div class="part-areas mt-2">
+                                        <h6 class="project-titles">OWNER</h6>
+                                        <p class="project-text">Dr Anil Chauhan</p>
+                                    </div>
+                                    <div class="owner-contact">
+                                       <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</section>
+</main>

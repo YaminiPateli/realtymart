@@ -1,0 +1,411 @@
+<main>
+    <section class="paying_guest">
+        <div class="container">
+            <!-- <ul class="redirect">
+                <li><a href>Home</a></li>
+                <span>></span>
+                <li><a href>PG in Ahmedabad</a></li>
+                <span>></span>
+                <li>PG for Detail</li>
+            </ul> -->
+
+            <div class="pg_list">
+                <div class="pg_list_box">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <ngx-slick-carousel class="carousel pg_slid"
+                                #slickModal="slick-carousel"
+                                [config]="slideConfig1">
+                                <div ngxSlickItem class="slide">
+                                    <a href="../../../assets/images/pg1.jpg" data-fancybox="gallery">
+                                        <img src="../../../assets/images/pg1.jpg"
+                                        alt
+                                        class="img-fluid">
+                                    </a>
+                                </div>
+                                <div ngxSlickItem class="slide">
+                                    <a href="../../../assets/images/pg2.jpg">
+                                        <img src="../../../assets/images/pg2.jpg"
+                                            alt
+                                            class="img-fluid">
+                                    </a>
+                                </div>
+                                
+                            </ngx-slick-carousel>
+                        </div>
+                        <div class="col-lg-7">
+                            <a class="groups-companies-names"> {{ pgdetails?.pg_company_name }} PG
+                                for {{ pgdetails?.pg_available_for }} </a>
+                            <p class="text-titles mt-2">
+                                {{ pgdetails?.pg_description }}
+                            </p>
+                            <input type="checkbox" class="text-btn" />
+
+                            <div class="buy-fcc">
+                                <div class="row">
+                                    <div class="col-md-3" *ngIf="pgdetails?.pg_deposit_ammount !== null">
+                                        <h6 class="project-titles">Deposit
+                                            Amount</h6>
+                                        <p class="project-text">₹ {{ pgdetails?.pg_deposit_ammount }} </p>
+                                    </div>
+                                    <div class="col-md-3 border-add" *ngIf="pgdetails?.pg_maintenance === null">
+                                        <h6
+                                            class="project-titles">Maintenance</h6>
+                                        <p class="project-text">-</p>
+                                    </div>
+                                    <div class="col-md-3 border-add" *ngIf="pgdetails?.pg_maintenance !== null">
+                                        <h6
+                                            class="project-titles">Maintenance</h6>
+                                        <p class="project-text">{{ pgdetails?.pg_maintenance }}</p>
+                                    </div>
+                                    <div class="col-md-3 border-add" *ngIf="pgdetails?.pg_notice_period !== null">
+                                        <h6 class="project-titles">Notice
+                                            Period</h6>
+                                        <p class="project-text">{{ pgdetails?.pg_notice_period }}</p>
+                                    </div>
+                                    <div class="col-md-3 border-add" *ngIf="pgdetails?.pg_electricity_charges === null">
+                                        <h6 class="project-titles">Electricity
+                                            Charges</h6>
+                                        <p class="project-text">-</p>
+                                    </div>
+                                    <div class="col-md-3 border-add" *ngIf="pgdetails?.pg_electricity_charges !== null">
+                                        <h6 class="project-titles">Electricity
+                                            Charges</h6>
+                                        <p class="project-text">{{ pgdetails?.pg_electricity_charges }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="buy-fcc">
+                                <div class="row">
+                                    <div class="col-md-3" *ngIf="pgdetails?.pg_food_availability === '0'">
+                                        <h6 class="project-titles">Food Availability</h6>
+                                        <p class="project-text">Veg Only</p>
+                                    </div>
+                                    <div class="col-md-3" *ngIf="pgdetails?.pg_food_availability === '1'">
+                                        <h6 class="project-titles">Food Availability</h6>
+                                        <p class="project-text">Non Veg Only</p>
+                                    </div>
+                                    <div class="col-md-3" *ngIf="pgdetails?.pg_food_availability === '2'">
+                                        <h6 class="project-titles">Food Availability</h6>
+                                        <p class="project-text">Veg & Non Veg</p>
+                                    </div>
+                                    <div class="col-md-3 border-add" *ngIf="pgdetails?.pg_ac_rooms === '1'">
+                                        <h6 class="project-titles">AC Rooms</h6>
+                                        <p class="project-text">Available</p>
+                                    </div>
+                                    <div class="col-md-3 border-add" *ngIf="pgdetails?.pg_ac_rooms === '0'">
+                                        <h6 class="project-titles">AC Rooms</h6>
+                                        <p class="project-text">Non Available</p>
+                                    </div>
+                                    <div class="col-md-3 border-add" *ngIf="pgdetails?.pg_parking === '1'">
+                                        <h6 class="project-titles">Parking</h6>
+                                        <p class="project-text">Available</p>
+                                    </div>
+                                    <div class="col-md-3 border-add" *ngIf="pgdetails?.pg_power_backup === '1'">
+                                        <h6 class="project-titles">Power
+                                            Backup</h6>
+                                        <p class="project-text">Available</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="buy-fcc">
+                                <div class="row">
+                                    <div class="col-md-3" *ngIf="pgdetails?.pg_available_for !== null">
+                                        <h6 class="project-titles">Available
+                                            for</h6>
+                                        <p class="project-text">{{ pgdetails?.pg_available_for }}</p>
+                                    </div>
+                                    <div class="col-md-3 border-add" *ngIf="pgdetails?.pg_preferred_tenants !== null">
+                                        <h6 class="project-titles">Preferred
+                                            Tenants</h6>
+                                        <p class="project-text">{{ pgdetails?.pg_preferred_tenants }}</p>
+                                    </div>
+                                    <div class="col-md-3 border-add" *ngIf="pgdetails?.pg_total_number_of_beds !== null">
+                                        <h6 class="project-titles">Total Number
+                                            of Beds</h6>
+                                        <p class="project-text">{{ pgdetails?.pg_total_number_of_beds }}</p>
+                                    </div>
+                                    <div class="col-md-3 border-add" *ngIf="pgdetails?.pg_operating_since !== null">
+                                        <h6 class="project-titles">Operating
+                                            Since</h6>
+                                        <p class="project-text">{{ pgdetails?.pg_operating_since }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pg-prop-details__info__uspdetails">
+                                All facilities are available.
+                            </div>
+
+                            <div class="save-get-no">
+                                <button class="contact-buy-btn"> View Phone
+                                    No.</button>
+
+                                <button class="contact-ow"> Contact Owner
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pg_Common">
+        <div class="container">
+            <div class="common_box">
+              <h3 class="groups-companies-names">Occupancy Options in {{ pgdetails?.pg_company_name }}</h3>
+
+              <ngx-slick-carousel class="carousel project_slider mt-2"
+                  #slickModal="slick-carousel"
+                  [config]="slideConfig2">
+
+                  <div ngxSlickItem class="slide" *ngFor="let pgoccupancy of pgdetails?.pgOccupancy">
+                      <div class="properties_buy_rent_box">
+                          <div class="buy_rent_mg">
+                              <img
+                                  src="{{ pgoccupancy.pg_main_images}}"
+                                  alt class="img-fluid">
+                          </div>
+                          <div class="buy_rent_intro">
+                              <a routerLink>
+                                  <h3>{{ pgoccupancy.occupancy_type }}</h3>
+                                  <ul class="occupancy_card">
+                                      <li class="occupancy">
+                                          <div
+                                              class="occupancy_list">Rent</div>
+                                          <div class="occupancy_detail">
+                                              <p>₹ {{ pgoccupancy.pg_rent }} <br> <span>(Food
+                                                      Included)</span></p>
+                                          </div>
+                                      </li>
+                                      <li class="occupancy" *ngIf="pgoccupancy.room_dimension !== null">
+                                          <div class="occupancy_list">Room
+                                              Dimension</div>
+                                          <div class="occupancy_detail">
+                                              <p>{{ pgoccupancy.room_dimension }}</p>
+                                          </div>
+                                      </li>
+                                      <li class="occupancy" *ngIf="pgoccupancy.rooms_available !== null">
+                                          <div class="occupancy_list">Rooms
+                                              Available</div>
+                                          <div class="occupancy_detail">
+                                              <p>{{ pgoccupancy.rooms_available }}</p>
+                                          </div>
+                                      </li>
+                                      <h3>Amenities</h3>
+                                      <ul class="amenit_occ">
+                                          <li>AC </li>
+                                          <li>Washroom/Toilet </li>
+                                          <li>Cupboard </li>
+                                          <li>Cot </li>
+                                          <li>Mattress </li>
+                                          <li>Side Table </li>
+                                      </ul>
+                                  </ul>
+                              </a>
+                              <button class="contact-buy-btn">View Phone
+                                  No.</button>
+                          </div>
+                      </div>
+                  </div>
+              </ngx-slick-carousel>
+
+                <h3 class="groups-companies-names">Common Area and Amenities</h3>
+                <div class="row">
+                    <div class="col-lg-8 mt-2">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="amenit_box">
+                                    <img
+                                        src="../../../assets/images/wifi.png"
+                                        alt class="img-fluid">
+                                </div>
+                                <p class="amenit_title">Wifi</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="amenit_box">
+                                    <img
+                                        src="../../../assets/images/Room-Cleaning.png"
+                                        alt class="img-fluid">
+                                </div>
+                                <p class="amenit_title">Room Cleaning Service</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="amenit_box">
+                                    <img
+                                        src="../../../assets/images/amenit8.png"
+                                        alt class="img-fluid">
+                                </div>
+                                <p class="amenit_title">Parking</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="amenit_box">
+                                    <img
+                                        src="../../../assets/images/Laundry.png"
+                                        alt class="img-fluid">
+                                </div>
+                                <p class="amenit_title">Laundry</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="amenit_box">
+                                    <img
+                                        src="../../../assets/images/fridge.png"
+                                        alt class="img-fluid">
+                                </div>
+                                <p class="amenit_title">Fridge</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="amenit_box">
+                                    <img
+                                        src="../../../assets/images/Water-Cooler.png"
+                                        alt class="img-fluid">
+                                </div>
+                                <p class="amenit_title">Water Cooler</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="amenit_box">
+                                    <img
+                                        src="../../../assets/images/warden.png"
+                                        alt class="img-fluid">
+                                </div>
+                                <p class="amenit_title">Warden</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <ngx-slick-carousel class="carousel pg_slid"
+                        #slickModal="slick-carousel"
+                        [config]="slideConfig1">
+                        <div ngxSlickItem class="slide">
+                            <img src="../../../assets/images/pg1.jpg"
+                                alt
+                                class="img-fluid">
+                        </div>
+                        <div ngxSlickItem class="slide">
+                            <img src="../../../assets/images/pg2.jpg"
+                                alt
+                                class="img-fluid">
+                        </div>
+                        <div ngxSlickItem class="slide">
+                            <img src="../../../assets/images/pg3.jpg"
+                                alt
+                                class="img-fluid">
+                        </div>
+                        <div ngxSlickItem class="slide">
+                            <img src="../../../assets/images/pg4.jpg"
+                                alt
+                                class="img-fluid">
+                        </div>
+                        <div ngxSlickItem class="slide">
+                            <img src="../../../assets/images/pg5.jpg"
+                                alt
+                                class="img-fluid">
+                        </div>
+                    </ngx-slick-carousel>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="pg_Common">
+        <div class="container">
+            <div class="common_box">
+                <h3 class="groups-companies-names">Food and Kitchen</h3>
+                <div class="row">
+                    <div class="col-lg-8 mt-2">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="amenit_box">
+                                    <img
+                                        src="../../../assets/images/wifi.png"
+                                        alt class="img-fluid">
+                                </div>
+                                <p class="amenit_title">Wifi</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="amenit_box">
+                                    <img
+                                        src="../../../assets/images/Room-Cleaning.png"
+                                        alt class="img-fluid">
+                                </div>
+                                <p class="amenit_title">Room Cleaning Service</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="amenit_box">
+                                    <img
+                                        src="../../../assets/images/amenit8.png"
+                                        alt class="img-fluid">
+                                </div>
+                                <p class="amenit_title">Parking</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="amenit_box">
+                                    <img
+                                        src="../../../assets/images/Laundry.png"
+                                        alt class="img-fluid">
+                                </div>
+                                <p class="amenit_title">Laundry</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="amenit_box">
+                                    <img
+                                        src="../../../assets/images/fridge.png"
+                                        alt class="img-fluid">
+                                </div>
+                                <p class="amenit_title">Fridge</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="amenit_box">
+                                    <img
+                                        src="../../../assets/images/Water-Cooler.png"
+                                        alt class="img-fluid">
+                                </div>
+                                <p class="amenit_title">Water Cooler</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="amenit_box">
+                                    <img
+                                        src="../../../assets/images/warden.png"
+                                        alt class="img-fluid">
+                                </div>
+                                <p class="amenit_title">Warden</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <ngx-slick-carousel class="carousel pg_slid"
+                        #slickModal="slick-carousel"
+                        [config]="slideConfig1">
+                        <div ngxSlickItem class="slide">
+                            <img src="../../../assets/images/pg1.jpg"
+                                alt
+                                class="img-fluid">
+                        </div>
+                        <div ngxSlickItem class="slide">
+                            <img src="../../../assets/images/pg2.jpg"
+                                alt
+                                class="img-fluid">
+                        </div>
+                        <div ngxSlickItem class="slide">
+                            <img src="../../../assets/images/pg3.jpg"
+                                alt
+                                class="img-fluid">
+                        </div>
+                        <div ngxSlickItem class="slide">
+                            <img src="../../../assets/images/pg4.jpg"
+                                alt
+                                class="img-fluid">
+                        </div>
+                        <div ngxSlickItem class="slide">
+                            <img src="../../../assets/images/pg5.jpg"
+                                alt
+                                class="img-fluid">
+                        </div>
+                    </ngx-slick-carousel>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+</main>

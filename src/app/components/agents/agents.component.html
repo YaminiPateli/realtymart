@@ -1,0 +1,293 @@
+<main>
+    <section class="agent-details-banner position-relative">
+        <div class="container">
+            <div class="banner-small">
+                <h1 class="banner_title">Agents</h1>
+                <!-- <p class="banner_small">New Projects in Ahmedabad</p> -->
+            </div>
+        </div>
+    </section>
+
+    <section class="all-projects-agents">
+        <div class="container">
+            <div *ngIf="agentlist.length === 0"
+                style="text-align: center; padding: 30px;">
+                <span style="font-size: larger;font-weight: 800;">Data Not
+                    Found!</span>
+            </div>
+            <div class="all-project-box" *ngIf="agentlist.length > 0">
+                <!-- <ul class="projection nav-pills mb-3" id="pills-tab"
+                    role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="project-link active"
+                            id="pills-topAgent-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-topAgents" type="button"
+                            role="tab" aria-controls="pills-topAgents"
+                            aria-selected="true">Agents
+                            ({{agentlist.length}})</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="project-link"
+                            id="pills-AgentProperties-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-AgentProperties"
+                            type="button" role="tab"
+                            aria-controls="pills-AgentProperties"
+                            aria-selected="false">Properties</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="project-link"
+                            id="pills-AgentProjectNew-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-AgentProjectNew"
+                            type="button" role="tab"
+                            aria-controls="pills-AgentProjectNew"
+                            aria-selected="false">New Projects
+                            ({{agentprojectcount}})</button>
+                    </li>
+                </ul> -->
+                <div  id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-topAgents"
+                        role="tabpanel" aria-labelledby="pills-topAgent-tab">
+                        <div class="head-projections justify-content-end">
+                            <!-- <div class="new-projection">
+                                <p>Top Agents dealing in Ahmedabad</p>
+                            </div> -->
+                           
+                            <!-- <div class="tabs_sortby pt-4">
+                                <div class="tabs_sortby--title"
+                                    (click)="toggleDropdown()">Sort by: <span>{{
+                                        selectedSortOption }}</span></div>
+                                <div class="tabs_sortby__dd box-shadow"
+                                    [class.tabs_sortby__dd--show]="isDropdownOpen">
+                                    <ul class="tabs_sortby__dd__list">
+                                        <li *ngFor="let option of sortOptions"
+                                            class="tabs_sortby__dd__list--item"
+                                            [class.active]="option === selectedSortOption"
+                                            (click)="changeSortOption(option)">
+                                            {{ option }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="project-detail-box"
+                            *ngFor="let agentlist of agentlist">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <img src="{{ agentlist.agent_logo }}"
+                                        alt="VITAL-SPACE-LOGO" class="img-fluid">
+                                </div>
+                                <div class="col-lg-7 col-md-12 col-sm-12">
+                                    <div class="name-of-companys">
+                                        <a
+                                            routerLink="/agents-details/{{ agentlist.agentUrl }}">{{
+                                            agentlist.company_name }}</a>
+                                    </div>
+
+                                    <div class="row show_work">
+                                        <div class="col-md-3 border-right">
+                                            <h6>{{agentlist.propertyForSell}}</h6>
+                                            <p class="project-text">Properties
+                                                For Sale</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h6>{{agentlist.propertyForRent}}</h6>
+                                            <p class="project-text">Properties
+                                                For rent</p>
+                                        </div>
+                                        <!-- <div class="col-md-3 border-right">
+                                            <h6>35</h6>
+                                            <p class="project-text">Deals
+                                                Closed</p>
+                                        </div> -->
+                                        <!-- <div class="col-md-3">
+                                            <h6>7</h6>
+                                            <p class="project-text">Team
+                                                Members</p>
+                                        </div> -->
+                                    </div>
+
+                                    <!-- <div class="detail-new-ponts">
+                                        <h2>Dealing In:</h2>
+                                        <p>{{ agentlist.deal_in }}</p>
+                                    </div> -->
+                                    <div class="detail-new-ponts" *ngIf="agentlist.sellpropertycount !== null">
+                                        <h2>Properties for Sale:</h2>
+                                        <p>{{agentlist.sellpropertycount}}
+                                        </p>
+                                    </div>
+                                    <div class="detail-new-ponts">
+                                        <h2>Address:</h2>
+                                        <p>{{ agentlist.address }}</p>
+                                    </div>
+                                    <!-- <div class="detail-new-ponts">
+                                        <h2>Sale Price Range:</h2>
+                                        <p>₹ {{ agentlist.sale_price_range
+                                            }}</p>
+                                    </div> -->
+                                    <div class="detail-new-ponts">
+                                        <h2>Operating Since:</h2>
+                                        <p>{{ agentlist.operating_since }}</p>
+                                    </div>
+                                    <!-- Read more implement ............ -->
+                                </div>
+                                <div class="col-lg-3 col-md-12 col-sm-12"
+                                    *ngIf="agentlist && agentlist.is_certified === '1'">
+                                    <div class="certified-details">
+                                        <h3 class="gold-certified"><span
+                                                class="me-2"><img
+                                                    src="../../../assets/images/Layer1.png"
+                                                    alt></span>Crisil Certified
+                                            Gold Agent</h3>
+                                        <div class="certified-infos">
+                                            <h3 class="Certified-head"><span
+                                                    class="me-2"><img
+                                                        src="../../../assets/images/Layer2.png"
+                                                        alt></span>Certified
+                                                Agent</h3>
+                                            <ul class="certified-bullates">
+                                                <li><span
+                                                        class="rg-tick">√</span>Trusted
+                                                    by Users</li>
+                                                <li><span
+                                                        class="rg-tick">√</span>Genuine
+                                                    Listings</li>
+                                                <li><span
+                                                        class="rg-tick">√</span>Market
+                                                    Expert</li>
+                                            </ul>
+                                        </div>
+                                        <a href class="company-contact d-block mb-2">Contact
+                                            Now</a>
+                                        <a href class="view-phone d-block">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-AgentProperties"
+                        role="tabpanel"
+                        aria-labelledby="pills-AgentProperties-tab">
+                        <p>launching very soon...</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-AgentProjectNew"
+                        role="tabpanel"
+                        aria-labelledby="pills-AgentProjectNew-tab">
+                        <section class="ahmedabad-all-builders">
+                            <div class="container">
+                                <div class="topahmedabad"
+                                    *ngFor="let allbuilderproject of agentproject">
+                                    <div class="groups-companies">
+                                        <div class="row">
+                                            <div
+                                                class="col-lg-2 col-md-5 col-sm-12">
+                                                <div class="group-logo">
+                                                    <img
+                                                        src="{{ allbuilderproject.agent_logo }}"
+                                                        alt class="img-fluid">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="col-lg-7 col-md-7 col-sm-12">
+                                                <a
+                                                    href="/agents-details/{{ allbuilderproject.agentUrl }}"
+                                                    class="groups-companies-names">{{
+                                                    allbuilderproject.company_name
+                                                    }}</a>
+                                                <p class="opnesince">Operating
+                                                    since {{
+                                                    allbuilderproject.year
+                                                    }}</p>
+                                                <div class="row">
+                                                    <div
+                                                        class="col-lg-4 col-md-6 col-sm-12">
+                                                        <h6
+                                                            class="project-titles">DEALS
+                                                            IN:</h6>
+                                                        <p
+                                                            class="project-text">{{
+                                                            allbuilderproject.deal_in
+                                                            }}</p>
+                                                    </div>
+                                                    <!-- <div class="col-lg-4 col-md-6 col-sm-12 mt-lg-0 mt-md-0 mt-sm-3 info-project">
+                                                    <h6 class="project-titles">TOTAL PROJECTS</h6>
+                                                    <p class="project-text">{{ allbuilderproject.total_projects }} Projects in Ahmedabad</p>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-12 mt-lg-0 mt-md-3 mt-sm-3 info-project">
+                                                    <h6 class="project-titles">COMPLETED PROJECTS</h6>
+                                                    <p class="project-text">{{ allbuilderproject.completed_projects }} Completed</p>
+                                                </div> -->
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="col-lg-3 col-md-12 col-sm-12 mt-lg-0 mt-md-3 mt-sm-3 info-project">
+                                                <p class="text-titles"
+                                                    [innerHTML]="allbuilderproject.prjdescription"></p>
+                                                <input type="checkbox"
+                                                    class="text-btn" />
+                                            </div>
+                                        </div>
+                                        <div class="builders-ahm-property">
+                                            <div class="show-ahm-box">
+                                                <a
+                                                    href="/project-details/{{ projects.project_name }}/{{ projects.project_id }}"
+                                                    class="links-taps"
+                                                    *ngFor="let projects of allbuilderproject.projects">
+                                                    <div class="ahow-ahm-items">
+                                                        <div
+                                                            class="property-details">
+                                                            <div
+                                                                class="img-property">
+                                                                <img
+                                                                    src="{{ projects.project_images }}"
+                                                                    class="img-fluid"
+                                                                    alt>
+                                                            </div>
+                                                            <div
+                                                                class="deatles-areas">
+                                                                <h5
+                                                                    class="property-names">{{
+                                                                    projects.project_name}}</h5>
+                                                                <p
+                                                                    class="location-property">{{
+                                                                    projects.address
+                                                                    }}</p>
+                                                                <p
+                                                                    class="property-type">{{
+                                                                    projects.property_bhk
+                                                                    }}<br>
+                                                                    <span
+                                                                        class="fw-bold">
+                                                                        ₹ {{
+                                                                        projects.price
+                                                                        }}</span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="all-over-propertys">
+                                            <div class="all-projects">
+                                                <a
+                                                    href="/builder-property-listing/{{allbuilderproject.user_id}}/all">SEE
+                                                    ALL PROJECTS</a>
+                                            </div>
+                                            <div class="explor-builders">
+                                                <a
+                                                    href="/agents-details/{{ allbuilderproject.user_id }}/{{ allbuilderproject.company_name }}">EXPLORE
+                                                    BUILDER</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

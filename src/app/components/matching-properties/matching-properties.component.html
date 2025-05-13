@@ -1,0 +1,1002 @@
+<main>
+  <section class="matching-banner position-relative">
+    <div class="container">
+      <div class="banner-action">
+        <h1 class="banner_title">Search Properties</h1>
+      </div>
+    </div>
+  </section>
+  <!-- <section class="save-search">
+    <div class="container">
+        <div class="save-search-box">
+            <h2 class="ss-head">Save Your Search</h2>
+            <p class="ss-title">Get email alerts for the latest properties related to your save</p>
+
+            <div class="edit-search-opp">
+                <h4>Edit Your Search</h4>
+                <div class="editfunctionalitys">
+                    <p><span><img src="../../../assets/images/right.png" alt=""></span>Ahmedabad</p>
+                    <p><span><img src="../../../assets/images/right.png" alt=""></span>Flat</p>
+                    <p><span><img src="../../../assets/images/right.png" alt=""></span>₹ 1,000 - ₹ 5,000</p>
+                    <p><span><img src="../../../assets/images/right.png" alt=""></span>1 BHK</p>
+                    <a href="" class="tap-edit">Edit</a>
+                    <button class="edit-search-btn">Save Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+  <section class="property-off">
+    <div class="container">
+      <!-- <div class="row">
+            <div class="col-lg-6 col-ms-6 col-sm-12 ">
+                <div class="left-mp-off">
+                    <div class="victory-box">
+                        <div class="victory-image">
+                            <img src="../../../assets/images/Vector1.png" alt="" class="img-fluid">
+                        </div>
+                        <div class="victory-info">
+                            <p>Pay Rent with Credit Card <strong>Earn upto 5% Cashback/ Reward Points</strong></p>
+                            <a href="">Pay Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-ms-6 col-sm-12">
+                <div class="right-mp-off">
+                    <div class="victory-box">
+                        <div class="victory-image">
+                            <img src="../../../assets/images/Vector2.png" alt="" class="img-fluid">
+                        </div>
+                        <div class="victory-info">
+                            <p>Enjoy Up to <strong>50% Off on Owner Ad Packages</strong></p>
+
+
+                            <a href="">Know More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+      <div class="row justify-content-end">
+        <div class="col-lg-2 col-md-3 col-sm-12 mb-2">
+          <div class="tabs_sortby pt-4">
+            <div class="tabs_sortby--title" (click)="toggleDropdown()">
+              Sort by: <span>{{ selectedSortOption }}</span>
+            </div>
+            <div
+              class="tabs_sortby__dd box-shadow z-1"
+              [class.tabs_sortby__dd--show]="isDropdownOpen"
+            >
+              <ul class="tabs_sortby__dd__list">
+                <li
+                  *ngFor="let option of sortOptions"
+                  class="tabs_sortby__dd__list--item"
+                  [class.active]="option === selectedSortOption"
+                  (click)="changeSortOption(option)"
+                >
+                  {{ option }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Display "No property found" when searchdata is empty -->
+      <div class="text-center" *ngIf="searchdata.length === 0">
+        <strong>No Property Found.</strong>
+      </div>
+
+      <!-- Display properties when searchdata has items -->
+      <div
+        class="maching-myproperties"
+        *ngFor="let item of searchdata.slice(0, initialListCount)"
+      >
+        <!-- <div class="maching-myproperties" *ngFor="let item of searchdata | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }; let i = index"> -->
+        <div class="row">
+          <div class="col-lg-3 col-md-5 col-sm-12">
+            <div class="request-images">
+              <ngx-slick-carousel
+                class="carousel"
+                #slickModal="slick-carousel"
+                [config]="slideConfig1"
+              >
+                <div
+                  ngxSlickItem
+                  class="slide"
+                  *ngFor="let item1 of item.property_img"
+                >
+                  <a href="{{ item1 }}" data-fancybox="gallery">
+                    <img src="{{ item1 }}" alt="Gallery" class="img-fluid" />
+                  </a>
+                </div>
+              </ngx-slick-carousel>
+
+              <span *ngIf="item.property_img.length - 1 > 0" class="txt"
+                >{{ item.property_img.length - 1 }}+ Photos</span
+              >
+            </div>
+            <div class="property-verified">
+              <img src="../../../assets/images/verified-property.png" alt="" />
+            </div>
+          </div>
+
+          <div class="col-lg-9 col-md-8 col-sm-12">
+            <div class="wich-location pb-2">
+              <a
+                routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{
+                  item.propertysecondUrlPart
+                }}"
+                class="tap-location"
+              >
+                <h3 class="groups-companies-names">
+                  {{ item.property_locality }}
+                </h3>
+                <strong
+                  >{{ item.property_for }} {{ item.property_type }}
+                  <span *ngIf="item.bedroom !== null"
+                    >{{ item.bedroom }} BHK</span
+                  >
+                  in {{ item.projectdetails.project_name }}
+                </strong>
+              </a>
+              <!-- <p class="posted-day">Posted: {{ item.created_at |
+                                date : 'yyyy-MM-dd' }}</p> -->
+
+              <a
+                class="our_share"
+                data-bs-toggle="modal"
+                data-bs-target="#shareModal"
+                title="Share"
+                (click)="
+                  getUrl(item.propertyfirstUrlPart, item.propertysecondUrlPart)
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_1748_317)">
+                    <path
+                      d="M13.5531 11.9146V16.892L23.2969 9.02799L13.5531 0.993896V6.05236C6.45623 6.05241 0.703125 11.7999 0.703125 18.8899V23.006C1.4078 16.7269 6.69923 11.9649 13.0237 11.9184L13.5531 11.9146Z"
+                      stroke="#E53726"
+                      stroke-width="1.40625"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1748_317">
+                      <rect width="24" height="24" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+            </div>
+            <div class="facility_wrapper">
+              <div *ngIf="item.property_price_show == 0">
+                <h6 class="facility_title">Price</h6>
+                <p class="project-text">
+                  ₹
+                  {{
+                    item.total_price !== null
+                      ? item.total_price
+                      : item.rent_amount.toLocaleString()
+                  }}
+                </p>
+              </div>
+              <div
+                class
+                *ngIf="item.floor_no !== null && item.total_floor !== null"
+              >
+                <h6 class="facility_title">Floor</h6>
+                <p class="project-text">
+                  {{ item.floor_no }} out of {{ item.total_floor }} Floor
+                </p>
+                <!-- <p class="project-text" *ngIf="item.property_type === '1' || item.property_type >= 10 && item.property_type <= 15">{{ item.property_bhk }}</p> -->
+              </div>
+              <div class *ngIf="item.furnishing_status !== null">
+                <h6 class="facility_title">furnishing</h6>
+                <p class="project-text">{{ item.furnishing_status }}</p>
+              </div>
+              <div class *ngIf="item.bathroom !== null">
+                <h6 class="facility_title">Bathroom</h6>
+                <p class="project-text">{{ item.bathroom }}</p>
+              </div>
+              <div class="part-areas" *ngIf="item.bedroom !== null">
+                <h6 class="facility_title">Bedroom</h6>
+                <p class="project-text">{{ item.bedroom }}</p>
+              </div>
+              <div class *ngIf="item.facing !== null">
+                <h6 class="facility_title">facing</h6>
+                <p class="project-text">{{ item.facing }}</p>
+              </div>
+              <div class *ngIf="item.lift !== null">
+                <h6 class="facility_title">Lift</h6>
+                <p class="project-text">{{ item.lift }}</p>
+              </div>
+              <div class="part-areas" *ngIf="item.car_parking !== null">
+                <h6 class="facility_title">Car Parking</h6>
+                <p class="project-text">{{ item.car_parking }}</p>
+              </div>
+            </div>
+            <!-- <p class="each-person">For each person RS.2500 ::::3 roommates needed in Jivrajpark.</p> -->
+
+            <!-- <div class="save-get-no">
+                            <div class="get-no">
+                                <a href="">Get Phone no.</a>
+                            </div>
+                            <div class="save-bt">
+                                <a href="">Save</a>
+                            </div>
+                        </div> -->
+            <div class="save-get-no">
+              <div class="get-no" *ngIf="item.property_price_show == 1">
+                <!-- <button class="contact-buy-btn mt-4" data-bs-toggle="modal" data-bs-target="#get-phone-no">Get Phone no.</button> -->
+                <a
+                  href=""
+                  data-bs-toggle="modal"
+                  data-bs-target="#get-owner"
+                  (click)="fetchProperty(item)"
+                  >Get a Quote</a
+                >
+              </div>
+              <div class="owner-cc">
+                <button
+                  class="contact-buy-btn"
+                  data-bs-toggle="modal"
+                  (click)="contactowner(item.propertysecondUrlPart)"
+                  data-bs-target="#contact-owner"
+                >
+                  CONTACT OWNER
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-lg-2 col-md-12 col-sm-12">
+                        <div class="price-maching">
+                            <p class="our-price" *ngIf="item.property_price_show == '0'">₹ {{ item.total_price !==null ? item.total_price : item.rent_amount }}</p>
+                            <a href="">See other Charges</a>
+
+                            <h6 class="owner-name"><span>Owner</span><br> {{
+                                item.owner_name}}</h6>
+
+                        </div>
+                    </div> -->
+        </div>
+      </div>
+      <div class="loading-spinner" *ngIf="loading">
+        <div class="spinner-border text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      <!-- <div class="pagination-container">
+              <button (click)="previousPageGroup()" [disabled]="visiblePageStart === 1">«</button>
+
+              <button *ngFor="let page of getVisiblePages()"
+                      [class.active]="page === currentPage"
+                      (click)="goToPage(page)">
+                {{ page }}
+              </button>
+
+              <button (click)="nextPageGroup()"
+                      [disabled]="visiblePageStart + visiblePageCount - 1 >= getTotalPages()">»</button>
+            </div> -->
+      <!-- <div class="pagination-controls">
+              <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+              <span>Page {{ currentPage }} of {{ getTotalPages() }}</span>
+              <button (click)="nextPage()" [disabled]="currentPage === getTotalPages()">Next</button>
+            </div> -->
+
+      <!-- <div class="sponsored">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    <a href="" class="links-taps">
+                        <div class="sponsored-box">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-12 col-sm-12" >
+                                    <div class="sponsored-image">
+                                    <img src="../../../assets/images/Sponsored.png" alt="" class="img-fluid">
+                                    <p class="sponsored-text">Sponsored</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-md-12 col-sm-12">
+                                    <div class="right-box-sponsored">
+                                        <div class="sponsored-details">
+                                            <div class="sponsored-side-box">
+                                             <div class="left-box">
+                                                 <h5 class="property-names">Swati Crimson</h5>
+                                                 <p class="location-property">Thaltej, Ahmedabad</p>
+                                             </div>
+                                             <div class="right-box">
+                                                 <p class="marketed">Marketed by <br>Swati Procon</p>
+                                             </div>
+                                            </div>
+                                         </div>
+                                         <p class="sponsored-reat"><strong>Dholera SIR</strong></p>
+                                         <p class="plots-price">Residential Plots <strong>₹ 5 Lac</strong> onwards</p>
+
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                    </a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    <a href="" class="links-taps">
+                        <div class="sponsored-box">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-12 col-sm-12">
+                                    <div class="sponsored-image">
+                                    <img src="../../../assets/images/Sponsored.png" alt="" class="img-fluid">
+                                    <p class="sponsored-text">Sponsored</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-md-12 col-sm-12">
+                                    <div class="right-box-sponsored">
+                                        <div class="sponsored-details">
+                                            <div class="sponsored-side-box">
+                                             <div class="left-box">
+                                                 <h5 class="property-names">Swati Crimson</h5>
+                                                 <p class="location-property">Thaltej, Ahmedabad</p>
+                                             </div>
+                                             <div class="right-box">
+                                                 <p class="marketed">Marketed by <br>Swati Procon</p>
+                                             </div>
+                                            </div>
+                                         </div>
+                                         <p class="sponsored-reat"><strong>Dholera SIR</strong></p>
+                                         <p class="plots-price">Residential Plots <strong>₹ 5 Lac</strong> onwards</p>
+
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                    </a>
+                </div>
+            </div>
+        </div> -->
+    </div>
+  </section>
+
+  <div
+    class="modal fade"
+    id="contact-owner"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div
+      class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable"
+    >
+      <div class="modal-content">
+        <div class="modal-header sign-in-box">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <h2 class="fill_one">Fill out this one - time contact form</h2>
+          <p class="detail_share">
+            We will share advertiser's details over email
+          </p>
+          <div class="contact-form__prjInfo prj-top-info">
+            <div class="contact-form__prjInfo__fig">
+              <img
+                src="{{ contact?.property?.property_main_img }}"
+                class="contact-form__prjInfo__fig--graphic"
+              />
+            </div>
+            <div class="contact-form__prjInfo__name">
+              {{ contact?.property?.project_name }}
+            </div>
+            <div class="contact-form__prjInfo__loc">
+              {{ contact?.property?.property_locality }}
+            </div>
+            <div class="contact-form__prjInfo__content">
+              <div
+                class="contact-form__prjInfo__bhk"
+                *ngIf="contact?.property?.bedroom !== null"
+              >
+                {{ contact?.property?.bedroom }} BHK
+              </div>
+              <div
+                class="contact-form__prjInfo__bhk"
+                *ngIf="contact?.property?.property_typeName !== null"
+              >
+                {{ contact?.property?.property_type }}
+              </div>
+              <!-- <div class="contact-form__prjInfo__bhk">2 BHK Flats</div> -->
+              <div
+                class="contact-form__prjInfo__price"
+                *ngIf="contact?.property?.property_price_show == '0'"
+              >
+                <span>
+                  ₹
+                  {{
+                    contact?.property?.total_price !== null
+                      ? contact?.property?.total_price
+                      : contact?.property?.rent_amount.toLocaleString()
+                  }}</span
+                >
+              </div>
+            </div>
+          </div>
+          <form (submit)="is_token ? submitForm() : openOTPModal()">
+            <div class="mt-3">
+              <input
+                type="text"
+                id="Aname"
+                [(ngModel)]="formData.username"
+                [disabled]="is_token"
+                name="name"
+                placeholder="Name"
+                (input)="validateName($event)"
+                (keypress)="validateCharInput($event)"
+                required
+                class="gold-form-input my-0"
+              />
+              <div *ngIf="nameError" class="mgs_error">Please enter name.</div>
+            </div>
+            <div class="mt-3">
+              <input
+                type="mail"
+                id="useremail"
+                [(ngModel)]="formData.useremail"
+                [disabled]="is_token"
+                (blur)="validateEmail($event)"
+                name="useremail"
+                placeholder="Email"
+                required
+                class="gold-form-input my-0"
+              />
+              <div *ngIf="emailError" class="mgs_error">
+                Please enter a valid email address.
+              </div>
+            </div>
+
+            <div class="mt-3">
+              <div class="row">
+                <!-- <div class="col-md-4">
+                            <select
+                              name="number-code"
+                              id="number-code"
+                              class="gold-form-input  my-0"
+                            >
+                              <option value="+91">+91</option>
+                              <option value="USA: +1">+1</option>
+                              <option value="UK: +44">+44</option>
+                              <option value="Mexico: +52">+52</option>
+                              <option value="China: +86">+86</option>
+                            </select>
+                          </div> -->
+                <div class="d-flex">
+                  <input
+                    type="tel"
+                    [(ngModel)]="formData.contact_no"
+                    id="goldNum"
+                    maxlength="10"
+                    name="contact_no"
+                    maxlength="10"
+                    [disabled]="is_token"
+                    placeholder="Mobile No."
+                    required
+                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                    (keypress)="validateNumberInput($event)"
+                    (blur)="validatePhoneNumber($event)"
+                    class="gold-form-input my-0"
+                  />
+                  <!-- <span
+                              class="verify-label"
+                              (click)="openOTPModal()"
+                              *ngIf="formData.contact_no && !phoneError"
+                              style="cursor: pointer; color: #ff5444; font-weight: bold; margin-left: 10px;"
+                            >
+                              Verify
+                            </span> -->
+                </div>
+                <div *ngIf="phoneError" class="mgs_error">
+                  Please enter a valid 10-digit number.
+                </div>
+              </div>
+            </div>
+            <div class="check-compare mt-3">
+              <input
+                type="checkbox"
+                [(ngModel)]="formData.termsAccepted"
+                [disabled]="is_token"
+                (change)="onTermsChange($event)"
+                name="termsAccepted"
+                id="compare"
+                value="compare add"
+                class="mycheck"
+              />
+              <label
+                for="compare"
+                class="compares"
+                style="display: inline-flex; gap: 5px"
+                >I Agree to realtymart
+                <!-- <span class="d-block"
+                          ><a
+                            routerlink="../terms-conditions"
+                            href="/terms-conditions"
+                            >Terms of Use</a
+                          ></span> -->
+              </label>
+              <br />
+            </div>
+            <div *ngIf="termsError" class="mgs_error">
+              Please agree to the terms and conditions.
+            </div>
+
+            <button type="submit" class="pp-form__cta" [disabled]="emailError">
+              {{ is_token ? "Submit Enquiry" : "Continue" }}
+            </button>
+          </form>
+          <!-- <form (submit)="submitForm()">
+                    <input
+                      type="text"
+                      id="Aname"
+                      name="username"
+                      placeholder="Name"
+                      [(ngModel)]="formData.username"
+                      required
+                      class="gold-form-input"
+                    />
+                    <input
+                      type="text"
+                      id="propertyid"
+                      name="propertyid"
+                      placeholder="propertyid"
+                      value="{{ contact?.property?.id }}"
+                      [(ngModel)]="formData.propertyid"
+                      required
+                      class="gold-form-input"
+                      />
+
+
+                    <input
+                      type="email"
+                      id="usermail"
+                      [(ngModel)]="formData.useremail"
+                      required
+                      name="usermail"
+                      placeholder="Email"
+                      class="gold-form-input"
+                    />
+
+                    <div class="pp-form__field pp-form__field--mobile">
+                      <div class="gold-form-input mb-0">
+                        <select
+                          name="countrycode"
+                          id="ownerISD"
+                          [(ngModel)]="formData.countrycode"
+                          required
+                        >
+                          <option value="IND +91" selected="selected">IND +91</option>
+                        </select>
+                      </div>
+                      <input
+                        type="tel"
+                        id="usernumber"
+                        name="usernumber"
+                        placeholder="Mobile No."
+                        [(ngModel)]="formData.phone_number"
+                        required
+                        class="gold-form-input mb-0"
+                      />
+                    </div>
+
+                    <div class="check-compare">
+                      <input
+                        type="checkbox"
+                        id="compare"
+                        ngModel
+                        name="compare"
+                        required
+                        class="mycheck"
+                      />
+                      <label for="compare" class="compares"
+                        >I Agree to realtymart
+                        <span
+                          ><a routerLink="../terms-conditions">Terms of Use</a></span
+                        > </label
+                      ><br />
+                    </div>
+
+                    <button type="submit" class="pp-form__cta">
+                      Get Contact Details
+                    </button>
+                  </form> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    #otpModel
+    class="modal fade"
+    tabindex="-1"
+    role="dialog"
+    aria-bs-hidden="true"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Verify Your Mobile Number</h5>
+          <button
+            type="button"
+            class="btn-close position-absolute top-0 end-0 mt-3 me-3"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div>
+            You will receive a 4-digit verification code on your registered
+            mobile number.
+          </div>
+          <input
+            type="text"
+            id="otpInput"
+            name="otpInput"
+            placeholder="Enter OTP"
+            [(ngModel)]="formData.otp"
+            (keypress)="validateNumberInput($event)"
+            maxlength="4"
+            style="border-color: #00000029"
+          />
+
+          <div *ngIf="otpError" class="mgs_error">
+            Please enter a valid OTP.
+          </div>
+        </div>
+        <div class="modal-footer border-0 flex-column text-center">
+          <button type="button" class="btn reg_sub" (click)="verifyOTP()">
+            Verify
+          </button>
+          <div>
+            <label
+              *ngIf="!isResendEnabled"
+              class="resend-label mb-3"
+              style="cursor: pointer"
+            >
+              You will receive OTP within
+              <b style="color: #ff5444"> 00:{{ remainingTime }}</b>
+              seconds
+            </label>
+            <div class="mb-3" *ngIf="isResendEnabled">
+              Did not get Verification Code?
+            </div>
+            <span
+              *ngIf="isResendEnabled"
+              style="cursor: pointer; border-bottom: 1px solid grey"
+              (click)="resendOTP()"
+              >Resend Code</span
+            >
+          </div>
+          <!-- <button type="button" [disabled]="!isResendEnabled" class="btn reg_sub" (click)="sendOTPToMobile()">
+            Resend OTP
+          </button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- shareModal -->
+<div
+  class="modal fade"
+  id="shareModal"
+  tabindex="-1"
+  aria-labelledby="shareModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="m-0">Share Property</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="d-flex justify-content-around my-3">
+          <div>
+            <button class="btn">
+              <svg viewBox="0 0 64 64" width="56" height="56">
+                <circle cx="32" cy="32" r="32" fill="#7f7f7f"></circle>
+                <path
+                  d="M17,22v20h30V22H17z M41.1,25L32,32.1L22.9,25H41.1z M20,39V26.6l12,9.3l12-9.3V39H20z"
+                  fill="white"
+                ></path>
+              </svg>
+              <div>Email</div>
+            </button>
+          </div>
+          <div>
+            <button class="btn">
+              <svg viewBox="0 0 64 64" width="56" height="56">
+                <circle cx="32" cy="32" r="32" fill="#25D366"></circle>
+                <path
+                  d="m42.32286,33.93287c-0.5178,-0.2589 -3.04726,-1.49644 -3.52105,-1.66732c-0.4712,-0.17346 -0.81554,-0.2589 -1.15987,0.2589c-0.34175,0.51004 -1.33075,1.66474 -1.63108,2.00648c-0.30032,0.33658 -0.60064,0.36247 -1.11327,0.12945c-0.5178,-0.2589 -2.17994,-0.80259 -4.14759,-2.56312c-1.53269,-1.37217 -2.56312,-3.05503 -2.86603,-3.57283c-0.30033,-0.5178 -0.03366,-0.80259 0.22524,-1.06149c0.23301,-0.23301 0.5178,-0.59547 0.7767,-0.90616c0.25372,-0.31068 0.33657,-0.5178 0.51262,-0.85437c0.17088,-0.36246 0.08544,-0.64725 -0.04402,-0.90615c-0.12945,-0.2589 -1.15987,-2.79613 -1.58964,-3.80584c-0.41424,-1.00971 -0.84142,-0.88027 -1.15987,-0.88027c-0.29773,-0.02588 -0.64208,-0.02588 -0.98382,-0.02588c-0.34693,0 -0.90616,0.12945 -1.37736,0.62136c-0.4712,0.5178 -1.80194,1.76053 -1.80194,4.27186c0,2.51134 1.84596,4.945 2.10227,5.30747c0.2589,0.33657 3.63497,5.51458 8.80262,7.74113c1.23237,0.5178 2.1903,0.82848 2.94111,1.08738c1.23237,0.38836 2.35599,0.33657 3.24402,0.20712c0.99159,-0.15534 3.04985,-1.24272 3.47963,-2.45956c0.44013,-1.21683 0.44013,-2.22654 0.31068,-2.45955c-0.12945,-0.23301 -0.46601,-0.36247 -0.98382,-0.59548m-9.40068,12.84407l-0.02589,0c-3.05503,0 -6.08417,-0.82849 -8.72495,-2.38189l-0.62136,-0.37023l-6.47252,1.68286l1.73463,-6.29129l-0.41424,-0.64725c-1.70875,-2.71846 -2.6149,-5.85116 -2.6149,-9.07706c0,-9.39809 7.68934,-17.06155 17.15993,-17.06155c4.58253,0 8.88029,1.78642 12.11655,5.02268c3.23625,3.21036 5.02267,7.50812 5.02267,12.06476c-0.0078,9.3981 -7.69712,17.06155 -17.14699,17.06155m14.58906,-31.58846c-3.93529,-3.80584 -9.1133,-5.95471 -14.62789,-5.95471c-11.36055,0 -20.60848,9.2065 -20.61625,20.52564c0,3.61684 0.94757,7.14565 2.75211,10.26282l-2.92557,10.63564l10.93337,-2.85309c3.0136,1.63108 6.4052,2.4958 9.85634,2.49839l0.01037,0c11.36574,0 20.61884,-9.2091 20.62403,-20.53082c0,-5.48093 -2.14111,-10.64081 -6.03239,-14.51915"
+                  fill="white"
+                ></path>
+              </svg>
+              <div>WhatsApp</div>
+            </button>
+          </div>
+          <div>
+            <button class="btn">
+              <svg viewBox="0 0 64 64" width="56" height="56">
+                <circle cx="32" cy="32" r="32" fill="#0965FE"></circle>
+                <path
+                  d="M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z"
+                  fill="white"
+                ></path>
+              </svg>
+              <div>Facebook</div>
+            </button>
+          </div>
+          <div>
+            <button class="btn">
+              <svg viewBox="0 0 64 64" width="56" height="56">
+                <circle cx="32" cy="32" r="32" fill="#000000"></circle>
+                <path
+                  d="M 41.116 18.375 h 4.962 l -10.8405 12.39 l 12.753 16.86 H 38.005 l -7.821 -10.2255 L 21.235 47.625 H 16.27 l 11.595 -13.2525 L 15.631 18.375 H 25.87 l 7.0695 9.3465 z m -1.7415 26.28 h 2.7495 L 24.376 21.189 H 21.4255 z"
+                  fill="white"
+                ></path>
+              </svg>
+              <div>Twitter</div>
+            </button>
+          </div>
+        </div>
+        <div class="input-group">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              [value]="dynamicUrl"
+              readonly
+            />
+            <button class="btn btn-outline-secondary" (click)="copyLink($event)">
+              Copy
+            </button>
+            <div
+            class="tooltip m-2"
+            [class.show]="tooltipVisible"
+            style="font-weight: 600;"
+            [ngStyle]="{ top: tooltipPosition.top, left: tooltipPosition.left }"
+          >
+            Copied!
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- shareModal -->
+
+<div
+  class="modal fade"
+  id="get-owner"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable"
+  >
+    <div class="modal-content">
+      <div class="modal-header sign-in-box">
+        <button
+          type="button"
+          class="btn-close"
+          id="getphoneno"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <h2 class="fill_one">Contact</h2>
+        <p class="detail_share">
+          We will share advertiser's details over email
+        </p>
+        <form (submit)="is_token ? submitFormPhone() : openContactOTPModal()">
+          <div class="mt-3">
+            <input
+              type="text"
+              id="Aname"
+              name="contactusername"
+              placeholder="Name"
+              [(ngModel)]="formDataphone.contactusername"
+              [disabled]="is_token"
+              (input)="validateContactName($event)"
+              (keypress)="validateContactCharInput($event)"
+              required
+              class="gold-form-input my-0"
+            />
+            <div *ngIf="nameContactError" class="mgs_error">
+              Please enter name.
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <input
+              type="email"
+              id="usermail"
+              [(ngModel)]="formDataphone.contactuseremail"
+              (blur)="validateContactEmail($event)"
+              required
+              [disabled]="is_token"
+              name="contactusermail"
+              placeholder="Email"
+              class="gold-form-input my-0"
+            />
+            <div *ngIf="emailContactError" class="mgs_error">
+              Please enter a valid email address.
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <!-- <div class="gold-form-input mb-0"> -->
+            <!-- <select name="contactcountrycode" id="ownerISD" [(ngModel)]="formDataphone.contactcountrycode" required>
+                  <option value="+91" selected="selected">+91</option>
+                </select> -->
+            <!-- <select
+                        name="number-code"
+                        id="number-code"
+                        class="gold-form-input  my-0"
+                      >
+                        <option value="+91">+91</option>
+                        <option value="USA: +1">+1</option>
+                        <option value="UK: +44">+44</option>
+                        <option value="Mexico: +52">+52</option>
+                        <option value="China: +86">+86</option>
+                      </select> -->
+            <!-- </div> -->
+
+            <div class="d-flex align-items-center">
+              <input
+                type="tel"
+                id="usernumber"
+                maxlength="10"
+                name="contactcontact_no"
+                placeholder="Mobile No."
+                [(ngModel)]="formDataphone.contactcontact_no"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                (keypress)="validateContactNumberInput($event)"
+                [disabled]="is_token"
+                (blur)="validateContactPhoneNumber($event)"
+                required
+                class="gold-form-input mb-0 my-0"
+              />
+              <!-- <span
+                class="verify-label"
+                (click)="openContactOTPModal()"
+                *ngIf="formDataphone
+                .contactcontact_no && !phoneContactError"
+                style="cursor: pointer; color: #ff5444; font-weight: bold; margin-left: 10px;"
+              >
+                Verify
+              </span> -->
+            </div>
+          </div>
+          <div *ngIf="phoneContactError" class="mgs_error">
+            Please enter a valid 10-digit number.
+          </div>
+
+          <div class="check-compare">
+            <input
+              type="checkbox"
+              id="compare"
+              (change)="onTermsContactChange($event)"
+              [(ngModel)]="formDataphone.termsContactAccepted"
+              name="termsContactAccepted"
+              [disabled]="is_token"
+              required
+              class="mycheck"
+            />
+            <label for="compare" class="compares"
+              >I Agree to realtymart</label
+            >
+            <!-- <span><a routerLink="../terms-conditions">Terms of Use</a></span> <br /> -->
+          </div>
+          <div *ngIf="termsContactError" class="mgs_error">
+            Please agree to the terms and conditions.
+          </div>
+          <button type="submit" class="pp-form__cta" [disabled]="emailContactError">
+            {{is_token ? 'Submit Enquiry':'Continue'}}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  #otpContactModel
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-bs-hidden="true"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Verify Your Mobile Number</h5>
+        <button
+          type="button"
+          class="btn-close position-absolute top-0 end-0 mt-3 me-3"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          You will receive a 4-digit verification code on your registered mobile
+          number.
+        </div>
+        <input
+          type="text"
+          id="otpInput"
+          name="otpInput"
+          placeholder="Enter OTP"
+          [(ngModel)]="formDataphone.contactotp"
+          (keypress)="validateNumberInput($event)"
+          maxlength="4"
+          style="border-color: #00000029"
+        />
+        <div *ngIf="otpError" class="mgs_error">Please enter a valid OTP.</div>
+      </div>
+      <div class="modal-footer border-0 flex-column text-center">
+        <button
+          type="button"
+          class="btn reg_sub"
+          data-bs-dismiss="modal"
+          (click)="verifyContactOTP()"
+        >
+        Verify
+        </button>
+        <div>
+          <label
+            *ngIf="!isResendEnabled"
+            class="resend-label mb-3"
+            style="cursor: pointer"
+          >
+            You will receive OTP within
+            <b style="color: #ff5444"> 00:{{ remainingTime }}</b>
+            seconds
+          </label>
+          <div class="mb-3" *ngIf="isResendEnabled">
+            Did not get Verification Code?
+          </div>
+          <span
+            *ngIf="isResendEnabled"
+            style="cursor: pointer; border-bottom: 1px solid grey"
+            (click)="resendContactOTP()"
+            >Resend Code</span
+          >
+        </div>
+        <!-- <button type="button" [disabled]="!isResendEnabled" class="btn reg_sub" (click)="sendOTPToMobile()">
+Resend OTP
+</button> -->
+      </div>
+    </div>
+  </div>
+</div>

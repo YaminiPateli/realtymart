@@ -1,0 +1,744 @@
+<main>
+  <section class="buy-projects position-relative">
+    <div class="container">
+      <div class="banner-small">
+        <h1 class="banner_title">{{ singleproperty.type }}</h1>
+        <p class="banner_small">For {{ singleproperty.property_for }} in {{ singleproperty.project_localities }}</p>
+      </div>
+    </div>
+  </section>
+  <section class="buy-products">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-12 col-sm-12">
+          <div class="buy-image">
+            <img
+              src="{{ singleproperty.property_main_img }}"
+              alt=""
+              class="img-fluid"
+            />
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-12 col-sm-12">
+          <div class="owner-buy">
+            <div class="row">
+              <div class="col-lg-7 col-md-6 col-12">
+                <p class="buy-heading" *ngIf="singleproperty.bedroom !== null">{{ singleproperty.bedroom }} BHK
+                  <span>
+                    {{ singleproperty.propertytypename }} in
+                  </span>
+                  </p>
+                <p class="buy-heading" *ngIf="singleproperty.bedroom === null">
+                  <span>
+                    {{ singleproperty.propertytypename }} in
+                  </span>
+                  </p>
+                  <a class="buy-heading">{{ singleproperty.project_name }}</a>
+                <p class="buy-location">
+                  <span class="locator-icon">
+                    <i
+                      class="fa-sharp fa-solid fa-location-dot"
+                      style="color: #000000"
+                    ></i> </span
+                  >{{ singleproperty.project_localities }}</p>
+                <div class="row mt-2" >
+                  <div class="col-md-3 border-right" *ngIf="singleproperty.floor_no !== null">
+                    <h6 class="project-titles">FLOOR</h6>
+                    <p class="project-text">{{ singleproperty.floor_no }} out of {{ singleproperty.total_floor }}</p>
+                  </div>
+                  <div class="col-md-3" *ngIf="singleproperty.super_area !== null">
+                    <h6 class="project-titles">SUPER AREA</h6>
+                    <p class="project-text">{{ singleproperty.super_area }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-5 col-md-6 col-12">
+                <div class="contact-buy-owner">
+                  <div class="name-owner">
+                    <h6 class="project-titles"><strong>BUILDER</strong></h6>
+                    <p class="project-text">{{ singleproperty.owner_name }}</p>
+                  </div>
+                  <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT BUILDER</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3 mb-md-3 mb-sm-2">
+            <div class="col-md-3 col-sm-12 mb-3" *ngIf="singleproperty.ploat_area !== null">
+                <h6 class="project-titles">Plot Area</h6>
+                <p class="project-text">{{ singleproperty.ploat_area }}</p>
+            </div>
+        </div>
+          <div class="buy-fcc">
+            <div class="row">
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.bathroom !== null">
+                <h6 class="project-titles">WASHROOM</h6>
+                <p class="project-text">{{ singleproperty.bathroom }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.personal_washroom !== null">
+                <h6 class="project-titles">PERSONAL WASHROOM</h6>
+                <p class="project-text">{{ singleproperty.personal_washroom }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.pantry_cafeteria !== null">
+                <h6 class="project-titles">PANTRY CAFETERIA</h6>
+                <p class="project-text">{{ singleproperty.pantry_cafeteria }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.is_corner_property !== null">
+                <h6 class="project-titles">CORNER PROPERTY</h6>
+                <p class="project-text">{{ singleproperty.is_corner_property == 1 ? 'Yes' : 'No' }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.is_road_facing !== null">
+                <h6 class="project-titles">ROAD FACING</h6>
+                <p class="project-text">{{ singleproperty.is_road_facing == 1 ? 'Yes' : 'No' }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.overlooking !== null">
+                  <h6 class="project-titles">OVERLOOKING</h6>
+                  <p class="project-text">{{ singleproperty.overlooking }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.balconies !== null">
+                  <h6 class="project-titles">BALCONIES</h6>
+                  <p class="project-text">{{ singleproperty.balconies }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.additional_rooms !== null">
+                  <h6 class="project-titles">ADDTIIONAL ROOMS</h6>
+                  <p class="project-text">{{ singleproperty.additional_rooms }}</p>
+              </div>
+              <!-- <div class="col-md-3 col-sm-12 mb-3" *ngIf="singleproperty.additional_rooms !== null">
+                  <h6 class="project-titles">ADDTIIONAL ROOMS</h6>
+                  <p class="project-text">{{ singleproperty.additional_rooms }}</p>
+              </div> -->
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.plot_length !== null">
+                <h6 class="project-titles">PLOT LENGTH</h6>
+                <p class="project-text">{{ singleproperty.plot_length }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.plot_width !== null">
+                <h6 class="project-titles">PLOT WIDTH</h6>
+                <p class="project-text">{{ singleproperty.plot_width }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.currently_leased_out !== null">
+                <h6 class="project-titles">CURRENTLY LEASED OUT</h6>
+                <p class="project-text">{{ singleproperty.currently_leased_out == 1 ? 'Yes' : 'No' }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.whom_property_leased !== null">
+                <h6 class="project-titles">WHOM LEASED OUT</h6>
+                <p class="project-text">{{ singleproperty.whom_property_leased }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.monthly_rent !== null">
+                <h6 class="project-titles">MOTHLY RENT</h6>
+                <p class="project-text">{{ singleproperty.monthly_rent }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.leased_on !== null">
+                <h6 class="project-titles">LEASED ON</h6>
+                <p class="project-text">{{ singleproperty.leased_on | date : "dd-MM-yyyy" }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.current_business_sector !== null">
+                <h6 class="project-titles">CURRENT BUSINESS SECTOR</h6>
+                <p class="project-text">{{ singleproperty.current_business_sector }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.in_business_since !== null">
+                <h6 class="project-titles">IN BUSINESS SINCE</h6>
+                <p class="project-text">{{ singleproperty.in_business_since }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.basic_price !== null">
+                <h6 class="project-titles">BASIC PRICE</h6>
+                <p class="project-text">{{ singleproperty.basic_price }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.floor_plc !== null">
+                <h6 class="project-titles">FLOOR PRICE PER SQFT</h6>
+                <p class="project-text">{{ singleproperty.floor_plc }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.facing_plc !== null">
+                <h6 class="project-titles">FACING PRICE PER SQFT</h6>
+                <p class="project-text">{{ singleproperty.facing_plc }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.open_car_parking !== null">
+                <h6 class="project-titles">OPEN CAR PARKING</h6>
+                <p class="project-text">{{ singleproperty.open_car_parking }} {{ singleproperty.open_car_parking_unit }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.covered_car_parking !== null">
+                <h6 class="project-titles">COVERED CAR PARKING</h6>
+                <p class="project-text">{{ singleproperty.covered_car_parking }} {{ singleproperty.covered_car_parking_unit }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.price_per_sq_ft !== null">
+                <h6 class="project-titles">PRICE PER SQFT</h6>
+                <p class="project-text">{{ singleproperty.price_per_sq_ft }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.price_includes !== null">
+                <h6 class="project-titles">PRICE INCLUDES</h6>
+                <p class="project-text">{{ singleproperty.price_includes }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.booking_or_token_ammount !== null">
+                <h6 class="project-titles">BOOKING OR TOKEN AMMOUNT</h6>
+                <p class="project-text">{{ singleproperty.booking_or_token_ammount }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.rent_amount !== null">
+                <h6 class="project-titles">RENT AMMOUNT</h6>
+                <p class="project-text">{{ singleproperty.rent_amount.toLocaleString() }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.security_amount !== null">
+                <h6 class="project-titles">SECURITY AMMOUNT</h6>
+                <p class="project-text">{{ singleproperty.security_amount }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.maintanance_charges !== null">
+                <h6 class="project-titles">MAINTANANCE</h6>
+                <p class="project-text">{{ singleproperty.maintanance_charges }} {{ singleproperty.maintenance_charges_per }}</p>
+              </div>
+            <!-- </div>
+          </div>
+          <div class="buy-fcc">
+            <div class="row"> -->
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.car_parking !== null">
+                <h6 class="project-titles">CAR PARKING</h6>
+                <p class="project-text">{{ singleproperty.car_parking }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.total_units !== null">
+                <h6 class="project-titles">UNITS AVAILABLE</h6>
+                <p class="project-text">{{ singleproperty.total_units }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.possession_status !== null">
+                <h6 class="project-titles">POSSESSION STATUS</h6>
+                <p class="project-text">{{ singleproperty.possession_status }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.available_from_month !== null || singleproperty.available_from_year !== null">
+                <h6 class="project-titles">AVAILABLE FROM</h6>
+                <p class="project-text">{{ singleproperty.available_from_month }} {{ singleproperty.available_from_year }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.available_from !== null">
+                <h6 class="project-titles">AVAILABLE FROM</h6>
+                <p class="project-text">{{ singleproperty.available_from }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.status_of_electricity !== null">
+                <h6 class="project-titles">STATUS OF ELECTRICITY</h6>
+                <p class="project-text">{{ singleproperty.status_of_electricity }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.water_availability !== null">
+                <h6 class="project-titles">WATER AVAILABILITY</h6>
+                <p class="project-text">{{ singleproperty.water_availability }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.facing !== null">
+                <h6 class="project-titles">FACING</h6>
+                <p class="project-text">{{ singleproperty.facing }}</p>
+              </div>
+              <div class="col-md-3 border-add mb-2" *ngIf="singleproperty.lift !== null">
+                <h6 class="project-titles">LIFT</h6>
+                <p class="project-text">{{ singleproperty.lift }}</p>
+              </div>
+            </div>
+          </div>
+          <p class="buy-price">₹ {{ singleproperty.total_price }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="save-property">
+    <div class="container">
+      <div class="save-box">
+        <div class="save-detail">
+          <div class="save-area">
+            <img src="../../../assets/images/save-1.png" alt="" />
+            <div class="save-title">
+              <h3>Save Property</h3>
+              <p>Don't Want to share your details with the agent right now</p>
+            </div>
+          </div>
+          <form (submit)="submitForm()">
+            <input type="hidden" name="user_id" value="5" [(ngModel)]="formData.user_id" required>
+            <input type="hidden" name="property_id" value="{{singleproperty.id}}" [(ngModel)]="formData.property_id" required>
+            <!-- <input class="enquire-submit" type="submit" value="SAVE PROPERTY FOR LATER"> -->
+            <button class="save-later-btn" type="submit">SAVE PROPERTY FOR LATER</button>
+          </form>
+        </div>
+      </div>
+      <!-- <div class="save-sponsored">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <a
+              href=""
+              class="links-taps"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              <div class="sponsored-box">
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="sponsored-image">
+                      <img
+                        src="../../../assets/images/Sponsored.png"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <p class="sponsored-text">Sponsored</p>
+                    </div>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="right-box-sponsored">
+                      <div class="sponsored-details">
+                        <div class="sponsored-side-box">
+                          <div class="left-box">
+                            <h5 class="property-names">Swati Crimson</h5>
+                            <p class="location-property">Thaltej, Ahmedabad</p>
+                          </div>
+                          <div class="right-box">
+                            <p class="marketed">
+                              Marketed by <br />Swati Procon
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="sponsored-reat">
+                        <strong>4 BHK</strong> Flats |
+                        <strong>₹ 1.70 CR onwards </strong>
+                      </p>
+                      <button class="buy-contact-btn">Contact Builder</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <a href="" class="links-taps">
+              <div class="sponsored-box">
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="sponsored-image">
+                      <img
+                        src="../../../assets/images/Sponsored.png"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <p class="sponsored-text">Sponsored</p>
+                    </div>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="right-box-sponsored">
+                      <div class="sponsored-details">
+                        <div class="sponsored-side-box">
+                          <div class="left-box">
+                            <h5 class="property-names">Swati Crimson</h5>
+                            <p class="location-property">Thaltej, Ahmedabad</p>
+                          </div>
+                          <div class="right-box">
+                            <p class="marketed">
+                              Marketed by <br />Swati Procon
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="sponsored-reat">
+                        <strong>4 BHK</strong> Flats |
+                        <strong>₹ 1.70 CR onwards </strong>
+                      </p>
+                      <button class="buy-contact-btn">Contact Builder</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </section>
+  <section class="save-descriptions" >
+    <div class="container">
+      <div class="description-box">
+        <div class="row">
+          <div class="col-lg-8 col-md-12 col-sm-12">
+            <div class="bullate-disc">
+              <div class="bullets-agents-details">
+                <h4>Description</h4>
+                <table>
+                  <tr class="bullet-agent-box">
+                    <th class="agent-bullet-head">Price Breakup</th>
+                    <td class="agent-bullet-descrip">₹ {{ singleproperty.total_price }}</td>
+                  </tr>
+                  <tr class="bullet-agent-box" *ngIf="singleproperty.property_facilities !== null">
+                    <th class="agent-bullet-head">Facilities</th>
+                    <td class="agent-bullet-descrip">
+                      {{ singleproperty.property_facilities }}
+                    </td>
+                  </tr>
+                  <!-- <tr class="bullet-agent-box">
+                    <th class="agent-bullet-head">Address</th>
+                    <td class="agent-bullet-descrip">
+                      {{ singleproperty.address }}
+                    </td>
+                  </tr> -->
+                  <tr class="bullet-agent-box" *ngIf="singleproperty.age_of_construction !== null">
+                    <th class="agent-bullet-head">Age of Construction</th>
+                    <td class="agent-bullet-descrip">{{ singleproperty.age_of_construction }}</td>
+                  </tr>
+                  <tr class="bullet-agent-box" *ngIf="singleproperty.furnishing_status !== null">
+                    <th class="agent-bullet-head">Furnishing</th>
+                    <td class="agent-bullet-descrip">{{ singleproperty.furnishing_status }}</td>
+                  </tr>
+                  <tr class="bullet-agent-box" *ngIf="singleproperty.rera_id !== null">
+                    <th class="agent-bullet-head">RERA ID</th>
+                    <td class="agent-bullet-descrip">{{ singleproperty.rera_id }}</td>
+                  </tr>
+                  <tr class="bullet-agent-box" *ngIf="singleproperty.transaction_type !== null">
+                    <th class="agent-bullet-head">Transaction Type</th>
+                    <td class="agent-bullet-descrip">{{ singleproperty.transaction_type }}</td>
+                  </tr>
+                  <!-- <button class="contact-buy-btn">CONTACT OWNER</button> -->
+                </table>
+              </div>
+            </div>
+            <!-- <div class="disclamer-box">
+              <h4>Disclaimer</h4>
+              <div [innerHTML]="singleproperty.description"><p></p></div>
+              <input type="checkbox" class="text-btn" />
+            </div> -->
+          </div>
+          <div class="col-lg-4 col-md-12 col-sm-12">
+            <!-- <div class="save-owners">
+                <div class="owner-direct">
+                    <img src="../../../assets/images/demouser.png" alt="">
+                    <div class="owner-buys">
+                    <h5>Owner</h5>
+                    <p>{{ singleproperty.owner_name }} <br> +91-{{ singleproperty.owner_contact_no.slice(0, 2) }}xxxxxx{{ singleproperty.owner_contact_no.slice(-2) }}</p>
+                    </div>
+                </div>
+                <button class="contact-buy-btn">Save For Later</button>
+            </div> -->
+            <div class="enq-buy-form">
+              <h4>Enquiry Now</h4>
+                <form action="#">
+                    <input type="text" id="Aname" name="Aname" placeholder="Name" class="gold-form-input"required><br>
+                    <input type="maill" id="agentmail" name="agentmail" placeholder="Email" class="gold-form-input"required><br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <select name="number-code" id="number-code" class="gold-form-input">
+                                <option value="Ind +91">Ind +91</option>
+                                <option value="USA: +1">USA: +1</option>
+                                <option value="UK: +44">UK: +44</option>
+                                <option value="Mexico: +52">Mexico: +52</option>
+                                <option value="China: +86">China: +86</option>
+                              </select>
+                        </div>
+                        <div class="col-md-8">
+                         <input type="number" id="agentNum" name="agentNum" placeholder="Number" class="gold-form-input"required><br>
+                        </div>
+                    </div>
+                    <div class="get-callback-btn m-0">
+                        <a href="javascript::void()">ENQURE NOW</a>
+                    </div>
+                    <p class="agree-you">I Agree to My Realitys’ <a href="./terms-conditions" target="_blank">Terms of Use</a></p>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="plus-ponts">
+    <div class="container">
+        <div class="proparti-ponts">
+            <div class="first-pont">
+                <h3 class="pont-heads">Home Inspections</h3>
+                <ul class="pont-bullats">
+                    <li><span><img src="" alt=""></span>Renegotiate property price</li>
+                    <li><span><img src="" alt=""></span>Avoid expensive repairs</li>
+                    <li><span><img src="" alt=""></span>Protect your investment</li>
+                </ul>
+                <button class="contact-buy-btn">KNOW MORE</button>
+            </div>
+            <div class="second-pont">
+                <h3 class="pont-heads">Legal Services </h3>
+                <ul class="pont-bullats">
+                    <li><span><img src="" alt=""></span>Property Verification</li>
+                    <li><span><img src="" alt=""></span>Drafting/vetting Sale Deed & Agreement</li>
+                    <li><span><img src="" alt=""></span>Property Registration</li>
+                </ul>
+                <button class="contact-buy-btn">KNOW MORE</button>
+            </div>
+            <div class="three-pont">
+                <h3 class="pont-heads">Home Cleaning</h3>
+                <ul class="pont-bullats">
+                    <li><span><img src="" alt=""></span>Verified & trusted cleaning experts</li>
+                    <li><span><img src="" alt=""></span>Intensive cleaning of all areas</li>
+                    <li><span><img src="" alt=""></span>Lowest prices</li>
+                </ul>
+                <button class="contact-buy-btn">KNOW MORE</button>
+            </div>
+        </div>
+    </div>
+  </section>
+  <!-- <section class="buy-sliders">
+    <div class="container">
+      <div class="buy-sliders-item">
+        <h4>Customers who viewed this property also liked</h4>
+        <ngx-slick-carousel
+          class="carousel"
+          #slickModal="slick-carousel"
+          [config]="slideConfig1"
+        >
+          <div ngxSlickItem class="slide">
+            <div class="feature-slide">
+              <div class="projectes">
+                <div class="feature-img">
+                  <img src="../../../assets/images/feature.jpeg" alt="" />
+                </div>
+                <div class="feature-detaile">
+                  <div class="feature-paragrapha">
+                    <p class="head-feature">Saujanya II - Khokhra</p>
+                    <p class="head-name">By Saumya</p>
+                    <p class="main-price-one">
+                      <span class="me-3">Price:</span>₹ 46.6 Lac - 70.4 Lac
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-inner">
+                  <a href="#" class="feature-btn"
+                    ><i
+                      class="fa fa-thin fa-chevron-right"
+                      style="color: #ffffff"
+                    ></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ngxSlickItem class="slide">
+            <div class="feature-slide">
+              <div class="projectes">
+                <div class="feature-img">
+                  <img src="../../../assets/images/feature.jpeg" alt="" />
+                </div>
+                <div class="feature-detaile">
+                  <div class="feature-paragrapha">
+                    <p class="head-feature">Saujanya II - Khokhra</p>
+                    <p class="head-name">By Saumya</p>
+                    <p class="main-price-one">
+                      <span class="me-3">Price:</span>₹ 46.6 Lac - 70.4 Lac
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-inner">
+                  <a href="#" class="feature-btn"
+                    ><i
+                      class="fa fa-thin fa-chevron-right"
+                      style="color: #ffffff"
+                    ></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ngxSlickItem class="slide">
+            <div class="feature-slide">
+              <div class="projectes">
+                <div class="feature-img">
+                  <img src="../../../assets/images/feature.jpeg" alt="" />
+                </div>
+                <div class="feature-detaile">
+                  <div class="feature-paragrapha">
+                    <p class="head-feature">Saujanya II - Khokhra</p>
+                    <p class="head-name">By Saumya</p>
+                    <p class="main-price-one">
+                      <span class="me-3">Price:</span>₹ 46.6 Lac - 70.4 Lac
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-inner">
+                  <a href="#" class="feature-btn"
+                    ><i
+                      class="fa fa-thin fa-chevron-right"
+                      style="color: #ffffff"
+                    ></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ngxSlickItem class="slide">
+            <div class="feature-slide">
+              <div class="projectes">
+                <div class="feature-img">
+                  <img src="../../../assets/images/feature.jpeg" alt="" />
+                </div>
+                <div class="feature-detaile">
+                  <div class="feature-paragrapha">
+                    <p class="head-feature">Saujanya II - Khokhra</p>
+                    <p class="head-name">By Saumya</p>
+                    <p class="main-price-one">
+                      <span class="me-3">Price:</span>₹ 46.6 Lac - 70.4 Lac
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-inner">
+                  <a href="#" class="feature-btn"
+                    ><i
+                      class="fa fa-thin fa-chevron-right"
+                      style="color: #ffffff"
+                    ></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ngxSlickItem class="slide">
+            <div class="feature-slide">
+              <div class="projectes">
+                <div class="feature-img">
+                  <img src="../../../assets/images/feature.jpeg" alt="" />
+                </div>
+                <div class="feature-detaile">
+                  <div class="feature-paragrapha">
+                    <p class="head-feature">Saujanya II - Khokhra</p>
+                    <p class="head-name">By Saumya</p>
+                    <p class="main-price-one">
+                      <span class="me-3">Price:</span>₹ 46.6 Lac - 70.4 Lac
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-inner">
+                  <a href="#" class="feature-btn"
+                    ><i
+                      class="fa fa-thin fa-chevron-right"
+                      style="color: #ffffff"
+                    ></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ngxSlickItem class="slide">
+            <div class="feature-slide">
+              <div class="projectes">
+                <div class="feature-img">
+                  <img src="../../../assets/images/feature.jpeg" alt="" />
+                </div>
+                <div class="feature-detaile">
+                  <div class="feature-paragrapha">
+                    <p class="head-feature">Saujanya II - Khokhra</p>
+                    <p class="head-name">By Saumya</p>
+                    <p class="main-price-one">
+                      <span class="me-3">Price:</span>₹ 46.6 Lac - 70.4 Lac
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-inner">
+                  <a href="#" class="feature-btn"
+                    ><i
+                      class="fa fa-thin fa-chevron-right"
+                      style="color: #ffffff"
+                    ></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </section> -->
+  <section class="buy-proj-eq">
+    <div class="container">
+        <h4>Verified on myrealityunlimited</h4>
+        <div class="buy-proj">
+            <div class="ongoing-img" *ngFor="let verify of verify">
+              <img src="{{ verify.project_images }}" alt="" class="img-fluid">
+              <div class="ongoing-deatils">
+                <a href="/property-details/{{ verify.propertyfirstUrlPart }}/{{ verify.propertysecondUrlPart }}" class="detail-head">{{ verify.project_name }}</a>
+                <p class="ongoing-location">
+                  <span class="locator-icon">
+                    <i class="fa-sharp fa-solid fa-location-dot"
+                      style="color: #000000"></i>
+                    </span>{{ verify.project_localities }}
+                </p>
+                <div class="area-detail">
+                    <div class="availabilty">
+                      <p class="area-title">Price:</p>
+                      <p class="area-title">Area:</p>
+                    </div>
+                    <div class="area">
+                      <p class="main-area">₹ {{ verify.total_price }}</p>
+                      <p class="main-area" *ngIf="verify.super_area !== null">{{ verify.super_area }}</p>
+                    </div>
+                  </div>
+                <div class="proj-builder">
+                  <a href="">ENQUIRE NOW</a>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="ongoing-img">
+              <img src="../../../assets/images/shipra.png" alt="" class="img-fluid">
+              <div class="ongoing-deatils">
+                <a href="" class="detail-head">Shipra Srishti</a>
+                <p class="ongoing-location">
+                  <span class="locator-icon">
+                    <i class="fa-sharp fa-solid fa-location-dot"
+                      style="color: #000000"></i>
+                    </span>Chandkheda, Ahmedabad
+                </p>
+                <div class="area-detail">
+                    <div class="availabilty">
+                      <p class="area-title">Price:</p>
+                      <p class="area-title">Area:</p>
+                    </div>
+                    <div class="area">
+                      <p class="main-area">₹ 46.15 Lac - ₹ 70.15 Lac</p>
+                      <p class="main-area">1305 Sq. Ft. - 1980 Sq. Ft.</p>
+                    </div>
+                  </div>
+                <div class="proj-builder">
+                  <a href="">ENQUIRE NOW</a>
+                </div>
+              </div>
+            </div>
+            <div class="ongoing-img">
+              <img src="../../../assets/images/shipra.png" alt="" class="img-fluid">
+              <div class="ongoing-deatils">
+                <a href="" class="detail-head">Shipra Srishti</a>
+                <p class="ongoing-location">
+                  <span class="locator-icon">
+                    <i class="fa-sharp fa-solid fa-location-dot"
+                      style="color: #000000"></i>
+                    </span>Chandkheda, Ahmedabad
+                </p>
+                <div class="area-detail">
+                    <div class="availabilty">
+                      <p class="area-title">Price:</p>
+                      <p class="area-title">Area:</p>
+                    </div>
+                    <div class="area">
+                      <p class="main-area">₹ 46.15 Lac - ₹ 70.15 Lac</p>
+                      <p class="main-area">1305 Sq. Ft. - 1980 Sq. Ft.</p>
+                    </div>
+                  </div>
+                <div class="proj-builder">
+                  <a href="">ENQUIRE NOW</a>
+                </div>
+              </div>
+            </div>
+            <div class="ongoing-img">
+              <img src="../../../assets/images/shipra.png" alt="" class="img-fluid">
+              <div class="ongoing-deatils">
+                <a href="" class="detail-head">Shipra Srishti</a>
+                <p class="ongoing-location">
+                  <span class="locator-icon">
+                    <i class="fa-sharp fa-solid fa-location-dot"
+                      style="color: #000000"></i>
+                    </span>Chandkheda, Ahmedabad
+                </p>
+                <div class="area-detail">
+                    <div class="availabilty">
+                      <p class="area-title">Price:</p>
+                      <p class="area-title">Area:</p>
+                    </div>
+                    <div class="area">
+                      <p class="main-area">₹ 46.15 Lac - ₹ 70.15 Lac</p>
+                      <p class="main-area">1305 Sq. Ft. - 1980 Sq. Ft.</p>
+                    </div>
+                  </div>
+                <div class="proj-builder">
+                  <a href="">ENQUIRE NOW</a>
+                </div>
+              </div>
+            </div> -->
+          </div>
+    </div>
+  </section>
+</main>

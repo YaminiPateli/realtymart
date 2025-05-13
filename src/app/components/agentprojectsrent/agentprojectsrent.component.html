@@ -1,0 +1,79 @@
+<main>
+
+    <section class="builders-ahmedabad position-relative">
+        <div class="container">
+          <div class="banner-small">
+            <h1 class="banner_title">Showing {{ allsingleagentprojectcount }} Builders in {{ allsingleagentproject[0].citysearch}}</h1>
+            <p class="banner_small">Builders inTop Localities</p>
+          </div>
+        </div>
+    </section>
+    
+    <section class="ahmedabad-all-builders">
+        <div class="container">
+            <div class="topahmedabad" *ngFor="let allbuilderproject of allsingleagentproject">
+                <div class="groups-companies">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-5 col-sm-12">
+                            <div class="group-logo">
+                                <img src="{{ allbuilderproject.agent_logo }}" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-12">
+                            <a href="/builder-detail/{{ allbuilderproject.builderUrl }}" class="groups-companies-names">{{ allbuilderproject.name }}</a>
+                            <p class="opnesince">Operating since {{ allbuilderproject.year }}</p>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <h6 class="project-titles">DEALS IN:</h6>
+                                    <p class="project-text">{{ allbuilderproject.dealsin }}</p>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 mt-lg-0 mt-md-0 mt-sm-3 info-project">
+                                    <h6 class="project-titles">TOTAL PROJECTS</h6>
+                                    <p class="project-text">{{ allbuilderproject.total_projects }} Projects in Ahmedabad</p>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 mt-lg-0 mt-md-3 mt-sm-3 info-project">
+                                    <h6 class="project-titles">COMPLETED PROJECTS</h6>
+                                    <p class="project-text">{{ allbuilderproject.completed_projects }} Completed</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-sm-12 mt-lg-0 mt-md-3 mt-sm-3 info-project">
+                            <p class="text-titles" [innerHTML]="allbuilderproject.long_description"></p>
+                              <input type="checkbox" class="text-btn" />
+                        </div>
+                    </div>
+                    <div class="builders-ahm-property">
+                        <div class="show-ahm-box">
+                            <a href="/project-details/{{ projects.project_name }}/{{ projects.project_id }}" class="links-taps" *ngFor="let projects of allbuilderproject.projects">
+                                <div class="ahow-ahm-items">
+                                    <div class="property-details">
+                                        <div class="img-property">
+                                            <img src="{{ projects.project_images }}" class="img-fluid" alt="">
+                                        </div>
+                                        <div class="deatles-areas">
+                                            <h5 class="property-names">{{ projects.project_name}}</h5>
+                                            <p class="location-property">{{ projects.address }}</p>
+                                            <p class="property-type">{{ projects.property_bhk }}<br>
+                                               <span class="fw-bold"> ₹ {{ projects.price }}</span> </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="all-over-propertys">
+                        <div class="all-projects">
+                            <a href="/builder-property-listing/{{allbuilderproject.user_id}}/all">SEE ALL PROJECTS</a>
+                        </div>
+                        <div class="explor-builders">
+                            <a href="/builder-detail/{{ allbuilderproject.builderUrl }}">EXPLORE BUILDER</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    </main>
+    

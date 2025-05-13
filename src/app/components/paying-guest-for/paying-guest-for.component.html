@@ -1,0 +1,56 @@
+<main>
+    <section class="paying_guest">
+        <div class="container">
+            <div class="banner-action">
+              <h1 class="banner_title">Search Properties</h1>
+            </div>
+        </div>
+            <div class="pg_list">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div class="pg_list_box">
+                            <div class="row" *ngFor="let pglistings of pglisting">
+                                <div class="col-lg-5 position-relative">
+                                    <ngx-slick-carousel class="carousel pg_slid"
+                                        #slickModal="slick-carousel"
+                                        [config]="slideConfig1">
+                                        <div ngxSlickItem class="slide">
+                                            <img src="{{ pglistings.pg_main_images }}" alt="" class="img-fluid">
+                                        </div>
+                                    </ngx-slick-carousel>
+                                    <span class="txt">✔ Partner verified</span>
+                                </div>
+                                <div class="col-lg-7 position-relative">
+                                    <p class="our-price">₹ {{ pglistings.pg_deposit_ammount }} <span class="m-srp-card__for__item" *ngIf="pglistings.pg_food_availability === '1'">Food Included</span></p>
+                                    <a target="_blank" href="/paying-guest-detail/{{ pglistings.pg_company_name }}/{{ pglistings.id }}" class="groups-companies-names"> {{ pglistings.pg_company_name }} PG for {{ pglistings.pg_available_for }} </a>
+                                    <p class="buy-location"><span class="locator-icon"><i class="fa-sharp fa-solid fa-location-dot" style="color: #000000;"></i></span> In {{ pglistings.pg_in_localities }}, {{ pglistings.city }}</p>
+                                    <div class="buy-fcc">
+                                        <div class="row">
+                                            <div *ngFor="let sharingoption of pglistings.pgOccupancy;" class="col-md-3">
+                                                <h6 class="project-titles">{{ sharingoption.occupancy_type }}</h6>
+                                                <p class="project-text">₹ {{ sharingoption.pg_rent }}</p>
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <p class="text-titles" >
+                                        {{ pglistings.pg_description }}
+                                      </p>
+                                      <input type="checkbox" class="text-btn" />
+
+                                      <div class="save-get-no">
+                                        <button class="contact-buy-btn"> View Phone No.</button>
+
+                                        <button class="contact-ow">  Contact Owner </button>
+                                      </div>
+                                      <span class="info_gender" *ngIf="pglistings.pg_available_for ==='Boys & Girls'">Coed</span>
+                                      <span class="info_gender" *ngIf="pglistings.pg_available_for ==='Boys'">Boy</span>
+                                      <span class="info_gender" *ngIf="pglistings.pg_available_for ==='Girls'">Girl</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+            </div>
+    </section>
+</main>

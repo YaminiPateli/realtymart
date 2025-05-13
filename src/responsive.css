@@ -1,0 +1,865 @@
+@media only screen and (max-width: 1530px){
+  .policy-info {padding: 0 50px 0 50px;}
+  .titles-heading{
+    margin-top: 55px;
+  }
+  .feature-main-slide-item {
+    margin: 50px 0 77px;
+}
+/* header menu  */
+.login-custom-dropdown {left: auto;}
+/* header menu  */
+.companies-names{font-size: 32px;}
+button.contact-buy-btn {padding: 10px 18px;}
+.proj-gallery-image-tow img {width: 225px;}
+}
+
+@media only screen and (max-width: 1365px) {
+  /* header menu  */
+  .login-custom-dropdown {left: auto}
+  /* header menu  */
+
+  .feature-img img {max-width: 357px;}
+  /* .group-main-img {height: -webkit-fill-available;} */
+  .highlight-group{margin-bottom: 0;}
+  .feature-btn{padding: 8px 14px;}
+  .inner-loan-btn{padding: 8px 14px;}
+  .builder-front{gap: 20px;}
+  /* .proj-gallery-image img{width:300px} */
+
+  /* Builder Details Page Css Start  */
+  .all-performance{gap: 4px;}
+  /* Builder Details Page Css End */
+
+  /* Service Detail Page Responsive Start  */
+  .close-img-btn{left: 78%;}
+  .open-times, .all-info-business{margin-left: 0;}
+  /* Service Detail Page Responsive End  */
+
+  /* interior Designers page Responsive Start  */
+  .enquire-btn {margin-top: 20px;}
+  .inner-enquire-btn{right: 68%;}
+  .interior-location, .interior-institutes{display: flex;}
+  .opne-inner-interior {margin-top: 75px;}
+
+  /* interior Designers page Responsive End */
+
+  /* Project page responsive start  */
+  /* .show-deals-explore{top: 27%;right: 7%;} */
+  .area-detail{gap: 8px;}
+  .details-flasts {display: block;}
+  .since-in {margin-top: 10px;}
+  .star-box{right: 0%;}
+  /* Project page responsive End  */
+
+  /* Explore Builders page responsive start  */
+  .explore-front{gap: 20px;}
+  .explore-top{margin-bottom: 15px;}
+  /* Explore Builders page responsive End  */
+
+  /* matching properties page responsive start  */
+  .matching-edit{margin-bottom: 50px;}
+  .price-maching{padding-left: 13px;}
+  /* matching properties page responsive End  */
+
+  /* Agent page responsive start  */
+  .detail-new-ponts h2{width: 25%;}
+  .detail-new-ponts{align-items: baseline;}
+  /* Agent page responsive end */
+
+
+  /* valuvation page responsive strat  */
+  ul.correct_pont {top: 10%;}
+  .ccl_value,.correct_valuation { margin: 65px 0;}
+  .valuer_content h3,.process_disc h3 {font-size: 24px;margin-bottom: 16px;}
+  .valuer_content {height: 281px;}
+  .line_added:before{border: none;}
+  /* valuvation page responsive end */
+
+  /* Explore Localities responsive start  */
+  .img-property img {width: 100%;}
+  /* Explore Localities responsive end  */
+
+
+
+}
+
+@media only screen and (max-width: 1199px) {
+    .feature-img img {max-width: 300px;}
+    .feature-btn{right: 0%;}
+    .group-property-names {margin-top: 7px;}
+    .builder-front {gap: 15px;}
+    .loan-title{margin: 20px 0 20px;}
+
+    .search_wrapper{width: auto;height: auto;padding: 16px;flex-wrap: wrap;justify-content: center;row-gap: 20px;}
+    .proj-gallery-image img, .proj-gallery-image-tow img {width: 200px;}
+    .group-of-box{height: 350px;}
+    /* Property Related Services start */
+    .service-box{grid-template-columns: repeat(3, 1fr);}
+    /* Property Related Services end*/
+
+    /* Ahmedabad Builder Listing page Responsive Start  */
+    .show-ahm-box{grid-template-columns: repeat(2, 1fr);}
+    /* Ahmedabad Builder Listing page Responsive end */
+
+    /* Builder Details Page Css Start  */
+    .all-performance {gap: 15px;}
+    /* Builder Details Page Css End  */
+
+
+
+    /* Privacy Policy page Responsive Start  */
+    .bullet-text{margin-bottom: 20px;}
+    .privacy-policy-banner{height: 250px;}
+    /* Privacy Policy page Responsive End */
+
+    /* Contact page responsive start  */
+    .contact-box {padding: 40px 40px;}
+    /* Contact page responsive End  */
+
+    /* interior Designers page Responsive Start  */
+    .enquire-btn a{padding: 12px 30px}
+    .inner-enquire-btn {right: 61%;}
+    .interior-head{margin-bottom: 15px;}
+    .enquire-btn {margin-top: 30px;}
+    .opne-inner-interior {margin-top: 72px;}
+    .vote-boox{padding-left: 0;}
+    /* interior Designers page Responsive End  */
+
+    /* Project page responsive start  */
+    .project-location {display: flex;}
+    .property-salee{margin-bottom: 20px;}
+    .all-sale-rent-property{grid-template-columns: repeat(2, 1fr);}
+    .deal-imgs img {width: 100%;}
+    /* .show-deals-explore {top: 43%;} */
+    .appreciation{height: 1200px;margin-bottom: 80px;}
+    .max-img img {width: 100%;}
+    .upcoming-box {grid-template-columns: repeat(2, 1fr);}
+    .price-appre{grid-template-columns: repeat(2, 1fr); }
+    .calculators-loans {grid-template-columns: repeat(2, 1fr);}
+    .details-flasts {display: flex;}
+    /* Project page responsive End  */
+
+    /* Explore Builders page responsive start  */
+    .builder-logos img {width: 100%;margin-bottom: 10px;}
+    .explore-front {grid-template-columns: repeat(1, 1fr);gap: 0;}
+    .explore-inner{top: 93%;}
+    /* Explore Builders page responsive End  */
+
+   /* matching properties page responsive start  */
+   /* matching properties page responsive End  */
+
+  /* Agent page responsive start  */
+  .name-of-companys h2{font-size: 18px;}
+  .detail-new-ponts {flex-wrap: wrap;margin-bottom: 5px;}
+  ul.certified-bullates {padding: 0;margin-top: 16px;}
+  .detail-new-ponts h2 {width: 30%;}
+  .main-verified-men {display: block;}
+  .verified-humen-details h5 {margin-top: 16px;}
+  .view-phone-humen {margin-top: 25px;}
+  .contact-are {display: block;}
+  .Iam {margin-bottom: 10px;}
+  .detail-agent-review {flex-wrap: wrap;}
+  /* Agent page responsive End  */
+
+  /* valuvation page responsive strat  */
+  img.back_mg.img-fluid {height: 259px;object-fit: cover;border-radius: 10px;}
+  .round_area {grid-template-columns: repeat(3, 1fr);gap: 30px;}
+  .valuer_content {height: 355px;}
+  .valuer_content h3 .process_disc h3 {font-size: 19px;margin-bottom: 16px;}
+  .valuation_title {font-size: 37px;line-height: 46px;}
+  /* valuvation page responsive end  */
+
+  /* blog page responsive start */
+  .blog-list-box{grid-template-columns: repeat(3, 1fr);}
+  /* blog page responsive end */
+
+  /* Explore Localities responsive start  */
+  .project-text {font-size: 14px;}
+  /* Explore Localities responsive end  */
+
+.all-packages{gap: 10px;}
+/* header menu and searchbar  */
+.location,.budget_dorp {min-width: 224px;}
+.banner_bg {height: 775px;}
+/* header menu and searchbar  */
+
+
+}
+
+@media only screen and (min-width: 991px){
+  .header_wrapper .dropdown:hover .dropdown-menu {
+    display:block;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  /* Home Page Responsive Start  */
+  .feature-img img {max-width: 340px;}
+  .free-you-Prt h2{font-size: 30px;}
+  .free-you-Prt p{font-size: 16px;}
+  .deal-slider-bar{grid-template-columns: repeat(2, 1fr);}
+  .header_wrapper .navbar-nav > li > .dropdown-menu {min-width: 100% !important;}
+  .header_wrapper .navbar{overflow: scroll;}
+
+  /* .free-post {margin-bottom: 350px;} */
+  .all-loans {grid-template-columns: repeat(2, 1fr);transform: translateY(0px);}
+  .group-of-box{display: flex;align-items: center;justify-content: space-between;border-bottom-left-radius: 0;
+    border-top-left-radius: 0;height: 260px;}
+  /* .group-main-img{border-bottom-right-radius: 00px;border-top-right-radius: 0px; height: auto;} */
+  .feature-main-slide-item {margin: 50px 0 80px;}
+  .feature-btn {right: 2%;}
+  .main_search_btn {line-height: 0;gap: 6px; line-height: 0;}
+  .search_wrapper {width: 100%;height: auto;border-radius: 0px;}
+  .free-post {margin-bottom: 40px;}
+  .propertyloans{height: auto;padding: 20px 0;}
+  .property_drop {align-items: center;padding: 0 19px;}
+  .proj-gallery-image img, .proj-gallery-image-tow img {width: 170px;}
+  /* Home Page Responsive End  */
+
+  /* header menu and searchbar  */
+  .banner_bg {height: 814px;}
+  .banner_title {margin-bottom: 29px !important;}
+  .nav {max-width: 592px;}
+  .property_drop{min-width: 267px;}
+  .search_wrapper {width: 85%;}
+  .company_overview {padding: 40px 0 0;}
+  /* header menu and searchbar  */
+
+   /* Property Related Services page Responsive Start  */
+   .property-service{margin-top: 125px;}
+   .service-box {grid-template-columns: repeat(2, 1fr);}
+   .loan-title{max-width: 100%;}
+   .slider_mg img {height: 450px;}
+   .enq-buy-form {margin-top: 30px;}
+   .amenit_box{padding: 12px;}
+   .facility_wrapper > div {
+    padding: 0 !important;
+    margin-bottom: 26px;
+}
+.facility_wrapper > div::before, .facility_wrapper > div::after{display: none;}
+.buy-products{margin-bottom: 20px;}
+  /* Property Related Services page Responsive End */
+
+  /* Interior Designers Page Responsive Start  */
+  .enquire-btn {margin-top: 30px;}
+  .inner-enquire-btn {right: 38%;}
+  .vote-boox {padding-left: 0;display: flex;align-items: center;justify-content: space-between;margin-top: 20px;}
+  .border-add{border: none;}
+  .opne-inner-interior{margin: 0;}
+  .Interior-desing{margin-top: 126px;height: 300px;}
+  /* Interior Designers Page Responsive End  */
+
+  /* Ahmedabad Builder Listing page Responsive Start  */
+  .builders-ahmedabad{height: 300px;}
+  .banner-small{top: 111px;}
+  .property-details{grid-template-columns: repeat(1, 1fr);}
+  .img-property img {width: -webkit-fill-available; border-radius: 10px 10px 0 0; height: 200px;}
+  .banner_title{font-size: 49px;}
+  /* Ahmedabad Builder Listing page Responsive End  */
+
+  /* Builder Details Page Css Start  */
+  .ongoing-img img{width: 100%;}
+  .builder-front {gap: 8px;}
+  .all-performance {gap: 3px;}
+  /* Builder Details Page Css End  */
+
+  /* Service Detail Page Responsive Start  */
+  .monoceros-banner{margin-top: 126px;}
+  .monoceros-actions{top: 190px;}
+  .action-items img {height: 44%;}
+  /* Service Detail Page Responsive End  */
+
+  /* Privacy Policy page Responsive Start  */
+  .privacy-policy-banner, .terms-condition-banner{margin-top: 126px;height: 250px;}
+  /* Privacy Policy page Responsive End  */
+
+  /* Contact page responsive start  */
+  .contact-box {display: block;}
+  .contact-box li {max-width: 100%;margin-bottom: 25px;}
+  .contact-banner{height: 250px;}
+  .banner_title{margin: 0;}
+  /* Contact page responsive End  */
+
+  /* career Page Responsive start   */
+  .career-tab{width: 100%;}
+  .career-tab-head{margin-top: 0;}
+  /* career Page Responsive End   */
+
+  /* Project page responsive start  */
+  .project-price {border-left: none;display: flex;justify-content: space-between;margin-top: 20px;}
+  .price-proj{text-align: unset;}
+  .see-project-btn{justify-content: unset;margin-top: 0;}
+  /* .show-deals-explore {top: 36%;} */
+  .sale-rents{gap: 9px;}
+  .appreciation{height: 1076px;}
+  /* Project page responsive End  */
+
+  /* selling-guide page Responsive Start  */
+
+  /* selling-guide page Responsive End  */
+
+  /* Explore Builders page responsive start  */
+  .explore-inner{padding: 8px 14px}
+  .explore-builders{gap: 12px;flex-wrap: wrap;}
+  .all-builder-btn a{margin-bottom: 0px;}
+  /* Explore Builders page responsive End  */
+
+  /* about-us page responsive start  */
+  .mission{margin: 25px 0;}
+  /* about-us page responsive End  */
+
+  /* matching properties page responsive start  */
+  .price-maching {padding: 0;border: none;}
+  .owner-name{margin-top: 18px;}
+  .wich-location {margin-top: 10px;}
+  /* matching properties page responsive End  */
+
+  /* Agent page responsive start  */
+  .agent-details-banner{height: 300px;}
+  .name-of-companys {margin-top: 14px;}
+  .detail-new-ponts h2 {width: 21%;}
+  .name-of-companys h2 {font-size: 22px;}
+  .contact-company-details {margin: 20px 0;}
+  .certified-details {padding: 0;border: none;}
+  /* Agent page responsive End  */
+
+  /* valuvation page responsive start  */
+  .buy-projects {height: 300px;}
+  .value_slid_box {margin-right: 0px;}
+  ul.correct_pont {top: 17%;left: 11%;}
+  .round_area {grid-template-columns: repeat(2, 1fr);gap: 30px;margin-left: 75px;}
+  .box_valuer img,.process_area img {width: 100%;}
+  .valuer_content {height: 250px;margin-bottom: 25px;}
+  .valuation_title {font-size: 28px;line-height: 40px;}
+  .valuer_show,.help_valuer_box {padding-bottom: 70px;}
+  .ccl_value,.correct_valuation {margin: 50px 0;}
+  .things_area {grid-template-columns: repeat(2, 1fr);}
+  .process_disc {margin-bottom: 25px;}
+  /* valuvation page responsive end  */
+
+/* blog page responsive start  */
+  .blog-banner {height: 300px;}
+  .blog-list-box {grid-template-columns: repeat(2, 1fr);}
+/* blog page responsive end  */
+
+  /* Explore Localities responsive start  */
+  .rs_mrg {margin-top: 12px;}
+  .head-localiti {flex-wrap: wrap;gap: 21px;}
+  .all-over-propertys {flex-wrap: wrap;gap: 17px;}
+  .explore-localities {height: 300px;}
+  /* Explore Localities responsive end  */
+/* nikunj css 13-9-24 */
+
+.procees-payment a, .shopping a{
+  padding: 8px 12px;
+  text-align: center;
+}
+.all-packages {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.tg_tabs{
+    flex-wrap: wrap;
+   }
+   .specifications_box ul {
+    padding: 0;
+}
+
+}
+
+@media only screen and (max-width: 768px) {
+  .free-post {
+    margin-bottom: 20px;
+}
+  .propertyes {grid-template-columns: repeat(3, 1fr);}
+
+  /* Home Page Responsive Start  */
+  .deal-slider-bar{display: block;}
+  .deal-imgs img{width: 100%;}
+  .hot-details {transform: translateY(-8px);}
+  .show-deals{ top: 56%;right: 5%;}
+  .feature-img img {max-width: 100%;}
+  .feature-btn {right: 5%;top: 67%;}
+  .titles-heading {font-size: 35px;}
+  .free-post-box{display: block;}
+  .free-post-box{text-align: center;}
+  .free-post-btn {justify-content: center;margin-top: 20px;}
+  .builder-logos img {width: 100%;}
+  .builder-front {grid-template-columns: repeat(1, 1fr);}
+  /* Home Page Responsive End  */
+
+   /* Property Related Services page Responsive Start  */
+   .banner_title{font-size: 45px;line-height: 50px;}
+   .border-right {
+    border-right: none;
+    margin-bottom: 15px;
+}
+  /* Property Related Services page Responsive End */
+
+  /* Interior Designers Page Responsive Start  */
+  .interior-head {margin-top: 25px;}
+  .enquire-btn {margin-top: 30px;}
+  .enquire-btn a{padding: 15px 35px;}
+  .inner-enquire-btn {right: 57%;}
+  /* Interior Designers Page Responsive End */
+
+   /* Ahmedabad Builder Listing page Responsive Start  */
+   .group-logo img {margin-bottom: 20px;}
+   .info-project{border: none;}
+   /* Ahmedabad Builder Listing page Responsive End  */
+
+  /* Builder Details Page Css Start  */
+  .all-performance {gap: 20px;}
+  /* Builder Details Page Css End  */
+
+  /* Service Detail Page Responsive Start  */
+  .monoceros-more {margin-bottom: 25px;}
+  .monoceros-actions {top: 170px;}
+  .enquire-vote{justify-content: space-evenly;}
+  .close-img-btn {left: 83%;top: 0%;}
+  /* Service Detail Page Responsive End  */
+
+  /* Privacy Policy page Responsive Start  */
+  .policy-info {margin: 40px 0 50px;}
+  .bullet-text {text-align: justify;}
+  .privacy-policy-banner {background-position: revert;height: 200px;}
+  .privacy-policy-banner, .terms-condition-banner {height: 200px;}
+  /* Privacy Policy page Responsive End  */
+
+  /* Contact page responsive start  */
+  /* Contact page responsive End  */
+
+  /* career Page Responsive start  */
+  .job-head h4, .job-acceptation p {font-size: 16px;line-height: 23px;}
+  .know-more a {padding: 11px 16px;}
+  /* career Page Responsive End  */
+
+  /* Project page responsive start  */
+  .projects-banner, .property-service {height: 300px;}
+  .gallery-proj-discription {margin-bottom: 25px;}
+  .sale-rents {flex-wrap: wrap;}
+  /* .show-deals-explore {top: 28%;} */
+  .main-price-one{font-size: 18px;}
+  .details-flasts {display: block;}
+  .appreciation {height: 1037px;margin-bottom: 60px;}
+  .price-appre{margin: 32px 0 60px;}
+  .project-headings, .project-more-head{font-size: 28px;}
+  .explore-box, .upcoming-box{margin: 50px 0 60px;}
+  .feature-develpers{margin-bottom: 60px;}
+  .project_ami {gap: 0;}
+  .project_slider .slick-prev, .project_slider .slick-next{top: -15px;}
+  /* Project page responsive End  */
+
+  /* selling-guide page Responsive Start  */
+
+  /* selling-guide page Responsive End  */
+
+  /* Explore Builders page responsive start  */
+  .builders-localities{gap: 30px;}
+  .all-builder-btn a{padding: 15px 23px;}
+  /* Explore Builders page responsive End  */
+
+  /* about-us page responsive start  */
+  .about-banner{height: 200px;}
+  .about-image img{margin-bottom: 20px;}
+  /* about-us page responsive End  */
+
+  /* matching properties page responsive start  */
+  .request-images img{width: 100%; height: auto;}
+  /* matching properties page responsive End  */
+
+  /* Agent page responsive start  */
+  .projection {gap: 12px;}
+  .project-link{padding: 16px 20px;}
+  .name-of-companys h2 {font-size: 17px;}
+  .detail-new-ponts h2 {width: 33%;}
+  /* Agent page responsive End  */
+
+  /* valuvation page responsive strat  */
+  .value_img {margin-top: 35px; }
+  .round_area {margin-left: 0;}
+  .things_area {grid-template-columns: repeat(1, 1fr);}
+  .valuation_pera {margin-top: 20px;}
+  /* valuvation page responsive strat  */
+
+  /* blog page responsive start  */
+  .blog-list-box {grid-template-columns: repeat(1, 1fr);}
+  /* blog page responsive end */
+
+  .show-ahm-box{grid-template-columns: repeat(1, 1fr);}
+
+  .ftdbox {
+    margin: 0 !important;
+  }
+
+  .nav-pills .tg_tabs-link, .nav-pills .tg_tabs-link.active{
+    padding: 30px 60px;
+    font-size: 25px;
+  }
+  .tips_guides .accordion-item .accordion-button-tb:not(.collapsed) , .tips_guides button.accordion-button-tb.collapsed{
+    font-size: 18px;
+  }
+   /* header menu and searchbar  */
+   .banner_content {top: 33px;}
+   .search_wrapper {width: 100%;justify-content: start;border-radius: 0 0 20px 20px;}
+   .location, .property_drop, .budget_dorp{width: 100%; border-bottom: 1px solid !important;
+    padding: 7px 0;}
+   .property_drop {border-left: none;border-right: none;padding: 0;}
+   .serch-propert{transform: translateY(-20px);left: 10px;}
+   .serch-propert-price{transform: translateY(-13px);left: 10px;}
+   .main_search_btn{margin-left: 12px;}
+   .banner_bg::before{display: none;}
+   .banner_bg {background-image: none;height: -webkit-fill-available;}
+   .property-services {margin-top: 20px !important;}
+   .deal-slider-bar{margin: 0;}
+   .title-property {margin: 33px 0 22px;}
+   .show-deals {display: none;}
+   .all-deals .titles-heading {margin-top: 60px;}
+   .all-main-hots {margin-top: 36px;}
+   .all-main-hots .slick-dots {bottom: -13px;}
+   .titles-heading {margin-top: 30px;}
+   .proj-gallery__card{width: 100%;}
+   .builder-main-slid{margin: 0;}
+   .nav-pills .nav-link {font-size: 16px;}
+   .location_select, .property_wrapper, .budget-inner{width: 100%;}
+   /* header menu and searchbar  */
+   .title-img-property {font-size: 15px;line-height: 21px;}
+   .titles-heading::before{top: 100%;}
+   .proparty_for{margin-bottom: 14px;}
+   .request-images .slick-dotted.slick-slider{margin-bottom: 14px;}
+   .proj-gallery-image img, .proj-gallery-image-tow img {
+    width: 230px;
+}
+
+
+}
+
+@media only screen and (max-width: 575px) {
+  .mobile-logo{display: block;height: 80px;}
+  .desk_logo{display:none;}
+
+  /* Property Related Services Responsive Start */
+  .group-of-box {display: block;}
+  .group-property-names {margin-top: 18px;}
+  .titles-heading {font-size: 28px;margin-top: 40px;line-height: 40px;}
+  .free-post-box{padding: 35px;}
+  .loans-details {padding: 32px 40px;}
+  .banner_title {font-size: 40px;}
+  .service-box {grid-template-columns: repeat(1, 1fr);}
+  .loan-title br {display: none;}
+  /* Property Related Services Responsive end */
+
+  /* Builder Details Page Css Start  */
+  .builder-infomation {margin: 50px 0 50px;}
+  .builder-inner-btn{ top: 23%;right: -6%;}
+  /* Builder Details Page Css End  */
+
+  /* Service Detail Page Responsive Start  */
+  .close-img-btn { left: 77%;font-size: 20px;}
+  /* Service Detail Page Responsive End  */
+
+  /* Privacy Policy page Responsive Start  */
+  li.latest-infomation {display: flex;align-items: center;}
+  li.supplied {display: flex;align-items: center;}
+  li.latest-infomation span{padding: 6px 12px;}
+  /* Privacy Policy page Responsive End  */
+
+  /* Contact page responsive start  */
+  .contact-box {padding: 33px 33px;}
+  /* Contact page responsive End */
+
+  /* Interior Designers Page Responsive Start  */
+  .inner-enquire-btn {right: 47%;}
+  .Interior-desing{height: 250px;}
+  /* Interior Designers Page Responsive End  */
+
+  /* career Page Responsive start  */
+  .jobRow{display: block;}
+  .know-more {margin-top: 20px;}
+  /* career Page Responsive End  */
+
+   /* Project page responsive start  */
+   .upcoming-box, .all-sale-rent-property, .price-appre, .calculators-loans{grid-template-columns: repeat(1, 1fr);}
+   /* .show-deals-explore {top: 44%;} */
+   .appreciation {height: 2231px;}
+   .details-flasts {display: flex;}
+   .project-headings, .project-more-head {font-size: 25px;line-height: 32px;}
+   /* Project page responsive End  */
+
+  /* selling-guide page Responsive Start  */
+
+  /* selling-guide page Responsive End  */
+
+  /* Explore Builders page responsive start  */
+  .builders-ahmedabad{height: 250px;}
+  .explore-head{font-size: 26px;}
+  .builders-localities{grid-template-columns: repeat(2, 1fr);}
+  /* Explore Builders page responsive End  */
+
+  /* about-us page responsive start  */
+  .myreality-about, .about-points li{text-align: justify;}
+  .title-choose{margin: 35px 0 24px;}
+  /* about-us page responsive End  */
+
+  /* matching properties page responsive start  */
+  .matching-edit h2{font-size: 28px;}
+  .matching-edit {margin-bottom: 35px;}
+  .border-right{border: none;gap: 12px;}
+  .price-maching {margin-top: 20px;}
+  /* matching properties page responsive End  */
+
+  /* Agent page responsive start  */
+
+  .nav-pills .project-link.active, .nav-pills .show > .project-link{padding: 13px 10px;}
+  .project-link {padding: 13px 10px;}
+  .name-of-companys h2 {font-size: 20px;}
+  .head-projections {flex-wrap: wrap; gap: 11px;}
+  .name-of-companys {flex-wrap: wrap; gap: 8px;    margin-bottom: 20px;}
+  .detail-new-ponts h2 {width: 40%;}
+  .contact-company-details {flex-wrap: wrap;gap: 20px;}
+  /* Agent page responsive End  */
+
+  /* valuvation page responsive start  */
+  .buy-projects {height: 250px;}
+  ul.correct_pont {top: 7%;left: 8%;max-width: 401px;}
+  .round_bg {padding: 50px 30px;width: 200px;height: 200px;}
+  /* valuvation page responsive end  */
+
+  /* Explore Localities responsive start  */
+  .explore-localities {height: 250px;}
+  /* Explore Localities responsive end  */
+
+  /* nikunj css 13-9-24 */
+
+  .matching-banner{
+    height: 250px;
+  }
+
+  .banner_title span{
+    font-size: 36px;
+  }
+
+  .search_wrapper{
+    flex-direction: column;
+    height: auto;
+    padding: 5px;
+  }
+
+  .explore-builders, .projection {
+    gap: 12px;
+    flex-wrap: nowrap;
+    text-wrap: nowrap;
+    overflow: auto;
+    justify-content: flex-start;
+}
+.all-builder-btn a{
+  margin-bottom: 0;
+}
+
+.login_box{
+  padding: 20px;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 10px;
+  width: 28%;
+  position: relative;
+  top: 200px;
+}
+
+.Your-cart, .about-banner, .career-banner, .projects-banner, .agent-details-banner, .blog-banner, .investment_bg, .tips_guide_bg{
+  height: 250px;
+}
+.coupon-app{
+  padding-left: 23px;
+}
+.all-packages {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0px;
+}
+.visibility{
+  padding: 10px;
+}
+.visibility-box{
+  position: unset;
+}
+.functionalitys{
+  flex-wrap: wrap;
+}
+
+.responses h2{
+  font-size: 24px;
+}
+
+.pp-exit-intent__form {
+  width: 100% !important;
+}
+.free_advertisement span{
+  font-size: 36px;
+}
+.pp-form__fieldset__wrap{
+  display: flex;
+}
+.fm_bg{
+  padding: 20px;
+}
+.free-post {
+  margin-bottom: 20px;
+}
+  /* nikunj css 13-9-24 */
+ /*sapna css*/
+ .header_wrapper {
+  position: sticky;
+}
+
+.shortlist {
+  margin-top: 20px !important;  /*sapna css*/
+}
+.under-ready {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.name-of-companys a{
+  font-size: 20px;
+}
+.property_arrow .slick-next, .property_arrow .slick-prev{
+  top: 10px;
+  z-index: 9;
+}
+
+.all-loans {
+  grid-template-columns: repeat(1, 1fr);
+  transform: translateY(0px);
+}
+/* header menu and searchbar  */
+  .location, .property_drop, .budget_dorp{width: 95%}
+  .nav-pills .nav-link {padding: 13px;}
+  .banner_content {top: 24px;}
+  .banner_title {margin-bottom: 14px !important;}
+/* header menu and searchbar  */
+  .groups-companies-names {width: 330px;}
+  .info-project {margin-top: 11px;}
+  .show-ahm-box {gap: 0;}
+  .proj-gallery-desc {width: calc(80% - 136px);}
+  .feature-main-slide-item {margin: 43px 0px;}
+
+  /* hover effect remove */
+  .main-deals:hover img{ transform: scale(1);}
+  /* hover effect remove */
+
+}
+
+@media only screen and (max-width: 480px) {
+  /* Home Page Responsive Start  */
+  .banner_title {font-size: 26px; line-height: 30px;}
+  .banner_small {font-size: 15px;line-height: 20px;}
+  /* Home Page Responsive End  */
+
+  /* Interior Designers Page Responsive Start  */
+  .interior-location, .interior-institutes{font-size: 15px;}
+  .interior-head {font-size: 22px;}
+  .show-ahm-box {grid-template-columns: repeat(1, 1fr);}
+  .all-over-propertys {display: block;}
+  .explor-builders a{margin-top: 20px;}
+  .enquire-btn a {padding: 13px 25px;}
+  .inner-enquire-btn {right: 19%;}
+  .opne-inner-interior {margin-top: 18px;}
+  .vote-boox{display: block;}
+  /* Interior Designers Page Responsive End  */
+
+  /* Builder Details Page Css Start  */
+  .builder-infomation {margin: 30px 0 50px;}
+  .box{display: block; border: none;width: 77%;}
+  .selectpicker{margin-top: 0;border-right: 1px solid #DDDDDD !important;border-left: 1px solid #DDDDDD !important;}
+  .search-box-btn{top: 50%;}
+  .builder-front {display: block;}
+  .builder-head{padding: 13px 0;}
+  /* Builder Details Page Css End  */
+
+  /* Service Detail Page Responsive Start  */
+  .enquire-vote {justify-content: space-between;}
+  .action-items img {height: 38%;}
+  .monoceros-more {margin-bottom: 20px;}
+  .monoceros-actions {top: 185px;}
+  .multiple-images{grid-template-columns: repeat(2, 1fr);}
+  .write-you-review h6 {margin: 20px 0 10px;font-size: 20px;}
+  .info-sub-head{font-size: 18px;}
+  .info-pera-business {font-size: 15px;}
+  /* Service Detail Page Responsive End  */
+
+   /* Privacy Policy page Responsive Start  */
+   .bullet-text {font-size: 14px;line-height: 20px;}
+   li.latest-infomation, li.supplied {font-size: 15px;line-height: 20px;}
+   .buy-products {
+    margin: 30px 0;
+}
+   /* Privacy Policy page Responsive End  */
+
+   /* Project page responsive start  */
+ .property-service {height: 250px;}
+   .detail-projects {display: block;}
+   .proj-logo {margin-bottom: 13px;}
+   .marketed-by{margin-top: 16px;}
+   .project-price {display: block;}
+   .see-project-btn {margin-top: 10px;}
+   .show-deals {top: 38%;}
+   .feature-develpers{height: 540px;}
+   /* .show-deals-explore {top: 33%;} */
+   .appreciation {height: 1880px;}
+   /* Project page responsive End  */
+
+   /* Explore Builders page responsive start  */
+   .explore-head {font-size: 21px;}
+   .builders-localities {grid-template-columns: repeat(1, 1fr);}
+   /* Explore Builders page responsive End  */
+
+  /* Agent page responsive start  */
+  .detail-new-ponts h2 {width: 100%;}
+  .detail-new-ponts{margin-bottom: 14px;}
+  .contact-phone {flex-wrap: wrap;}
+  .company-contact{padding: 12px 26px;}
+  .contact-phone {flex-wrap: wrap;}
+  .recommended {flex-wrap: wrap;}
+  .reviews-by-agents a {padding: 15px 14px;}
+  /* Agent page responsive End  */
+
+  /* valuvation responsive start  */
+  .legal_value {font-size: 18px;}
+  .round_area {grid-template-columns: repeat(1, 1fr);width: 60%;margin: 0 auto;margin-top: 24px;}
+  ul.correct_pont li {font-size: 15px;}
+  ul.correct_pont {top: 14%;}
+  .ccl_value,.correct_valuation {margin: 45px 0;}
+  .add_pd {padding: 50px 0 31px;}
+  .valuer_show,.help_valuer_box {padding-bottom: 50px;}
+  /* valuvation responsive end  */
+
+  /* Explore Localities responsive start  */
+  .area-heading {font-size: 25px;}
+  /* Explore Localities responsive end  */
+  .social-media {
+    gap: 14px; /*sapna css*/
+}
+/*sapna css*/
+.groups-companies-names {
+  width: 170px;
+}
+.save-get-no{gap: 13px;margin-top: 0;}
+
+.serch-propert{width: 270px;}
+.main_search_btn {margin-left: 0px;}
+.banner_title span {font-size: 28px;}
+.bullate-disc, .disclamer-box, .save-owners, .enq-buy-form{padding: 15px;}
+.bullet-agent-box {flex-wrap: wrap;}
+button.contact-buy-btn {
+  padding: 10px 20px;
+}
+
+}
+
+@media only screen and (max-width: 320px) {
+
+}

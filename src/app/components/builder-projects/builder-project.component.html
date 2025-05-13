@@ -1,0 +1,114 @@
+<main>
+
+    <section class="builders-ahmedabad position-relative">
+        <div class="container">
+            <div class="banner-small">
+                <h1 class="banner_title">{{ allbuilderproject[0]?.builder_name }}</h1>
+                <p class="banner_small">New Projects in {{allbuilderproject[0]?.builder_name}}</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="godrej-projects">
+        <div class="container">
+            <div class="godrej-tab">
+                  
+                  <div class="tab-content" id="pills-tabContent">
+    
+                    <div class="tab-pane fade show active" id="pills-gogrej" role="tabpanel" aria-labelledby="pills-godrej-tab">
+                    <div class="projections">
+                        <div class="head-projections">
+                            <div class="new-projection">
+                                <!-- <p>New Projects in Ahmedabad</p> -->
+                            </div>
+                            <div class="tabs_sortby pt-4">
+                                <div class="tabs_sortby--title"
+                                    (click)="toggleDropdown()">Sort by: <span>{{
+                                        selectedSortOption }}</span></div>
+                                <div class="tabs_sortby__dd box-shadow z-1"
+                                    [class.tabs_sortby__dd--show]="isDropdownOpen">
+                                    <ul class="tabs_sortby__dd__list">
+                                        <li *ngFor="let option of sortOptions"
+                                            class="tabs_sortby__dd__list--item"
+                                            [class.active]="option === selectedSortOption"
+                                            (click)="changeSortOption(option)">
+                                            {{ option }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- <div class="sort-by">
+                                <label for="cars">Sort By:</label>
+                                <select id="cars" name="carlist" class="sort-select" form="carform">
+                                <option value="" disabled selected hidden>Relevance</option>
+                                <option value="Lorem">Lorem</option>
+                                <option value="Lorem">Lorem</option>
+                                <option value="Lorem">Lorem</option>
+                                <option value="Lorem">Lorem</option>
+                                </select>
+                            </div> -->
+                        </div>
+                        <div class="godrej-citys">
+                            <div class="citiys-planes" *ngFor="let allbuilderproject of allbuilderproject">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-6 col-sm-12">
+                                        <div class="city-images" *ngIf="allbuilderproject.project_banner_image !== null">
+                                            <img src="{{ allbuilderproject.project_banner_image }}" alt="" class="img-fluid">
+                                        </div>
+                                        
+                                        <!-- <div class="property-verified" *ngIf="allbuilderproject.properties[0].is_exclusive === '1'"><p>EXCLUSIVE PROPERTY</p></div> -->
+                                        <!-- <div class="check-compare">
+                                            <input type="checkbox" id="compare" name="compare" value="compare add" class="mycheck">
+                                            <label for="compare" class="compares"> Add to Compare</label><br>
+                                        </div> -->
+                                    </div>
+                                    <div class="col-lg-10 col-md-6 col-sm-12">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <a href="project-details/{{ allbuilderproject.firstUrlPart }}/{{ allbuilderproject.secondUrlPart}}" class="groups-companies-names">{{ allbuilderproject.project_name}}</a>
+                                                <p class="opnesince">{{ allbuilderproject.project_total_floor }} Floor Plan  |  By: {{ allbuilderproject.project_name}}</p>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p class="interior-location"><span class="me-3"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>in {{ allbuilderproject.project_localities }}</p>
+                                                    </div>
+                                                    <div class="col-md-6 border-add" *ngIf="allbuilderproject.project_price_show == '0'">
+                                                        <div class="city-price">
+                                                        <p class="our-price">₹ {{ allbuilderproject.project_minimum_price }} to {{ allbuilderproject.project_maximum_price }}</p>
+                                                        <!-- <p class="since-oct"><span class="me-2"><i class="fa-solid fa-arrow-up" style="color: #25c600;"></i></span>5% since Oct '15</p> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <h6 class="possession">Possession in 2022</h6> -->
+                                        <p class="text-titles" [innerHTML]="allbuilderproject.project_about"></p>
+                                          <input type="checkbox" class="text-btn" />
+                                        <div class="deatel-table">
+                                            <table class="table-responsive">
+                                              <tbody *ngFor="let flat of allbuilderproject.properties ">
+                                                <tr class="table-data">
+                                                    <td>{{ flat.property_bhk }}</td>
+                                                    <td>{{ flat.property_sqfoot }}</td>
+                                                    <td>{{ flat.minprice }} to {{ flat.maxprice }}</td>
+                                                    <td class="contact-godrej"><a href="#">CONTACT NOW</a></td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </div>                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>
+                    </div>
+    
+                    <div class="tab-pane fade" id="pills-godarej-two" role="tabpanel" aria-labelledby="pills-godarej-two-tab">...</div>
+                    
+                  </div>
+            </div>
+        </div>
+    </section>
+    
+    </main>

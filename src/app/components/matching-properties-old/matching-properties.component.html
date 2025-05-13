@@ -1,0 +1,220 @@
+<main>
+<section class="matching-banner position-relative">
+    <div class="container">
+        <div class="banner-action">
+            <h1 class="banner_title">Search Properties</h1>
+        </div>
+    </div>
+</section>
+<!-- <section class="save-search">
+    <div class="container">
+        <div class="save-search-box">
+            <h2 class="ss-head">Save Your Search</h2>
+            <p class="ss-title">Get email alerts for the latest properties related to your save</p>
+
+            <div class="edit-search-opp">
+                <h4>Edit Your Search</h4>
+                <div class="editfunctionalitys">
+                    <p><span><img src="../../../assets/images/right.png" alt=""></span>Ahmedabad</p>
+                    <p><span><img src="../../../assets/images/right.png" alt=""></span>Flat</p>
+                    <p><span><img src="../../../assets/images/right.png" alt=""></span>₹ 1,000 - ₹ 5,000</p>
+                    <p><span><img src="../../../assets/images/right.png" alt=""></span>1 BHK</p>
+                    <a href="" class="tap-edit">Edit</a>
+                    <button class="edit-search-btn">Save Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<section class="property-off">
+    <div class="container">
+        <!-- <div class="row">
+            <div class="col-lg-6 col-ms-6 col-sm-12 ">
+                <div class="left-mp-off">
+                    <div class="victory-box">
+                        <div class="victory-image">
+                            <img src="../../../assets/images/Vector1.png" alt="" class="img-fluid">
+                        </div>
+                        <div class="victory-info">
+                            <p>Pay Rent with Credit Card <strong>Earn upto 5% Cashback/ Reward Points</strong></p>
+                            <a href="">Pay Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-ms-6 col-sm-12">
+                <div class="right-mp-off">
+                    <div class="victory-box">
+                        <div class="victory-image">
+                            <img src="../../../assets/images/Vector2.png" alt="" class="img-fluid">
+                        </div>
+                        <div class="victory-info">
+                            <p>Enjoy Up to <strong>50% Off on Owner Ad Packages</strong></p>
+                            
+
+                            <a href="">Know More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="row justify-content-end">
+            <div class="col-lg-2 col-md-3 col-sm-12 mb-2">
+                <div class="tabs_sortby pt-4">
+                    <div class="tabs_sortby--title" (click)="toggleDropdown()">Sort by: <span>{{ selectedSortOption }}</span></div>
+                    <div class="tabs_sortby__dd box-shadow" [class.tabs_sortby__dd--show]="isDropdownOpen">
+                      <ul class="tabs_sortby__dd__list">
+                        <li *ngFor="let option of sortOptions"
+                            class="tabs_sortby__dd__list--item"
+                            [class.active]="option === selectedSortOption"
+                            (click)="changeSortOption(option)">
+                          {{ option }}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+              </div>
+        </div>
+
+        <div class="maching-myproperties" *ngFor="let item of searchdata">
+            <div class="row">
+                <div class="col-lg-2 col-md-5 col-sm-12">
+                    <div class="request-images">
+                        <img src="{{ item.property_main_img }}" alt="" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12">
+                    <div class="wich-location">
+                        <a routerLink="/property-details/{{ item.projectdetails.project_name }}/{{ item.id }}" class="tap-location"><strong>{{ item.super_area }}</strong> for {{ item.property_for }} <span *ngIf="item.property_type === '1' || item.property_type >= 10 && item.property_type <= 15">{{ item.property_bhk }} Flat</span> in {{ item.name }}</a>
+                        <p class="posted-day">Posted: {{ item.created_at | date : 'yyyy-MM-dd' }}</p>
+                    </div>
+                    <div class="properties-allinfo">
+                        <div class="part-areas border-right">
+                            <h6 class="project-titles">Floor</h6>
+                            <p class="project-text">{{ item.floor }} out of {{ item.total_floor }} Floor</p>
+                            <!-- <p class="project-text" *ngIf="item.property_type === '1' || item.property_type >= 10 && item.property_type <= 15">{{ item.property_bhk }}</p> -->
+                        </div>
+                        <div class="part-areas border-right">
+                            <h6 class="project-titles">furnishing</h6>
+                            <p class="project-text">{{ item.furnishing_status }}</p>
+                        </div>
+                        <div class="part-areas border-right">
+                            <h6 class="project-titles">Bathroom</h6>
+                            <p class="project-text">{{ item.bathroom }}</p>
+                        </div>
+                        <div class="part-areas" *ngIf="item.property_type === '8' || item.property_type > 16 && item.property_type < 20">
+                            <h6 class="project-titles">Bedroom</h6>
+                            <p class="project-text">{{ item.bedroom }}</p>
+                        </div>
+                        <div class="part-areas border-right">
+                            <h6 class="project-titles">facing</h6>
+                            <p class="project-text">{{ item.facing }}</p>
+                        </div>
+                        <div class="part-areas border-right">
+                            <h6 class="project-titles">Lift</h6>
+                            <p class="project-text">{{ item.lift }}</p>
+                        </div>
+                        <div class="part-areas">
+                            <h6 class="project-titles">Car Parking</h6>
+                            <p class="project-text">{{ item.parking }}</p>
+                        </div>
+                    </div>
+                    <!-- <p class="each-person">For each person RS.2500 ::::3 roommates needed in Jivrajpark.</p> -->
+
+                    <div class="save-get-no">
+                        <div class="get-no">
+                            <a href="">Get Phone no.</a>
+                        </div>
+                        <div class="save-bt">
+                            <a href="">Save</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-12 col-sm-12">
+                    <div class="price-maching">
+                        <p>₹ {{ item.minprice }} to ₹ {{ item.maxprice }}</p>
+                        <!-- <a href="">See other Charges</a> -->
+                        
+                        <h6 class="owner-name"><span>Owner</span><br> {{ item.owner_name}}</h6>
+                        <div class="owner-cc">
+                            <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contect-owner">CONTACT OWNER</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="sponsored">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    <a href="" class="links-taps">
+                        <div class="sponsored-box">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-12 col-sm-12" >
+                                    <div class="sponsored-image">
+                                    <img src="../../../assets/images/Sponsored.png" alt="" class="img-fluid">
+                                    <p class="sponsored-text">Sponsored</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-md-12 col-sm-12">
+                                    <div class="right-box-sponsored">
+                                        <div class="sponsored-details">
+                                            <div class="sponsored-side-box">
+                                             <div class="left-box">
+                                                 <h5 class="property-names">Swati Crimson</h5>
+                                                 <p class="location-property">Thaltej, Ahmedabad</p>
+                                             </div>
+                                             <div class="right-box">
+                                                 <p class="marketed">Marketed by <br>Swati Procon</p>
+                                             </div>
+                                            </div>
+                                         </div>
+                                         <p class="sponsored-reat"><strong>Dholera SIR</strong></p>
+                                         <p class="plots-price">Residential Plots <strong>₹ 5 Lac</strong> onwards</p>
+                                         
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                    </a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    <a href="" class="links-taps">
+                        <div class="sponsored-box">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-12 col-sm-12">
+                                    <div class="sponsored-image">
+                                    <img src="../../../assets/images/Sponsored.png" alt="" class="img-fluid">
+                                    <p class="sponsored-text">Sponsored</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-md-12 col-sm-12">
+                                    <div class="right-box-sponsored">
+                                        <div class="sponsored-details">
+                                            <div class="sponsored-side-box">
+                                             <div class="left-box">
+                                                 <h5 class="property-names">Swati Crimson</h5>
+                                                 <p class="location-property">Thaltej, Ahmedabad</p>
+                                             </div>
+                                             <div class="right-box">
+                                                 <p class="marketed">Marketed by <br>Swati Procon</p>
+                                             </div>
+                                            </div>
+                                         </div>
+                                         <p class="sponsored-reat"><strong>Dholera SIR</strong></p>
+                                         <p class="plots-price">Residential Plots <strong>₹ 5 Lac</strong> onwards</p>
+                                        
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</main>
