@@ -206,12 +206,16 @@ export class LoginComponent {
     localStorage.removeItem('myrealtylogintoken');
     localStorage.removeItem('userId');
     localStorage.removeItem('email');
+    localStorage.removeItem('contact_no');
+    localStorage.removeItem('role');
+    localStorage.removeItem('name');
+    localStorage.removeItem('sessionId');
     const currentUrl = this.location.path();
-  if(currentUrl == '/home'){
-    window.location.reload();
-  }else{
-    this.route.navigate(['/home']);
-  }
+    if(currentUrl == '/'){
+      window.location.reload();
+    }else{
+      this.route.navigate(['/']);
+    }
   }
 
   getregistereddata(information: any): void {

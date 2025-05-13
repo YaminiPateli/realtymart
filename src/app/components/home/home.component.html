@@ -2054,7 +2054,7 @@
               <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig4">
                 <div ngxSlickItem class="slide" *ngFor="let property of propertyServices">
                   <div class="allpropertyes">
-                    <a routerLink="property-services/{{ property.prpsrcurl }}"><img src={{property.image}}
+                    <a target="_blank" routerLink="property-services/{{ property.prpsrcurl }}"><img src={{property.image}}
                         alt={{property.name}} />
                       <p class="title-img-property">{{property.name}}</p>
                     </a>
@@ -2204,7 +2204,7 @@
                   <div class="deal-imgs">
                     <img src="{{ hotdeal.property_main_img }}" class="img-fluid" alt="" />
                     <div class="hot-details">
-                      <a routerLink="/property-details/{{
+                      <a target="_blank" routerLink="/property-details/{{
                           hotdeal.propertyfirstUrlPart
                         }}/{{ hotdeal.propertysecondUrlPart }}" class="detail-head">
                         <h2 class="proj-Mhead">{{ hotdeal.projectName }}</h2>
@@ -2248,7 +2248,7 @@
                     </div>
                   </div>
 
-                  <a routerLink="/property-details/{{ hotdeal.propertyfirstUrlPart }}/{{
+                  <a target="_blank" routerLink="/property-details/{{ hotdeal.propertyfirstUrlPart }}/{{
                       hotdeal.propertysecondUrlPart
                     }}" class="show-deals"><i class="fa fa-thin fa-chevron-right" style="color: #ffffff"></i></a>
                 </div>
@@ -2268,13 +2268,13 @@
           <div ngxSlickItem class="slide" *ngFor="let featuredResidentals of featuredResidentals">
             <div class="proj-gallery__card">
               <div class="proj-link">
-                <a routerLink="/project-details/{{ featuredResidentals?.firstUrlPart }}/{{ featuredResidentals?.secondUrlPart }}">
+                <a target="_blank" routerLink="/project-details/{{ featuredResidentals?.firstUrlPart }}/{{ featuredResidentals?.secondUrlPart }}">
                   <div class="proj-gallery-image">
                     <img src="{{ featuredResidentals?.project_banner_image }}" alt="" />
                   </div>
                 </a>
                 <div class="proj-gallery-desc">
-                  <a routerLink="/project-details/{{
+                  <a target="_blank" routerLink="/project-details/{{
                     featuredResidentals.firstUrlPart
                   }}/{{ featuredResidentals.secondUrlPart }}">
                     <h3 class="proj-Mhead">
@@ -2312,7 +2312,7 @@
                     </p>
                   </a>
                   <a *ngIf="featuredResidentals.project_price_show == '1' " class="get_enq" style="cursor:pointer"
-                    (click)="contactowner( featuredResidentals.secondUrlPart);fetchProperty(featuredResidentals)"
+                    (click)="contactowner(featuredResidentals.secondUrlPart);fetchProperty(featuredResidentals)"
                     data-bs-toggle="modal" data-bs-target="#contact-owner">Get a Quote</a>
                   <!-- <button class="get_enq" data-bs-toggle="modal" data-bs-target="#contact-owner" >Get a Quote</button> -->
                 </div>
@@ -2340,12 +2340,12 @@
                 {{ bannerbuilder[0].property_bhk }}</p>
             </div>
             <div class="group-view">
-              <a href="project-details/{{ bannerbuilder[0].project_name }}/{{ bannerbuilder[0].id }}/{{ bannerbuilder[0].property_type }}">View projects</a>
+              <a target="_blank" href="project-details/{{ bannerbuilder[0].project_name }}/{{ bannerbuilder[0].id }}/{{ bannerbuilder[0].property_type }}">View projects</a>
             </div>
           </div>
         </div> -->
         <div class="col-lg-12 col-md-12 col-sm-12 ps-0 ps-lg-0 ps-md-3">
-          <a
+          <a target="_blank"
             href="project-details/{{ bannerbuilder[0].projectfirstUrlPart }}/{{ bannerbuilder[0].projectsecondUrlPart }}">
             <img src="{{ bannerbuilder[0].project_banner_img }}" alt="" class="img-fluid group-main-img" />
           </a>
@@ -2362,7 +2362,7 @@
           <div ngxSlickItem class="slide" *ngFor="let featuredcommercials of featuredcommercials">
             <div class="proj-gallery__card">
               <div class="proj-link">
-                <a routerLink="/project-details/{{
+                <a target="_blank" routerLink="/project-details/{{
                   featuredcommercials.firstUrlPart
                 }}/{{ featuredcommercials.secondUrlPart }}">
                   <div class="proj-gallery-image-tow">
@@ -2370,7 +2370,7 @@
                   </div>
                 </a>
                 <div class="proj-gallery-desc">
-                  <a routerLink="/project-details/{{
+                  <a target="_blank" routerLink="/project-details/{{
                     featuredcommercials.firstUrlPart
                   }}/{{ featuredcommercials.secondUrlPart }}">
                     <h3 class="proj-Mhead">
@@ -2420,12 +2420,12 @@
                 {{ bannerbuilder[1].property_bhk }}</p>
             </div>
             <div class="group-view">
-              <a href="project-details/{{ bannerbuilder[1].project_name }}/{{ bannerbuilder[1].id }}/{{ bannerbuilder[1].property_type }}">View projects</a>
+              <a target="_blank" href="project-details/{{ bannerbuilder[1].project_name }}/{{ bannerbuilder[1].id }}/{{ bannerbuilder[1].property_type }}">View projects</a>
             </div>
           </div>
         </div> -->
         <div class="col-lg-12 col-md-12 col-sm-12 ps-0 ps-lg-0 ps-md-3">
-          <a
+          <a target="_blank"
             href="project-details/{{ bannerbuilder[1].projectfirstUrlPart }}/{{ bannerbuilder[1].projectsecondUrlPart }}">
             <img src="{{ bannerbuilder[1].project_banner_img }}" alt="" class="img-fluid group-main-img" />
           </a>
@@ -2442,7 +2442,7 @@
           <div ngxSlickItem class="slide" *ngFor="let featuredBunglowss of featuredBunglowss">
             <div class="proj-gallery__card">
               <div class="proj-link">
-                <a routerLink="/project-details/{{
+                <a target="_blank" routerLink="/project-details/{{
                   featuredBunglowss.firstUrlPart
                 }}/{{ featuredBunglowss.secondUrlPart }}">
                   <div class="proj-gallery-image">
@@ -2450,7 +2450,7 @@
                   </div>
                 </a>
                 <div class="proj-gallery-desc">
-                  <a routerLink="/project-details/{{
+                  <a target="_blank" routerLink="/project-details/{{
                     featuredBunglowss.firstUrlPart
                   }}/{{ featuredBunglowss.secondUrlPart }}">
                     <h3 class="proj-Mhead">
@@ -2495,7 +2495,7 @@
           <div ngxSlickItem class="slide" *ngFor="let featurefarmhouse of featurefarmhouse">
             <div class="proj-gallery__card">
               <div class="proj-link">
-                <a routerLink="/project-details/{{
+                <a target="_blank" routerLink="/project-details/{{
                   featurefarmhouse.firstUrlPart
                 }}/{{ featurefarmhouse.secondUrlPart }}">
                   <div class="proj-gallery-image-tow">
@@ -2503,7 +2503,7 @@
                   </div>
                 </a>
                 <div class="proj-gallery-desc">
-                  <a routerLink="/project-details/{{
+                  <a target="_blank" routerLink="/project-details/{{
                     featurefarmhouse.firstUrlPart
                   }}/{{ featurefarmhouse.secondUrlPart }}">
                     <h3 class="proj-Mhead">
@@ -2552,12 +2552,12 @@
                 {{ bannerbuilder[2].property_bhk }}</p>
             </div>
             <div class="group-view">
-              <a href="project-details/{{ bannerbuilder[2].project_name }}/{{ bannerbuilder[2].id }}/{{ bannerbuilder[2].property_type }}">View projects</a>
+              <a target="_blank" href="project-details/{{ bannerbuilder[2].project_name }}/{{ bannerbuilder[2].id }}/{{ bannerbuilder[2].property_type }}">View projects</a>
             </div>
           </div>
         </div> -->
         <div class="col-lg-12 col-md-12 col-sm-12 ps-0 ps-lg-0 ps-md-3">
-          <a
+          <a target="_blank"
             href="project-details/{{ bannerbuilder[2].projectfirstUrlPart }}/{{ bannerbuilder[2].projectsecondUrlPart }}">
             <img src="{{ bannerbuilder[2].project_banner_img }}" alt="" class="img-fluid group-main-img" />
           </a>
@@ -2574,7 +2574,7 @@
           <div ngxSlickItem class="slide" *ngFor="let featurePlots of featurePlotss">
             <div class="proj-gallery__card">
               <div class="proj-link">
-                <a routerLink="/project-details/{{ featurePlots.firstUrlPart }}/{{
+                <a target="_blank" routerLink="/project-details/{{ featurePlots.firstUrlPart }}/{{
                   featurePlots.secondUrlPart
                 }}">
                   <div class="proj-gallery-image">
@@ -2582,7 +2582,7 @@
                   </div>
                 </a>
                 <div class="proj-gallery-desc">
-                  <a routerLink="/project-details/{{ featurePlots.firstUrlPart }}/{{
+                  <a target="_blank" routerLink="/project-details/{{ featurePlots.firstUrlPart }}/{{
                   featurePlots.secondUrlPart
                 }}">
                     <h3 class="proj-Mhead">{{ featurePlots.project_name }}</h3>
@@ -2624,7 +2624,7 @@
           <p>Get authentic leads by listing it on realtymart.</p>
         </div>
         <div class="free-post-btn">
-          <a routerLink="/selling-guide"
+          <a target="_blank" routerLink="/selling-guide"
             >Post Property <span class="fw-bold">FREE</span></a
           >
         </div>
@@ -2656,7 +2656,7 @@
           />
           <p class="loan-title">Get the Value of any Property</p>
           <div>
-            <a href="/property-valuation" class="inner-loan-btn"
+            <a target="_blank" href="/property-valuation" class="inner-loan-btn"
               ><i class="fa fa-thin fa-chevron-right" style="color: #ffffff"></i
             ></a>
           </div>
@@ -2669,7 +2669,7 @@
           />
           <p class="loan-title">Home Loan Calculator</p>
           <div>
-            <a routerLink="../emi-calculator" class="inner-loan-btn"
+            <a target="_blank" routerLink="../emi-calculator" class="inner-loan-btn"
               ><i class="fa fa-thin fa-chevron-right" style="color: #ffffff"></i
             ></a>
           </div>
@@ -2682,7 +2682,7 @@
           />
           <p class="loan-title">Property Services</p>
           <div>
-            <a routerLink="/property-services" class="inner-loan-btn"
+            <a target="_blank" routerLink="/property-services" class="inner-loan-btn"
               ><i class="fa fa-thin fa-chevron-right" style="color: #ffffff"></i
             ></a>
           </div>
@@ -2699,7 +2699,7 @@
           <div ngxSlickItem class="slide" *ngFor="let topbuilders of topbuilders">
             <!-- <img src="{{ slide.img }}" alt="" width="100%" /> -->
             <div class="builder-main-slid">
-              <a href="builder-detail/{{ topbuilders.builderUrl }}" class="builder-front">
+              <a target="_blank" href="builder-detail/{{ topbuilders.builderUrl }}" class="builder-front">
                 <div class="builder-logos">
                   <img src="{{ topbuilders.builder_logo }}" alt="" class="img-fluid" />
                 </div>

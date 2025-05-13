@@ -38,7 +38,6 @@ export class HeaderComponent implements AfterViewInit{
   latitude:any;
   cookie_location: any;
   longitude:any;
-  localStorage = localStorage;
   checkToken:any;
   city: any;
   validCities: string[] = ['Ahmedabad', 'Rajkot', 'Surat', 'Vadodara', 'Mumbai', 'Navi Mumbai', 'Pune', 'Bangalore', 'NCR', 'Delhi', 'Gurgaon', 'Hyderabad'];
@@ -53,6 +52,10 @@ export class HeaderComponent implements AfterViewInit{
     private toastr: ToastrService,
     private geolocationService: GeolocationService
   ) {
+    if(this.checkToken == null || this.checkToken == undefined){
+      this.checkToken = localStorage.getItem('myrealtylogintoken');
+    }
+
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'instant' });
     }, 0);
@@ -66,7 +69,9 @@ export class HeaderComponent implements AfterViewInit{
 
   ngOnInit(): void {
     this.getLocation();
-    this.checkToken = localStorage.getItem('myrealtylogintoken');
+    if(this.checkToken == null || this.checkToken == undefined){
+      this.checkToken = localStorage.getItem('myrealtylogintoken');
+    }
   }
 
   getLocation() {
@@ -83,7 +88,7 @@ export class HeaderComponent implements AfterViewInit{
               if (this.isValidCity(city)) {
                 this.updateCity(city);
               } else {
-                this.updateCity('Ahmedabad'); 
+                this.updateCity('Ahmedabad');
               }
             }).catch((error: any) => {
               console.error('Error getting city from coordinates:', error);
@@ -141,7 +146,7 @@ export class HeaderComponent implements AfterViewInit{
     localStorage.removeItem('name');
     localStorage.removeItem('sessionId');
     const currentUrl = this.location.path();
-    if(currentUrl == '/'){
+    if(currentUrl == ''){
       window.location.reload();
     }else{
       this.route.navigate(['/']);

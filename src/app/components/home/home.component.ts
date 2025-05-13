@@ -154,7 +154,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
       'Gurgaon',
       'Hyderabad',
     ];
-    
+
     nameError:boolean=false;
     emailError:boolean=false;
     phoneError:boolean=false;
@@ -268,7 +268,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   }
 
   getLocation() {
-    const locationCookie = localStorage.getItem('location');    
+    const locationCookie = localStorage.getItem('location');
     this.city = locationCookie;
 
     if (!locationCookie) {
@@ -404,8 +404,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
     this.featureresidentalService.futureresidentalget(this.city)?.subscribe((featureResidentalData: any) => {
         this.featureResidentalData = featureResidentalData;
         this.featuredResidentals = this.featureResidentalData?.data;
-        console.log(this.featuredResidentals);
-        
     });
   }
 
@@ -413,8 +411,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
     this.featurecommercialService.featurecommercialget(this.city)?.subscribe((featuredcommercialData: any) => {
         this.featureCommercialData = featuredcommercialData;
         this.featuredcommercials = this.featureCommercialData?.data;
-        console.log(this.featuredcommercials);
-        
     });
   }
 

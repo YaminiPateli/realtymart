@@ -9,6 +9,8 @@ import { map } from 'rxjs/operators'; // Import map operator
 import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from '../../../environments/environment';
+import { NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 interface ApiResponse {
   status: boolean;
   data: any; // You can specify the actual data type you expect here
@@ -18,7 +20,9 @@ interface ApiResponse {
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  standalone:true,
+  imports: [NgIf, FormsModule],
 })
 export class LoginComponent {
   private apiUrl: string = environment.apiUrl;
@@ -38,7 +42,7 @@ export class LoginComponent {
   cookie_location: any;
   longitude:any;
   showContactError: boolean = false;
-  isMobileNumberDisabled: boolean = false; 
+  isMobileNumberDisabled: boolean = false;
   localStorage = localStorage;
 
   constructor(
@@ -100,7 +104,6 @@ export class LoginComponent {
               this.localStorage.setItem('location', 'Ahmedabad');
             }
 
-
             this.locationCookie = this.localStorage.getItem('location');
           },
           (error) => {
@@ -140,7 +143,7 @@ export class LoginComponent {
   // isValidContactNumber(): boolean {
   //   return this.contact_no.length == 10;
   // }
-  
+
 
   // generateOtp() {
   //   // Your OTP generation logic here
@@ -154,17 +157,15 @@ export class LoginComponent {
 
   onFormSubmit(form: any) {
     if (form.valid) {
-      
+
     }
   }
 
- generateOtp(contact_no: string) {
-    
+ generateOtp(contact_no: any) {
     if (contact_no?.length !== 10 || !/^\d+$/.test(contact_no)) {
-        this.showContactError = true; 
+        this.showContactError = true;
         return
     }
-
     // If the mobile number is valid, generate a 6-digit OTP
     const otpLength = 6;
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
@@ -180,7 +181,6 @@ export class LoginComponent {
             this.isMobileNumberDisabled = true;
             this.isOtpGenerated = true;
           }
-            // console.log('OTP generated successfully:', response);
         },
         (error) => {
             console.error('Error generating OTP:', error);
@@ -205,17 +205,19 @@ export class LoginComponent {
     // this.showContactError = this.contact_no?.length === 10 ? false : this.showContactError;
   }
 
-  validateOtp(contact_no: string, otp: string) {
-    const enteredOtp = parseInt(otp, 10); // Parse enteredOtp as a number
-    // console.log('validateOtp method called');
+  validateOtp(contact_no: string, otp: any) {
+    if(otp?.length !=4){
+      this.toastr.error('Please Enter 4 Digit OTP');
+      return;
+    }
 
-    // You can now send a request with email and entered OTP
+    const enteredOtp = parseInt(otp, 10);
+
     const url = `${this.apiUrl}validateotp`;
     const data = { contact_no: contact_no, otp: enteredOtp };
 
     this.http.post<ApiResponse>(url, data).subscribe(
-      (response: ApiResponse) => {
-
+      (response: any) => {
         // Store the token in session storage
         if (response && response.status === true) {
           localStorage.setItem('myrealtylogintoken', response.data.token);
@@ -226,6 +228,8 @@ export class LoginComponent {
           localStorage.setItem('email',response.data.email);
           this.route.navigate(['/']);
           this.toastr.success('Login successfully!');
+        } else if(response && response.code == 1) {
+          this.toastr.error('Invalid OTP');
         }
       },
       (error) => {
@@ -237,13 +241,17 @@ export class LoginComponent {
   logout() {
     localStorage.removeItem('myrealtylogintoken');
     localStorage.removeItem('userId');
+    localStorage.removeItem('email');
     localStorage.removeItem('contact_no');
+    localStorage.removeItem('role');
+    localStorage.removeItem('name');
+    localStorage.removeItem('sessionId');
     const currentUrl = this.location.path();
-  if(currentUrl == '/'){
-    window.location.reload();
-  }else{
-    this.route.navigate(['/']);
-  }
+    if(currentUrl == ''){
+      window.location.reload();
+    }else{
+      this.route.navigate(['/']);
+    }
   }
 
   getregistereddata(information: any): void {
