@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { AfterViewInit, OnInit, HostListener,ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -8,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { GeolocationService } from '../app/components/service/geolocation.service';
+import { CookieService } from 'ngx-cookie-service';
 
 interface City {
   cid: number;
@@ -22,19 +22,24 @@ interface City {
 export class AppComponent {
   isRegisterRoute = false;
   isRegisterThankyouRoute = false;
+  isLoginRoute = false;
   title = 'my-reality-unlimited';
   city: any;
   city1:City[]=[];
   validcityforselected:any;
+  cookie_name: string = '';
+  all_cookies: any = {};
 
   constructor(
+    private cookieService: CookieService,
     private router: Router,
     public http: HttpClient,
     private geolocationService: GeolocationService
   ) {
-    this.router.events.subscribe(() => {  
+    this.router.events.subscribe(() => {
       // Check if the current route is `/register`
       this.isRegisterRoute = this.router.url === '/registration';
+      this.isLoginRoute = this.router.url === '/login';
       this.isRegisterThankyouRoute = this.router.url === '/thank-you-register';
     });
 
@@ -43,6 +48,30 @@ export class AppComponent {
       for (let name of names) caches.delete(name);
       });
       }
+  }
+
+    ngOnInit(): void {
+    this.loadCookies();
+  }
+
+    setCookie(): void {
+    this.cookieService.set('name', 'AngularCookie', { expires: 7 }); // 7 days
+    this.loadCookies();
+  }
+
+  deleteCookie(): void {
+    this.cookieService.delete('name');
+    this.loadCookies();
+  }
+
+  deleteAll(): void {
+    this.cookieService.deleteAll();
+    this.loadCookies();
+  }
+
+  private loadCookies(): void {
+    this.cookie_name = this.cookieService.get('name');
+    this.all_cookies = this.cookieService.getAll();
   }
 
   getLocation() {
@@ -80,7 +109,7 @@ export class AppComponent {
       localStorage.setItem('location', this.city);
     }
   }
-  
+
     fetchCities() {
       this.http.get<{ data: { id: number; name: string }[] }>(`${environment.apiUrl}cities`).subscribe(
         (response: any) => {

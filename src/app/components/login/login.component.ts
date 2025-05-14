@@ -4,17 +4,17 @@ import { Injectable } from '@angular/core';
 import { PropertyservicesService } from '../../components/service/propertyservices.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs'; // Import Observable
-import { map } from 'rxjs/operators'; // Import map operator
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from '../../../environments/environment';
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 interface ApiResponse {
   status: boolean;
-  data: any; // You can specify the actual data type you expect here
-  // Add other properties as needed based on the response structure
+  data: any;
 }
 
 @Component({
@@ -22,7 +22,7 @@ interface ApiResponse {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   standalone:true,
-  imports: [NgIf, FormsModule],
+  imports: [NgIf, FormsModule, CommonModule],
 })
 export class LoginComponent {
   private apiUrl: string = environment.apiUrl;
@@ -66,59 +66,59 @@ export class LoginComponent {
 
 
   // loader script
-  private getUserGeolocation(): Observable<GeolocationPosition> {
-    return new Observable((observer) => {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          observer.next(position);
-          observer.complete();
-        },
-        (error) => observer.error(error)
-      );
-    });
-  }
+  // private getUserGeolocation(): Observable<GeolocationPosition> {
+  //   return new Observable((observer) => {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         observer.next(position);
+  //         observer.complete();
+  //       },
+  //       (error) => observer.error(error)
+  //     );
+  //   });
+  // }
 
-  private getUserCityFromCoordinates(latitude: number, longitude: number): Observable<string> {
-    return this.http
-      .get<any>(
-        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=10`
-      )
-      .pipe(map((response) => response.address.city || 'Ahmedabad'));
-  }
+  // private getUserCityFromCoordinates(latitude: number, longitude: number): Observable<string> {
+  //   return this.http
+  //     .get<any>(
+  //       `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=10`
+  //     )
+  //     .pipe(map((response) => response.address.city || 'Ahmedabad'));
+  // }
 
   ngOnInit() {
     const token = this.localStorage.getItem('myrealtylogintoken');
     if(token){
       this.route.navigate(['/']);
     }
-    this.getUserGeolocation().subscribe(
-      (position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
+    // this.getUserGeolocation().subscribe(
+    //   (position) => {
+    //     this.latitude = position.coords.latitude;
+    //     this.longitude = position.coords.longitude;
 
-        this.getUserCityFromCoordinates(this.latitude, this.longitude).subscribe(
-          (userCity) => {
-            this.cookie_location = 'Ahmedabad';
-            this.localStorage.setItem('location', userCity);
-            if (!userCity || userCity.trim() === '') {
-              this.localStorage.setItem('location', 'Ahmedabad');
-            }
+    //     this.getUserCityFromCoordinates(this.latitude, this.longitude).subscribe(
+    //       (userCity) => {
+    //         this.cookie_location = 'Ahmedabad';
+    //         this.localStorage.setItem('location', userCity);
+    //         if (!userCity || userCity.trim() === '') {
+    //           this.localStorage.setItem('location', 'Ahmedabad');
+    //         }
 
-            this.locationCookie = this.localStorage.getItem('location');
-          },
-          (error) => {
-            console.error('Error getting user city:', error);
-              this.localStorage.setItem('location', 'Ahmedabad');
-              this.locationCookie = this.localStorage.getItem('location');
-          }
-        );
-      },
-      (error) => {
-        console.error('Error getting user geolocation:', error);
-          this.localStorage.setItem('location', 'Ahmedabad');
-          this.locationCookie = this.localStorage.getItem('location');
-      }
-    );
+    //         this.locationCookie = this.localStorage.getItem('location');
+    //       },
+    //       (error) => {
+    //         console.error('Error getting user city:', error);
+    //           this.localStorage.setItem('location', 'Ahmedabad');
+    //           this.locationCookie = this.localStorage.getItem('location');
+    //       }
+    //     );
+    //   },
+    //   (error) => {
+    //     console.error('Error getting user geolocation:', error);
+    //       this.localStorage.setItem('location', 'Ahmedabad');
+    //       this.locationCookie = this.localStorage.getItem('location');
+    //   }
+    // );
   }
 
   ngAfterViewInit(){
@@ -128,32 +128,9 @@ export class LoginComponent {
     }, 3000);
   }
 
-  // loader script
-
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
-
-  // isValidEmail(): boolean {
-  //   // Regular expression for email validation
-  //   const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
-  //   return emailRegex.test(this.contact_no);
-  // }
-
-  // isValidContactNumber(): boolean {
-  //   return this.contact_no.length == 10;
-  // }
-
-
-  // generateOtp() {
-  //   // Your OTP generation logic here
-  //   this.isOtpGenerated = true;
-  // }
-
-  // validateOtp() {
-  //   // Your OTP validation logic here
-  //   this.isOtpValid = true; // Set to true if OTP is valid
-  // }
 
   onFormSubmit(form: any) {
     if (form.valid) {
@@ -166,13 +143,11 @@ export class LoginComponent {
         this.showContactError = true;
         return
     }
-    // If the mobile number is valid, generate a 6-digit OTP
     const otpLength = 6;
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     this.generatedOtp = otp.substring(0, otpLength);
     this.isOtpValid = false;
 
-    // Send the OTP generation request to the backend (you can include the contact number)
     this.http.post(`${this.apiUrl}generateotp`, { contact_no: this.contact_no }).subscribe(
         (response: any) => {
           if(response?.code == 1){
@@ -191,7 +166,6 @@ export class LoginComponent {
 
   validateNumberInput(event: KeyboardEvent) {
     const charCode = event.which ? event.which : event.keyCode;
-    // Only allow numeric characters (0-9)
     if (charCode < 48 || charCode > 57) {
       event.preventDefault();
     }
@@ -201,8 +175,6 @@ export class LoginComponent {
     const inputValue = event.target.value;
     const phonePattern = /^[0-9]{10}$/;
     this.showContactError = !phonePattern.test(inputValue);
-    // Reset the error message if the contact number is not 10 digits
-    // this.showContactError = this.contact_no?.length === 10 ? false : this.showContactError;
   }
 
   validateOtp(contact_no: string, otp: any) {
@@ -218,7 +190,6 @@ export class LoginComponent {
 
     this.http.post<ApiResponse>(url, data).subscribe(
       (response: any) => {
-        // Store the token in session storage
         if (response && response.status === true) {
           localStorage.setItem('myrealtylogintoken', response.data.token);
           localStorage.setItem('contact_no', response.data.contact_no);

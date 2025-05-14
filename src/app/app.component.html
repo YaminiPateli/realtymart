@@ -1,4 +1,4 @@
-<ng-container *ngIf="!isRegisterRoute && !isRegisterThankyouRoute">
+<ng-container *ngIf="!isRegisterRoute && !isRegisterThankyouRoute && !isLoginRoute">
   <app-header></app-header>
 </ng-container>
 
@@ -43,3 +43,4 @@
        <button (click)="deleteAll()">Delete All</button>
      </div> -->
 </ng-container>
+<app-cookie-consent></app-cookie-consent>
