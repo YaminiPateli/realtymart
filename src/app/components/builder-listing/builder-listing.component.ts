@@ -1,5 +1,4 @@
 import { Component, HostListener } from '@angular/core';
-import { BuilderprojectlistingService } from '../service/builderprojectlisting.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
@@ -16,10 +15,10 @@ export class BuilderListingComponent {
   allbuilderprojectcount:any;
   allbuilderproject: any = [];
   isExpanded = false;
-  // paginatedData: any[] = []; 
-  // currentPage: number = 1; 
-  // pageSize: number = 5; 
-  // totalItems: number = 0; 
+  // paginatedData: any[] = [];
+  // currentPage: number = 1;
+  // pageSize: number = 5;
+  // totalItems: number = 0;
   // itemsPerPage = 5;
   // visiblePageStart: number = 1;
   // visiblePageCount: number = 5;
@@ -36,9 +35,8 @@ export class BuilderListingComponent {
     private titleService: Title,
     private metaService: Meta,
     public http: HttpClient,
-    private builderprojectlistingService: BuilderprojectlistingService,
     private route: ActivatedRoute
-  ) {  
+  ) {
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: 'instant' });
       }, 0);
@@ -50,7 +48,7 @@ export class BuilderListingComponent {
   @HostListener('window:scroll', [])
   onScroll(): void {
     const items = document.querySelectorAll('.topahmedabad');
-    
+
     if (items.length < 20) return;
 
     const lastVisibleItem = items[items.length - 2];
@@ -73,14 +71,14 @@ export class BuilderListingComponent {
   loadAllBuilders(): void {
     const cityName = this.route.snapshot.paramMap.get('city');
     if (this.isLoading || this.currentPage > this.lastPage) return;
-  
+
       this.isLoading = true;
       this.loading = true;
-  
+
       const lastElement = document.querySelectorAll('.topahmedabad');
       const lastItem = lastElement[lastElement.length - 1];
       const lastItemOffset = lastItem ? lastItem.getBoundingClientRect().top : 0;
-  
+
     if (cityName) {
       this.http.get<any>(`${environment.apiUrl}allbuilderlisting/${cityName}?page=${this.currentPage}`).subscribe(
         (response) => {
@@ -94,7 +92,7 @@ export class BuilderListingComponent {
           );
 
           this.allbuilderprojectcount = response?.data?.total;
-          this.lastPage = response?.data?.last_page;         
+          this.lastPage = response?.data?.last_page;
 
           this.currentPage++;
           this.isLoading = false;

@@ -38,9 +38,9 @@
                 (input)="validContactNumber($event)"
                 required
               />
-              <p *ngIf="showContactError" class="error-message-login">
+              <!-- <p *ngIf="showContactError" class="error-message-login">
                 Invalid mobile number. Please enter at least 10 digits.
-              </p>
+              </p> -->
 
               <button
                 class="form-action-btn mt-3"
@@ -75,11 +75,11 @@
               </button>
 
               <!-- Invalid OTP Error -->
-              <ng-container *ngIf="!isOtpValid">
+              <!-- <ng-container *ngIf="!isOtpValid">
                 <p class="error-message-login">
                   Invalid OTP. Please try again.
                 </p>
-              </ng-container>
+              </ng-container> -->
             </div>
 
             <!-- OTP Validation Success -->

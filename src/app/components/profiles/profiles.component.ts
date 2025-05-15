@@ -68,6 +68,28 @@ export class ProfilesComponent {
     }
   }
 
+  getLoggedIn() {
+    const token = localStorage.getItem('myrealtylogintoken');
+    if (token) {
+      const headers = new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Accept', 'application/json');
+
+      this.http
+        .get(`${this.apiUrl}getbackendaccess`, {
+          headers,
+        })
+        .subscribe(
+          (userDetailsData: any) => {
+            console.log(userDetailsData);
+          },
+          (error) => { }
+        );
+    } else {
+      console.log('No token found in localStorage.');
+    }
+  }
+
   changePassword(changePasswordForm: NgForm): void {
     const token = localStorage.getItem('myrealtylogintoken');
 

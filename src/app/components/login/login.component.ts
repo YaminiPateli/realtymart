@@ -12,6 +12,7 @@ import { environment } from '../../../environments/environment';
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Title, Meta } from '@angular/platform-browser';
 interface ApiResponse {
   status: boolean;
   data: any;
@@ -46,6 +47,8 @@ export class LoginComponent {
   localStorage = localStorage;
 
   constructor(
+    private titleService: Title,
+    private metaService: Meta,
     public http: HttpClient,
     private PropertyservicesService: PropertyservicesService,
     private spinner: NgxSpinnerService,
@@ -53,6 +56,10 @@ export class LoginComponent {
     private location: Location,
     private toastr: ToastrService
   ) {
+    this.setMetaTags(
+      'User Login in realtymart',
+      '',
+    );
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'instant' });
     }, 0);
@@ -64,7 +71,25 @@ export class LoginComponent {
     this.spinner.show();
   }
 
+  // meta title
+  setMetaTags(title: string, description: string) {
+    this.titleService.setTitle(title);
 
+    this.metaService.updateTag({ name: 'description', content: description });
+    this.metaService.updateTag({ property: 'og:title', content: title });
+    this.metaService.updateTag({
+      property: 'og:description',
+      content: description,
+    });
+    // this.metaService.updateTag({ property: 'og:image', content: image });
+    this.metaService.updateTag({ name: 'twitter:title', content: title });
+    this.metaService.updateTag({
+      name: 'twitter:description',
+      content: description,
+    });
+    // this.metaService.updateTag({ name: 'twitter:image', content: image });
+  }
+  
   // loader script
   // private getUserGeolocation(): Observable<GeolocationPosition> {
   //   return new Observable((observer) => {

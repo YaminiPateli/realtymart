@@ -164,7 +164,6 @@ register();
     YourCartComponent,
     AdPackagesComponent,
     ProfilesComponent,
-    SellingGuideComponent,
     AgentsDetailsComponent,
     PostPropertyFreeComponent,
     BuilderDetailComponent,

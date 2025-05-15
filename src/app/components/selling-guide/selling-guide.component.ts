@@ -2,28 +2,88 @@ import { Component, HostListener, ViewChild, ElementRef, OnInit  } from '@angula
 import { FormControl, Validators, FormsModule, ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Title, Meta } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 declare var $: any; // Declare jQuery
-
-
 @Component({
   selector: 'app-selling-guide',
   templateUrl: './selling-guide.component.html',
-  styleUrls: ['./selling-guide.component.css']
+  styleUrls: ['./selling-guide.component.css'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ]
 })
 export class SellingGuideComponent {
   apiUrl = environment.apiUrl;
   contactStore!: FormGroup;
   bootstrap:any;
+  userRole: any;
+  userContactNo:any;
+    formData = {
+    role: '',
+    property_for: '',
+    contact_no: ''
+  };
 
   constructor(
+    private titleService: Title,
+    private metaService: Meta,
+    private toastr: ToastrService,
     private http: HttpClient,
     private fb: FormBuilder,
     private elementRef: ElementRef,
+    private route: Router,
   ) {
+    const Property = localStorage.getItem('postProperty');
+    if(Property == 'true'){
+      this.route.navigate(['/post-property-free']);
+    }
+    this.setMetaTags(
+      'Post Free Property Ads | Rent & Sell Property Online',
+      '',
+    );
+    this.formData.role = localStorage.getItem('role') || '';
+    this.formData.contact_no = localStorage.getItem('contact_no') || '';
     this.contactStore = this.fb.group({
       mobile: ['', [Validators.required, Validators.pattern(/^\d+$/), Validators.minLength(10), Validators.maxLength(10)]],
     });
+  }
+
+  // meta title
+  setMetaTags(title: string, description: string) {
+    this.titleService.setTitle(title);
+
+    this.metaService.updateTag({ name: 'description', content: description });
+    this.metaService.updateTag({ property: 'og:title', content: title });
+    this.metaService.updateTag({
+      property: 'og:description',
+      content: description,
+    });
+    // this.metaService.updateTag({ property: 'og:image', content: image });
+    this.metaService.updateTag({ name: 'twitter:title', content: title });
+    this.metaService.updateTag({
+      name: 'twitter:description',
+      content: description,
+    });
+    // this.metaService.updateTag({ name: 'twitter:image', content: image });
+  }
+
+  onSubmit(information:any) {
+    const formData = information.form.value;
+    if (!formData.contact_no || !formData.role || !formData.property_for) {
+      this.toastr.error('Please fill all the fields');
+      return;
+    }
+
+    localStorage.setItem('postProperty', 'true');
+    localStorage.setItem('postPropertyData', JSON.stringify(information.form.value));
+    this.route.navigate(['/post-property-free']);
   }
 
   getErrorMessage(controlName: string) {

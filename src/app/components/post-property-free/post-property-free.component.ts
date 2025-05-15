@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-post-property-free',
@@ -185,12 +186,28 @@ export class PostPropertyFreeComponent {
     return this.propertyType?.filter((item: any) => item?.type === type);
   }
   constructor(
+    private titleService: Title,
+    private metaService: Meta,
     private PostpropertyfreeService: PostpropertyfreeService,
     public http: HttpClient,
     private toastr: ToastrService,
     private route: Router,
   ) {
-    const tokens = localStorage.getItem('myrealtylogintoken');    
+    this.setMetaTags(
+      'Sell and Rent Your Property For Free on realtymart',
+      '',
+    );
+    const propertyDataJson = localStorage.getItem('postPropertyData');
+    const propertyData = propertyDataJson ? JSON.parse(propertyDataJson) : null;
+    console.log(propertyData);
+    console.log(propertyData.property_for);
+
+    if (propertyData) {
+      this.submitForm.patchValue({
+        property_for: propertyData.property_for || '',
+      });
+    }
+    const tokens = localStorage.getItem('myrealtylogintoken');
     if(tokens === null){
       this.route.navigate(['/login']);
       this.toastr.error('Please Login!');
@@ -198,6 +215,26 @@ export class PostPropertyFreeComponent {
       this.userRoleGet = localStorage.getItem('role');
     }
   }
+
+  // meta title
+  setMetaTags(title: string, description: string) {
+    this.titleService.setTitle(title);
+
+    this.metaService.updateTag({ name: 'description', content: description });
+    this.metaService.updateTag({ property: 'og:title', content: title });
+    this.metaService.updateTag({
+      property: 'og:description',
+      content: description,
+    });
+    // this.metaService.updateTag({ property: 'og:image', content: image });
+    this.metaService.updateTag({ name: 'twitter:title', content: title });
+    this.metaService.updateTag({
+      name: 'twitter:description',
+      content: description,
+    });
+    // this.metaService.updateTag({ name: 'twitter:image', content: image });
+  }
+
   @HostListener('document:click', ['$event'])
   outsideClick(event: Event) {
     const target = event.target as HTMLElement;
@@ -249,11 +286,11 @@ export class PostPropertyFreeComponent {
       // total_floor
       this.submitForm.get('total_floor')?.setValidators([Validators.required]);
       this.submitForm.get('total_floor')?.updateValueAndValidity();
-      
+
       // furnishing_status
       this.submitForm.get('furnishing_status')?.setValidators([Validators.required]);
       this.submitForm.get('furnishing_status')?.updateValueAndValidity();
-      
+
       // bedroom
       this.submitForm.get('bedroom')?.setValidators([Validators.required]);
       this.submitForm.get('bedroom')?.updateValueAndValidity();
@@ -261,47 +298,47 @@ export class PostPropertyFreeComponent {
       // bathroom
       this.submitForm.get('bathroom')?.setValidators([Validators.required]);
       this.submitForm.get('bathroom')?.updateValueAndValidity();
-      
+
       // balconies
       this.submitForm.get('balconies')?.setValidators([Validators.required]);
       this.submitForm.get('balconies')?.updateValueAndValidity();
-      
+
       // flooring
       this.submitForm.get('flooring')?.setValidators([Validators.required]);
       this.submitForm.get('flooring')?.updateValueAndValidity();
-      
+
       // facing
       this.submitForm.get('facing')?.setValidators([Validators.required]);
       this.submitForm.get('facing')?.updateValueAndValidity();
-      
+
       // additional_rooms
       this.submitForm.get('additional_rooms')?.setValidators([Validators.required]);
       this.submitForm.get('additional_rooms')?.updateValueAndValidity();
-      
+
       // built_up_area
       this.submitForm.get('built_up_area')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area')?.updateValueAndValidity();
-      
+
       // built_up_area_in
       this.submitForm.get('built_up_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area_in')?.updateValueAndValidity();
-      
+
       // super_area
       this.submitForm.get('super_area')?.setValidators([Validators.required]);
       this.submitForm.get('super_area')?.updateValueAndValidity();
-      
+
       // super_area_in
       this.submitForm.get('super_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('super_area_in')?.updateValueAndValidity();
-      
+
       // carpet_area
       this.submitForm.get('carpet_area')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area')?.updateValueAndValidity();
-      
+
       // carpet_area_in
       this.submitForm.get('carpet_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area_in')?.updateValueAndValidity();
-      
+
       // possession_status
       this.submitForm.get('possession_status')?.setValidators([Validators.required]);
       this.submitForm.get('possession_status')?.updateValueAndValidity();
@@ -314,15 +351,15 @@ export class PostPropertyFreeComponent {
       // total_units
       this.submitForm.get('total_units')?.setValidators([Validators.required]);
       this.submitForm.get('total_units')?.updateValueAndValidity();
-      
+
       // total_floor
       this.submitForm.get('total_floor')?.setValidators([Validators.required]);
       this.submitForm.get('total_floor')?.updateValueAndValidity();
-      
+
       // furnishing_status
       this.submitForm.get('furnishing_status')?.setValidators([Validators.required]);
       this.submitForm.get('furnishing_status')?.updateValueAndValidity();
-      
+
       // no_of_open_sides
       this.submitForm.get('no_of_open_sides')?.setValidators([Validators.required]);
       this.submitForm.get('no_of_open_sides')?.updateValueAndValidity();
@@ -330,7 +367,7 @@ export class PostPropertyFreeComponent {
       // width_of_road_facing_the_plot
       this.submitForm.get('width_of_road_facing_the_plot')?.setValidators([Validators.required]);
       this.submitForm.get('width_of_road_facing_the_plot')?.updateValueAndValidity();
-            
+
       // bedroom
       this.submitForm.get('bedroom')?.setValidators([Validators.required]);
       this.submitForm.get('bedroom')?.updateValueAndValidity();
@@ -338,47 +375,47 @@ export class PostPropertyFreeComponent {
       // bathroom
       this.submitForm.get('bathroom')?.setValidators([Validators.required]);
       this.submitForm.get('bathroom')?.updateValueAndValidity();
-      
+
       // built_up_area
       this.submitForm.get('built_up_area')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area')?.updateValueAndValidity();
-      
+
       // built_up_area_in
       this.submitForm.get('built_up_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area_in')?.updateValueAndValidity();
-      
+
       // carpet_area
       this.submitForm.get('carpet_area')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area')?.updateValueAndValidity();
-      
+
       // carpet_area_in
       this.submitForm.get('carpet_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area_in')?.updateValueAndValidity();
-      
+
       // covered_area
       this.submitForm.get('covered_area')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area')?.updateValueAndValidity();
-      
+
       // covered_area_in
       this.submitForm.get('covered_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area_in')?.updateValueAndValidity();
-      
+
       // ploat_area
       this.submitForm.get('ploat_area')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area')?.updateValueAndValidity();
-      
+
       // ploat_area_in
       this.submitForm.get('ploat_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area_in')?.updateValueAndValidity();
-      
+
       // plot_length
       this.submitForm.get('plot_length')?.setValidators([Validators.required]);
       this.submitForm.get('plot_length')?.updateValueAndValidity();
-      
+
       // plot_width
       this.submitForm.get('plot_width')?.setValidators([Validators.required]);
       this.submitForm.get('plot_width')?.updateValueAndValidity();
-      
+
       // possession_status
       this.submitForm.get('possession_status')?.setValidators([Validators.required]);
       this.submitForm.get('possession_status')?.updateValueAndValidity();
@@ -387,19 +424,19 @@ export class PostPropertyFreeComponent {
       // land_zone
       this.submitForm.get('land_zone')?.setValidators([Validators.required]);
       this.submitForm.get('land_zone')?.updateValueAndValidity();
-      
+
       // lift
       this.submitForm.get('lift')?.setValidators([Validators.required]);
       this.submitForm.get('lift')?.updateValueAndValidity();
-      
+
       // total_floor
       this.submitForm.get('total_floor')?.setValidators([Validators.required]);
       this.submitForm.get('total_floor')?.updateValueAndValidity();
-      
+
       // furnishing_status
       this.submitForm.get('furnishing_status')?.setValidators([Validators.required]);
       this.submitForm.get('furnishing_status')?.updateValueAndValidity();
-      
+
       // no_of_open_sides
       this.submitForm.get('no_of_open_sides')?.setValidators([Validators.required]);
       this.submitForm.get('no_of_open_sides')?.updateValueAndValidity();
@@ -407,7 +444,7 @@ export class PostPropertyFreeComponent {
       // width_of_road_facing_the_plot
       this.submitForm.get('width_of_road_facing_the_plot')?.setValidators([Validators.required]);
       this.submitForm.get('width_of_road_facing_the_plot')?.updateValueAndValidity();
-            
+
       // bedroom
       this.submitForm.get('bedroom')?.setValidators([Validators.required]);
       this.submitForm.get('bedroom')?.updateValueAndValidity();
@@ -415,47 +452,47 @@ export class PostPropertyFreeComponent {
       // bathroom
       this.submitForm.get('bathroom')?.setValidators([Validators.required]);
       this.submitForm.get('bathroom')?.updateValueAndValidity();
-      
+
       // built_up_area
       this.submitForm.get('built_up_area')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area')?.updateValueAndValidity();
-      
+
       // built_up_area_in
       this.submitForm.get('built_up_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area_in')?.updateValueAndValidity();
-      
+
       // carpet_area
       this.submitForm.get('carpet_area')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area')?.updateValueAndValidity();
-      
+
       // carpet_area_in
       this.submitForm.get('carpet_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area_in')?.updateValueAndValidity();
-      
+
       // covered_area
       this.submitForm.get('covered_area')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area')?.updateValueAndValidity();
-      
+
       // covered_area_in
       this.submitForm.get('covered_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area_in')?.updateValueAndValidity();
-      
+
       // ploat_area
       this.submitForm.get('ploat_area')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area')?.updateValueAndValidity();
-      
+
       // ploat_area_in
       this.submitForm.get('ploat_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area_in')?.updateValueAndValidity();
-      
+
       // plot_length
       this.submitForm.get('plot_length')?.setValidators([Validators.required]);
       this.submitForm.get('plot_length')?.updateValueAndValidity();
-      
+
       // plot_width
       this.submitForm.get('plot_width')?.setValidators([Validators.required]);
       this.submitForm.get('plot_width')?.updateValueAndValidity();
-      
+
       // possession_status
       this.submitForm.get('possession_status')?.setValidators([Validators.required]);
       this.submitForm.get('possession_status')?.updateValueAndValidity();
@@ -464,7 +501,7 @@ export class PostPropertyFreeComponent {
       // land_zone
       this.submitForm.get('land_zone')?.setValidators([Validators.required]);
       this.submitForm.get('land_zone')?.updateValueAndValidity();
-      
+
       // no_of_open_sides
       this.submitForm.get('no_of_open_sides')?.setValidators([Validators.required]);
       this.submitForm.get('no_of_open_sides')?.updateValueAndValidity();
@@ -484,19 +521,19 @@ export class PostPropertyFreeComponent {
       // is_in_gated_colony
       this.submitForm.get('is_in_gated_colony')?.setValidators([Validators.required]);
       this.submitForm.get('is_in_gated_colony')?.updateValueAndValidity();
-      
+
       // ploat_area
       this.submitForm.get('ploat_area')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area')?.updateValueAndValidity();
-      
+
       // ploat_area_in
       this.submitForm.get('ploat_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area_in')?.updateValueAndValidity();
-      
+
       // plot_length
       this.submitForm.get('plot_length')?.setValidators([Validators.required]);
       this.submitForm.get('plot_length')?.updateValueAndValidity();
-      
+
       // plot_width
       this.submitForm.get('plot_width')?.setValidators([Validators.required]);
       this.submitForm.get('plot_width')?.updateValueAndValidity();
@@ -509,19 +546,19 @@ export class PostPropertyFreeComponent {
       // lift
       this.submitForm.get('lift')?.setValidators([Validators.required]);
       this.submitForm.get('lift')?.updateValueAndValidity();
-      
+
       // total_units
       this.submitForm.get('total_units')?.setValidators([Validators.required]);
       this.submitForm.get('total_units')?.updateValueAndValidity();
-      
+
       // total_towers
       this.submitForm.get('total_towers')?.setValidators([Validators.required]);
       this.submitForm.get('total_towers')?.updateValueAndValidity();
-      
+
       // water_availability
       this.submitForm.get('water_availability')?.setValidators([Validators.required]);
       this.submitForm.get('water_availability')?.updateValueAndValidity();
-      
+
       // status_of_electricity
       this.submitForm.get('status_of_electricity')?.setValidators([Validators.required]);
       this.submitForm.get('status_of_electricity')?.updateValueAndValidity();
@@ -529,11 +566,11 @@ export class PostPropertyFreeComponent {
       // floor_no
       this.submitForm.get('floor_no')?.setValidators([Validators.required]);
       this.submitForm.get('floor_no')?.updateValueAndValidity();
-      
+
       // total_floor
       this.submitForm.get('total_floor')?.setValidators([Validators.required]);
       this.submitForm.get('total_floor')?.updateValueAndValidity();
-      
+
       // furnishing_status
       this.submitForm.get('furnishing_status')?.setValidators([Validators.required]);
       this.submitForm.get('furnishing_status')?.updateValueAndValidity();
@@ -549,39 +586,39 @@ export class PostPropertyFreeComponent {
       // pantry_cafeteria
       this.submitForm.get('pantry_cafeteria')?.setValidators([Validators.required]);
       this.submitForm.get('pantry_cafeteria')?.updateValueAndValidity();
-      
+
       // built_up_area
       this.submitForm.get('built_up_area')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area')?.updateValueAndValidity();
-      
+
       // built_up_area_in
       this.submitForm.get('built_up_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area_in')?.updateValueAndValidity();
-      
+
       // carpet_area
       this.submitForm.get('carpet_area')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area')?.updateValueAndValidity();
-      
+
       // carpet_area_in
       this.submitForm.get('carpet_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area_in')?.updateValueAndValidity();
-      
+
       // covered_area
       this.submitForm.get('covered_area')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area')?.updateValueAndValidity();
-      
+
       // covered_area_in
       this.submitForm.get('covered_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area_in')?.updateValueAndValidity();
-      
+
       // ploat_area
       this.submitForm.get('ploat_area')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area')?.updateValueAndValidity();
-      
+
       // ploat_area_in
       this.submitForm.get('ploat_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area_in')?.updateValueAndValidity();
-      
+
       // possession_status
       this.submitForm.get('possession_status')?.setValidators([Validators.required]);
       this.submitForm.get('possession_status')?.updateValueAndValidity();
@@ -590,7 +627,7 @@ export class PostPropertyFreeComponent {
       // land_zone
       this.submitForm.get('land_zone')?.setValidators([Validators.required]);
       this.submitForm.get('land_zone')?.updateValueAndValidity();
-      
+
       // no_of_open_sides
       this.submitForm.get('no_of_open_sides')?.setValidators([Validators.required]);
       this.submitForm.get('no_of_open_sides')?.updateValueAndValidity();
@@ -598,7 +635,7 @@ export class PostPropertyFreeComponent {
       // width_of_road_facing_the_plot
       this.submitForm.get('width_of_road_facing_the_plot')?.setValidators([Validators.required]);
       this.submitForm.get('width_of_road_facing_the_plot')?.updateValueAndValidity();
-      
+
       // floors_allowed_for_construction
       this.submitForm.get('floors_allowed_for_construction')?.setValidators([Validators.required]);
       this.submitForm.get('floors_allowed_for_construction')?.updateValueAndValidity();
@@ -610,19 +647,19 @@ export class PostPropertyFreeComponent {
       // is_in_gated_colony
       this.submitForm.get('is_in_gated_colony')?.setValidators([Validators.required]);
       this.submitForm.get('is_in_gated_colony')?.updateValueAndValidity();
-      
+
       // ploat_area
       this.submitForm.get('ploat_area')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area')?.updateValueAndValidity();
-      
+
       // ploat_area_in
       this.submitForm.get('ploat_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area_in')?.updateValueAndValidity();
-      
+
       // plot_length
       this.submitForm.get('plot_length')?.setValidators([Validators.required]);
       this.submitForm.get('plot_length')?.updateValueAndValidity();
-      
+
       // plot_width
       this.submitForm.get('plot_width')?.setValidators([Validators.required]);
       this.submitForm.get('plot_width')?.updateValueAndValidity();
@@ -635,15 +672,15 @@ export class PostPropertyFreeComponent {
       // total_units
       this.submitForm.get('total_units')?.setValidators([Validators.required]);
       this.submitForm.get('total_units')?.updateValueAndValidity();
-      
+
       // total_towers
       this.submitForm.get('total_towers')?.setValidators([Validators.required]);
       this.submitForm.get('total_towers')?.updateValueAndValidity();
-      
+
       // water_availability
       this.submitForm.get('water_availability')?.setValidators([Validators.required]);
       this.submitForm.get('water_availability')?.updateValueAndValidity();
-      
+
       // status_of_electricity
       this.submitForm.get('status_of_electricity')?.setValidators([Validators.required]);
       this.submitForm.get('status_of_electricity')?.updateValueAndValidity();
@@ -651,15 +688,15 @@ export class PostPropertyFreeComponent {
       // floor_no
       this.submitForm.get('floor_no')?.setValidators([Validators.required]);
       this.submitForm.get('floor_no')?.updateValueAndValidity();
-      
+
       // total_floor
       this.submitForm.get('total_floor')?.setValidators([Validators.required]);
       this.submitForm.get('total_floor')?.updateValueAndValidity();
-      
+
       // furnishing_status
       this.submitForm.get('furnishing_status')?.setValidators([Validators.required]);
       this.submitForm.get('furnishing_status')?.updateValueAndValidity();
-            
+
       // bedroom
       this.submitForm.get('bedroom')?.setValidators([Validators.required]);
       this.submitForm.get('bedroom')?.updateValueAndValidity();
@@ -667,55 +704,55 @@ export class PostPropertyFreeComponent {
       // bathroom
       this.submitForm.get('bathroom')?.setValidators([Validators.required]);
       this.submitForm.get('bathroom')?.updateValueAndValidity();
-      
+
       // balconies
       this.submitForm.get('balconies')?.setValidators([Validators.required]);
       this.submitForm.get('balconies')?.updateValueAndValidity();
-      
+
       // flooring
       this.submitForm.get('flooring')?.setValidators([Validators.required]);
       this.submitForm.get('flooring')?.updateValueAndValidity();
-      
+
       // facing
       this.submitForm.get('facing')?.setValidators([Validators.required]);
       this.submitForm.get('facing')?.updateValueAndValidity();
-      
+
       // additional_rooms
       this.submitForm.get('additional_rooms')?.setValidators([Validators.required]);
       this.submitForm.get('additional_rooms')?.updateValueAndValidity();
-      
+
       // built_up_area
       this.submitForm.get('built_up_area')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area')?.updateValueAndValidity();
-      
+
       // built_up_area_in
       this.submitForm.get('built_up_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area_in')?.updateValueAndValidity();
-      
+
       // carpet_area
       this.submitForm.get('carpet_area')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area')?.updateValueAndValidity();
-      
+
       // carpet_area_in
       this.submitForm.get('carpet_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area_in')?.updateValueAndValidity();
-      
+
       // covered_area
       this.submitForm.get('covered_area')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area')?.updateValueAndValidity();
-      
+
       // covered_area_in
       this.submitForm.get('covered_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area_in')?.updateValueAndValidity();
-      
+
       // ploat_area
       this.submitForm.get('ploat_area')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area')?.updateValueAndValidity();
-      
+
       // ploat_area_in
       this.submitForm.get('ploat_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area_in')?.updateValueAndValidity();
-      
+
       // possession_status
       this.submitForm.get('possession_status')?.setValidators([Validators.required]);
       this.submitForm.get('possession_status')?.updateValueAndValidity();
@@ -724,15 +761,15 @@ export class PostPropertyFreeComponent {
       // lift
       this.submitForm.get('lift')?.setValidators([Validators.required]);
       this.submitForm.get('lift')?.updateValueAndValidity();
-      
+
       // total_floor
       this.submitForm.get('total_floor')?.setValidators([Validators.required]);
       this.submitForm.get('total_floor')?.updateValueAndValidity();
-      
+
       // furnishing_status
       this.submitForm.get('furnishing_status')?.setValidators([Validators.required]);
       this.submitForm.get('furnishing_status')?.updateValueAndValidity();
-            
+
       // bedroom
       this.submitForm.get('bedroom')?.setValidators([Validators.required]);
       this.submitForm.get('bedroom')?.updateValueAndValidity();
@@ -740,47 +777,47 @@ export class PostPropertyFreeComponent {
       // bathroom
       this.submitForm.get('bathroom')?.setValidators([Validators.required]);
       this.submitForm.get('bathroom')?.updateValueAndValidity();
-      
+
       // built_up_area
       this.submitForm.get('built_up_area')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area')?.updateValueAndValidity();
-      
+
       // built_up_area_in
       this.submitForm.get('built_up_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area_in')?.updateValueAndValidity();
-      
+
       // carpet_area
       this.submitForm.get('carpet_area')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area')?.updateValueAndValidity();
-      
+
       // carpet_area_in
       this.submitForm.get('carpet_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area_in')?.updateValueAndValidity();
-      
+
       // covered_area
       this.submitForm.get('covered_area')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area')?.updateValueAndValidity();
-      
+
       // covered_area_in
       this.submitForm.get('covered_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area_in')?.updateValueAndValidity();
-      
+
       // ploat_area
       this.submitForm.get('ploat_area')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area')?.updateValueAndValidity();
-      
+
       // ploat_area_in
       this.submitForm.get('ploat_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area_in')?.updateValueAndValidity();
-      
+
       // plot_length
       this.submitForm.get('plot_length')?.setValidators([Validators.required]);
       this.submitForm.get('plot_length')?.updateValueAndValidity();
-      
+
       // plot_width
       this.submitForm.get('plot_width')?.setValidators([Validators.required]);
       this.submitForm.get('plot_width')?.updateValueAndValidity();
-      
+
       // possession_status
       this.submitForm.get('possession_status')?.setValidators([Validators.required]);
       this.submitForm.get('possession_status')?.updateValueAndValidity();
@@ -789,19 +826,19 @@ export class PostPropertyFreeComponent {
       // lift
       this.submitForm.get('lift')?.setValidators([Validators.required]);
       this.submitForm.get('lift')?.updateValueAndValidity();
-      
+
       // total_units
       this.submitForm.get('total_units')?.setValidators([Validators.required]);
       this.submitForm.get('total_units')?.updateValueAndValidity();
-      
+
       // total_towers
       this.submitForm.get('total_towers')?.setValidators([Validators.required]);
       this.submitForm.get('total_towers')?.updateValueAndValidity();
-      
+
       // water_availability
       this.submitForm.get('water_availability')?.setValidators([Validators.required]);
       this.submitForm.get('water_availability')?.updateValueAndValidity();
-      
+
       // status_of_electricity
       this.submitForm.get('status_of_electricity')?.setValidators([Validators.required]);
       this.submitForm.get('status_of_electricity')?.updateValueAndValidity();
@@ -809,15 +846,15 @@ export class PostPropertyFreeComponent {
       // floor_no
       this.submitForm.get('floor_no')?.setValidators([Validators.required]);
       this.submitForm.get('floor_no')?.updateValueAndValidity();
-      
+
       // total_floor
       this.submitForm.get('total_floor')?.setValidators([Validators.required]);
       this.submitForm.get('total_floor')?.updateValueAndValidity();
-      
+
       // furnishing_status
       this.submitForm.get('furnishing_status')?.setValidators([Validators.required]);
       this.submitForm.get('furnishing_status')?.updateValueAndValidity();
-            
+
       // bedroom
       this.submitForm.get('bedroom')?.setValidators([Validators.required]);
       this.submitForm.get('bedroom')?.updateValueAndValidity();
@@ -825,55 +862,55 @@ export class PostPropertyFreeComponent {
       // bathroom
       this.submitForm.get('bathroom')?.setValidators([Validators.required]);
       this.submitForm.get('bathroom')?.updateValueAndValidity();
-      
+
       // balconies
       this.submitForm.get('balconies')?.setValidators([Validators.required]);
       this.submitForm.get('balconies')?.updateValueAndValidity();
-      
+
       // flooring
       this.submitForm.get('flooring')?.setValidators([Validators.required]);
       this.submitForm.get('flooring')?.updateValueAndValidity();
-      
+
       // facing
       this.submitForm.get('facing')?.setValidators([Validators.required]);
       this.submitForm.get('facing')?.updateValueAndValidity();
-      
+
       // additional_rooms
       this.submitForm.get('additional_rooms')?.setValidators([Validators.required]);
       this.submitForm.get('additional_rooms')?.updateValueAndValidity();
-      
+
       // built_up_area
       this.submitForm.get('built_up_area')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area')?.updateValueAndValidity();
-      
+
       // built_up_area_in
       this.submitForm.get('built_up_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area_in')?.updateValueAndValidity();
-      
+
       // carpet_area
       this.submitForm.get('carpet_area')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area')?.updateValueAndValidity();
-      
+
       // carpet_area_in
       this.submitForm.get('carpet_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area_in')?.updateValueAndValidity();
-      
+
       // covered_area
       this.submitForm.get('covered_area')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area')?.updateValueAndValidity();
-      
+
       // covered_area_in
       this.submitForm.get('covered_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area_in')?.updateValueAndValidity();
-      
+
       // ploat_area
       this.submitForm.get('ploat_area')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area')?.updateValueAndValidity();
-      
+
       // ploat_area_in
       this.submitForm.get('ploat_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area_in')?.updateValueAndValidity();
-      
+
       // possession_status
       this.submitForm.get('possession_status')?.setValidators([Validators.required]);
       this.submitForm.get('possession_status')?.updateValueAndValidity();
@@ -882,7 +919,7 @@ export class PostPropertyFreeComponent {
       // land_zone
       this.submitForm.get('land_zone')?.setValidators([Validators.required]);
       this.submitForm.get('land_zone')?.updateValueAndValidity();
-      
+
       // lift
       this.submitForm.get('lift')?.setValidators([Validators.required]);
       this.submitForm.get('lift')?.updateValueAndValidity();
@@ -890,15 +927,15 @@ export class PostPropertyFreeComponent {
       // total_units
       this.submitForm.get('total_units')?.setValidators([Validators.required]);
       this.submitForm.get('total_units')?.updateValueAndValidity();
-      
+
       // total_towers
       this.submitForm.get('total_towers')?.setValidators([Validators.required]);
       this.submitForm.get('total_towers')?.updateValueAndValidity();
-      
+
       // water_availability
       this.submitForm.get('water_availability')?.setValidators([Validators.required]);
       this.submitForm.get('water_availability')?.updateValueAndValidity();
-      
+
       // status_of_electricity
       this.submitForm.get('status_of_electricity')?.setValidators([Validators.required]);
       this.submitForm.get('status_of_electricity')?.updateValueAndValidity();
@@ -906,15 +943,15 @@ export class PostPropertyFreeComponent {
       // floor_no
       this.submitForm.get('floor_no')?.setValidators([Validators.required]);
       this.submitForm.get('floor_no')?.updateValueAndValidity();
-      
+
       // total_floor
       this.submitForm.get('total_floor')?.setValidators([Validators.required]);
       this.submitForm.get('total_floor')?.updateValueAndValidity();
-      
+
       // furnishing_status
       this.submitForm.get('furnishing_status')?.setValidators([Validators.required]);
       this.submitForm.get('furnishing_status')?.updateValueAndValidity();
-      
+
       // washroom
       this.submitForm.get('washroom')?.setValidators([Validators.required]);
       this.submitForm.get('washroom')?.updateValueAndValidity();
@@ -926,31 +963,31 @@ export class PostPropertyFreeComponent {
       // pantry_cafeteria
       this.submitForm.get('pantry_cafeteria')?.setValidators([Validators.required]);
       this.submitForm.get('pantry_cafeteria')?.updateValueAndValidity();
-      
+
       // built_up_area
       this.submitForm.get('built_up_area')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area')?.updateValueAndValidity();
-      
+
       // built_up_area_in
       this.submitForm.get('built_up_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area_in')?.updateValueAndValidity();
-      
+
       // covered_area
       this.submitForm.get('covered_area')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area')?.updateValueAndValidity();
-      
+
       // covered_area_in
       this.submitForm.get('covered_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area_in')?.updateValueAndValidity();
-      
+
       // ploat_area
       this.submitForm.get('ploat_area')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area')?.updateValueAndValidity();
-      
+
       // ploat_area_in
       this.submitForm.get('ploat_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area_in')?.updateValueAndValidity();
-      
+
       // possession_status
       this.submitForm.get('possession_status')?.setValidators([Validators.required]);
       this.submitForm.get('possession_status')?.updateValueAndValidity();
@@ -959,7 +996,7 @@ export class PostPropertyFreeComponent {
       // land_zone
       this.submitForm.get('land_zone')?.setValidators([Validators.required]);
       this.submitForm.get('land_zone')?.updateValueAndValidity();
-      
+
       // floors_allowed_for_construction
       this.submitForm.get('floors_allowed_for_construction')?.setValidators([Validators.required]);
       this.submitForm.get('floors_allowed_for_construction')?.updateValueAndValidity();
@@ -971,19 +1008,19 @@ export class PostPropertyFreeComponent {
       // is_in_gated_colony
       this.submitForm.get('is_in_gated_colony')?.setValidators([Validators.required]);
       this.submitForm.get('is_in_gated_colony')?.updateValueAndValidity();
-      
+
       // ploat_area
       this.submitForm.get('ploat_area')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area')?.updateValueAndValidity();
-      
+
       // ploat_area_in
       this.submitForm.get('ploat_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area_in')?.updateValueAndValidity();
-      
+
       // plot_length
       this.submitForm.get('plot_length')?.setValidators([Validators.required]);
       this.submitForm.get('plot_length')?.updateValueAndValidity();
-      
+
       // plot_width
       this.submitForm.get('plot_width')?.setValidators([Validators.required]);
       this.submitForm.get('plot_width')?.updateValueAndValidity();
@@ -996,19 +1033,19 @@ export class PostPropertyFreeComponent {
       // lift
       this.submitForm.get('lift')?.setValidators([Validators.required]);
       this.submitForm.get('lift')?.updateValueAndValidity();
-      
+
       // total_units
       this.submitForm.get('total_units')?.setValidators([Validators.required]);
       this.submitForm.get('total_units')?.updateValueAndValidity();
-      
+
       // total_towers
       this.submitForm.get('total_towers')?.setValidators([Validators.required]);
       this.submitForm.get('total_towers')?.updateValueAndValidity();
-      
+
       // water_availability
       this.submitForm.get('water_availability')?.setValidators([Validators.required]);
       this.submitForm.get('water_availability')?.updateValueAndValidity();
-      
+
       // status_of_electricity
       this.submitForm.get('status_of_electricity')?.setValidators([Validators.required]);
       this.submitForm.get('status_of_electricity')?.updateValueAndValidity();
@@ -1016,15 +1053,15 @@ export class PostPropertyFreeComponent {
       // floor_no
       this.submitForm.get('floor_no')?.setValidators([Validators.required]);
       this.submitForm.get('floor_no')?.updateValueAndValidity();
-      
+
       // total_floor
       this.submitForm.get('total_floor')?.setValidators([Validators.required]);
       this.submitForm.get('total_floor')?.updateValueAndValidity();
-      
+
       // furnishing_status
       this.submitForm.get('furnishing_status')?.setValidators([Validators.required]);
       this.submitForm.get('furnishing_status')?.updateValueAndValidity();
-      
+
       // washroom
       this.submitForm.get('washroom')?.setValidators([Validators.required]);
       this.submitForm.get('washroom')?.updateValueAndValidity();
@@ -1036,39 +1073,39 @@ export class PostPropertyFreeComponent {
       // pantry_cafeteria
       this.submitForm.get('pantry_cafeteria')?.setValidators([Validators.required]);
       this.submitForm.get('pantry_cafeteria')?.updateValueAndValidity();
-      
+
       // built_up_area
       this.submitForm.get('built_up_area')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area')?.updateValueAndValidity();
-      
+
       // built_up_area_in
       this.submitForm.get('built_up_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area_in')?.updateValueAndValidity();
-      
+
       // carpet_area
       this.submitForm.get('carpet_area')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area')?.updateValueAndValidity();
-      
+
       // carpet_area_in
       this.submitForm.get('carpet_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area_in')?.updateValueAndValidity();
-      
+
       // covered_area
       this.submitForm.get('covered_area')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area')?.updateValueAndValidity();
-      
+
       // covered_area_in
       this.submitForm.get('covered_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area_in')?.updateValueAndValidity();
-      
+
       // ploat_area
       this.submitForm.get('ploat_area')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area')?.updateValueAndValidity();
-      
+
       // ploat_area_in
       this.submitForm.get('ploat_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area_in')?.updateValueAndValidity();
-      
+
       // possession_status
       this.submitForm.get('possession_status')?.setValidators([Validators.required]);
       this.submitForm.get('possession_status')?.updateValueAndValidity();
@@ -1077,7 +1114,7 @@ export class PostPropertyFreeComponent {
       // land_zone
       this.submitForm.get('land_zone')?.setValidators([Validators.required]);
       this.submitForm.get('land_zone')?.updateValueAndValidity();
-      
+
       // lift
       this.submitForm.get('lift')?.setValidators([Validators.required]);
       this.submitForm.get('lift')?.updateValueAndValidity();
@@ -1085,15 +1122,15 @@ export class PostPropertyFreeComponent {
       // total_units
       this.submitForm.get('total_units')?.setValidators([Validators.required]);
       this.submitForm.get('total_units')?.updateValueAndValidity();
-      
+
       // total_towers
       this.submitForm.get('total_towers')?.setValidators([Validators.required]);
       this.submitForm.get('total_towers')?.updateValueAndValidity();
-      
+
       // water_availability
       this.submitForm.get('water_availability')?.setValidators([Validators.required]);
       this.submitForm.get('water_availability')?.updateValueAndValidity();
-      
+
       // status_of_electricity
       this.submitForm.get('status_of_electricity')?.setValidators([Validators.required]);
       this.submitForm.get('status_of_electricity')?.updateValueAndValidity();
@@ -1101,15 +1138,15 @@ export class PostPropertyFreeComponent {
       // floor_no
       this.submitForm.get('floor_no')?.setValidators([Validators.required]);
       this.submitForm.get('floor_no')?.updateValueAndValidity();
-      
+
       // total_floor
       this.submitForm.get('total_floor')?.setValidators([Validators.required]);
       this.submitForm.get('total_floor')?.updateValueAndValidity();
-      
+
       // furnishing_status
       this.submitForm.get('furnishing_status')?.setValidators([Validators.required]);
       this.submitForm.get('furnishing_status')?.updateValueAndValidity();
-      
+
       // washroom
       this.submitForm.get('washroom')?.setValidators([Validators.required]);
       this.submitForm.get('washroom')?.updateValueAndValidity();
@@ -1121,39 +1158,39 @@ export class PostPropertyFreeComponent {
       // pantry_cafeteria
       this.submitForm.get('pantry_cafeteria')?.setValidators([Validators.required]);
       this.submitForm.get('pantry_cafeteria')?.updateValueAndValidity();
-      
+
       // built_up_area
       this.submitForm.get('built_up_area')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area')?.updateValueAndValidity();
-      
+
       // built_up_area_in
       this.submitForm.get('built_up_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area_in')?.updateValueAndValidity();
-      
+
       // carpet_area
       this.submitForm.get('carpet_area')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area')?.updateValueAndValidity();
-      
+
       // carpet_area_in
       this.submitForm.get('carpet_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('carpet_area_in')?.updateValueAndValidity();
-      
+
       // covered_area
       this.submitForm.get('covered_area')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area')?.updateValueAndValidity();
-      
+
       // covered_area_in
       this.submitForm.get('covered_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area_in')?.updateValueAndValidity();
-      
+
       // ploat_area
       this.submitForm.get('ploat_area')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area')?.updateValueAndValidity();
-      
+
       // ploat_area_in
       this.submitForm.get('ploat_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area_in')?.updateValueAndValidity();
-      
+
       // possession_status
       this.submitForm.get('possession_status')?.setValidators([Validators.required]);
       this.submitForm.get('possession_status')?.updateValueAndValidity();
@@ -1162,23 +1199,23 @@ export class PostPropertyFreeComponent {
       // land_zone
       this.submitForm.get('land_zone')?.setValidators([Validators.required]);
       this.submitForm.get('land_zone')?.updateValueAndValidity();
-      
+
       // lift
       this.submitForm.get('lift')?.setValidators([Validators.required]);
       this.submitForm.get('lift')?.updateValueAndValidity();
-      
+
       // total_units
       this.submitForm.get('total_units')?.setValidators([Validators.required]);
       this.submitForm.get('total_units')?.updateValueAndValidity();
-      
+
       // total_towers
       this.submitForm.get('total_towers')?.setValidators([Validators.required]);
       this.submitForm.get('total_towers')?.updateValueAndValidity();
-      
+
       // water_availability
       this.submitForm.get('water_availability')?.setValidators([Validators.required]);
       this.submitForm.get('water_availability')?.updateValueAndValidity();
-      
+
       // status_of_electricity
       this.submitForm.get('status_of_electricity')?.setValidators([Validators.required]);
       this.submitForm.get('status_of_electricity')?.updateValueAndValidity();
@@ -1186,19 +1223,19 @@ export class PostPropertyFreeComponent {
       // floor_no
       this.submitForm.get('floor_no')?.setValidators([Validators.required]);
       this.submitForm.get('floor_no')?.updateValueAndValidity();
-      
+
       // total_floor
       this.submitForm.get('total_floor')?.setValidators([Validators.required]);
       this.submitForm.get('total_floor')?.updateValueAndValidity();
-      
+
       // furnishing_status
       this.submitForm.get('furnishing_status')?.setValidators([Validators.required]);
       this.submitForm.get('furnishing_status')?.updateValueAndValidity();
-      
+
       // furnishing_status
       this.submitForm.get('furnishing_status')?.setValidators([Validators.required]);
       this.submitForm.get('furnishing_status')?.updateValueAndValidity();
-      
+
       // washroom
       this.submitForm.get('washroom')?.setValidators([Validators.required]);
       this.submitForm.get('washroom')?.updateValueAndValidity();
@@ -1210,39 +1247,39 @@ export class PostPropertyFreeComponent {
       // pantry_cafeteria
       this.submitForm.get('pantry_cafeteria')?.setValidators([Validators.required]);
       this.submitForm.get('pantry_cafeteria')?.updateValueAndValidity();
-      
+
       // built_up_area
       this.submitForm.get('built_up_area')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area')?.updateValueAndValidity();
-      
+
       // built_up_area_in
       this.submitForm.get('built_up_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('built_up_area_in')?.updateValueAndValidity();
-      
+
       // covered_area
       this.submitForm.get('covered_area')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area')?.updateValueAndValidity();
-      
+
       // covered_area_in
       this.submitForm.get('covered_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('covered_area_in')?.updateValueAndValidity();
-      
+
       // ploat_area
       this.submitForm.get('ploat_area')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area')?.updateValueAndValidity();
-      
+
       // ploat_area_in
       this.submitForm.get('ploat_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area_in')?.updateValueAndValidity();
-      
+
       // plot_length
       this.submitForm.get('plot_length')?.setValidators([Validators.required]);
       this.submitForm.get('plot_length')?.updateValueAndValidity();
-      
+
       // plot_width
       this.submitForm.get('plot_width')?.setValidators([Validators.required]);
       this.submitForm.get('plot_width')?.updateValueAndValidity();
-      
+
       // possession_status
       this.submitForm.get('possession_status')?.setValidators([Validators.required]);
       this.submitForm.get('possession_status')?.updateValueAndValidity();
@@ -1251,7 +1288,7 @@ export class PostPropertyFreeComponent {
       // land_zone
       this.submitForm.get('land_zone')?.setValidators([Validators.required]);
       this.submitForm.get('land_zone')?.updateValueAndValidity();
-      
+
       // no_of_open_sides
       this.submitForm.get('no_of_open_sides')?.setValidators([Validators.required]);
       this.submitForm.get('no_of_open_sides')?.updateValueAndValidity();
@@ -1259,7 +1296,7 @@ export class PostPropertyFreeComponent {
       // width_of_road_facing_the_plot
       this.submitForm.get('width_of_road_facing_the_plot')?.setValidators([Validators.required]);
       this.submitForm.get('width_of_road_facing_the_plot')?.updateValueAndValidity();
-      
+
       // floors_allowed_for_construction
       this.submitForm.get('floors_allowed_for_construction')?.setValidators([Validators.required]);
       this.submitForm.get('floors_allowed_for_construction')?.updateValueAndValidity();
@@ -1271,30 +1308,32 @@ export class PostPropertyFreeComponent {
       // is_in_gated_colony
       this.submitForm.get('is_in_gated_colony')?.setValidators([Validators.required]);
       this.submitForm.get('is_in_gated_colony')?.updateValueAndValidity();
-      
+
       // ploat_area
       this.submitForm.get('ploat_area')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area')?.updateValueAndValidity();
-      
+
       // ploat_area_in
       this.submitForm.get('ploat_area_in')?.setValidators([Validators.required]);
       this.submitForm.get('ploat_area_in')?.updateValueAndValidity();
-      
+
       // plot_length
       this.submitForm.get('plot_length')?.setValidators([Validators.required]);
       this.submitForm.get('plot_length')?.updateValueAndValidity();
-      
+
       // plot_width
       this.submitForm.get('plot_width')?.setValidators([Validators.required]);
       this.submitForm.get('plot_width')?.updateValueAndValidity();
 
     }
   }
-  
+
   onPropertyFor(event: Event) {
     this.selectedPropertyFor = this.submitForm.value?.property_for;
-    
-    
+    console.log(this.selectedPropertyFor);
+
+
+
     if(this.selectedPropertyFor == 'Rent'){
       // avbldate
       this.submitForm.get('avbldate')?.setValidators([Validators.required]);
@@ -1311,20 +1350,20 @@ export class PostPropertyFreeComponent {
       // security_amount
       this.submitForm.get('security_amount')?.setValidators([Validators.required]);
       this.submitForm.get('security_amount')?.updateValueAndValidity();
-      
+
     } else if(this.selectedPropertyFor == 'Sell'){
       // total_price
       this.submitForm.get('total_price')?.setValidators([Validators.required]);
       this.submitForm.get('total_price')?.updateValueAndValidity();
-    
+
       // lac_or_cr
       this.submitForm.get('lac_or_cr')?.setValidators([Validators.required]);
       this.submitForm.get('lac_or_cr')?.updateValueAndValidity();
-    
+
       // booking_or_token_ammount
       this.submitForm.get('booking_or_token_ammount')?.setValidators([Validators.required]);
       this.submitForm.get('booking_or_token_ammount')?.updateValueAndValidity();
-    
+
       // thousand_lac_or_cr
       this.submitForm.get('thousand_lac_or_cr')?.setValidators([Validators.required]);
       this.submitForm.get('thousand_lac_or_cr')?.updateValueAndValidity();
@@ -1334,7 +1373,7 @@ export class PostPropertyFreeComponent {
   showpossessionstatus(){
     this.selectedPossessionStatus = this.submitForm.value?.possession_status;
     console.log(this.selectedPossessionStatus);
-    
+
     if(this.selectedPropertyFor !== 'Rent' || this.selectedPossessionStatus == 'Under Construction'){
       // available_from_month
       this.submitForm.get('available_from_month')?.setValidators([Validators.required]);
@@ -1352,11 +1391,11 @@ export class PostPropertyFreeComponent {
   }
 
   currentbusinesssector(){
-    this.selectedCurrentBusinessSector = this.submitForm.value?.current_business_sector;    
+    this.selectedCurrentBusinessSector = this.submitForm.value?.current_business_sector;
   }
 
   ontransactiontype(){
-    this.selectedTransactionType = this.submitForm.value?.transaction_type;    
+    this.selectedTransactionType = this.submitForm.value?.transaction_type;
   }
 
   onAssuredReturns(){
@@ -1559,23 +1598,19 @@ export class PostPropertyFreeComponent {
     this.submitForm.patchValue({ user_id: userId });
     console.log(this.submitForm.invalid);
     console.log(this.submitForm.value);
-    
-    
+
     if (this.submitForm.invalid) {
-      // Mark all fields as touched to trigger validation messages
-      this.submitForm.markAllAsTouched();      
-    
-      // Log invalid controls
+      this.submitForm.markAllAsTouched();
+
       Object.keys(this.submitForm.controls).forEach(key => {
         const control = this.submitForm.get(key);
         if (control && control.invalid) {
           console.log(`Invalid field: ${key}`, control.errors);
         }
       });
-    
       return;
     }
-    
+
     let payload = this.submitForm.value;
     this.http.post(`${environment.apiUrl}addproperty`, payload).subscribe(
       (res: any) => {
@@ -1586,17 +1621,18 @@ export class PostPropertyFreeComponent {
       }
     );
   }
+
   validateNameInput(event: KeyboardEvent) {
     const charCode = event.which ? event.which : event.keyCode;
     if (charCode >= 48 && charCode <= 57) {
-      event.preventDefault(); 
+      event.preventDefault();
     }
   }
-  
+
   validateEmailInput(event: KeyboardEvent) {
     const invalidChars = [' ', ',', ';', '"', `'`, '`'];
     if (invalidChars.includes(event.key)) {
-      event.preventDefault(); // Prevent spaces and special characters
+      event.preventDefault();
     }
   }
 }
