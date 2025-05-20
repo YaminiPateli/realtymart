@@ -7,7 +7,7 @@
         </h1>
         <p class="banner_small" *ngIf="singleproperty?.property_for !== null">
           For {{ singleproperty?.property_for }} in
-          {{ singleproperty.project_name }}
+          {{ singleproperty?.project_name }}
         </p>
       </div>
     </div>
@@ -16,53 +16,53 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-12 col-sm-12">
-          <div class="buy-image" *ngIf="singleproperty.property_main_img !== null">
-            <img src="{{ singleproperty.property_main_img }}" alt="" class="img-fluid" />
+          <div class="buy-image" *ngIf="singleproperty?.property_main_img !== null">
+            <img src="{{ singleproperty?.property_main_img }}" alt="" class="img-fluid" />
           </div>
         </div>
         <div class="col-lg-8 col-md-12 col-sm-12">
           <div class="owner-buy">
             <div class="row">
               <div class="col-lg-9 col-md-8 col-12">
-                <p class="buy-heading" *ngIf="singleproperty.bedroom !== null">
-                  {{ singleproperty.bedroom }} BHK
-                  <span *ngIf="singleproperty.propertytypename !== null">
-                    {{ singleproperty.propertytypename }} in
+                <p class="buy-heading" *ngIf="singleproperty?.bedroom !== null">
+                  {{ singleproperty?.bedroom }} BHK
+                  <span *ngIf="singleproperty?.propertytypename !== null">
+                    {{ singleproperty?.propertytypename }} in
                   </span>
                 </p>
-                <p class="buy-heading" *ngIf="singleproperty.bedroom === null">
-                  <span *ngIf="singleproperty.propertytypename !== null">
-                    {{ singleproperty.propertytypename }} in
+                <p class="buy-heading" *ngIf="singleproperty?.bedroom === null">
+                  <span *ngIf="singleproperty?.propertytypename !== null">
+                    {{ singleproperty?.propertytypename }} in
                   </span>
                 </p>
-                <a class="buy-heading" *ngIf="singleproperty.project_name !== null">{{ singleproperty.project_name
+                <a class="buy-heading" *ngIf="singleproperty?.project_name !== null">{{ singleproperty?.project_name
                   }}</a>
-                <p class="buy-location" *ngIf="singleproperty.project_localities !== null">
+                <p class="buy-location" *ngIf="singleproperty?.project_localities !== null">
                   <span class="locator-icon">
                     <i class="fa-sharp fa-solid fa-location-dot" style="color: #000000"></i> </span>{{
-                  singleproperty.property_locality }}
+                  singleproperty?.property_locality }}
                 </p>
                 <!-- <div class="row mt-2" >
-                  <div *ngIf="singleproperty.floor_no !== null">
+                  <div *ngIf="singleproperty?.floor_no !== null">
                     <h6 class="facility_title">FLOOR</h6>
-                    <p class="project-text" *ngIf="singleproperty.floor_no !== null && singleproperty.total_floor  !== null">{{ singleproperty.floor_no }} out of {{ singleproperty.total_floor }}</p>
+                    <p class="project-text" *ngIf="singleproperty?.floor_no !== null && singleproperty?.total_floor  !== null">{{ singleproperty?.floor_no }} out of {{ singleproperty?.total_floor }}</p>
                   </div>
-                  <div *ngIf="singleproperty.super_area !== null">
+                  <div *ngIf="singleproperty?.super_area !== null">
                     <h6 class="facility_title">SUPER AREA</h6>
-                    <p class="project-text">{{ singleproperty.super_area }}</p>
+                    <p class="project-text">{{ singleproperty?.super_area }}</p>
                   </div>
 
-                <div *ngIf="singleproperty.ploat_area !== null">
+                <div *ngIf="singleproperty?.ploat_area !== null">
                   <h6 class="facility_title">Plot Area</h6>
-                  <p class="project-text">{{ singleproperty.ploat_area }}</p>
+                  <p class="project-text">{{ singleproperty?.ploat_area }}</p>
               </div>
                 </div> -->
               </div>
               <div class="col-lg-3 col-md-4 col-12">
                 <div class="contact-buy-owner">
-                  <div class="name-owner" *ngIf="singleproperty.owner_name !== null">
+                  <div class="name-owner" *ngIf="singleproperty?.owner_name !== null">
                     <h6 class="project-titles"><strong>BUILDER</strong></h6>
-                    <p class="project-text">{{ singleproperty.owner_name }}</p>
+                    <p class="project-text">{{ singleproperty?.owner_name }}</p>
                   </div>
                   <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#get-builder">
                     CONTACT BUILDER
@@ -75,108 +75,108 @@
             <!-- First Group -->
             <div class="">
               <div class="facility_wrapper">
-                <!-- <div *ngIf="singleproperty.property_price_show == 0">
+                <!-- <div *ngIf="singleproperty?.property_price_show == 0">
                   <h6 class="facility_title">Price</h6>
                   <p class="project-text">
-                      ₹ {{ singleproperty.total_price !== null ? singleproperty.total_price : singleproperty.rent_amount }}</p>
+                      ₹ {{ singleproperty?.total_price !== null ? singleproperty?.total_price : singleproperty?.rent_amount }}</p>
               </div> -->
-                <div *ngIf="singleproperty.project_name !== null">
+                <div *ngIf="singleproperty?.project_name !== null">
                   <h6 class="facility_title">Project</h6>
-                  <a routerLink="/project-details/{{ singleproperty.ProjectfirstUrlPart }}/{{ singleproperty.ProjectsecondUrlPart }}"
-                    target="_blank" class="project-text" style="cursor: pointer; ">{{ singleproperty.project_name }}</a>
+                  <a routerLink="/project-details/{{ singleproperty?.ProjectfirstUrlPart }}/{{ singleproperty?.ProjectsecondUrlPart }}"
+                    target="_blank" class="project-text" style="cursor: pointer; ">{{ singleproperty?.project_name }}</a>
                 </div>
-                <!-- <a href="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}" target="_blank" class="detail-head">{{ item.projectName }} -->
-                <div *ngIf="singleproperty.builder_name !== null">
+                <!-- <a routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}" target="_blank" class="detail-head">{{ item.projectName }} -->
+                <div *ngIf="singleproperty?.builder_name !== null">
                   <h6 class="facility_title">Developer</h6>
-                  <a routerLink="/builder-detail/{{ singleproperty.builderUrl}}" target="_blank" class="project-text"
-                    style="cursor: pointer; ">{{ singleproperty.builder_name }}</a>
+                  <a routerLink="/builder-detail/{{ singleproperty?.builderUrl}}" target="_blank" class="project-text"
+                    style="cursor: pointer; ">{{ singleproperty?.builder_name }}</a>
                   <!-- <p class="project-text">
-                  {{ singleproperty.builder_name }}</p> -->
+                  {{ singleproperty?.builder_name }}</p> -->
                 </div>
-                <div class="" *ngIf="singleproperty.bathroom !== null">
+                <div class="" *ngIf="singleproperty?.bathroom !== null">
                   <h6 class="facility_title">WASHROOM</h6>
-                  <p class="project-text">{{ singleproperty.bathroom }}</p>
+                  <p class="project-text">{{ singleproperty?.bathroom }}</p>
                 </div>
-                <div class="" *ngIf="singleproperty.personal_washroom !== null">
+                <div class="" *ngIf="singleproperty?.personal_washroom !== null">
                   <h6 class="facility_title">PERSONAL WASHROOM</h6>
                   <p class="project-text">
-                    {{ singleproperty.personal_washroom }}
+                    {{ singleproperty?.personal_washroom }}
                   </p>
                 </div>
-                <div class="" *ngIf="singleproperty.pantry_cafeteria !== null">
+                <div class="" *ngIf="singleproperty?.pantry_cafeteria !== null">
                   <h6 class="facility_title">PANTRY CAFETERIA</h6>
                   <p class="project-text">
-                    {{ singleproperty.pantry_cafeteria }}
+                    {{ singleproperty?.pantry_cafeteria }}
                   </p>
                 </div>
-                <div class="" *ngIf="singleproperty.is_corner_property !== null">
+                <div class="" *ngIf="singleproperty?.is_corner_property !== null">
                   <h6 class="facility_title">CORNER PROPERTY</h6>
                   <p class="project-text">
-                    {{ singleproperty.is_corner_property == 1 ? "Yes" : "No" }}
+                    {{ singleproperty?.is_corner_property == 1 ? "Yes" : "No" }}
                   </p>
                 </div>
 
-                <div class="" *ngIf="singleproperty.is_road_facing !== null">
+                <div class="" *ngIf="singleproperty?.is_road_facing !== null">
                   <h6 class="facility_title">ROAD FACING</h6>
                   <p class="project-text">
-                    {{ singleproperty.is_road_facing == 1 ? "Yes" : "No" }}
+                    {{ singleproperty?.is_road_facing == 1 ? "Yes" : "No" }}
                   </p>
                 </div>
-                <div class="" *ngIf="singleproperty.overlooking !== null">
+                <div class="" *ngIf="singleproperty?.overlooking !== null">
                   <h6 class="facility_title">OVERLOOKING</h6>
-                  <p class="project-text">{{ singleproperty.overlooking }}</p>
+                  <p class="project-text">{{ singleproperty?.overlooking }}</p>
                 </div>
-                <div class="" *ngIf="singleproperty.balconies !== null">
+                <div class="" *ngIf="singleproperty?.balconies !== null">
                   <h6 class="facility_title">BALCONIES</h6>
-                  <p class="project-text">{{ singleproperty.balconies }}</p>
+                  <p class="project-text">{{ singleproperty?.balconies }}</p>
                 </div>
-                <div class="" *ngIf="singleproperty.additional_rooms !== null">
+                <div class="" *ngIf="singleproperty?.additional_rooms !== null">
                   <h6 class="facility_title">ADDITIONAL ROOMS</h6>
                   <p class="project-text">
-                    {{ singleproperty.additional_rooms }}
+                    {{ singleproperty?.additional_rooms }}
                   </p>
                 </div>
 
-                <div class="" *ngIf="singleproperty.plot_length !== null">
+                <div class="" *ngIf="singleproperty?.plot_length !== null">
                   <h6 class="facility_title">PLOT LENGTH</h6>
-                  <p class="project-text">{{ singleproperty.plot_length }}</p>
+                  <p class="project-text">{{ singleproperty?.plot_length }}</p>
                 </div>
-                <div class="" *ngIf="singleproperty.plot_width !== null">
+                <div class="" *ngIf="singleproperty?.plot_width !== null">
                   <h6 class="facility_title">PLOT WIDTH</h6>
-                  <p class="project-text">{{ singleproperty.plot_width }}</p>
+                  <p class="project-text">{{ singleproperty?.plot_width }}</p>
                 </div>
-                <div class="" *ngIf="singleproperty.currently_leased_out !== null">
+                <div class="" *ngIf="singleproperty?.currently_leased_out !== null">
                   <h6 class="facility_title">CURRENTLY LEASED OUT</h6>
                   <p class="project-text">
                     {{
-                    singleproperty.currently_leased_out == 1 ? "Yes" : "No"
+                    singleproperty?.currently_leased_out == 1 ? "Yes" : "No"
                     }}
                   </p>
                 </div>
-                <div class="" *ngIf="singleproperty.whom_property_leased !== null">
+                <div class="" *ngIf="singleproperty?.whom_property_leased !== null">
                   <h6 class="facility_title">WHOM LEASED OUT</h6>
                   <p class="project-text">
-                    {{ singleproperty.whom_property_leased }}
+                    {{ singleproperty?.whom_property_leased }}
                   </p>
                 </div>
-                <div *ngIf="singleproperty.floor_no !== null">
+                <div *ngIf="singleproperty?.floor_no !== null">
                   <h6 class="facility_title">FLOOR</h6>
                   <p class="project-text" *ngIf="
-                      singleproperty.floor_no !== null &&
-                      singleproperty.total_floor !== null
+                      singleproperty?.floor_no !== null &&
+                      singleproperty?.total_floor !== null
                     ">
-                    {{ singleproperty.floor_no }} out of
-                    {{ singleproperty.total_floor }}
+                    {{ singleproperty?.floor_no }} out of
+                    {{ singleproperty?.total_floor }}
                   </p>
                 </div>
-                <div *ngIf="singleproperty.super_area !== null">
+                <div *ngIf="singleproperty?.super_area !== null">
                   <h6 class="facility_title">SUPER AREA</h6>
-                  <p class="project-text">{{ singleproperty.super_area }}</p>
+                  <p class="project-text">{{ singleproperty?.super_area }}</p>
                 </div>
 
-                <div *ngIf="singleproperty.ploat_area !== null">
+                <div *ngIf="singleproperty?.ploat_area !== null">
                   <h6 class="facility_title">Plot Area</h6>
-                  <p class="project-text">{{ singleproperty.ploat_area }}</p>
+                  <p class="project-text">{{ singleproperty?.ploat_area }}</p>
                 </div>
               </div>
             </div>
@@ -184,7 +184,7 @@
             <!-- Continue with more groups as needed -->
           </div>
 
-          <!-- <p class="buy-price">₹ {{ singleproperty.total_price }}</p> -->
+          <!-- <p class="buy-price">₹ {{ singleproperty?.total_price }}</p> -->
         </div>
       </div>
     </div>
@@ -202,7 +202,7 @@
           </div>
           <form (submit)="submitForm()">
             <input type="hidden" name="user_id" value="5" [(ngModel)]="formData.user_id" required>
-            <input type="hidden" name="property_id" value="{{singleproperty.id}}" [(ngModel)]="formData.property_id" required> -->
+            <input type="hidden" name="property_id" value="{{singleproperty?.id}}" [(ngModel)]="formData.property_id" required> -->
   <!-- <input class="enquire-submit" type="submit" value="SAVE PROPERTY FOR LATER"> -->
   <!-- <button class="save-later-btn" type="submit">SAVE PROPERTY FOR LATER</button>
           </form>
@@ -212,7 +212,7 @@
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-12">
             <a
-              href=""
+              routerLink=""
               class="links-taps"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
@@ -256,7 +256,7 @@
             </a>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12">
-            <a href="" class="links-taps">
+            <a routerLink="" class="links-taps">
               <div class="sponsored-box">
                 <div class="row">
                   <div class="col-md-5">
@@ -311,57 +311,57 @@
                   <table>
                     <tr class="bullet-agent-box">
                       <th class="agent-bullet-head">Price Breakup</th>
-                      <td class="agent-bullet-descrip" *ngIf="singleproperty.property_price_show == 0">
+                      <td class="agent-bullet-descrip" *ngIf="singleproperty?.property_price_show == 0">
                         ₹
                         {{
-                        singleproperty.total_price !== null
-                        ? singleproperty.total_price
-                        : singleproperty.rent_amount.toLocaleString()
+                        singleproperty?.total_price !== null
+                        ? singleproperty?.total_price
+                        : singleproperty?.rent_amount.toLocaleString()
                         }}
                       </td>
-                      <td class="agent-bullet-descrip" *ngIf="singleproperty.property_price_show == 1">call for price
+                      <td class="agent-bullet-descrip" *ngIf="singleproperty?.property_price_show == 1">call for price
                       </td>
                     </tr>
-                    <tr class="bullet-agent-box" *ngIf="singleproperty.property_facilities !== null">
+                    <tr class="bullet-agent-box" *ngIf="singleproperty?.property_facilities !== null">
                       <th class="agent-bullet-head">Facilities</th>
                       <td class="agent-bullet-descrip">
                         <div class="text-wrapper">
                           <span class="text-titles">
-                            {{ singleproperty.property_facilities }}</span>
+                            {{ singleproperty?.property_facilities }}</span>
                           <input *ngIf="
-                              singleproperty.property_facilities.length > 130
+                              singleproperty?.property_facilities?.length > 130
                             " type="checkbox" class="text-btn" style="font-size: 15px" />
                         </div>
                       </td>
                     </tr>
-                    <tr class="bullet-agent-box" *ngIf="singleproperty.property_address !== null">
+                    <tr class="bullet-agent-box" *ngIf="singleproperty?.property_address !== null">
                       <th class="agent-bullet-head">Address</th>
                       <td class="agent-bullet-descrip">
-                        {{ singleproperty.property_address }}
+                        {{ singleproperty?.property_address }}
                       </td>
                     </tr>
-                    <tr class="bullet-agent-box" *ngIf="singleproperty.age_of_construction !== null">
+                    <tr class="bullet-agent-box" *ngIf="singleproperty?.age_of_construction !== null">
                       <th class="agent-bullet-head">Age of Construction</th>
                       <td class="agent-bullet-descrip">
-                        {{ singleproperty.age_of_construction }}
+                        {{ singleproperty?.age_of_construction }}
                       </td>
                     </tr>
-                    <tr class="bullet-agent-box" *ngIf="singleproperty.furnishing_status !== null">
+                    <tr class="bullet-agent-box" *ngIf="singleproperty?.furnishing_status !== null">
                       <th class="agent-bullet-head">Furnishing</th>
                       <td class="agent-bullet-descrip">
-                        {{ singleproperty.furnishing_status }}
+                        {{ singleproperty?.furnishing_status }}
                       </td>
                     </tr>
-                    <tr class="bullet-agent-box" *ngIf="singleproperty.rera_id !== null">
+                    <tr class="bullet-agent-box" *ngIf="singleproperty?.rera_id !== null">
                       <th class="agent-bullet-head">RERA ID</th>
                       <td class="agent-bullet-descrip">
-                        {{ singleproperty.rera_id }}
+                        {{ singleproperty?.rera_id }}
                       </td>
                     </tr>
-                    <tr class="bullet-agent-box" *ngIf="singleproperty.transaction_type !== null">
+                    <tr class="bullet-agent-box" *ngIf="singleproperty?.transaction_type !== null">
                       <th class="agent-bullet-head">Transaction Type</th>
                       <td class="agent-bullet-descrip">
-                        {{ singleproperty.transaction_type }}
+                        {{ singleproperty?.transaction_type }}
                       </td>
                     </tr>
                     <!-- <button class="contact-buy-btn">CONTACT OWNER</button> -->
@@ -371,7 +371,7 @@
             </div>
             <!-- <div class="disclamer-box">
               <h4>Disclaimer</h4>
-              <div [innerHTML]="singleproperty.description"><p></p></div>
+              <div [innerHTML]="singleproperty?.description"><p></p></div>
               <input type="checkbox" class="text-btn" />
             </div> -->
           </div>
@@ -381,7 +381,7 @@
                     <img src="../../../assets/images/demouser.png" alt="">
                     <div class="owner-buys">
                     <h5>Owner</h5>
-                    <p>{{ singleproperty.owner_name }} <br> +91-{{ singleproperty.owner_contact_no.slice(0, 2) }}xxxxxx{{ singleproperty.owner_contact_no.slice(-2) }}</p>
+                    <p>{{ singleproperty?.owner_name }} <br> +91-{{ singleproperty?.owner_contact_no.slice(0, 2) }}xxxxxx{{ singleproperty?.owner_contact_no.slice(-2) }}</p>
                     </div>
                 </div>
                 <button class="contact-buy-btn">Save For Later</button>
@@ -449,7 +449,7 @@
                   <button type="submit" class="pp-form__cta" [disabled]="emailError">{{is_token ? 'ENQURE
                     NOW':'Continue'}}</button>
                 </div>
-                <!-- <p class="agree-you">I Agree to My Realitys’ <a href="./terms-conditions" target="_blank">Terms of Use</a></p> -->
+                <!-- <p class="agree-you">I Agree to My Realitys’ <a routerLink="./terms-conditions" target="_blank">Terms of Use</a></p> -->
               </form>
             </div>
           </div>
@@ -459,35 +459,35 @@
   </section>
 
   <div class="container">
-    <div class="product_about bullate-disc" id="aboutProject" *ngIf="this.singleproperty.property_description !== null">
-      <h3 class="companies-names pb-3" *ngIf="this.singleproperty.project_about">
-        About {{ this.singleproperty.project_name }}
+    <div class="product_about bullate-disc" id="aboutProject" *ngIf="this.singleproperty?.property_description !== null">
+      <h3 class="companies-names pb-3" *ngIf="this.singleproperty?.project_about">
+        About {{ this.singleproperty?.project_name }}
       </h3>
       <!-- <div class="d-flex align-items-center justify-content-between"> -->
       <!-- <a routerLink="" style="color: red; ">Explore Project</a> -->
       <!-- </div> -->
-      <div class="about-text-titles" [innerHTML]="this.singleproperty.property_description"></div>
+      <div class="about-text-titles" [innerHTML]="this.singleproperty?.property_description"></div>
       <input type="checkbox" class="text-btn" />
-      <div class="address_point" *ngIf="this.singleproperty.project_address">
+      <div class="address_point" *ngIf="this.singleproperty?.project_address">
         <h4>Address:</h4>
-        <p>{{ this.singleproperty.project_address }}</p>
+        <p>{{ this.singleproperty?.project_address }}</p>
         <div class="row mt-4 gap-4">
-          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty.project_size_in_sqft">
+          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty?.project_size_in_sqft">
             <p>Project Size :</p>
             <p class="about-project-value">
-              {{ this.singleproperty.project_size_in_sqft }} Sq-yrd
+              {{ this.singleproperty?.project_size_in_sqft }} Sq-yrd
             </p>
           </div>
-          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty.project_launch_date">
+          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty?.project_launch_date">
             <p>Launch Date :</p>
             <p class="about-project-value">
-              {{ getFormattedDate(this.singleproperty.project_launch_date) }}
+              {{ getFormattedDate(this.singleproperty?.project_launch_date) }}
             </p>
           </div>
-          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty.project_status">
+          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty?.project_status">
             <p>Status :</p>
             <p class="about-project-value">
-              {{ this.singleproperty.project_status }}
+              {{ this.singleproperty?.project_status }}
             </p>
           </div>
           <!-- <div class="col-md-3 col-sm-12 mb-3 about_box">
@@ -502,22 +502,22 @@
               }}
             </p>
           </div>
-          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty.project_total_units">
+          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty?.project_total_units">
             <p>Total Units :</p>
             <p class="about-project-value">
-              {{ this.singleproperty.project_total_units }}
+              {{ this.singleproperty?.project_total_units }}
             </p>
           </div>
-          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty.project_total_tower">
+          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty?.project_total_tower">
             <p>Total Towers :</p>
             <p class="about-project-value">
-              {{ this.singleproperty.project_total_tower }}
+              {{ this.singleproperty?.project_total_tower }}
             </p>
           </div>
-          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty.project_type">
+          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty?.project_type">
             <p>Project Type :</p>
             <p class="about-project-value">
-              {{ this.singleproperty.project_type }}
+              {{ this.singleproperty?.project_type }}
             </p>
           </div>
           <!-- <div class="col-md-3 col-sm-12 mb-3 about_box">
@@ -532,10 +532,10 @@
                                 <p>Commencement Certificate :</p>
                                 <p class="about-project-value">Yes</p>
                             </div> -->
-          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty.project_pincode">
+          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty?.project_pincode">
             <p>Pincode :</p>
             <p class="about-project-value">
-              {{ this.singleproperty.project_pincode }}
+              {{ this.singleproperty?.project_pincode }}
             </p>
           </div>
         </div>
@@ -543,14 +543,14 @@
     </div>
   </div>
 
-  <div class="amenities" id="amenities" *ngIf="this.singleproperty.amenitiess.length > 0">
+  <div class="amenities" id="amenities" *ngIf="this.singleproperty?.amenitiess?.length > 0">
     <div class="container">
       <div class="bullate-disc">
         <h3 class="companies-names pb-3">
-          Amenities at {{ this.singleproperty.project_name }}
+          Amenities at {{ this.singleproperty?.project_name }}
         </h3>
         <div class="row">
-          <div class="col-md-2" *ngFor="let amenities of this.singleproperty.amenitiess">
+          <div class="col-md-2" *ngFor="let amenities of this.singleproperty?.amenitiess">
             <div class="amenit_box">
               <img src="{{ amenities.image }}" alt class="img-fluid" />
             </div>
@@ -561,11 +561,11 @@
     </div>
   </div>
 
-  <div class="container landmark" *ngIf="hasNonEmptyLandmarks(this.singleproperty.landmarksnearproject)">
+  <div class="container landmark" *ngIf="hasNonEmptyLandmarks(this.singleproperty?.landmarksnearproject)">
     <div class="bullate-disc">
       <div class="" id="landmark">
         <h3 class="companies-names pb-3">
-          Landmarks Near {{ singleproperty.project_name }}
+          Landmarks Near {{ singleproperty?.project_name }}
         </h3>
       </div>
 
@@ -579,7 +579,7 @@
             ]
           ">
           <div class="pdp__landmarks__card" *ngIf="
-              this.singleproperty.landmarksnearproject[category].length > 0
+              this.singleproperty?.landmarksnearproject[category].length > 0
             ">
             <div class="pdp__landmarks__card__inner">
               <div class="" [ngClass]="{
@@ -593,19 +593,19 @@
                   {{ category | titlecase }}
                 </div>
                 <div class="pdp__landmarks__card__action" *ngIf="
-                    this.singleproperty.landmarksnearproject[category].length >
+                    this.singleproperty?.landmarksnearproject[category].length >
                     3
                   ">
                   <span>+
                     {{
-                    this.singleproperty.landmarksnearproject[category]
+                    this.singleproperty?.landmarksnearproject[category]
                     .length - 3
                     }}
                     more</span>
                 </div>
                 <div class="pdp__landmarks__card__body">
                   <ng-container *ngFor="
-                      let item of this.singleproperty.landmarksnearproject[
+                      let item of this.singleproperty?.landmarksnearproject[
                         category
                       ].slice(0, 3)
                     ">
@@ -626,15 +626,15 @@
     </div>
   </div>
 
-  <section class="more_info" *ngIf="singleproperty.property_img.length > 0">
+  <section class="more_info" *ngIf="singleproperty?.property_img.length > 0">
     <div class="container">
       <div class="bullate-disc gallery">
         <h3 class="companies-names pb-3">Gallery</h3>
         <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig3">
-          <div ngxSlickItem class="slide" *ngFor="let gallery of singleproperty.property_img">
+          <div ngxSlickItem class="slide" *ngFor="let gallery of singleproperty?.property_img">
             <div class="gallery_box">
               <div class="gallery">
-                <a href="{{ gallery }}" data-fancybox="gallery">
+                <a routerLink="{{ gallery }}" data-fancybox="gallery">
                   <img src="{{ gallery }}" alt="Gallery Image" class="img-fluid" />
                 </a>
               </div>
@@ -645,7 +645,7 @@
     </div>
   </section>
 
-  <section class="more_info" *ngIf="whoLikeProperty.length > 0">
+  <section class="more_info" *ngIf="whoLikeProperty?.length > 0">
     <div class="container">
       <div class="bullate-disc">
         <h3 class="companies-names pb-3">
@@ -656,7 +656,7 @@
             <a href="#" class="prj_box">
               <img src={{item.property_main_img}} alt="" />
               <div class="projdesc">
-                <a href="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}"
+                <a routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}"
                   target="_blank" class="detail-head">{{ item.projectName }}
                   <h3 class="proj-Mhead">{{item.project.project_name}}</h3>
                   <p class="pb-price" *ngIf="item.property_price_show == '0'">₹ {{ item.total_price }}</p>
@@ -676,7 +676,7 @@
     </div>
   </section>
 
-  <section class="more_info" *ngIf="verifySimilarProperty.length > 0">
+  <section class="more_info" *ngIf="verifySimilarProperty?.length > 0">
     <div class="container">
       <div class="bullate-disc">
         <h3 class="companies-names pb-3">Properties in Similar Projects</h3>
@@ -685,7 +685,7 @@
             <div href="#" class="prj_box">
               <img src="{{ item.property_main_img }}" alt="" />
               <div class="projdesc">
-                <a href="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}"
+                <a routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}"
                   target="_blank" class="detail-head">{{ item.projectName }}
                   <h3 class="proj-Mhead">{{item.project.project_name}}</h3>
                   <p class="pb-price" *ngIf="item.property_price_show == '0'">₹ {{ item.total_price }}</p>
@@ -764,7 +764,7 @@
           <div ngxSlickItem class="slide">
             <a href="#" class="prj_box">
               <img
-                src="https://realtymart.com/new-myrealty/public/images/property_main_img/1735642766kp1-waiting-area-1.jpg"
+                src="https://www.realtymart.com/realtymart/backend/public/images/property_main_img/1735642766kp1-waiting-area-1.jpg"
                 alt=""
               />
               <div class="projdesc">
@@ -783,9 +783,9 @@
             </a>
           </div>
           <div ngxSlickItem class="slide">
-            <a href="" class="prj_box">
+            <a routerLink="" class="prj_box">
               <img
-                src="https://realtymart.com/new-myrealty/public/images/property_main_img/1735642766kp1-waiting-area-1.jpg"
+                src="https://www.realtymart.com/realtymart/backend/public/images/property_main_img/1735642766kp1-waiting-area-1.jpg"
                 alt=""
               />
               <div class="projdesc">
@@ -804,9 +804,9 @@
             </a>
           </div>
           <div ngxSlickItem class="slide">
-            <a href="" class="prj_box">
+            <a routerLink="" class="prj_box">
               <img
-                src="https://realtymart.com/new-myrealty/public/images/property_main_img/1735642766kp1-waiting-area-1.jpg"
+                src="https://www.realtymart.com/realtymart/backend/public/images/property_main_img/1735642766kp1-waiting-area-1.jpg"
                 alt=""
               />
               <div class="projdesc">
@@ -825,9 +825,9 @@
             </a>
           </div>
           <div ngxSlickItem class="slide">
-            <a href="" class="prj_box">
+            <a routerLink="" class="prj_box">
               <img
-                src="https://realtymart.com/new-myrealty/public/images/property_main_img/1735642766kp1-waiting-area-1.jpg"
+                src="https://www.realtymart.com/realtymart/backend/public/images/property_main_img/1735642766kp1-waiting-area-1.jpg"
                 alt=""
               />
               <div class="projdesc">
@@ -851,7 +851,7 @@
   </section> -->
 
   <!-- near by property  -->
-  <section class="more_info" *ngIf="nearByProperty.length > 0">
+  <section class="more_info" *ngIf="nearByProperty?.length > 0">
     <div class="container">
       <div class="bullate-disc">
         <h3 class="companies-names pb-3">
@@ -862,7 +862,7 @@
             <a href="#" class="prj_box">
               <img src={{item.property_main_img}} alt="" />
               <div class="projdesc">
-                <a href="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}"
+                <a routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}"
                   target="_blank" class="detail-head">{{ item.projectName }}
                   <h3 class="proj-Mhead">{{item.project.project_name}}</h3>
                   <p class="pb-price" *ngIf="item.property_price_show == '0'">₹ {{ item.total_price }}</p>
@@ -883,7 +883,7 @@
   </section>
 
   <!-- other property -->
-  <section class="more_info" *ngIf="whoLikeProperty.length > 0">
+  <section class="more_info" *ngIf="whoLikeProperty?.length > 0">
     <div class="container">
       <div class="bullate-disc">
         <h3 class="companies-names pb-3">
@@ -894,8 +894,7 @@
             <a href="#" class="prj_box">
               <img src={{item.property_main_img}} alt="" />
               <div class="projdesc">
-                <a href="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}"
-                  target="_blank" class="detail-head">{{ item.projectName }}
+                <a routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}" target="_blank" class="detail-head">{{ item.projectName }}
                   <h3 class="proj-Mhead">{{item.project.project_name}}</h3>
                   <p class="pb-price" *ngIf="item.property_price_show == '0'">₹ {{ item.total_price }}</p>
                   <p class="mb-para-by">
@@ -916,7 +915,7 @@
 
   <!-- similar property -->
 
-  <!-- <section class="more_info" *ngIf="verifySimilarProperty.length > 0">
+  <!-- <section class="more_info" *ngIf="verifySimilarProperty?.length > 0">
     <div class="container">
       <div class="bullate-disc">
         <h3 class="companies-names pb-3">Properties in Similar Projects</h3>
@@ -932,7 +931,7 @@
                 alt=""
               />
               <div class="projdesc">
-                <a href="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}" target="_blank" class="detail-head">{{ item.projectName }}
+                <a routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}" target="_blank" class="detail-head">{{ item.projectName }}
                 <h3 class="proj-Mhead">{{item.project.project_name}}</h3>
                 <p class="pb-price" *ngIf="item.property_price_show == '0'">₹ {{ item.total_price }}</p>
                 <p class="mb-para-by">
@@ -966,8 +965,8 @@
           <b>Loading .....</b>
           <div class="review_box">
             <div class="row align-items-center">
-              <div class="col-md-6 mb-2" *ngIf="singleproperty.company_logo !==null">
-                <img src={{singleproperty.company_logo}} alt="" class="img-fluid">
+              <div class="col-md-6 mb-2" *ngIf="singleproperty?.company_logo !==null">
+                <img src={{singleproperty?.company_logo}} alt="" class="img-fluid">
               </div>
               <div class="col-md-6">
                 <h4> Rating</h4>
@@ -1013,7 +1012,7 @@
             <div class="prj_box">
               <img src="{{ verify.property_main_img }}" alt="" class="img-fluid">
               <div class="projdesc">
-                <a href="/property-details/{{ verify.propertyfirstUrlPart }}/{{ verify.propertysecondUrlPart }}"
+                <a routerLink="/property-details/{{ verify.propertyfirstUrlPart }}/{{ verify.propertysecondUrlPart }}"
                   target="_blank" class="detail-head">{{ verify.projectName }}
                   <h3 class="proj-Mhead">{{verify.project.project_name}}</h3>
                   <p class="pb-price" *ngIf="verify.property_price_show == '0'">₹ {{ verify.total_price }}</p>
@@ -1033,7 +1032,7 @@
         <!-- <div class="ongoing-img">
               <img src="../../../assets/images/shipra.png" alt="" class="img-fluid">
               <div class="ongoing-deatils">
-                <a href="" class="detail-head">Shipra Srishti</a>
+                <a routerLink="" class="detail-head">Shipra Srishti</a>
                 <p class="ongoing-location">
                   <span class="locator-icon">
                     <i class="fa-sharp fa-solid fa-location-dot"
@@ -1051,14 +1050,14 @@
                     </div>
                   </div>
                 <div class="proj-builder">
-                  <a href="">ENQUIRE NOW</a>
+                  <a routerLink="">ENQUIRE NOW</a>
                 </div>
               </div>
             </div>
             <div class="ongoing-img">
               <img src="../../../assets/images/shipra.png" alt="" class="img-fluid">
               <div class="ongoing-deatils">
-                <a href="" class="detail-head">Shipra Srishti</a>
+                <a routerLink="" class="detail-head">Shipra Srishti</a>
                 <p class="ongoing-location">
                   <span class="locator-icon">
                     <i class="fa-sharp fa-solid fa-location-dot"
@@ -1076,14 +1075,14 @@
                     </div>
                   </div>
                 <div class="proj-builder">
-                  <a href="">ENQUIRE NOW</a>
+                  <a routerLink="">ENQUIRE NOW</a>
                 </div>
               </div>
             </div>
             <div class="ongoing-img">
               <img src="../../../assets/images/shipra.png" alt="" class="img-fluid">
               <div class="ongoing-deatils">
-                <a href="" class="detail-head">Shipra Srishti</a>
+                <a routerLink="" class="detail-head">Shipra Srishti</a>
                 <p class="ongoing-location">
                   <span class="locator-icon">
                     <i class="fa-sharp fa-solid fa-location-dot"
@@ -1101,7 +1100,7 @@
                     </div>
                   </div>
                 <div class="proj-builder">
-                  <a href="">ENQUIRE NOW</a>
+                  <a routerLink="">ENQUIRE NOW</a>
                 </div>
               </div>
             </div> -->

@@ -409,8 +409,8 @@
                         </div>
                         <div class="reraRecords__slidersec">
                         <div class="proj-detail-slider sub-wrap clearfix no-proj-swiper" id="reraPreviews">
-                        <div class="swiper-button-next"><a href="javascript:void(0);"></a></div>
-                        <div class="swiper-button-prev"><a href="javascript:void(0);"></a></div>
+                        <div class="swiper-button-next"><a routerLink="javascript:void(0);"></a></div>
+                        <div class="swiper-button-prev"><a routerLink="javascript:void(0);"></a></div>
                         <div class="swiper-container">
                         <div class="swiper-wrapper">
                         <div class="swiper-slide docsCard">
@@ -456,7 +456,7 @@
                 <div class="gallery_box">
                   <div class="gallery">
                     <!-- Adding data-fancybox for Fancybox functionality -->
-                    <a href="{{ gallery }}" data-fancybox="gallery">
+                    <a routerLink="{{ gallery }}" data-fancybox="gallery">
                       <img src="{{ gallery }}" alt="Gallery Image" class="img-fluid" />
                     </a>
                   </div>
@@ -552,7 +552,7 @@
                                     <div class="review__user-rating">
                                     <div class="review__user-pic">V</div>
                                     <div class="review__name-block">
-                                    <a href="https://www.magicbricks.com/property-agent-details/broker-V-Real-Estate-in-Ahmedabad-agentid-4d423438373835353731" target="_blank">
+                                    <a routerLink="https://www.magicbricks.com/property-agent-details/broker-V-Real-Estate-in-Ahmedabad-agentid-4d423438373835353731" target="_blank">
                                     <div class="review__name ellipsis">Vishal</div>
                                     </a>
                                     <div class="review__type">Agent
@@ -660,7 +660,7 @@
               <h3 class="companies-names">About Developer</h3>
               <div class="about-devloper-wrapper d-flex align-items-center justify-content-between">
                 <div>
-                  <a style="color: black" href="builder-detail/{{ singleproject.aboutdeveloper.builderUrl }}">
+                  <a style="color: black" routerLink="builder-detail/{{ singleproject.aboutdeveloper.builderUrl }}">
                     <h3>
                       {{ singleproject.aboutdeveloper.builderName }}
                     </h3>
@@ -825,7 +825,7 @@
                     <!-- <span class="d-block"
                       ><a
                         routerlink="../terms-conditions"
-                        href="/terms-conditions"
+                        routerLink="/terms-conditions"
                         >Terms of Use</a
                       ></span> -->
                   </label>
@@ -838,7 +838,7 @@
                   [value]="is_token ? 'Submit Enquiry':'Continue'" />
               </form>
             </div>
-            <!-- <a href="" class="brochure_more">
+            <!-- <a routerLink="" class="brochure_more">
             <span
               ><img
                 src="../../../assets/images/Brochure.png"
@@ -854,7 +854,7 @@
         </h3>
         <div class="row mt-3">
           <div class="col-md-3 col-sm-12">
-            <a href="/emi-calculator" target="_blank" class="instruments_box">
+            <a routerLink="/emi-calculator" target="_blank" class="instruments_box">
               <div class="instrunment_mg mb-2">
                 <img src="../../../assets/images/Instruments1.png" alt="'Instruments" class="img-fluid" />
               </div>
@@ -863,7 +863,7 @@
             </a>
           </div>
           <div class="col-md-3 col-sm-12">
-            <a href="/property-valuation" target="_blank" class="instruments_box">
+            <a routerLink="/property-valuation" target="_blank" class="instruments_box">
               <div class="instrunment_mg mb-2">
                 <img src="../../../assets/images/Instruments2.png" alt="'Instruments" class="img-fluid" />
               </div>
@@ -872,7 +872,7 @@
             </a>
           </div>
           <!-- <div class="col-md-3 col-sm-12">
-            <a href="/title-check" target="_blank" class="instruments_box">
+            <a routerLink="/title-check" target="_blank" class="instruments_box">
               <div class="instrunment_mg mb-2">
                 <img
                   src="../../../assets/images/Instruments3.png"
@@ -888,7 +888,7 @@
             </a>
           </div> -->
           <div class="col-md-3 col-sm-12">
-            <a href="/property-services" target="_blank" class="instruments_box">
+            <a routerLink="/property-services" target="_blank" class="instruments_box">
               <div class="instrunment_mg mb-2">
                 <img src="../../../assets/images/Instruments4.png" alt="Instruments" class="img-fluid" />
               </div>
@@ -1095,7 +1095,7 @@
           <input type="checkbox" id="Terms" name="Terms" value="compare add" class="mycheck" />
           <label for="Terms" class="compares">I Agree to realtymart
             <!-- <span
-              ><a routerlink="../terms-conditions" href="/terms-conditions"
+              ><a routerlink="../terms-conditions" routerLink="/terms-conditions"
                 >Terms of Use</a
               ></span> --> </label><br />
         </div>

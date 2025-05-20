@@ -8,13 +8,13 @@
             </div>
         </div>
     </section>
-    
+
     <section class="godrej-projects">
         <div class="container">
             <div class="godrej-tab">
-                  
+
                   <div class="tab-content" id="pills-tabContent">
-    
+
                     <div class="tab-pane fade show active" id="pills-gogrej" role="tabpanel" aria-labelledby="pills-godrej-tab">
                     <div class="projections">
                         <div class="head-projections">
@@ -55,7 +55,7 @@
                                         <div class="city-images" *ngIf="allbuilderproject.project_banner_image !== null">
                                             <img src="{{ allbuilderproject.project_banner_image }}" alt="" class="img-fluid">
                                         </div>
-                                        
+
                                         <!-- <div class="property-verified" *ngIf="allbuilderproject.properties[0].is_exclusive === '1'"><p>EXCLUSIVE PROPERTY</p></div> -->
                                         <!-- <div class="check-compare">
                                             <input type="checkbox" id="compare" name="compare" value="compare add" class="mycheck">
@@ -65,7 +65,7 @@
                                     <div class="col-lg-10 col-md-6 col-sm-12">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <a href="project-details/{{ allbuilderproject.firstUrlPart }}/{{ allbuilderproject.secondUrlPart}}" class="groups-companies-names">{{ allbuilderproject.project_name}}</a>
+                                                <a routerLink="project-details/{{ allbuilderproject.firstUrlPart }}/{{ allbuilderproject.secondUrlPart}}" class="groups-companies-names">{{ allbuilderproject.project_name}}</a>
                                                 <p class="opnesince">{{ allbuilderproject.project_total_floor }} Floor Plan  |  By: {{ allbuilderproject.project_name}}</p>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -96,19 +96,19 @@
                                                 </tr>
                                               </tbody>
                                             </table>
-                                          </div>                                      
+                                          </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>                    
+                        </div>
                     </div>
                     </div>
-    
+
                     <div class="tab-pane fade" id="pills-godarej-two" role="tabpanel" aria-labelledby="pills-godarej-two-tab">...</div>
-                    
+
                   </div>
             </div>
         </div>
     </section>
-    
+
     </main>

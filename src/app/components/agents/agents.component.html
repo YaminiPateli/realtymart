@@ -51,7 +51,7 @@
                             <!-- <div class="new-projection">
                                 <p>Top Agents dealing in Ahmedabad</p>
                             </div> -->
-                           
+
                             <!-- <div class="tabs_sortby pt-4">
                                 <div class="tabs_sortby--title"
                                     (click)="toggleDropdown()">Sort by: <span>{{
@@ -156,9 +156,9 @@
                                                     Expert</li>
                                             </ul>
                                         </div>
-                                        <a href class="company-contact d-block mb-2">Contact
+                                        <a routerLink class="company-contact d-block mb-2">Contact
                                             Now</a>
-                                        <a href class="view-phone d-block">View Details</a>
+                                        <a routerLink class="view-phone d-block">View Details</a>
                                     </div>
                                 </div>
                             </div>
@@ -191,7 +191,7 @@
                                             <div
                                                 class="col-lg-7 col-md-7 col-sm-12">
                                                 <a
-                                                    href="/agents-details/{{ allbuilderproject.agentUrl }}"
+                                                    routerLink="/agents-details/{{ allbuilderproject.agentUrl }}"
                                                     class="groups-companies-names">{{
                                                     allbuilderproject.company_name
                                                     }}</a>
@@ -231,7 +231,7 @@
                                         <div class="builders-ahm-property">
                                             <div class="show-ahm-box">
                                                 <a
-                                                    href="/project-details/{{ projects.project_name }}/{{ projects.project_id }}"
+                                                    routerLink="/project-details/{{ projects.project_name }}/{{ projects.project_id }}"
                                                     class="links-taps"
                                                     *ngFor="let projects of allbuilderproject.projects">
                                                     <div class="ahow-ahm-items">
@@ -272,12 +272,12 @@
                                         <div class="all-over-propertys">
                                             <div class="all-projects">
                                                 <a
-                                                    href="/builder-property-listing/{{allbuilderproject.user_id}}/all">SEE
+                                                    routerLink="/builder-property-listing/{{allbuilderproject.user_id}}/all">SEE
                                                     ALL PROJECTS</a>
                                             </div>
                                             <div class="explor-builders">
                                                 <a
-                                                    href="/agents-details/{{ allbuilderproject.user_id }}/{{ allbuilderproject.company_name }}">EXPLORE
+                                                    routerLink="/agents-details/{{ allbuilderproject.user_id }}/{{ allbuilderproject.company_name }}">EXPLORE
                                                     BUILDER</a>
                                             </div>
                                         </div>

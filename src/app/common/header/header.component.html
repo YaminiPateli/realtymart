@@ -26,7 +26,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" data-bs-toggle="dropdown"
+            <a class="nav-link dropdown-toggle" routerLink="javascript:void(0)" id="navbarDropdown" data-bs-toggle="dropdown"
               role="button" aria-expanded="false">
               Buy
             </a>
@@ -37,28 +37,28 @@
                     Popular Choices
                   </li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/owner-property-buy/{{ city }}">Owner Properties</a>
+                    <a target="_blank" class="dropdown-item" routerLink="/owner-property-buy/{{ city }}">Owner Properties</a>
                   </li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/verified-property-buy/{{ city }}">Verified
+                    <a target="_blank" class="dropdown-item" routerLink="/verified-property-buy/{{ city }}">Verified
                       Properties</a>
                   </li>
                   <!-- <li>
-                    <a class="dropdown-item" href="/project-featured">Project Featured </a>
+                    <a class="dropdown-item" routerLink="/project-featured">Project Featured </a>
                   </li> -->
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/paying-guest-for/boys/{{ city }}">Pg For Boys {{
+                    <a target="_blank" class="dropdown-item" routerLink="/paying-guest-for/boys/{{ city }}">Pg For Boys {{
                       city }}</a>
                   </li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/newly-launched">Newly Launched <span
+                    <a target="_blank" class="dropdown-item" routerLink="/newly-launched">Newly Launched <span
                         class="badge">NEW</span></a>
                   </li>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                   <li class="dropdown-item menu_inner_title">Property Types</li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/property-for-buy/flat/{{ city }}">Flats in {{ city
+                    <a target="_blank" class="dropdown-item" routerLink="/property-for-buy/flat/{{ city }}">Flats in {{ city
                       }}</a>
                   </li>
                   <!-- <li>
@@ -67,7 +67,7 @@
                     >
                   </li> -->
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/property-for-buy/house-villa/{{ city }}">House/Villa
+                    <a target="_blank" class="dropdown-item" routerLink="/property-for-buy/house-villa/{{ city }}">House/Villa
                       in {{
                       city }}</a>
                   </li>
@@ -75,34 +75,34 @@
                     <a class="dropdown-item" href="#">Villa in Ahmedabad</a>
                   </li> -->
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/property-for-buy/plot/{{ city }}">Plot in {{ city
+                    <a target="_blank" class="dropdown-item" routerLink="/property-for-buy/plot/{{ city }}">Plot in {{ city
                       }}</a>
                   </li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/property-for-buy/office-space/{{ city }}">Office
+                    <a target="_blank" class="dropdown-item" routerLink="/property-for-buy/office-space/{{ city }}">Office
                       Space in {{ city }}</a>
                   </li>
                   <li>
                     <a target="_blank" class="dropdown-item"
-                      href="/property-for-buy/commercial-land/{{ city }}">Commercial Land in {{ city }}</a>
+                      routerLink="/property-for-buy/commercial-land/{{ city }}">Commercial Land in {{ city }}</a>
                   </li>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                   <li class="dropdown-item menu_inner_title">Explore</li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/builder-listing/{{ city }}">Builders in {{ city
+                    <a target="_blank" class="dropdown-item" routerLink="/builder-listing/{{ city }}">Builders in {{ city
                       }}</a>
                   </li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/explore-localities/{{ city }}">Localities in {{ city
+                    <a target="_blank" class="dropdown-item" routerLink="/explore-localities/{{ city }}">Localities in {{ city
                       }}</a>
                   </li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/projects-in-city/{{ city }}">Projects in {{ city
+                    <a target="_blank" class="dropdown-item" routerLink="/projects-in-city/{{ city }}">Projects in {{ city
                       }}</a>
                   </li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/investment-hotspot">Investment Hotspot</a>
+                    <a target="_blank" class="dropdown-item" routerLink="/investment-hotspot">Investment Hotspot</a>
                   </li>
                   <li>
                     <a target="_blank" class="dropdown-item" routerLink="/agents/{{ city }}">Find an Agent</a>
@@ -113,7 +113,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" data-bs-toggle="dropdown"
+            <a class="nav-link dropdown-toggle" routerLink="javascript:void(0)" id="navbarDropdown" data-bs-toggle="dropdown"
               role="button" aria-expanded="false">
               Rent
             </a>
@@ -124,17 +124,17 @@
                     Popular Choices
                   </li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/owner-property-rent/{{ city }}">Owner Properties</a>
+                    <a target="_blank" class="dropdown-item" routerLink="/owner-property-rent/{{ city }}">Owner Properties</a>
                   </li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/verified-property-rent/{{ city }}">Verified
+                    <a target="_blank" class="dropdown-item" routerLink="/verified-property-rent/{{ city }}">Verified
                       Properties</a>
                   </li>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                   <li class="dropdown-item menu_inner_title">Property Types</li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/property-for-rent/flat/{{ city }}">Flats in {{ city
+                    <a target="_blank" class="dropdown-item" routerLink="/property-for-rent/flat/{{ city }}">Flats in {{ city
                       }}</a>
                   </li>
                   <!-- <li>
@@ -144,20 +144,20 @@
                   </li> -->
                   <li>
                     <a target="_blank" class="dropdown-item"
-                      href="/property-for-rent/house-villa/{{ city }}">House/Villa in
+                      routerLink="/property-for-rent/house-villa/{{ city }}">House/Villa in
                       {{ city }}</a>
                   </li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/property-for-rent/plot/{{ city }}">Plot in {{ city
+                    <a target="_blank" class="dropdown-item" routerLink="/property-for-rent/plot/{{ city }}">Plot in {{ city
                       }}</a>
                   </li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/property-for-rent/office-space/{{ city }}">Office
+                    <a target="_blank" class="dropdown-item" routerLink="/property-for-rent/office-space/{{ city }}">Office
                       Space in {{ city }}</a>
                   </li>
                   <li>
                     <a target="_blank" class="dropdown-item"
-                      href="/property-for-rent/commercial-land/{{ city }}">Commercial Space in {{ city }}</a>
+                      routerLink="/property-for-rent/commercial-land/{{ city }}">Commercial Space in {{ city }}</a>
                   </li>
                   <li>
                     <a target="_blank" class="dropdown-item" href="#">Hostel in {{ city }}</a>
@@ -171,7 +171,7 @@
                     Popular Choices
                   </li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/explore-localities/{{ city }}">Localities in {{ city
+                    <a target="_blank" class="dropdown-item" routerLink="/explore-localities/{{ city }}">Localities in {{ city
                       }}</a>
                   </li>
                   <li>
@@ -186,7 +186,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" data-bs-toggle="dropdown"
+            <a class="nav-link dropdown-toggle" routerLink="javascript:void(0)" id="navbarDropdown" data-bs-toggle="dropdown"
               role="button" aria-expanded="false">
               Sell
             </a>
@@ -205,7 +205,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" data-bs-toggle="dropdown"
+            <a class="nav-link dropdown-toggle" routerLink="javascript:void(0)" id="navbarDropdown" data-bs-toggle="dropdown"
               role="button" aria-expanded="false">
               Tools
             </a>
@@ -216,10 +216,10 @@
                     Popular Service
                   </li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/property-valuation">Property Valuation</a>
+                    <a target="_blank" class="dropdown-item" routerLink="/property-valuation">Property Valuation</a>
                   </li>
                   <!-- <li>
-                    <a class="dropdown-item" href="/title-check"
+                    <a class="dropdown-item" routerLink="/title-check"
                       >Legal Title Check</a
                     >
                   </li> -->
@@ -235,7 +235,7 @@
                     <a target="_blank" class="dropdown-item" routerLink="/emi-calculator">EMI Calculator</a>
                   </li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/investment-hotspot">Investment Hotspot</a>
+                    <a target="_blank" class="dropdown-item" routerLink="/investment-hotspot">Investment Hotspot</a>
                   </li>
                   <li>
                     <a target="_blank" class="dropdown-item" routerLink="/research-insights">Research Insights</a>
@@ -244,10 +244,10 @@
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                   <li class="dropdown-item menu_inner_title">Buying Tools</li>
                   <!-- <li>
-                    <a class="dropdown-item" href="/find-pincode">Find Pincode</a>
+                    <a class="dropdown-item" routerLink="/find-pincode">Find Pincode</a>
                   </li> -->
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/tips-and-guides">Tips and Guides</a>
+                    <a target="_blank" class="dropdown-item" routerLink="/tips-and-guides">Tips and Guides</a>
                   </li>
                 </div>
               </div>
@@ -255,7 +255,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" routerLink="javascript::void(0)" id="navbarDropdown"
+            <a class="nav-link dropdown-toggle" routerLink="javascript:void(0)" id="navbarDropdown"
               data-bs-toggle="dropdown" role="button" aria-expanded="false">
               Property Services
             </a>
@@ -272,13 +272,13 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a target="_blank" class="nav-link" href="top-builders" aria-expanded="false">Top Builders</a>
+            <a target="_blank" class="nav-link" routerLink="top-builders" aria-expanded="false">Top Builders</a>
           </li>
           <li class="nav-item">
-            <a target="_blank" class="nav-link" href="emi-calculator" aria-expanded="false">EMI Calculator</a>
+            <a target="_blank" class="nav-link" routerLink="emi-calculator" aria-expanded="false">EMI Calculator</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown"
+            <a class="nav-link dropdown-toggle" routerLink="javascript:void(0)" id="navbarDropdown"
               data-bs-toggle="dropdown" role="button" aria-expanded="false">
               Help
             </a>
@@ -293,11 +293,11 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown"
+            <a class="nav-link dropdown-toggle" routerLink="javascript:void(0)" id="navbarDropdown"
               data-bs-toggle="dropdown" role="button" aria-expanded="false" *ngIf="checkToken == null">
               Login
             </a>
-            <a class="nav-link dropdown-toggle" href="javascript:void(0)" (click)="logout()" id="navbarDropdown"
+            <a class="nav-link dropdown-toggle" routerLink="javascript:void(0)" (click)="logout()" id="navbarDropdown"
               role="button" aria-expanded="false" *ngIf="checkToken != null">
               Logout
             </a>
@@ -317,10 +317,10 @@
                   </li>
 
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/login" *ngIf="checkToken == null">Login</a>
+                    <a target="_blank" class="dropdown-item" routerLink="/login" *ngIf="checkToken == null">Login</a>
                   </li>
                   <li>
-                    <a target="_blank" class="dropdown-item" href="/registration" *ngIf="checkToken == null">New to
+                    <a target="_blank" class="dropdown-item" routerLink="/registration" *ngIf="checkToken == null">New to
                       realtymart ? <span> Sign Up </span></a>
                   </li>
                 </div>
@@ -378,7 +378,7 @@
           <div class="btn-submit">
             <button>Sign up</button>
           </div>
-          <p class="sign-already">Already Registered? <a href="/login">Sign In</a></p>
+          <p class="sign-already">Already Registered? <a routerLink="/login">Sign In</a></p>
             </form>
           </div>
         </div>

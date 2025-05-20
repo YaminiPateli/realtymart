@@ -247,7 +247,7 @@
                   <div class="get-callback-btn m-0">
                     <input class="enquire-submit" type="submit" value="ENQUIRE NOW">
                   </div>
-                  <p class="agree-you">I Agree to My Realtys’ <a href="./terms-conditions" target="_blank">Terms of Use</a></p>
+                  <p class="agree-you">I Agree to My Realtys’ <a routerLink="./terms-conditions" target="_blank">Terms of Use</a></p>
                 </form>
 
 
@@ -298,7 +298,7 @@
               <div class="ongoing-img" *ngFor="let verifys of verify">
                 <img src="{{ verifys.project_images }}" alt="" class="img-fluid">
                 <div class="ongoing-deatils">
-                  <a href="/project-details/{{ verifys.project_name }}/{{ verifys.project_id }}/{{verifys.property_type}}" class="detail-head">{{ verifys.project_name }}</a>
+                  <a routerLink="/project-details/{{ verifys.project_name }}/{{ verifys.project_id }}/{{verifys.property_type}}" class="detail-head">{{ verifys.project_name }}</a>
                   <p class="ongoing-location">
                     <span class="locator-icon">
                       <i class="fa-sharp fa-solid fa-location-dot"
@@ -320,7 +320,7 @@
                       </div>
                     </div>
                   <div class="proj-builder">
-                    <a href="">ENQUIRE NOW</a>
+                    <a routerLink="">ENQUIRE NOW</a>
                   </div>
                 </div>
               </div>

@@ -79,6 +79,7 @@ import { ProjectApproveDetailComponent } from './components/project-approve-deta
 import { PropertyincitybuyComponent } from './components/propertyincitybuy/propertyincitybuy.component';
 import { PropertyincityrentComponent } from './components/propertyincityrent/propertyincityrent.component';
 import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
+import { LocationPermissionComponent } from './components/location-permission/location-permission.component';
 
 // Page Routing
 const routes: Routes = [
@@ -205,6 +206,7 @@ register();
     PropertyincitybuyComponent,
     PropertyincityrentComponent,
     CookieConsentComponent,
+    LocationPermissionComponent,
   ],
   imports: [
     LoginComponent,

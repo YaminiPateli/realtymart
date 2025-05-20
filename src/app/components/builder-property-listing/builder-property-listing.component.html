@@ -12,7 +12,7 @@
 <section class="godrej-projects">
     <div class="container">
         <div class="godrej-tab">
-              
+
               <div class="tab-content" id="pills-tabContent">
 
                 <div class="tab-pane fade show active" id="pills-gogrej" role="tabpanel" aria-labelledby="pills-godrej-tab">
@@ -39,7 +39,7 @@
                                     <div class="city-images">
                                         <img src="{{ allbuilderproperty.project_images }}" alt="" class="img-fluid">
                                     </div>
-                                    
+
                                     <div class="property-verified" *ngIf="allbuilderproperty.properties[0].is_exclusive === '1'"><p>EXCLUSIVE PROPERTY</p></div>
                                     <!-- <div class="check-compare">
                                         <input type="checkbox" id="compare" name="compare" value="compare add" class="mycheck">
@@ -49,7 +49,7 @@
                                 <div class="col-lg-10 col-md-6 col-sm-12">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <a href="property-details/{{ allbuilderproperty.project_name }}/{{ allbuilderproperty.properties[0].propertyid }}" class="groups-companies-names">{{ allbuilderproperty.project_name}}</a>
+                                            <a routerLink="property-details/{{ allbuilderproperty.project_name }}/{{ allbuilderproperty.properties[0].propertyid }}" class="groups-companies-names">{{ allbuilderproperty.project_name}}</a>
                                             <p class="opnesince">{{ allbuilderproperty.totalfloor }} Floor Plan  |  By: {{ allbuilderproperty.name}}</p>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
@@ -80,16 +80,16 @@
                                             </tr>
                                           </tbody>
                                         </table>
-                                      </div>                                      
+                                      </div>
                                 </div>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
                 </div>
 
                 <div class="tab-pane fade" id="pills-godarej-two" role="tabpanel" aria-labelledby="pills-godarej-two-tab">...</div>
-                
+
               </div>
         </div>
     </div>

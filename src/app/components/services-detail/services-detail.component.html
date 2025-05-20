@@ -5,7 +5,7 @@
             #slickModal="slick-carousel"
             *ngIf="singlecompany.prtsrc_banner_image?.length > 0"
             [config]="slideConfig1">
-            <div ngxSlickItem class="slide slider_mg" *ngFor="let banner of singlecompany.prtsrc_banner_image"> 
+            <div ngxSlickItem class="slide slider_mg" *ngFor="let banner of singlecompany.prtsrc_banner_image">
                 <img src={{banner}} alt="banner-image" width="100%">
             </div>
         </ngx-slick-carousel>
@@ -43,7 +43,7 @@
                         <h3 class="companies-names">Gallery</h3>
                         <ngx-slick-carousel class="carousel project_slider"
                             #slickModal="slick-carousel"
-                            
+
                             [config]="slideConfig2">
                             <div ngxSlickItem class="slide" *ngFor="let gallery of singlecompany.PrtSrcGallerys">
                                 <div class="gallery_box">
@@ -145,7 +145,7 @@
                                     alt>
                                 <p>Government Approval and Laisaning</p>
                             </div> -->
-                            
+
                         </div>
                     </div>
 
@@ -185,7 +185,7 @@
                     <div class="testimonials_flow mt-3" id="testimonials" *ngIf="singlecompany.PrtSrcTestimonials?.length > 0">
                         <h3 class="companies-names">Testimonials</h3>
                         <ngx-slick-carousel class="carousel project_slider pt-3"
-                        
+
                             #slickModal="slick-carousel"
                             [config]="slideConfig4">
                             <div ngxSlickItem class="slide" *ngFor="let testimonial of singlecompany.PrtSrcTestimonials">
@@ -305,7 +305,7 @@
                               <p>Lorem ipsum dolor sit amet consectetur. Enim ac lobortis euismod massa sed velit arcu eu et. Lorem ipsum rutrum id tortor massa. Sollicitudin morbi feugiat augue at mauris quam sagittis nunc sit. Faucibus vulputate tortor diam varius est. Pulvinar.</p>
                           </div> -->
                         </div>
-                      </div>         
+                      </div>
                 </div>
 
                 <div class="col-lg-4 mt-3">
@@ -315,7 +315,7 @@
                             <p *ngIf="singlecompany.company_address !== null">{{singlecompany.company_address}} </p>
 
                             <div class="d-flex align-items-center flex-wrap our_time">
-                                <a class="directions" target="_blank" [href]="'https://www.google.com/maps/place/' + singlecompany?.company_map?.replace(' ', '')">Get Directions</a>
+                                <a *ngIf="singlecompany?.company_map != null" class="directions" target="_blank" [href]="'https://www.google.com/maps/place/' + singlecompany?.company_map?.replace(' ', '')">Get Directions</a>
                                     <ul class="dropdown list-unstyled" *ngIf="singlecompany.bussiness_hours !== null">
                                         <p class="m-0"><b>Business Hours</b></p>
                                         <div *ngFor="let businessHour of reorderBusinessHours()">
@@ -328,7 +328,7 @@
                                               {{ businessHour?.closed === 'off' ? 'Closed - Closed' : businessHour?.open_hour + ' - ' + businessHour?.close_hour }}
                                             </span>
                                           </div>
-                                        </div>      
+                                        </div>
                                       </ul>
                                 <!-- <ul class="business_hours list-unstyled">
                                     <li>
@@ -400,7 +400,7 @@
                             </div>
 
                             <div class="d-flex justify-content-between mt-2" data-bs-toggle="modal" data-bs-target="#shareModal" (click)="getUrl(serviceName, serviceId)">
-                                <div> 
+                                <div>
                                     <p class="info-title mb-2">Share This:</p>
                                     <a href="javascript::void()"
                                         class="directions d-flex align-items-center gap-2">Share
@@ -580,7 +580,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-center">
-         
+
           <div class="d-flex justify-content-around my-3">
             <div>
               <button class="btn">

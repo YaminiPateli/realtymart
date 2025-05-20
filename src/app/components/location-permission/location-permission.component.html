@@ -1,0 +1,14 @@
+<div *ngIf="showModal" class="location-modal-overlay">
+  <div class="location-modal">
+    <div class="modal-header">
+      <i class="fas fa-map-marker-alt location-icon"></i>
+      <h3>Allow Location Access</h3>
+    </div>
+    <p>To show properties near you, allow us to access your location.</p>
+    <div class="modal-actions">
+      <button class="btn btn-allow" (click)="allowLocation()">Allow while using site</button>
+      <button class="btn btn-once" (click)="allowLocationOnce()">Allow this time</button>
+      <button class="btn btn-deny" (click)="rejectLocation()">Never Allow</button>
+    </div>
+  </div>
+</div>

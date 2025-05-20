@@ -965,29 +965,30 @@
                     </div>
                   </div>
 
-                  <div class="bedroom_specification col-md-5" *ngIf="showSection" style="margin-bottom: 20px">
-                    <h6>Specify bedroom sizes. - For example: 12 x 10 ft</h6>
-                    <div class="bedroom-fields">
-                      <div>Length</div>
-                      <div>x</div>
-                      <div>Breadth</div>
-                    </div>
-                    <div class="bed-list">
-                      <div
-                        class="d-flex justify-content-between px-3 py-1"
-                        *ngFor="let num of this.numberOfBed"
-                      >
-                        <div class="d-flex gap-1 align-items-center">
-                          <p>Bedroom {{ num }}</p>
-                          <input type="text" />
-                        </div>
-                        <div class="d-flex gap-1 align-items-center">
-                          <input type="text" />
-                          <p>ft</p>
-                        </div>
+                <div class="bedroom_specification col-md-5" *ngIf="showSections" style="margin-bottom: 20px">
+                  <h6>Specify bedroom sizes. - For example: 12 x 10 ft</h6>
+                  <div class="bedroom-fields">
+                    <div>Length</div>
+                    <div>x</div>
+                    <div>Breadth</div>
+                  </div>
+                  <div class="bed-list">
+                    <div
+                      class="d-flex justify-content-between px-3 py-1"
+                      *ngFor="let bedroom of bedrooms.controls; let i = index"
+                      [formGroupName]="i"
+                    >
+                      <div class="d-flex gap-1 align-items-center">
+                        <p>Bedroom {{ numberOfBeds[i] }}</p>
+                        <input type="text" formControlName="length" />
+                      </div>
+                      <div class="d-flex gap-1 align-items-center">
+                        <input type="text" formControlName="breadth" />
+                        <p>ft</p>
                       </div>
                     </div>
                   </div>
+                </div>
 
                   <div class="col-md-4">
                     <div class="priceHeader ftltN">Bathrooms</div>
@@ -1309,77 +1310,31 @@
               </div> -->
 
               <div class="area_property post_fm" id="area">
-                <h4 class="title-property m-0 pb-3">Area</h4>
-                  <div id="builtupareainput" [style.display]="['1', '3', '4', '8', '9', '12', '16', '17', '18', '19', '20', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <label for="Built-up-Area">Built-up Area</label>
-                          <input
-                            type="text"
-                            id="Built-up-Area"
-                            formControlName="built_up_area"
-                            placeholder="Built-up Area"
-                            class="gold-form-input mb-0"
-                          />
-                          <div *ngIf="submitForm.get('built_up_area')?.invalid && (submitForm.get('built_up_area')?.dirty || submitForm.get('built_up_area')?.touched)" class="mgs_error">
-                            Please Enter builtup Area.
-                          </div>
-                        </div>
-                        <div class="col-md-6 mt-4">
-                          <select
-                            formControlName="built_up_area_in"
-                            id="Sq-m"
-                            class="gold-form-input mb-0"
-                          >
-                          <option value="" selected disabled>Select Built-up Area in</option>
-                          <option value="Sq-ft">Sq-ft</option>
-                          <option value="Sq-yrd">Sq-yrd</option>
-                          <option value="Sq-m">Sq-m</option>
-                          <option value="Acre">Acre</option>
-                          <option value="Bigha">Bigha</option>
-                          <option value="Hectare">Hectare</option>
-                          <option value="Marla">Marla</option>
-                          <option value="Kanal">Kanal</option>
-                          <option value="Biswa1">Biswa1</option>
-                          <option value="Biswa2">Biswa2</option>
-                          <option value="Ground">Ground</option>
-                          <option value="Rood">Rood</option>
-                          <option value="Chatak">Chatak</option>
-                          <option value="Kottah">Kottah</option>
-                          <option value="Cent">Cent</option>
-                          <option value="Perch">Perch</option>
-                          <option value="Guntha">Guntha</option>
-                          <option value="Are">Are</option>
-                          </select>
-                          <div *ngIf="submitForm.get('built_up_area_in')?.invalid && (submitForm.get('built_up_area_in')?.dirty || submitForm.get('built_up_area_in')?.touched)" class="mgs_error">
-                            Please Enter builtup Area in.
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-
-                  <div id="superareainput" [style.display]="['1', '3', '4', '8', '9', '12', '16', '17', '18', '19', '20', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
-                    <div class="row mt-3">
+              <h4 class="title-property m-0 pb-3" [style.display]="['1', '3', '4', '5', '8', '9', '10', '11', '12', '16', '17', '18', '19', '20', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
+                Area
+              </h4>
+                <div id="builtupareainput" [style.display]="['1', '3', '4', '8', '9', '12', '16', '17', '18', '19', '20', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
+                    <div class="row">
                       <div class="col-md-6">
-                        <label for="Super-Area">Super Area</label>
+                        <label for="Built-up-Area">Built-up Area</label>
                         <input
                           type="text"
-                          id="Super-Area"
-                          formControlName="super_area"
-                          placeholder="Super Area"
+                          id="Built-up-Area"
+                          formControlName="built_up_area"
+                          placeholder="Built-up Area"
                           class="gold-form-input mb-0"
                         />
-                        <div *ngIf="submitForm.get('super_area')?.invalid && (submitForm.get('super_area')?.dirty || submitForm.get('super_area')?.touched)" class="mgs_error">
-                          Please Enter super Area.
+                        <div *ngIf="submitForm.get('built_up_area')?.invalid && (submitForm.get('built_up_area')?.dirty || submitForm.get('built_up_area')?.touched)" class="mgs_error">
+                          Please Enter builtup Area.
                         </div>
                       </div>
                       <div class="col-md-6 mt-4">
                         <select
-                          formControlName="super_area_in"
+                          formControlName="built_up_area_in"
                           id="Sq-m"
                           class="gold-form-input mb-0"
                         >
-                        <option value="" selected disabled>Select Super Area in</option>
+                        <option value="" selected disabled>Select Built-up Area in</option>
                         <option value="Sq-ft">Sq-ft</option>
                         <option value="Sq-yrd">Sq-yrd</option>
                         <option value="Sq-m">Sq-m</option>
@@ -1399,12 +1354,59 @@
                         <option value="Guntha">Guntha</option>
                         <option value="Are">Are</option>
                         </select>
-                        <div *ngIf="submitForm.get('super_area_in')?.invalid && (submitForm.get('super_area_in')?.dirty || submitForm.get('super_area_in')?.touched)" class="mgs_error">
-                          Please Enter super Area in.
+                        <div *ngIf="submitForm.get('built_up_area_in')?.invalid && (submitForm.get('built_up_area_in')?.dirty || submitForm.get('built_up_area_in')?.touched)" class="mgs_error">
+                          Please Enter builtup Area in.
                         </div>
                       </div>
                     </div>
+                </div>
+                <div id="superareainput" [style.display]="['1', '3', '4', '8', '9', '12', '16', '17', '18', '19', '20', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
+                  <div class="row mt-3">
+                    <div class="col-md-6">
+                      <label for="Super-Area">Super Area</label>
+                      <input
+                        type="text"
+                        id="Super-Area"
+                        formControlName="super_area"
+                        placeholder="Super Area"
+                        class="gold-form-input mb-0"
+                      />
+                      <div *ngIf="submitForm.get('super_area')?.invalid && (submitForm.get('super_area')?.dirty || submitForm.get('super_area')?.touched)" class="mgs_error">
+                        Please Enter super Area.
+                      </div>
+                    </div>
+                    <div class="col-md-6 mt-4">
+                      <select
+                        formControlName="super_area_in"
+                        id="Sq-m"
+                        class="gold-form-input mb-0"
+                      >
+                      <option value="" selected disabled>Select Super Area in</option>
+                      <option value="Sq-ft">Sq-ft</option>
+                      <option value="Sq-yrd">Sq-yrd</option>
+                      <option value="Sq-m">Sq-m</option>
+                      <option value="Acre">Acre</option>
+                      <option value="Bigha">Bigha</option>
+                      <option value="Hectare">Hectare</option>
+                      <option value="Marla">Marla</option>
+                      <option value="Kanal">Kanal</option>
+                      <option value="Biswa1">Biswa1</option>
+                      <option value="Biswa2">Biswa2</option>
+                      <option value="Ground">Ground</option>
+                      <option value="Rood">Rood</option>
+                      <option value="Chatak">Chatak</option>
+                      <option value="Kottah">Kottah</option>
+                      <option value="Cent">Cent</option>
+                      <option value="Perch">Perch</option>
+                      <option value="Guntha">Guntha</option>
+                      <option value="Are">Are</option>
+                      </select>
+                      <div *ngIf="submitForm.get('super_area_in')?.invalid && (submitForm.get('super_area_in')?.dirty || submitForm.get('super_area_in')?.touched)" class="mgs_error">
+                        Please Enter super Area in.
+                      </div>
+                    </div>
                   </div>
+                </div>
                 <div id="areainput" [style.display]="['1', '3', '4', '8', '10', '11', '12', '18', '19'].includes(selectedPropertyType) ? 'block' : 'none'">
                   <div class="row mt-3">
                     <div class="col-md-6">
@@ -1579,9 +1581,7 @@
               </div>
 
               <div class="transaction" id="transactionheadertitle">
-                <h4 class="title-property m-0 pb-3">
-                  Transaction Type, Property Availability
-                </h4>
+                <h4 class="title-property m-0 pb-3">Transaction Type, Property Availability</h4>
                 <div id="transactiontypeclass">
                   <div class="col-md-6" id="possessionstatusfornotaplot" [style.display]="['1', '3', '4', '8', '10', '11', '12', '16', '18', '19', '20'].includes(selectedPropertyType) ? 'block' : 'none'">
                     <label for="Possession-Status">Possession Status</label>
@@ -1933,7 +1933,7 @@
               <!-- This will be visible when top builder and rent/lease are selected -->
 
               <div class="price_details">
-                <h4 class="title-property m-0 pb-3">Price Details</h4>
+                <h4 class="title-property m-0 pb-3" *ngIf="selectedPropertyFor === 'Sell' && selectedTransactionType === 'New Property' && ['1', '3', '4', '5', '8', '10', '11', '12', '16', '18', '19', '20'].includes(selectedPropertyType) && totalcompletePrice == '0' && selectedPropertyFor == 'Sell' && totalcompletePrice == '1' && selectedPropertyFor == 'Rent'">Price Details</h4>
                 <div class="filde_commercial col-md-6" id="property_price" *ngIf="selectedPropertyFor === 'Sell'">
                   <label class="form-label">Show Property Price</label>
 
@@ -2462,7 +2462,7 @@
                 Please Accept Terms & Conditions
               </div>
 
-              <button type="submit" class="contact-buy-btn mt-2 mb-3" href>
+              <button type="submit" class="contact-buy-btn mt-2 mb-3" routerLink>
                Post Property
               </button>
               <!-- This part will remain there whenever any post comes to the property's page. -->

@@ -19,7 +19,7 @@
                     <p><span><img src="../../../assets/images/right.png" alt=""></span>Flat</p>
                     <p><span><img src="../../../assets/images/right.png" alt=""></span>₹ 1,000 - ₹ 5,000</p>
                     <p><span><img src="../../../assets/images/right.png" alt=""></span>1 BHK</p>
-                    <a href="" class="tap-edit">Edit</a>
+                    <a routerLink="" class="tap-edit">Edit</a>
                     <button class="edit-search-btn">Save Search</button>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                         </div>
                         <div class="victory-info">
                             <p>Pay Rent with Credit Card <strong>Earn upto 5% Cashback/ Reward Points</strong></p>
-                            <a href="">Pay Rent Now</a>
+                            <a routerLink="">Pay Rent Now</a>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                             <p>Enjoy Up to <strong>50% Off on Owner Ad Packages</strong></p>
 
 
-                            <a href="">Know More</a>
+                            <a routerLink="">Know More</a>
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                   class="slide"
                   *ngFor="let item1 of item.property_img"
                 >
-                  <a href="{{ item1 }}" data-fancybox="gallery">
+                  <a routerLink="{{ item1 }}" data-fancybox="gallery">
                     <img src="{{ item1 }}" alt="Gallery" class="img-fluid" />
                   </a>
                 </div>
@@ -229,17 +229,17 @@
 
             <!-- <div class="save-get-no">
                             <div class="get-no">
-                                <a href="">Get Phone no.</a>
+                                <a routerLink="">Get Phone no.</a>
                             </div>
                             <div class="save-bt">
-                                <a href="">Save</a>
+                                <a routerLink="">Save</a>
                             </div>
                         </div> -->
             <div class="save-get-no">
               <div class="get-no" *ngIf="item.property_price_show == 1">
                 <!-- <button class="contact-buy-btn mt-4" data-bs-toggle="modal" data-bs-target="#get-phone-no">Get Phone no.</button> -->
                 <a
-                  href=""
+                  routerLink=""
                   data-bs-toggle="modal"
                   data-bs-target="#get-owner"
                   (click)="fetchProperty(item)"
@@ -261,7 +261,7 @@
           <!-- <div class="col-lg-2 col-md-12 col-sm-12">
                         <div class="price-maching">
                             <p class="our-price" *ngIf="item.property_price_show == '0'">₹ {{ item.total_price !==null ? item.total_price : item.rent_amount }}</p>
-                            <a href="">See other Charges</a>
+                            <a routerLink="">See other Charges</a>
 
                             <h6 class="owner-name"><span>Owner</span><br> {{
                                 item.owner_name}}</h6>
@@ -296,7 +296,7 @@
       <!-- <div class="sponsored">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
-                    <a href="" class="links-taps">
+                    <a routerLink="" class="links-taps">
                         <div class="sponsored-box">
                             <div class="row">
                                 <div class="col-lg-5 col-md-12 col-sm-12" >
@@ -328,7 +328,7 @@
                     </a>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
-                    <a href="" class="links-taps">
+                    <a routerLink="" class="links-taps">
                         <div class="sponsored-box">
                             <div class="row">
                                 <div class="col-lg-5 col-md-12 col-sm-12">
@@ -527,7 +527,7 @@
                 <!-- <span class="d-block"
                           ><a
                             routerlink="../terms-conditions"
-                            href="/terms-conditions"
+                            routerLink="/terms-conditions"
                             >Terms of Use</a
                           ></span> -->
               </label>

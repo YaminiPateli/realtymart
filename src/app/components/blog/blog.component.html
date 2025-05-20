@@ -19,14 +19,13 @@
                 <img [src]="blog.image" alt="" class="img-fluid" />
               </div>
               <div class="blog-list-info">
-                <a href="blog-details/{{ blog.url }}" class="blog-list-head">{{
+                <a [routerLink]="['/blog-details', sanitizeUrl(blog.url)]" class="blog-list-head">{{
                   blog.title
                 }}</a>
                 <p class="date">{{ blog.publish_date }}</p>
                 <p class="rg_small">{{ blog.short_description }}</p>
-                <a href="blog-details/{{ blog.url }}" class="blog-read"
-                  >Read More</a
-                >
+                <a [routerLink]="['/blog-details', sanitizeUrl(blog.url)]" class="blog-read"
+                  >Read More</a>
               </div>
             </div>
           </div>

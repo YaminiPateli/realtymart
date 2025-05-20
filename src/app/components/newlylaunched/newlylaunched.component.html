@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-5 col-sm-12">
                       <div class="request-images">
-                        <a href="{{ newlauchedproperty.project_banner_image }}" data-fancybox="gallery">
+                        <a routerLink="{{ newlauchedproperty.project_banner_image }}" data-fancybox="gallery">
                           <img src="{{ newlauchedproperty.project_banner_image }}" alt="Gallery" class="img-fluid" />
                         </a>
                         <!-- <ngx-slick-carousel
@@ -41,12 +41,12 @@
                         <div ngxSlickItem class="slide">
                         </div> -->
                         <!-- <div ngxSlickItem class="slide">
-                          <a href="{{ newlauchedproperty.property_main_img }}" data-fancybox="gallery">
+                          <a routerLink="{{ newlauchedproperty.property_main_img }}" data-fancybox="gallery">
                             <img src="{{ newlauchedproperty.property_main_img }}" alt="Gallery" class="img-fluid" />
                           </a>
                         </div>
                         <div ngxSlickItem class="slide">
-                          <a href="{{ newlauchedproperty.property_main_img }}" data-fancybox="gallery">
+                          <a routerLink="{{ newlauchedproperty.property_main_img }}" data-fancybox="gallery">
                             <img src="{{ newlauchedproperty.property_main_img }}" alt="Gallery" class="img-fluid" />
                           </a>
                         </div> -->
@@ -178,7 +178,7 @@
 
                         <div class="save-get-no">
                             <!-- <div class="get-no">
-                                <a href="">Get Phone no.</a>
+                                <a routerLink="">Get Phone no.</a>
                             </div> -->
                             <div class="owner-cc">
                               <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#contact-owner" (click)="contactowner( newlauchedproperty.secondUrlPart)">CONTACT OWNER</button>
@@ -189,7 +189,7 @@
                     <!-- <div class="col-lg-2 col-md-12 col-sm-12">
                       <div class="price-maching">
                           <p class="our-price" *ngIf="newlauchedproperty.property_price_show  == 0">₹ {{ newlauchedproperty.total_price  }}</p>
-                            <a href="">See other Charges</a>
+                            <a routerLink="">See other Charges</a>
                             <img *ngIf="newlauchedproperty.is_verified === '1'" src="../../../assets/images/verified.png" alt="" class="img-fluid mt-2">
                             <h6 class="owner-name" *ngIf="newlauchedproperty.is_verified === '1'"><span>Owner</span><br> {{ newlauchedproperty.owner_name }}</h6>
                             <h6 class="owner-name" *ngIf="newlauchedproperty.is_verified !== '1'"><span>Owner</span><br> {{ newlauchedproperty.owner_name }}</h6>
@@ -219,7 +219,7 @@
             <!-- <div class="sponsored">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <a href="" class="links-taps">
+                        <a routerLink="" class="links-taps">
                             <div class="sponsored-box">
                                 <div class="row">
                                     <div class="col-md-5">
@@ -251,7 +251,7 @@
                         </a>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <a href="" class="links-taps">
+                        <a routerLink="" class="links-taps">
                             <div class="sponsored-box">
                                 <div class="row">
                                     <div class="col-md-5">
@@ -464,7 +464,7 @@
                       <!-- <span class="d-block"
                         ><a
                           routerlink="../terms-conditions"
-                          href="/terms-conditions"
+                          routerLink="/terms-conditions"
                           >Terms of Use</a
                         ></span> -->
                          </label

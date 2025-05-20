@@ -9,7 +9,7 @@
   <section class="property-off">
     <div class="container">
       <div class="maching-myproperties" *ngFor="let verifiedproperty of verifiedproperty">
-        
+
         <div class="row">
           <div class="col-lg-3 col-md-5 col-sm-12">
             <div class="request-images">
@@ -23,7 +23,7 @@
                   class="slide"
                   *ngFor="let item of verifiedproperty.property_img"
                 >
-                  <a href="{{ item }}" data-fancybox="gallery"
+                  <a routerLink="{{ item }}" data-fancybox="gallery"
                   (click)="openGallery(verifiedproperty.property_img, $event)">
                     <img src="{{ item }}" alt="Gallery" class="img-fluid" />
                   </a>
@@ -160,7 +160,7 @@
                 class="get-no"
                 *ngIf="verifiedproperty.property_price_show == 1"
               >
-                <a href="" data-bs-toggle="modal" data-bs-target="#getOwner" (click)="fetchProperty(verifiedproperty)"
+                <a routerLink="" data-bs-toggle="modal" data-bs-target="#getOwner" (click)="fetchProperty(verifiedproperty)"
                   >Get a Quote</a
                 >
               </div>
@@ -206,7 +206,7 @@
       <!-- <div class="sponsored">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <a href="" class="links-taps">
+                        <a routerLink="" class="links-taps">
                             <div class="sponsored-box">
                                 <div class="row">
                                     <div class="col-md-5">
@@ -238,7 +238,7 @@
                         </a>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <a href="" class="links-taps">
+                        <a routerLink="" class="links-taps">
                             <div class="sponsored-box">
                                 <div class="row">
                                     <div class="col-md-5">
@@ -438,7 +438,7 @@
               <!-- <span class="d-block"
                           ><a
                             routerlink="../terms-conditions"
-                            href="/terms-conditions"
+                            routerLink="/terms-conditions"
                             >Terms of Use</a
                           ></span> -->
             </label>

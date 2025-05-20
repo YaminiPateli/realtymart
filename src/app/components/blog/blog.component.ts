@@ -68,4 +68,9 @@ export class BlogComponent {
       this.initialBlogCount += this.blogsToLoad;
     }
   }
+
+  sanitizeUrl(url: string): string {
+  return url.trim().toLowerCase().replace(/ /g, ' ');
+}
+
 }

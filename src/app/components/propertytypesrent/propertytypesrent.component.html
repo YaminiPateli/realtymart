@@ -44,19 +44,19 @@
                             [config]="slideConfig1"
                           >
                             <div ngxSlickItem class="slide" *ngFor="let item1 of item.property_img">
-                              <a href="{{ item1 }}" data-fancybox="gallery"
+                              <a routerLink="{{ item1 }}" data-fancybox="gallery"
                               (click)="openGallery(item.property_img, $event)">
                                 <img src="{{ item1 }}" alt="Gallery" class="img-fluid" />
                               </a>
                             </div>
 
                             <!-- <div ngxSlickItem class="slide">
-                              <a href="{{ item.property_main_img }}" data-fancybox="gallery">
+                              <a routerLink="{{ item.property_main_img }}" data-fancybox="gallery">
                                 <img src="{{ item.property_main_img }}" alt="Gallery" class="img-fluid" />
                               </a>
                             </div>
                             <div ngxSlickItem class="slide">
-                              <a href="{{ item.property_main_img }}" data-fancybox="gallery">
+                              <a routerLink="{{ item.property_main_img }}" data-fancybox="gallery">
                                 <img src="{{ item.property_main_img }}" alt="Gallery" class="img-fluid" />
                               </a>
                             </div> -->
@@ -163,13 +163,13 @@
 
                         <div class="save-get-no">
                             <!-- <div class="get-no">
-                                <a href>Get Phone no.</a>
+                                <a routerLink>Get Phone no.</a>
                             </div> -->
                             <div
                             class="get-no"
                             *ngIf="item.property_price_show == 1"
                           >
-                            <a href="" data-bs-toggle="modal" data-bs-target="#getOwner"  (click)="fetchProperty(item)"
+                            <a routerLink="" data-bs-toggle="modal" data-bs-target="#getOwner"  (click)="fetchProperty(item)"
                               >Get a Quote</a
                             >
                           </div>
@@ -221,7 +221,7 @@
             <!-- <div class="sponsored" *ngIf="datacheck != false">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <a href class="links-taps">
+                        <a routerLink class="links-taps">
                             <div class="sponsored-box">
                                 <div class="row">
                                     <div class="col-md-5">
@@ -267,7 +267,7 @@
                         </a>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <a href class="links-taps">
+                        <a routerLink class="links-taps">
                             <div class="sponsored-box">
                                 <div class="row">
                                     <div class="col-md-5">
@@ -449,7 +449,7 @@
                         <!-- <span class="d-block"
                           ><a
                             routerlink="../terms-conditions"
-                            href="/terms-conditions"
+                            routerLink="/terms-conditions"
                             >Terms of Use</a
                           ></span> -->
                            </label

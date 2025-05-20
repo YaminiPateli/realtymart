@@ -121,9 +121,9 @@
                     </ng-container>
                   </optgroup>
                 </select>
-                
-                
-                
+
+
+
 
               <div class="form-top-heading">
                 <h3>Property Details</h3>
@@ -171,10 +171,10 @@
                     </li>
                   </ul>
                   <input type="hidden" name="bedroom" [value]="selectedBedroom"> -->
-                  
-                  
-                  
-                  
+
+
+
+
 
                   <!-- <ul class="posting_conunt">
                     <li>
@@ -204,7 +204,7 @@
                       </select>
                     </li>
                   </ul> -->
-                  
+
                 </div>
 
                 <div>
@@ -238,12 +238,12 @@
                 <div>
                   <p class="Iam">You're looking to</p>
                 <ul class="property_type_list">
-                  <a href="javascript:void(0)" onclick="selectProperty()"><li
+                  <a routerLink="javascript:void(0)" onclick="selectProperty()"><li
                       class="active">Sell</li></a>
-                  <a href="javascript:void(0)" disabled="disabled"><li>Rent</li></a>
+                  <a routerLink="javascript:void(0)" disabled="disabled"><li>Rent</li></a>
                 </ul>
                 </div>
-                
+
                 <div>
                   <p class="Iam" style="margin-left: 30px">Expected price</p>
                   <ul class="posting_area_size">
@@ -260,9 +260,9 @@
                 <div>
                   <p class="Iam">Constrution Status</p>
                 <ul class="property_type_list">
-                  <a href="javascript:void(0)" onclick="selectProperty()"><li
+                  <a routerLink="javascript:void(0)" onclick="selectProperty()"><li
                       class="">Ready to move</li></a>
-                  <a href="javascript:void(0)" disabled="disabled"><li>Under Constrution</li></a>
+                  <a routerLink="javascript:void(0)" disabled="disabled"><li>Under Constrution</li></a>
                 </ul>
                 </div>
               </div>
@@ -328,7 +328,7 @@
                   <button class="btn_size" (click)="increment()">+</button>
                 </div>
               </div>
-              
+
               <div class="form-top-heading">
                 <h3>Property Location</h3>
               </div>
@@ -373,7 +373,7 @@
                   <img [src]="image.url" [alt]="image.name">
                 </div>
               </div>
- 
+
               <input class="post_sub" type="submit" value="Submit">
             </div>
           </div>

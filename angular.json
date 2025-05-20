@@ -34,7 +34,7 @@
               "node_modules/ngx-toastr/toastr.css",
               "src/styles.css",
               "src/responsive.css"
-              
+
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",

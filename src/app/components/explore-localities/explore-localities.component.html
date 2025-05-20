@@ -71,7 +71,7 @@
               <div class="builders-ahm-property">
                 <div class="row">
                   <div class="col-lg-6 col-md-12 col-sm-12" *ngFor="let project of locality.projects">
-                    <a href="/project-details/{{ project.firstUrlPart }}/{{
+                    <a routerLink="/project-details/{{ project.firstUrlPart }}/{{
                         project.secondUrlPart
                       }}" class="links-taps">
                       <div class="property-details">
@@ -103,7 +103,7 @@
                     </a>
                   </div>
                   <!-- <div class="col-lg-6 col-md-12 col-sm-12">
-                                    <a href="" class="links-taps">
+                                    <a routerLink="" class="links-taps">
                                         <div class="property-details">
                                             <div class="img-property">
                                                 <img src="../../../assets/images/sakar11.png" alt="">
@@ -121,11 +121,11 @@
               </div>
               <div class="all-over-propertys">
                 <div class="explor-builders">
-                  <a target="_blank" href="/localities-projects/{{ locality.locality.seeallprojectsurl }}">SEE ALL
+                  <a target="_blank" routerLink="/localities-projects/{{ locality.locality.seeallprojectsurl }}">SEE ALL
                     PROJECTS</a>
                 </div>
                 <!-- <div class="all-projects" *ngFor="let project of locality.projects" >
-                                <a *ngIf="project.project_price_show == '1'" href="">Call For Price</a>
+                                <a *ngIf="project.project_price_show == '1'" routerLink="">Call For Price</a>
                             </div> -->
                 <!-- <div class="all-projects">
                                 <a href="#">EXPLORE LOCALITY</a>
@@ -306,7 +306,7 @@
                   <!-- <span class="d-block"
                     ><a
                       routerlink="../terms-conditions"
-                      href="/terms-conditions"
+                      routerLink="/terms-conditions"
                       >Terms of Use</a
                     ></span> -->
                 </label>

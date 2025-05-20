@@ -8,7 +8,7 @@
           </div>
         </div>
     </section>
-    
+
     <section class="ahmedabad-all-builders">
         <div class="container">
             <div class="topahmedabad" *ngFor="let allbuilderproject of allsingleagentproject">
@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-7 col-sm-12">
-                            <a href="/builder-detail/{{ allbuilderproject.builderUrl }}" class="groups-companies-names">{{ allbuilderproject.name }}</a>
+                            <a routerLink="/builder-detail/{{ allbuilderproject.builderUrl }}" class="groups-companies-names">{{ allbuilderproject.name }}</a>
                             <p class="opnesince">Operating since {{ allbuilderproject.year }}</p>
                             <div class="row">
                                 <div class="col-lg-4 col-md-6 col-sm-12">
@@ -44,7 +44,7 @@
                     </div>
                     <div class="builders-ahm-property">
                         <div class="show-ahm-box">
-                            <a href="/project-details/{{ projects.project_name }}/{{ projects.project_id }}" class="links-taps" *ngFor="let projects of allbuilderproject.projects">
+                            <a routerLink="/project-details/{{ projects.project_name }}/{{ projects.project_id }}" class="links-taps" *ngFor="let projects of allbuilderproject.projects">
                                 <div class="ahow-ahm-items">
                                     <div class="property-details">
                                         <div class="img-property">
@@ -63,17 +63,16 @@
                     </div>
                     <div class="all-over-propertys">
                         <div class="all-projects">
-                            <a href="/builder-property-listing/{{allbuilderproject.user_id}}/all">SEE ALL PROJECTS</a>
+                            <a routerLink="/builder-property-listing/{{allbuilderproject.user_id}}/all">SEE ALL PROJECTS</a>
                         </div>
                         <div class="explor-builders">
-                            <a href="/builder-detail/{{ allbuilderproject.builderUrl }}">EXPLORE BUILDER</a>
+                            <a routerLink="/builder-detail/{{ allbuilderproject.builderUrl }}">EXPLORE BUILDER</a>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </section>
-    
+
     </main>
-    

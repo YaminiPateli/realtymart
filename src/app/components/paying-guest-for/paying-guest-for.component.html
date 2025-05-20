@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="col-lg-7 position-relative">
                                     <p class="our-price">₹ {{ pglistings.pg_deposit_ammount }} <span class="m-srp-card__for__item" *ngIf="pglistings.pg_food_availability === '1'">Food Included</span></p>
-                                    <a target="_blank" href="/paying-guest-detail/{{ pglistings.pg_company_name }}/{{ pglistings.id }}" class="groups-companies-names"> {{ pglistings.pg_company_name }} PG for {{ pglistings.pg_available_for }} </a>
+                                    <a target="_blank" routerLink="/paying-guest-detail/{{ pglistings.pg_company_name }}/{{ pglistings.id }}" class="groups-companies-names"> {{ pglistings.pg_company_name }} PG for {{ pglistings.pg_available_for }} </a>
                                     <p class="buy-location"><span class="locator-icon"><i class="fa-sharp fa-solid fa-location-dot" style="color: #000000;"></i></span> In {{ pglistings.pg_in_localities }}, {{ pglistings.city }}</p>
                                     <div class="buy-fcc">
                                         <div class="row">

@@ -108,6 +108,7 @@ export class PostPropertyFreeComponent {
     total_floor: new FormControl('', []),
     balconies: new FormControl('', []),
     furnishing_status: new FormControl('', []),
+    bedrooms: this.fb.array([])
   });
 
   selectedPropertyFor:any;
@@ -168,6 +169,8 @@ export class PostPropertyFreeComponent {
     (i + 5).toString()
   );
   flooroptions: string[] = [];
+  numberOfBeds: any;
+  showSections = false;
 
   isValidEmail() {
     throw new Error('Method not implemented.');
@@ -182,10 +185,12 @@ export class PostPropertyFreeComponent {
     return [...new Set(types)]; // Get unique types
   }
 
+
   getPropertiesByType(type: any) {
     return this.propertyType?.filter((item: any) => item?.type === type);
   }
   constructor(
+    private fb: FormBuilder,
     private titleService: Title,
     private metaService: Meta,
     private PostpropertyfreeService: PostpropertyfreeService,
@@ -199,8 +204,6 @@ export class PostPropertyFreeComponent {
     );
     const propertyDataJson = localStorage.getItem('postPropertyData');
     const propertyData = propertyDataJson ? JSON.parse(propertyDataJson) : null;
-    console.log(propertyData);
-    console.log(propertyData.property_for);
 
     if (propertyData) {
       this.submitForm.patchValue({
@@ -249,6 +252,25 @@ export class PostPropertyFreeComponent {
     this.isbathRoomDropdownOpen = false;
     this.isfloorNoDropdownOpen = false;
     this.isfloorDropdownOpen = false;
+  }
+
+  get bedrooms(): FormArray {
+    return this.submitForm.get('bedrooms') as FormArray;
+  }
+
+  initBedrooms() {
+    console.log(this.numberOfBeds);
+    this.bedrooms.clear(); // clear existing FormArray if any
+    this.showSections = true;
+
+    for (let i = 0; i < this.numberOfBeds; i++) {
+      this.bedrooms.push(
+        this.fb.group({
+          length: [''],
+          breadth: ['']
+        })
+      );
+    }
   }
 
   onChange(event: any){
@@ -1541,6 +1563,8 @@ export class PostPropertyFreeComponent {
     this.selectedBalconiesValue = '3+';
   }
   selectBedRoom(num: any, name: any) {
+    this.numberOfBeds = num;
+    this.initBedrooms();
     this.selectedBedRoom = num;
     this.submitForm.patchValue({ bedroom: this.selectedBedRoom });
     this.numberOfBed = Array(num)

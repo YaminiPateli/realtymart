@@ -31,7 +31,7 @@
                   class="slide"
                   *ngFor="let item of ownerlauchedproperty.property_img"
                 >
-                  <a href="{{ item }}" data-fancybox="gallery"
+                  <a routerLink="{{ item }}" data-fancybox="gallery"
                   (click)="openGallery(ownerlauchedproperty.property_img, $event)">
                     <img src="{{ item }}" alt="Gallery" class="img-fluid" />
                   </a>
@@ -212,7 +212,7 @@
               >
                 <!-- <button class="contact-buy-btn mt-4" data-bs-toggle="modal" data-bs-target="#get-phone-no">Get Phone no.</button> -->
                 <a
-                  href=""
+                  routerLink=""
                   data-bs-toggle="modal"
                   data-bs-target="#get-owner"
                   (click)="fetchProperty(ownerlauchedproperty)"
@@ -267,7 +267,7 @@
   <!-- <div class="sponsored" *ngIf="ownerlauchedproperty.length != 0">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <a href="" class="links-taps">
+                        <a routerLink="" class="links-taps">
                             <div class="sponsored-box">
                                 <div class="row">
                                     <div class="col-md-5">
@@ -299,7 +299,7 @@
                         </a>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <a href="" class="links-taps">
+                        <a routerLink="" class="links-taps">
                             <div class="sponsored-box">
                                 <div class="row">
                                     <div class="col-md-5">
@@ -507,7 +507,7 @@
               <!-- <span class="d-block"
                         ><a
                           routerlink="../terms-conditions"
-                          href="/terms-conditions"
+                          routerLink="/terms-conditions"
                           >Terms of Use</a
                         ></span> -->
             </label>

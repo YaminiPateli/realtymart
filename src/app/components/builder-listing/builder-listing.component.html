@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-7 col-sm-12">
-                        <a href="/builder-detail/{{ item.builderUrl }}" class="groups-companies-names">{{ item.name }}</a>
+                        <a routerLink="/builder-detail/{{ item.builderUrl }}" class="groups-companies-names">{{ item.name }}</a>
                         <p class="opnesince">Operating since {{ item.year }}</p>
                         <div class="row">
                             <!-- <div class="col-lg-4 col-md-6 col-sm-12">
@@ -39,7 +39,7 @@
                 </div>
                 <div class="builders-ahm-property">
                     <div class="show-ahm-box">
-                        <a href="/project-details/{{ projects.firstUrlPart }}/{{ projects.secondUrlPart }}" class="links-taps" *ngFor="let projects of item.projects">
+                        <a routerLink="/project-details/{{ projects.firstUrlPart }}/{{ projects.secondUrlPart }}" class="links-taps" *ngFor="let projects of item.projects">
                             <div class="ahow-ahm-items">
                                 <div class="property-details">
                                     <div class="img-property">
@@ -59,7 +59,7 @@
                             </div>
                         </a>
 
-                        <!-- <a href="" class="links-taps">
+                        <!-- <a routerLink="" class="links-taps">
                             <div class="ahow-ahm-items">
                                 <div class="property-details">
                                     <div class="img-property">
@@ -75,7 +75,7 @@
                             </div>
                         </a>
 
-                        <a href="" class="links-taps">
+                        <a routerLink="" class="links-taps">
                             <div class="ahow-ahm-items">
                                 <div class="property-details">
                                     <div class="img-property">
@@ -102,10 +102,10 @@
                 </div>
                 <div class="all-over-propertys">
                     <div class="all-projects">
-                        <a target="_blank" href="/builder-project-listing/{{item.builderUrl}}">SEE ALL PROJECTS</a>
+                        <a target="_blank" routerLink="/builder-project-listing/{{item.builderUrl}}">SEE ALL PROJECTS</a>
                     </div>
                     <div class="explor-builders">
-                        <a target="_blank" href="/builder-detail/{{ item.builderUrl }}">EXPLORE BUILDER</a>
+                        <a target="_blank" routerLink="/builder-detail/{{ item.builderUrl }}">EXPLORE BUILDER</a>
                     </div>
                 </div>
             </div>
