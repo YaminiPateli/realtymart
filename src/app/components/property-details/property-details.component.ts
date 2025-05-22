@@ -169,7 +169,6 @@ export class PropertyDetailsComponent implements OnInit {
   }
   ngAfterViewInit(): void {
     Fancybox.bind('[data-fancybox="gallery"]', {
-
     });
   }
 
@@ -277,7 +276,7 @@ export class PropertyDetailsComponent implements OnInit {
 
   fetchSimilarProperty():void {
     const propertyName = this.route.snapshot.paramMap.get('name');
-    const propertyId = this.route.snapshot.paramMap.get('id');  
+    const propertyId = this.route.snapshot.paramMap.get('id');
     if (propertyName && propertyId) {
     this.verifyservice.similarProperties(propertyName,propertyId)?.subscribe((res:any) => {
     this.verifySimilarPropertyData = res;
@@ -321,6 +320,7 @@ export class PropertyDetailsComponent implements OnInit {
             this.singleproperty = this.singlepropertyData?.responseData;
             this.setMetaTags(this.singleproperty.property_meta_title, this.singleproperty.property_meta_description, this.singleproperty.image);
             this.queryPlaceByName(this.singleproperty.project_name);
+            Fancybox.bind('[data-fancybox="gallery"]', { });
           },
           (error: any) => {
             console.error('Error fetching property details:', error);
@@ -338,7 +338,7 @@ export class PropertyDetailsComponent implements OnInit {
     this.termsContactError = !(event.target as HTMLInputElement).checked;
   }
 
-  
+
     fetchCities() {
       this.http.get<{ data: { id: number; name: string }[] }>(`${environment.apiUrl}cities`).subscribe(
         (response: any) => {
@@ -794,7 +794,7 @@ export class PropertyDetailsComponent implements OnInit {
     let contactModal = document.getElementById('contact-owner');
     let contactBuilderModal = document.getElementById('get-builder');
     let otpModal = document.getElementById('#otpContactModel');
-    
+
 
     if (contactModal) {
       let bsModal = bootstrap.Modal.getInstance(contactModal);

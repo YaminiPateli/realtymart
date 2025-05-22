@@ -10,6 +10,7 @@ import { Fancybox } from '@fancyapps/ui';
 import { ActivityTrackerService } from '../service/activitytracker.service';
 import { GeolocationService } from '../service/geolocation.service';
 import { Title, Meta } from '@angular/platform-browser';
+import { DatePipe } from '@angular/common';
 declare var bootstrap: any;
 
 interface City {
@@ -19,7 +20,8 @@ interface City {
 @Component({
   selector: 'app-newlylaunched',
   templateUrl: './newlylaunched.component.html',
-  styleUrls: ['./newlylaunched.component.css']
+  styleUrls: ['./newlylaunched.component.css'],
+  providers: [DatePipe]
 })
 export class NewlylaunchedComponent {
   tooltipVisible = false;
@@ -92,7 +94,7 @@ export class NewlylaunchedComponent {
   ];
 
   constructor(private titleService: Title, private metaService: Meta, public http: HttpClient, private newpropertyService: NewlylaunchedService, private route: ActivatedRoute,private tost: ToastrService,private elementRef: ElementRef,
-    private spinner: NgxSpinnerService,  private activityTrackerService: ActivityTrackerService,  private router: Router, private geolocationService: GeolocationService,) {
+    private spinner: NgxSpinnerService,  private activityTrackerService: ActivityTrackerService,  private router: Router, private geolocationService: GeolocationService, private datePipe: DatePipe) {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'instant' });
     }, 0);
@@ -119,7 +121,11 @@ export class NewlylaunchedComponent {
       this.is_token= false;
     }
   }
-  
+
+  getFormattedDate(dateString: string) {
+    return this.datePipe.transform(dateString, 'MMMM, yyyy');
+  }
+
   fetchNewLaunchProject() : void {
     this.city = localStorage.getItem('location');
   if (this.isLoading || this.currentPage > this.lastPage) return;
@@ -146,7 +152,7 @@ export class NewlylaunchedComponent {
           ];
         this.setMetaTags(response.meta.title, response.meta.description,);
 
-          this.lastPage = response?.data?.last_page;          
+          this.lastPage = response?.data?.last_page;
 
           this.currentPage++;
           this.isLoading = false;
@@ -166,7 +172,7 @@ export class NewlylaunchedComponent {
         }
       );
   }
-  
+
   @HostListener('window:scroll', [])
   onScroll(): void {
     const items = document.querySelectorAll('.maching-myproperties');
@@ -682,7 +688,7 @@ export class NewlylaunchedComponent {
       }
         this.sendOTPToMobile(); // Call this to send OTP to mobile
 
-        
+
       let contactModal = document.getElementById('contact-owner');
       let otpModal = document.getElementById('otpModel');
 

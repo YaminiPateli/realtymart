@@ -191,6 +191,11 @@ button.contact-buy-btn {padding: 10px 18px;}
   .header_wrapper .dropdown:hover .dropdown-menu {
     display:block;
   }
+  ul.dropdown-menu.property_service_custom_dropdown {
+    overflow-y: scroll;
+    height: 400px;
+    overflow-x: clip;
+}
 }
 
 @media only screen and (max-width: 991px) {
@@ -538,7 +543,6 @@ button.contact-buy-btn {padding: 10px 18px;}
 
 @media only screen and (max-width: 575px) {
   .mobile-logo{display: block;height: 80px;}
-  .desk_logo{display:none;}
 
   /* Property Related Services Responsive Start */
   .group-of-box {display: block;}
@@ -857,6 +861,7 @@ button.contact-buy-btn {padding: 10px 18px;}
 button.contact-buy-btn {
   padding: 10px 20px;
 }
+.post_btn{display: none;}
 
 }
 

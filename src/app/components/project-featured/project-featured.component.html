@@ -170,13 +170,13 @@
               [config]="slideConfig1" *ngIf="this.singleproject.allProperties !== null">
               <div ngxSlickItem class="slide" *ngFor="let item of this.singleproject.allProperties">
                 <div class="properties_buy_rent_box">
-                  <a routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}">
+                  <a target="_blank" routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}">
                     <div class="buy_rent_mg" *ngIf="item.property_main_img !== null">
                       <img src="{{ item.property_main_img }}" alt="" class="img-fluid" />
                     </div>
                   </a>
                   <div class="buy_rent_intro">
-                    <a routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}">
+                    <a target="_blank" routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}">
                       <h2 class="proj-Mhead">{{ singleproject.project_name }}</h2>
                     </a>
                     <p class="detail-pera">
@@ -458,7 +458,7 @@
                 <div class="gallery_box">
                   <div class="gallery">
                     <!-- Adding data-fancybox for Fancybox functionality -->
-                    <a routerLink="{{ gallery }}" data-fancybox="gallery">
+                    <a href="{{ gallery }}" data-fancybox="gallery">
                       <img src="{{ gallery }}" alt="Gallery Image" class="img-fluid" />
                     </a>
                   </div>
@@ -662,7 +662,7 @@
               <h3 class="companies-names">About Developer</h3>
               <div class="about-devloper-wrapper d-flex align-items-center justify-content-between">
                 <div>
-                  <a style="color: black" routerLink="builder-detail/{{ singleproject.aboutdeveloper.builderUrl }}">
+                  <a target="_blank" style="color: black" href="builder-detail/{{ singleproject.aboutdeveloper.builderUrl }}">
                     <h3>
                       {{ singleproject.aboutdeveloper.builderName }}
                     </h3>
