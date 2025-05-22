@@ -318,7 +318,7 @@
                                 <a *ngIf="singlecompany?.company_map != null" class="directions" target="_blank" [href]="'https://www.google.com/maps/place/' + singlecompany?.company_map?.replace(' ', '')">Get Directions</a>
                                     <ul class="dropdown list-unstyled" *ngIf="singlecompany.bussiness_hours !== null">
                                         <p class="m-0"><b>Business Hours</b></p>
-                                        <div *ngFor="let businessHour of reorderBusinessHours()">
+                                        <div *ngFor="let businessHour of reorderBusinessHours() || []">
                                           <div class="d-flex gap-3 mt-2 justify-content-between">
                                             <span>
                                               {{ getDayName(businessHour?.day) }}

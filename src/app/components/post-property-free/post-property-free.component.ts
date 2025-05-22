@@ -108,9 +108,13 @@ export class PostPropertyFreeComponent {
     total_floor: new FormControl('', []),
     balconies: new FormControl('', []),
     furnishing_status: new FormControl('', []),
-    bedrooms: this.fb.array([])
+    bedrooms: new FormControl('', []),
+    bedroomsize: this.fb.array([]),
+    bedroom_length: new FormControl('', []),
+    bedroom_width: new FormControl('', [])
   });
 
+  floorOptions: number[] = Array.from({ length: 200 }, (_, i) => i + 1);
   selectedPropertyFor:any;
   selectedPossessionStatus:any;
   selectedAgeOfConstruction:any;
@@ -209,6 +213,7 @@ export class PostPropertyFreeComponent {
       this.submitForm.patchValue({
         property_for: propertyData.property_for || '',
       });
+      this.onPropertyFor(propertyData.property_for);
     }
     const tokens = localStorage.getItem('myrealtylogintoken');
     if(tokens === null){
@@ -254,23 +259,23 @@ export class PostPropertyFreeComponent {
     this.isfloorDropdownOpen = false;
   }
 
-  get bedrooms(): FormArray {
-    return this.submitForm.get('bedrooms') as FormArray;
+  get bedroomsize(): FormArray {
+    return this.submitForm.get('bedroomsize') as FormArray;
   }
 
   initBedrooms() {
-    console.log(this.numberOfBeds);
-    this.bedrooms.clear(); // clear existing FormArray if any
-    this.showSections = true;
+    this.bedroomsize.clear();
 
     for (let i = 0; i < this.numberOfBeds; i++) {
-      this.bedrooms.push(
+      this.bedroomsize.push(
         this.fb.group({
-          length: [''],
-          breadth: ['']
+          bedroom_length: [''],
+          bedroom_width: ['']
         })
       );
     }
+
+    this.showSections = true;
   }
 
   onChange(event: any){
@@ -1352,9 +1357,6 @@ export class PostPropertyFreeComponent {
 
   onPropertyFor(event: Event) {
     this.selectedPropertyFor = this.submitForm.value?.property_for;
-    console.log(this.selectedPropertyFor);
-
-
 
     if(this.selectedPropertyFor == 'Rent'){
       // avbldate

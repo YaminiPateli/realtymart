@@ -176,7 +176,9 @@
                     </div>
                   </a>
                   <div class="buy_rent_intro">
-                    <h2 class="proj-Mhead">{{ singleproject.project_name }}</h2>
+                    <a routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}">
+                      <h2 class="proj-Mhead">{{ singleproject.project_name }}</h2>
+                    </a>
                     <p class="detail-pera">
                       {{ item.property_type }}
                     </p>
