@@ -705,7 +705,7 @@
     </div>
   </section>
 
-  <div class="more_info">
+  <div class="more_info" *ngIf="reviews && reviews.length > 0">
     <div class="container">
       <div class="bullate-disc">
         <h3 class="companies-names pb-3">Reviews</h3>
@@ -1002,10 +1002,10 @@
       </div>
     </div> -->
 
-  <section class="more_info">
+  <section class="more_info" *ngIf="verifyProperty?.length > 0">
     <div class="container">
       <div class="bullate-disc">
-        <h4 class="companies-names pb-3">Verified on myrealityunlimited</h4>
+        <h4 class="companies-names pb-3">Verified on realtymart</h4>
         <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig1">
           <div ngxSlickItem class="slide" *ngFor="let verify of verifyProperty">
             <div class="prj_box">
@@ -1283,7 +1283,7 @@
   </div>
 </div>
 
-\<div class="modal fade" id="contact-owner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="contact-owner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header sign-in-box">

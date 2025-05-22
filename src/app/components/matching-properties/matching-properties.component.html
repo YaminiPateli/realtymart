@@ -117,9 +117,9 @@
                 >{{ item.property_img.length - 1 }}+ Photos</span
               >
             </div>
-            <div class="property-verified">
+            <!-- <div class="property-verified">
               <img src="../../../assets/images/verified-property.png" alt="" />
-            </div>
+            </div> -->
           </div>
 
           <div class="col-lg-9 col-md-8 col-sm-12">
@@ -239,7 +239,7 @@
               <div class="get-no" *ngIf="item.property_price_show == 1">
                 <!-- <button class="contact-buy-btn mt-4" data-bs-toggle="modal" data-bs-target="#get-phone-no">Get Phone no.</button> -->
                 <a
-                  routerLink=""
+                  href="javascript:void(0)"
                   data-bs-toggle="modal"
                   data-bs-target="#get-owner"
                   (click)="fetchProperty(item)"
