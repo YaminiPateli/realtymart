@@ -63,16 +63,16 @@
             [ngClass]="{ active: activeSection === 'overview' }">Overview</a>
         </li>
         <li class="{'active': activeSection === 'properties'}"
-          *ngIf="this.singleproject.allProperties && this.singleproject.allProperties?.length !== 0">
+          *ngIf="hasKeysOrValues(this.singleproject?.allProperties && this.singleproject?.allProperties?.length !== 0)">
           <a style="cursor: pointer" (click)="scrollToSection('properties')"
             [ngClass]="{ active: activeSection === 'properties' }">Properties</a>
         </li>
         <li class="{'active': activeSection === 'aboutProject'}"
-          *ngIf="this.hasKeysOrValues(this.singleproject.project_about)">
+          *ngIf="hasKeysOrValues(this.singleproject?.project_about)">
           <a style="cursor: pointer" (click)="scrollToSection('aboutProject')"
             [ngClass]="{ active: activeSection === 'aboutProject' }">About Project</a>
         </li>
-        <li class="{'active': activeSection === 'amenities'}" *ngIf="this.singleproject.amenitiess?.length > 0">
+        <li class="{'active': activeSection === 'amenities'}" *ngIf="hasKeysOrValues(this.singleproject?.amenitiess?.length > 0)">
           <a style="cursor: pointer" (click)="scrollToSection('amenities')"
             [ngClass]="{ active: activeSection === 'amenities' }">Amenities</a>
         </li>
@@ -82,15 +82,15 @@
               <li class="{'active': activeSection === 'floor-plan'}">
                 <a style="cursor:pointer" (click)="scrollToSection('floor-plan')" [ngClass]="{'active': activeSection === 'floor-plan'}">Floor Plan & Units</a>
               </li> -->
-        <li class="{'active': activeSection === 'project-detail'}" *ngIf="this.singleproject.project_specification">
+        <li class="{'active': activeSection === 'project-detail'}" *ngIf="hasKeysOrValues(this.singleproject?.project_specification)">
           <a style="cursor: pointer" (click)="scrollToSection('project-detail')"
             [ngClass]="{ active: activeSection === 'project-detail' }">Project Details</a>
         </li>
-        <li class="{'active': activeSection === 'locality'}" *ngIf="hasKeysOrValues(this.singleproject.nearByProject)">
+        <li class="{'active': activeSection === 'locality'}" *ngIf="hasKeysOrValues(this.singleproject?.nearByProject)">
           <a style="cursor: pointer" (click)="scrollToSection('locality')"
             [ngClass]="{ active: activeSection === 'locality' }">About Locality</a>
         </li>
-        <li class="{'active': activeSection === 'developer'}" *ngIf="hasKeysOrValues(singleproject.aboutdeveloper)">
+        <li class="{'active': activeSection === 'developer'}" *ngIf="hasKeysOrValues(singleproject?.aboutdeveloper)">
           <a style="cursor: pointer" (click)="scrollToSection('developer')"
             [ngClass]="{ active: activeSection === 'developer' }">About Developer</a>
         </li>
@@ -116,8 +116,8 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8">
-          <div class="company_llg" *ngIf="this.singleproject.project_logo !== null">
-            <img src="{{ this.singleproject.project_logo }}" alt="logo" class="img-fluid" />
+          <div class="company_llg" *ngIf="this.singleproject?.project_logo !== null">
+            <img src="{{ this.singleproject?.project_logo }}" alt="logo" class="img-fluid" />
           </div>
 
           <div class="dtl_box" id="overview">
@@ -127,15 +127,15 @@
                   {{ this.singleproject?.project_name }}
                 </h3>
                 <p class="by_group" *ngIf="this.singleproject?.builderName !== null">
-                  {{ this.singleproject.builderName }}
+                  {{ this.singleproject?.builderName }}
                 </p>
-                <p class="buy-location" style="color: #666666" *ngIf="this.singleproject.project_localities !== null">
+                <p class="buy-location" style="color: #666666" *ngIf="this.singleproject?.project_localities !== null">
                   <span class="locator-icon"><i class="fa-sharp fa-solid fa-location-dot" style="color: #666666"></i>
-                  </span>{{ this.singleproject.project_localities }}
+                  </span>{{ this.singleproject?.project_localities }}
                 </p>
                 <div class="pos-status">
-                  <div class="pos-status__item" *ngIf="this.singleproject.project_status !== null">
-                    <p>{{ this.singleproject.project_status }}</p>
+                  <div class="pos-status__item" *ngIf="this.singleproject?.project_status !== null">
+                    <p>{{ this.singleproject?.project_status }}</p>
                   </div>
                   <div class="pos-status__item" *ngIf="this.singleproject?.project_possession_date !== null">
                     <p>
@@ -148,11 +148,11 @@
                     </p>
                   </div>
                 </div>
-                <p class="buy-price p-0" *ngIf="singleproject.project_price_show == '0'">
-                  ₹ {{ this.singleproject.project_minimum_price }} - ₹
-                  {{ this.singleproject.project_maximum_price }}
+                <p class="buy-price p-0" *ngIf="singleproject?.project_price_show == '0'">
+                  ₹ {{ this.singleproject?.project_minimum_price }} - ₹
+                  {{ this.singleproject?.project_maximum_price }}
                 </p>
-                <!-- <p class="by_group">{{this.singleproject.projectBHK}} Flats</p> -->
+                <!-- <p class="by_group">{{this.singleproject?.projectBHK}} Flats</p> -->
               </div>
               <div class="col-lg-4">
                 <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#get-builder">
@@ -162,13 +162,13 @@
             </div>
           </div>
 
-          <div class="properties_buy_rent" id="properties" *ngIf="this.singleproject.allProperties?.length > 0">
-            <h3 class="m-0" *ngIf="this.singleproject.project_name !== null">
-              Properties in {{ this.singleproject.project_name }}
+          <div class="properties_buy_rent" id="properties" *ngIf="this.singleproject?.allProperties?.length > 0">
+            <h3 class="m-0" *ngIf="this.singleproject?.project_name !== null">
+              Properties in {{ this.singleproject?.project_name }}
             </h3>
             <ngx-slick-carousel class="carousel project_slider property_arrow" #slickModal="slick-carousel"
-              [config]="slideConfig1" *ngIf="this.singleproject.allProperties !== null">
-              <div ngxSlickItem class="slide" *ngFor="let item of this.singleproject.allProperties">
+              [config]="slideConfig1" *ngIf="this.singleproject?.allProperties !== null">
+              <div ngxSlickItem class="slide" *ngFor="let item of this.singleproject?.allProperties">
                 <div class="properties_buy_rent_box">
                   <a target="_blank" routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}">
                     <div class="buy_rent_mg" *ngIf="item.property_main_img !== null">
@@ -177,7 +177,7 @@
                   </a>
                   <div class="buy_rent_intro">
                     <a target="_blank" routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}">
-                      <h2 class="proj-Mhead">{{ singleproject.project_name }}</h2>
+                      <h2 class="proj-Mhead">{{ singleproject?.project_name }}</h2>
                     </a>
                     <p class="detail-pera">
                       {{ item.property_type }}
@@ -206,12 +206,12 @@
                     </div>
                     <!-- <p class="mb-0 text-dark fw-bold" *ngIf="item.bedroom && item.built_up_area">{{item.bedroom}}BHK   {{item.built_up_area}}</p>
                     <a class="" routerLink="/property-details/{{ item.propertyfirstUrlPart}}/{{ item.propertysecondUrlPart }}">
-                      <p class="mb-0 text-dark fw-bold" *ngIf="singleproject.project_possession_date"> {{getFormattedDate(singleproject.project_possession_date)}}</p>
+                      <p class="mb-0 text-dark fw-bold" *ngIf="singleproject?.project_possession_date"> {{getFormattedDate(singleproject?.project_possession_date)}}</p>
                     </a>
                     <p class="about_status" *ngIf=" item.property_description"  #descriptionElem>{{ item.property_description }}</p>
                     <input  type="checkbox" class="text-btn" />
-                    <p class="owner_for" *ngIf="this.singleproject.builderName !== null ">
-                      Builder: {{ this.singleproject.builderName }}
+                    <p class="owner_for" *ngIf="this.singleproject?.builderName !== null ">
+                      Builder: {{ this.singleproject?.builderName }}
                     </p> -->
                     <button class="contact-builder" data-bs-toggle="modal" data-bs-target="#get-builder">
                       Contact Owner
@@ -301,39 +301,39 @@
             </ngx-slick-carousel>
           </div>
 
-          <div class="product_about" id="aboutProject" *ngIf="this.hasKeysOrValues(this.singleproject.project_about)">
-            <h3 class="companies-names" *ngIf="this.singleproject.project_name !== null">
-              About {{ this.singleproject.project_name }}
+          <div class="product_about" id="aboutProject" *ngIf="this.hasKeysOrValues(this.singleproject?.project_about)">
+            <h3 class="companies-names" *ngIf="this.singleproject?.project_name !== null">
+              About {{ this.singleproject?.project_name }}
             </h3>
-            <div *ngIf="this.singleproject.project_about !== null" class="about-text-titles"
-              [innerHTML]="this.singleproject.project_about"></div>
+            <div *ngIf="this.singleproject?.project_about !== null" class="about-text-titles"
+              [innerHTML]="this.singleproject?.project_about"></div>
             <input type="checkbox" class="text-btn" />
             <div class="address_point">
-              <h4 *ngIf="this.singleproject.project_address !== null">
+              <h4 *ngIf="this.singleproject?.project_address !== null">
                 Address:
               </h4>
-              <p *ngIf="this.singleproject.project_address !== null">
-                {{ this.singleproject.project_address }}
+              <p *ngIf="this.singleproject?.project_address !== null">
+                {{ this.singleproject?.project_address }}
               </p>
               <div class="row mt-4 container project_ami">
-                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject.project_size_in_sqft !== null">
+                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject?.project_size_in_sqft !== null">
                   <p>Project Size :</p>
                   <p class="about-project-value">
-                    {{getRoundedValue(this.singleproject.project_size_in_sqft) }} Sq-ft
+                    {{getRoundedValue(this.singleproject?.project_size_in_sqft) }} Sq-ft
                   </p>
                 </div>
-                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject.project_launch_date !== null">
+                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject?.project_launch_date !== null">
                   <p>Launch Date :</p>
                   <p class="about-project-value">
                     {{
-                    getFormattedDate(this.singleproject.project_launch_date)
+                    getFormattedDate(this.singleproject?.project_launch_date)
                     }}
                   </p>
                 </div>
-                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject.project_status !== null">
+                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject?.project_status !== null">
                   <p>Status :</p>
                   <p class="about-project-value">
-                    {{ this.singleproject.project_status }}
+                    {{ this.singleproject?.project_status }}
                   </p>
                 </div>
                 <!-- <div class="col-md-3 col-sm-12 mb-3 about_box">
@@ -351,22 +351,22 @@
                     }}
                   </p>
                 </div>
-                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject.project_total_units !== null">
+                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject?.project_total_units !== null">
                   <p>Total Units :</p>
                   <p class="about-project-value">
-                    {{ this.singleproject.project_total_units }}
+                    {{ this.singleproject?.project_total_units }}
                   </p>
                 </div>
-                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject.project_total_tower !== null">
+                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject?.project_total_tower !== null">
                   <p>Total Towers :</p>
                   <p class="about-project-value">
-                    {{ this.singleproject.project_total_tower }}
+                    {{ this.singleproject?.project_total_tower }}
                   </p>
                 </div>
-                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject.project_type !== null">
+                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject?.project_type !== null">
                   <p>Project Type :</p>
                   <p class="about-project-value">
-                    {{ this.singleproject.project_type }}
+                    {{ this.singleproject?.project_type }}
                   </p>
                 </div>
                 <!-- <div class="col-md-3 col-sm-12 mb-3 about_box">
@@ -381,22 +381,22 @@
                                     <p>Commencement Certificate :</p>
                                     <p class="about-project-value">Yes</p>
                                 </div> -->
-                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject.project_pincode !== null">
+                <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproject?.project_pincode !== null">
                   <p>Pincode :</p>
                   <p class="about-project-value">
-                    {{ this.singleproject.project_pincode }}
+                    {{ this.singleproject?.project_pincode }}
                   </p>
                 </div>
               </div>
 
-              <div class="about_investing" *ngIf="this.singleproject.project_why_buy_sell !== null">
-                <h3 *ngIf="this.singleproject.project_why_buy_sell !== null">
+              <div class="about_investing" *ngIf="this.singleproject?.project_why_buy_sell !== null">
+                <h3 *ngIf="this.singleproject?.project_why_buy_sell !== null">
                   What makes investing in The
-                  {{ this.singleproject.project_name }} a compelling choice?
+                  {{ this.singleproject?.project_name }} a compelling choice?
                 </h3>
 
-                <div *ngIf="this.singleproject.project_why_buy_sell !== null"
-                  [innerHTML]="this.singleproject.project_why_buy_sell" class="mt-3 about_inner"></div>
+                <div *ngIf="this.singleproject?.project_why_buy_sell !== null"
+                  [innerHTML]="this.singleproject?.project_why_buy_sell" class="mt-3 about_inner"></div>
               </div>
             </div>
           </div>
@@ -429,10 +429,10 @@
                         </div>
                         </div> -->
 
-          <div class="amenities" id="amenities" *ngIf="this.singleproject.amenitiess?.length > 0">
+          <div class="amenities" id="amenities" *ngIf="this.singleproject?.amenitiess?.length > 0">
             <div class="">
-              <h3 class="companies-names" *ngIf="this.singleproject.project_name !== null">
-                Amenities at {{ this.singleproject.project_name }}
+              <h3 class="companies-names" *ngIf="this.singleproject?.project_name !== null">
+                Amenities at {{ this.singleproject?.project_name }}
               </h3>
               <!-- <p>
                 The Green Parmeshwar offers distinctive amenities like power
@@ -440,7 +440,7 @@
                 projects in Jagatpur.
               </p> -->
               <div class="row mt-2">
-                <div class="col-md-2" *ngFor="let amenities of this.singleproject.amenitiess">
+                <div class="col-md-2" *ngFor="let amenities of this.singleproject?.amenitiess">
                   <div class="amenit_box">
                     <img src="{{ amenities.image }}" alt class="img-fluid" />
                   </div>
@@ -467,23 +467,23 @@
             </ngx-slick-carousel>
           </div>
 
-          <div class="specifications" id="project-detail" *ngIf="this.singleproject.project_specification !== null">
+          <div class="specifications" id="project-detail" *ngIf="this.singleproject?.project_specification !== null">
             <div class="conatiner">
-              <h3 class="companies-names" *ngIf="this.singleproject.project_name !== null">
-                Specifications of The {{ this.singleproject.project_name }}
+              <h3 class="companies-names" *ngIf="this.singleproject?.project_name !== null">
+                Specifications of The {{ this.singleproject?.project_name }}
               </h3>
-              <div class="specifications_box" *ngIf="this.singleproject.project_specification !== null">
-                <div class="about_inner" [innerHTML]="this.singleproject.project_specification"></div>
+              <div class="specifications_box" *ngIf="this.singleproject?.project_specification !== null">
+                <div class="about_inner" [innerHTML]="this.singleproject?.project_specification"></div>
               </div>
-              <!-- <h3 class="companies-names review">{{this.singleproject.project_name}} Reviews & Ratings</h3>
+              <!-- <h3 class="companies-names review">{{this.singleproject?.project_name}} Reviews & Ratings</h3>
                             <button class="developer_builder_btn mt-3">Write a review</button> -->
             </div>
           </div>
 
-          <div class="about-locality" id="locality" *ngIf="hasKeysOrValues(this.singleproject.nearByProject)">
+          <div class="about-locality" id="locality" *ngIf="hasKeysOrValues(this.singleproject?.nearByProject)">
             <div class="">
-              <h3 class="companies-names" *ngIf="this.singleproject.project_localities !== null">
-                About {{ this.singleproject.project_localities }}
+              <h3 class="companies-names" *ngIf="this.singleproject?.project_localities !== null">
+                About {{ this.singleproject?.project_localities }}
               </h3>
               <div class="about-locality-wrapper">
                 <div class="proj-rating proj-rating--threecol">
@@ -503,7 +503,7 @@
                                     </div> -->
                   <!-- <div class="proj-rating__column">
                     <div class="proj-rating__title">
-                      Rank {{ this.singleproject.nearByProject.rank }}
+                      Rank {{ this.singleproject?.nearByProject.rank }}
                     </div> -->
                   <!-- <div class="proj-rating__text">out of
                                     1759 Localities</div> -->
@@ -520,28 +520,28 @@
                                     </div> -->
                 </div>
                 <div class="proj-details__descheading" *ngIf="
-                    this.singleproject.nearByProject
+                    this.singleproject?.nearByProject
                       .locality_introduction_and_neighbourhood !== null
                   ">
                   Locality introduction and neighbourhood
                 </div>
                 <div class="detail-full-pop" id="locPopupSection"
-                  *ngIf="this.singleproject.nearByProject.locality_introduction_and_neighbourhood !== null">
+                  *ngIf="this.singleproject?.nearByProject.locality_introduction_and_neighbourhood !== null">
                   <div class="proj-info-inner text-titles"
-                    [innerHTML]="this.singleproject.nearByProject.locality_introduction_and_neighbourhood"></div>
+                    [innerHTML]="this.singleproject?.nearByProject.locality_introduction_and_neighbourhood"></div>
                 </div>
                 <input type="checkbox" class="text-btn"
-                  *ngIf="this.singleproject.nearByProject.locality_introduction_and_neighbourhood" />
+                  *ngIf="this.singleproject?.nearByProject.locality_introduction_and_neighbourhood" />
                 <div class="projthings"
-                  *ngIf="this.singleproject.nearByProject.keep_in_mind_advantage || this.singleproject.nearByProject.keep_in_mind_disadvantage">
-                  <div class="projthings__title" *ngIf="this.singleproject.nearByProject.keep_in_mind_advantage">
+                  *ngIf="this.singleproject?.nearByProject.keep_in_mind_advantage || this.singleproject?.nearByProject.keep_in_mind_disadvantage">
+                  <div class="projthings__title" *ngIf="this.singleproject?.nearByProject.keep_in_mind_advantage">
                     Things to keep in mind
                   </div>
                   <ul class="projthings__list">
-                    <div *ngFor="let item of this.singleproject.nearByProject.keep_in_mind_advantage">
+                    <div *ngFor="let item of this.singleproject?.nearByProject.keep_in_mind_advantage">
                       <li class="projthings__list__val" [innerHTML]="item.keep_in_mind_advantage"></li>
                     </div>
-                    <div *ngFor="let item of this.singleproject.nearByProject.keep_in_mind_disadvantage">
+                    <div *ngFor="let item of this.singleproject?.nearByProject.keep_in_mind_disadvantage">
                       <li class="projthings__list__val projthings__list__val--neg"
                         [innerHTML]="item.keep_in_mind_disadvantage"></li>
                     </div>
@@ -594,7 +594,7 @@
           <!-- <div>
                         <div class="container">
                             <h3 class="companies-names">
-                                Landmarks Near {{this.singleproject.project_name}}</h3>
+                                Landmarks Near {{this.singleproject?.project_name}}</h3>
                             </div>
 
                             <div class="pdp__landmarks__wrap">
@@ -612,16 +612,16 @@
                                                     <div class="pdp__landmarks__card__item">Ananya Vidyalaya</div><span class="pdp__landmarks__card__item--bold"> (2.9 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Sakar English School</div><span class="pdp__landmarks__card__item--bold"> (2.1 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Vishwakarma Government Engineering College</div><span class="pdp__landmarks__card__item--bold"> (2.6 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Gujarat Technological University</div><span class="pdp__landmarks__card__item--bold"> (2.6 Km)</span></div></div></div></div></div><div class="pdp__landmarks__card"><div class="pdp__landmarks__card__inner"><div class="pdp__landmarks__card__head__ic transport"></div><div class="pdp__landmarks__content"><div class="pdp__landmarks__card__head">Transportation Hub</div><div class="pdp__landmarks__card__body"><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Mansarovar Metro Station</div><span class="pdp__landmarks__card__item--bold"> (1.2 Km)</span></div></div></div></div></div><div class="pdp__landmarks__card"><div class="pdp__landmarks__card__inner"><div class="pdp__landmarks__card__head__ic shopping"></div><div class="pdp__landmarks__content"><div class="pdp__landmarks__card__head">Shopping Centre</div><div class="pdp__landmarks__card__action"><span>+ </span>3 more</div><div class="pdp__landmarks__card__body"><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">4D Square Mall</div><span class="pdp__landmarks__card__item--bold"> (2.9 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Sangath Mall 1</div><span class="pdp__landmarks__card__item--bold"> (3.0 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Hind Super Market</div><span class="pdp__landmarks__card__item--bold"> (1.7 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Aapka Bazar</div><span class="pdp__landmarks__card__item--bold"> (3.4 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Highway Mall</div><span class="pdp__landmarks__card__item--bold"> (1.3 Km)</span></div></div></div></div></div><div class="pdp__landmarks__card"><div class="pdp__landmarks__card__inner"><div class="pdp__landmarks__card__head__ic hospital"></div><div class="pdp__landmarks__content"><div class="pdp__landmarks__card__head">Hospital</div><div class="pdp__landmarks__card__body"><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Jincy Multispeciality Hospital</div><span class="pdp__landmarks__card__item--bold"> (1.4 Km)</span></div></div></div></div></div><div class="pdp__landmarks__card"><div class="pdp__landmarks__card__inner"><div class="pdp__landmarks__card__head__ic commhub"></div><div class="pdp__landmarks__content"><div class="pdp__landmarks__card__head">Commercial Hub</div><div class="pdp__landmarks__card__action"><span>+ </span>1 more</div><div class="pdp__landmarks__card__body"><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Ongc</div><span class="pdp__landmarks__card__item--bold"> (1.3 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">Commissionerate Of Commercial Tax</div><span class="pdp__landmarks__card__item--bold"> (8.9 Km)</span></div><div class="pdp__landmarks__card--wrap"><div class="pdp__landmarks__card__item">State Sales Tax</div><span class="pdp__landmarks__card__item--bold"> (8.9 Km)</span></div></div></div></div></div></div>
                     </div> -->
           <div>
-            <div class="landmark" id="landmark" *ngIf="hasKeysOrValues(this.singleproject.landmarksnearproject)">
-              <h3 class="companies-names" *ngIf="singleproject.project_name !== null">
-                Landmarks Near {{ singleproject.project_name }}
+            <div class="landmark" id="landmark" *ngIf="hasKeysOrValues(this.singleproject?.landmarksnearproject)">
+              <h3 class="companies-names" *ngIf="singleproject?.project_name !== null">
+                Landmarks Near {{ singleproject?.project_name }}
               </h3>
             </div>
 
-            <div class="pdp__landmarks__wrap mt-2" *ngIf="hasKeysOrValues(this.singleproject.landmarksnearproject)">
+            <div class="pdp__landmarks__wrap mt-2" *ngIf="hasKeysOrValues(this.singleproject?.landmarksnearproject)">
               <ng-container
                 *ngFor="let category of ['educationalinstitute', 'shoppingcentre', 'hospital', 'commercialhub']">
-                <div class="pdp__landmarks__card" *ngIf="this.singleproject.landmarksnearproject[category]?.length > 0">
+                <div class="pdp__landmarks__card" *ngIf="this.singleproject?.landmarksnearproject[category]?.length > 0">
                   <div class="pdp__landmarks__card__inner">
                     <div class=""
                       [ngClass]="{ eduins: category === 'educationalinstitute', shopping: category === 'shoppingcentre', hospital: category === 'hospital', commhub: category === 'commercialhub' }">
@@ -631,15 +631,15 @@
                         {{ categoryDisplayNames[category] }}
                       </div>
                       <div class="pdp__landmarks__card__action"
-                        *ngIf="this.singleproject.landmarksnearproject[category] ?.length > 3">
+                        *ngIf="this.singleproject?.landmarksnearproject[category] ?.length > 3">
                         <!-- <span>+
-                          {{ this.singleproject.landmarksnearproject[category]?.length - 3 }}
+                          {{ this.singleproject?.landmarksnearproject[category]?.length - 3 }}
                           more
                         </span> -->
                       </div>
                       <div class="pdp__landmarks__card__body">
                         <ng-container
-                          *ngFor="let item of this.singleproject.landmarksnearproject[category].slice(0, 3)">
+                          *ngFor="let item of this.singleproject?.landmarksnearproject[category].slice(0, 3)">
                           <div class="pdp__landmarks__card--wrap flex-wrap align-items-center">
                             <div class="pdp__landmarks__card__item">
                               {{ item.name }}
@@ -657,64 +657,64 @@
             </div>
           </div>
 
-          <div class="developer" id="developer" *ngIf="hasKeysOrValues(singleproject.aboutdeveloper)">
+          <div class="developer" id="developer" *ngIf="hasKeysOrValues(singleproject?.aboutdeveloper)">
             <div class="">
               <h3 class="companies-names">About Developer</h3>
               <div class="about-devloper-wrapper d-flex align-items-center justify-content-between">
                 <div>
-                  <a target="_blank" style="color: black" href="builder-detail/{{ singleproject.aboutdeveloper.builderUrl }}">
+                  <a target="_blank" style="color: black" href="builder-detail/{{ singleproject?.aboutdeveloper.builderUrl }}">
                     <h3>
-                      {{ singleproject.aboutdeveloper.builderName }}
+                      {{ singleproject?.aboutdeveloper.builderName }}
                     </h3>
                   </a>
-                  <div *ngIf="singleproject.aboutdeveloper.year !== null">
-                    Years of Experiance - {{ singleproject.aboutdeveloper.year }}
+                  <div *ngIf="singleproject?.aboutdeveloper.year !== null">
+                    Years of Experiance - {{ singleproject?.aboutdeveloper.year }}
                   </div>
                 </div>
                 <div class="about-developer__builder__logo"
-                  *ngIf="this.singleproject.aboutdeveloper.builderLogo !== null">
-                  <img class="img-fluid" alt="{{ this.singleproject.aboutdeveloper.builderName }}"
-                    data-src="{{ this.singleproject.aboutdeveloper.builderLogo }}"
-                    src="{{ this.singleproject.aboutdeveloper.builderLogo }}" />
+                  *ngIf="this.singleproject?.aboutdeveloper.builderLogo !== null">
+                  <img class="img-fluid" alt="{{ this.singleproject?.aboutdeveloper.builderName }}"
+                    data-src="{{ this.singleproject?.aboutdeveloper.builderLogo }}"
+                    src="{{ this.singleproject?.aboutdeveloper.builderLogo }}" />
                 </div>
               </div>
               <div class="about-developer__table">
                 <div class="about-developer__table__item">Total Projects</div>
                 <div class="about-developer__table__item">
-                  {{ this.singleproject.aboutdeveloper.totalProjects }}
+                  {{ this.singleproject?.aboutdeveloper.totalProjects }}
                 </div>
                 <div class="about-developer__table__item"
-                  *ngIf="this.singleproject.aboutdeveloper.completedProjects !== null">
+                  *ngIf="this.singleproject?.aboutdeveloper.completedProjects !== null">
                   Projects Completed
                 </div>
                 <div class="about-developer__table__item"
-                  *ngIf="this.singleproject.aboutdeveloper.completedProjects !== null">
-                  {{ this.singleproject.aboutdeveloper.completedProjects }}
+                  *ngIf="this.singleproject?.aboutdeveloper.completedProjects !== null">
+                  {{ this.singleproject?.aboutdeveloper.completedProjects }}
                 </div>
                 <div class="about-developer__table__item"
-                  *ngIf="this.singleproject.aboutdeveloper.ongoingProjects !== null">
+                  *ngIf="this.singleproject?.aboutdeveloper.ongoingProjects !== null">
                   Projects Ongoing
                 </div>
                 <div class="about-developer__table__item"
-                  *ngIf="this.singleproject.aboutdeveloper.ongoingProjects !== null">
-                  {{ this.singleproject.aboutdeveloper.ongoingProjects }}
+                  *ngIf="this.singleproject?.aboutdeveloper.ongoingProjects !== null">
+                  {{ this.singleproject?.aboutdeveloper.ongoingProjects }}
                 </div>
                 <div class="about-developer__table__item"
-                  *ngIf="this.singleproject.aboutdeveloper.Operatingin !== null">
+                  *ngIf="this.singleproject?.aboutdeveloper.Operatingin !== null">
                   Operating in
                 </div>
                 <div class="about-developer__table__item"
-                  *ngIf="this.singleproject.aboutdeveloper.Operatingin !== null">
-                  <span class="develop-city-name">{{ this.singleproject.aboutdeveloper.Operatingin }}</span>
+                  *ngIf="this.singleproject?.aboutdeveloper.Operatingin !== null">
+                  <span class="develop-city-name">{{ this.singleproject?.aboutdeveloper.Operatingin }}</span>
                 </div>
               </div>
               <div class="proj-info__about__text mb-3">
-                <h3 class="companies-names m-0" *ngIf="this.singleproject.aboutdeveloper.builderName !== null">
-                  {{ this.singleproject.aboutdeveloper.builderName }}
+                <h3 class="companies-names m-0" *ngIf="this.singleproject?.aboutdeveloper.builderName !== null">
+                  {{ this.singleproject?.aboutdeveloper.builderName }}
                 </h3>
-                <div *ngIf="this.singleproject.aboutdeveloper.developerDescription !== null"
+                <div *ngIf="this.singleproject?.aboutdeveloper.developerDescription !== null"
                   class="proj-info-inner text-titles"
-                  [innerHTML]=" this.singleproject.aboutdeveloper.developerDescription"></div>
+                  [innerHTML]=" this.singleproject?.aboutdeveloper.developerDescription"></div>
                 <input type="checkbox" class="text-btn" />
               </div>
 
@@ -728,8 +728,8 @@
         <div class="col-lg-4">
           <div class="form_sticky">
             <div class="fill_info">
-              <h3 *ngIf="this.singleproject.project_name !== null">Searching for a Property in {{
-                this.singleproject.project_name }}</h3>
+              <h3 *ngIf="this.singleproject?.project_name !== null">Searching for a Property in {{
+                this.singleproject?.project_name }}</h3>
               <form (submit)="is_token ? submitEnquiry() : openOTPModal()">
                 <!-- <div class="pp-form__fieldset">
                                 <div class="pp-form__fieldset__heading">I

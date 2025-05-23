@@ -446,7 +446,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
     this.propertyresidentialservice.getpropertytyperesidential()?.subscribe((propertyresidentialData: any) => {
         this.propertyresidentialData = propertyresidentialData;
         this.propertyresidential =
-          this.propertyresidentialData?.responseData?.propertytyperesidential;
+          this.propertyresidentialData?.data;
 
           if (this.activeTab != 'pg' && this.activeTab != 'hostel') {
             const defaultSelections = ['Flat', 'Villa'];
@@ -485,7 +485,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
       ?.subscribe((propertycommercialData: any) => {
         this.propertycommercialData = propertycommercialData;
         this.propertycommercial =
-          this.propertycommercialData?.responseData?.propertytypecommercial;
+          this.propertycommercialData?.data;
       });
   }
   loadPropertyOther(): void {
@@ -494,7 +494,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
       ?.subscribe((propertyotherData: any) => {
         this.propertyotherData = propertyotherData;
         this.propertyother =
-          this.propertyotherData?.responseData?.propertytypeothertypes;
+          this.propertyotherData?.data;
       });
   }
   loadPropertyPg(): void {
@@ -502,7 +502,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
       .getpropertytypepg()
       ?.subscribe((propertypgData: any) => {
         this.propertypgData = propertypgData;
-        this.propertypg = this.propertypgData?.responseData?.propertytypepg;
+        this.propertypg = this.propertypgData?.data;
       });
   }
   loadPropertyHostel(): void {
@@ -511,7 +511,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
       ?.subscribe((propertyhostelData: any) => {
         this.propertyhostelData = propertyhostelData;
         this.propertyhostel =
-          this.propertyhostelData?.responseData?.propertytypehostel;
+          this.propertyhostelData?.data;
       });
   }
   visible: boolean = false;
@@ -864,53 +864,52 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
   onSubmit() {
     if (this.myForm.invalid) {
-      this.searchError = true;  // This will trigger error messages in the form
+      this.searchError = true;
       return;
     }
-      this.searchError = false;
+    this.searchError = false;
 
-      const ResidentialItems = this.selectedItemsOrder.filter(
-        (item) => item.type === 'RESIDENTIAL'
-      ).map((item) => item.id);;
-      const CommercialItems = this.selectedItemsOrder.filter(
-        (item) => item.type === 'COMMERCIAL'
-      ).map((item) => item.id);;
-      const OtherItems = this.selectedItemsOrder.filter(
-        (item) => item.type !== 'RESIDENTIAL' && item.type !== 'COMMERCIAL'
-      ).map((item) => item.id);
+    const ResidentialItems = this.selectedItemsOrder.filter(
+      (item) => item.type === 'RESIDENTIAL'
+    ).map((item) => item.id);
+    const CommercialItems = this.selectedItemsOrder.filter(
+      (item) => item.type === 'COMMERCIAL'
+    ).map((item) => item.id);
+    const OtherItems = this.selectedItemsOrder.filter(
+      (item) => item.type !== 'RESIDENTIAL' && item.type !== 'COMMERCIAL'
+    ).map((item) => item.id);
 
-      const selectedCityId = this.myForm.get('selectcitysearch')?.value;
-      const selectedCity = this.city1.find(city => city.cid === selectedCityId);
-      const location = selectedCity?.cname || this.city;
+    const selectedCityId = this.myForm.get('selectcitysearch')?.value;
+    const selectedCity = this.city1.find(city => city.cid === selectedCityId);
+    const location = selectedCity?.cname || this.city;
 
-      let searchData: any = {
-        location: location,
-        minPrice: this.minBudget,
-        maxPrice: this.maxBudget,
-        propertyfor: this.activeTab,
-      };
+    let searchData: any = {
+      location: location,
+      minPrice: this.minBudget,
+      maxPrice: this.maxBudget,
+      propertyfor: this.activeTab,
+    };
 
-      if (this.activeTab == 'pg' || this.activeTab == 'hostel') {
-        searchData.gender = this.selectedGenders;
-        searchData.lookingFor = this.selectedLookingFor;
-      } else {
-        searchData.residentialItems = ResidentialItems;
-        searchData.commercialItems = CommercialItems;
-        searchData.otherItems = OtherItems;
-      }
+    if (this.activeTab == 'pg' || this.activeTab == 'hostel') {
+      searchData.gender = this.selectedGenders;
+      searchData.lookingFor = this.selectedLookingFor;
+    } else {
+      searchData.residentialItems = ResidentialItems;
+      searchData.commercialItems = CommercialItems;
+      searchData.otherItems = OtherItems;
+    }
 
-      this.http
-        .post(`${environment.apiUrl}searchproperty`, searchData)
-        .subscribe(
-          (response: any) => {
-            const dataToSend = { result: response };
-            this.router.navigate(['search-property'], { state: response });
-
-          },
-          (error: any) => {
-            console.error('API Error:', error);
-          }
-        );
+    this.http
+      .post(`${environment.apiUrl}searchproperty`, searchData)
+      .subscribe(
+        (response: any) => {
+          const dataToSend = { result: response };
+          this.router.navigate(['search-property'], { state: response });
+        },
+        (error: any) => {
+          console.error('API Error:', error);
+        }
+      );
   }
 
   updateSelectedItems(event: any, id: number, selectedItems: number[], itemsList: any[]): void {

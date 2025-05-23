@@ -186,8 +186,8 @@ export class PropertyDetailsComponent implements OnInit {
   private loadGoogleMapsScript(): void {
     if (typeof google === 'undefined' || !google.maps) {
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCSTCnateoFfNtpPRtURlnEroMPDL0Bxs8&libraries=places`;
-      script.async = true;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCSTCnateoFfNtpPRtURlnEroMPDL0Bxs8`;
+      script.async = false;
       script.defer = true;
       document.head.appendChild(script);
 

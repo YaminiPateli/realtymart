@@ -13,17 +13,14 @@ export class ActivityTrackerService {
   private sessionId: string = this.generateSessionId();
   private userId: string | null = null;
   private previousUrl: string = '';
-
+  logginId:any;
   constructor(private http: HttpClient, private router: Router) {
-    const logginId = localStorage.getItem('userId');
+    this.logginId = localStorage.getItem('userId');
 
-    if (logginId) {
-      this.userId = logginId;
+    if (this.logginId) {
+      this.userId = this.logginId;
+      localStorage.setItem('sessionId', this.logginId);
       // console.log('Using logginId:', this.userId);
-    } else {
-      this.userId = this.sessionId;
-      localStorage.setItem('sessionId', this.sessionId);
-      // console.log('Using sessionId:', this.userId);
     }
 
     // Capture page load and redirection events
@@ -57,15 +54,17 @@ export class ActivityTrackerService {
       timestamp: new Date().toISOString(),
     };
 
-    // Call like this:
-    this.sendActivityToServer(activityLog).subscribe({
-      next: (response: any) => {
-        // console.log('Activity logged:', response);
-      },
-      error: (error: any) => {
-        // console.error('Error logging activity:', error);
-      },
-    });
+    if (this.logginId) {
+      // Call like this:
+      this.sendActivityToServer(activityLog).subscribe({
+        next: (response: any) => {
+          // console.log('Activity logged:', response);
+        },
+        error: (error: any) => {
+          // console.error('Error logging activity:', error);
+        },
+      });
+    }
   }
     // Define the function like this:
     private sendActivityToServer(log: any): Observable<any> {

@@ -6,5 +6,6 @@ export const environment = {
   // apiUrl:'https://test.myrealtyunlimited.com/new-myrealty/api/'
   // apiUrl:'https://myrealtyunlimited.com/new-myrealty/api/',
   // apiUrl:'https://demo.myrealtyunlimited.com/new-myrealty/api/'
-  apiUrl:'https://www.realtymart.com/realtymart/backend/api/',
+  // apiUrl:'https://www.realtymart.com/realtymart/backend/api/',
+  apiUrl:'https://realtymart.com/backend/api/',
 };

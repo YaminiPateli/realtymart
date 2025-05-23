@@ -19,14 +19,14 @@ declare const google: any;
   templateUrl: './services-detail.component.html',
   styleUrls: ['./services-detail.component.css'],
   standalone: true,
-  imports: [NgbRatingModule,CommonModule, 
+  imports: [NgbRatingModule,CommonModule,
     SlickCarouselModule,],
 })
 export class ServicesDetailComponent implements OnInit {
   tooltipVisible = false;
   tooltipPosition = { top: '0px', left: '0px' };
   [x: string]: any;
-  currentRate:any; 
+  currentRate:any;
   singlecompany: any = {};
   urlSegments:any;
   fullPath:any;
@@ -48,7 +48,7 @@ export class ServicesDetailComponent implements OnInit {
   dynamicUrl: any;
    serviceName = this.route.snapshot.paramMap.get('name');
    serviceId = this.route.snapshot.paramMap.get('id');
-  
+
   constructor(
     private titleService: Title,
     private metaService: Meta,
@@ -84,8 +84,8 @@ export class ServicesDetailComponent implements OnInit {
   private loadGoogleMapsScript(): void {
     if (typeof google === 'undefined' || !google.maps) {
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCSTCnateoFfNtpPRtURlnEroMPDL0Bxs8&libraries=places`;
-      script.async = true;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCSTCnateoFfNtpPRtURlnEroMPDL0Bxs8`;
+      script.async = false;
       script.defer = true;
       document.head.appendChild(script);
 
@@ -110,7 +110,7 @@ export class ServicesDetailComponent implements OnInit {
   }
 
   copyLink(event: MouseEvent) {
-    navigator.clipboard.writeText(this.dynamicUrl).then(() => 
+    navigator.clipboard.writeText(this.dynamicUrl).then(() =>
       {
       this.showTooltip(event);
     }, (err) => {
@@ -124,7 +124,7 @@ export class ServicesDetailComponent implements OnInit {
     this.tooltipPosition = {
       top: `${buttonRect.top - 50}px`,
       left: `${buttonRect.left + 60}px`,
-      
+
     };
 
     this.tooltipVisible = true;
@@ -133,12 +133,12 @@ export class ServicesDetailComponent implements OnInit {
       this.tooltipVisible = false;
     }, 1500);
   }
-  
+
 
   fetchCompanyServiceListing() {
     const serviceName = this.route.snapshot.paramMap.get('name');
     const serviceId = this.route.snapshot.paramMap.get('id');
-  
+
     if (serviceName && serviceId) {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -147,7 +147,7 @@ export class ServicesDetailComponent implements OnInit {
             const lat = latitude;
             const lng = longitude;
             const city = localStorage.getItem('location');
-  
+
             this.singleCompanyService.getCompanyServiceListing(serviceName, serviceId, lat, lng, city).subscribe(
               (response: any) => {
                 this.singlecompany = response.data;
@@ -174,7 +174,7 @@ export class ServicesDetailComponent implements OnInit {
   setMetaTags(title: string, description: string, image: string): void {
     this.titleService.setTitle(title || '');
     this.metaService.updateTag({ name: 'description', content: description || 'Default description' });
-    
+
     this.metaService.updateTag({ property: 'og:title', content: title });
     this.metaService.updateTag({ property: 'og:description', content: description });
     this.metaService.updateTag({ name: 'twitter:title', content: title });
@@ -209,7 +209,7 @@ export class ServicesDetailComponent implements OnInit {
     });
   }
 
-  
+
   slideConfig1 = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -306,7 +306,7 @@ export class ServicesDetailComponent implements OnInit {
       navbar?.classList.remove("sticky");
     }
   }
- 
+
   // share on whatsapp code by jeet thaker on 18-12-24 START
   shareonWhatsapp(){
     const whatsappMessage = `https://api.whatsapp.com/send?text=${encodeURIComponent('Check out my amazing concept: My Amazing Website! '+this.fullPath)}`;
@@ -316,9 +316,9 @@ export class ServicesDetailComponent implements OnInit {
 
 
  // google reviews
- queryPlaceByName(placeName: string): void {  
+ queryPlaceByName(placeName: string): void {
   const service = new google.maps.places.PlacesService(document.createElement('div'));
-  
+
   const request = {
     query: placeName,
     fields: ['place_id', 'name'],
@@ -374,7 +374,7 @@ reorderBusinessHours() {
         this.googleReviews = place;
         this.errorMessage = null;
         this.reviews = place.reviews || [];
-        
+
         this.placeDetails = {
           name: place.name,
           rating: place.rating,

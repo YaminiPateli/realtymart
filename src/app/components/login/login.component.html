@@ -1,15 +1,12 @@
   <div class="container">
     <div class="menu_wrapper">
       <div class="main_logo">
-        <a routerLink="/"><img src="../assets/images/logo.svg" class="img-fluid desk_logo" alt="" /></a>
+        <a href="/"><img src="../assets/images/logo.svg" class="img-fluid desk_logo" alt="" /></a>
         <!-- <a class="navbar-brand" href="#"><img src="../../../assets/images/mobile-logo.png" class="mobile-logo"
             alt="" /></a> -->
       </div>
       <!-- <img src="../assets/images/My-Realty.png" class="img-fluid" alt="" -->
       <div class="header_btn gap-2">
-        <!-- <a routerLink="/register" class="register ms-3"
-          > SIGN UP</a
-        > -->
         <a href="/registration" class="post_btn">Register</a>
       </div>
     </div>
@@ -20,9 +17,7 @@
       <div class="login_box">
         <form #myForm="ngForm" (ngSubmit)="onFormSubmit(myForm)">
           <h1 class="login_sign_head">Login</h1>
-
           <div class="otp-process">
-            <!-- Mobile Number Input -->
             <div>
               <input
                 type="tel"
@@ -37,10 +32,6 @@
                 (input)="validContactNumber($event)"
                 required
               />
-              <!-- <p *ngIf="showContactError" class="error-message-login">
-                Invalid mobile number. Please enter at least 10 digits.
-              </p> -->
-
               <button
                 class="form-action-btn mt-3"
                 *ngIf="!isOtpGenerated || showContactError"
@@ -50,8 +41,6 @@
                 Generate OTP
               </button>
             </div>
-
-            <!-- OTP Input -->
             <div *ngIf="isOtpGenerated && !showContactError" class="mt-3">
               <input
                 type="number"
@@ -63,7 +52,6 @@
                 placeholder="Enter OTP"
                 required
               />
-
               <button
                 class="form-action-btn mt-3"
                 *ngIf="isOtpGenerated && !showContactError"
@@ -72,16 +60,8 @@
               >
                 Submit OTP
               </button>
-
-              <!-- Invalid OTP Error -->
-              <!-- <ng-container *ngIf="!isOtpValid">
-                <p class="error-message-login">
-                  Invalid OTP. Please try again.
-                </p>
-              </ng-container> -->
             </div>
 
-            <!-- OTP Validation Success -->
             <div *ngIf="isOtpValid" class="success-message">
               OTP successfully validated!
             </div>
