@@ -17,22 +17,20 @@ export class BlogComponent {
   blogsToLoad = 8;
   blog: any;
   constructor(
-      private titleService: Title,
-      private metaService: Meta,
+    private titleService: Title,
+    private metaService: Meta,
     private http: HttpClient,
     private BlogService: BlogslistingService) {
     this.setMetaTags(
-      'Blogs in realtymart',
+      'Blog in realtymart',
       '',
     );
-    // this.appendItems();
     this.Loadblogs();
   }
 
   // meta title
   setMetaTags(title: string, description: string) {
     this.titleService.setTitle(title);
-
     this.metaService.updateTag({ name: 'description', content: description });
     this.metaService.updateTag({ property: 'og:title', content: title });
     this.metaService.updateTag({

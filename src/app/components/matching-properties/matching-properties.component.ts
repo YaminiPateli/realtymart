@@ -26,22 +26,22 @@ export class MatchingPropertiesComponent {
    @ViewChild('otpContactModel') otpContactModel!: ElementRef;
    private apiUrl: string = environment.apiUrl;
   homepagesearch: any;
-  searchdata: any; // Holds the main list of properties
-  original: any[] = [];   // Original data backup
+  searchdata: any;
+  original: any[] = [];
   filteredData: any[] = [];
   selectedSortOption: string = 'Relevance';
   isDropdownOpen: boolean = false;
-  paginatedData: any[] = []; // Data for the current page
-  currentPage: number = 1; // Current page number
-  pageSize: number = 5; // Items per page
-  totalItems: number = 0; // Total number of items
+  paginatedData: any[] = [];
+  currentPage: number = 1;
+  pageSize: number = 5;
+  totalItems: number = 0;
   itemsPerPage = 5;
   formData: any = {
-    username: '', // Initialize with an empty string
-    useremail: '', // Initialize with an empty string
-    countrycode: 'IN +91', // Initialize with an empty string
-    contact_no: null, // Initialize with null or a default number
-    property_for: '', // Initialize with an empty string,
+    username: '',
+    useremail: '',
+    countrycode: 'IN +91',
+    contact_no: null,
+    property_for: '',
     otp: '',
     termsAccepted: false};
     contact:any;
@@ -59,7 +59,6 @@ export class MatchingPropertiesComponent {
     contactData:any;
     visiblePageStart: number = 1;
     visiblePageCount: number = 5;
-
     initialListCount = 5;
     propertyToLoad = 5;
     loading:boolean=false;
@@ -88,7 +87,6 @@ export class MatchingPropertiesComponent {
   singleProp:any;
   checkToken:any;
   is_token:boolean=false;
-
   city: any;
   city1:City[]=[];
   validcityforselected:any;
@@ -103,10 +101,8 @@ export class MatchingPropertiesComponent {
 
     if (navigation && navigation.extras.state) {
       const data = navigation.extras.state as any;
-      this.searchdata = data.responseData || []; // Use empty array if no data
-      this.original = [...this.searchdata]; // Clone the data into original
-      // this.updateTotalItems();
-      // this.updatePaginatedData();
+      this.searchdata = data.responseData || [];
+      this.original = [...this.searchdata];
     }
   }
 
@@ -137,97 +133,7 @@ export class MatchingPropertiesComponent {
         this.loading = false;
       }, 700);
     }
-    // if (
-    //   window.innerHeight + window.scrollY >= document.body.offsetHeight - 600 &&  !this.loading &&
-    //   this.initialListCount < this.searchdata.length
-    // ) {
-    //   this.loading = true;
-    // setTimeout(() => {
-    //   this.initialListCount += this.propertyToLoad;
-    //   this.loading = false;
-    // }, 500);
-    // }
   }
-
-
-  // updatePaginatedData(): void {
-  //   const startIndex = (this.currentPage - 1) * this.pageSize;
-  //   const endIndex = startIndex + this.pageSize;
-  //   this.paginatedData = this.searchdata.slice(startIndex, endIndex);
-  // }
-  // updateTotalItems(): void {
-  //   this.totalItems = this.searchdata.length; // Total items from searchdata
-  // }
-
-
-  // nextPage(): void {
-  //   if (this.currentPage < this.getTotalPages()) {
-  //     this.currentPage++;
-  //     this.updatePaginatedData();
-  //   }
-  //   this.updateTotalItems();
-  // }
-
-  // previousPage(): void {
-  //   if (this.currentPage > 1) {
-  //     this.currentPage--;
-  //     this.updatePaginatedData();
-  //   }
-  //   this.updateTotalItems();
-  // }
-
-  // getTotalPages(): number {
-  //   return Math.ceil(this.totalItems / this.pageSize);
-  // }
-
-  // goToPage(page: number): void {
-  //   if (page >= 1 && page <= this.getTotalPages()) {
-  //     this.currentPage = page;
-  //     this.updatePaginatedData();
-
-  //     if (page < this.visiblePageStart) {
-  //       this.visiblePageStart = Math.max(1, this.visiblePageStart - this.visiblePageCount);
-  //     } else if (page >= this.visiblePageStart + this.visiblePageCount) {
-  //       this.visiblePageStart = Math.min(page, this.getTotalPages() - this.visiblePageCount + 1);
-  //     }
-  //   }
-  // }
-  // nextPageGroup(): void {
-  //   const totalPages = this.getTotalPages();
-  //   if (this.visiblePageStart + this.visiblePageCount <= totalPages) {
-  //     this.visiblePageStart += this.visiblePageCount;
-  //   }
-  // }
-  // previousPageGroup(): void {
-  //   if (this.visiblePageStart > 1) {
-  //     this.visiblePageStart -= this.visiblePageCount;
-  //   }
-  // }
-
-  // setPageSize(size: number): void {
-  //   this.pageSize = size;
-  //   this.currentPage = 1;
-  //   this.updatePaginatedData();
-  // }
-  // getVisiblePages(): number[] {
-  //   const totalPages = this.getTotalPages();
-  //   const visiblePages: number[] = [];
-
-  //   const endPage = Math.min(this.visiblePageStart + this.visiblePageCount - 1, totalPages);
-
-  //   for (let i = this.visiblePageStart; i <= endPage; i++) {
-  //     visiblePages.push(i);
-  //   }
-  //   return visiblePages;
-  // }
-
-  // showFirstPage(): boolean {
-  //   return this.currentPage > 3;
-  // }
-
-  // showLastPage(): boolean {
-  //   return this.currentPage < this.getTotalPages() - 2;
-  // }
 
   ngOnInit() {
     const token = localStorage.getItem('myrealtylogintoken');
@@ -256,16 +162,16 @@ export class MatchingPropertiesComponent {
   changeSortOption(option: string): void {
     this.selectedSortOption = option;
     this.isDropdownOpen = false;
-  
+
     let sortedData;
-  
+
     switch (option) {
       case 'Price - Low to High':
         sortedData = [...this.searchdata]
           .filter((item: any) => {
-            const priceA = item.total_price !== null && item.total_price !== undefined 
+            const priceA = item.total_price !== null && item.total_price !== undefined
               ? item.total_price : item.rent_amount;
-            return priceA !== null && priceA !== undefined; 
+            return priceA !== null && priceA !== undefined;
           })
           .sort((a: any, b: any) => {
             const priceA = a.total_price !== null ? a.total_price : a.rent_amount;
@@ -274,11 +180,11 @@ export class MatchingPropertiesComponent {
           });
         this.searchdata = sortedData;
         break;
-  
+
       case 'Price - High to Low':
         sortedData = [...this.searchdata]
           .filter((item: any) => {
-            const priceA = item.total_price !== null && item.total_price !== undefined 
+            const priceA = item.total_price !== null && item.total_price !== undefined
               ? item.total_price : item.rent_amount;
             return priceA !== null && priceA !== undefined;
           })
@@ -289,26 +195,18 @@ export class MatchingPropertiesComponent {
           });
         this.searchdata = sortedData;
         break;
-  
+
       case 'Most Recent':
         sortedData = [...this.searchdata].sort((a: any, b: any) => this.sortByRecent(a, b));
         this.searchdata = sortedData;
         break;
-  
+
       case 'Relevance':
       default:
         this.searchdata = [...this.original];
         break;
     }
   }
-  
-
-
-  // private sortByPrice(a: any, b: any): number {
-  //   const priceA = this.parsePrice(a.total_price);
-  //   const priceB = this.parsePrice(b.total_price);
-  //   return priceA - priceB;
-  // }
 
   private sortByRecent(a: any, b: any): number {
     const dateA = new Date(a.created_at).getTime();
@@ -331,8 +229,6 @@ export class MatchingPropertiesComponent {
     this.url = window.location.origin;
     const staticpart = '/property-details/';
     this.dynamicUrl = this.url + staticpart + urlPart1 + '/' + urlPart2;
-    // console.log(this.dynamicUrl);
-
   }
 
   whatsappShare() {
@@ -350,7 +246,6 @@ export class MatchingPropertiesComponent {
     } else {
       numericValue = numericValue / 100000;
     }
-
     return numericValue;
   }
 
@@ -690,12 +585,12 @@ export class MatchingPropertiesComponent {
 
         let contactModal = document.getElementById('contact-owner');
         let otpModal = document.getElementById('otpModel');
-  
+
         if (contactModal) {
           let bsModal = bootstrap.Modal.getInstance(contactModal);
           bsModal?.hide();
         }
-  
+
         // Show the OTP modal
         if (otpModal) {
           let otpModalInstance = new bootstrap.Modal(otpModal);
@@ -860,12 +755,12 @@ export class MatchingPropertiesComponent {
         this.sendOTPContactToMobile();
         let contactModal = document.getElementById('get-owner');
         let otpModal = document.getElementById('otpContactModel');
-  
+
         if (contactModal) {
           let bsModal = bootstrap.Modal.getInstance(contactModal);
           bsModal?.hide();
         }
-  
+
         // Show the OTP modal
         if (otpModal) {
           let otpModalInstance = new bootstrap.Modal(otpModal);

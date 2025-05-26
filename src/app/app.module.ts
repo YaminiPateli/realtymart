@@ -111,7 +111,7 @@ const routes: Routes = [
   { path: 'career', component:  CareerComponent },
   { path: 'projects', component:  ProjectsComponent },
   { path: 'agents/:city', component:  AgentsComponent },
-  { path: 'blogs', component:  BlogComponent },
+  { path: 'blog', component:  BlogComponent },
   { path: 'blog-details/:blogurl', component:  BlogDetailsComponent },
   { path: 'emi-calculator', component:  EmiCalculatorComponent },
   { path: 'property-details/:name/:id', component:  PropertyDetailsComponent },
@@ -147,7 +147,6 @@ const routes: Routes = [
 
 // register Swiper custom elements
 register();
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -235,4 +234,4 @@ register();
 })
 export class AppModule {
 
- }
+}

@@ -1,65 +1,114 @@
 <main>
-
-<section class="builders-ahmedabad position-relative">
+  <section class="builders-ahmedabad position-relative">
     <div class="container">
       <div class="banner-small">
-        <h1 class="banner_title">Showing {{ allbuilderprojectcount }} Builders in {{ allbuilderproject[0].citysearch}}</h1>
+        <h1 class="banner_title">
+          Showing {{ allbuilderprojectcount }} Builders in
+          {{ allbuilderproject[0].citysearch }}
+        </h1>
         <!-- <p class="banner_small">Builders inTop Localities</p> -->
       </div>
     </div>
-</section>
-<section class="ahmedabad-all-builders">
+  </section>
+  <section class="ahmedabad-all-builders">
     <div class="container">
-        <div class="topahmedabad" *ngFor="let item of allbuilderproject">
-            <div class="groups-companies">
-                <div class="row">
-                    <div class="col-lg-2 col-md-5 col-sm-12">
-                        <div class="group-logo">
-                            <img src="{{ item.builder_logo }}" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="col-lg-10 col-md-7 col-sm-12">
-                        <a routerLink="/builder-detail/{{ item.builderUrl }}" class="groups-companies-names">{{ item.name }}</a>
-                        <p class="opnesince">Operating since {{ item.year }}</p>
-                        <div class="row">
-                            <!-- <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="topahmedabad" *ngFor="let item of allbuilderproject">
+        <div class="groups-companies">
+          <div class="row">
+            <div class="col-lg-2 col-md-5 col-sm-12">
+              <div class="group-logo">
+                <img src="{{ item.builder_logo }}" alt="" class="img-fluid" />
+              </div>
+            </div>
+            <div class="col-lg-10 col-md-7 col-sm-12">
+              <a
+                routerLink="/builder-detail/{{ item.builderUrl }}"
+                class="groups-companies-names"
+                >{{ item.name }}</a
+              >
+              <p class="opnesince">Operating since {{ item.year }}</p>
+              <div class="row">
+                <!-- <div class="col-lg-4 col-md-6 col-sm-12">
                                 <h6 class="project-titles">DEALS IN:</h6>
                                 <p class="project-text">{{ item.dealsin }}</p>
                             </div> -->
-                            <div class="col-lg-4 col-md-6 col-sm-12 mt-lg-0 mt-md-0 mt-sm-3 ">
-                                <h6 class="project-titles">TOTAL PROJECTS</h6>
-                                <p class="project-text">{{ item.total_projects }} Projects in Ahmedabad</p>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 mt-lg-0 mt-md-3 mt-sm-3 info-project">
-                                <h6 class="project-titles">COMPLETED PROJECTS</h6>
-                                <p class="project-text">{{ item.completed_projects }} Completed</p>
-                            </div>
-                        </div>
-                    </div>
+                <div
+                  class="col-lg-4 col-md-6 col-sm-12 mt-lg-0 mt-md-0 mt-sm-3"
+                >
+                  <h6 class="project-titles">TOTAL PROJECTS</h6>
+                  <p class="project-text">
+                    {{ item.total_projects }} Projects in Ahmedabad
+                  </p>
                 </div>
-                <div class="builders-ahm-property">
-                    <div class="show-ahm-box">
-                        <a routerLink="/project-details/{{ projects.firstUrlPart }}/{{ projects.secondUrlPart }}" class="links-taps" *ngFor="let projects of item.projects">
-                            <div class="ahow-ahm-items">
-                                <div class="property-details">
-                                    <div class="img-property">
-                                        <img src="{{ projects.project_banner_image }}" class="img-fluid" alt="banner-image">
-                                    </div>
-                                    <div class="deatles-areas">
-                                        <h5 class="property-names">{{ projects.project_name}}</h5>
-                                        <p class="location-property">{{ projects.project_address }}</p>
-                                        <p class="location-property">{{ projects.project_type }}</p>
-                                        <p class="location-property">{{ projects.project_localities }}</p>
-                                        <p class="location-property" *ngIf="projects.land_zone !== null">{{ projects.land_zone }}</p>
-                                        <p class="property-type" >
-                                            <!-- {{ projects.bedroom }} <span *ngIf="projects.bedroom !== null"> BHK Flat</span><br> -->
-                                           <span class="fw-bold" *ngIf="projects.project_price_show == '0'">₹ {{projects.project_minimum_price}} - ₹ {{ projects.project_maximum_price }}</span> </p>
-                                    </div>
-                                </div>
-                            </div>
+                <div
+                  class="col-lg-4 col-md-6 col-sm-12 mt-lg-0 mt-md-3 mt-sm-3 info-project"
+                >
+                  <h6 class="project-titles">COMPLETED PROJECTS</h6>
+                  <p class="project-text">
+                    {{ item.completed_projects }} Completed
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="builders-ahm-property">
+            <div class="show-ahm-box">
+              <div *ngFor="let projects of item.projects">
+                <a
+                  [routerLink]="[
+                    '/project-details',
+                    projects.firstUrlPart,
+                    projects.secondUrlPart
+                  ]"
+                  class="links-taps"
+                >
+                  <div class="ahow-ahm-items">
+                    <div class="property-details">
+                      <div class="img-property">
+                        <img
+                          [src]="projects.project_banner_image"
+                          class="img-fluid"
+                          alt="banner-image"
+                        />
+                      </div>
+                      <div class="deatles-areas">
+                        <h5 class="property-names">
+                          {{ projects.project_name }}
+                        </h5>
+                        <p class="location-property">
+                          {{ projects.project_address }}
+                        </p>
+                        <p class="location-property">
+                          {{ projects.project_type }}
+                        </p>
+                        <p class="location-property">
+                          {{ projects.project_localities }}
+                        </p>
+                        <p
+                          class="location-property"
+                          *ngIf="projects.land_zone !== null"
+                        >
+                          {{ projects.land_zone }}
+                        </p>
+                        <p class="property-type">
+                          <span
+                            class="fw-bold"
+                            *ngIf="projects.project_price_show == '0'"
+                          >
+                            ₹ {{ projects.project_minimum_price }} - ₹
+                            {{ projects.project_maximum_price }}
+                          </span>
+                        </p>
+                        <a *ngIf="projects.project_price_show == '1'" class="get_enq" style="cursor: pointer" (click)="contactowner(projects.secondUrlPart); fetchProperty(projects)" data-bs-toggle="modal" data-bs-target="#contact-owner">
+                          Get a Quote
                         </a>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
 
-                        <!-- <a routerLink="" class="links-taps">
+              <!-- <a routerLink="" class="links-taps">
                             <div class="ahow-ahm-items">
                                 <div class="property-details">
                                     <div class="img-property">
@@ -90,33 +139,190 @@
                                 </div>
                             </div>
                         </a> -->
-                    </div>
-                </div>
-                <div class="mt-3" *ngIf="item.long_description !== null">
-                    <p class="text-titles" [class.expanded]="isExpanded" [innerHTML]="item.long_description"></p>
-                      <!-- <input type="checkbox" class="text-btn" /> -->
-                      <input type="checkbox" class="text-btn" [(ngModel)]="isExpanded" id="toggle" />
-                      <label for="toggle" class="text-label">
-                        {{ isExpanded ? 'Read Less' : 'Read More' }}
-                      </label>
-                </div>
-                <div class="all-over-propertys">
-                    <div class="all-projects">
-                        <a target="_blank" routerLink="/builder-project-listing/{{item.builderUrl}}">SEE ALL PROJECTS</a>
-                    </div>
-                    <div class="explor-builders">
-                        <a target="_blank" routerLink="/builder-detail/{{ item.builderUrl }}">EXPLORE BUILDER</a>
-                    </div>
-                </div>
             </div>
-        </div>
-        <div class="loading-spinner" *ngIf="loading">
-          <div class="spinner-border text-danger" role="status">
-            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="mt-3" *ngIf="item.long_description !== null">
+            <p
+              class="text-titles"
+              [class.expanded]="isExpanded"
+              [innerHTML]="item.long_description"
+            ></p>
+            <!-- <input type="checkbox" class="text-btn" /> -->
+            <input
+              type="checkbox"
+              class="text-btn"
+              [(ngModel)]="isExpanded"
+              id="toggle"
+            />
+            <label for="toggle" class="text-label">
+              {{ isExpanded ? "Read Less" : "Read More" }}
+            </label>
+          </div>
+          <div class="all-over-propertys">
+            <div class="all-projects">
+              <a
+                target="_blank"
+                routerLink="/builder-project-listing/{{ item.builderUrl }}"
+                >SEE ALL PROJECTS</a
+              >
+            </div>
+            <div class="explor-builders">
+              <a
+                target="_blank"
+                routerLink="/builder-detail/{{ item.builderUrl }}"
+                >EXPLORE BUILDER</a
+              >
+            </div>
           </div>
         </div>
+      </div>
+      <div class="loading-spinner" *ngIf="loading">
+        <div class="spinner-border text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
     </div>
-</section>
-
-
+  </section>
 </main>
+
+<div class="modal fade" id="contact-owner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header sign-in-box">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2 class="fill_one">Fill out this one - time contact form</h2>
+        <p class="detail_share">We will share advertiser's details over
+          email</p>
+        <div class="contact-form__prjInfo prj-top-info">
+          <div class="contact-form__prjInfo__fig"><img src="{{ contact?.project?.project_banner_image }}"
+              class="contact-form__prjInfo__fig--graphic">
+          </div>
+          <div class="contact-form__prjInfo__name">{{ contact?.project?.project_name }}</div>
+          <div class="contact-form__prjInfo__loc">
+            {{ contact?.project?.project_localities}}
+          </div>
+          <div class="contact-form__prjInfo__content">
+            <div class="contact-form__prjInfo__bhk" *ngIf="contact?.project?.project_type !== null">{{
+              contact?.project?.project_type }}</div>
+            <!-- <div class="contact-form__prjInfo__bhk" *ngIf="contact?.property?.bedroom !== null">{{ contact?.project?.bedroom }} BHK</div> -->
+            <!-- <div class="contact-form__prjInfo__bhk">2 BHK Flats</div> -->
+            <!-- <div class="contact-form__prjInfo__price" *ngIf="contact?.project?.project_price_show =='0'">
+                          <span> ₹ {{ contact?.project?.project_minimum_price }} - ₹ {{contact?.project?.project_maximum_price }}</span>
+                        </div> -->
+          </div>
+        </div>
+        <form (submit)="is_token ? submitForm() : openOTPModal()">
+          <div class="mt-3">
+            <input type="text" id="Aname" [(ngModel)]="formData.username" name="name" placeholder="Name"
+              (input)="validateName($event)" (keypress)="validateCharInput($event)" required [disabled]="is_token"
+              class="gold-form-input my-0" />
+            <div *ngIf="nameError" class="mgs_error">
+              Please enter name.
+            </div>
+          </div>
+          <div class="mt-3">
+            <input type="mail" id="useremail" [(ngModel)]="formData.useremail" (blur)="validateEmail($event)"
+              name="useremail" [disabled]="is_token" placeholder="Email" required class="gold-form-input my-0" />
+            <div *ngIf="emailError" class="mgs_error">
+              Please enter a valid email address.
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <div class="row">
+              <!-- <div class="col-md-4">
+                        <select
+                          name="number-code"
+                          id="number-code"
+                          class="gold-form-input  my-0"
+                        >
+                          <option value="+91">+91</option>
+                          <option value="USA: +1">+1</option>
+                          <option value="UK: +44">+44</option>
+                          <option value="Mexico: +52">+52</option>
+                          <option value="China: +86">+86</option>
+                        </select>
+                      </div> -->
+              <div class="d-flex">
+                <input type="tel" [(ngModel)]="formData.contact_no" id="goldNum" name="contact_no" maxlength="10"
+                  placeholder="Mobile No." required [disabled]="is_token" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                  (keypress)="validateNumberInput($event)" (blur)="validatePhoneNumber($event)"
+                  class="gold-form-input  my-0" />
+                <!-- <span
+                          class="verify-label"
+                          (click)="openOTPModal()"
+                          *ngIf="formData.contact_no?.length === 10 && !phoneError && !is_token"
+                          style="cursor: pointer; color: #ff5444; font-weight: bold; margin-left: 10px;"
+                        >
+                          Verify
+                        </span> -->
+              </div>
+              <div *ngIf="phoneError" class="mgs_error">
+                Please enter a valid 10-digit number.
+              </div>
+            </div>
+          </div>
+          <div class="check-compare mt-3">
+            <input type="checkbox" [(ngModel)]="formData.termsAccepted" (change)="onTermsChange($event)"
+              name="termsAccepted" id="compare" [disabled]="is_token" value="compare add" class="mycheck" />
+            <label for="compare" class="compares" style="display: inline-flex; gap:5px;">I Agree to realtymart
+
+            </label>
+            <br />
+          </div>
+          <div *ngIf="termsError" class="mgs_error">
+            Please agree to the terms and conditions.
+          </div>
+          <button type="submit" class=" pp-form__cta" [disabled]="emailError">
+            {{is_token ? 'Submit Enquiry':'Continue'}}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div #otpModel class="modal fade" tabindex="-1" role="dialog" aria-bs-hidden="true" data-bs-backdrop="static"
+  data-bs-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Verify Your Mobile Number</h5>
+        <button type="button" class="btn-close position-absolute top-0 end-0 mt-3 me-3" data-bs-dismiss="modal"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          You will receive a 4-digit verification code on your registered mobile number.
+        </div>
+        <input type="text" id="otpInput" name="otpInput" placeholder="Enter OTP" [(ngModel)]="formData.otp"
+          (keypress)="validateNumberInput($event)" maxlength="4" style="border-color: #00000029" />
+
+        <div *ngIf="otpError" class="mgs_error">
+          Please enter a valid OTP.
+        </div>
+      </div>
+      <div class="modal-footer border-0 flex-column text-center">
+        <button type="button" class="btn reg_sub" (click)="verifyOTP()">
+          Verify
+        </button>
+        <div>
+          <label *ngIf="!isResendEnabled" class="resend-label mb-3" style="cursor: pointer">
+            You will receive OTP within
+            <b style="color: #ff5444"> 00:{{ remainingTime }}</b>
+            seconds
+          </label>
+          <div class="mb-3" *ngIf="isResendEnabled">Did not get Verification Code?</div>
+          <span *ngIf="isResendEnabled" style="cursor: pointer; border-bottom: 1px solid grey"
+            (click)="resendOTP()">Resend Code</span>
+        </div>
+        <!-- <button type="button" [disabled]="!isResendEnabled" class="btn reg_sub" (click)="sendOTPToMobile()">
+Resend OTP
+</button> -->
+      </div>
+    </div>
+  </div>
+</div>

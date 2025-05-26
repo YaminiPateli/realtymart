@@ -124,7 +124,8 @@ export class HomeComponent implements AfterViewInit, OnInit {
     contact_no: null,
     property_for: '',
     otp: '',
-    termsAccepted: false};
+    termsAccepted: false
+  };
     propertyLabel: string = 'Select Property Type';
     selectedItemsOrder: any[] = [];
     selectedItemsPg: Array<{ id: number, name: string }> = [];
@@ -176,7 +177,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
     private activityTrackerService: ActivityTrackerService,
     private titleService: Title, private metaService: Meta,
     private spinner: NgxSpinnerService,
-    private tost: ToastrService,
+    private toastr: ToastrService,
     private topbuildersService: TopbuildersService,
     private hotdealsService: HotdealsserviceService,
     private featurecommercialService: FeaturedcommercialService,
@@ -844,6 +845,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
       },
     ],
   };
+
   fetchCities() {
     this.http.get<{ data: { id: number; name: string }[] }>(`${environment.apiUrl}cities`).subscribe(
       (response: any) => {
@@ -899,8 +901,14 @@ export class HomeComponent implements AfterViewInit, OnInit {
       searchData.otherItems = OtherItems;
     }
 
+    const token = localStorage.getItem('myrealtylogintoken');
+
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Accept', 'application/json');
+
     this.http
-      .post(`${environment.apiUrl}searchproperty`, searchData)
+      .post(`${environment.apiUrl}searchproperty`, searchData,{headers})
       .subscribe(
         (response: any) => {
           const dataToSend = { result: response };
@@ -1251,7 +1259,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
       .subscribe((response: any) => {
         if (response.status === true) {
           this.activityTrackerService.logActivity(`Inquiry stored for ${this.contact.property ? 'property' : 'project'}`,'');
-          this.tost.success('Inquiry Addeded successfully!');
+          this.toastr.success('Inquiry Addeded successfully!');
           const modalElement = document.getElementById('contact-owner');
           const modalElementProp = document.getElementById('contact-owner-prop');
       if (modalElement) {
@@ -1343,7 +1351,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
     verifyOTP() {
 
       if(this.formData.otp == ''){
-        this.tost.error('Please Enter OTP');
+        this.toastr.error('Please Enter OTP');
         return
       }
       let payload  = {
@@ -1359,7 +1367,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
         .subscribe(
           (response: any) => {
             if (response.status == true) {
-              this.tost.success('OTP verified successfully.');
+              this.toastr.success('OTP verified successfully.');
               const modalElement = this.otpModel.nativeElement;
               const modal = bootstrap.Modal.getInstance(modalElement);
               if (modal) {
@@ -1388,7 +1396,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
               this.spinner.hide();
             } else {
-              this.tost.error('Wrong OTP entered. Please try again.');
+              this.toastr.error('Wrong OTP entered. Please try again.');
               this.isResendEnabled = true;
               this.isSubmitting = false; // Reset submission flag if failed
             }
@@ -1434,10 +1442,10 @@ export class HomeComponent implements AfterViewInit, OnInit {
               const modalElement = this.otpModel.nativeElement;
               const modal = new bootstrap.Modal(modalElement);
               modal.show();
-              this.tost.success('OTP Sent Successfully.');
+              this.toastr.success('OTP Sent Successfully.');
             }
             if (response.code === 101) {
-              this.tost.warning(response.message);
+              this.toastr.warning(response.message);
             }
           }
             else {
@@ -1446,7 +1454,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
             this.spinner.hide();
           },
           (error) => {
-            this.tost.error('Failed to send OTP.');
+            this.toastr.error('Failed to send OTP.');
             console.error('Error sending OTP', error);
             this.spinner.hide();
           }

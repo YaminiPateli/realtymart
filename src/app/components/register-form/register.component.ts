@@ -529,7 +529,7 @@ export class RegisterComponent implements OnDestroy {
     //     }
     // );
   }
-  
+
   verifyOTP() {
     if(this.formData.otp == ''){
       this.toastr.error('Please Enter OTP');
@@ -790,8 +790,6 @@ export class RegisterComponent implements OnDestroy {
       )
       .subscribe(
         (response: any) => {
-          console.log(response);
-
           if (response.isSuccess === true) {
             this.servicesimgss = response?.responseData;
           }
