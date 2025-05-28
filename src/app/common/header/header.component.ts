@@ -1,5 +1,5 @@
 import { Component, OnInit , AfterViewInit, ElementRef } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PropertyservicesService } from '../../components/service/propertyservices.service';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -40,6 +40,7 @@ export class HeaderComponent implements AfterViewInit{
   longitude:any;
   checkToken:any;
   city: any;
+  locationFooter: any;
   validCities: string[] = ['Ahmedabad', 'Rajkot', 'Surat', 'Vadodara', 'Mumbai', 'Navi Mumbai', 'Pune', 'Bangalore', 'NCR', 'Delhi', 'Gurgaon', 'Hyderabad'];
 
   constructor(
@@ -69,6 +70,7 @@ export class HeaderComponent implements AfterViewInit{
 
   ngOnInit(): void {
     this.getLocation();
+    this.getLocations();
     if(this.checkToken == null || this.checkToken == undefined){
       this.checkToken = localStorage.getItem('myrealtylogintoken');
     }
@@ -84,7 +86,7 @@ export class HeaderComponent implements AfterViewInit{
           (position) => {
             const { latitude, longitude } = position.coords;
             this.geolocationService.getCity(latitude, longitude).then((city: string) => {
-
+              this.locationFooter = latitude + ', ' + longitude;
               if (this.isValidCity(city)) {
                 this.updateCity(city);
               } else {
@@ -132,24 +134,54 @@ export class HeaderComponent implements AfterViewInit{
     }, 3000);
   }
 
-  // loader script
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
 
   logout() {
-    localStorage.removeItem('myrealtylogintoken');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('email');
-    localStorage.removeItem('contact_no');
-    localStorage.removeItem('role');
-    localStorage.removeItem('name');
-    localStorage.removeItem('sessionId');
-    const currentUrl = this.location.path();
-    if(currentUrl == ''){
-      window.location.reload();
-    }else{
-      this.route.navigate(['/']);
+    const token = localStorage.getItem('myrealtylogintoken');
+
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Accept', 'application/json');
+    const url = `${this.apiUrl}logout`;
+    const data = { location: this.locationFooter };
+
+    this.http.post<ApiResponse>(url, data, {headers}).subscribe(
+      (response: any) => {
+        if (response && response.status === true) {
+        localStorage.removeItem('myrealtylogintoken');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('email');
+        localStorage.removeItem('contact_no');
+        localStorage.removeItem('role');
+        localStorage.removeItem('name');
+        localStorage.removeItem('sessionId');
+        const currentUrl = this.location.path();
+        if(currentUrl == ''){
+          window.location.reload();
+        }else{
+          this.route.navigate(['/']);
+        }
+      }
+    });
+  }
+
+  getLocations(): void {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          this.latitude = position.coords.latitude;
+          this.longitude = position.coords.longitude;
+
+          this.locationFooter = this.latitude + ', ' + this.longitude;
+        },
+        (error) => {
+          console.error('Error getting location:', error);
+        }
+      );
+    } else {
+      console.error('Geolocation not supported by this browser.');
     }
   }
 

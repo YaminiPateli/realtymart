@@ -1,14 +1,14 @@
 .tabs_sortby {
     position: relative;
   }
-  
+
   .tabs_sortby--title {
     cursor: pointer;
     padding: 10px;
     background-color: #eaeaea;
     border: 1px solid #ccc;
   }
-  
+
   .tabs_sortby__dd {
     position: absolute;
     top: 100%;
@@ -19,23 +19,54 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: none;
   }
-  
+
   .tabs_sortby__dd__list {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-  
+
   .tabs_sortby__dd__list--item {
     cursor: pointer;
     padding: 10px;
     border-bottom: 1px solid #ccc;
   }
-  
+
   .tabs_sortby__dd__list--item:last-child {
     border-bottom: none;
   }
-  
+
   .tabs_sortby__dd--show {
     display: block;
+  }
+
+  .mgs_error{
+    color: red;
+  }
+
+  .reg_sub {
+    width: 100%;
+    margin: 0 auto;
+    color: #fff;
+    text-decoration: none;
+    background-color: #ff5444;
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+  }
+
+  #otpInput {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #666666;
+    margin-top: 12px;
+  }
+
+  #otpInput:focus {
+    outline: none;
+  }
+
+  .mgs_error{
+    color: red;
   }

@@ -137,7 +137,7 @@ export class ProjectFeaturedComponent implements OnInit {
   private loadGoogleMapsScript(): void {
     if (typeof google === 'undefined' || !google.maps) {
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCSTCnateoFfNtpPRtURlnEroMPDL0Bxs8`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCSTCnateoFfNtpPRtURlnEroMPDL0Bxs8&libraries=places`;
       script.async = false;
       script.defer = true;
       document.head.appendChild(script);
@@ -185,6 +185,8 @@ export class ProjectFeaturedComponent implements OnInit {
     service.getDetails(request, (place: any, status: any) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         this.googleReviews = place;
+        console.log(this.googleReviews);
+
         this.errorMessage = null;
         this.reviews = place.reviews || [];
         this.placeDetails = {

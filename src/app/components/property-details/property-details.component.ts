@@ -172,12 +172,11 @@ export class PropertyDetailsComponent implements OnInit {
     });
   }
 
-    checkLoggedIn() {
-    this.checkToken = localStorage.getItem('myrealtylogintoken');
+  checkLoggedIn() {
+  this.checkToken = localStorage.getItem('myrealtylogintoken');
     if(this.checkToken){
       this.is_token= true;
-    }
-    else {
+    } else {
       this.is_token= false;
     }
   }
@@ -186,7 +185,7 @@ export class PropertyDetailsComponent implements OnInit {
   private loadGoogleMapsScript(): void {
     if (typeof google === 'undefined' || !google.maps) {
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCSTCnateoFfNtpPRtURlnEroMPDL0Bxs8`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCSTCnateoFfNtpPRtURlnEroMPDL0Bxs8&libraries=places`;
       script.async = false;
       script.defer = true;
       document.head.appendChild(script);

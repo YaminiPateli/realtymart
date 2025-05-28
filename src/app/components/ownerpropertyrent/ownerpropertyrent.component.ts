@@ -153,8 +153,8 @@ export class OwnerpropertyrentComponent {
           response.responseData.meta.description,
             );
 
-          this.lastPage = response?.data?.last_page;          
-          this.ownerlauchedpropertycount = response?.responseData?.isownerproperty?.total;          
+          this.lastPage = response?.data?.last_page;
+          this.ownerlauchedpropertycount = response?.responseData?.isownerproperty?.total;
 
           this.currentPage++;
           this.isLoading = false;
@@ -179,13 +179,13 @@ export class OwnerpropertyrentComponent {
     onScroll(): void {
       const items = document.querySelectorAll('.maching-myproperties');
       if (items.length < 20) return;
-  
+
       const lastVisibleItem = items[items.length - 2];
       if (!lastVisibleItem) return;
-  
+
       const rect = lastVisibleItem.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-  
+
       if (rect.top < windowHeight && !this.isLoading) {
         clearTimeout(this.scrollTimeout);
         this.scrollTimeout = setTimeout(() => {
@@ -404,8 +404,6 @@ export class OwnerpropertyrentComponent {
 
 
   verifyOTP() {
-    console.log('this.formData', this.formData)
-    console.log(' this.formData.contact_no',  this.formData.contact_no)
     if (this.formData.otp == '') {
       this.tost.error('Please Enter OTP');
       return;

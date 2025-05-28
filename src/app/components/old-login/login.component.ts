@@ -202,21 +202,21 @@ export class LoginComponent {
     );
   }
 
-  logout() {
-    localStorage.removeItem('myrealtylogintoken');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('email');
-    localStorage.removeItem('contact_no');
-    localStorage.removeItem('role');
-    localStorage.removeItem('name');
-    localStorage.removeItem('sessionId');
-    const currentUrl = this.location.path();
-    if(currentUrl == '/'){
-      window.location.reload();
-    }else{
-      this.route.navigate(['/']);
-    }
-  }
+  // logout() {
+  //   localStorage.removeItem('myrealtylogintoken');
+  //   localStorage.removeItem('userId');
+  //   localStorage.removeItem('email');
+  //   localStorage.removeItem('contact_no');
+  //   localStorage.removeItem('role');
+  //   localStorage.removeItem('name');
+  //   localStorage.removeItem('sessionId');
+  //   const currentUrl = this.location.path();
+  //   if(currentUrl == '/'){
+  //     window.location.reload();
+  //   }else{
+  //     this.route.navigate(['/']);
+  //   }
+  // }
 
   getregistereddata(information: any): void {
     this.http.post(`${this.apiUrl}register`, information)

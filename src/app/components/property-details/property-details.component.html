@@ -709,6 +709,37 @@
     <div class="container">
       <div class="bullate-disc">
         <h3 class="companies-names pb-3">Reviews</h3>
+        <div class="review_box">
+          <div class="row align-items-center">
+            <div class="col-md-6 mb-2">
+              <div class="company_llg">
+                <img
+                  src="{{ singleproperty?.project_logo }}"
+                  alt=""
+                  class="img-fluid"
+                />
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <h4>Rating</h4>
+              <div class="rating">
+                <span class="rating-number">{{
+                  googleReviews?.rating
+                }}</span>
+                <div class="stars">
+                  <div
+                    class="filled-stars"
+                    [ngStyle]="{
+                      width: googleReviews?.rating * 20 + '%'
+                    }"
+                  ></div>
+                  <div class="empty-stars"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- <b>Reviews Implement the same as service provder page.</b> -->
 
         <div class="row" *ngFor="let item of reviews">
