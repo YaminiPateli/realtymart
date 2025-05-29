@@ -282,63 +282,63 @@ export class HomeComponent implements AfterViewInit, OnInit {
               .then((city: string) => {
                 if (this.isValidCity(city)) {
                   this.updateCity(city);
-                  // this.loadHotDeals();
-                  // this.loadFeaturedResidentalProjects();
-                  // this.loadFeaturedCommercialProjects();
-                  // this.loadFeaturedBunglowsProjects();
-                  // this.loadFarmHouseProjects();
-                  // this.loadFeaturedPlotsProjects();
-                  // this.loadTopBuilders();
-                  // this.loadHomeBanner();
+                  this.loadHotDeals();
+                  this.loadFeaturedResidentalProjects();
+                  this.loadFeaturedCommercialProjects();
+                  this.loadFeaturedBunglowsProjects();
+                  this.loadFarmHouseProjects();
+                  this.loadFeaturedPlotsProjects();
+                  this.loadTopBuilders();
+                  this.loadHomeBanner();
                 } else {
                   this.updateCity('Ahmedabad');
-                  // this.loadHotDeals();
-                  // this.loadFeaturedResidentalProjects();
-                  // this.loadFeaturedCommercialProjects();
-                  // this.loadFeaturedBunglowsProjects();
-                  // this.loadFarmHouseProjects();
-                  // this.loadFeaturedPlotsProjects();
-                  // this.loadTopBuilders();
-                  // this.loadHomeBanner();
+                  this.loadHotDeals();
+                  this.loadFeaturedResidentalProjects();
+                  this.loadFeaturedCommercialProjects();
+                  this.loadFeaturedBunglowsProjects();
+                  this.loadFarmHouseProjects();
+                  this.loadFeaturedPlotsProjects();
+                  this.loadTopBuilders();
+                  this.loadHomeBanner();
                 }
               })
               .catch((error: any) => {
                 console.error('Error getting city from coordinates:', error);
                 this.updateCity('Ahmedabad');
-                // this.loadHotDeals();
-                // this.loadFeaturedResidentalProjects();
-                // this.loadFeaturedCommercialProjects();
-                // this.loadFeaturedBunglowsProjects();
-                // this.loadFarmHouseProjects();
-                // this.loadFeaturedPlotsProjects();
-                // this.loadTopBuilders();
-                // this.loadHomeBanner();
+                this.loadHotDeals();
+                this.loadFeaturedResidentalProjects();
+                this.loadFeaturedCommercialProjects();
+                this.loadFeaturedBunglowsProjects();
+                this.loadFarmHouseProjects();
+                this.loadFeaturedPlotsProjects();
+                this.loadTopBuilders();
+                this.loadHomeBanner();
               });
           },
           (error) => {
             console.error('Error getting location', error);
             this.updateCity('Ahmedabad');
-            // this.loadHotDeals();
-            // this.loadFeaturedResidentalProjects();
-            // this.loadFeaturedCommercialProjects();
-            // this.loadFeaturedBunglowsProjects();
-            // this.loadFarmHouseProjects();
-            // this.loadFeaturedPlotsProjects();
-            // this.loadTopBuilders();
-            // this.loadHomeBanner();
+            this.loadHotDeals();
+            this.loadFeaturedResidentalProjects();
+            this.loadFeaturedCommercialProjects();
+            this.loadFeaturedBunglowsProjects();
+            this.loadFarmHouseProjects();
+            this.loadFeaturedPlotsProjects();
+            this.loadTopBuilders();
+            this.loadHomeBanner();
           }
         );
       } else {
         console.error('Geolocation not supported by this browser.');
         this.updateCity('Ahmedabad');
-        // this.loadHotDeals();
-        // this.loadFeaturedResidentalProjects();
-        // this.loadFeaturedCommercialProjects();
-        // this.loadFeaturedBunglowsProjects();
-        // this.loadFarmHouseProjects();
-        // this.loadFeaturedPlotsProjects();
-        // this.loadTopBuilders();
-        // this.loadHomeBanner();
+        this.loadHotDeals();
+        this.loadFeaturedResidentalProjects();
+        this.loadFeaturedCommercialProjects();
+        this.loadFeaturedBunglowsProjects();
+        this.loadFarmHouseProjects();
+        this.loadFeaturedPlotsProjects();
+        this.loadTopBuilders();
+        this.loadHomeBanner();
       }
     }
   }
@@ -381,14 +381,13 @@ export class HomeComponent implements AfterViewInit, OnInit {
         // Handle the error as needed
       }
     );
-    }
+  }
 
-    trackCustomActivity() {
-      this.router.navigate(['property-details/:name/:id']);
-      this.router.navigate(['project-details/:name/:id']);
-      this.router.navigate(['builder-details/:id']);
-    }
-
+  trackCustomActivity() {
+    this.router.navigate(['property-details/:name/:id']);
+    this.router.navigate(['project-details/:name/:id']);
+    this.router.navigate(['builder-details/:id']);
+  }
 
   loadHotDeals() {
     this.hotdealsService.hotdealget(this.city)?.subscribe((hotdealData) => {
@@ -621,7 +620,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
     dots: true,
     arrows: false,
     infinite: true,
-    "autoplay":true,
+    autoplay: true,
     responsive: [
       {
         breakpoint: 1535,
@@ -815,7 +814,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
     dots: true,
     arrows: false,
     infinite: true,
-    // autoplay: true,
+    autoplay: true,
     responsive: [
       {
         breakpoint: 1024,
