@@ -7350,6 +7350,24 @@ button.contact-ow {
   background-size: contain;
   width: 0%;
 }
+/* .stars {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    background: url('./assets/images/empty_star.png') repeat-x;
+    background-size: contain;
+}
+
+.filled-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: url('./assets/images/star.png') repeat-x;
+    background-size: contain;
+    width: 0%;
+}  */
 
 .empty-stars {
   visibility: hidden;

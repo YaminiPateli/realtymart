@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="col-lg-8 col-md-6 col-sm-12">
-                            <a class="interior-head" routerLink="/company-detail/{{ company_list.prpserviceurl1 }}/{{company_list.prpserviceurl2}}">{{ toTitleCase(company_list.company_name) }}</a>
+                            <a class="interior-head" target="_blank" routerLink="/company-detail/{{ company_list.prpserviceurl1 }}/{{company_list.prpserviceurl2}}">{{ toTitleCase(company_list.company_name) }}</a>
                             <p class="interior-location"><span class="me-2"><i class="fa fa-sharp fa-light fa-location-dot" style="color: #bbbbbb;"></i></span>{{ company_list.company_address }}</p>
                             <p class="interior-institutes" [innerHTML]="company_list.services"><span class="me-3"><i class="fa-regular fa-bookmark" style="color: #bbbbbb;"></i></span></p>
                             <div class="enquire-mood position-relative">

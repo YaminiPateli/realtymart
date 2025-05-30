@@ -61,20 +61,12 @@ export class ServicesDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-      // this.singleCompanyService.initializeLocation().then(() => {
-      //   this.fetchCompanyServiceListing();
-      // }).catch((error: any) => {
-      //   console.warn('Location not set, calling without place name');
-      //   this.fetchCompanyServiceListing();
-      // });
-        this.fetchCompanyServiceListing();
+    this.fetchCompanyServiceListing();
     this.loadGoogleMapsScript();
-    // share on whatsapp code by jeet thaker on 18-12-24 START
     this.activatedRoute.url.subscribe((segments) => {
       this.urlSegments = segments.map((segment) => segment.path);
       this.fullPath = `${this.apiUrl}/${this.urlSegments.join('/')}`;
     });
-    // share on whatsapp code by jeet thaker on 18-12-24 END
   }
 
   getSanitizedHTML(html: string): SafeHtml {
@@ -110,11 +102,10 @@ export class ServicesDetailComponent implements OnInit {
   }
 
   copyLink(event: MouseEvent) {
-    navigator.clipboard.writeText(this.dynamicUrl).then(() =>
-      {
+    navigator.clipboard.writeText(this.dynamicUrl).then(() => {
       this.showTooltip(event);
     }, (err) => {
-      console.log('failed copy')
+      console.log('failed copy');
     });
   }
 
@@ -124,7 +115,6 @@ export class ServicesDetailComponent implements OnInit {
     this.tooltipPosition = {
       top: `${buttonRect.top - 50}px`,
       left: `${buttonRect.left + 60}px`,
-
     };
 
     this.tooltipVisible = true;
@@ -133,7 +123,6 @@ export class ServicesDetailComponent implements OnInit {
       this.tooltipVisible = false;
     }, 1500);
   }
-
 
   fetchCompanyServiceListing() {
     const serviceName = this.route.snapshot.paramMap.get('name');
@@ -209,7 +198,6 @@ export class ServicesDetailComponent implements OnInit {
     });
   }
 
-
   slideConfig1 = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -220,7 +208,6 @@ export class ServicesDetailComponent implements OnInit {
   };
 
   // gallery slider
-
   slideConfig2 = {
     slidesToShow: 3,
     slidesToScroll: 3,
@@ -307,12 +294,10 @@ export class ServicesDetailComponent implements OnInit {
     }
   }
 
-  // share on whatsapp code by jeet thaker on 18-12-24 START
   shareonWhatsapp(){
     const whatsappMessage = `https://api.whatsapp.com/send?text=${encodeURIComponent('Check out my amazing concept: My Amazing Website! '+this.fullPath)}`;
     window.open(whatsappMessage, '_blank');
   }
-  // share on whatsapp code by jeet thaker on 18-12-24 END
 
 
  // google reviews
