@@ -44,13 +44,13 @@
                 PG
               </button>
             </li>
-            <li class="nav-item" role="presentation">
+            <!-- <li class="nav-item" role="presentation">
               <button class="nav-link" id="pills-Hostel-tab" data-bs-toggle="pill" data-bs-target="#pills-Hostel"
                 type="button" role="tab" aria-controls="pills-Hostel" aria-selected="false"
                 (click)="handleTabClick('hostel')">
                 Hostel
               </button>
-            </li>
+            </li> -->
           </ul>
           <form (ngSubmit)="onSubmit()" [formGroup]="myForm">
             <div class="tab-content profile-content" id="pills-tabContent">
@@ -2805,7 +2805,7 @@
           <div class="check-compare mt-3">
             <input type="checkbox" [(ngModel)]="formData.termsAccepted" (change)="onTermsChange($event)"
               name="termsAccepted" id="compare" [disabled]="is_token" value="compare add" class="mycheck" />
-            <label for="compare" class="compares" style="display: inline-flex; gap:5px;">I Agree to realtymart
+            <label for="compare" class="compares" style="display: inline-flex; gap:5px;">I Agree to realtymart Terms of Use
               <!-- <span class="d-block"
                                 ><a
                                   routerlink="../terms-conditions"
@@ -2913,7 +2913,7 @@
           <div class="check-compare mt-3">
             <input type="checkbox" [(ngModel)]="formData.termsAccepted" (change)="onTermsChange($event)"
               name="termsAccepted" id="compare" [disabled]="is_token" value="compare add" class="mycheck" />
-            <label for="compare" class="compares" style="display: inline-flex; gap:5px;">I Agree to realtymart
+            <label for="compare" class="compares" style="display: inline-flex; gap:5px;">I Agree to realtymart Terms of Use
 
             </label>
             <br />

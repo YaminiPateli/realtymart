@@ -14,7 +14,7 @@
        <div class="row">
          <div class="col-lg-8  col-lg-offset-1">
            <div class="well">
-   
+
              <div class="form-group">
                <!-- <div class="col-md-12">
                  <span class="left-title">
@@ -24,18 +24,19 @@
                    [(ngModel)]="query.amount" placeholder="Loan Amount" name="pemi.highValue" />
                </div> -->
                <div class="col-md-12">
-                <span class="left-title">
-                  Home Loan Amount
-                </span>
-                <input type="text" style="width:44%;float:right;" class="form-control" (blur)="tbupdate(0)"
-                [(ngModel)]="query.amount" placeholder="Loan Amount" name="pemi.highValue" />
-            </div>
+                <span class="left-title">Home Loan Amount</span>
+                <div style="width: 44%; float: right; position: relative;">
+                  <span class="rupee-symbol">₹</span>
+                  <input type="text" class="form-control pl-4" (blur)="tbupdate(0)"
+                    [(ngModel)]="query.amount" placeholder="Loan Amount" name="pemi.highValue" />
+                </div>
+              </div>
                <ngx-slider [(value)]="pemi.value" [options]="poptions" (userChangeEnd)="update()">
                </ngx-slider>
              </div>
-   
+
              <hr />
-   
+
              <div class="form-group">
                <div class="col-md-12">
                  <span class="left-title">
@@ -48,7 +49,7 @@
                </ngx-slider>
              </div>
              <hr />
-   
+
              <div class="form-group">
                <div class="col-md-10">
                  <span class="left-title">Loan Tenure</span>
@@ -70,35 +71,35 @@
                <ngx-slider *ngIf="!yrToggel" [(value)]="memi.value" [options]="moptions" (userChangeEnd)="update()">
                </ngx-slider>
              </div>
-   
-   
-   
+
+
+
            </div>
-   
+
          </div>
          <div class="col-lg-3">
            <div class="well">
-   
+
              <div class="jusify-center">
                <h5>
                  Loan EMI
                </h5>
                <span class="result">
-                 {{result.emi || "--"}}
+                 ₹ {{result.emi || "--"}}
                </span>
              </div>
-   
+
              <hr />
-   
+
              <div>
                <h5>
                  Total Interest Payable
                </h5>
                <span class="result">
-                 {{result.interest || "--"}}
+                 ₹ {{result.interest || "--"}}
                </span>
              </div>
-   
+
              <hr />
              <div>
                <h5>
@@ -108,19 +109,19 @@
                  (Principal + Interest)
                </h6>
                <span class="result">
-                 {{result.total || "--"}}
+                 ₹ {{result.total || "--"}}
                </span>
              </div>
            </div>
          </div>
        </div>
-     </div> 
+     </div>
    </div>
   </div>
 </section>
 
 <section class="home-loan-clc">
-    <div class="container">       
+    <div class="container">
         <h2 class="home-loantitle">Home Loan EMI Calculator</h2>
         <p class="emi-text">A home loan EMI calculator is a tool that helps you calculate your monthly instalments (EMIs) with just one click. Home loan calculator is really helpful and can be used easily by any individual who wants to know their Home Loan EMIs in advance.</p>
         <p class="emi-text">To calculate your Home loan EMI, you need to enter the loan amount, interest rate, and the tenure of the loan.</p>
@@ -132,7 +133,7 @@
           <strong>Step 2:</strong> Enter the tenure (in years) for which you want to borrow<br>
           <strong>Step 3:</strong> Enter the rate of interest <br>
           <strong>Step 4:</strong> Click on “Calculate Your EMI”</p>
-        
+
         <p class="emi-text">After you take all these steps, you will be able to view your monthly instalment on your home loan.</p>
 
         <h2 class="emi-help-pont">How the Home Loan Calculator Helps You</h2>
