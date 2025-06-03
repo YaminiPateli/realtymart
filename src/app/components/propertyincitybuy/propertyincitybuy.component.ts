@@ -142,11 +142,11 @@ export class PropertyincitybuyComponent {
     // });
     this.loadProperties();
   }
-  
+
     // meta title
     setMetaTags(title: string, description: string) {
       this.titleService.setTitle(title);
-  
+
       this.metaService.updateTag({ name: 'description', content: description });
       this.metaService.updateTag({ property: 'og:title', content: title });
       this.metaService.updateTag({
@@ -631,7 +631,7 @@ export class PropertyincitybuyComponent {
     }
     this.sendOTPToMobile(); // Call this to send OTP to mobile
 
-    
+
     let contactModal = document.getElementById('contect-owner');
     let otpModal = document.getElementById('otpModel');
 
@@ -811,7 +811,7 @@ export class PropertyincitybuyComponent {
       return;
     }
     this.sendOTPContactToMobile();
-    
+
     let contactModal = document.getElementById('get-owner');
     let otpModal = document.getElementById('otpContactModel');
 
@@ -926,7 +926,7 @@ export class PropertyincitybuyComponent {
     const staticpart = '/property-details/';
     this.dynamicUrl = this.url + staticpart + urlPart1 + '/' + urlPart2;
   }
-  
+
     fetchCities() {
       this.http.get<{ data: { id: number; name: string }[] }>(`${environment.apiUrl}cities`).subscribe(
         (response: any) => {
@@ -969,7 +969,7 @@ export class PropertyincitybuyComponent {
 
   @Input() propertyLink: string = '';
   copyLink(event: MouseEvent) {
-    navigator.clipboard.writeText(this.dynamicUrl).then(() => 
+    navigator.clipboard.writeText(this.dynamicUrl).then(() =>
       {
       this.showTooltip(event);
     }, (err) => {
@@ -977,13 +977,33 @@ export class PropertyincitybuyComponent {
     });
 }
 
+  twitterShare() {
+    const text = encodeURIComponent('Check this out!');
+    const url = encodeURIComponent(this.dynamicUrl);
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    window.open(twitterUrl, '_blank');
+  }
+
+  facebookShare() {
+    const url = encodeURIComponent(this.dynamicUrl);
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    window.open(facebookUrl, '_blank');
+  }
+
+  emailShare() {
+    const subject = encodeURIComponent('Check this out');
+    const body = encodeURIComponent(`Here is something interesting: ${this.dynamicUrl}`);
+    const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
+    window.open(mailtoLink, '_blank');
+  }
+
 showTooltip(event: MouseEvent): void {
   const button = event.target as HTMLElement;
   const buttonRect = button.getBoundingClientRect();
   this.tooltipPosition = {
     top: `${buttonRect.top - 50}px`,
     left: `${buttonRect.left + 60}px`,
-    
+
   };
 
   this.tooltipVisible = true;

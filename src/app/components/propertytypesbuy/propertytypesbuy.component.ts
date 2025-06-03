@@ -144,7 +144,7 @@ export class PropertytypesbuyComponent {
       .split('-')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join('-');
-  }  
+  }
 
   ngOnInit() {
     const token = localStorage.getItem('myrealtylogintoken');
@@ -213,10 +213,10 @@ export class PropertytypesbuyComponent {
     const type = this.route.snapshot.paramMap.get('type');
     const city = this.route.snapshot.paramMap.get('city');
     if (this.isLoading || this.currentPage > this.lastPage) return;
-  
+
       this.isLoading = true;
       this.loading = true;
-  
+
       const lastElement = document.querySelectorAll('.maching-myproperties');
       const lastItem = lastElement[lastElement.length - 1];
       const lastItemOffset = lastItem ? lastItem.getBoundingClientRect().top : 0;
@@ -273,7 +273,7 @@ export class PropertytypesbuyComponent {
     });
     // this.metaService.updateTag({ name: 'twitter:image', content: image });
   }
-  
+
   getUrl(urlPart1: any, urlPart2: any) {
     this.url = window.location.origin;
     const staticpart = '/property-details/';
@@ -1063,6 +1063,26 @@ export class PropertytypesbuyComponent {
       console.log('failed copy')
     });
 }
+
+  twitterShare() {
+    const text = encodeURIComponent('Check this out!');
+    const url = encodeURIComponent(this.dynamicUrl);
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    window.open(twitterUrl, '_blank');
+  }
+
+  facebookShare() {
+    const url = encodeURIComponent(this.dynamicUrl);
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    window.open(facebookUrl, '_blank');
+  }
+
+  emailShare() {
+    const subject = encodeURIComponent('Check this out');
+    const body = encodeURIComponent(`Here is something interesting: ${this.dynamicUrl}`);
+    const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
+    window.open(mailtoLink, '_blank');
+  }
 
 showTooltip(event: MouseEvent): void {
   const button = event.target as HTMLElement;

@@ -15,7 +15,10 @@
         <span style="font-size: larger; font-weight: 800">Data Not Found!</span>
       </div>
 
-      <div class="maching-myproperties" *ngFor="let ownerlauchedproperty of ownerlauchedproperty">
+      <div
+        class="maching-myproperties"
+        *ngFor="let ownerlauchedproperty of ownerlauchedproperty"
+      >
         <!-- <div class="maching-myproperties"  *ngFor="let ownerlauchedproperty of ownerlauchedproperty | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }; let i = index"> -->
         <div class="row">
           <div class="col-lg-3 col-md-5 col-sm-12">
@@ -31,8 +34,13 @@
                   class="slide"
                   *ngFor="let item of ownerlauchedproperty.property_img"
                 >
-                  <a routerLink="{{ item }}" data-fancybox="gallery"
-                  (click)="openGallery(ownerlauchedproperty.property_img, $event)">
+                  <a
+                    routerLink="{{ item }}"
+                    data-fancybox="gallery"
+                    (click)="
+                      openGallery(ownerlauchedproperty.property_img, $event)
+                    "
+                  >
                     <img src="{{ item }}" alt="Gallery" class="img-fluid" />
                   </a>
                 </div>
@@ -54,7 +62,13 @@
           </div>
           <div class="col-lg-9 col-md-8 col-sm-12">
             <div class="wich-location">
-              <a target="_blank" routerLink="/property-details/{{ ownerlauchedproperty.propertyfirstUrlPart }}/{{ ownerlauchedproperty.propertysecondUrlPart }}" class="tap-location">
+              <a
+                target="_blank"
+                routerLink="/property-details/{{
+                  ownerlauchedproperty.propertyfirstUrlPart
+                }}/{{ ownerlauchedproperty.propertysecondUrlPart }}"
+                class="tap-location"
+              >
                 <h3 class="groups-companies-names">
                   {{ ownerlauchedproperty.property_locality }}
                 </h3></a
@@ -575,7 +589,7 @@
       <div class="modal-body text-center">
         <div class="d-flex flex-wrap justify-content-around my-3">
           <div>
-            <button class="btn">
+            <button class="btn" (click)="emailShare()">
               <svg viewBox="0 0 64 64" width="56" height="56">
                 <circle cx="32" cy="32" r="32" fill="#7f7f7f"></circle>
                 <path
@@ -599,7 +613,7 @@
             </button>
           </div>
           <div>
-            <button class="btn">
+            <button class="btn" (click)="facebookShare()">
               <svg viewBox="0 0 64 64" width="56" height="56">
                 <circle cx="32" cy="32" r="32" fill="#0965FE"></circle>
                 <path
@@ -611,7 +625,7 @@
             </button>
           </div>
           <div>
-            <button class="btn">
+            <button class="btn" (click)="twitterShare()">
               <svg viewBox="0 0 64 64" width="56" height="56">
                 <circle cx="32" cy="32" r="32" fill="#000000"></circle>
                 <path
@@ -935,7 +949,11 @@
           <div *ngIf="termsContactError" class="mgs_error">
             Please agree to the terms and conditions.
           </div>
-          <button type="submit" class="pp-form__cta" [disabled]="emailContactError">
+          <button
+            type="submit"
+            class="pp-form__cta"
+            [disabled]="emailContactError"
+          >
             {{ is_token ? "Submit Enquiry" : "Continue" }}
           </button>
         </form>

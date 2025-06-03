@@ -10,7 +10,7 @@
 
     <section class="all-projects-agents">
         <div class="container">
-            <div *ngIf="agentlist.length === 0"
+            <div *ngIf="agentlist?.length === 0"
                 style="text-align: center; padding: 30px;">
                 <span style="font-size: larger;font-weight: 800;">Data Not
                     Found!</span>
@@ -24,7 +24,7 @@
                             data-bs-target="#pills-topAgents" type="button"
                             role="tab" aria-controls="pills-topAgents"
                             aria-selected="true">Agents
-                            ({{agentlist.length}})</button>
+                            ({{agentlists?.length}})</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="project-link"
@@ -70,27 +70,27 @@
                             </div> -->
                         </div>
                         <div class="project-detail-box"
-                            *ngFor="let agentlist of agentlist">
+                            *ngFor="let agentlists of agentlist">
                             <div class="row">
                                 <div class="col-lg-2 col-md-6 col-sm-12">
-                                    <img src="{{ agentlist.agent_logo }}"
+                                    <img src="{{ agentlists?.agent_logo }}"
                                         alt="VITAL-SPACE-LOGO" class="img-fluid">
                                 </div>
                                 <div class="col-lg-7 col-md-12 col-sm-12">
                                     <div class="name-of-companys">
                                         <a
-                                            routerLink="/agents-details/{{ agentlist.agentUrl }}">{{
-                                            agentlist.company_name }}</a>
+                                            routerLink="/agents-details/{{ agentlists?.agentUrl }}">{{
+                                            agentlists?.company_name }}</a>
                                     </div>
 
                                     <div class="row show_work">
                                         <div class="col-md-3 border-right">
-                                            <h6>{{agentlist.propertyForSell}}</h6>
+                                            <h6>{{ agentlists?.totalSellPropertyCount }}</h6>
                                             <p class="project-text">Properties
                                                 For Sale</p>
                                         </div>
                                         <div class="col-md-3">
-                                            <h6>{{agentlist.propertyForRent}}</h6>
+                                            <h6>{{ agentlists?.totalRentPropertyCount }}</h6>
                                             <p class="project-text">Properties
                                                 For rent</p>
                                         </div>
@@ -108,30 +108,30 @@
 
                                     <!-- <div class="detail-new-ponts">
                                         <h2>Dealing In:</h2>
-                                        <p>{{ agentlist.deal_in }}</p>
+                                        <p>{{ agentlists?.deal_in }}</p>
                                     </div> -->
-                                    <div class="detail-new-ponts" *ngIf="agentlist.sellpropertycount !== null">
+                                    <div class="detail-new-ponts" *ngIf="agentlists?.sellpropertycount !== null">
                                         <h2>Properties for Sale:</h2>
-                                        <p>{{agentlist.sellpropertycount}}
+                                        <p>{{ agentlists?.sellpropertycount }}
                                         </p>
                                     </div>
                                     <div class="detail-new-ponts">
                                         <h2>Address:</h2>
-                                        <p>{{ agentlist.address }}</p>
+                                        <p>{{ agentlists?.address }}</p>
                                     </div>
                                     <!-- <div class="detail-new-ponts">
                                         <h2>Sale Price Range:</h2>
-                                        <p>₹ {{ agentlist.sale_price_range
+                                        <p>₹ {{ agentlists?.sale_price_range
                                             }}</p>
                                     </div> -->
                                     <div class="detail-new-ponts">
                                         <h2>Operating Since:</h2>
-                                        <p>{{ agentlist.operating_since }}</p>
+                                        <p>{{ agentlists?.operating_since }}</p>
                                     </div>
                                     <!-- Read more implement ............ -->
                                 </div>
                                 <div class="col-lg-3 col-md-12 col-sm-12"
-                                    *ngIf="agentlist && agentlist.is_certified === '1'">
+                                    *ngIf="agentlist && agentlists?.is_certified === '1'">
                                     <div class="certified-details">
                                         <h3 class="gold-certified"><span
                                                 class="me-2"><img

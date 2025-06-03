@@ -369,7 +369,6 @@
     id="contact-owner"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
   >
     <div
       class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable"
@@ -515,12 +514,12 @@
                 [disabled]="is_token"
                 (change)="onTermsChange($event)"
                 name="termsAccepted"
-                id="compare"
+                id="comparess"
                 value="compare add"
                 class="mycheck"
               />
               <label
-                for="compare"
+                for="comparess"
                 class="compares"
                 style="display: inline-flex; gap: 5px"
                 >I Agree to realtymart Terms of Use
@@ -699,7 +698,6 @@
   id="shareModal"
   tabindex="-1"
   aria-labelledby="shareModalLabel"
-  aria-hidden="true"
 >
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -715,7 +713,7 @@
       <div class="modal-body text-center">
         <div class="d-flex justify-content-around my-3">
           <div>
-            <button class="btn">
+            <button class="btn" (click)="emailShare()">
               <svg viewBox="0 0 64 64" width="56" height="56">
                 <circle cx="32" cy="32" r="32" fill="#7f7f7f"></circle>
                 <path
@@ -727,7 +725,7 @@
             </button>
           </div>
           <div>
-            <button class="btn">
+            <button class="btn" (click)="whatsappShare()">
               <svg viewBox="0 0 64 64" width="56" height="56">
                 <circle cx="32" cy="32" r="32" fill="#25D366"></circle>
                 <path
@@ -739,7 +737,7 @@
             </button>
           </div>
           <div>
-            <button class="btn">
+            <button class="btn" (click)="facebookShare()">
               <svg viewBox="0 0 64 64" width="56" height="56">
                 <circle cx="32" cy="32" r="32" fill="#0965FE"></circle>
                 <path
@@ -751,7 +749,7 @@
             </button>
           </div>
           <div>
-            <button class="btn">
+            <button class="btn" (click)="twitterShare()">
               <svg viewBox="0 0 64 64" width="56" height="56">
                 <circle cx="32" cy="32" r="32" fill="#000000"></circle>
                 <path
@@ -795,11 +793,8 @@
   id="get-owner"
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
 >
-  <div
-    class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable"
-  >
+  <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header sign-in-box">
         <button
@@ -968,7 +963,6 @@
         <button
           type="button"
           class="btn reg_sub"
-          data-bs-dismiss="modal"
           (click)="verifyContactOTP()"
         >
         Verify

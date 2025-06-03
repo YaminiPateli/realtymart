@@ -524,7 +524,7 @@
       <div class="modal-body text-center">
         <div class="d-flex flex-wrap justify-content-around my-3">
           <div>
-            <button class="btn">
+            <button class="btn" (click)="emailShare()">
               <svg viewBox="0 0 64 64" width="56" height="56">
                 <circle cx="32" cy="32" r="32" fill="#7f7f7f"></circle>
                 <path
@@ -548,7 +548,7 @@
             </button>
           </div>
           <div>
-            <button class="btn">
+            <button class="btn" (click)="facebookShare()">
               <svg viewBox="0 0 64 64" width="56" height="56">
                 <circle cx="32" cy="32" r="32" fill="#0965FE"></circle>
                 <path
@@ -560,7 +560,7 @@
             </button>
           </div>
           <div>
-            <button class="btn">
+            <button class="btn" (click)="twitterShare()">
               <svg viewBox="0 0 64 64" width="56" height="56">
                 <circle cx="32" cy="32" r="32" fill="#000000"></circle>
                 <path

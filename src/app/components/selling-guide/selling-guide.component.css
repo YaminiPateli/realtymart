@@ -241,7 +241,7 @@ select[id="ownerISD"] {
         font-size: 38px;
         line-height: 40px;
       }
-    
+
       .free_advertisement span {
         font-size: 44px;
       }
@@ -328,4 +328,8 @@ select[id="ownerISD"] {
     font-size: 20px;
     line-height: 30px;
   }
+}
+
+.pp-exit-intent__form__error{
+  color: red;
 }

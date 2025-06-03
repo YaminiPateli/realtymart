@@ -1,4 +1,11 @@
-import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
@@ -96,8 +103,8 @@ export class OwnerpropertyComponent {
   checkToken: any;
   is_token: boolean = false;
   city: any;
-  city1:City[]=[];
-  validcityforselected:any;
+  city1: City[] = [];
+  validcityforselected: any;
 
   constructor(
     private titleService: Title,
@@ -107,7 +114,7 @@ export class OwnerpropertyComponent {
     private tost: ToastrService,
     private spinner: NgxSpinnerService,
     private activityTrackerService: ActivityTrackerService,
-    private router: Router,
+    private router: Router
   ) {
     setTimeout(() => {
       this.loadProperties();
@@ -142,10 +149,10 @@ export class OwnerpropertyComponent {
             ...this.ownerlauchedproperty,
             ...(response.responseData.isownerproperty?.data || []),
           ];
-            this.setMetaTags(
-              response.responseData.meta.title,
-              response.responseData.meta.description,
-            );
+          this.setMetaTags(
+            response.responseData.meta.title,
+            response.responseData.meta.description
+          );
 
           this.lastPage = response.responseData?.isownerproperty?.last_page;
 
@@ -168,7 +175,7 @@ export class OwnerpropertyComponent {
       );
   }
 
-    // meta title
+  // meta title
   setMetaTags(title: string, description: string) {
     this.titleService.setTitle(title);
 
@@ -307,7 +314,7 @@ export class OwnerpropertyComponent {
       receiver_user_id: this.contact?.property?.user_id,
       leads_type: 'contact-owner',
       leads_for: 'Property',
-      location:this.city,
+      location: this.city,
       // project_Id:this.singleproject.id,
       // leads_for:this.singleproject.property_for,
       // receiver_user_id:this.singleproject.user_id,
@@ -324,7 +331,10 @@ export class OwnerpropertyComponent {
       .subscribe(
         (response: any) => {
           if (response.status === true) {
-            this.activityTrackerService.logActivity('Inquiry stored for property','');
+            this.activityTrackerService.logActivity(
+              'Inquiry stored for property',
+              ''
+            );
             this.tost.success('Inquiry Addded successfully!');
             // const elementToClick = this.elementRef.nativeElement.querySelector('#contactownerbuttonclose');
             const modalElement = document.getElementById('contect-owner');
@@ -341,7 +351,7 @@ export class OwnerpropertyComponent {
       );
   }
 
-   validateCharInput(event: KeyboardEvent) {
+  validateCharInput(event: KeyboardEvent) {
     const charCode = event.which ? event.which : event.keyCode;
     const inputElement = event.target as HTMLInputElement;
 
@@ -408,7 +418,7 @@ export class OwnerpropertyComponent {
   }
 
   verifyOTP() {
-    console.log(this.formData.contact_no,'this.formData.contact_no')
+    console.log(this.formData.contact_no, 'this.formData.contact_no');
     if (this.formData.otp == '') {
       this.tost.error('Please Enter OTP');
       return;
@@ -550,7 +560,6 @@ export class OwnerpropertyComponent {
     }
     this.sendOTPToMobile(); // Call this to send OTP to mobile
 
-    
     let contactModal = document.getElementById('contect-owner');
     let otpModal = document.getElementById('otpModel');
 
@@ -607,7 +616,7 @@ export class OwnerpropertyComponent {
       agent_id: this.singleProp.agent_id,
       leads_type: 'call for price',
       leads_for: 'Property',
-      location:this.city
+      location: this.city,
     };
     const token = localStorage.getItem('myrealtylogintoken');
 
@@ -619,7 +628,10 @@ export class OwnerpropertyComponent {
       .subscribe(
         (response: any) => {
           if (response.status === true) {
-            this.activityTrackerService.logActivity('Inquiry stored for property','');
+            this.activityTrackerService.logActivity(
+              'Inquiry stored for property',
+              ''
+            );
             this.tost.success('Inquiry Addeded successfully!');
             const modalElement = document.getElementById('get-owner');
             if (modalElement) {
@@ -730,7 +742,7 @@ export class OwnerpropertyComponent {
       return;
     }
     this.sendOTPContactToMobile();
-    
+
     let contactModal = document.getElementById('get-owner');
     let otpModal = document.getElementById('otpContactModel');
 
@@ -811,21 +823,9 @@ export class OwnerpropertyComponent {
           this.isResendEnabled = false;
           this.isMobileNumberDisabled = true;
 
-          // Optional: Delay for user feedback before hiding
           setTimeout(() => {
             this.spinner.hide();
           }, 1000); // Adjust the delay as needed
-          // if (
-          //   this.nameContactError||
-          //   this.phoneContactError ||
-          //   this.emailContactError
-          // ) {
-          //   return;
-          // }
-          // else {
-          //   this.submitFormPhone();
-          // }
-
           this.spinner.hide();
         } else {
           this.tost.error('Wrong OTP entered. Please try again.');
@@ -840,28 +840,35 @@ export class OwnerpropertyComponent {
       }
     );
   }
+  
   getUrl(urlPart1: any, urlPart2: any) {
     this.url = window.location.origin;
     const staticpart = '/property-details/';
     this.dynamicUrl = this.url + staticpart + urlPart1 + '/' + urlPart2;
     // console.log(this.dynamicUrl);
   }
-  
-    fetchCities() {
-      this.http.get<{ data: { id: number; name: string }[] }>(`${environment.apiUrl}cities`).subscribe(
+
+  fetchCities() {
+    this.http
+      .get<{ data: { id: number; name: string }[] }>(
+        `${environment.apiUrl}cities`
+      )
+      .subscribe(
         (response: any) => {
           this.city1 = response.responseData.map((city: any) => ({
             cid: city.id,
-            cname: city.name
+            cname: city.name,
           }));
           this.validcityforselected = response.validCities;
-          const defaultCity = this.city1.find(city => city.cname === this.city);
+          const defaultCity = this.city1.find(
+            (city) => city.cname === this.city
+          );
         },
         (error: any) => {
           console.error('API Error:', error);
         }
       );
-    }
+  }
 
   isValidCity(city: string): boolean {
     return this.validcityforselected.includes(city);
@@ -891,32 +898,54 @@ export class OwnerpropertyComponent {
   }
 
   // Share and copy link
-
   @Input() propertyLink: string = '';
   copyLink(event: MouseEvent) {
-    navigator.clipboard.writeText(this.dynamicUrl).then(() => 
-      {
-      this.showTooltip(event);
-    }, (err) => {
-      console.log('failed copy')
-    });
-}
+    navigator.clipboard.writeText(this.dynamicUrl).then(
+      () => {
+        this.showTooltip(event);
+      },
+      (err) => {
+        console.log('failed copy');
+      }
+    );
+  }
 
-showTooltip(event: MouseEvent): void {
-  const button = event.target as HTMLElement;
-  const buttonRect = button.getBoundingClientRect();
-  this.tooltipPosition = {
-    top: `${buttonRect.top - 50}px`,
-    left: `${buttonRect.left + 60}px`,
-    
-  };
+  twitterShare() {
+    const text = encodeURIComponent('Check this out!');
+    const url = encodeURIComponent(this.dynamicUrl);
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    window.open(twitterUrl, '_blank');
+  }
 
-  this.tooltipVisible = true;
+  facebookShare() {
+    const url = encodeURIComponent(this.dynamicUrl);
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    window.open(facebookUrl, '_blank');
+  }
 
-  setTimeout(() => {
-    this.tooltipVisible = false;
-  }, 1500);
-}
+  emailShare() {
+    const subject = encodeURIComponent('Check this out');
+    const body = encodeURIComponent(
+      `Here is something interesting: ${this.dynamicUrl}`
+    );
+    const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
+    window.open(mailtoLink, '_blank');
+  }
+
+  showTooltip(event: MouseEvent): void {
+    const button = event.target as HTMLElement;
+    const buttonRect = button.getBoundingClientRect();
+    this.tooltipPosition = {
+      top: `${buttonRect.top - 50}px`,
+      left: `${buttonRect.left + 60}px`,
+    };
+
+    this.tooltipVisible = true;
+
+    setTimeout(() => {
+      this.tooltipVisible = false;
+    }, 1500);
+  }
 
   // Image slider
 

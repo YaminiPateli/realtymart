@@ -1,4 +1,11 @@
-import { Component, ElementRef, HostListener, Injectable, Input, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  Injectable,
+  Input,
+  ViewChild,
+} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -147,14 +154,18 @@ export class OwnerpropertyrentComponent {
           const oldScrollY = window.scrollY;
 
           this.ownerlauchedproperty = this.ownerlauchedproperty || [];
-          this.ownerlauchedproperty = [...this.ownerlauchedproperty, ...(response.responseData?.isownerproperty?.data || []),];
-        this.setMetaTags(
-          response.responseData.meta.title,
-          response.responseData.meta.description,
-            );
+          this.ownerlauchedproperty = [
+            ...this.ownerlauchedproperty,
+            ...(response.responseData?.isownerproperty?.data || []),
+          ];
+          this.setMetaTags(
+            response.responseData.meta.title,
+            response.responseData.meta.description
+          );
 
           this.lastPage = response?.data?.last_page;
-          this.ownerlauchedpropertycount = response?.responseData?.isownerproperty?.total;
+          this.ownerlauchedpropertycount =
+            response?.responseData?.isownerproperty?.total;
 
           this.currentPage++;
           this.isLoading = false;
@@ -173,28 +184,28 @@ export class OwnerpropertyrentComponent {
           this.loading = false;
         }
       );
+  }
+
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    const items = document.querySelectorAll('.maching-myproperties');
+    if (items.length < 20) return;
+
+    const lastVisibleItem = items[items.length - 2];
+    if (!lastVisibleItem) return;
+
+    const rect = lastVisibleItem.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (rect.top < windowHeight && !this.isLoading) {
+      clearTimeout(this.scrollTimeout);
+      this.scrollTimeout = setTimeout(() => {
+        this.loadOwnerProperty();
+      }, 200);
     }
+  }
 
-    @HostListener('window:scroll', [])
-    onScroll(): void {
-      const items = document.querySelectorAll('.maching-myproperties');
-      if (items.length < 20) return;
-
-      const lastVisibleItem = items[items.length - 2];
-      if (!lastVisibleItem) return;
-
-      const rect = lastVisibleItem.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      if (rect.top < windowHeight && !this.isLoading) {
-        clearTimeout(this.scrollTimeout);
-        this.scrollTimeout = setTimeout(() => {
-          this.loadOwnerProperty();
-        }, 200);
-      }
-    }
-
-    // meta title
+  // meta title
   setMetaTags(title: string, description: string) {
     this.titleService.setTitle(title);
 
@@ -375,7 +386,6 @@ export class OwnerpropertyrentComponent {
     }
   }
 
-
   fetchCities() {
     this.http
       .get<{ data: { id: number; name: string }[] }>(
@@ -401,7 +411,6 @@ export class OwnerpropertyrentComponent {
   isValidCity(city: string): boolean {
     return this.validcityforselected.includes(city);
   }
-
 
   verifyOTP() {
     if (this.formData.otp == '') {
@@ -542,8 +551,6 @@ export class OwnerpropertyrentComponent {
       );
   }
 
-
-
   verifyContactOTP() {
     if (this.formDataphone.contactotp == '') {
       this.tost.error('Please Enter OTP');
@@ -612,7 +619,6 @@ export class OwnerpropertyrentComponent {
   //   }, 500);
   //   }
   // }
-
 
   // updatePaginatedData(): void {
   //   const startIndex = (this.currentPage - 1) * this.pageSize;
@@ -748,26 +754,28 @@ export class OwnerpropertyrentComponent {
       .set('Authorization', `Bearer ${token}`)
       .set('Accept', 'application/json');
 
-    this.http.post(`${this.apiUrl}storeinquiry`, payload,{headers}).subscribe(
-      (response: any) => {
-        if (response.status === true) {
-          this.activityTrackerService.logActivity(
-            'Inquiry stored for property',
-            ''
-          );
-          this.tost.success('Inquiry Addeded successfully!');
-          const modalElement = document.getElementById('contact-owner');
-          if (modalElement) {
-            const modalInstance = bootstrap.Modal.getInstance(modalElement);
-            modalInstance?.hide();
+    this.http
+      .post(`${this.apiUrl}storeinquiry`, payload, { headers })
+      .subscribe(
+        (response: any) => {
+          if (response.status === true) {
+            this.activityTrackerService.logActivity(
+              'Inquiry stored for property',
+              ''
+            );
+            this.tost.success('Inquiry Addeded successfully!');
+            const modalElement = document.getElementById('contact-owner');
+            if (modalElement) {
+              const modalInstance = bootstrap.Modal.getInstance(modalElement);
+              modalInstance?.hide();
+            }
+            this.resetForm();
           }
-          this.resetForm();
+        },
+        (error) => {
+          console.error('Error sending data', error);
         }
-      },
-      (error) => {
-        console.error('Error sending data', error);
-      }
-    );
+      );
   }
 
   validateCharInput(event: KeyboardEvent) {
@@ -977,6 +985,28 @@ export class OwnerpropertyrentComponent {
         console.log('failed copy');
       }
     );
+  }
+
+  twitterShare() {
+    const text = encodeURIComponent('Check this out!');
+    const url = encodeURIComponent(this.dynamicUrl);
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    window.open(twitterUrl, '_blank');
+  }
+
+  facebookShare() {
+    const url = encodeURIComponent(this.dynamicUrl);
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    window.open(facebookUrl, '_blank');
+  }
+
+  emailShare() {
+    const subject = encodeURIComponent('Check this out');
+    const body = encodeURIComponent(
+      `Here is something interesting: ${this.dynamicUrl}`
+    );
+    const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
+    window.open(mailtoLink, '_blank');
   }
 
   showTooltip(event: MouseEvent): void {

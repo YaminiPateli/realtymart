@@ -474,26 +474,26 @@
       <div class="modal-body fill_pop">
         <h2>Need help in posting your property?</h2>
         <p>Let our Property Expert help you.</p>
-        <form
-          [formGroup]="contactStore"
-          (ngSubmit)="addContact(clearaddform)"
-          #clearaddform="ngForm"
-        >
+        <form [formGroup]="contactStore" (ngSubmit)="addContact()">
           <div class="pp-exit-intent__form">
             <div class="pp-exit-intent__mobile">
-              <span class="pp-exit-intent__mobile-isd"> +91</span>
+              <span class="pp-exit-intent__mobile-isd">+91</span>
               <input
                 type="tel"
-                name="mobile"
+                formControlName="mobile"
                 placeholder="Enter Mobile No."
                 class="pp-exit-intent__mobile-input"
                 id="exitMobile"
               />
             </div>
-            <div class="pp-exit-intent__form__error" style="display: none">
+            <div
+              class="pp-exit-intent__form__error"
+              *ngIf="contactStore.get('mobile')?.invalid && contactStore.get('mobile')?.touched"
+            >
               Please enter a valid mobile number
             </div>
           </div>
+
           <div class="pp-exit-intent__action">
             <a
               data-bs-dismiss="modal"
@@ -501,10 +501,9 @@
               class="pp-exit-intent__btn pp-exit-intent__btn--white"
               >Maybe Later</a
             >
-            <button class="pp-exit-intent__btn">Submit</button>
+            <button type="submit" class="pp-exit-intent__btn">Submit</button>
           </div>
         </form>
-
         <div class="pp-exit-intent__footer">
           Need some help? Give us a call at
           <a routerLink="tel:918448818983">+91xxxxxxxxxx</a>

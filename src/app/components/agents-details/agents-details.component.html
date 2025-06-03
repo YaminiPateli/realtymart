@@ -174,9 +174,10 @@
               </div>
               <div class="verified-humen-details">
                 <h5>{{ singleagent.name }}</h5>
-                <a routerLink="{{ singleagent.map_link }}">See Location Map</a>
+                <!-- <a routerLink="{{ singleagent.map_link }}">See Location Map</a> -->
+                <a *ngIf="singleagent?.map_link != null" target="_blank" [href]="'https://www.google.com/maps/place/' + singleagent?.map_link?.replace(' ', '')">See Location Map</a>
                 <div class="view-phone-humen">
-                  <a href="#">VIEW PHONE NO.</a>
+                  <a href="javascript::void(0)">VIEW PHONE NO.</a>
                 </div>
               </div>
             </div>

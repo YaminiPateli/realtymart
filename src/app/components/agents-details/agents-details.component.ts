@@ -55,7 +55,7 @@ export class AgentsDetailsComponent implements OnInit {
   termsContactError:boolean=false;
   otpError: boolean = false;
   isResendEnabled = false;
-  isMobileNumberDisabled: boolean = false; 
+  isMobileNumberDisabled: boolean = false;
   isSubmitting = false;
   remainingTime: number = 60;
   private timer: any;
@@ -64,7 +64,7 @@ export class AgentsDetailsComponent implements OnInit {
     contactusername: '',
     contactuseremail: '',
     contactcountrycode: 'IN +91',
-    contactcontact_no: null, 
+    contactcontact_no: null,
     contactproperty_for: '',
     contactotp: '',
     termsContactAccepted: false
@@ -185,13 +185,13 @@ export class AgentsDetailsComponent implements OnInit {
     // leads_for:'',
     receiver_user_id:this.singleagent.user_id,
     location:this.city,
-    
+
       // contact_no :this.formDataphone.contactcontact_no,
       // useremail:this.formDataphone.contactuseremail,
       // username:this.formDataphone.contactusername
     }
     const token = localStorage.getItem('myrealtylogintoken');
-      
+
          const headers = new HttpHeaders()
            .set('Authorization', `Bearer ${token}`)
            .set('Accept', 'application/json');
@@ -199,14 +199,14 @@ export class AgentsDetailsComponent implements OnInit {
       .subscribe((response: any) => {
         if (response.status === true) {
           this.activityTrackerService.logActivity('Inquiry stored for Agent','');
-        this.toastr.success('Inquiry Addeded successfully!');
+        this.toastr.success('We have received your inquiry. Our team will get back to you within 24 working hours.');
         const modalElement = document.getElementById('get-builder');
         if (modalElement) {
           const modalInstance = bootstrap.Modal.getInstance(modalElement);
           modalInstance?.hide();
         }
         this.resetContactForm();
-      } 
+      }
       }, (error) => {
         console.error('Error sending data', error);
       });
@@ -306,9 +306,9 @@ export class AgentsDetailsComponent implements OnInit {
       return;
     }
     if (this.phoneContactError) {
-      return; 
+      return;
     }
-    this.sendOTPContactToMobile(); 
+    this.sendOTPContactToMobile();
   }
 
   resendContactOTP() {
@@ -367,7 +367,7 @@ export class AgentsDetailsComponent implements OnInit {
       .subscribe(
         (response: any) => {
           if (response.status == true) {
-            this.toastr.success('OTP verified successfully.');
+            // this.toastr.success('OTP verified successfully.');
             const modalElement = this.otpContactModel.nativeElement;
             const modal = bootstrap.Modal.getInstance(modalElement);
             if (modal) {
@@ -406,22 +406,22 @@ export class AgentsDetailsComponent implements OnInit {
         }
       );
   }
-  
+
   startTimer() {
     this.isResendEnabled = false;
-    this.remainingTime = 60; 
+    this.remainingTime = 60;
     clearInterval(this.timer);
-  
+
     this.timer = setInterval(() => {
       this.remainingTime--;
-  
+
       if (this.remainingTime <= 0) {
         clearInterval(this.timer);
         this.isResendEnabled = true;
       }
     }, 1000);
   }
-  
+
   getFormattedDate(dateString: string) {
     // return this.datePipe.transform(dateString, 'MMMM, yyyy');
   }
@@ -445,11 +445,11 @@ export class AgentsDetailsComponent implements OnInit {
     }
   }
 
-  
+
 
   // agentresidentialagentpropertysell() {
   //   const agentId = this.route.snapshot.paramMap.get('name');
-    
+
 
   //   if (agentId) {
   //     this.propertysell.getagentresidentialpropertysell(parseInt(agentId)).subscribe(
@@ -546,7 +546,7 @@ export class AgentsDetailsComponent implements OnInit {
       this.countrcode[0].selected = true;
     });
   }
-  
+
     fetchCities() {
       this.http.get<{ data: { id: number; name: string }[] }>(`${environment.apiUrl}cities`).subscribe(
         (response: any) => {

@@ -39,6 +39,7 @@ export class SellingGuideComponent {
     private fb: FormBuilder,
     private elementRef: ElementRef,
     private route: Router,
+    private toaster: ToastrService
   ) {
     const Property = localStorage.getItem('postProperty');
     if(Property == 'true'){
@@ -80,7 +81,7 @@ export class SellingGuideComponent {
       this.toastr.error('Please fill all the fields');
       return;
     }
-
+    
     localStorage.setItem('postProperty', 'true');
     localStorage.setItem('postPropertyData', JSON.stringify(information.form.value));
     this.route.navigate(['/post-property-free']);
@@ -119,31 +120,60 @@ export class SellingGuideComponent {
     }, 15000); // 15 seconds delay
   }
 
-  addContact(clearaddform: any) {
+  // addContact(clearaddform: any) {
+  //   if (this.contactStore.valid) {
+  //     const formData = {
+  //       contact_no: this.contactStore.get('mobile')?.value,
+  //       // Add other form fields as needed
+  //     };
+
+  //     this.http.post(`${this.apiUrl}sellingguideinquiry`, formData)
+  //       .subscribe(
+  //         (response: any) => {
+  //           if (response.isSuccess === true) {
+  //             window.location.reload();
+  //             const elementToClick = this.elementRef.nativeElement.querySelector('.prt_popup');
+  //               if (elementToClick) {
+  //                 elementToClick.click();
+  //               }
+  //             clearaddform.resetForm();
+  //           } else {
+  //           }
+  //         },
+  //         (error: any) => {
+  //           console.error('Error sending data', error);
+  //           // Handle the error
+  //         }
+  //       );
+  //   }
+  // }
+
+   addContact() {
     if (this.contactStore.valid) {
       const formData = {
         contact_no: this.contactStore.get('mobile')?.value,
-        // Add other form fields as needed
       };
 
-      this.http.post(`${this.apiUrl}sellingguideinquiry`, formData)
-        .subscribe(
-          (response: any) => {
-            if (response.isSuccess === true) {
-              window.location.reload();
-              const elementToClick = this.elementRef.nativeElement.querySelector('.prt_popup');
-                if (elementToClick) {
-                  elementToClick.click();
-                }
-              clearaddform.resetForm();
-            } else {
+      this.http.post(`${this.apiUrl}helppostpropinq`, formData).subscribe(
+        (response: any) => {
+          if (response.status === true) {
+            // Close popup and refresh
+            const elementToClick = this.elementRef.nativeElement.querySelector('.prt_popup');
+            if (elementToClick) {
+              elementToClick.click();
             }
-          },
-          (error: any) => {
-            console.error('Error sending data', error);
-            // Handle the error
+            this.contactStore.reset();
+            this.toaster.success('Thank you for your interest! We will contact you soon.');
+          } else {
+            // Handle failed response
           }
-        );
+        },
+        (error: any) => {
+          console.error('Error sending data', error);
+        }
+      );
+    } else {
+      this.contactStore.markAllAsTouched();
     }
   }
 
