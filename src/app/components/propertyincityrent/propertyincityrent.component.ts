@@ -406,7 +406,7 @@ export class PropertyincityrentComponent {
         (response: any) => {
           if (response.status === true) {
             this.activityTrackerService.logActivity('Inquiry stored for property','');
-            this.tost.success('Inquiry Addded successfully!');
+            this.tost.success('We have received your inquiry. Our team will get back to you within 24 working hours.');
             // const elementToClick = this.elementRef.nativeElement.querySelector('#contactownerbuttonclose');
             const modalElement = document.getElementById('contect-owner');
             if (modalElement) {
@@ -502,7 +502,7 @@ export class PropertyincityrentComponent {
     this.http.post(`${this.apiUrl}verifyinquiryotp`, payload).subscribe(
       (response: any) => {
         if (response.status == true) {
-          this.tost.success('OTP verified successfully.');
+          // this.tost.success('OTP verified successfully.');
           const modalElement = this.otpModel.nativeElement;
           const modal = bootstrap.Modal.getInstance(modalElement);
           if (modal) {
@@ -701,7 +701,7 @@ export class PropertyincityrentComponent {
         (response: any) => {
           if (response.status === true) {
             this.activityTrackerService.logActivity('Inquiry stored for property','');
-            this.tost.success('Inquiry Addeded successfully!');
+            this.tost.success('We have received your inquiry. Our team will get back to you within 24 working hours.');
             const modalElement = document.getElementById('get-owner');
             if (modalElement) {
               const modalInstance = bootstrap.Modal.getInstance(modalElement);
@@ -879,8 +879,8 @@ export class PropertyincityrentComponent {
     this.http.post(`${this.apiUrl}verifyinquiryotp`, payload).subscribe(
       (response: any) => {
         if (response.status == true) {
-          this.tost.success('OTP verified successfully.');
-          const modalElement = this.otpModel.nativeElement;
+          // this.tost.success('OTP verified successfully.');
+          const modalElement = this.otpContactModel.nativeElement;
           const modal = bootstrap.Modal.getInstance(modalElement);
           if (modal) {
             modal.hide();

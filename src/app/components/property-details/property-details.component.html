@@ -16,8 +16,15 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-12 col-sm-12">
-          <div class="buy-image" *ngIf="singleproperty?.property_main_img !== null">
-            <img src="{{ singleproperty?.property_main_img }}" alt="" class="img-fluid" />
+          <div
+            class="buy-image"
+            *ngIf="singleproperty?.property_main_img !== null"
+          >
+            <img
+              src="{{ singleproperty?.property_main_img }}"
+              alt=""
+              class="img-fluid"
+            />
           </div>
         </div>
         <div class="col-lg-8 col-md-12 col-sm-12">
@@ -35,12 +42,21 @@
                     {{ singleproperty?.propertytypename }} in
                   </span>
                 </p>
-                <a class="buy-heading" *ngIf="singleproperty?.project_name !== null">{{ singleproperty?.project_name
-                  }}</a>
-                <p class="buy-location" *ngIf="singleproperty?.project_localities !== null">
+                <a
+                  class="buy-heading"
+                  *ngIf="singleproperty?.project_name !== null"
+                  >{{ singleproperty?.project_name }}</a
+                >
+                <p
+                  class="buy-location"
+                  *ngIf="singleproperty?.project_localities !== null"
+                >
                   <span class="locator-icon">
-                    <i class="fa-sharp fa-solid fa-location-dot" style="color: #000000"></i> </span>{{
-                  singleproperty?.property_locality }}
+                    <i
+                      class="fa-sharp fa-solid fa-location-dot"
+                      style="color: #000000"
+                    ></i> </span
+                  >{{ singleproperty?.property_locality }}
                 </p>
                 <!-- <div class="row mt-2" >
                   <div *ngIf="singleproperty?.floor_no !== null">
@@ -60,11 +76,18 @@
               </div>
               <div class="col-lg-3 col-md-4 col-12">
                 <div class="contact-buy-owner">
-                  <div class="name-owner" *ngIf="singleproperty?.owner_name !== null">
+                  <div
+                    class="name-owner"
+                    *ngIf="singleproperty?.owner_name !== null"
+                  >
                     <h6 class="project-titles"><strong>BUILDER</strong></h6>
                     <p class="project-text">{{ singleproperty?.owner_name }}</p>
                   </div>
-                  <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#get-builder">
+                  <button
+                    class="contact-buy-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#get-builder"
+                  >
                     CONTACT BUILDER
                   </button>
                 </div>
@@ -82,14 +105,28 @@
               </div> -->
                 <div *ngIf="singleproperty?.project_name !== null">
                   <h6 class="facility_title">Project</h6>
-                  <a routerLink="/project-details/{{ singleproperty?.ProjectfirstUrlPart }}/{{ singleproperty?.ProjectsecondUrlPart }}"
-                    target="_blank" class="project-text" style="cursor: pointer; ">{{ singleproperty?.project_name }}</a>
+                  <a
+                    routerLink="/project-details/{{
+                      singleproperty?.ProjectfirstUrlPart
+                    }}/{{ singleproperty?.ProjectsecondUrlPart }}"
+                    target="_blank"
+                    class="project-text"
+                    style="cursor: pointer"
+                    >{{ singleproperty?.project_name }}</a
+                  >
                 </div>
                 <!-- <a routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}" target="_blank" class="detail-head">{{ item.projectName }} -->
                 <div *ngIf="singleproperty?.builder_name !== null">
                   <h6 class="facility_title">Developer</h6>
-                  <a routerLink="/builder-detail/{{ singleproperty?.builderUrl}}" target="_blank" class="project-text"
-                    style="cursor: pointer; ">{{ singleproperty?.builder_name }}</a>
+                  <a
+                    routerLink="/builder-detail/{{
+                      singleproperty?.builderUrl
+                    }}"
+                    target="_blank"
+                    class="project-text"
+                    style="cursor: pointer"
+                    >{{ singleproperty?.builder_name }}</a
+                  >
                   <!-- <p class="project-text">
                   {{ singleproperty?.builder_name }}</p> -->
                 </div>
@@ -97,7 +134,10 @@
                   <h6 class="facility_title">WASHROOM</h6>
                   <p class="project-text">{{ singleproperty?.bathroom }}</p>
                 </div>
-                <div class="" *ngIf="singleproperty?.personal_washroom !== null">
+                <div
+                  class=""
+                  *ngIf="singleproperty?.personal_washroom !== null"
+                >
                   <h6 class="facility_title">PERSONAL WASHROOM</h6>
                   <p class="project-text">
                     {{ singleproperty?.personal_washroom }}
@@ -109,7 +149,10 @@
                     {{ singleproperty?.pantry_cafeteria }}
                   </p>
                 </div>
-                <div class="" *ngIf="singleproperty?.is_corner_property !== null">
+                <div
+                  class=""
+                  *ngIf="singleproperty?.is_corner_property !== null"
+                >
                   <h6 class="facility_title">CORNER PROPERTY</h6>
                   <p class="project-text">
                     {{ singleproperty?.is_corner_property == 1 ? "Yes" : "No" }}
@@ -145,15 +188,21 @@
                   <h6 class="facility_title">PLOT WIDTH</h6>
                   <p class="project-text">{{ singleproperty?.plot_width }}</p>
                 </div>
-                <div class="" *ngIf="singleproperty?.currently_leased_out !== null">
+                <div
+                  class=""
+                  *ngIf="singleproperty?.currently_leased_out !== null"
+                >
                   <h6 class="facility_title">CURRENTLY LEASED OUT</h6>
                   <p class="project-text">
                     {{
-                    singleproperty?.currently_leased_out == 1 ? "Yes" : "No"
+                      singleproperty?.currently_leased_out == 1 ? "Yes" : "No"
                     }}
                   </p>
                 </div>
-                <div class="" *ngIf="singleproperty?.whom_property_leased !== null">
+                <div
+                  class=""
+                  *ngIf="singleproperty?.whom_property_leased !== null"
+                >
                   <h6 class="facility_title">WHOM LEASED OUT</h6>
                   <p class="project-text">
                     {{ singleproperty?.whom_property_leased }}
@@ -161,10 +210,13 @@
                 </div>
                 <div *ngIf="singleproperty?.floor_no !== null">
                   <h6 class="facility_title">FLOOR</h6>
-                  <p class="project-text" *ngIf="
+                  <p
+                    class="project-text"
+                    *ngIf="
                       singleproperty?.floor_no !== null &&
                       singleproperty?.total_floor !== null
-                    ">
+                    "
+                  >
                     {{ singleproperty?.floor_no }} out of
                     {{ singleproperty?.total_floor }}
                   </p>
@@ -311,54 +363,85 @@
                   <table>
                     <tr class="bullet-agent-box">
                       <th class="agent-bullet-head">Price Breakup</th>
-                      <td class="agent-bullet-descrip" *ngIf="singleproperty?.property_price_show == 0">
+                      <td
+                        class="agent-bullet-descrip"
+                        *ngIf="singleproperty?.property_price_show == 0"
+                      >
                         ₹
                         {{
-                        singleproperty?.total_price !== null
-                        ? singleproperty?.total_price
-                        : singleproperty?.rent_amount.toLocaleString()
+                          singleproperty?.total_price !== null
+                            ? singleproperty?.total_price
+                            : singleproperty?.rent_amount.toLocaleString()
                         }}
                       </td>
-                      <td class="agent-bullet-descrip" *ngIf="singleproperty?.property_price_show == 1">call for price
+                      <td
+                        class="agent-bullet-descrip"
+                        *ngIf="singleproperty?.property_price_show == 1"
+                      >
+                        call for price
                       </td>
                     </tr>
-                    <tr class="bullet-agent-box" *ngIf="singleproperty?.property_facilities !== null">
+                    <tr
+                      class="bullet-agent-box"
+                      *ngIf="singleproperty?.property_facilities !== null"
+                    >
                       <th class="agent-bullet-head">Facilities</th>
                       <td class="agent-bullet-descrip">
                         <div class="text-wrapper">
                           <span class="text-titles">
-                            {{ singleproperty?.property_facilities }}</span>
-                          <input *ngIf="
+                            {{ singleproperty?.property_facilities }}</span
+                          >
+                          <input
+                            *ngIf="
                               singleproperty?.property_facilities?.length > 130
-                            " type="checkbox" class="text-btn" style="font-size: 15px" />
+                            "
+                            type="checkbox"
+                            class="text-btn"
+                            style="font-size: 15px"
+                          />
                         </div>
                       </td>
                     </tr>
-                    <tr class="bullet-agent-box" *ngIf="singleproperty?.property_address !== null">
+                    <tr
+                      class="bullet-agent-box"
+                      *ngIf="singleproperty?.property_address !== null"
+                    >
                       <th class="agent-bullet-head">Address</th>
                       <td class="agent-bullet-descrip">
                         {{ singleproperty?.property_address }}
                       </td>
                     </tr>
-                    <tr class="bullet-agent-box" *ngIf="singleproperty?.age_of_construction !== null">
+                    <tr
+                      class="bullet-agent-box"
+                      *ngIf="singleproperty?.age_of_construction !== null"
+                    >
                       <th class="agent-bullet-head">Age of Construction</th>
                       <td class="agent-bullet-descrip">
                         {{ singleproperty?.age_of_construction }}
                       </td>
                     </tr>
-                    <tr class="bullet-agent-box" *ngIf="singleproperty?.furnishing_status !== null">
+                    <tr
+                      class="bullet-agent-box"
+                      *ngIf="singleproperty?.furnishing_status !== null"
+                    >
                       <th class="agent-bullet-head">Furnishing</th>
                       <td class="agent-bullet-descrip">
                         {{ singleproperty?.furnishing_status }}
                       </td>
                     </tr>
-                    <tr class="bullet-agent-box" *ngIf="singleproperty?.rera_id !== null">
+                    <tr
+                      class="bullet-agent-box"
+                      *ngIf="singleproperty?.rera_id !== null"
+                    >
                       <th class="agent-bullet-head">RERA ID</th>
                       <td class="agent-bullet-descrip">
                         {{ singleproperty?.rera_id }}
                       </td>
                     </tr>
-                    <tr class="bullet-agent-box" *ngIf="singleproperty?.transaction_type !== null">
+                    <tr
+                      class="bullet-agent-box"
+                      *ngIf="singleproperty?.transaction_type !== null"
+                    >
                       <th class="agent-bullet-head">Transaction Type</th>
                       <td class="agent-bullet-descrip">
                         {{ singleproperty?.transaction_type }}
@@ -391,17 +474,35 @@
               <h4>Enquiry Now</h4>
               <form (submit)="is_token ? submitEnquiry() : openOTPModal()">
                 <div class="mt-3">
-                  <input type="text" id="Aname" name="Aname" [disabled]="is_token" (input)="validateName($event)"
-                    (keypress)="validateCharInput($event)" placeholder="Name" [(ngModel)]="formData.username"
-                    class="gold-form-input my-0" required />
+                  <input
+                    type="text"
+                    id="Aname"
+                    name="Aname"
+                    [disabled]="is_token"
+                    (input)="validateName($event)"
+                    (keypress)="validateCharInput($event)"
+                    placeholder="Name"
+                    [(ngModel)]="formData.username"
+                    class="gold-form-input my-0"
+                    required
+                  />
                   <div *ngIf="nameError" class="mgs_error">
                     Please enter name.
                   </div>
                 </div>
 
                 <div class="mt-3">
-                  <input type="mail" id="agentmail" [(ngModel)]="formData.useremail" (blur)="validateEmail($event)"
-                    name="useremail" [disabled]="is_token" placeholder="Email" class="gold-form-input my-0" required />
+                  <input
+                    type="mail"
+                    id="agentmail"
+                    [(ngModel)]="formData.useremail"
+                    (blur)="validateEmail($event)"
+                    name="useremail"
+                    [disabled]="is_token"
+                    placeholder="Email"
+                    class="gold-form-input my-0"
+                    required
+                  />
                   <div *ngIf="emailError" class="mgs_error">
                     Please enter a valid email address.
                   </div>
@@ -422,10 +523,20 @@
                       </select>
                     </div> -->
                     <div class="d-flex">
-                      <input type="tel" id="agentNum" maxlength="10" [(ngModel)]="formData.contact_no" name="contact_no"
-                        placeholder="Mobile No." pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                        (keypress)="validateNumberInput($event)" [disabled]="is_token"
-                        (blur)="validatePhoneNumber($event)" class="gold-form-input my-0" required />
+                      <input
+                        type="tel"
+                        id="agentNum"
+                        maxlength="10"
+                        [(ngModel)]="formData.contact_no"
+                        name="contact_no"
+                        placeholder="Mobile No."
+                        pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                        (keypress)="validateNumberInput($event)"
+                        [disabled]="is_token"
+                        (blur)="validatePhoneNumber($event)"
+                        class="gold-form-input my-0"
+                        required
+                      />
                       <!-- <span
                         class="verify-label"
                         (click)="openOTPModal()"
@@ -445,8 +556,38 @@
                     </div>
                   </div>
                 </div>
+                <div class="mt-3">
+                  <div class="row">
+                    <div class="d-flex">
+                      <input
+                        type="checkbox"
+                        id="compare"
+                        [disabled]="is_token"
+                        (change)="onTermsChange($event)"
+                        [disabled]="is_token"
+                        [(ngModel)]="formData.termsAccepted"
+                        name="termsContactAccepted"
+                        required
+                        class="mycheck"
+                      />
+                      <label for="compare" class="compares"
+                        >I Agree to realtymart Terms of Use</label
+                      >
+                      <!-- <span><a routerLink="../terms-conditions">Terms of Use</a></span> <br /> -->
+                    </div>
+                    <div *ngIf="termsError" class="mgs_error">
+                      Please agree to the terms and conditions.
+                    </div>
+                  </div>
+                </div>
                 <div class="get-callback-btn m-0">
-                  <button type="submit" class="pp-form__cta" [disabled]="emailError">{{ is_token ? 'ENQURE NOW':'Continue' }}</button>
+                  <button
+                    type="submit"
+                    class="pp-form__cta"
+                    [disabled]="emailError"
+                  >
+                    {{ is_token ? "ENQURE NOW" : "Continue" }}
+                  </button>
                 </div>
                 <!-- <p class="agree-you">I Agree to My Realitys’ <a routerLink="./terms-conditions" target="_blank">Terms of Use</a></p> -->
               </form>
@@ -458,32 +599,51 @@
   </section>
 
   <div class="container">
-    <div class="product_about bullate-disc" id="aboutProject" *ngIf="this.singleproperty?.property_description !== null">
-      <h3 class="companies-names pb-3" *ngIf="this.singleproperty?.project_about">
+    <div
+      class="product_about bullate-disc"
+      id="aboutProject"
+      *ngIf="this.singleproperty?.property_description !== null"
+    >
+      <h3
+        class="companies-names pb-3"
+        *ngIf="this.singleproperty?.project_about"
+      >
         About {{ this.singleproperty?.project_name }}
       </h3>
       <!-- <div class="d-flex align-items-center justify-content-between"> -->
       <!-- <a routerLink="" style="color: red; ">Explore Project</a> -->
       <!-- </div> -->
-      <div class="about-text-titles" [innerHTML]="this.singleproperty?.property_description"></div>
+      <div
+        class="about-text-titles"
+        [innerHTML]="this.singleproperty?.property_description"
+      ></div>
       <input type="checkbox" class="text-btn" />
       <div class="address_point" *ngIf="this.singleproperty?.project_address">
         <h4>Address:</h4>
         <p>{{ this.singleproperty?.project_address }}</p>
         <div class="row mt-4 gap-4">
-          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty?.project_size_in_sqft">
+          <div
+            class="col-md-3 col-sm-12 mb-3 about_box"
+            *ngIf="this.singleproperty?.project_size_in_sqft"
+          >
             <p>Project Size :</p>
             <p class="about-project-value">
               {{ this.singleproperty?.project_size_in_sqft }} Sq-yrd
             </p>
           </div>
-          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty?.project_launch_date">
+          <div
+            class="col-md-3 col-sm-12 mb-3 about_box"
+            *ngIf="this.singleproperty?.project_launch_date"
+          >
             <p>Launch Date :</p>
             <p class="about-project-value">
               {{ getFormattedDate(this.singleproperty?.project_launch_date) }}
             </p>
           </div>
-          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty?.project_status">
+          <div
+            class="col-md-3 col-sm-12 mb-3 about_box"
+            *ngIf="this.singleproperty?.project_status"
+          >
             <p>Status :</p>
             <p class="about-project-value">
               {{ this.singleproperty?.project_status }}
@@ -493,27 +653,39 @@
                                 <p>Price per Sqft :</p>
                                 <p>{{this.singleproperty?.price_per_sq_ft}}</p>
                             </div> -->
-          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty?.project_possession_date">
+          <div
+            class="col-md-3 col-sm-12 mb-3 about_box"
+            *ngIf="this.singleproperty?.project_possession_date"
+          >
             <p>Possession by :</p>
             <p class="about-project-value">
               {{
-              getFormattedDate(this.singleproperty?.project_possession_date)
+                getFormattedDate(this.singleproperty?.project_possession_date)
               }}
             </p>
           </div>
-          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty?.project_total_units">
+          <div
+            class="col-md-3 col-sm-12 mb-3 about_box"
+            *ngIf="this.singleproperty?.project_total_units"
+          >
             <p>Total Units :</p>
             <p class="about-project-value">
               {{ this.singleproperty?.project_total_units }}
             </p>
           </div>
-          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty?.project_total_tower">
+          <div
+            class="col-md-3 col-sm-12 mb-3 about_box"
+            *ngIf="this.singleproperty?.project_total_tower"
+          >
             <p>Total Towers :</p>
             <p class="about-project-value">
               {{ this.singleproperty?.project_total_tower }}
             </p>
           </div>
-          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty?.project_type">
+          <div
+            class="col-md-3 col-sm-12 mb-3 about_box"
+            *ngIf="this.singleproperty?.project_type"
+          >
             <p>Project Type :</p>
             <p class="about-project-value">
               {{ this.singleproperty?.project_type }}
@@ -531,7 +703,10 @@
                                 <p>Commencement Certificate :</p>
                                 <p class="about-project-value">Yes</p>
                             </div> -->
-          <div class="col-md-3 col-sm-12 mb-3 about_box" *ngIf="this.singleproperty?.project_pincode">
+          <div
+            class="col-md-3 col-sm-12 mb-3 about_box"
+            *ngIf="this.singleproperty?.project_pincode"
+          >
             <p>Pincode :</p>
             <p class="about-project-value">
               {{ this.singleproperty?.project_pincode }}
@@ -542,14 +717,21 @@
     </div>
   </div>
 
-  <div class="amenities" id="amenities" *ngIf="this.singleproperty?.amenitiess?.length > 0">
+  <div
+    class="amenities"
+    id="amenities"
+    *ngIf="this.singleproperty?.amenitiess?.length > 0"
+  >
     <div class="container">
       <div class="bullate-disc">
         <h3 class="companies-names pb-3">
           Amenities at {{ this.singleproperty?.project_name }}
         </h3>
         <div class="row">
-          <div class="col-md-2" *ngFor="let amenities of this.singleproperty?.amenitiess">
+          <div
+            class="col-md-2"
+            *ngFor="let amenities of this.singleproperty?.amenitiess"
+          >
             <div class="amenit_box">
               <img src="{{ amenities.image }}" alt class="img-fluid" />
             </div>
@@ -560,7 +742,10 @@
     </div>
   </div>
 
-  <div class="container landmark" *ngIf="hasNonEmptyLandmarks(this.singleproperty?.landmarksnearproject)">
+  <div
+    class="container landmark"
+    *ngIf="hasNonEmptyLandmarks(this.singleproperty?.landmarksnearproject)"
+  >
     <div class="bullate-disc">
       <div class="" id="landmark">
         <h3 class="companies-names pb-3">
@@ -569,51 +754,67 @@
       </div>
 
       <div class="pdp__landmarks__wrap mt-2">
-        <ng-container *ngFor="
+        <ng-container
+          *ngFor="
             let category of [
               'educationalinstitute',
               'shoppingcentre',
               'hospital',
               'commercialhub'
             ]
-          ">
-          <div class="pdp__landmarks__card" *ngIf="
+          "
+        >
+          <div
+            class="pdp__landmarks__card"
+            *ngIf="
               this.singleproperty?.landmarksnearproject[category].length > 0
-            ">
+            "
+          >
             <div class="pdp__landmarks__card__inner">
-              <div class="" [ngClass]="{
+              <div
+                class=""
+                [ngClass]="{
                   eduins: category === 'educationalinstitute',
                   shopping: category === 'shoppingcentre',
                   hospital: category === 'hospital',
                   commhub: category === 'commercialhub'
-                }"></div>
+                }"
+              ></div>
               <div class="pdp__landmarks__content">
                 <div class="pdp__landmarks__card__head">
                   {{ category | titlecase }}
                 </div>
-                <div class="pdp__landmarks__card__action" *ngIf="
+                <div
+                  class="pdp__landmarks__card__action"
+                  *ngIf="
                     this.singleproperty?.landmarksnearproject[category].length >
                     3
-                  ">
-                  <span>+
+                  "
+                >
+                  <span
+                    >+
                     {{
-                    this.singleproperty?.landmarksnearproject[category]
-                    .length - 3
+                      this.singleproperty?.landmarksnearproject[category]
+                        .length - 3
                     }}
-                    more</span>
+                    more</span
+                  >
                 </div>
                 <div class="pdp__landmarks__card__body">
-                  <ng-container *ngFor="
+                  <ng-container
+                    *ngFor="
                       let item of this.singleproperty?.landmarksnearproject[
                         category
                       ].slice(0, 3)
-                    ">
+                    "
+                  >
                     <div class="pdp__landmarks__card--wrap">
                       <div class="pdp__landmarks__card__item">
                         {{ item.name }}
                       </div>
                       <span class="pdp__landmarks__card__item--bold">
-                        ({{ item.distance_km }} Km)</span>
+                        ({{ item.distance_km }} Km)</span
+                      >
                     </div>
                   </ng-container>
                 </div>
@@ -629,12 +830,24 @@
     <div class="container">
       <div class="bullate-disc gallery">
         <h3 class="companies-names pb-3">Gallery</h3>
-        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig3">
-          <div ngxSlickItem class="slide" *ngFor="let gallery of singleproperty?.property_img">
+        <ngx-slick-carousel
+          class="carousel"
+          #slickModal="slick-carousel"
+          [config]="slideConfig3"
+        >
+          <div
+            ngxSlickItem
+            class="slide"
+            *ngFor="let gallery of singleproperty?.property_img"
+          >
             <div class="gallery_box">
               <div class="gallery">
                 <a href="{{ gallery }}" data-fancybox="gallery">
-                  <img src="{{ gallery }}" alt="Gallery Image" class="img-fluid" />
+                  <img
+                    src="{{ gallery }}"
+                    alt="Gallery Image"
+                    class="img-fluid"
+                  />
                 </a>
               </div>
             </div>
@@ -650,21 +863,39 @@
         <h3 class="companies-names pb-3">
           People who viewed this property also liked
         </h3>
-        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig1">
+        <ngx-slick-carousel
+          class="carousel"
+          #slickModal="slick-carousel"
+          [config]="slideConfig1"
+        >
           <div ngxSlickItem class="slide" *ngFor="let item of whoLikeProperty">
             <a href="#" class="prj_box">
-              <img src={{item.property_main_img}} alt="" />
+              <img src="{{ item.property_main_img }}" alt="" />
               <div class="projdesc">
-                <a routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}"
-                  target="_blank" class="detail-head">{{ item.projectName }}
-                  <h3 class="proj-Mhead">{{item.project.project_name}}</h3>
-                  <p class="pb-price" *ngIf="item.property_price_show == '0'">₹ {{ item.total_price }}</p>
+                <a
+                  routerLink="/property-details/{{
+                    item.propertyfirstUrlPart
+                  }}/{{ item.propertysecondUrlPart }}"
+                  target="_blank"
+                  class="detail-head"
+                  >{{ item.projectName }}
+                  <h3 class="proj-Mhead">{{ item.project.project_name }}</h3>
+                  <p class="pb-price" *ngIf="item.property_price_show == '0'">
+                    ₹ {{ item.total_price }}
+                  </p>
                   <p class="mb-para-by">
                     {{ item.property_locality }}
                   </p>
-                  <p class="mb-para-by" *ngIf="item.available_from !== null">{{ item.available_from }}</p>
+                  <p class="mb-para-by" *ngIf="item.available_from !== null">
+                    {{ item.available_from }}
+                  </p>
                   <div class="">
-                    <a data-bs-toggle="modal" data-bs-target="#contact-owner" class="get_enq">Contact Agent</a>
+                    <a
+                      data-bs-toggle="modal"
+                      data-bs-target="#contact-owner"
+                      class="get_enq"
+                      >Contact Agent</a
+                    >
                   </div>
                 </a>
               </div>
@@ -679,27 +910,48 @@
     <div class="container">
       <div class="bullate-disc">
         <h3 class="companies-names pb-3">Properties in Similar Projects</h3>
-        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig1">
-          <div ngxSlickItem class="slide" *ngFor="let item of verifySimilarProperty">
+        <ngx-slick-carousel
+          class="carousel"
+          #slickModal="slick-carousel"
+          [config]="slideConfig1"
+        >
+          <div
+            ngxSlickItem
+            class="slide"
+            *ngFor="let item of verifySimilarProperty"
+          >
             <div href="#" class="prj_box">
               <img src="{{ item.property_main_img }}" alt="" />
               <div class="projdesc">
-                <a routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}"
-                  target="_blank" class="detail-head">{{ item.projectName }}
-                  <h3 class="proj-Mhead">{{item.project.project_name}}</h3>
-                  <p class="pb-price" *ngIf="item.property_price_show == '0'">₹ {{ item.total_price }}</p>
+                <a
+                  routerLink="/property-details/{{
+                    item.propertyfirstUrlPart
+                  }}/{{ item.propertysecondUrlPart }}"
+                  target="_blank"
+                  class="detail-head"
+                  >{{ item.projectName }}
+                  <h3 class="proj-Mhead">{{ item.project.project_name }}</h3>
+                  <p class="pb-price" *ngIf="item.property_price_show == '0'">
+                    ₹ {{ item.total_price }}
+                  </p>
                   <p class="mb-para-by">
                     {{ item.property_locality }}
                   </p>
-                  <p class="mb-para-by" *ngIf="item.available_from !== null">{{ item.available_from }}</p>
+                  <p class="mb-para-by" *ngIf="item.available_from !== null">
+                    {{ item.available_from }}
+                  </p>
                 </a>
                 <div class="">
-                  <a data-bs-toggle="modal" data-bs-target="#contact-owner" class="get_enq">Contact Agent</a>
+                  <a
+                    data-bs-toggle="modal"
+                    data-bs-target="#contact-owner"
+                    class="get_enq"
+                    >Contact Agent</a
+                  >
                 </div>
               </div>
             </div>
           </div>
-
         </ngx-slick-carousel>
       </div>
     </div>
@@ -724,9 +976,7 @@
             <div class="col-md-6">
               <h4>Rating</h4>
               <div class="rating">
-                <span class="rating-number">{{
-                  googleReviews?.rating
-                }}</span>
+                <span class="rating-number">{{ googleReviews?.rating }}</span>
                 <div class="stars">
                   <div
                     class="filled-stars"
@@ -744,20 +994,29 @@
 
         <div class="row" *ngFor="let item of reviews">
           <div class="col-lg-2 mb-3">
-            <img class="profile_photo_url img-fluid" [src]="item.profile_photo_url" alt="profile_photo">
+            <img
+              class="profile_photo_url img-fluid"
+              [src]="item.profile_photo_url"
+              alt="profile_photo"
+            />
           </div>
           <div class="col-lg-10 mb-3">
             <div class="info_write">
-              <h3 class="author_name">{{item.author_name}}</h3>
+              <h3 class="author_name">{{ item.author_name }}</h3>
               <div class="rating">
                 <div class="stars">
-                  <div class="filled-stars" [ngStyle]="{ width: (item.rating * 20) + '%' }"></div>
+                  <div
+                    class="filled-stars"
+                    [ngStyle]="{ width: item.rating * 20 + '%' }"
+                  ></div>
                   <div class="empty-stars"></div>
                 </div>
-                <span class="time_of_review">{{item.relative_time_description}}</span>
+                <span class="time_of_review">{{
+                  item.relative_time_description
+                }}</span>
               </div>
             </div>
-            <p>{{item.text}}</p>
+            <p>{{ item.text }}</p>
           </div>
           <!-- <div class="col-lg-2 mb-3">
                 <img class="profile_photo_url img-fluid" src="../../../assets/images/demouser.png" alt="profile_photo_url">
@@ -887,22 +1146,40 @@
         <h3 class="companies-names pb-3">
           Other Properties in this Project and Nearby
         </h3>
-        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig1">
+        <ngx-slick-carousel
+          class="carousel"
+          #slickModal="slick-carousel"
+          [config]="slideConfig1"
+        >
           <div ngxSlickItem class="slide" *ngFor="let item of nearByProperty">
             <a href="#" class="prj_box">
-              <img src={{item.property_main_img}} alt="" />
+              <img src="{{ item.property_main_img }}" alt="" />
               <div class="projdesc">
-                <a routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}"
-                  target="_blank" class="detail-head">{{ item.projectName }}
-                  <h3 class="proj-Mhead">{{item.project.project_name}}</h3>
-                  <p class="pb-price" *ngIf="item.property_price_show == '0'">₹ {{ item.total_price }}</p>
+                <a
+                  routerLink="/property-details/{{
+                    item.propertyfirstUrlPart
+                  }}/{{ item.propertysecondUrlPart }}"
+                  target="_blank"
+                  class="detail-head"
+                  >{{ item.projectName }}
+                  <h3 class="proj-Mhead">{{ item.project.project_name }}</h3>
+                  <p class="pb-price" *ngIf="item.property_price_show == '0'">
+                    ₹ {{ item.total_price }}
+                  </p>
                   <p class="mb-para-by">
                     {{ item.property_locality }}
                   </p>
-                  <p class="mb-para-by" *ngIf="item.available_from !== null">{{ item.available_from }}</p>
+                  <p class="mb-para-by" *ngIf="item.available_from !== null">
+                    {{ item.available_from }}
+                  </p>
                 </a>
                 <div class="">
-                  <a data-bs-toggle="modal" data-bs-target="#contact-owner" class="get_enq">Contact Agent</a>
+                  <a
+                    data-bs-toggle="modal"
+                    data-bs-target="#contact-owner"
+                    class="get_enq"
+                    >Contact Agent</a
+                  >
                 </div>
               </div>
             </a>
@@ -919,21 +1196,40 @@
         <h3 class="companies-names pb-3">
           People who viewed this property also liked
         </h3>
-        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig1">
+        <ngx-slick-carousel
+          class="carousel"
+          #slickModal="slick-carousel"
+          [config]="slideConfig1"
+        >
           <div ngxSlickItem class="slide" *ngFor="let item of whoLikeProperty">
             <a href="#" class="prj_box">
-              <img src={{item.property_main_img}} alt="" />
+              <img src="{{ item.property_main_img }}" alt="" />
               <div class="projdesc">
-                <a routerLink="/property-details/{{ item.propertyfirstUrlPart }}/{{ item.propertysecondUrlPart }}" target="_blank" class="detail-head">{{ item.projectName }}
-                  <h3 class="proj-Mhead">{{item.project.project_name}}</h3>
-                  <p class="pb-price" *ngIf="item.property_price_show == '0'">₹ {{ item.total_price }}</p>
+                <a
+                  routerLink="/property-details/{{
+                    item.propertyfirstUrlPart
+                  }}/{{ item.propertysecondUrlPart }}"
+                  target="_blank"
+                  class="detail-head"
+                  >{{ item.projectName }}
+                  <h3 class="proj-Mhead">{{ item.project.project_name }}</h3>
+                  <p class="pb-price" *ngIf="item.property_price_show == '0'">
+                    ₹ {{ item.total_price }}
+                  </p>
                   <p class="mb-para-by">
                     {{ item.property_locality }}
                   </p>
-                  <p class="mb-para-by" *ngIf="item.available_from !== null">{{ item.available_from }}</p>
+                  <p class="mb-para-by" *ngIf="item.available_from !== null">
+                    {{ item.available_from }}
+                  </p>
                 </a>
                 <div class="">
-                  <a data-bs-toggle="modal" data-bs-target="#contact-owner" class="get_enq">Contact Agent</a>
+                  <a
+                    data-bs-toggle="modal"
+                    data-bs-target="#contact-owner"
+                    class="get_enq"
+                    >Contact Agent</a
+                  >
                 </div>
               </div>
             </a>
@@ -1037,23 +1333,45 @@
     <div class="container">
       <div class="bullate-disc">
         <h4 class="companies-names pb-3">Verified on realtymart</h4>
-        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig1">
+        <ngx-slick-carousel
+          class="carousel"
+          #slickModal="slick-carousel"
+          [config]="slideConfig1"
+        >
           <div ngxSlickItem class="slide" *ngFor="let verify of verifyProperty">
             <div class="prj_box">
-              <img src="{{ verify.property_main_img }}" alt="" class="img-fluid">
+              <img
+                src="{{ verify.property_main_img }}"
+                alt=""
+                class="img-fluid"
+              />
               <div class="projdesc">
-                <a routerLink="/property-details/{{ verify.propertyfirstUrlPart }}/{{ verify.propertysecondUrlPart }}"
-                  target="_blank" class="detail-head">{{ verify.projectName }}
-                  <h3 class="proj-Mhead">{{verify.project.project_name}}</h3>
-                  <p class="pb-price" *ngIf="verify.property_price_show == '0'">₹ {{ verify.total_price }}</p>
+                <a
+                  routerLink="/property-details/{{
+                    verify.propertyfirstUrlPart
+                  }}/{{ verify.propertysecondUrlPart }}"
+                  target="_blank"
+                  class="detail-head"
+                  >{{ verify.projectName }}
+                  <h3 class="proj-Mhead">{{ verify.project.project_name }}</h3>
+                  <p class="pb-price" *ngIf="verify.property_price_show == '0'">
+                    ₹ {{ verify.total_price }}
+                  </p>
                   <!-- <a *ngIf="verify.property_price_show == '1' " class="get_enq" style="cursor:pointer"  data-bs-toggle="modal" data-bs-target="#get-builder">Get a Quote</a> -->
                   <p class="mb-para-by">
                     {{ verify.property_locality }}
                   </p>
-                  <p class="mb-para-by" *ngIf="verify.available_from !== null">{{ verify.available_from }}</p>
+                  <p class="mb-para-by" *ngIf="verify.available_from !== null">
+                    {{ verify.available_from }}
+                  </p>
                 </a>
                 <div class="">
-                  <a data-bs-toggle="modal" data-bs-target="#contact-owner" class="get_enq">Contact Agent</a>
+                  <a
+                    data-bs-toggle="modal"
+                    data-bs-target="#contact-owner"
+                    class="get_enq"
+                    >Contact Agent</a
+                  >
                 </div>
               </div>
             </div>
@@ -1134,16 +1452,29 @@
                 </div>
               </div>
             </div> -->
-
       </div>
     </div>
   </section>
 </main>
-<div class="modal fade" id="get-builder" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
+<div
+  class="modal fade"
+  id="get-builder"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable"
+  >
     <div class="modal-content">
       <div class="modal-header sign-in-box">
-        <button type="button" class="btn-close" id="getphoneno" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          id="getphoneno"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <h2 class="fill_one">Fill out this one - time contact form</h2>
@@ -1152,18 +1483,37 @@
         </p>
         <form (submit)="is_token ? submitFormPhone() : openContactOTPModal()">
           <div class="mt-3">
-            <input type="text" [disabled]="is_token" id="Aname" name="contactusername"
-              (input)="validateContactName($event)" (keypress)="validateContactCharInput($event)" placeholder="Name"
-              [disabled]="is_token" [(ngModel)]="formDataphone.contactusername" required class="gold-form-input my-0" />
+            <input
+              type="text"
+              [disabled]="is_token"
+              id="Aname"
+              name="contactusername"
+              (input)="validateContactName($event)"
+              (keypress)="validateContactCharInput($event)"
+              placeholder="Name"
+              [disabled]="is_token"
+              [(ngModel)]="formDataphone.contactusername"
+              required
+              class="gold-form-input my-0"
+            />
             <div *ngIf="nameContactError" class="mgs_error">
               Please enter name.
             </div>
           </div>
 
           <div class="mt-3">
-            <input type="email" [disabled]="is_token" id="usermail" [(ngModel)]="formDataphone.contactuseremail"
-              (blur)="validateContactEmail($event)" required [disabled]="is_token" name="contactusermail"
-              placeholder="Email" class="gold-form-input my-0" />
+            <input
+              type="email"
+              [disabled]="is_token"
+              id="usermail"
+              [(ngModel)]="formDataphone.contactuseremail"
+              (blur)="validateContactEmail($event)"
+              required
+              [disabled]="is_token"
+              name="contactusermail"
+              placeholder="Email"
+              class="gold-form-input my-0"
+            />
             <div *ngIf="emailContactError" class="mgs_error">
               Please enter a valid email address.
             </div>
@@ -1187,10 +1537,21 @@
             </select> -->
             <!-- </div> -->
             <div class="d-flex align-items-center">
-              <input type="tel" id="usernumber" maxlength="10" name="contactcontact_no" maxlength="10"
-                placeholder="Enter Mobile Number" [disabled]="is_token" [(ngModel)]="formDataphone.contactcontact_no"
-                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" (keypress)="validateContactNumberInput($event)"
-                (blur)="validateContactPhoneNumber($event)" required class="gold-form-input mb-0" />
+              <input
+                type="tel"
+                id="usernumber"
+                maxlength="10"
+                name="contactcontact_no"
+                maxlength="10"
+                placeholder="Enter Mobile Number"
+                [disabled]="is_token"
+                [(ngModel)]="formDataphone.contactcontact_no"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                (keypress)="validateContactNumberInput($event)"
+                (blur)="validateContactPhoneNumber($event)"
+                required
+                class="gold-form-input mb-0"
+              />
               <!-- <span
                 class="verify-label"
                 (click)="openContactOTPModal()"
@@ -1211,18 +1572,32 @@
           </div>
 
           <div class="check-compare">
-            <input type="checkbox" id="compare" [disabled]="is_token" (change)="onTermsContactChange($event)"
-              [disabled]="is_token" [(ngModel)]="formDataphone.termsContactAccepted" name="termsContactAccepted"
-              required class="mycheck" />
-            <label for="compare" class="compares">I Agree to realtymart Terms of Use</label>
+            <input
+              type="checkbox"
+              id="compare"
+              [disabled]="is_token"
+              (change)="onTermsContactChange($event)"
+              [disabled]="is_token"
+              [(ngModel)]="formDataphone.termsContactAccepted"
+              name="termsContactAccepted"
+              required
+              class="mycheck"
+            />
+            <label for="compare" class="compares"
+              >I Agree to realtymart Terms of Use</label
+            >
             <!-- <span><a routerLink="../terms-conditions">Terms of Use</a></span> <br /> -->
           </div>
           <div *ngIf="termsContactError" class="mgs_error">
             Please agree to the terms and conditions.
           </div>
 
-          <button type="submit" class="pp-form__cta" [disabled]="emailContactError">
-            {{is_token ? 'Submit Enquiry':'Continue'}}
+          <button
+            type="submit"
+            class="pp-form__cta"
+            [disabled]="emailContactError"
+          >
+            {{ is_token ? "Submit Enquiry" : "Continue" }}
           </button>
         </form>
       </div>
@@ -1230,22 +1605,41 @@
   </div>
 </div>
 
-<div #otpModel class="modal fade" tabindex="-1" role="dialog" aria-bs-hidden="true" data-bs-backdrop="static"
-  data-bs-keyboard="false">
+<div
+  #otpModel
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-bs-hidden="true"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Verify Your Mobile Number</h5>
-        <button type="button" class="btn-close position-absolute top-0 end-0 mt-3 me-3" data-bs-dismiss="modal"
-          aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close position-absolute top-0 end-0 mt-3 me-3"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <div>
           You will receive a 4-digit verification code on your registered mobile
           number.
         </div>
-        <input type="text" id="otpInput" name="otpInput" placeholder="Enter OTP" [(ngModel)]="formData.otp"
-          (keypress)="validateNumberInput($event)" maxlength="4" style="border-color: #00000029" />
+        <input
+          type="text"
+          id="otpInput"
+          name="otpInput"
+          placeholder="Enter OTP"
+          [(ngModel)]="formData.otp"
+          (keypress)="validateNumberInput($event)"
+          maxlength="4"
+          style="border-color: #00000029"
+        />
         <div *ngIf="otpError" class="mgs_error">Please enter a valid OTP.</div>
       </div>
       <div class="modal-footer border-0 flex-column text-center">
@@ -1253,7 +1647,11 @@
           Verify
         </button>
         <div>
-          <label *ngIf="!isResendEnabled" class="resend-label mb-3" style="cursor: pointer">
+          <label
+            *ngIf="!isResendEnabled"
+            class="resend-label mb-3"
+            style="cursor: pointer"
+          >
             You will receive OTP within
             <b style="color: #ff5444"> 00:{{ remainingTime }}</b>
             seconds
@@ -1261,8 +1659,12 @@
           <div class="mb-3" *ngIf="isResendEnabled">
             Did not get Verification OTP ?
           </div>
-          <span *ngIf="isResendEnabled" style="cursor: pointer; border-bottom: 1px solid grey"
-            (click)="resendOTP()">Resend OTP</span>
+          <span
+            *ngIf="isResendEnabled"
+            style="cursor: pointer; border-bottom: 1px solid grey"
+            (click)="resendOTP()"
+            >Resend OTP</span
+          >
         </div>
         <!-- <button type="button" [disabled]="!isResendEnabled" class="btn reg_sub" (click)="sendOTPToMobile()">
             Resend OTP
@@ -1272,22 +1674,41 @@
   </div>
 </div>
 
-<div #otpContactModel class="modal fade" tabindex="-1" role="dialog" aria-bs-hidden="true" data-bs-backdrop="static"
-  data-bs-keyboard="false">
+<div
+  #otpContactModel
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-bs-hidden="true"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Verify Your Mobile Number</h5>
-        <button type="button" class="btn-close position-absolute top-0 end-0 mt-3 me-3" data-bs-dismiss="modal"
-          aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close position-absolute top-0 end-0 mt-3 me-3"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <div>
           You will receive a 4-digit verification code on your registered mobile
           number.
         </div>
-        <input type="text" id="otpInput" name="otpInput" placeholder="Enter OTP" [(ngModel)]="formDataphone.contactotp"
-          (keypress)="validateNumberInput($event)" maxlength="4" style="border-color: #00000029" />
+        <input
+          type="text"
+          id="otpInput"
+          name="otpInput"
+          placeholder="Enter OTP"
+          [(ngModel)]="formDataphone.contactotp"
+          (keypress)="validateNumberInput($event)"
+          maxlength="4"
+          style="border-color: #00000029"
+        />
         <div *ngIf="otpError" class="mgs_error">Please enter a valid OTP.</div>
       </div>
       <div class="modal-footer border-0 flex-column text-center">
@@ -1295,7 +1716,11 @@
           Verify
         </button>
         <div>
-          <label *ngIf="!isResendEnabled" class="resend-label mb-3" style="cursor: pointer">
+          <label
+            *ngIf="!isResendEnabled"
+            class="resend-label mb-3"
+            style="cursor: pointer"
+          >
             You will receive OTP within
             <b style="color: #ff5444"> 00:{{ remainingTime }}</b>
             seconds
@@ -1303,8 +1728,12 @@
           <div class="mb-3" *ngIf="isResendEnabled">
             Did not get Verification OTP ?
           </div>
-          <span *ngIf="isResendEnabled" style="cursor: pointer; border-bottom: 1px solid grey"
-            (click)="resendContactOTP()">Resend OTP</span>
+          <span
+            *ngIf="isResendEnabled"
+            style="cursor: pointer; border-bottom: 1px solid grey"
+            (click)="resendContactOTP()"
+            >Resend OTP</span
+          >
         </div>
         <!-- <button type="button" [disabled]="!isResendEnabled" class="btn reg_sub" (click)="sendOTPToMobile()">
   Resend OTP
@@ -1314,11 +1743,25 @@
   </div>
 </div>
 
-<div class="modal fade" id="contact-owner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
+<div
+  class="modal fade"
+  id="contact-owner"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable"
+  >
     <div class="modal-content">
       <div class="modal-header sign-in-box">
-        <button type="button" class="btn-close" id="getphoneno" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          id="getphoneno"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <h2 class="fill_one">Fill out this one - time contact form</h2>
@@ -1327,18 +1770,37 @@
         </p>
         <form (submit)="is_token ? submitFormPhone() : openContactOTPModal()">
           <div class="mt-3">
-            <input type="text" [disabled]="is_token" id="Aname" name="contactusername"
-              (input)="validateContactName($event)" (keypress)="validateContactCharInput($event)" placeholder="Name"
-              [disabled]="is_token" [(ngModel)]="formDataphone.contactusername" required class="gold-form-input my-0" />
+            <input
+              type="text"
+              [disabled]="is_token"
+              id="Aname"
+              name="contactusername"
+              (input)="validateContactName($event)"
+              (keypress)="validateContactCharInput($event)"
+              placeholder="Name"
+              [disabled]="is_token"
+              [(ngModel)]="formDataphone.contactusername"
+              required
+              class="gold-form-input my-0"
+            />
             <div *ngIf="nameContactError" class="mgs_error">
               Please enter name.
             </div>
           </div>
 
           <div class="mt-3">
-            <input type="email" [disabled]="is_token" id="usermail" [(ngModel)]="formDataphone.contactuseremail"
-              (blur)="validateContactEmail($event)" required [disabled]="is_token" name="contactusermail"
-              placeholder="Email" class="gold-form-input my-0" />
+            <input
+              type="email"
+              [disabled]="is_token"
+              id="usermail"
+              [(ngModel)]="formDataphone.contactuseremail"
+              (blur)="validateContactEmail($event)"
+              required
+              [disabled]="is_token"
+              name="contactusermail"
+              placeholder="Email"
+              class="gold-form-input my-0"
+            />
             <div *ngIf="emailContactError" class="mgs_error">
               Please enter a valid email address.
             </div>
@@ -1362,10 +1824,21 @@
           </select> -->
             <!-- </div> -->
             <div class="d-flex align-items-center">
-              <input type="tel" id="usernumber" maxlength="10" name="contactcontact_no" maxlength="10"
-                placeholder="Enter Mobile Number" [disabled]="is_token" [(ngModel)]="formDataphone.contactcontact_no"
-                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" (keypress)="validateContactNumberInput($event)"
-                (blur)="validateContactPhoneNumber($event)" required class="gold-form-input mb-0" />
+              <input
+                type="tel"
+                id="usernumber"
+                maxlength="10"
+                name="contactcontact_no"
+                maxlength="10"
+                placeholder="Enter Mobile Number"
+                [disabled]="is_token"
+                [(ngModel)]="formDataphone.contactcontact_no"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                (keypress)="validateContactNumberInput($event)"
+                (blur)="validateContactPhoneNumber($event)"
+                required
+                class="gold-form-input mb-0"
+              />
               <!-- <span
               class="verify-label"
               (click)="openContactOTPModal()"
@@ -1386,18 +1859,32 @@
           </div>
 
           <div class="check-compare">
-            <input type="checkbox" id="compare" [disabled]="is_token" (change)="onTermsContactChange($event)"
-              [disabled]="is_token" [(ngModel)]="formDataphone.termsContactAccepted" name="termsContactAccepted"
-              required class="mycheck" />
-            <label for="compare" class="compares">I Agree to realtymart Terms of Use</label>
+            <input
+              type="checkbox"
+              id="compare"
+              [disabled]="is_token"
+              (change)="onTermsContactChange($event)"
+              [disabled]="is_token"
+              [(ngModel)]="formDataphone.termsContactAccepted"
+              name="termsContactAccepted"
+              required
+              class="mycheck"
+            />
+            <label for="compare" class="compares"
+              >I Agree to realtymart Terms of Use</label
+            >
             <!-- <span><a routerLink="../terms-conditions">Terms of Use</a></span> <br /> -->
           </div>
           <div *ngIf="termsContactError" class="mgs_error">
             Please agree to the terms and conditions.
           </div>
 
-          <button type="submit" class="pp-form__cta" [disabled]="emailContactError">
-            {{is_token ? 'Submit Enquiry':'Continue'}}
+          <button
+            type="submit"
+            class="pp-form__cta"
+            [disabled]="emailContactError"
+          >
+            {{ is_token ? "Submit Enquiry" : "Continue" }}
           </button>
         </form>
       </div>

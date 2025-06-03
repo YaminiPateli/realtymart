@@ -38,9 +38,9 @@ export class AppComponent {
   ) {
     this.router.events.subscribe(() => {
       // Check if the current route is `/register`
-      this.isRegisterRoute = this.router.url === '/registration';
-      this.isLoginRoute = this.router.url === '/login';
-      this.isRegisterThankyouRoute = this.router.url === '/thank-you-register';
+      this.isRegisterRoute = this.router.url.startsWith('/registration');
+      this.isLoginRoute = this.router.url.startsWith('/login');
+      this.isRegisterThankyouRoute = this.router.url.startsWith('/thank-you-register');
     });
 
     if ('caches' in window) {

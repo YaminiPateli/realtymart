@@ -336,6 +336,9 @@ export class PropertyDetailsComponent implements OnInit {
   onTermsContactChange(event: Event) {
     this.termsContactError = !(event.target as HTMLInputElement).checked;
   }
+  onTermsChange(event: Event) {
+    this.termsError = !(event.target as HTMLInputElement).checked;
+  }
 
 
     fetchCities() {
@@ -362,6 +365,7 @@ export class PropertyDetailsComponent implements OnInit {
     this.nameError = false;
     this.phoneError = false;
     this.emailError = false;
+    this.termsError = false;
 
     if(!this.formData.username) {
       this.nameError=true;
@@ -374,8 +378,11 @@ export class PropertyDetailsComponent implements OnInit {
     {
       this.phoneError=true;
     }
+    if (!this.formData.termsAccepted) {
+      this.termsError = true;
+    }
 
-    if(this.nameError || this.phoneError || this.emailError)
+    if(this.nameError || this.phoneError || this.emailError || this.termsError)
     {
       return;
     }
@@ -398,7 +405,7 @@ export class PropertyDetailsComponent implements OnInit {
       .subscribe(
         (response: any) => {
           if (response.status == true) {
-            this.toastr.success('OTP verified successfully.');
+            // this.toastr.success('OTP verified successfully.');
             const modalElement = this.otpModel.nativeElement;
             const modal = bootstrap.Modal.getInstance(modalElement);
             if (modal) {
@@ -550,7 +557,7 @@ export class PropertyDetailsComponent implements OnInit {
     this.http.post(`${this.apiUrl}storeinquiry`,payload,{headers}).subscribe((response:any)=> {
       if (response.status === true) {
         this.activityTrackerService.logActivity('Inquiry stored for property','');
-        this.toastr.success('Inquiry Addeded successfully!');
+        this.toastr.success('We have received your inquiry. Our team will get back to you within 24 working hours.');
         if(!token){
           this.resetForm();
         }
@@ -737,7 +744,7 @@ export class PropertyDetailsComponent implements OnInit {
       .subscribe((response: any) => {
         if (response.status === true) {
           this.activityTrackerService.logActivity('Inquiry stored for builder','');
-        this.toastr.success('Inquiry Addeded successfully!');
+        this.toastr.success('We have received your inquiry. Our team will get back to you within 24 working hours.');
         const modalElement = document.getElementById('get-builder');
         if (modalElement) {
           const modalInstance = bootstrap.Modal.getInstance(modalElement);
@@ -862,7 +869,7 @@ export class PropertyDetailsComponent implements OnInit {
       .subscribe(
         (response: any) => {
           if (response.status == true) {
-            this.toastr.success('OTP verified successfully.');
+            // this.toastr.success('OTP verified successfully.');
             const modalElement = this.otpContactModel.nativeElement;
             const modal = bootstrap.Modal.getInstance(modalElement);
             if (modal) {

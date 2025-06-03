@@ -83,7 +83,6 @@ export class ProjectApproveDetailComponent implements OnInit,AfterViewInit  {
     private sponsorservice: IssponsoredService,
     private verifyservice: IsverifiedService,
     private location: Location,
-    private tost:ToastrService,
     // private datePipe: DatePipe,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
@@ -366,7 +365,7 @@ export class ProjectApproveDetailComponent implements OnInit,AfterViewInit  {
     this.http.post(`${this.apiUrl}storeinquiry`,payload).subscribe((response:any)=> {
       if (response.status === true) {
         this.activityTrackerService.logActivity('Inquiry stored for project','');
-        this.tost.success('Inquiry Addeded successfully!');
+        this.toastr.success('We have received your inquiry. Our team will get back to you within 24 working hours.');
         this.resetForm();
         }
     },
@@ -460,7 +459,7 @@ export class ProjectApproveDetailComponent implements OnInit,AfterViewInit  {
       .subscribe(
         (response: any) => {
           if (response.status == true) {
-            this.toastr.success('OTP verified successfully.');
+            // this.toastr.success('OTP verified successfully.');
             const modalElement = this.otpContactModel.nativeElement;
             const modal = bootstrap.Modal.getInstance(modalElement);
             if (modal) {
@@ -517,7 +516,7 @@ export class ProjectApproveDetailComponent implements OnInit,AfterViewInit  {
       .subscribe(
         (response: any) => {
           if (response.status == true) {
-            this.toastr.success('OTP verified successfully.');
+            // this.toastr.success('OTP verified successfully.');
             const modalElement = this.otpModel.nativeElement;
             const modal = bootstrap.Modal.getInstance(modalElement);
             if (modal) {
@@ -930,7 +929,7 @@ export class ProjectApproveDetailComponent implements OnInit,AfterViewInit  {
       .subscribe((response: any) => {
         if (response.status === true) {
           this.activityTrackerService.logActivity('Inquiry stored for project','');
-        this.tost.success('Inquiry Addeded successfully!');
+        this.toastr.success('We have received your inquiry. Our team will get back to you within 24 working hours.');
         const modalElement = document.getElementById('get-builder');
         if (modalElement) {
           const modalInstance = bootstrap.Modal.getInstance(modalElement);

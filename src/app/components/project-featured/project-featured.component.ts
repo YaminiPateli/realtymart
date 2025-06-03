@@ -106,7 +106,6 @@ export class ProjectFeaturedComponent implements OnInit {
     private verifyservice: IsverifiedService,
     private location: Location,
     // private toastr: ToastrModule,
-    private tost: ToastrService,
     private datePipe: DatePipe,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
@@ -441,7 +440,7 @@ export class ProjectFeaturedComponent implements OnInit {
               'Inquiry stored for project',
               ''
             );
-            this.tost.success('Inquiry Addeded successfully!');
+            this.toastr.success('We have received your inquiry. Our team will get back to you within 24 working hours.');
             this.resetForm();
           }
         },
@@ -472,6 +471,8 @@ export class ProjectFeaturedComponent implements OnInit {
     if (!this.formData.username) {
       this.nameError = true;
     }
+    console.log(this.nameError);
+
     if (!this.formData.useremail) {
       this.emailError = true;
     }
@@ -547,7 +548,7 @@ export class ProjectFeaturedComponent implements OnInit {
     this.http.post(`${this.apiUrl}verifyinquiryotp`, payload).subscribe(
       (response: any) => {
         if (response.status == true) {
-          this.toastr.success('OTP verified successfully.');
+          // this.toastr.success('OTP verified successfully.');
           const modalElement = this.otpContactModel.nativeElement;
           const modal = bootstrap.Modal.getInstance(modalElement);
           if (modal) {
@@ -598,7 +599,7 @@ export class ProjectFeaturedComponent implements OnInit {
     this.http.post(`${this.apiUrl}verifyinquiryotp`, this.formData).subscribe(
       (response: any) => {
         if (response.status == true) {
-          this.toastr.success('OTP verified successfully.');
+          // this.toastr.success('OTP verified successfully.');
           const modalElement = this.otpModel.nativeElement;
           const modal = bootstrap.Modal.getInstance(modalElement);
           if (modal) {
@@ -1068,7 +1069,7 @@ export class ProjectFeaturedComponent implements OnInit {
               'Inquiry stored for project',
               ''
             );
-            this.tost.success('Inquiry Addeded successfully!');
+            this.toastr.success('We have received your inquiry. Our team will get back to you within 24 working hours.');
             const modalElement = document.getElementById('get-builder');
             if (modalElement) {
               const modalInstance = bootstrap.Modal.getInstance(modalElement);
