@@ -8,7 +8,7 @@ import { Title, Meta } from '@angular/platform-browser';
 })
 export class PropertyValuationComponent {
 
-// TOP SLIDER 
+// TOP SLIDER
   slideConfig1 = {
     slidesToShow: 2,
     slidesToScroll: 2,
@@ -103,7 +103,7 @@ export class PropertyValuationComponent {
       private metaService: Meta,
     ) {
         this.setMetaTags(
-          'Property Valuation in realtymart',
+          'Property Valuation in RealtyMart',
           '',
             );
     }

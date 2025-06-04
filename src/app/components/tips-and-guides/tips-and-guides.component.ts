@@ -13,7 +13,7 @@ export class TipsAndGuidesComponent {
     private metaService: Meta,
   ) {
     this.setMetaTags(
-      'Tips & Guides in realtymart',
+      'Tips & Guides in RealtyMart',
       '',
     );
   }

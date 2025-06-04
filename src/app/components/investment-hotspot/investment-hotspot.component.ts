@@ -13,7 +13,7 @@ export class InvestmentHotspotComponent {
     private metaService: Meta,
   ) {
     this.setMetaTags(
-      'Investment Hotspot in realtymart',
+      'Investment Hotspot in RealtyMart',
       '',
     );
   }

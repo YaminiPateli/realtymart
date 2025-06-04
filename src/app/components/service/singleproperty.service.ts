@@ -12,10 +12,11 @@ export class SinglePropertyService {
   constructor(private http: HttpClient) {}
 
   getPropertyServiceListing(name: string): Observable<any> {
-    const url = `${this.apiUrl}getpropertyservicelisting/${name}`;
+    const location = localStorage.getItem('location');
+    const url = `${this.apiUrl}getpropertyservicelisting/${name}/${location}`;
     const token = localStorage.getItem('myrealtylogintoken');
     const headers = { 'Authorization': `Bearer ${token}` };
-  
+
     return this.http.get(url, { headers });
-  }  
+  }
 }

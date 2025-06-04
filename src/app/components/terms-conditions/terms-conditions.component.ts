@@ -13,7 +13,7 @@ export class TermsConditionsComponent {
     private metaService: Meta,
   ) {
     this.setMetaTags(
-      'Terms & Conditions in realtymart',
+      'Terms & Conditions in RealtyMart',
       '',
     );
   }

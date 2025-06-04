@@ -13,7 +13,7 @@ export class ResearchInsightsComponent {
     private metaService: Meta,
   ) {
     this.setMetaTags(
-      'Research Insights in realtymart',
+      'Research Insights in RealtyMart',
       '',
     );
   }

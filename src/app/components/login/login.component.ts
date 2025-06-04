@@ -60,7 +60,7 @@ export class LoginComponent {
     private toastr: ToastrService,
     private geolocationService: GeolocationService
   ) {
-    this.setMetaTags('User Login in realtymart', '');
+    this.setMetaTags('User Login in RealtyMart', '');
     this.getLocation();
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'instant' });

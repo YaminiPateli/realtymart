@@ -17,7 +17,7 @@ export class PropertyServicesComponent implements OnInit {
 
   constructor(private titleService: Title, private metaService: Meta, public http: HttpClient, private propertyservicesService: PropertyservicesService) {
     this.setMetaTags(
-      'Property Services in realtymart',
+      'Property Services in RealtyMart',
       '',
     );
     setTimeout(() => {
@@ -59,5 +59,5 @@ export class PropertyServicesComponent implements OnInit {
   onServiceSelect(event: any) {
     this.selectedService = event.value;
   }
-  
+
 }

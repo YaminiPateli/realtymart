@@ -79,7 +79,7 @@ export class EmiCalculatorComponent {
   ) {
     this.yrToggel = true;
     this.setMetaTags(
-      'Investment Hotspot in realtymart',
+      'Investment Hotspot in RealtyMart',
       '',
     );
   }

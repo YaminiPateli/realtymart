@@ -203,7 +203,7 @@ export class PostPropertyFreeComponent {
     private route: Router,
   ) {
     this.setMetaTags(
-      'Sell and Rent Your Property For Free on realtymart',
+      'Sell and Rent Your Property For Free on RealtyMart',
       '',
     );
     const propertyDataJson = localStorage.getItem('postPropertyData');

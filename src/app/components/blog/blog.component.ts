@@ -22,7 +22,7 @@ export class BlogComponent {
     private http: HttpClient,
     private BlogService: BlogslistingService) {
     this.setMetaTags(
-      'Blog in realtymart',
+      'Blog in RealtyMart',
       '',
     );
     this.Loadblogs();

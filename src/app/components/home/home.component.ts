@@ -238,10 +238,10 @@ export class HomeComponent implements AfterViewInit, OnInit {
     this.checkLoggedIn();
     this.propertyServicesHomePage()
     this.loadpropertyresidential();
-    this.titleService.setTitle('Real Estate Property Portal | Real Estate Services | Buy, Sell, Rent Properties | realtymart.Com');
+    this.titleService.setTitle('Real Estate Property Portal | Real Estate Services | Buy, Sell, Rent Properties | realtymart.com');
     this.metaService.addTag({
       name: 'description',
-      content: 'Find the best real estate services. Buy, sell, and rent properties with ease at realtymart.Com. Your one-stop property portal!'
+      content: 'Find the best real estate services. Buy, sell, and rent properties with ease at realtymart.com. Your one-stop property portal!'
     });
     const token = localStorage.getItem('myrealtylogintoken');
     if (token) {
