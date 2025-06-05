@@ -18,6 +18,7 @@ export class TopbuildersComponent implements OnInit{
   locationCookie: any;
   activeLocality: string = 'sg';
   topbuildersbase64: any;
+  locationget: any;
 
 
   constructor(
@@ -30,7 +31,7 @@ export class TopbuildersComponent implements OnInit{
     }
 
     ngOnInit() {
-      this.locationCookie = localStorage.getItem('location');
+      this.locationget = this.locationCookie = localStorage.getItem('location');
     }
 
     trackCustomActivity() {
@@ -39,16 +40,16 @@ export class TopbuildersComponent implements OnInit{
     loadTopBuilders(): void {
       const locationCookie = localStorage.getItem('location');
       if (!locationCookie) {
+      console.log(locationCookie);
       this.topbuildersService.topbuilderget('Ahmedabad').subscribe((data) => {
         this.topbuilderData = data;
         this.topbuilders = this.topbuilderData?.responseData;
-        this.topbuildersbase64 = console.log(btoa("stringAngular2")); 
         this.keys = Object.keys(this.topbuilders);
         // Initialize the active locality with the first key
         if (this.keys.length > 0) {
           this.activeLocality = this.keys[0];
         }
-        
+
         this.setMetaTags(
           this.topbuilderData.meta.title,
           this.topbuilderData.meta.description,
@@ -56,10 +57,11 @@ export class TopbuildersComponent implements OnInit{
       });
     }
     else {
+      console.log(locationCookie);
       this.topbuildersService.topbuilderget(locationCookie).subscribe((data) => {
         this.topbuilderData = data;
         this.topbuilders = this.topbuilderData?.responseData;
-        this.topbuildersbase64 = console.log(btoa("stringAngular2")); 
+        this.topbuildersbase64 = console.log(btoa("stringAngular2"));
         this.keys = Object.keys(this.topbuilders);
         // Initialize the active locality with the first key
         if (this.keys.length > 0) {

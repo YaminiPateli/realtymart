@@ -14,6 +14,8 @@ export class TopbuilderslistingService {
   constructor(private httpClient: HttpClient) {}
 
   topbuilderget(city:string): Observable<any> {
+    console.log(city);
+
     return this.httpClient.get<any>(`${this.apiUrl}/${city}`).pipe(
       catchError(this.errorHandler)
     );
