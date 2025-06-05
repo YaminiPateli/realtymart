@@ -44,6 +44,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ActivityTrackerService } from '../service/activitytracker.service';
 import { PropertyplotService } from '../service/propertyplot.service';
+import { HeaderService } from '../service/header.service';
 declare var bootstrap: any;
 interface City {
   cid: number;
@@ -203,7 +204,8 @@ export class HomeComponent implements AfterViewInit, OnInit {
     private renderer: Renderer2,
     private datePipe: DatePipe,
     private el: ElementRef,
-    private geolocationService: GeolocationService
+    private geolocationService: GeolocationService,
+    private headerService: HeaderService
   ) {
     this.getLocation();
     this.loadHotDeals();
@@ -897,6 +899,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
         const getCitys = matchedCity.name;
         if(currentCity != getCitys){
           localStorage.setItem('location', matchedCity.name);
+          this.headerService.triggerRefresh();
         }
       }
     }

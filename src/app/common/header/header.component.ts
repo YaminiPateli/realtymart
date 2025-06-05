@@ -11,6 +11,7 @@ import { environment } from '../../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { GeolocationService } from '../../components/service/geolocation.service';
 import { NgFor } from '@angular/common';
+import { HeaderService } from 'src/app/components/service/header.service';
 interface ApiResponse {
   data: any;
 }
@@ -51,7 +52,8 @@ export class HeaderComponent implements AfterViewInit{
     private location: Location,
     private elementRef: ElementRef,
     private toastr: ToastrService,
-    private geolocationService: GeolocationService
+    private geolocationService: GeolocationService,
+    private headerService: HeaderService
   ) {
     if(this.checkToken == null || this.checkToken == undefined){
       this.checkToken = localStorage.getItem('myrealtylogintoken');
@@ -69,6 +71,16 @@ export class HeaderComponent implements AfterViewInit{
   }
 
   ngOnInit(): void {
+    this.headerService.refresh$.subscribe((refresh) => {
+      if (refresh) {
+      this.getLocation();
+      this.getLocations();
+      if(this.checkToken == null || this.checkToken == undefined){
+        this.checkToken = localStorage.getItem('myrealtylogintoken');
+      }
+        this.headerService.resetRefresh();
+      }
+    });
     this.getLocation();
     this.getLocations();
     if(this.checkToken == null || this.checkToken == undefined){
@@ -158,6 +170,7 @@ export class HeaderComponent implements AfterViewInit{
         localStorage.removeItem('name');
         localStorage.removeItem('sessionId');
         const currentUrl = this.location.path();
+          this.headerService.triggerRefresh();
         if(currentUrl == ''){
           window.location.reload();
         }else{

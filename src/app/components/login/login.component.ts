@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Title, Meta } from '@angular/platform-browser';
 import { GeolocationService } from '../service/geolocation.service';
+import { HeaderService } from '../service/header.service';
 declare var google: any;
 interface ApiResponse {
   status: boolean;
@@ -58,7 +59,8 @@ export class LoginComponent {
     private route: Router,
     private location: Location,
     private toastr: ToastrService,
-    private geolocationService: GeolocationService
+    private geolocationService: GeolocationService,
+    private headerService: HeaderService
   ) {
     this.setMetaTags('User Login in RealtyMart', '');
     this.getLocation();
@@ -175,6 +177,7 @@ export class LoginComponent {
           localStorage.setItem('role', response.data.role);
           localStorage.setItem('name', response.data.name);
           localStorage.setItem('email', response.data.email);
+          this.headerService.triggerRefresh();
           this.route.navigate(['/']);
           this.toastr.success('Login successfully!');
         } else if (response && response.code == 1) {
