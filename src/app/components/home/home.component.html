@@ -1227,80 +1227,24 @@
                     <div *ngIf="visible" class="ccc property_inner">
                       <div class="serch-propert">
                         <div class="mb-search-residential">
-                          <div class="mb-search__property__title" (click)="residencial()">
-                            <label for="Residential">Residential </label>
-                          </div>
                           <div class="mb-search__property__data" *ngIf="Residencialvisible">
                             <div class="data-overflow">
                               <div class="mb-search__property__item" *ngFor="
-                                  let propertyresidential of propertyresidential
-                                ">
+                                  let propertyplots of propertyplot">
                                 <input class="mb-search__property__item__input" type="checkbox" [checked]="
-                                    selectedResidentialItems.includes(
-                                      propertyresidential.id
+                                    selectedPlotItems.includes(
+                                      propertyplots.id
                                     )
-                                  " name="bar_propertyType_new_rent" id="plots_{{ propertyresidential.id }}"
-                                  title="{{ propertyresidential.name }}" (change)="
+                                  " name="bar_propertyType_new_rent" id="plots_{{ propertyplots.id }}"
+                                  title="{{ propertyplots.name }}" (change)="
                                     plotsCheckboxChange(
                                       $event,
-                                      +propertyresidential.id,
+                                      +propertyplots.id,
                                       'plots'
                                     )
                                   " />
-                                <label class="mb-search__property__item__label" for="plots_{{ propertyresidential.id }}"
-                                  id="plots_{{ propertyresidential.id }}">{{ propertyresidential.name }}</label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="mb-search-commercial">
-                          <div class="mb-search__property__title" (click)="commercial()">
-                            <label for="">Commercial</label>
-                          </div>
-                          <div class="mb-search__property__data" *ngIf="Commercialvisible">
-                            <div class="data-overflow">
-                              <div class="mb-search__property__item" *ngFor="
-                                  let propertycommercial of propertycommercial
-                                ">
-                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
-                                    selectedCommercialItems.includes(
-                                      propertycommercial.id
-                                    )
-                                  " name="bar_propertyType_new_buy" id="plots_{{ propertycommercial.id }}"
-                                  title="{{ propertycommercial.name }}" (change)="
-                                    plotshandleCommercialCheckboxChange(
-                                      $event,
-                                      propertycommercial.id,
-                                      'plots'
-                                    )
-                                  " />
-                                <label class="mb-search__property__item__label" for="plots_{{ propertycommercial.id }}"
-                                  id="plots_{{ propertycommercial.id }}">{{ propertycommercial.name }}</label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="mb-search-other  w-100">
-                          <div class="mb-search__property__title " (click)="OtherPropertyTypes()">
-                            <label for="">Other Property Types</label>
-                          </div>
-                          <div class="mb-search__property__data" *ngIf="otherproperytypes">
-                            <div class="data-overflow">
-                              <div class="mb-search__property__item" *ngFor="let propertyother of propertyother">
-                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
-                                    selectedOtherItems.includes(
-                                      propertyother.id
-                                    )
-                                  " name="bar_propertyType_new_buy" id="plots_{{ propertyother.id }}"
-                                  title="{{ propertyother.name }}" (change)="
-                                    plotshandleOtherCheckboxChange(
-                                      $event,
-                                      propertyother.id,
-                                      'plots'
-                                    )
-                                  " />
-                                <label class="mb-search__property__item__label" for="plots_{{ propertyother.id }}"
-                                  id="plots_{{ propertyother.id }}">{{ propertyother.name }}</label>
+                                <label class="mb-search__property__item__label" for="plots_{{ propertyplots.id }}"
+                                  id="plots_{{ propertyplots.id }}">{{ propertyplots.name }}</label>
                               </div>
                             </div>
                           </div>

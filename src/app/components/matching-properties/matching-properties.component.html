@@ -180,7 +180,8 @@
             </div>
             <div class="facility_wrapper">
               <div *ngIf="item.property_price_show == 0">
-                <h6 class="facility_title">Price</h6>
+                <h6 class="facility_title" *ngIf="item.total_price !== null">Price</h6>
+                <h6 class="facility_title" *ngIf="item.rent_amount !== null">Rent Amount</h6>
                 <p class="project-text">
                   ₹
                   {{

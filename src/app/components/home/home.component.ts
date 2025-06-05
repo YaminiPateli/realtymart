@@ -43,6 +43,7 @@ import { DatePipe, NgFor, NgIf } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ActivityTrackerService } from '../service/activitytracker.service';
+import { PropertyplotService } from '../service/propertyplot.service';
 declare var bootstrap: any;
 interface City {
   cid: number;
@@ -72,6 +73,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   @ViewChild('otpModel') otpModel!: ElementRef;
   selectedResidentialItems: number[] = [];
   selectedCommercialItems: number[] = [];
+  selectedPlotItems: number[] = [];
   selectedGenders: string[] = [];
   selectedLookingFor: string[] = [];
   topbuilderData: any;
@@ -98,6 +100,8 @@ export class HomeComponent implements AfterViewInit, OnInit {
   propertycommercial: any;
   propertyotherData: any;
   propertyother: any;
+  propertyplotData: any;
+  propertyplot: any;
   propertypgData: any;
   propertypg: any;
   propertyhostelData: any;
@@ -114,6 +118,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   locationCookie: any;
   activeTab: string = 'buy';
   city: any;
+  citySearch: any;
   city1:City[]=[];
   contact:any;
   contactData:any;
@@ -188,6 +193,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
     private propertyresidentialservice: PropertytyperesidentialService,
     private propertycommercialservice: PropertytypecommercialService,
     private propertyotherservice: PropertytypeothertypesService,
+    private propertyplotservice: PropertyplotService,
     private propertypgservice: PropertytypepgService,
     private propertyhostelservice: PropertytypehostelService,
     private bannerservice: HomepagebannerService,
@@ -211,6 +217,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
     this.loadpropertyresidential();
     this.loadpropertycommercial();
     this.loadPropertyOther();
+    this.loadPropertyPlot();
     this.loadPropertyPg();
     this.loadPropertyHostel();
     this.myForm = new FormGroup({
@@ -449,6 +456,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
           this.propertyresidentialData?.data;
 
           if (this.activeTab != 'pg' && this.activeTab != 'hostel') {
+
             const defaultSelections = ['Flat', 'Villa'];
             this.selectedResidentialItems = this.propertyresidential
             ?.filter((item: any) => defaultSelections.includes(item.name))
@@ -456,6 +464,19 @@ export class HomeComponent implements AfterViewInit, OnInit {
             this.selectedItemsOrder = this.propertyresidential?.filter(
               (item: any) => defaultSelections.includes(item.name)
             );
+            if(this.activeTab == 'plots'){
+            console.log('Active Tab:', this.activeTab);
+
+            const defaultSelections = ['Residential Land & Plot', 'Commercial Land'];
+            this.selectedPlotItems = this.propertyplot
+            ?.filter((item: any) => defaultSelections.includes(item.name))
+            .map((item: any) => item.id);
+            this.selectedItemsOrder = this.propertyplot?.filter(
+              (item: any) => defaultSelections.includes(item.name)
+            );
+            // this.selectedResidentialItems = [];
+            // this.selectedItemsOrder = [];
+          }
             //     const defaultSelections = ['Flat', 'Villa'];
             //     this.selectedResidentialItems = this.propertyresidential
             //   ?.filter((item: any) => defaultSelections.includes(item.name))
@@ -463,11 +484,11 @@ export class HomeComponent implements AfterViewInit, OnInit {
             // this.selectedItemsOrder = this.propertyresidential?.filter(
               //   (item: any) => defaultSelections.includes(item.name)
               // );
-      }
-      else {
-        this.selectedResidentialItems = [];
-        this.selectedItemsOrder = [];
-      }
+          }
+          else {
+            this.selectedResidentialItems = [];
+            this.selectedItemsOrder = [];
+          }
 
       if (this.selectedResidentialItems.length > 0) {
         this.Residencialvisible = true;
@@ -480,39 +501,34 @@ export class HomeComponent implements AfterViewInit, OnInit {
       });
   }
   loadpropertycommercial(): void {
-    this.propertycommercialservice
-      .getpropertytypecommercial()
-      ?.subscribe((propertycommercialData: any) => {
+    this.propertycommercialservice.getpropertytypecommercial()?.subscribe((propertycommercialData: any) => {
         this.propertycommercialData = propertycommercialData;
-        this.propertycommercial =
-          this.propertycommercialData?.data;
-      });
+        this.propertycommercial = this.propertycommercialData?.data;
+    });
   }
   loadPropertyOther(): void {
-    this.propertyotherservice
-      .getpropertytypeother()
-      ?.subscribe((propertyotherData: any) => {
+    this.propertyotherservice.getpropertytypeother()?.subscribe((propertyotherData: any) => {
         this.propertyotherData = propertyotherData;
-        this.propertyother =
-          this.propertyotherData?.data;
-      });
+        this.propertyother = this.propertyotherData?.data;
+    });
+  }
+  loadPropertyPlot(): void {
+    this.propertyplotservice.getpropertytypeplot()?.subscribe((propertyplotData: any) => {
+        this.propertyplotData = propertyplotData;
+        this.propertyplot = this.propertyplotData?.data;
+    });
   }
   loadPropertyPg(): void {
-    this.propertypgservice
-      .getpropertytypepg()
-      ?.subscribe((propertypgData: any) => {
+    this.propertypgservice.getpropertytypepg()?.subscribe((propertypgData: any) => {
         this.propertypgData = propertypgData;
         this.propertypg = this.propertypgData?.data;
-      });
+    });
   }
   loadPropertyHostel(): void {
-    this.propertyhostelservice
-      .getpropertytypehostel()
-      ?.subscribe((propertyhostelData: any) => {
+    this.propertyhostelservice.getpropertytypehostel()?.subscribe((propertyhostelData: any) => {
         this.propertyhostelData = propertyhostelData;
-        this.propertyhostel =
-          this.propertyhostelData?.data;
-      });
+        this.propertyhostel = this.propertyhostelData?.data;
+    });
   }
   visible: boolean = false;
   Residencialvisible: boolean = false;
@@ -852,6 +868,8 @@ export class HomeComponent implements AfterViewInit, OnInit {
           cid: city.id,
           cname: city.name
         }));
+        this.citySearch = response.responseData;
+
         const defaultCity = this.city1.find(city => city.cname === this.city);
         if (defaultCity) {
           this.myForm.get('selectcitysearch')?.setValue(defaultCity.cid);
@@ -869,6 +887,19 @@ export class HomeComponent implements AfterViewInit, OnInit {
       return;
     }
     this.searchError = false;
+    const selectedCityIds = this.myForm.get('selectcitysearch')?.value;
+
+    if (selectedCityIds) {
+      const matchedCity = this.citySearch.find((city: any) => city.id == selectedCityIds);
+
+      if (matchedCity) {
+        const currentCity = localStorage.getItem('location');
+        const getCitys = matchedCity.name;
+        if(currentCity != getCitys){
+          localStorage.setItem('location', matchedCity.name);
+        }
+      }
+    }
 
     const ResidentialItems = this.selectedItemsOrder.filter(
       (item) => item.type === 'RESIDENTIAL'
@@ -920,7 +951,10 @@ export class HomeComponent implements AfterViewInit, OnInit {
   }
 
   updateSelectedItems(event: any, id: number, selectedItems: number[], itemsList: any[]): void {
+console.log(itemsList);
+
     const selectedItem = itemsList.find(i => i.id === id);
+    console.log(selectedItem);
 
     if (event.target.checked) {
       this.selectedItemsOrder.push(selectedItem);
@@ -947,16 +981,16 @@ export class HomeComponent implements AfterViewInit, OnInit {
   }
 
   plotsCheckboxChange(event: any, id: number, type: any) {
-    // if (event.target.checked) {
-    //   this.selectedResidentialItems.push(id);
-    // } else {
-    //   this.selectedResidentialItems = this.selectedResidentialItems.filter(
-    //     (item) => item !== id
-    //   );
-    // }
-    // this.type = type;
+    if (event.target.checked) {
+      this.selectedPlotItems.push(id);
+    } else {
+      this.selectedPlotItems = this.selectedPlotItems.filter(
+        (item) => item !== id
+      );
+    }
+    this.type = type;
     // this.plotschangeLabel();
-    this.updateSelectedItems(event, id, this.selectedResidentialItems, this.propertyresidential);
+    this.updateSelectedItems(event, id, this.selectedPlotItems, this.propertyplot);
   }
 
   pgCheckboxChange(event: any, id: any, name: string) {
