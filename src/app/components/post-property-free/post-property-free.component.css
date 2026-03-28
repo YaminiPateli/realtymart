@@ -204,7 +204,7 @@ span.policy_links a {
 .modify_oop {
   display: flex;
   gap: 30px;
-  margin-bottom: 30px;
+  /* margin-top: 30px; */
 }
 
 .bedroom_specification {
@@ -297,4 +297,11 @@ textarea{
 
 .mgs_error {
   color: red;
+}
+.form-check-input[type=radio] {
+  border-width: 3px;
+  accent-color: #e53726;
+}
+.formCom{
+  margin-bottom: 30px;
 }

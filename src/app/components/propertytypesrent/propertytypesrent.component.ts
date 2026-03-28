@@ -101,6 +101,7 @@ export class PropertytypesrentComponent {
   scrollTimeout: any;
   isLoading: any;
   lastPage: any;
+originalPropertytype: any[] = [];
 
   sortOptions: string[] = [
     'Relevance',
@@ -251,6 +252,12 @@ export class PropertytypesrentComponent {
               ...this.propertytype,
               ...(response.responseData?.propertytypesrentin?.data || []),
             ];
+
+            this.originalPropertytype = [
+              ...this.propertytype,
+              ...(response.responseData?.propertytypesrentin?.data || []),
+            ];
+
             this.setMetaTags(response.meta.title, response.meta.description);
 
             this.lastPage =
@@ -437,7 +444,7 @@ export class PropertytypesrentComponent {
         );
         break;
       case 'Relevance':
-        this.propertytype = this.original;
+          this.propertytype = this.originalPropertytype;
         break;
       default:
         break;

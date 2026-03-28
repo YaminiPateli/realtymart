@@ -8,59 +8,47 @@
       <img
         src="{{ singleproject?.project_banner_image }}"
         alt
-        class="img-fluid"
+        class="img-fluid banner_img"
         width="100%"
       />
     </div>
-    <!-- <div class="container-fluid">
-          <div class="col-lg-4 p-0" *ngIf="latitude !== null  && longitude !== null">
-            <app-map [latitude]="singleproject?.latitude" [longitude]="singleproject?.longitude"></app-map>
-            <google-map
-              [center]="center"
-              [zoom]="zoom"
-              width="100%"
-              height="100%"
-            >
-              <map-marker [position]="center"></map-marker>
-            </google-map>
-          </div>
-      </div> -->
 
-    <!-- <div class="product_showing">
-        <div class="container">
-          <div class="product_dd">
-            <div class="box_ddd_one">
-              <img
-                src="../../../assets/images/Rera.png"
-                alt="project-rera"
-                class="img-fluid"
-              />
-            </div>
-            <div class="box_ddd_two">
-              <a
-                class="photos"
-                mat-raised-button
-                color="primary"
-                (click)="openLightbox()"
-              >
-                <span>
-                  <img src="../../../assets/images/photo_mg.png" alt="Photos" />
-                </span>
-                Photos
-              </a>
-              <ngx-lightbox></ngx-lightbox>
-              <a
-                class="brochure"
-                data-bs-toggle="modal"
-                data-bs-target="#Brochure"
-                style="cursor: pointer"
-                ><span><img src="../../../assets/images/Brochure.png" alt /></span
-                >Download Brochure</a
-              >
-            </div>
-          </div>
-        </div>
-      </div> -->
+    <!-- Logo box overlay (project logo + builder logo) - bottom left -->
+    <div class="banner-logo-box">
+      <img
+        *ngIf="singleproject?.project_logo"
+        src="{{ singleproject.project_logo }}"
+        alt="Project Logo"
+        class="banner-logo-img"
+      />
+      <img
+        *ngIf="singleproject?.aboutdeveloper?.builderLogo"
+        src="{{ singleproject.aboutdeveloper.builderLogo }}"
+        alt="Builder Logo"
+        class="banner-logo-img"
+      />
+    </div>
+
+    <!-- RERA Badge - bottom left below logo box -->
+    <div class="banner-rera-badge">
+      <span class="banner-rera-icon">R</span>
+      <span class="banner-rera-text">RERA APPROVED</span>
+      <span class="banner-rera-info">&#9432;</span>
+    </div>
+
+    <!-- Photos count button - bottom right -->
+    <div
+      class="banner-photos-btn"
+      *ngIf="photoAlbum.length > 0 || layoutAlbum.length > 0 || videoAlbum.length > 0"
+      (click)="openGallery('photos')"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+        <polyline points="21 15 16 10 5 21"></polyline>
+      </svg>
+      {{ photoAlbum.length + layoutAlbum.length + videoAlbum.length }} Photos
+    </div>
   </section>
 
   <section class="top_flore" id="navbar">
@@ -75,10 +63,10 @@
           >
         </li>
         <li
-          class="{'active': activeSection === 'properties'}"
+          class="{'active': activeSection === 'properties'} d-none"
           *ngIf="
-            this.singleproject?.propertybuilder &&
-            this.singleproject?.propertybuilder?.length !== 0
+            this.singleproject?.allProperties &&
+            this.singleproject?.allProperties?.length !== 0
           "
         >
           <a
@@ -239,22 +227,50 @@
                 </p>
                 <!-- <p class="by_group">{{this.singleproject.projectBHK}} Flats</p> -->
               </div>
-              <div class="col-lg-4">
-                <button
-                  class="contact-buy-btn"
-                  data-bs-toggle="modal"
-                  data-bs-target="#get-builder"
-                >
-                  Contact Builder
-                </button>
+              <div class="col-lg-4 overview-price-col">
+                <div class="overview-action-btns">
+                  <button
+                    class="contact-buy-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#get-builder"
+                  >
+                    Contact Builder
+                  </button>
+                  <div class="overview-dl-btns">
+                    <button
+                      class="download-brochure-btn"
+                      data-bs-toggle="modal"
+                      data-bs-target="#Brochure"
+                      (click)="brochureMode='brochure'; resetBrochureForm()"
+                      *ngIf="singleproject?.project_brochure"
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                      </svg>
+                      Download Brochure
+                    </button>
+                    <button
+                      class="download-payment-btn"
+                      data-bs-toggle="modal"
+                      data-bs-target="#Brochure"
+                      (click)="brochureMode='payment'; resetBrochureForm()"
+                      *ngIf="singleproject?.project_brochure"
+                    >
+                      <span class="payment-icon">&#8377;</span>
+                      Download Payment Plan
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           <div
-            class="properties_buy_rent"
+            class="properties_buy_rent d-none"
             id="properties"
-            *ngIf="this.singleproject?.propertybuilder?.length > 0"
+            *ngIf="this.singleproject?.allProperties?.length > 0"
           >
             <h3 class="m-0" *ngIf="this.singleproject.project_name !== null">
               Properties in The {{ this.singleproject.project_name }}
@@ -279,12 +295,12 @@
               class="carousel project_slider property_arrow"
               #slickModal="slick-carousel"
               [config]="slideConfig1"
-              *ngIf="this.singleproject?.propertybuilder !== null"
+              *ngIf="this.singleproject?.allProperties !== null"
             >
               <div
                 ngxSlickItem
                 class="slide"
-                *ngFor="let item of this.singleproject?.propertybuilder"
+                *ngFor="let item of this.singleproject?.allProperties"
               >
                 <div class="properties_buy_rent_box">
                   <a
@@ -480,7 +496,7 @@
                 >
                   <p>Project Size :</p>
                   <p class="about-project-value">
-                    {{ this.singleproject.project_size_in_sqft }} Sq-yrd
+                    {{ this.singleproject.project_size_in_sqft }} Sq-ft
                   </p>
                 </div>
                 <div
@@ -650,7 +666,7 @@
 
           <div
             class="gallery"
-            *ngIf="singleproject.project_images_3d.length > 0"
+            *ngIf="singleproject.project_images?.length > 0 || singleproject.project_images_3d?.length > 0"
           >
             <h3 class="companies-names">Gallery</h3>
             <ngx-slick-carousel
@@ -700,8 +716,56 @@
                   [innerHTML]="this.singleproject.project_specification"
                 ></div>
               </div>
-              <!-- <h3 class="companies-names review">{{this.singleproject.project_name}} Reviews & Ratings</h3>
-                              <button class="developer_builder_btn mt-3">Write a review</button> -->
+            </div>
+          </div>
+
+          <div class="reviews" id="reviews">
+            <div class="conatiner">
+              <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+                <h3 class="companies-names m-0">{{ singleproject?.project_name }} Reviews &amp; Ratings</h3>
+                <a class="w-fit contact-buy-btn" (click)="openReviewModal()">Write a review</a>
+              </div>
+
+              <!-- Rating summary (only when reviews exist) -->
+              <div class="proj-rating proj-rating--threecol" *ngIf="projectReviews.length > 0">
+                <div class="proj-rating__column">
+                  <div class="proj-rating__row">
+                    <span class="proj-rating__number">{{ averageRating | number:'1.1-1' }}</span>
+                    <span>
+                      <span class="proj-rating__star" *ngFor="let s of [1,2,3,4,5]" [class.full]="s <= averageRating"></span>
+                    </span>
+                  </div>
+                  <div style="font-size:13px; color:#606060; margin-top:2px;">
+                    {{ projectReviews.length }} {{ projectReviews.length === 1 ? 'Rating' : 'Ratings' }}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Review cards -->
+              <div class="review-block__wrap" *ngIf="projectReviews.length > 0">
+                <div class="review-block" *ngFor="let review of projectReviews">
+                  <div class="review__user-pic">{{ review.name?.charAt(0)?.toUpperCase() }}</div>
+                  <div class="review__posted">
+                    <div class="review__date">{{ review.created_at | date:'dd/MM/yyyy' }}</div>
+                  </div>
+                  <div class="review__info">
+                    <div class="review__name">{{ review.name }}</div>
+                    <div class="review__type">Verified User</div>
+                    <div class="review__stars">
+                      <span class="rating__star" *ngFor="let s of [1,2,3,4,5]" [class.full]="s <= review.rating"></span>
+                    </div>
+                  </div>
+                  <p class="review__text">{{ review.review }}</p>
+                </div>
+              </div>
+
+              <!-- Empty state -->
+              <div class="review-empty" *ngIf="projectReviews.length === 0">
+                <div class="review-empty__icon">&#9733;</div>
+                <div class="review-empty__title">No Reviews Yet</div>
+                <div class="review-empty__sub">Be the first to share your experience about this project</div>
+                <a class="review-write-link review-write-link--cta d-none" (click)="openReviewModal()">Write a Review</a>
+              </div>
             </div>
           </div>
 
@@ -1232,7 +1296,7 @@
                     for="compare"
                     class="compares"
                     style="display: inline-flex; gap: 5px"
-                    >I Agree to RealtyMart Terms of Use
+                    >I Agree to RealtyMart <a routerLink="/terms-conditions" target="_blank">Terms of Use</a>
                     <!-- <span class="d-block"
                         ><a
                           routerlink="../terms-conditions"
@@ -1252,13 +1316,7 @@
                 />
               </form>
             </div>
-            <!-- <a routerLink="" class="brochure_more">
-              <span
-                ><img
-                  src="../../../assets/images/Brochure.png"
-                  alt="Download" /></span
-              >Download Brochure</a
-            > -->
+            <!-- Hidden: sidebar Download Brochure link -->
           </div>
         </div>
       </div>
@@ -1490,18 +1548,219 @@
       </section> -->
 </main>
 
+<!-- ===== Gallery Modal (MagicBricks windowed style) ===== -->
+<div class="gallery-modal-overlay" *ngIf="galleryVisible" (click)="closeGallery()">
+  <div class="gallery-modal" (click)="$event.stopPropagation()">
+
+    <!-- Header -->
+    <div class="gallery-modal-header">
+      <div class="gallery-modal-tabs">
+        <button class="gallery-modal-tab" [class.active]="galleryActiveTab === 'photos'"
+          (click)="setGalleryTab('photos')" *ngIf="photoAlbum.length > 0">
+          Project Photos ({{ photoAlbum.length }})
+        </button>
+        <button class="gallery-modal-tab" [class.active]="galleryActiveTab === 'layout'"
+          (click)="setGalleryTab('layout')" *ngIf="layoutAlbum.length > 0">
+          Layout Photos ({{ layoutAlbum.length }})
+        </button>
+        <button class="gallery-modal-tab" [class.active]="galleryActiveTab === 'video'"
+          (click)="setGalleryTab('video')" *ngIf="videoAlbum.length > 0">
+          Video ({{ videoAlbum.length }})
+        </button>
+      </div>
+      <span class="gallery-header-sep"></span>
+      <div class="gallery-modal-actions">
+        <button class="gallery-contact-btn" (click)="openGalleryForm('contact')">Contact Now</button>
+        <button class="gallery-close-btn" (click)="closeGallery()">&times;</button>
+      </div>
+    </div>
+
+    <!-- Centered contact form card (shown over gallery when Contact Now clicked) -->
+    <div class="gallery-form-overlay" *ngIf="galleryFormType === 'contact'" (click)="closeGalleryForm()">
+      <div class="gallery-form-card" (click)="$event.stopPropagation()">
+        <!-- × close -->
+        <button class="gallery-form-card-close" (click)="closeGalleryForm()">&times;</button>
+
+        <!-- Title block -->
+        <div class="gfc-title">{{ singleproject?.project_name }}</div>
+        <div class="gfc-location">{{ singleproject?.project_localities }}</div>
+        <div class="gfc-sub">Get the advertiser details and share yours</div>
+
+        <!-- Name -->
+        <input type="text" placeholder="Name" [(ngModel)]="galleryContactData.name"
+          (keypress)="validateCharInput($event)" class="gfc-input" name="gcName" />
+        <div *ngIf="galleryContactNameErr" class="mgs_error">Please enter your name.</div>
+
+        <!-- Mobile with prefix -->
+        <div class="gfc-mobile-row">
+          <span class="gfc-isd">IND +91</span>
+          <input type="tel" placeholder="Mobile" maxlength="10" [(ngModel)]="galleryContactData.mobile"
+            (keypress)="validateNumberInput($event)" class="gfc-input gfc-mobile-input" name="gcMobile" />
+        </div>
+        <div *ngIf="galleryContactMobileErr" class="mgs_error">Please enter a valid 10-digit number.</div>
+
+        <!-- Email -->
+        <input type="email" placeholder="Email" [(ngModel)]="galleryContactData.email"
+          class="gfc-input" name="gcEmail" />
+        <div *ngIf="galleryContactEmailErr" class="mgs_error">Please enter a valid email.</div>
+
+        <!-- Terms -->
+        <div class="check-compare m-0 mt-3">
+          <input type="checkbox" id="gcTerms" [(ngModel)]="galleryContactData.termsAccepted" name="gcTerms" class="mycheck" />
+          <label for="gcTerms" class="compares">I Agree to RealtyMart <a routerLink="/terms-conditions" target="_blank">Terms of Use</a></label>
+        </div>
+        <div *ngIf="galleryContactTermsErr" class="mgs_error">Please agree to the terms.</div>
+
+        <!-- OTP row -->
+        <ng-container *ngIf="galleryContactOtpVisible">
+          <input type="text" placeholder="Enter OTP" [(ngModel)]="galleryContactOtp"
+            (keypress)="validateNumberInput($event)" maxlength="4" class="gfc-input mt-3" name="gcOtp" />
+          <div *ngIf="galleryContactOtpErr" class="mgs_error">Please enter a valid OTP.</div>
+          <button class="gfc-submit" (click)="submitGalleryContact()">Submit Enquiry</button>
+        </ng-container>
+        <button *ngIf="!galleryContactOtpVisible" class="gfc-submit" (click)="sendGalleryContactOTP()">Send OTP</button>
+      </div>
+    </div>
+
+    <!-- Thumbnail Row -->
+    <div class="gallery-thumbnails-row" *ngIf="currentAlbum.length > 0">
+      <button class="gallery-thumb-nav" (click)="prevGalleryImage()">&#8249;</button>
+      <div class="gallery-thumbnails" id="galleryThumbs">
+        <div class="gallery-thumb" *ngFor="let img of currentAlbum; let i = index"
+          [class.active]="i === galleryActiveIndex"
+          (click)="setGalleryImage(i)">
+          <img *ngIf="galleryActiveTab !== 'video'" [src]="img" alt="thumb" />
+          <div *ngIf="galleryActiveTab === 'video'" class="gallery-thumb-video">&#9654;</div>
+        </div>
+      </div>
+      <button class="gallery-thumb-nav" (click)="nextGalleryImage()">&#8250;</button>
+    </div>
+
+    <!-- Caption Bar -->
+    <div class="gallery-caption" *ngIf="currentAlbum.length > 0">
+      <span class="gallery-caption-count">
+        {{ galleryActiveIndex + 1 }}/{{ currentAlbum.length }}
+        {{ galleryActiveTab === 'photos' ? 'Project Photos' : galleryActiveTab === 'layout' ? 'Layout Photos' : 'Videos' }}
+      </span>
+      &nbsp;&#183;&nbsp;
+      <span class="gallery-caption-name">{{ singleproject?.project_name }}</span>
+    </div>
+
+    <!-- Main Image Area -->
+    <div class="gallery-main">
+      <button class="gallery-nav gallery-nav-prev" (click)="prevGalleryImage()">&#8249;</button>
+
+      <div class="gallery-main-content">
+        <a *ngIf="galleryActiveTab !== 'video' && currentAlbum.length > 0"
+           [attr.data-fancybox]="galleryZoom === 1 ? 'gallery-lb' : null"
+           [attr.href]="galleryZoom === 1 ? currentAlbum[galleryActiveIndex] : null">
+          <img
+            [src]="currentAlbum[galleryActiveIndex]"
+            alt="Gallery"
+            class="gallery-main-img"
+            [style.transform]="'scale(' + galleryZoom + ')'"
+            [style.cursor]="galleryZoom > 1 ? 'grab' : 'default'"
+          />
+        </a>
+        <video
+          *ngIf="galleryActiveTab === 'video' && currentAlbum.length > 0"
+          [src]="currentAlbum[galleryActiveIndex]"
+          controls
+          autoplay
+          class="gallery-main-img"
+        ></video>
+      </div>
+
+      <button class="gallery-nav gallery-nav-next" (click)="nextGalleryImage()">&#8250;</button>
+
+      <!-- Zoom Controls - right edge vertically centered -->
+      <div class="gallery-zoom-controls" *ngIf="galleryActiveTab !== 'video'">
+        <!-- Zoom In -->
+        <button class="gallery-zoom-btn" (click)="zoomIn()" [disabled]="galleryZoom >= 3" title="Zoom In">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            <line x1="11" y1="8" x2="11" y2="14"/>
+            <line x1="8" y1="11" x2="14" y2="11"/>
+          </svg>
+        </button>
+        <!-- Zoom Out -->
+        <button class="gallery-zoom-btn" (click)="zoomOut()" [disabled]="galleryZoom <= 1" title="Zoom Out">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            <line x1="8" y1="11" x2="14" y2="11"/>
+          </svg>
+        </button>
+        <!-- Reset -->
+        <button class="gallery-zoom-btn" (click)="galleryZoom = 1" title="Reset Zoom">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12a9 9 0 1 1-2.636-6.364"/>
+            <polyline points="21 3 21 9 15 9"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== Write Review Modal ===== -->
+<div class="modal fade" id="WriteReview" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header sign-in-box">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetReviewForm()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-contact__covidmsg--heading">Write a Review</div>
+        <div class="m-contact__covidmsg--text">Share your experience about {{ singleproject?.project_name }}</div>
+
+        <div class="mb-3">
+          <label class="review-field-label">Your Rating *</label>
+          <div class="review-stars-input">
+            <span
+              *ngFor="let s of [1,2,3,4,5]"
+              class="review-input-star"
+              [class.active]="s <= (hoveredReviewRating || reviewFormData.rating)"
+              (mouseenter)="hoveredReviewRating = s"
+              (mouseleave)="hoveredReviewRating = 0"
+              (click)="setReviewRating(s)"
+            >&#9733;</span>
+          </div>
+          <div *ngIf="reviewRatingError" class="mgs_error">Please select a rating.</div>
+        </div>
+
+        <input
+          type="text"
+          placeholder="Your Name"
+          [(ngModel)]="reviewFormData.name"
+          class="gold-form-input"
+        />
+        <div *ngIf="reviewNameError" class="mgs_error">Please enter your name.</div>
+
+        <textarea
+          placeholder="Write your review..."
+          [(ngModel)]="reviewFormData.review"
+          class="gold-form-input review-textarea"
+          rows="4"
+        ></textarea>
+        <div *ngIf="reviewTextError" class="mgs_error">Please write a review.</div>
+
+        <input class="sub_phone w-100" type="button" value="Submit Review" (click)="submitReview()" />
+      </div>
+    </div>
+  </div>
+</div>
+
 <div
   class="modal fade"
   id="Brochure"
   tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
-  aria-labelledby="exampleModalLabel"
+  aria-labelledby="brochureModalLabel"
   aria-hidden="true"
 >
-  <div
-    class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable"
-  >
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header sign-in-box">
         <button
@@ -1509,82 +1768,81 @@
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
+          (click)="resetBrochureForm()"
         ></button>
       </div>
       <div class="modal-body">
-        <div class="m-contact__covidmsg--heading">Download Brochure</div>
-        <div class="m-contact__covidmsg--text">
-          Fill your details &amp; get a great deal from the undefined Directly
+        <div class="m-contact__covidmsg--heading">
+          {{ brochureMode === 'brochure' ? 'Download Brochure' : 'Download Payment Plan' }}
         </div>
+        <div class="m-contact__covidmsg--text">
+          Fill your details &amp; get the document from {{ singleproject?.project_name }} directly
+        </div>
+
         <input
           type="text"
-          id="Aname"
-          name="name"
+          name="brochureName"
           placeholder="Name"
-          required=""
+          [(ngModel)]="brochureFormData.name"
+          (keypress)="validateCharInput($event)"
           class="gold-form-input"
         />
+        <div *ngIf="brochureNameError" class="mgs_error">Please enter your name.</div>
+
         <input
           type="email"
-          id="email"
-          name="email"
+          name="brochureEmail"
           placeholder="Email"
-          required=""
+          [(ngModel)]="brochureFormData.email"
           class="gold-form-input"
         />
+        <div *ngIf="brochureEmailError" class="mgs_error">Please enter a valid email address.</div>
 
         <div class="row">
           <div class="col-md-4">
-            <select name="number-code" id="number-code" class="gold-form-input">
-              <option value="Ind +91">Ind +91</option>
-              <option value="USA: +1">USA: +1</option>
-              <option value="UK: +44">UK: +44</option>
-              <option value="Mexico: +52">Mexico: +52</option>
-              <option value="China: +86">China: +86</option>
-            </select>
+            <select name="brochureCode" class="gold-form-input"><option value="+91">Ind +91</option></select>
           </div>
           <div class="col-md-8">
             <input
-              type="number"
-              id="goldNum"
-              name="goldNum"
+              type="tel"
+              name="brochureMobile"
               placeholder="Mobile No."
-              required
+              maxlength="10"
+              [(ngModel)]="brochureFormData.mobile"
+              (keypress)="validateNumberInput($event)"
               class="gold-form-input"
-            /><br />
+            />
           </div>
         </div>
+        <div *ngIf="brochureMobileError" class="mgs_error">Please enter a valid 10-digit mobile number.</div>
+
         <div class="check-compare m-0">
-          <input
-            type="checkbox"
-            id="Terms"
-            name="Terms"
-            value="compare add"
-            class="mycheck"
-          />
-          <label for="Terms" class="compares"
-            >I Agree to RealtyMart Terms of Use
-            <!-- <span
-                ><a routerlink="../terms-conditions" routerLink="/terms-conditions"
-                  >Terms of Use</a
-                ></span> --> </label
-          ><br />
+          <input type="checkbox" id="BrochureTerms" name="BrochureTerms" [(ngModel)]="brochureFormData.termsAccepted" class="mycheck" />
+          <label for="BrochureTerms" class="compares">I Agree to RealtyMart <a routerLink="/terms-conditions">Terms of Use</a></label>
         </div>
-        <div *ngIf="showOTP">
+        <div *ngIf="brochureTermsError" class="mgs_error">Please agree to the terms and conditions.</div>
+
+        <div *ngIf="brochureOtpVisible" class="mt-3">
           <input
             type="text"
-            id="otp"
-            name="otp"
+            name="brochureOtp"
             placeholder="Enter OTP"
-            [(ngModel)]="otp"
-            required
+            [(ngModel)]="brochureOtp"
+            (keypress)="validateNumberInput($event)"
+            maxlength="4"
             class="gold-form-input"
           />
-          <button type="button" class="btn btn-primary" (click)="verifyOTP()">
-            Verify
-          </button>
+          <div *ngIf="brochureOtpError" class="mgs_error">Please enter a valid OTP.</div>
+          <input class="sub_phone" type="button" value="Verify &amp; Download" (click)="submitBrochure()" />
         </div>
-        <input class="sub_phone" type="submit" value="Download Now" />
+
+        <input
+          *ngIf="!brochureOtpVisible"
+          class="sub_phone"
+          type="button"
+          value="Send OTP"
+          (click)="sendBrochureOTP()"
+        />
       </div>
     </div>
   </div>
@@ -1711,7 +1969,7 @@
               class="mycheck"
             />
             <label for="compare" class="compares"
-              >I Agree to RealtyMart Terms of Use</label
+              >I Agree to RealtyMart <a routerLink="/terms-conditions" target="_blank">Terms of Use</a></label
             >
             <!-- <span><a routerLink="../terms-conditions">Terms of Use</a></span> <br /> -->
           </div>

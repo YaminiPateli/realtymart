@@ -1,403 +1,1620 @@
 <main>
-<section class="profile position-relative">
+  <section class="profile position-relative">
     <div class="container">
-        <div class="banner-small">
-            <h1 class="banner_title"></h1>
-            <p class="banner_small"></p>
-        </div>
+      <div class="banner-small">
+        <h1 class="banner_title"></h1>
+        <p class="banner_small"></p>
+      </div>
     </div>
-</section>
-<section class="our-profiles">
+  </section>
+  <section class="our-profiles">
     <div class="container">
-        <div class="profile-tab-section">
-            <ul class="myprofile nav-pills mb-3" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                  <button class="profile-link " id="pills-account-tab" data-bs-toggle="pill" data-bs-target="#pills-account" type="button" role="tab" aria-controls="pills-account" aria-selected="true">ACCOUNT SUMMARY</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="profile-link" id="pills-responses-tab" data-bs-toggle="pill" data-bs-target="#pills-responses" type="button" role="tab" aria-controls="pills-responses" aria-selected="false">CONTACTS/RESPONSES</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="profile-link" id="pills-myproperties-tab" data-bs-toggle="pill" data-bs-target="#pills-myproperties" type="button" role="tab" aria-controls="pills-myproperties" aria-selected="false">PROPERTIES</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="profile-link" id="pills-alerts-tab" data-bs-toggle="pill" data-bs-target="#pills-alerts" type="button" role="tab" aria-controls="pills-alerts" aria-selected="false">PROPERTY ALERTS</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="profile-link active" id="pills-Iprofile-tab" data-bs-toggle="pill" data-bs-target="#pills-Iprofile" type="button" role="tab" aria-controls="pills-Iprofile" aria-selected="false">PROFILE</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="profile-link" id="pills-subscription-tab" data-bs-toggle="pill" data-bs-target="#pills-subscription" type="button" role="tab" aria-controls="pills-subscription" aria-selected="false">SUBSCRIPTION</button>
-                  </li>
-              </ul>
-        </div>
+      <div class="profile-tab-section">
+        <ul class="myprofile nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="profile-link active" id="pills-Iprofile-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-Iprofile" type="button" role="tab" aria-controls="pills-Iprofile"
+              aria-selected="false">
+              <svg width="66" height="69" viewBox="0 0 66 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M33.0012 7.73828C48.3216 7.73841 60.7415 20.1582 60.7415 35.4785C60.7414 36.4142 60.6943 37.339 60.6038 38.251C60.5742 38.5482 60.3093 38.7648 60.0129 38.7354C59.7165 38.7058 59.5001 38.4415 59.5295 38.1445C59.6165 37.2679 59.6614 36.3785 59.6614 35.4785C59.6614 20.7547 47.7249 8.81849 33.0012 8.81836C18.2773 8.81836 6.34106 20.7546 6.34106 35.4785C6.34119 50.2022 18.2774 62.1387 33.0012 62.1387C33.9012 62.1387 34.7906 62.0938 35.6672 62.0068C35.9642 61.9774 36.2285 62.1938 36.2581 62.4902C36.2875 62.7866 36.071 63.0515 35.7737 63.0811C34.8617 63.1716 33.937 63.2187 33.0012 63.2188C17.6809 63.2188 5.26111 50.7989 5.26099 35.4785C5.26099 20.1581 17.6808 7.73828 33.0012 7.73828Z"
+                  stroke="#333333" stroke-width="3" />
+                <path
+                  d="M20.3706 48.707C24.1947 44.7018 29.8922 42.9334 35.2788 43.5645L35.7993 43.6338C36.0577 43.6717 36.246 43.886 36.2603 44.1367L36.2554 44.2461C36.2174 44.5043 36.003 44.6927 35.7524 44.707L35.6431 44.7021C30.4148 43.9359 24.833 45.5976 21.1519 49.4531C20.9459 49.6687 20.6038 49.6764 20.3882 49.4707C20.1724 49.2645 20.1648 48.9227 20.3706 48.707ZM32.978 21.3398C37.0366 21.3398 40.3276 24.6254 40.3276 28.6797C40.3276 32.7339 37.0366 36.0195 32.978 36.0195C28.9195 36.0195 25.6284 32.734 25.6284 28.6797C25.6285 24.6254 28.9196 21.3399 32.978 21.3398ZM32.978 22.4199C29.5146 22.42 26.7086 25.2235 26.7085 28.6797C26.7085 32.136 29.5146 34.9394 32.978 34.9395C36.4417 34.9395 39.2476 32.1361 39.2476 28.6797C39.2475 25.2234 36.4417 22.4199 32.978 22.4199Z"
+                  stroke="#333333" stroke-width="3" />
+                <path
+                  d="M50.6807 43.0996C56.2365 43.0996 60.741 47.6034 60.7412 53.1592C60.7412 58.7151 56.2366 63.2197 50.6807 63.2197C45.1249 63.2195 40.6211 58.715 40.6211 53.1592C40.6213 47.6036 45.125 43.0998 50.6807 43.0996ZM50.6807 44.1797C45.7214 44.1799 41.7014 48.2 41.7012 53.1592C41.7012 58.1186 45.7213 62.1394 50.6807 62.1396C55.6402 62.1396 59.6611 58.1187 59.6611 53.1592C59.6609 48.1998 55.6401 44.1797 50.6807 44.1797Z"
+                  stroke="#333333" stroke-width="3" />
+              </svg>
+              PROFILE
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="profile-link" id="pills-buyerresponse-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-buyerresponse" type="button" role="tab" aria-controls="pills-buyerresponse"
+              aria-selected="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="68" height="69" viewBox="0 0 68 69" fill="none">
+                <path
+                  d="M20.7931 32.9912L35.8191 48.0172L47.0887 44.2608L58.3582 55.5303L50.8451 63.0434C46.7131 67.1754 39.9512 67.1754 35.8191 63.0434L5.76712 32.9912C1.63479 28.8589 1.63505 22.0973 5.76712 17.9652L13.2802 10.4521L24.5497 21.7217L20.7931 32.9912Z"
+                  stroke="#333333" stroke-width="2.55" stroke-miterlimit="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path
+                  d="M49.9297 14.0796C52.8637 14.0796 55.2422 11.7011 55.2422 8.76709C55.2422 5.83308 52.8637 3.45459 49.9297 3.45459C46.9957 3.45459 44.6172 5.83308 44.6172 8.76709C44.6172 11.7011 46.9957 14.0796 49.9297 14.0796Z"
+                  stroke="#333333" stroke-width="2.55" stroke-miterlimit="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path
+                  d="M39.3047 30.0171C39.3047 24.149 44.0616 19.3921 49.9297 19.3921C55.7977 19.3921 60.5547 24.149 60.5547 30.0171"
+                  stroke="#333333" stroke-width="2.55" stroke-miterlimit="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M65.3335 66.1421H43.5312" stroke="#333333" stroke-width="2.55" stroke-miterlimit="10"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Buyer<br> Responses
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="profile-link" id="pills-sellerresponse-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-sellerresponse" type="button" role="tab" aria-controls="pills-sellerresponse"
+              aria-selected="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="68" height="69" viewBox="0 0 68 69" fill="none">
+                <path
+                  d="M20.7931 32.9912L35.8191 48.0172L47.0887 44.2608L58.3582 55.5303L50.8451 63.0434C46.7131 67.1754 39.9512 67.1754 35.8191 63.0434L5.76712 32.9912C1.63479 28.8589 1.63505 22.0973 5.76712 17.9652L13.2802 10.4521L24.5497 21.7217L20.7931 32.9912Z"
+                  stroke="#333333" stroke-width="2.55" stroke-miterlimit="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path
+                  d="M49.9297 14.0796C52.8637 14.0796 55.2422 11.7011 55.2422 8.76709C55.2422 5.83308 52.8637 3.45459 49.9297 3.45459C46.9957 3.45459 44.6172 5.83308 44.6172 8.76709C44.6172 11.7011 46.9957 14.0796 49.9297 14.0796Z"
+                  stroke="#333333" stroke-width="2.55" stroke-miterlimit="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path
+                  d="M39.3047 30.0171C39.3047 24.149 44.0616 19.3921 49.9297 19.3921C55.7977 19.3921 60.5547 24.149 60.5547 30.0171"
+                  stroke="#333333" stroke-width="2.55" stroke-miterlimit="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M65.3335 66.1421H43.5312" stroke="#333333" stroke-width="2.55" stroke-miterlimit="10"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Seller<br> Responses
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="profile-link" id="pills-propertyalerts-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-propertyalerts" type="button" role="tab" aria-controls="pills-propertyalerts"
+              aria-selected="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="68" height="69" viewBox="0 0 68 69" fill="none">
+                <g clip-path="url(#clip0_198_490)">
+                  <mask id="mask0_198_490" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-1" y="0"
+                    width="69" height="69">
+                    <path d="M-0.00390625 0.795906H67.9961V68.7959H-0.00390625V0.795906Z" fill="white" />
+                  </mask>
+                  <g mask="url(#mask0_198_490)">
+                    <path d="M50.8254 66.1387H9.29297V22.377" stroke="#333333" stroke-width="2.55"
+                      stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M58.6992 22.377V49.5371" stroke="#333333" stroke-width="2.55" stroke-miterlimit="10"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M2.65234 25.6309L33.9961 3.45117L65.3398 25.6309" stroke="#333333" stroke-width="2.55"
+                      stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                  </g>
+                  <path
+                    d="M38.7773 56.9951C40.9778 56.9951 42.7617 55.2112 42.7617 53.0107V45.4404C42.7617 41.0394 46.3294 37.4717 50.7305 37.4717C55.1315 37.4717 58.6992 41.0394 58.6992 45.4404V53.0107C58.6992 55.2112 60.4831 56.9951 62.6836 56.9951"
+                    stroke="#333333" stroke-width="2.55" stroke-miterlimit="10" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                  <path d="M38.7773 56.9951H62.6836" stroke="#333333" stroke-width="2.55" stroke-miterlimit="10"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M50.7305 60.9795V56.9951" stroke="#333333" stroke-width="2.55" stroke-miterlimit="10"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_198_490">
+                    <rect width="68" height="68" fill="white" transform="translate(0 0.799805)" />
+                  </clipPath>
+                </defs>
+              </svg>
+              Property<br> Alerts
+            </button>
+          </li>
+          <!-- <li class="nav-item" role="presentation">
+            <button class="profile-link" id="pills-subscription-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-subscription" type="button" role="tab" aria-controls="pills-subscription"
+              aria-selected="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="71" height="72" viewBox="0 0 71 72" fill="none">
+                <path
+                  d="M8.9375 1.79932V13.3247C15.2684 6.25476 24.4595 1.79932 34.6968 1.79932C53.7927 1.79932 69.2731 17.2797 69.2731 36.3756C69.2731 40.4168 68.5798 44.2961 67.3057 47.901"
+                  stroke="#333333" stroke-width="2.55" stroke-miterlimit="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path
+                  d="M61.7819 69.7999V58.2745L61.6926 58.1951C55.3594 65.315 46.1282 69.7999 35.8497 69.7999C16.7538 69.7999 1.27344 54.3196 1.27344 35.2237C1.27344 31.1824 1.96669 27.3031 3.24083 23.6982"
+                  stroke="#333333" stroke-width="2.55" stroke-miterlimit="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path
+                  d="M24.9108 25.7847H18.0039V18.8778C18.0039 16.9705 19.5501 15.4243 21.4574 15.4243C23.3646 15.4243 24.9108 16.9705 24.9108 18.8778V25.7847Z"
+                  stroke="#333333" stroke-width="2.55" stroke-miterlimit="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M52.5421 56.1752V18.8778C52.5421 16.9705 50.9959 15.4243 49.0886 15.4243H24.9144H21.4609"
+                  stroke="#333333" stroke-width="2.55" stroke-miterlimit="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M24.9102 25.7837V56.1742" stroke="#333333" stroke-width="2.55" stroke-miterlimit="10"
+                  stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                  d="M24.9102 56.1747L28.3636 52.7212L31.8171 56.1747L35.2705 52.7212L38.724 56.1747L42.1775 52.7212L45.6309 56.1747L49.0844 52.7212L52.5379 56.1747"
+                  stroke="#333333" stroke-width="2.55" stroke-miterlimit="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              Subscription
+            </button>
+          </li> -->
+        </ul>
+      </div>
     </div>
-</section>
+  </section>
 
-<div class="xyz">
+  <div class="xyz">
     <div class="container">
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade" id="pills-account" role="tabpanel" aria-labelledby="pills-account-tab">ACCOUNT SUMMARY</div>
-
-            <div class="tab-pane fade" id="pills-responses" role="tabpanel" aria-labelledby="pills-responses-tab">CONTACTS/RESPONSES</div>
-
-            <div class="tab-pane fade" id="pills-myproperties" role="tabpanel" aria-labelledby="pills-myproperties-tab">PROPERTIES</div>
-
-            <div class="tab-pane fade" id="pills-alerts" role="tabpanel" aria-labelledby="pills-alerts-tab">
-              <div class="alerts-tabs">
-                <div class="myalerts">
-                  <div class="head-alert">
-                    <h4>My Property Alerts</h4>
-                  </div>
-                  <div class="new-alert">
-                    <a routerLink="javascript::void(0)">SET NEW PROPERTY ALERT</a>
+      <!-- individual profile -->
+      <div class="profile_details d-none">
+        <div class="login-details">
+          <div class="login_head">
+            <div class="profile_pic">
+              <img src="{{ company_details.builder_logo }}" alt="">
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none"
+                  class="pic_edit">
+                  <circle cx="10.5" cy="10.3721" r="10" fill="#75A702" />
+                  <path
+                    d="M10.5 14.3589H15.75M13.1367 4.74575L5.82942 12.0412L5.25 14.3589L7.56771 13.7795L14.875 6.48403C15.355 6.00402 15.355 5.22577 14.875 4.74575C14.395 4.26574 13.6167 4.26574 13.1367 4.74575Z"
+                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </div>
+            <div>
+              <div class="profile_name">Alex Volkov</div>
+              <div class="profile_history">Account Created on 25 Feb,2024</div>
+            </div>
+          </div>
+          <div class="login-edit">
+            <form action="">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <label for="fname" class="label-form">User Name </label>
+                  <input type="text" id="fname" name="fname" [(ngModel)]="userdetail.name" class="iform-input mb-0">
+                </div>
+                <!-- User Email + Verify -->
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                  <label class="label-form">User Email</label>
+                  <div class="position-relative">
+                    <input type="email" class="iform-input mb-0" value="alexvolkov@gmail.com" readonly />
+                    <button type="button" class="verify_btn ">Verify</button>
                   </div>
                 </div>
-
-                <div class="alerts-box">
-                  <div class="row">
-                    <div class="col-lg-10 col-md-6 col-sm-12">
-                      <p class="criteria-titles"><strong>Alerts Criteria -</strong> To rent <strong>1 BHK</strong> Builder Floor Apartment
-                        in <strong>Ahmedabad, Vejalpur</strong> in range of <strong>1000 to 5000.</strong></p>
-
-                      <p class="criteria-titles mt-4">Alerts Frequency - Daily</p>
-
-                      <div class="maching-all">
-                        <div class="edit-and-maching">
-                          <div class="search-maching">
-                            <a href="#">SEARCH MATCHING PROPERTIES</a>
+                <!-- Mobile + Verify -->
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                  <label class="label-form">Mobile</label>
+                  <div class="position-relative">
+                    <input type="text" class="iform-input mb-0" value="+91 - 8956742364" readonly />
+                    <button type="button" class="verify_btn ">Verify</button>
+                  </div>
+                </div>
+              </div>
+              <div class="edit-save">
+                <button>Save & Continue</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- individual profile -->
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-Iprofile" role="tabpanel" aria-labelledby="pills-Iprofile-tab">
+          <div class="">
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="profile-tab">
+                  <div class="profile-box flex-column nav-pills" id="v-pills-tab" role="tablist"
+                    aria-orientation="vertical">
+                    <button class="Mprofile-link active" id="v-pills-personal-tab" data-bs-toggle="pill"
+                      data-bs-target="#v-pills-personal" type="button" role="tab" aria-controls="v-pills-personal"
+                      aria-selected="true">
+                      <div class="step">
+                        <div class="circle">1</div>
+                        <div class="label">Personal Details</div>
+                      </div>
+                    </button>
+                    <button class="Mprofile-link" id="v-pills-address-tab" data-bs-toggle="pill"
+                      data-bs-target="#v-pills-address" type="button" role="tab" aria-controls="v-pills-address"
+                      aria-selected="false">
+                      <div class="step">
+                        <div class="circle">2</div>
+                        <div class="label">Addresses</div>
+                      </div>
+                    </button>
+                    <button class="Mprofile-link" id="v-pills-buss-det-tab" data-bs-toggle="pill"
+                      data-bs-target="#v-pills-buss-det" type="button" role="tab" aria-controls="v-pills-buss-det"
+                      aria-selected="false" *ngIf="userdetail.role != 'User'">
+                      <div class="step">
+                        <div class="circle">3</div>
+                        <div class="label">Business Details</div>
+                      </div>
+                    </button>
+                    <button class="Mprofile-link" id="v-pills-deal-exp-tab" data-bs-toggle="pill"
+                      data-bs-target="#v-pills-deal-exp" type="button" role="tab" aria-controls="v-pills-deal-exp"
+                      aria-selected="false" *ngIf="userdetail.role != 'User'">
+                      <div class="step">
+                        <div class="circle">4</div>
+                        <div class="label">Deals & Expertise</div>
+                      </div>
+                    </button>
+                    <!-- <button class="Mprofile-link " id="v-pills-media-tab" data-bs-toggle="pill"
+                      data-bs-target="#v-pills-media" type="button" role="tab" aria-controls="v-pills-media"
+                      aria-selected="false">
+                      <div class="step">
+                        <div class="circle">5</div>
+                        <div class="label">Media</div>
+                      </div>
+                    </button>
+                    <button class="Mprofile-link" id="v-pills-testimonial-tab" data-bs-toggle="pill"
+                      data-bs-target="#v-pills-testimonial" type="button" role="tab" aria-controls="v-pills-testimonial"
+                      aria-selected="false">
+                      <div class="step">
+                        <div class="circle">6</div>
+                        <div class="label">Testimonials</div>
+                      </div>
+                    </button> -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-9 col-md-9 col-sm-12 ps-lg-5">
+                <div class="profile_details">
+                  <div class="progress-container">
+                    <div class="progress">
+                      <div class="progress-bar profile_progress" style="width: 10%;" role="progressbar"
+                        aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+                      </div>
+                    </div>
+                    <div class="progress-percent">10%</div>
+                    <div class="owner-cc">
+                      <button class="contact-buy-btn" data-bs-toggle="modal" data-bs-target="#deactivateModal">
+                        CONTACT OWNER
+                      </button>
+                    </div>
+                  </div>
+                  <div class="tab-content profile-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-personal" role="tabpanel"
+                      aria-labelledby="v-pills-personal-tab">
+                      <div class="login-details">
+                        <div class="login_head">
+                          <div class="profile_pic">
+                            <img src="{{ company_details.builder_logo }}" alt="">
+                            <a href="#">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"
+                                fill="none" class="pic_edit">
+                                <circle cx="10.5" cy="10.3721" r="10" fill="#75A702" />
+                                <path
+                                  d="M10.5 14.3589H15.75M13.1367 4.74575L5.82942 12.0412L5.25 14.3589L7.56771 13.7795L14.875 6.48403C15.355 6.00402 15.355 5.22577 14.875 4.74575C14.395 4.26574 13.6167 4.26574 13.1367 4.74575Z"
+                                  stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                              </svg>
+                            </a>
                           </div>
-                          <div class="edit-maching">
-                            <a href="#">EDIT</a> <span class="h-line">|</span> <a href="#">UNSUBSCRIBE</a>
+                          <div>
+                            <div class="profile_name">{{userdetail.name}}</div>
+                            <div class="profile_history">Account Created on {{userdetail.created_at | date:'dd MMM,
+                              yyyy' }}</div>
                           </div>
+                        </div>
+                        <div class="login-edit">
+                          <form action="">
+                            <div class="row">
+                              <div class="col-lg-6 col-md-6 col-sm-12">
+                                <label for="fname" class="label-form">User Name </label>
+                                <input type="text" id="fname" name="fname" [(ngModel)]="userdetail.name"
+                                  class="iform-input mb-0">
+                              </div>
+                              <!-- User Email + Verify -->
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                                <label class="label-form">User Email</label>
+                                <div class="position-relative">
+                                  <input type="email" name="email" class="iform-input mb-0"
+                                    [(ngModel)]="userdetail.email" readonly />
+                                  <button type="button" class="verify_btn ">Verify</button>
+                                </div>
+                              </div>
+                              <!-- Mobile + Verify -->
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                                <label class="label-form">Mobile</label>
+                                <div class="position-relative">
+                                  <input type="text" class="iform-input mb-0" name="contact_no"
+                                    [(ngModel)]="userdetail.contact_no" readonly />
+                                  <!-- <button type="button" class="verify_btn ">Verify</button> -->
+                                </div>
+                              </div>
+                              <!-- Registered As -->
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                                <label class="label-form">Registered As</label>
+                                <input type="text" class="iform-input mb-0" name="role" [(ngModel)]="userdetail.role" />
+                              </div>
+                              <!-- Alternate Mobile -->
+                              <!-- <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                                <label class="label-form">Alternate Mobile Number</label>
+                                <div class="position-relative">
+                                  <input type="text" class="iform-input mb-0" placeholder="Enter Your Mobile Number" name="role" [(ngModel)]="userdetail.role" />
+                                  <a
+                                    class="position-absolute top-50 end-0 translate-middle-y text-danger text-decoration-none">&#9998;</a>
+                                </div>
+                              </div> -->
+                              <!-- <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                                <label class="label-form">Alternate Email</label>
+                                <div class="position-relative">
+                                  <input type="email" class="iform-input mb-0" placeholder="Add Email" />
+                                  <a
+                                    class="position-absolute top-50 end-0 translate-middle-y text-danger text-decoration-none">&#9998;</a>
+                                </div>
+                              </div> -->
+                            </div>
+                            <div class="edit-save">
+                              <button>Save & Continue</button>
+                            </div>
+                          </form>
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-2 col-md-6 col-sm-12">
-                      <p class="alert-post-date">Posted: Apr 27, '09</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="alerts-box">
-                  <div class="row">
-                    <div class="col-lg-10 col-md-6 col-sm-12">
-                      <p class="criteria-titles"><strong>Alerts Criteria -</strong> To rent <strong>1 BHK</strong> Builder Floor Apartment
-                        in <strong>Ahmedabad, Vejalpur</strong> in range of <strong>1000 to 5000.</strong></p>
-
-                      <p class="criteria-titles mt-4">Alerts Frequency - Daily</p>
-
-                      <div class="maching-all">
-                        <div class="edit-and-maching">
-                          <div class="search-maching">
-                            <a href="#">SEARCH MATCHING PROPERTIES</a>
+                    <div class="tab-pane fade" id="v-pills-address" role="tabpanel"
+                      aria-labelledby="v-pills-address-tab">
+                      <div class="login-details">
+                        <div class="login_head">
+                          <div class="profile_pic">
+                            <img src="{{ company_details.builder_logo }}" alt="">
+                            <a href="#">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"
+                                fill="none" class="pic_edit">
+                                <circle cx="10.5" cy="10.3721" r="10" fill="#75A702" />
+                                <path
+                                  d="M10.5 14.3589H15.75M13.1367 4.74575L5.82942 12.0412L5.25 14.3589L7.56771 13.7795L14.875 6.48403C15.355 6.00402 15.355 5.22577 14.875 4.74575C14.395 4.26574 13.6167 4.26574 13.1367 4.74575Z"
+                                  stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                              </svg>
+                            </a>
                           </div>
-                          <div class="edit-maching">
-                            <a href="#">EDIT</a> <span class="h-line">|</span> <a href="#">UNSUBSCRIBE</a>
+                          <div>
+                            <div class="profile_name">{{userdetail.name}}</div>
+                            <div class="profile_history">Account Created on {{userdetail.created_at | date:'dd MMM,
+                              yyyy' }}</div>
                           </div>
+                        </div>
+                        <div class="login-edit">
+                          <form action="">
+                            <div class="row">
+                              <!--    <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                                <label for="fname" class="label-form">Company Address</label>
+                                <input type="text" id="fname" name="fname" class="iform-input mb-0"
+                                 [(ngModel)]="company_details.company_address">
+                              </div>
+                             <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <label class="label-form">Working in State</label>
+                                <select name="" id="">
+                                  <option value="" selected disabled>Select State</option>
+                                </select>
+                              </div> -->
+                              <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                                <label for="fname" class="label-form">Working in State</label>
+                                <input type="text" id="fname" name="state" class="iform-input mb-0"
+                                  [(ngModel)]="company_details.office_address">
+                              </div>
+                              <!-- <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <label class="label-form">Working in State</label>
+                                <select name="" id="">
+                                  <option value="" selected disabled>Select State</option>
+                                </select>
+                              </div> -->
+                              <!--  <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                                <label class="label-form tooltip_label">Comapny Email
+                                  <span data-bs-toggle="tooltip" data-bs-placement="top" title="Address"
+                                    class="ms-2 d-flex">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"
+                                      fill="none">
+                                      <path
+                                        d="M7.5 3.31367V3.3M7.5 6.1V11.7M14.5 7.5C14.5 11.366 11.366 14.5 7.5 14.5C3.634 14.5 0.5 11.366 0.5 7.5C0.5 3.634 3.634 0.5 7.5 0.5C11.366 0.5 14.5 3.634 14.5 7.5Z"
+                                        stroke="#BBBBBB" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                  </span>
+                                </label>
+                                <div class="position-relative mb-3">
+                                  <input type="email" class="iform-input mb-0" name="company_email" [(ngModel)]="company_details.company_email" readonly />
+                                </div>
+                                <div class="position-relative mb-3">
+                                  <input type="email" class="iform-input mb-0" name="company_email" [(ngModel)]="company_details.company_email" readonly />
+                                </div> 
+                              </div>-->
+                            </div>
+                            <div class="edit-save">
+                              <button>Save & Continue</button>
+                            </div>
+                          </form>
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-2 col-md-6 col-sm-12">
-                      <p class="alert-post-date">Posted: Apr 27, '09</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="alerts-box">
-                  <div class="row">
-                    <div class="col-lg-10 col-md-6 col-sm-12">
-                      <p class="criteria-titles"><strong>Alerts Criteria -</strong> To rent <strong>1 BHK</strong> Builder Floor Apartment
-                        in <strong>Ahmedabad, Vejalpur</strong> in range of <strong>1000 to 5000.</strong></p>
-
-                      <p class="criteria-titles mt-4">Alerts Frequency - Daily</p>
-
-                      <div class="maching-all">
-                        <div class="edit-and-maching">
-                          <div class="search-maching">
-                            <a href="#">SEARCH MATCHING PROPERTIES</a>
+                    <div class="tab-pane fade" id="v-pills-buss-det" role="tabpanel"
+                      aria-labelledby="v-pills-buss-det-tab">
+                      <div class="login-details">
+                        <div class="login_head">
+                          <div class="profile_pic">
+                            <img src="{{ company_details.company_logo  }}" alt="">
+                            <a href="#">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"
+                                fill="none" class="pic_edit">
+                                <circle cx="10.5" cy="10.3721" r="10" fill="#75A702" />
+                                <path
+                                  d="M10.5 14.3589H15.75M13.1367 4.74575L5.82942 12.0412L5.25 14.3589L7.56771 13.7795L14.875 6.48403C15.355 6.00402 15.355 5.22577 14.875 4.74575C14.395 4.26574 13.6167 4.26574 13.1367 4.74575Z"
+                                  stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                              </svg>
+                            </a>
                           </div>
-                          <div class="edit-maching">
-                            <a href="#">EDIT</a> <span class="h-line">|</span> <a href="#">UNSUBSCRIBE</a>
+                          <div>
+                            <div class="profile_name">{{userdetail.name}}</div>
+                            <div class="profile_history">Account Created on {{userdetail.created_at | date:'dd MMM,
+                              yyyy' }}</div>
                           </div>
+                        </div>
+                        <div class="login-edit">
+                          <form action="">
+                            <div class="row">
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <label for="fname" class="label-form">Name</label>
+                                <input type="text" id="fname" name="Name" class="iform-input mb-0"
+                                  [(ngModel)]="userdetail.username">
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <label class="label-form">Company Name</label>
+                                <input type="text" id="fname" name="company_name" class="iform-input mb-0"
+                                  [(ngModel)]="company_details.company_name">
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <label class="label-form">User Email</label>
+                                <div class="position-relative">
+                                  <input type="email" name="company_email" class="iform-input mb-0"
+                                    [(ngModel)]="company_details.company_email" readonly />
+                                  <button type="button" class="verify_btn ">Verify</button>
+                                </div>
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <label class="label-form">Agency Contact Number</label>
+                                <div class="position-relative">
+                                  <input type="email" name="company_contactno" class="iform-input mb-0"
+                                    [(ngModel)]="company_details.company_contactno" readonly />
+                                  <button type="button" class="verify_btn ">Verify</button>
+                                </div>
+                              </div>
+                              <div class="col-lg-10 col-md-10 col-sm-12 mb-4" *ngIf="userdetail.role == 'builder'">
+                                <label class="label-form">Operating Since</label>
+                                <select name="" id="">
+                                  <option value="" selected disabled>Select State</option>
+                                </select>
+                              </div>
+                              <div class="col-lg-2 mb-4">
+                                <div class="d-flex justify-content-between flex-column h-100">
+                                  <label class="label-form">Is Certified</label>
+                                  <div class="radio-group">
+                                    <input type="radio" name="inner_sleeve" value="yes" id="innerSleeveYes"> <label
+                                      for="innerSleeveYes">Yes</label>
+                                    <input type="radio" name="inner_sleeve" value="no" id="innerSleeveNo" class="ms-3">
+                                    <label for="innerSleeveNo">No</label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-lg-4 mb-4">
+                                <div class="d-flex justify-content-between flex-column h-100">
+                                  <label class="label-form">Can Provide Loan Facility</label>
+                                  <div class="radio-group">
+                                    <input type="radio" name="inner_sleeve" value="yes" id="innerSleeveYes"> <label
+                                      for="innerSleeveYes">Yes</label>
+                                    <input type="radio" name="inner_sleeve" value="no" id="innerSleeveNo" class="ms-3">
+                                    <label for="innerSleeveNo">No</label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-lg-8 col-md-8 col-sm-12 mb-4">
+                                <label class="label-form">Select Banks</label>
+                                <select name="" id="">
+                                  <option value="" selected disabled>Select State</option>
+                                </select>
+                              </div>
+                              <!-- <div class="col-lg-12 mb-4 d-flex justify-content-between">
+                                <div class="">
+                                  <label class="label-form">Is SmartAgent</label>
+                                  <div class="radio-group">
+                                    <input type="radio" name="inner_sleeve" value="yes" id="innerSleeveYes"> <label
+                                      for="innerSleeveYes">Yes</label>
+                                    <input type="radio" name="inner_sleeve" value="no" id="innerSleeveNo" class="ms-3">
+                                    <label for="innerSleeveNo">No</label>
+                                  </div>
+                                </div>
+                                <div class="">
+                                  <label class="label-form">Registered with NAR</label>
+                                  <div class="radio-group">
+                                    <input type="radio" name="inner_sleeve" value="yes" id="innerSleeveYes"> <label
+                                      for="innerSleeveYes">Yes</label>
+                                    <input type="radio" name="inner_sleeve" value="no" id="innerSleeveNo" class="ms-3">
+                                    <label for="innerSleeveNo">No</label>
+                                  </div>
+                                </div>
+                                <div class="">
+                                  <label class="label-form">Property Registry</label>
+                                  <div class="radio-group">
+                                    <input type="radio" name="inner_sleeve" value="yes" id="innerSleeveYes"> <label
+                                      for="innerSleeveYes">Yes</label>
+                                    <input type="radio" name="inner_sleeve" value="no" id="innerSleeveNo" class="ms-3">
+                                    <label for="innerSleeveNo">No</label>
+                                  </div>
+                                </div>
+                              </div> -->
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <label class="label-form">Trade Licence Registration</label>
+                                <input type="text" id="fname" name="fname" class="iform-input mb-0"
+                                  value="Enter 10-digit number">
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <label class="label-form">Date of Issue</label>
+                                <div class="date_wrapper position-relative">
+                                  <input type="date" id="fname" name="fname" class="iform-input mb-0"
+                                    value="DD/MM/YYYY">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="edit-save">
+                              <button>Save & Continue</button>
+                            </div>
+                          </form>
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-2 col-md-6 col-sm-12">
-                      <p class="alert-post-date">Posted: Apr 27, '09</p>
+                    <div class="tab-pane fade" id="v-pills-deal-exp" role="tabpanel"
+                      aria-labelledby="v-pills-deal-exp-tab">
+                      <div class="login-details">
+                        <div class="login_head">
+                          <div class="profile_pic">
+                            <img src="{{ company_details.builder_logo }}" alt="">
+                            <a href="#">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"
+                                fill="none" class="pic_edit">
+                                <circle cx="10.5" cy="10.3721" r="10" fill="#75A702" />
+                                <path
+                                  d="M10.5 14.3589H15.75M13.1367 4.74575L5.82942 12.0412L5.25 14.3589L7.56771 13.7795L14.875 6.48403C15.355 6.00402 15.355 5.22577 14.875 4.74575C14.395 4.26574 13.6167 4.26574 13.1367 4.74575Z"
+                                  stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                              </svg>
+                            </a>
+                          </div>
+                          <div>
+                            <div class="profile_name">{{userdetail.name}}</div>
+                            <div class="profile_history">Account Created on {{userdetail.created_at | date:'dd MMM,
+                              yyyy' }}</div>
+                          </div>
+                        </div>
+                        <div class="login-edit">
+                          <form action="">
+                            <div class="row">
+                              <div class="col-lg-12 mb-4 d-flex justify-content-between">
+                                <div>
+                                  <div class="d-flex justify-content-between flex-column h-100">
+                                    <label class="label-form">I am Dealing in</label>
+                                    <div class="radio-group">
+                                      <input type="checkbox" name="inner_sleeve" value="yes" id="innerSleeveYes"> <label
+                                        for="innerSleeveYes">Sale</label>
+                                      <input type="checkbox" name="inner_sleeve" value="no" id="innerSleeveNo"
+                                        class="ms-3">
+                                      <label for="innerSleeveNo">Rent</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div>
+                                  <div class="d-flex justify-content-between flex-column h-100">
+                                    <label class="label-form">Property Type</label>
+                                    <div class="radio-group">
+                                      <input type="checkbox" name="inner_sleeve" value="yes" id="innerSleeveYes"> <label
+                                        for="innerSleeveYes">Sale</label>
+                                      <input type="checkbox" name="inner_sleeve" value="no" id="innerSleeveNo"
+                                        class="ms-3">
+                                      <label for="innerSleeveNo">Rent</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div>
+                                  <div class="d-flex justify-content-between flex-column h-100">
+                                    <label class="label-form">Expertise In</label>
+                                    <select name="" id="">
+                                      <option value="" disabled selected>Residential Sales, Commercial Leasing</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <div class="d-flex justify-content-between flex-column h-100">
+                                  <label class="label-form">Transaction Type</label>
+                                  <div class="radio-group">
+                                    <input type="checkbox" name="inner_sleeve" value="yes" id="innerSleeveYes">
+                                    <label for="innerSleeveYes">Rent/Lease</label>
+                                    <input type="checkbox" name="inner_sleeve" value="no" id="innerSleeveNo"
+                                      class="ms-3">
+                                    <label for="innerSleeveNo">Other</label>
+                                    <input type="checkbox" name="inner_sleeve" value="no" id="innerSleeveNo"
+                                      class="ms-3">
+                                    <label for="innerSleeveNo">Pre-launch</label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <label class="label-form">Other Transaction Type</label>
+                                <input type="text" id="fname" name="fname" class="iform-input mb-0"
+                                  value="alexvolkov@2024">
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <label class="label-form">Types of Residential Property</label>
+                                <select name="" id="">
+                                  <option value="" selected disabled>Multistorey Apartment, Builder Floor Apartment
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <label class="label-form">Types of Commercial Property</label>
+                                <select name="" id="">
+                                  <option value="" selected disabled>Co-working Space, Commercial Land</option>
+                                </select>
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <label class="label-form">Brief Description of Your Business</label>
+                                <input type="text" id="fname" name="fname" class="iform-input mb-0"
+                                  value="max 3000 character">
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <label class="label-form">Authorized Agents / Dealers of</label>
+                                <input type="text" id="fname" name="fname" class="iform-input mb-0"
+                                  value="max 3000 character">
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <label class="label-form">Authorized Agents / Dealers of</label>
+                                <input type="text" id="fname" name="fname" class="iform-input mb-0"
+                                  value="max 3000 character">
+                              </div>
+                              <div class="col-lg-6 mb-4">
+                                <div class="d-flex justify-content-between flex-column h-100">
+                                  <label class="label-form">Value Added Services</label>
+                                  <select name="" id="">
+                                    <option value="" selected disabled>Property Valuation, Legal Assistance +5 more
+                                    </option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="edit-save">
+                              <button>Save & Continue</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-media" role="tabpanel" aria-labelledby="v-pills-media-tab">
+                      <div class="login-details">
+                        <div class="login_head">
+                          <div class="profile_pic">
+                            <img src="{{ company_details.builder_logo }}" alt="">
+                            <a href="#">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"
+                                fill="none" class="pic_edit">
+                                <circle cx="10.5" cy="10.3721" r="10" fill="#75A702" />
+                                <path
+                                  d="M10.5 14.3589H15.75M13.1367 4.74575L5.82942 12.0412L5.25 14.3589L7.56771 13.7795L14.875 6.48403C15.355 6.00402 15.355 5.22577 14.875 4.74575C14.395 4.26574 13.6167 4.26574 13.1367 4.74575Z"
+                                  stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                              </svg>
+                            </a>
+                          </div>
+                          <div>
+                            <div class="profile_name">{{userdetail.name}}</div>
+                            <div class="profile_history">Account Created on {{userdetail.created_at | date:'dd MMM,
+                              yyyy' }}</div>
+                          </div>
+                        </div>
+                        <div class="login-edit">
+                          <form action="">
+                            <div class="row">
+                              <div class="col-lg-12 mb-5">
+                                <label class="label-form">Agent Logo</label>
+                                <div class="file-upload-box">
+                                  Attach Your image In JPG, PNG<br>
+                                  Max Size: 1 Mb
+                                  <input type="file" id="agentLogo" accept=".jpg,.jpeg,.png">
+                                </div>
+                                <div class="d-flex justify-content-between mt-3">
+                                  <div class="file-name" id="logoFileName">Logo.jpg</div>
+                                  <button class="grey_btn">Remove</button>
+                                </div>
+                              </div>
+                              <div class="col-lg-12 mb-5">
+                                <label class="label-form">Agent Photo</label>
+                                <div class="file-upload-box">
+                                  Attach Your image In JPG, PNG<br>
+                                  Max Size: 1 Mb
+                                  <input type="file" id="agentLogo" accept=".jpg,.jpeg,.png">
+                                </div>
+                                <div class="d-flex justify-content-between mt-3">
+                                  <div class="file-name" id="logoFileName">Logo.jpg</div>
+                                  <button class="grey_btn">Remove</button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="edit-save">
+                              <button>Save & Continue</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-testimonial" role="tabpanel"
+                      aria-labelledby="v-pills-testimonial-tab">
+                      <div class="save-msg">
+                        pending due to no figma already told to MM
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <!-- buyerresponse -->
+        <div class="tab-pane fade" id="pills-buyerresponse" role="tabpanel" aria-labelledby="pills-buyerresponse-tab">
 
-            <div class="tab-pane show active" id="pills-Iprofile" role="tabpanel" aria-labelledby="pills-Iprofile-tab">
+          <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-12">
+              <div class="profile-tab">
+                <div class="profile-box flex-column nav-pills" id="v-pills-tab" role="tablist"
+                  aria-orientation="vertical">
 
-                <div class="">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12">
-                            <div class="profile-tab">
+                  <!-- 1. Contacted Properties -->
+                  <button class="Mprofile-link active" id="v-pills-contacted-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-contacted" type="button" role="tab" aria-controls="v-pills-contacted"
+                    aria-selected="true">
+                    <div class="step">
+                      <div class="circle">1</div>
+                      <div class="label">Contacted Properties</div>
+                    </div>
+                  </button>
 
-                                <div class="profile-box flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                <button class="Mprofile-link active" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile</button>
+                  <!-- 2. Seen Properties -->
+                  <button class="Mprofile-link d-none" id="v-pills-seen-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-seen" type="button" role="tab" aria-controls="v-pills-seen"
+                    aria-selected="false">
+                    <div class="step">
+                      <div class="circle">2</div>
+                      <div class="label">Seen Properties</div>
+                    </div>
+                  </button>
 
-                                <button class="Mprofile-link" id="v-pills-login-details-tab" data-bs-toggle="pill" data-bs-target="#v-pills-login-details" type="button" role="tab" aria-controls="v-pills-login-details" aria-selected="false">Edit Login Details</button>
+                  <!-- 3. Saved Properties -->
+                  <button class="Mprofile-link d-none" id="v-pills-saved-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-saved" type="button" role="tab" aria-controls="v-pills-saved"
+                    aria-selected="false">
+                    <div class="step">
+                      <div class="circle">3</div>
+                      <div class="label">Saved Properties</div>
+                    </div>
+                  </button>
 
-                                <button class="Mprofile-link" id="v-pills-change-pass-tab" data-bs-toggle="pill" data-bs-target="#v-pills-change-pass" type="button" role="tab" aria-controls="v-pills-change-pass" aria-selected="false">Change Password</button>
+                  <!-- 4. Recent Searches -->
+                  <button class="Mprofile-link" id="v-pills-searches-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-searches" type="button" role="tab" aria-controls="v-pills-searches"
+                    aria-selected="false">
+                    <div class="step">
+                      <div class="circle">2</div>
+                      <div class="label">Recent Searches</div>
+                    </div>
+                  </button>
 
-                                <button class="Mprofile-link" id="v-pills-save-message-tab" data-bs-toggle="pill" data-bs-target="#v-pills-save-message" type="button" role="tab" aria-controls="v-pills-save-message" aria-selected="false">Saved Messages</button>
-                                </div>
-                            </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-12 ps-lg-5">
+              <div class="">
+                <div class="tab-content profile-content" id="v-pills-tabContent">
+
+                  <!-- Contacted Properties -->
+                  <div class="tab-pane fade show active" id="v-pills-contacted" role="tabpanel"
+                    aria-labelledby="v-pills-contacted-tab">
+                    <div class="maching-myproperties">
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <img
+                            src="https://realtymart.com/backend/public/images/property_img/1752746207360_F_295713811_ilg5EbeLqu7RvzKpJrEgCfneLjTZ1xja.jpg"
+                            alt="Gallery" class="img-fluid" />
                         </div>
-                        <div class="col-lg-9 col-md-9 col-sm-12">
-                            <div class="profile_details">
-                            <div class="tab-content profile-content" id="v-pills-tabContent">
+                        <div class="col-lg-9">
+                          <div class="wich-location pb-2">
+                            <a class="tap-location" target="_blank" href="javascript::void(0)">
+                              <h3 class="groups-companies-names">
+                                Prahlad Nagar, Ahmedabad
+                              </h3>
+                            </a>                            
+                          </div>
+                          <p class="proparty_for">for Sell 3 BHK Flat in Mahalaxmi Dream Home</p>
+                          <div class="facility_wrapper">
+                            <div>
+                              <h6 class="facility_title">Price</h6>
+                              <p class="project-text"> ₹ 45 Lac </p>
+                            </div>
+                            <div>
+                              <h6 class="facility_title">Price</h6>
+                              <p class="project-text"> ₹ 45 Lac </p>
+                            </div>
+                            <div>
+                              <h6 class="facility_title">Price</h6>
+                              <p class="project-text"> ₹ 45 Lac </p>
+                            </div>
+                            <div>
+                              <h6 class="facility_title">Price</h6>
+                              <p class="project-text"> ₹ 45 Lac </p>
+                            </div>
+                          </div>
+                          <div class="save-get-no">
+                            <div class="owner-cc">
+                              <button class="contact-buy-btn"> CONTACT </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-                                <div class="tab-pane table-responsive fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                    <table class="profile_table">
-                                        <tr>
-                                          <th>Name:</th>
-                                          <td>{{ userdetail.name }}</td>
-                                        </tr>
-                                        <tr>
-                                          <th>Registered As:</th>
-                                          <td>{{ userdetail.role }}</td>
-                                        </tr>
-                                        <tr>
-                                          <th>Email:</th>
-                                          <td>{{ userdetail.email }}</td>
-                                          <td><span class="profile_verify">verified</span></td>
-                                        </tr>
-                                        <tr>
-                                          <th>Alternate Email:</th>
-                                          <td>rajputarvind@gmail.com</td>
-                                          <td><span class="profile_verify">verified</span></td>
-                                          <td><span class="profile_data_changes">CHANGE ALTERNATE EMAIL</span></td>
-                                        </tr>
-                                        <tr>
-                                          <th>Mobile:</th>
-                                          <td>9427801299</td>
-                                          <td><span class="profile_verify">verified</span></td>
-                                          <td><span class="profile_data_changes">CHANGE MOBILE</span></td>
-                                        </tr>
-                                        <tr>
-                                          <th>Password:</th>
-                                          <td>Not shown due to security reasons </td>
-                                          <td></td>
-                                          <td><span class="profile_data_changes">CHANGE PASSWORD</span></td>
-                                        </tr>
-                                      </table>
-                                      <div class="deactived">
-                                        <a href="#">DEACTIVATE</a>
-                                      </div>
+                  <!-- Seen Properties -->
+                  <div class="tab-pane fade d-none" id="v-pills-seen" role="tabpanel"
+                    aria-labelledby="v-pills-seen-tab">
+                    SEEN PROPERTIES CONTENT
+                  </div>
+
+                  <!-- Saved Properties -->
+                  <div class="tab-pane fade d-none" id="v-pills-saved" role="tabpanel"
+                    aria-labelledby="v-pills-saved-tab">
+                    SAVED PROPERTIES CONTENT
+                  </div>
+
+                  <!-- Recent Searches -->
+                  <div class="tab-pane fade" id="v-pills-searches" role="tabpanel"
+                    aria-labelledby="v-pills-searches-tab">
+                    <div class="maching-myproperties">
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <img
+                            src="https://realtymart.com/backend/public/images/property_img/1752746207360_F_295713811_ilg5EbeLqu7RvzKpJrEgCfneLjTZ1xja.jpg"
+                            alt="Gallery" class="img-fluid" />
+                        </div>
+                        <div class="col-lg-9">
+                          <div class="wich-location pb-2">
+                            <a class="tap-location" target="_blank" href="javascript::void(0)">
+                              <h3 class="groups-companies-names">
+                                Prahlad Nagar, Ahmedabad
+                              </h3>
+                            </a>                            
+                          </div>
+                          <p class="proparty_for">for Sell 3 BHK Flat in Mahalaxmi Dream Home</p>
+                          <div class="facility_wrapper">
+                            <div>
+                              <h6 class="facility_title">Price</h6>
+                              <p class="project-text"> ₹ 45 Lac </p>
+                            </div>
+                            <div>
+                              <h6 class="facility_title">Price</h6>
+                              <p class="project-text"> ₹ 45 Lac </p>
+                            </div>
+                            <div>
+                              <h6 class="facility_title">Price</h6>
+                              <p class="project-text"> ₹ 45 Lac </p>
+                            </div>
+                            <div>
+                              <h6 class="facility_title">Price</h6>
+                              <p class="project-text"> ₹ 45 Lac </p>
+                            </div>
+                          </div>
+                          <div class="save-get-no">
+                            <div class="owner-cc">
+                              <button class="contact-buy-btn"> CONTACT </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <!--  sellerresponse -->
+        <div class="tab-pane fade" id="pills-sellerresponse" role="tabpanel" aria-labelledby="pills-sellerresponse-tab">
+          <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-12">
+              <div class="profile-tab">
+                <div class="profile-box flex-column nav-pills" id="v-pills-tab" role="tablist"
+                  aria-orientation="vertical">
+
+                  <!-- 1. Contacted Properties -->
+                  <button class="Mprofile-link active" id="v-pills-contacted-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-contacted" type="button" role="tab" aria-controls="v-pills-contacted"
+                    aria-selected="true">
+                    <div class="step">
+                      <div class="circle">1</div>
+                      <div class="label">Contacted Properties</div>
+                    </div>
+                  </button>
+
+                  <!-- 2. Seen Properties -->
+                  <button class="Mprofile-link d-none" id="v-pills-seen-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-seen" type="button" role="tab" aria-controls="v-pills-seen"
+                    aria-selected="false">
+                    <div class="step">
+                      <div class="circle">2</div>
+                      <div class="label">Seen Properties</div>
+                    </div>
+                  </button>
+
+                  <!-- 3. Saved Properties -->
+                  <button class="Mprofile-link d-none" id="v-pills-saved-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-saved" type="button" role="tab" aria-controls="v-pills-saved"
+                    aria-selected="false">
+                    <div class="step">
+                      <div class="circle">3</div>
+                      <div class="label">Saved Properties</div>
+                    </div>
+                  </button>
+
+                  <!-- 4. Recent Searches -->
+                  <button class="Mprofile-link" id="v-pills-searches-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-searches" type="button" role="tab" aria-controls="v-pills-searches"
+                    aria-selected="false">
+                    <div class="step">
+                      <div class="circle">2</div>
+                      <div class="label">Recent Searches</div>
+                    </div>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-12 ps-lg-5">
+              <div class="">
+                <div class="tab-content profile-content" id="v-pills-tabContent">
+
+                  <!-- Contacted Properties -->
+                  <div class="tab-pane fade show active" id="v-pills-contacted" role="tabpanel"
+                    aria-labelledby="v-pills-contacted-tab">
+                    <div class="maching-myproperties">
+                      <div class="row">                      
+                        <div class="col-lg-12">
+                          <div class="wich-location pb-2">
+                            <a class="tap-location" target="_blank" href="javascript::void(0)">
+                              <h3 class="groups-companies-names">
+                                Prahlad Nagar, Ahmedabad
+                              </h3>
+                            </a>                            
+                          </div>                          
+                          <div class="save-get-no">
+                            <div class="owner-cc">
+                              <button class="contact-buy-btn"> CONTACT </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Seen Properties -->
+                  <div class="tab-pane fade d-none" id="v-pills-seen" role="tabpanel"
+                    aria-labelledby="v-pills-seen-tab">
+                    SEEN PROPERTIES CONTENT
+                  </div>
+
+                  <!-- Saved Properties -->
+                  <div class="tab-pane fade d-none" id="v-pills-saved" role="tabpanel"
+                    aria-labelledby="v-pills-saved-tab">
+                    SAVED PROPERTIES CONTENT
+                  </div>
+
+                  <!-- Recent Searches -->
+                  <div class="tab-pane fade" id="v-pills-searches" role="tabpanel"
+                    aria-labelledby="v-pills-searches-tab">
+                    <div class="maching-myproperties">
+                      <div class="row">                        
+                        <div class="col-lg-12">
+                          <div class="wich-location pb-2">
+                            <a class="tap-location" target="_blank" href="javascript::void(0)">
+                              <h3 class="groups-companies-names">
+                                Prahlad Nagar, Ahmedabad
+                              </h3>
+                            </a>                            
+                          </div>                          
+                          <div class="save-get-no">
+                            <div class="owner-cc">
+                              <button class="contact-buy-btn"> CONTACT </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="pills-propertyalerts" role="tabpanel" aria-labelledby="pills-propertyalerts-tab">
+          <div class="alerts-tabs d-none">
+            <div class="row myalerts">
+              <div class="col-lg-8 head-alert">
+                <h4>My Property Alerts</h4>
+                <p>Lorem ipsum dolor sit amet consectetur. Faucibus nunc fermentum consequat nam blandit eget at. Nisi
+                  aliquam nullam amet
+                  hac eget. Adipiscing enim vel nunc in ornare odio. Purus ipsum orci amet a eu tristique lectus. Lorem
+                  ipsum dolor sit
+                  amet</p>
+              </div>
+              <div class="col-lg-3 new-alert">
+                <a routerLink="javascript::void(0)">Set New Property Alert</a>
+              </div>
+            </div>
+
+            <div class="alert_wrapper">
+              <div class="alerts-box">
+                <div class="row">
+                  <div class="col-lg-10 col-md-6 col-sm-12">
+                    <p class="criteria-titles"><strong>Alerts Criteria -</strong> To rent <strong>1 BHK</strong> Builder
+                      Floor Apartment
+                      in <strong>Ahmedabad, Vejalpur</strong> in range of <strong>1000 to 5000.</strong></p>
+                    <p class="criteria-titles mt-4">Alerts Frequency - Daily</p>
+                    <div class="maching-all">
+                      <div class="edit-and-maching">
+                        <div class="search-maching">
+                          <a href="#">SEARCH MATCHING PROPERTIES</a>
+                        </div>
+                        <div class="edit-maching">
+                          <a href="#">EDIT</a> <span class="h-line">|</span> <a href="#">UNSUBSCRIBE</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-md-6 col-sm-12">
+                    <p class="alert-post-date">Posted: Apr 27, '09</p>
+                  </div>
+                </div>
+              </div>
+              <div class="alerts-box">
+                <div class="alert_head">
+                  <div>
+                    <h6 class="alert_name">Ahmedabad 2 BHK Rental Alert</h6>
+                    <p class="alert_update">Last updated: 3 min ago | High Priority</p>
+                  </div>
+                  <div class="alert_head_right">
+                    <p class="alert_created">Created: February 25, 2025</p>
+                    <p class="alert_active">Active</p>
+                    <a class="alert_share" href="#">Share
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <g clip-path="url(#clip0_198_1577)">
+                          <path
+                            d="M13.5531 11.9148V16.8923L23.2969 9.02823L13.5531 0.994141V6.05261C6.45623 6.05266 0.703125 11.8002 0.703125 18.8901V23.0062C1.4078 16.7271 6.69923 11.9652 13.0237 11.9187L13.5531 11.9148Z"
+                            stroke="#111111" stroke-width="1.40625" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_198_1577">
+                            <rect width="24" height="24" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+                <div class="alert_body">
+                  <div>
+                    <table style="width: 100%; font-family: Arial, sans-serif; font-size: 14px;">
+                      <tr>
+                        <td style="font-weight: bold; padding: 6px 8px; white-space: nowrap;">Looking For :</td>
+                        <td style="padding: 6px 8px;">To Rent | 2 BHK Multistorey Apartment, Penthouse</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: bold; padding: 6px 8px;">City :</td>
+                        <td style="padding: 6px 8px;">Ahmedabad</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: bold; padding: 6px 8px;">Budget :</td>
+                        <td style="padding: 6px 8px;">₹10L – ₹50L</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div>
+                    <table style="width: 100%; font-family: Arial, sans-serif; font-size: 14px;">
+                      <tr>
+                        <td style="font-weight: bold; padding: 6px 8px; white-space: nowrap;">Construction Status :</td>
+                        <td style="padding: 6px 8px;">Under Construction</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: bold; padding: 6px 8px;">Locality :</td>
+                        <td style="padding: 6px 8px;">Thaltej, Satellite</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: bold; padding: 6px 8px;">Radius :</td>
+                        <td style="padding: 6px 8px;">5 km</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div>
+                    <table style="width: 100%; font-family: Arial, sans-serif; font-size: 14px;">
+                      <tr>
+                        <td style="font-weight: bold; padding: 6px 8px; white-space: nowrap;">Frequency :</td>
+                        <td style="padding: 6px 8px;">Updates: Daily</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: bold; padding: 6px 8px;">Notifications :</td>
+                        <td style="padding: 6px 8px;">Email</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="alert_foot">
+                  <a href="#" class="find_match">Find Matches</a>
+                  <a href="#" class="update_alert">Update Alert</a>
+                  <a href="#" class="stop_alert">Stop Alerts</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- alert tab 2 -->
+          <div class="alert_wrapper">
+            <div class="alert_tabs2">
+              <form action="">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="create_tab_wrapper">
+                      <h2>What Are You Looking For?</h2>
+                      <div class="create_tab_form">
+                        <div class="login-edit mt-0">
+                          <div class="row">
+                            <div class="col-lg-12 mb-4">
+                              <div class="">
+                                <label class="label-form">What do you want to do?</label>
+                                <div class="radio-group">
+                                  <input type="checkbox" name="inner_sleeve" value="yes" id="innerSleeveYes"> <label
+                                    for="innerSleeveYes">I Want to
+                                    Buy</label>
+                                  <input type="checkbox" name="inner_sleeve" value="no" id="innerSleeveNo" class="ms-3">
+                                  <label for="innerSleeveNo">I Want to Rent</label>
                                 </div>
-
-                                <div class="tab-pane fade show active" id="v-pills-login-details" role="tabpanel" aria-labelledby="v-pills-login-details-tab">
-                                  <div class="login-details">
-                                    <p class="id-email">Email Id: <span class="text-dark"> {{ userdetail.email }}</span></p>
-                                    <div class="login-edit">
-                                      <form action="">
-                                        <label for="User-Type" class="label-form">User Type {{ userdetail.role }}</label><br>
-                                        <select name="City" id="City" class="iform-input" [(ngModel)]="userdetail.role" style="width: 32%;">
-                                          <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
-                                        </select>
-                                        <div class="row">
-                                          <div class="col-lg-4 col-md-6 col-sm-12">
-                                            <label for="fname" class="label-form">Name <span class="text-danger">*</span></label><br>
-                                            <input type="text" id="fname" name="fname" [(ngModel)]="userdetail.name" class="iform-input"required><br>
-                                          </div>
-                                          <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <label for="alt-email" class="label-form">Alternate Email ID</label><br>
-                                            <input type="email" id="alt-email" name="alt-email" class="iform-input m-0"><br>
-                                            <div class="check-compare">
-                                              <input type="checkbox" id="alternat-id" name="alternat-id" value="alternat-id" class="mycheck">
-                                              <label for="alternat-id" class="compares">Select this check box to receive emails on alternate email id</label><br>
-                                          </div>
-                                          </div>
-                                        </div>
-                                        <div class="row">
-                                          <div class="col-lg-4 col-md-6 col-sm-12">
-                                            <label for="alt-email" class="label-form">Mobile</label><br>
-                                            <div class="row">
-                                              <div class="col-md-5">
-                                                  <select name="number-code" id="number-code" class="iform-input">
-                                                      <option value="Ind +91">Ind +91</option>
-                                                      <option value="USA: +1">USA: +1</option>
-                                                      <option value="UK: +44">UK: +44</option>
-                                                      <option value="Mexico: +52">Mexico: +52</option>
-                                                      <option value="China: +86">China: +86</option>
-                                                    </select>
-                                              </div>
-                                              <div class="col-md-7">
-                                               <input type="number" id="goldNum" name="goldNum" class="iform-input"required><br>
-                                              </div>
-                                          </div>
-                                          </div>
-                                          <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="redio-box  mt-lg-5 mt-sm-0">
-                                              <input type="radio" id="receive-SMS" name="fav_language" value="receive-SMS">
-                                              <label for="receive-SMS">Select the mobile on which you want to receive SMS</label><br>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div class="redio-box mt-2">
-                                          <p class="m-0 text-dark">Primary Mobile number is Virtual:</p>
-                                          <input type="radio" id="no" name="fav_language" value="no">
-                                          <label for="no">no</label><br>
-                                          <input type="radio" id="Yes" name="fav_language" value="Yes">
-                                          <label for="Yes">Yes</label><br>
-                                        </div>
-                                        <div class="redio-box mt-3">
-                                          <p class="m-0 text-dark hide-contact">Hide Contact Details:</p>
-                                          <input type="radio" id="show" name="fav_language" value="show">
-                                          <label for="show">No, show it to all users</label><br>
-                                          <input type="radio" id="Yes-more" name="fav_language" value="Yes-more">
-                                          <label for="Yes-more">Yes</label><br>
-                                        </div>
-                                        <div class="check-compare mt-4">
-                                          <input type="checkbox" id="communication" name="communication" value="communication" class="mycheck">
-                                          <label for="communication" class="compares">I Agree to RealtyMart Terms of Use' Terms & Conditions. I would like to receive property related communication through Email, Call or SMS</label><br>
-                                      </div>
-                                      <div class="edit-save">
-                                        <a routerLink="javascript::void(0)">SAVE</a>
-                                      </div>
-                                      </form>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="v-pills-change-pass" role="tabpanel" aria-labelledby="v-pills-change-pass-tab">
-                                    <p class="id-email">Email Id: <span class="text-dark"> {{ userdetail.email }}</span></p>
-                                    <div class="password">
-                                      <form #myForm="ngForm" (ngSubmit)="changePassword(myForm)">
-                                        <label for="old-pwd" class="label-form">Old Password <span class="text-danger">*</span></label><br>
-                                        <input type="password" id="old-pwd" name="old_password" [(ngModel)]="changePasswordForm.old_password" minlength="8" class="iform-input" required><br>
-
-                                        <label for="new-pwd" class="label-form">New Password <span class="text-danger">*</span></label><br>
-                                        <input type="password" id="new-pwd" name="new_password" [(ngModel)]="changePasswordForm.new_password" minlength="8" class="iform-input"required><br>
-
-                                        <label for="conf-pwd" class="label-form">Confirm Password <span class="text-danger">*</span></label><br>
-                                        <input type="password" id="conf-pwd" name="confpwd" [(ngModel)]="changePasswordForm.confpwd" minlength="8" class="iform-input"required>
-
-                                        <div class="edit-save m-0">
-                                          <button type="submit">Submit</button>
-                                        </div>
-                                      </form>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="v-pills-save-message" role="tabpanel" aria-labelledby="v-pills-save-message-tab">
-                                  <div class="save-msg">
-
-                                    <ul class="save nav-pills mb-3" id="pills-tab" role="tablist">
-                                      <li class="nav-item" role="presentation">
-                                        <button class="save-link active" id="pills-save-pro-tab" data-bs-toggle="pill" data-bs-target="#pills-save-prop" type="button" role="tab" aria-controls="pills-save-prop" aria-selected="true">FOR PROPERTY</button>
-                                      </li>
-                                      <li class="nav-item" role="presentation">
-                                        <button class="save-link" id="pills-requirements-tab" data-bs-toggle="pill" data-bs-target="#pills-requirements" type="button" role="tab" aria-controls="pills-requirements" aria-selected="false">FOR REQUIREMENTS</button>
-                                      </li>
-                                      <li class="nav-item" role="presentation">
-                                        <button class="save-link" id="pills-save-agent-tab" data-bs-toggle="pill" data-bs-target="#pills-save-agent" type="button" role="tab" aria-controls="pills-save-agent" aria-selected="false">FOR AGENTS</button>
-                                      </li>
-                                      <li class="nav-item" role="presentation">
-                                        <button class="save-link" id="pills-save-builders-tab" data-bs-toggle="pill" data-bs-target="#pills-save-builders" type="button" role="tab" aria-controls="pills-save-agent" aria-selected="false">FOR BUILDERS</button>
-                                      </li>
-                                    </ul>
-                                    <div class="tab-content save-content" id="pills-tabContent">
-                                      <div class="tab-pane fade show active" id="pills-save-prop" role="tabpanel" aria-labelledby="pills-save-pro-tab">
-                                        <div class="create-save">
-                                          <p>This section gives you easy access to contact Multiple Property Listings.
-                                            In case you want to update the message, please edit & save it.</p>
-
-                                            <textarea id="saved-messages" name="saved-messages" rows="6" cols="50" class="save-msg-textarea"></textarea>
-                                            <p>1000 Characters left</p>
-
-                                            <div class="edit-save mt-2">
-                                              <a href="#">SAVE</a>
-                                            </div>
-                                        </div>
-                                      </div>
-                                      <div class="tab-pane fade" id="pills-requirements" role="tabpanel" aria-labelledby="pills-requirements-tab">
-                                        <div class="create-save">
-                                          <p>This section gives you easy access to contact Multiple Property Listings.
-                                            In case you want to update the message, please edit & save it.</p>
-
-                                            <textarea id="saved-messages" name="saved-messages" rows="6" cols="50" class="save-msg-textarea"></textarea>
-                                            <p>1000 Characters left</p>
-
-                                            <div class="edit-save mt-2">
-                                              <a href="#">SAVE</a>
-                                            </div>
-                                        </div>
-                                      </div>
-                                      <div class="tab-pane fade" id="pills-save-agent" role="tabpanel" aria-labelledby="pills-save-agent-tab">
-                                        <div class="create-save">
-                                          <p>This section gives you easy access to contact Multiple Property Listings.
-                                            In case you want to update the message, please edit & save it.</p>
-
-                                            <textarea id="saved-messages" name="saved-messages" rows="6" cols="50" class="save-msg-textarea"></textarea>
-                                            <p>1000 Characters left</p>
-
-                                            <div class="edit-save mt-2">
-                                              <a href="#">SAVE</a>
-                                            </div>
-                                        </div>
-                                      </div>
-                                      <div class="tab-pane fade" id="pills-save-builders" role="tabpanel" aria-labelledby="pills-save-builders-tab">
-                                        <div class="create-save">
-                                          <p>This section gives you easy access to contact Multiple Property Listings.
-                                            In case you want to update the message, please edit & save it.</p>
-
-                                            <textarea id="saved-messages" name="saved-messages" rows="6" cols="50" class="save-msg-textarea"></textarea>
-                                            <p>1000 Characters left</p>
-
-                                            <div class="edit-save mt-2">
-                                              <a href="#">SAVE</a>
-                                            </div>
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                  </div>
-                                </div>
-
                               </div>
                             </div>
+                            <div class="col-lg-12 mb-5">
+                              <label for="">Choose your property type</label>
+                              <select name="" id="">
+                                <option value="">Select property type</option>
+                              </select>
+                            </div>
+                            <div class="col-lg-12 mb-5">
+                              <div class="price_slider">
+                                <label for="">Set your budget range</label>
+                                range slider
+                              </div>
+                            </div>
+                            <div class="col-lg-12 mb-5">
+                              <div class="">
+                                <label class="label-form">Construction stage </label>
+                                <div class="radio-group">
+                                  <input type="checkbox" name="inner_sleeve" value="yes" id="innerSleeveYes">
+                                  <label for="innerSleeveYes">Under Construction</label>
+                                  <input type="checkbox" name="inner_sleeve" value="no" id="innerSleeveNo" class="ms-3">
+                                  <label for="innerSleeveNo">Ready to Move</label>
+                                  <input type="checkbox" name="inner_sleeve" value="no" id="innerSleeveNo" class="ms-3">
+                                  <label for="innerSleeveNo">Ongoing</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="create_tab_wrapper">
+                      <h2>What Are You Looking For?</h2>
+                      <div class="create_tab_form">
+                        <div class="login-edit">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="">
+                                <label class="label-form">What do you want to do?</label>
+                                <div class="radio-group">
+                                  <input type="checkbox" name="inner_sleeve" value="yes" id="innerSleeveYes"> <label
+                                    for="innerSleeveYes">I Want to
+                                    Buy</label>
+                                  <input type="checkbox" name="inner_sleeve" value="no" id="innerSleeveNo" class="ms-3">
+                                  <label for="innerSleeveNo">I Want to Rent</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-12">
+                              <label for="">Choose your property type</label>
+                              <select name="" id="">
+                                <option value="">Select property type</option>
+                              </select>
+                            </div>
+                            <div class="col-lg-12">
+                              <div class="price_slider">
+                                <label for="">Set your budget range</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="create_tab_wrapper">
+                      <h2>How and Why to Set an Alert?</h2>
+                      <div class="create_tab_form">
+                        <div class="login-edit">
+                          <div class="row">
+                            <div class="col-lg-6 mb-4">
+                              <div class="">
+                                <label class="label-form">Receive Alerts For</label>
+                                <div class="radio-group">
+                                  <input type="checkbox" name="inner_sleeve" value="yes" id="innerSleeveYes">
+                                  <label for="innerSleeveYes">Property Projects</label>
+                                  <input type="checkbox" name="inner_sleeve" value="no" id="innerSleeveNo" class="ms-3">
+                                  <label for="innerSleeveNo">Agents</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 mb-4">
+                              <label for="">Notification Preferences</label>
+                              <select name="" id="">
+                                <option value="">Select property type</option>
+                              </select>
+                            </div>
+                            <div class="col-lg-6 mb-4">
+                              <div class="">
+                                <label class="label-form">Notification Preferences</label>
+                                <div class="radio-group">
+                                  <input type="checkbox" name="inner_sleeve" value="yes" id="innerSleeveYes">
+                                  <label for="innerSleeveYes">Email</label>
+                                  <input type="checkbox" name="inner_sleeve" value="no" id="innerSleeveNo" class="ms-3">
+                                  <label for="innerSleeveNo">In-app</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 mb-4">
+                              <label for="">Priority Level</label>
+                              <select name="" id="">
+                                <option value="" selected>High</option>
+                              </select>
+                            </div>
+                            <div class="col-lg-12">
+                              <label for="">Custom Alert Name</label>
+                              <input type="text" name="" value="Ahmedabad 2 BHK Rental" id="" class=" iform-input">
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur. Faucibus nunc fermentum consequat nam blandit
+                              eget at. Nisi aliquam nullam amet
+                              hac eget. Adipiscing enim vel nunc in ornare odio. Purus ipsum orci amet a eu tristique
+                              lectus. Lorem ipsum dolor sit
+                              amet</p>
+                            <div class="my-3">
+                              <input type="checkbox" name="inner_sleeve" value="no" id="innerSleeveNo" class="me-3">
+                              <label for="">I agree to Terms & Conditions</label>
+                            </div>
+                            <div>
+                              <button class="de_req">Create Alert</button>
+                              <button class="keep_acc ms-5">Reset</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </form>
             </div>
-            </div>
-            <div class="tab-pane fade" id="pills-subscription" role="tabpanel" aria-labelledby="pills-subscription-tab">SUBSCRIPTION</div>
           </div>
-    </div>
-</div>
-
-<section class="information-front">
-  <div class="container">
-    <h6 class="info-head">The information provided herein have been collected from publicly available sources, and is yet to be verified as per RERA guidelines.*</h6>
-    <div class="more-points">
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12">
-          <h6 class="info-title">REAL ESTATE</h6>
-          <p class="info-locator">Gujarat Real Estate  |  Ahmedabad Real Estate  |  Surat Real Estate  |  Baroda Real Estate  |  Rajkot Real Estate</p>
-
-          <h6 class="info-title">BUY PROPERTY</h6>
-          <p class="info-locator">Buy Property in Guajrat  |  Buy Property in Ahmedabad  |  Buy Property in Surat  |  Buy Property in Baroda  |  Buy Property in Rajkot</p>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
-          <h6 class="info-title">COWORKING SPACE</h6>
-          <p class="info-locator">Office space in Gujarat  |  Office space in Ahmedabad  |  Office space in Surat  |  Office space in Baroda  |  Office space in Rajkot</p>
 
-          <h6 class="info-title">PROPERTIES FOR RENT</h6>
-          <p class="info-locator">Rent Property in Guajrat  |  Rent Property in Ahmedabad  |  Rent Property in Surat  |  Rent Property in Baroda  |  Rent Property in Rajkot</p>
+        <!-- Subscription Tab Section (Updated) -->
+        <div class="tab-pane fade" id="pills-subscription" role="tabpanel" aria-labelledby="pills-subscription-tab">
+          <div class="subs-tab-section">
+            <ul class="mysubs nav-pills" id="pills-tab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="subs-link active" id="pills-subscriptions-tab" data-bs-toggle="pill"
+                  data-bs-target="#pills-subscriptions" type="button" role="tab" aria-controls="pills-subscriptions"
+                  aria-selected="true">
+                  Your Subscriptions
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="subs-link" id="pills-orderhistory-tab" data-bs-toggle="pill"
+                  data-bs-target="#pills-orderhistory" type="button" role="tab" aria-controls="pills-orderhistory"
+                  aria-selected="false">
+                  Order History
+                </button>
+              </li>
+            </ul>
+
+            <!-- Conditional dropdown - only shows when Order History tab is active -->
+            <div *ngIf="activeSubscriptionTab === 'orderhistory'">
+              <p>ORDER HISTORY TAB SELECTED</p>
+              <div class="subs_select">
+                <select>
+                  <option value="" disabled selected>Sort by: Status</option>
+                  <option value="">Subscribed</option>
+                  <option value="">Canceled</option>
+                  <option value="">Declined</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-subscriptions" role="tabpanel"
+              aria-labelledby="pills-subscriptions-tab">
+              <div class="alert_wrapper">
+                <div class="ys_wrapper d-none">
+                  <div class="d-flex justify-content-between mb-5">
+                    <div class="ysbasic">
+                      <div class="ysbasic_head">
+                        <div>
+                          <p class="mb-0">Basic</p>
+                          <h6>₹ 1199</h6>
+                          <ul>
+                            <li>Unlimited property alerts daily</li>
+                            <li>Priority support from our team</li>
+                            <li>Enhanced listing visibility</li>
+                          </ul>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <p class="mb-0">Expires in 14 days</p>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
+                            fill="none">
+                            <path d="M3 12.5L9 18.5L21 6.5" stroke="#111111" stroke-width="1.5" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="yspro">
+                      <div class="yspro_head">
+                        <div>
+                          <p class="mb-0">Basic</p>
+                          <h6>₹ 1599</h6>
+                        </div>
+                      </div>
+                      <ul>
+                        <li>No. of Owners you can contact - 2</li>
+                        <li>Unlock Owner Properties reserved</li>
+                        <li>Validity (Months)</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <h2>Enjoying your plan? Upgrade Plan for more features</h2>
+                    <p>or Cancel Plan if it's not right for you.</p>
+                    <div class="mb-4">
+                      <a href="#" class="find_match">Upgrade Plan</a>
+                      <a href="#" class="update_alert ms-3">Cancel Plan</a>
+                    </div>
+                    <p>Need assistance? Contact Support or check our Help Centre.</p>
+                  </div>
+                </div>
+                <div class="ys_wrapper">
+                  <div class="ys_login">
+                    image
+                    <h2 class="text-center">You haven't subscribed to any plans yet. Unlock premium features to
+                      supercharge your property search and management!</h2>
+                    <a class="verify_btn position-relative" href="#">Buy Plan</a>
+                    <p>Need assistance? Contact Support or check our Help Centre.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-orderhistory" role="tabpanel" aria-labelledby="pills-orderhistory-tab">
+              <div class="alert_wrapper">
+                <div class="order_history_wrapper d-none">
+                  <div class="oh_table_wrapper">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Order Details</th>
+                          <th>Date</th>
+                          <th>Status</th>
+                          <th>Payment Method</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>One Free Listing<br>(Order #60429551)</td>
+                          <td>Mar 21, 2025</td>
+                          <td><span class="status-badge sub_btn">Subscribed</span></td>
+                          <td>Online<br>(Debit/Credit Card, Net Banking, Paytm)</td>
+                          <td class="actions"><a href="#">View Invoice</a></td>
+                        </tr>
+                        <tr>
+                          <td>One Free Listing<br>(Order #60429551)</td>
+                          <td>Mar 21, 2025</td>
+                          <td><span class="status-badge canc_btn">Cancelled</span></td>
+                          <td>Online<br>(Debit/Credit Card, Net Banking, Paytm)</td>
+                          <td class="actions"><a href="#">View Invoice</a></td>
+                        </tr>
+                        <tr>
+                          <td>One Free Listing<br>(Order #60429551)</td>
+                          <td>Mar 21, 2025</td>
+                          <td><span class="status-badge dec_btn">Declined</span></td>
+                          <td>Online<br>(Debit/Credit Card, Net Banking, Paytm)</td>
+                          <td class="actions"><a href="#">View Invoice</a></td>
+                        </tr>
+                        <tr>
+                          <td>One Free Listing<br>(Order #60429551)</td>
+                          <td>Mar 21, 2025</td>
+                          <td><span class="status-badge sub_btn">Subscribed</span></td>
+                          <td>Online<br>(Debit/Credit Card, Net Banking, Paytm)</td>
+                          <td class="actions"><a href="#">View Invoice</a></td>
+                        </tr>
+                        <tr>
+                          <td>One Free Listing<br>(Order #60429551)</td>
+                          <td>Mar 21, 2025</td>
+                          <td><span class="status-badge sub_btn">Subscribed</span></td>
+                          <td>Online<br>(Debit/Credit Card, Net Banking, Paytm)</td>
+                          <td class="actions"><a href="#">View Invoice</a></td>
+                        </tr>
+                        <tr>
+                          <td colspan="5">
+                            <div class="oh_pagination">
+                              <button class="oh_nav"><svg width="10" height="18" viewBox="0 0 10 18" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.42578 1.5L1.50078 9.425L9.42578 17.163" stroke="white"
+                                    stroke-width="1.5" />
+                                </svg>
+                              </button>
+                              <button class="active">1</button>
+                              <button>2</button>
+                              <button>3</button>
+                              <button>4</button>
+                              <button>5</button>
+                              <button>6</button>
+                              <button class="oh_nav"><svg width="11" height="18" viewBox="0 0 11 18" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M1.50468 1.5L9.42969 9.42499L1.50468 17.163" stroke="white"
+                                    stroke-width="1.5" />
+                                </svg>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="ys_wrapper">
+                  <div class="ys_login">
+                    image
+                    <h2 class="text-center">No orders found yet. Start exploring and take the first step toward your
+                      dream property journey!</h2>
+                    <a class="verify_btn position-relative" href="#">Buy Plan</a>
+                    <p>Need assistance? Contact Support or check our Help Centre.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="info-bottom">
+
+  <section class="information-front">
     <div class="container">
-      <p class="info-pera"> is India's premium real estate portal where users can find Independent Houses / Villas, Apartments/Flats and Plots for sale and rent in 4 cities across Guajrat, India.  helps the property seeker to find Resale properties, Residential Projects and Owner properties in Ahmedabad, Baroda, Surat and Rajkot.  provides complete details of Project launches, under construction projects and ready-to-move projects with detailed description of locality, builder, price trends and features.</p>
+      <h6 class="info-head">The information provided herein have been collected from publicly available sources, and is
+        yet to be verified as per RERA guidelines.*</h6>
+      <div class="more-points">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <h6 class="info-title">REAL ESTATE</h6>
+            <p class="info-locator">Gujarat Real Estate | Ahmedabad Real Estate | Surat Real Estate | Baroda Real Estate
+              | Rajkot Real Estate</p>
+
+            <h6 class="info-title">BUY PROPERTY</h6>
+            <p class="info-locator">Buy Property in Guajrat | Buy Property in Ahmedabad | Buy Property in Surat | Buy
+              Property in Baroda | Buy Property in Rajkot</p>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <h6 class="info-title">COWORKING SPACE</h6>
+            <p class="info-locator">Office space in Gujarat | Office space in Ahmedabad | Office space in Surat | Office
+              space in Baroda | Office space in Rajkot</p>
+
+            <h6 class="info-title">PROPERTIES FOR RENT</h6>
+            <p class="info-locator">Rent Property in Guajrat | Rent Property in Ahmedabad | Rent Property in Surat |
+              Rent Property in Baroda | Rent Property in Rajkot</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="info-bottom">
+      <div class="container">
+        <p class="info-pera"> is India's premium real estate portal where users can find Independent Houses / Villas,
+          Apartments/Flats and Plots for sale and rent in 4 cities across Guajrat, India. helps the property seeker to
+          find Resale properties, Residential Projects and Owner properties in Ahmedabad, Baroda, Surat and Rajkot.
+          provides complete details of Project launches, under construction projects and ready-to-move projects with
+          detailed description of locality, builder, price trends and features.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- deactive modal -->
+<div class="modal fade deac_modal" id="deactivateModal" tabindex="-1" aria-labelledby="deactivateModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body text-center">
+        <div class="prof_modal_wrapper">
+          <h4 class="fw-bold mb-3">Are You Sure You Want to Deactivate Your Account?</h4>
+          <p class="text-muted mb-4">
+            We're sorry to see you go! Your deactivation request will be reviewed by our team. We'll notify you within
+            2–3
+            business days with a decision on whether you can deactivate. Until then, your profile and alerts will remain
+            active. Please share why you're leaving to help us improve.
+          </p>
+
+          <form class="deac_modal_form">
+            <div class="text-start px-3">
+              <label for="" class="label-form">Please specify your reason</label>
+              <input type="text" name="deactivationReason" class="iform-input mb-0" placeholder="Enter Your Reason" />
+            </div>
+            <div class="d-flex justify-content-center gap-3 mt-4">
+              <button class="de_req">Submit Deactivation Request</button>
+              <button class="keep_acc" data-bs-dismiss="modal">Cancel and Keep Account</button>
+            </div>
+          </form>
+
+          <div class="mt-4 text-muted">
+            <strong>Questions?</strong><br />
+            Contact us at <a href="mailto:support@realtymart.com">support@realtymart.com</a> or visit our Help Centre.
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
-</main>
+</div>
+<!-- deactive modal -->
+<!-- Profile_Save_changes -->
+<div class="modal fade deac_modal" id="deactivateModal" tabindex="-1" aria-labelledby="deactivateModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body text-center">
+        <div class="prof_modal_wrapper">
+          <h4 class="fw-bold mb-3">Changes Saved Successfully!</h4>
+          <p class="text-muted mb-4">
+            Your updates have been saved. Your account details are now up to date. Want to explore more features like
+            managing your
+            properties?
+          </p>
+
+          <div class="mt-4 text-muted">
+            <button class="de_req">Manage Properties</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Profile_Save_changes -->

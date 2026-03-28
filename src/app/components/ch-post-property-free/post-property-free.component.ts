@@ -58,7 +58,7 @@ export class PostPropertyFreeComponent {
       this.propertytypeGroups = Object.keys(this.propertytype).map((group) => ({
         groupName: group,
         properties: this.propertytype[group],
-      }));
+      }));  
     });
   }
 
@@ -110,7 +110,5 @@ export class PostPropertyFreeComponent {
       }
     }
   }
-
-
 
 }

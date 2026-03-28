@@ -21,7 +21,7 @@ export class PostPropertyFreeComponent {
     property_city: new FormControl('', [Validators.required]),
     property_locality: new FormControl('', [Validators.required]),
     property_address: new FormControl(null, [Validators.required]),
-    project_id: new FormControl(null, [Validators.required]),
+    project_id: new FormControl('', [Validators.required]),
     landmarks: new FormControl(null, []),
     land_zone: new FormControl('', []),
     property_price_show: new FormControl(null, []),
@@ -1613,6 +1613,10 @@ export class PostPropertyFreeComponent {
     const selectedLocality:any = event.target.value;
     this.fetchProjectList(selectedLocality);
   }
+  onPropertyChange(event:any) {
+    const selectedLocality:any = event.target.value;
+    
+  }
   fetchProjectList(locality:any) {
     this.PostpropertyfreeService.getProjectList(locality).subscribe((res:any)=> {
       this.projectList =res.responseData.addproject;
@@ -1640,6 +1644,8 @@ export class PostPropertyFreeComponent {
     let payload = this.submitForm.value;
     this.http.post(`${environment.apiUrl}addproperty`, payload).subscribe(
       (res: any) => {
+      window.location.reload();
+
         this.toastr.success('Your Property Post successfully.');
       },
       (error) => {

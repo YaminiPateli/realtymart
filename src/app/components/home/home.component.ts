@@ -312,7 +312,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
                 }
               })
               .catch((error: any) => {
-                console.error('Error getting city from coordinates:', error);
                 this.updateCity('Ahmedabad');
                 this.loadHotDeals();
                 this.loadFeaturedResidentalProjects();
@@ -325,7 +324,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
               });
           },
           (error) => {
-            console.error('Error getting location', error);
             this.updateCity('Ahmedabad');
             this.loadHotDeals();
             this.loadFeaturedResidentalProjects();
@@ -338,7 +336,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
           }
         );
       } else {
-        console.error('Geolocation not supported by this browser.');
         this.updateCity('Ahmedabad');
         this.loadHotDeals();
         this.loadFeaturedResidentalProjects();
@@ -476,16 +473,20 @@ export class HomeComponent implements AfterViewInit, OnInit {
             this.selectedItemsOrder = this.propertyplot?.filter(
               (item: any) => defaultSelections.includes(item.name)
             );
-            // this.selectedResidentialItems = [];
-            // this.selectedItemsOrder = [];
+           
           }
-            //     const defaultSelections = ['Flat', 'Villa'];
-            //     this.selectedResidentialItems = this.propertyresidential
-            //   ?.filter((item: any) => defaultSelections.includes(item.name))
-            //   .map((item: any) => item.id);
-            // this.selectedItemsOrder = this.propertyresidential?.filter(
-              //   (item: any) => defaultSelections.includes(item.name)
-              // );
+            if(this.activeTab == 'commercial'){
+            console.log('Active Tab:', this.activeTab);
+
+            const defaultSelections = ['Office Space', 'Commercial Land'];
+            this.selectedPlotItems = this.propertyplot
+            ?.filter((item: any) => defaultSelections.includes(item.name))
+            .map((item: any) => item.id);
+            this.selectedItemsOrder = this.propertyplot?.filter(
+              (item: any) => defaultSelections.includes(item.name)
+            );
+           
+          }
           }
           else {
             this.selectedResidentialItems = [];
@@ -560,6 +561,9 @@ export class HomeComponent implements AfterViewInit, OnInit {
   plotstoggleDisplayDiv() {
     this.visible = !this.visible;
   }
+  toggleDisplayDivcom() {
+    this.visible = !this.visible;
+  }
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
@@ -601,13 +605,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
     this.Lookingfor = !this.Lookingfor;
   }
 
-  // city1 = [
-  //   { cid: 0, cname: 'Ahmedabad' },
-  //   { cid: 1, cname: 'Rajkot' },
-  //   { cid: 2, cname: 'Surat' },
-  //   { cid: 3, cname: 'Vadodara' }
-  // ];
-
+  
   cars = [
     { id: 0, name: 'Ahmedabad' },
     { id: 1, name: 'Rajkot' },
@@ -623,22 +621,19 @@ export class HomeComponent implements AfterViewInit, OnInit {
     // { id: 11, name: 'Hydrabad' },
   ];
 
-  // ngOnInit() {}
 
-  // toggleDisabled() {
-  //   const car: any = this.city[11];
-  //   car.disabled = !car.disabled;
-  // }
   //-------------------------------//
   // Hot Deals Slider //
   //-------------------------------//
   slideConfig2 = {
-    slidesToShow: 4,
-    slidesToScroll: 3,
+    slidesToShow: 3,
+    slidesToScroll: 2,
     dots: true,
     arrows: false,
     infinite: true,
     autoplay: true,
+    autoplaySpeed: 5000,  // Time between auto scrolls in ms (default is 3000)
+    speed: 800,           // Transition speed in ms (default is 300)
     responsive: [
       {
         breakpoint: 1535,
@@ -944,6 +939,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
       .post(`${environment.apiUrl}searchproperty`, searchData,{headers})
       .subscribe(
         (response: any) => {
+          console.log('API Response:', response);
           const dataToSend = { result: response };
           this.router.navigate(['search-property'], { state: response });
         },
@@ -953,23 +949,33 @@ export class HomeComponent implements AfterViewInit, OnInit {
       );
   }
 
-  updateSelectedItems(event: any, id: number, selectedItems: number[], itemsList: any[]): void {
-console.log(itemsList);
+updateSelectedItems(event: any, id: number, selectedItemsArray: number[], itemsList: any[], type?: string): void {
+  const checked = event.target.checked;
+  const selectedItem = itemsList.find(i => i.id === id);
 
-    const selectedItem = itemsList.find(i => i.id === id);
-    console.log(selectedItem);
+  if (!selectedItem) return;
 
-    if (event.target.checked) {
+  if (checked) {
+    // Add to order list (for label)
+    if (!this.selectedItemsOrder.find(item => item.id === id)) {
       this.selectedItemsOrder.push(selectedItem);
     }
-     else {
-      // this.selectedItemsOrder = this.selectedItemsOrder.filter(i => i.id !== id);
-      selectedItems = selectedItems.filter(itemId => itemId !== selectedItem.id);
-      this.selectedItemsOrder = this.selectedItemsOrder.filter(item => item.id !== selectedItem.id);
+    // Add ID to the specific array
+    if (!selectedItemsArray.includes(id)) {
+      selectedItemsArray.push(id);
     }
-    this.selectedResidentialItems = [...selectedItems];
-    this.updatePropertyLabel();
+  } else {
+    // Remove from order list
+    this.selectedItemsOrder = this.selectedItemsOrder.filter(item => item.id !== id);
+    // Remove ID
+    const index = selectedItemsArray.indexOf(id);
+    if (index > -1) {
+      selectedItemsArray.splice(index, 1);
+    }
   }
+
+  this.updatePropertyLabel();
+}
 
   handleResidentialCheckboxChange(event: any, id: number) {
     this.updateSelectedItems(event, id, this.selectedResidentialItems, this.propertyresidential);
@@ -1030,20 +1036,13 @@ console.log(itemsList);
     if (selectedCount === 0) {
       this.propertyLabel = 'Select Property Type';  // Default label when nothing is selected
     } else if (selectedCount === 1) {
-      // Display the name of the first selected item
-      // const selectedItem = this.propertypg.find(
-      //   (item:any) => item.id === this.selectedResidentialItems[0]
-      // );
+    
       this.propertyLabel = this.selectedItemsPg[0].name;
     } else {
       // Display the first selected item and count of others
       this.propertyLabel = `${this.selectedItemsPg[0].name} + ${selectedCount - 1}`;
-      // const firstItem = this.propertypg.find(
-      //   (item:any) => item.id === this.selectedResidentialItems[0]
-      // );
-      // this.propertyLabel = `${firstItem ? firstItem.name : 'Item'} + ${selectedCount - 1}`;
+     
     }
-    // const label = document.querySelector('#property_tabs_pg');
 
   }
 
@@ -1091,29 +1090,12 @@ console.log(itemsList);
 
     handleCommercialCheckboxChange(event: any, id: number) {
       this.updateSelectedItems(event, id, this.selectedCommercialItems, this.propertycommercial);
-    // this.updatePropertyLabel(this.selectedCommercialItems, this.propertycommercial);
-      // if (event.target.checked) {
-      //   this.selectedCommercialItems.push(id);
-      // } else {handleOtherCheckboxChange
-      //   this.selectedCommercialItems = this.selectedCommercialItems.filter(
-      //     (item) => item !== id
-      //   );
-      // }
-      // this.changeLabel();
+   
     }
 
   handleOtherCheckboxChange(event: any, id: number) {
     this.updateSelectedItems(event, id, this.selectedOtherItems, this.propertyother);
-    // this.updatePropertyLabel(this.selectedOtherItems, this.propertyother);
-
-    // if (event.target.checked) {
-    //   this.selectedOtherItems.push(id);
-    // } else {
-    //   this.selectedOtherItems = this.selectedOtherItems.filter(
-    //     (item) => item !== id
-    //   );
-    // }
-    // this.changeLabel();
+   
   }
 
   updatePropertyLabel(): void {
@@ -1142,81 +1124,33 @@ console.log(itemsList);
   renthandleCommercialCheckboxChange(event: any, id: number, type: any) {
     this.updateSelectedItems(event, id, this.selectedCommercialItems, this.propertycommercial);
     this.updatePropertyLabel();
-    // if (event.target.checked) {
-    //   this.selectedCommercialItems.push(id);
-    // } else {
-    //   this.selectedCommercialItems = this.selectedCommercialItems.filter(
-    //     (item) => item !== id
-    //   );
-    // }
-    // this.type = type;
-    // this.rentchangeLabel();
+  
   }
 
   renthandleOtherCheckboxChange(event: any, id: number, type: any) {
     this.updateSelectedItems(event, id, this.selectedOtherItems, this.propertyother);
     this.updatePropertyLabel();
-    // if (event.target.checked) {
-    //   this.selectedOtherItems.push(id);
-    // } else {
-    //   this.selectedOtherItems = this.selectedOtherItems.filter(
-    //     (item) => item !== id
-    //   );
-    // }
-    // this.type = type;
-    // this.rentchangeLabel();
+ 
   }
 
   farmhousehandleCommercialCheckboxChange(event: any, id: number, type: any) {
     this.updateSelectedItems(event, id, this.selectedCommercialItems, this.propertycommercial);
-    // if (event.target.checked) {
-    //   this.selectedCommercialItems.push(id);
-    // } else {
-    //   this.selectedCommercialItems = this.selectedCommercialItems.filter(
-    //     (item) => item !== id
-    //   );
-    // }
-    // this.type = type;
-    // this.farmhousechangeLabel();
+   
   }
 
   farmhousehandleOtherCheckboxChange(event: any, id: number, type: any) {
     this.updateSelectedItems(event, id, this.selectedOtherItems, this.propertyother);
-    // if (event.target.checked) {
-    //   this.selectedOtherItems.push(id);
-    // } else {
-    //   this.selectedOtherItems = this.selectedOtherItems.filter(
-    //     (item) => item !== id
-    //   );
-    // }
-    // this.type = type;
-    // this.farmhousechangeLabel();
+   
   }
 
   plotshandleCommercialCheckboxChange(event: any, id: number, type: any) {
     this.updateSelectedItems(event, id, this.selectedCommercialItems, this.propertycommercial);
-    // if (event.target.checked) {
-    //   this.selectedCommercialItems.push(id);
-    // } else {
-    //   this.selectedCommercialItems = this.selectedCommercialItems.filter(
-    //     (item) => item !== id
-    //   );
-    // }
-    // this.type = type;
-    // this.plotschangeLabel();
+   
   }
 
   plotshandleOtherCheckboxChange(event: any, id: number, type: any) {
     this.updateSelectedItems(event, id, this.selectedOtherItems, this.propertyother);
-    // if (event.target.checked) {
-    //   this.selectedOtherItems.push(id);
-    // } else {
-    //   this.selectedOtherItems = this.selectedOtherItems.filter(
-    //     (item) => item !== id
-    //   );
-    // }
-    // this.type = type;
-    // this.plotschangeLabel();
+   
   }
 
   getvaluemin(minval: any, type: any) {
@@ -1276,17 +1210,6 @@ console.log(itemsList);
     }
       // contact_no :this.formData.contact_no,
 
-    // project_Id:this.proj_id,
-    // propertyid:'',
-    // builder_id:'',
-    // agent_id:'',
-    // useremail:this.formData.useremail,
-    // username:this.formData.username,
-    // leads_type:'Call for Price',
-    // leads_for:'',
-    // receiver_user_id:'',
-    // countrycode:'',
-    // request_price:0,
     const token = localStorage.getItem('myrealtylogintoken');
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`).set('Accept', 'application/json');
@@ -1295,7 +1218,7 @@ console.log(itemsList);
       .subscribe((response: any) => {
         if (response.status === true) {
           this.activityTrackerService.logActivity(`Inquiry stored for ${this.contact.property ? 'property' : 'project'}`,'');
-          this.toastr.success('Inquiry Addeded successfully!');
+          this.toastr.success('Inquiry Added successfully!');
           const modalElement = document.getElementById('contact-owner');
           const modalElementProp = document.getElementById('contact-owner-prop');
       if (modalElement) {
@@ -1306,7 +1229,7 @@ console.log(itemsList);
         const modalInstance = bootstrap.Modal.getInstance(modalElementProp);
         modalInstance?.hide();
       }
-          this.resetForm();
+          // this.resetForm();
         }
       }, (error) => {
         console.error('Error sending data', error);
@@ -1420,15 +1343,7 @@ console.log(itemsList);
               setTimeout(() => {
                 this.spinner.hide();
               }, 1000); // Adjust the delay as needed
-              // if (
-              //   this.nameError||
-              //   this.phoneError ||
-              //   this.emailError
-              // ) {
-              //   return;
-              // }
-              // else{
-              // }
+             
 
               this.spinner.hide();
             } else {

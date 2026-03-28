@@ -32,15 +32,14 @@ export class ServicesDetailComponent implements OnInit {
   fullPath:any;
   activeSection: string | undefined ='about';
   // google reviews
+  lat = '23.0225';
+  lng = '72.5714';
   placeName: string = '';
   errorMessage: string | null = null;
   reviews: any[] | null = null;
   placeDetails: any = null;
   googleReviews: any;
   dayNames: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  private apiKey = 'AIzaSyD-iX9GMP2C8Tsz4hOM3qksvMHyzLSXLxA';
-  private textSearchUrl = 'https://maps.googleapis.com/maps/api/place/textsearch/json';
-  private placeDetailsUrl = 'https://maps.googleapis.com/maps/api/place/details/json';
   private apiUrl: string = environment.apiUrl;
   url: any;
   city: any;
@@ -62,7 +61,7 @@ export class ServicesDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCompanyServiceListing();
-    this.loadGoogleMapsScript();
+    // this.loadGoogleMapsScript();
     this.activatedRoute.url.subscribe((segments) => {
       this.urlSegments = segments.map((segment) => segment.path);
       this.fullPath = `${this.apiUrl}/${this.urlSegments.join('/')}`;
@@ -73,22 +72,22 @@ export class ServicesDetailComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
-  private loadGoogleMapsScript(): void {
-    if (typeof google === 'undefined' || !google.maps) {
-      const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCSTCnateoFfNtpPRtURlnEroMPDL0Bxs8&libraries=places`;
-      script.async = false;
-      script.defer = true;
-      document.head.appendChild(script);
+  // private loadGoogleMapsScript(): void {
+  //   if (typeof google === 'undefined' || !google.maps) {
+  //     const script = document.createElement('script');
+  //     script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCSTCnateoFfNtpPRtURlnEroMPDL0Bxs8&libraries=places`;
+  //     script.async = false;
+  //     script.defer = true;
+  //     document.head.appendChild(script);
 
-      script.onload = () => {
-      };
+  //     script.onload = () => {
+  //     };
 
-      script.onerror = () => {
-        this.errorMessage = 'Error loading Google Maps API.';
-      };
-    }
-  }
+  //     script.onerror = () => {
+  //       this.errorMessage = 'Error loading Google Maps API.';
+  //     };
+  //   }
+  // }
 
   getUrl(urlPart1:any, urlPart2:any){
     this.url = window.location.origin;
@@ -124,40 +123,135 @@ export class ServicesDetailComponent implements OnInit {
     }, 1500);
   }
 
+  // fetchCompanyServiceListing() {
+  //   const serviceName = this.route.snapshot.paramMap.get('name');
+  //   const serviceId = this.route.snapshot.paramMap.get('id');
+
+  //   if (serviceName && serviceId) {
+  //     if (navigator.geolocation) {
+  //       navigator.geolocation.getCurrentPosition(
+  //         (position) => {
+  //           const { latitude, longitude } = position.coords;
+  //           const lat = latitude;
+  //           const lng = longitude;
+  //           const city = localStorage.getItem('location');
+
+  //           this.singleCompanyService.getCompanyServiceListing(serviceName, serviceId, lat, lng, city).subscribe(
+  //             (response: any) => {
+  //               this.singlecompany = response.data;
+  //               this.setMetaTags(this.singlecompany.meta_title, this.singlecompany.meta_description, this.singlecompany.company_logo);
+  //               // this.queryPlaceByName(this.singlecompany.company_name);
+  //               console.log('response',response.data);
+  //             },
+  //             (error: any) => {
+  //               console.error('Error fetching company service listing:', error);
+  //             }
+  //           );
+  //         },
+  //         (error) => {
+  //           console.error('Geolocation error:', error);
+  //           // fallback without location
+  //         }
+  //       );
+  //     } else {
+  //       // fallback if geolocation is not supported
+  //     }
+  //   }
+  // }
   fetchCompanyServiceListing() {
-    const serviceName = this.route.snapshot.paramMap.get('name');
-    const serviceId = this.route.snapshot.paramMap.get('id');
+  const serviceName = this.route.snapshot.paramMap.get('name');
+  const serviceId = this.route.snapshot.paramMap.get('id');
 
-    if (serviceName && serviceId) {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const { latitude, longitude } = position.coords;
-            const lat = latitude;
-            const lng = longitude;
-            const city = localStorage.getItem('location');
+  if (!serviceName || !serviceId) return;
 
-            this.singleCompanyService.getCompanyServiceListing(serviceName, serviceId, lat, lng, city).subscribe(
-              (response: any) => {
-                this.singlecompany = response.data;
-                this.setMetaTags(this.singlecompany.meta_title, this.singlecompany.meta_description, this.singlecompany.company_logo);
-                this.queryPlaceByName(this.singlecompany.company_name);
-              },
-              (error: any) => {
-                console.error('Error fetching company service listing:', error);
-              }
-            );
-          },
-          (error) => {
-            console.error('Geolocation error:', error);
-            // fallback without location
-          }
-        );
-      } else {
-        // fallback if geolocation is not supported
-      }
-    }
+  const city = localStorage.getItem('location');
+
+  // Safari + iPhone Fix → Add geolocation options
+  const geoOptions = {
+    enableHighAccuracy: true,
+    timeout: 10000,       // 10 seconds
+    maximumAge: 0
+  };
+
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        const lat = latitude;
+        const lng = longitude;
+
+        this.singleCompanyService
+          .getCompanyServiceListing(serviceName, serviceId, lat, lng, city)
+          .subscribe(
+            (response: any) => {
+              this.singlecompany = response.data;
+              this.setMetaTags(
+                this.singlecompany.meta_title,
+                this.singlecompany.meta_description,
+                this.singlecompany.company_logo
+              );
+              console.log('response', response.data);
+            },
+            (error: any) => {
+              console.error('Error fetching company service listing:', error);
+            }
+          );
+      },
+
+      // ------------- ERROR HANDLER FIXED FOR SAFARI --------------
+      (error: GeolocationPositionError) => {
+        console.error('Geolocation error:', error);
+
+        // Custom readable error logs
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            console.warn("User denied location request.");
+            break;
+
+          case error.POSITION_UNAVAILABLE:
+            console.warn("Location unavailable. Safari often causes this.");
+            break;
+
+          case error.TIMEOUT:
+            console.warn("Location timed out.");
+            break;
+        }
+
+        // fallback without location
+        this.singleCompanyService
+          .getCompanyServiceListing(serviceName, serviceId, this.lat, this.lng, city)
+          .subscribe(
+            (response: any) => {
+              this.singlecompany = response.data;
+              this.setMetaTags(
+                this.singlecompany.meta_title,
+                this.singlecompany.meta_description,
+                this.singlecompany.company_logo
+              );
+              console.log('response (fallback)', response.data);
+            }
+          );
+      },
+      geoOptions
+    );
+  } else {
+    // If geolocation not supported
+    this.singleCompanyService
+      .getCompanyServiceListing(serviceName, serviceId, this.lat, this.lng, city)
+      .subscribe(
+        (response: any) => {
+          this.singlecompany = response.data;
+          this.setMetaTags(
+            this.singlecompany.meta_title,
+            this.singlecompany.meta_description,
+            this.singlecompany.company_logo
+          );
+        }
+      );
   }
+}
+
 
   // Set the title and meta description
   setMetaTags(title: string, description: string, image: string): void {
@@ -295,29 +389,35 @@ export class ServicesDetailComponent implements OnInit {
   }
 
   shareonWhatsapp(){
-    const whatsappMessage = `https://api.whatsapp.com/send?text=${encodeURIComponent('Check out my amazing concept: My Amazing Website! '+this.fullPath)}`;
-    window.open(whatsappMessage, '_blank');
+    // const whatsappMessage = `https://api.whatsapp.com/send?text=${encodeURIComponent('Check out my amazing concept: My Amazing Website! '+this.fullPath)}`;
+    // window.open(whatsappMessage, '_blank');
+    const message = `Check out my amazing concept: My Amazing Website!`;
+
+const whatsappMessage =
+  `https://api.whatsapp.com/send?phone=7378373783&text=${encodeURIComponent(message)}`;
+
+window.open(whatsappMessage, '_blank');
   }
 
 
  // google reviews
- queryPlaceByName(placeName: string): void {
-  const service = new google.maps.places.PlacesService(document.createElement('div'));
+//  queryPlaceByName(placeName: string): void {
+//   const service = new google.maps.places.PlacesService(document.createElement('div'));
 
-  const request = {
-    query: placeName,
-    fields: ['place_id', 'name'],
-  };
+//   const request = {
+//     query: placeName,
+//     fields: ['place_id', 'name'],
+//   };
 
-  service.textSearch(request, (results: any, status: any) => {
-    if (status === google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
-      const placeId = results[0].place_id;
-      this.fetchPlaceDetails(placeId);
-    } else {
-      this.errorMessage = 'Error: Place not found.';
-    }
-  });
-}
+//   service.textSearch(request, (results: any, status: any) => {
+//     if (status === google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
+//       const placeId = results[0].place_id;
+//       this.fetchPlaceDetails(placeId);
+//     } else {
+//       this.errorMessage = 'Error: Place not found.';
+//     }
+//   });
+// }
 
 getToday(): string {
   const today = new Date().getDay(); // Sunday = 0, Saturday = 6

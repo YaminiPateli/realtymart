@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import { ToastrModule,ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
-
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-project-featured',
   templateUrl: './project-featured.component.html',
@@ -40,6 +40,8 @@ export class ProjectFeaturedComponent implements OnInit,AfterViewInit  {
     phone_number: null, // Initialize with null or a default number
     property_for: '', // Initialize with an empty string
   };
+
+  mapUrl!: SafeResourceUrl;
   constructor(
     private _lightbox: Lightbox,
     private route: ActivatedRoute,
@@ -52,6 +54,7 @@ export class ProjectFeaturedComponent implements OnInit,AfterViewInit  {
     private toastr: ToastrModule,
     private tost:ToastrService,
     private datePipe: DatePipe,
+    private sanitizer: DomSanitizer
   ) {
     this._album.push({
       src: 'assets/images/advertisement.png',
@@ -210,13 +213,17 @@ export class ProjectFeaturedComponent implements OnInit,AfterViewInit  {
   ngOnInit(): void {
     this.fetchPropertyDetails();
     this.loadissponsored();
-    this.loadisverified();
+    // this.loadisverified();
     this.center = {
       // lat: this.singleproject.latitude,
       // lng: this.singleproject.longitude,
       lat: this.singleproject.latitude,
       lng: this.singleproject.longitude,
     };
+     const url =
+    `https://www.google.com/maps?q=${this.singleproject?.latitude},${this.singleproject?.longitude}&output=embed`;
+ 
+  this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     window.onscroll = () => this.checkScroll();
       this.route.fragment.subscribe(fragment => {
         this.currentSection = fragment;
@@ -317,12 +324,12 @@ export class ProjectFeaturedComponent implements OnInit,AfterViewInit  {
     });
   }
 
-  loadisverified(): void {
-    this.verifyservice.verifiedget()?.subscribe((verifyData: any) => {
-      this.verifyData = verifyData;
-      this.verify = this.verifyData?.responseData?.isverified;
-    });
-  }
+  // loadisverified(): void {
+  //   this.verifyservice.verifiedget()?.subscribe((verifyData: any) => {
+  //     this.verifyData = verifyData;
+  //     this.verify = this.verifyData?.responseData?.isverified;
+  //   });
+  // }
 
 
   // objectKeys(obj: any): string[] {

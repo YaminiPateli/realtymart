@@ -174,21 +174,7 @@ export class ProjectsincityComponent {
         }
       );
 
-    // if (cityName) {
-    //   this.projectlistingincityService.getprojectincity(cityName).subscribe(
-    //     (response: any) => {
-    //       this.projectincityData = response;
-    //       this.projectincitycount = this.projectincityData?.responseData?.projectincitycount;
-    //       this.projectincity = this.projectincityData?.data;
-    //       this.original = [...this.projectincity];
-    //       this.totalItems = this.projectincity.length;
-    //       this.updatePaginatedData();
-    //     },
-    //     (error: any) => {
-    //       console.error('Error fetching all builders:', error);
-    //     }
-    //   );
-    // }
+
   }
 
   // meta title

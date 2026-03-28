@@ -58,7 +58,7 @@
                                     <div class="col-lg-10 col-md-6 col-sm-12">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <a routerLink="project-details/{{ projects.firstUrlPart }}/{{ projects.secondUrlPart }}" class="groups-companies-names">{{ projects.project_name}}</a>
+                                                <a [routerLink]="['/project-details', projects.firstUrlPart, projects.secondUrlPart]" class="groups-companies-names">{{ projects.project_name}}</a>
                                                 <p class="opnesince" *ngIf="projects.totalfloor && projects.name">{{ projects.totalfloor }} Floor Plan  |  By: {{ projects.name}}</p>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -179,7 +179,7 @@
           <div class="check-compare mt-3">
             <input type="checkbox" [(ngModel)]="formData.termsAccepted" (change)="onTermsChange($event)"
               name="termsAccepted" id="compare" [disabled]="is_token" value="compare add" class="mycheck" />
-            <label for="compare" class="compares" style="display: inline-flex; gap:5px;">I Agree to RealtyMart Terms of Use
+            <label for="compare" class="compares" style="display: inline-flex; gap:5px;">I Agree to RealtyMart <a routerLink="/terms-conditions" target="_blank">Terms of Use</a>
 
             </label>
             <br />

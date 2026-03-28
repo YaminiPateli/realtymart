@@ -2,7 +2,7 @@
   <div class="row align-items-center">
     <div class="col-lg-6 col-md-12 col-sm-12">
       <div class="text-center signUp_logo">
-       <a href="/"> <img src="../assets/images/logo.svg" class="img-fluid" /></a>
+        <a href="/"> <img src="../assets/images/logo.svg" class="img-fluid" /></a>
       </div>
       <h1 class="text-center pt-4 heading-reg" style="color: white">
         India’s 1st Integrated Portal for Builders, Brokers and Service
@@ -16,54 +16,30 @@
             <div class="reg_form">
               <div class="row">
                 <h3><b>Sign Up</b></h3>
-                  <div class="pt-2 signup-space">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="pt-2 signup-space">
+                  <div class="col-lg-12 col-md-12 col-sm-12">
                     <label for>Register me as</label>
                     <div>
                       <div class="as_reg mt-1 m-0 d-flex flex-wrap">
                         <div class="d-flex gap-2">
-                          <input
-                            type="radio"
-                            id="builder"
-                            name="role"
-                            value="builder"
-                            (click)="servicesnotdisplay()"
-                            [(ngModel)]="formData.register_as"
-                          />
+                          <input type="radio" id="builder" name="role" value="builder" (click)="servicesnotdisplay()"
+                            [(ngModel)]="formData.register_as" />
                           <label for="builder">Builder</label>
                         </div>
-                        <div class="d-flex gap-2">
-                          <input
-                            type="radio"
-                            id="broker"
-                            name="role"
-                            value="broker"
-                            (click)="servicesnotdisplay()"
-                            [(ngModel)]="formData.register_as"
-                          />
+                        <!-- <div class="d-flex gap-2">
+                          <input type="radio" id="broker" name="role" value="broker" (click)="servicesnotdisplay()"
+                            [(ngModel)]="formData.register_as" />
                           <label for="broker">Broker</label>
-                        </div>
+                        </div> -->
                         <div class="d-flex gap-2">
-                          <input
-                            type="radio"
-                            id="service-provider"
-                            name="role"
-                            (click)="servicesdisplay()"
-                            [(ngModel)]="formData.register_as"
-                            value="service-provider"
-                          />
+                          <input type="radio" id="service-provider" name="role" (click)="servicesdisplay()"
+                            [(ngModel)]="formData.register_as" value="service-provider" />
                           <label for="service-provider">Service Provider</label>
                         </div>
 
                         <div class="d-flex gap-2">
-                          <input
-                            type="radio"
-                            id="Buyer"
-                            name="role"
-                            (click)="servicesnotdisplay()"
-                            [(ngModel)]="formData.register_as"
-                            value="User"
-                          />
+                          <input type="radio" id="Buyer" name="role" (click)="servicesnotdisplay()"
+                            [(ngModel)]="formData.register_as" value="User" />
                           <label for="Buyer">Buyer/End User</label>
                         </div>
                       </div>
@@ -71,31 +47,18 @@
                         Select register type!
                       </div>
                     </div>
-                    </div>
                   </div>
-                  <div class="hg_box">
-                    <div class="row">
-                      <div
-                      *ngIf="
+                </div>
+                <div class="hg_box">
+                  <div class="row">
+                    <div *ngIf="
                         servicess == 1 || formData.register_as == 'service-provider'
-                      "
-                      class="col-lg-12 mt-3"
-                      id="registerAs"
-                    >
-                      <select
-                        name="registerAs"
-                        *ngIf="
+                      " class="col-lg-12 mt-3" id="registerAs">
+                      <select name="registerAs" *ngIf="
                           servicess == 1 || formData.register_as == 'service-provider'
-                        "
-                        required
-                        [(ngModel)]="formData.register_type"
-                        (change)="onProviderChange($event)"
-                      >
+                        " required [(ngModel)]="formData.register_type" (change)="onProviderChange($event)">
                         <option value selected disabled>Select Service Type</option>
-                        <option
-                          *ngFor="let service of servicesimgss"
-                          [value]="service.name"
-                        >
+                        <option *ngFor="let service of servicesimgss" [value]="service.name">
                           {{ service.name }}
                         </option>
                       </select>
@@ -111,16 +74,9 @@
                     </div> -->
 
                     <div class="col-lg-6 col-md-6 col-sm-12 mt-3" *ngIf="formData.register_as !== 'User'">
-                      <input
-                        type="text"
-                        id="companyName"
-                        name="companyName"
-                        [(ngModel)]="formData.comapny_name"
-                        placeholder="Company Name"
-                        (blur)="validateCompanyName($event)"
-                        (keypress)="validateCompanyCharInput($event)"
-                        required
-                      />
+                      <input type="text" id="companyName" name="companyName" [(ngModel)]="formData.comapny_name"
+                        placeholder="Company Name" (blur)="validateCompanyName($event)"
+                        (keypress)="validateCompanyCharInput($event)" required />
                       <div *ngIf="companyError" class="mgs_error">
                         {{companyErrorMessage}}
                       </div>
@@ -128,56 +84,29 @@
 
 
                     <div class="col-lg-6 col-md-6 col-sm-12 mt-3" *ngIf="formData.register_as == 'User'">
-                      <input
-                        type="text"
-                        id="companyName"
-                        name="companyName"
-                        [(ngModel)]="formData.comapny_name"
-                        placeholder="User Name"
-                        (blur)="validateUserName($event)"
-                        (keypress)="validateCharInput($event)"
-                        required
-                      />
+                      <input type="text" id="companyName" name="companyName" [(ngModel)]="formData.comapny_name"
+                        placeholder="User Name" (blur)="validateUserName($event)" (keypress)="validateCharInput($event)"
+                        required />
                       <div *ngIf="companyError" class="mgs_error">
-                     {{companyErrorMessage}}
+                        {{companyErrorMessage}}
                       </div>
                     </div>
 
-                    <div class="col-lg-6 col-md-6 col-sm-12 mt-3"
-                    >
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Email"
-                        [(ngModel)]="formData.email"
-                        (blur)="validateEmail($event)"
-                        (keypress)="preventSpace($event)"
-                        required
-                      />
+                    <div class="col-lg-6 col-md-6 col-sm-12 mt-3">
+                      <input type="email" id="email" name="email" placeholder="Email" [(ngModel)]="formData.email"
+                        (blur)="validateEmail($event)" (keypress)="preventSpace($event)" required />
                       <div *ngIf="emailError" class="mgs_error">
-                     {{emailErrorMessage}}
+                        {{emailErrorMessage}}
                       </div>
                     </div>
 
-                    <div class="col-lg-6 col-md-6 col-sm-12 mt-3"
-                    >
-                    <div class="d-flex align-items-center">
-                      <input
-                        type="tel"
-                        maxlength="10"
-                        id="mobileNo"
-                        [disabled]="isMobileNumberDisabled"
-                        maxlength="10"
-                        name="mobileNo"
-                        [(ngModel)]="formData.mobile_no"
-                        placeholder="Mobile No."
-                        pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                        required
-                        (keypress)="validateNumberInput($event)"
-                        (blur)="validatePhoneNumber($event)"
-                      />
-                      <!-- <span
+                    <div class="col-lg-6 col-md-6 col-sm-12 mt-3">
+                      <div class="d-flex align-items-center">
+                        <input type="tel" maxlength="10" id="mobileNo" [disabled]="isMobileNumberDisabled"
+                          maxlength="10" name="mobileNo" [(ngModel)]="formData.mobile_no" placeholder="Mobile No."
+                          pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required (keypress)="validateNumberInput($event)"
+                          (blur)="validatePhoneNumber($event)" />
+                        <!-- <span
                       class="verify-label"
                       (click)="openOTPModal()"
                       *ngIf="formData.mobile_no?.length === 10 && !phoneError"
@@ -185,49 +114,42 @@
                     >
                     Verified
                     </span> -->
-                  </div>
+                      </div>
                       <div *ngIf="phoneError" class="mgs_error">
                         Please enter a valid 10-digit number.
                       </div>
                     </div>
 
-                    </div>
                   </div>
                 </div>
-                <div class="text-center">
-                    <button class="reg_sub" type="submit"  [disabled]="registerError || serviceTypeError || companyError || phoneError || emailError">Verify OTP</button>
-                </div>
+                <!-- I agree to RealtyMart.com T&C, Privacy Policy, & Cookie Policy  -->
+              </div>
+              <div class="text-center">
+                <button class="reg_sub" type="submit"
+                  [disabled]="registerError || serviceTypeError || companyError || phoneError || emailError">Sign
+                  up</button>
+              </div>
+              <div>
+                <a target="_blank" routerlink="/login" class="dropdown-item pt-2" href="/login">Already registered?
+                  <span> Login Now </span></a>
+              </div>
             </div>
           </form>
-          <div
-            class="modal fade"
-            id="successModal"
-            tabindex="-1"
-            aria-labelledby="successModalLabel"
-            aria-hidden="true"
-          >
+
+
+          <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-              <div
-                class="modal-content p-4"
-                style="
+              <div class="modal-content p-4" style="
                   border-radius: 10px;
                   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-                "
-              >
+                ">
                 <div class="modal-header border-0 justify-content-center">
-                  <h5
-                    class="modal-title text-success fw-bold"
-                    id="successModalLabel"
-                    style="font-size: 24px"
-                  >
+                  <h5 class="modal-title text-success fw-bold" id="successModalLabel" style="font-size: 24px">
                     Registration Successful 🎉
                   </h5>
-                  <button
-                    type="button"
-                    class="btn-close position-absolute top-0 end-0 mt-3 me-3"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
+                  <button type="button" class="btn-close position-absolute top-0 end-0 mt-3 me-3"
+                    data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
                   <div style="font-size: 18px; color: #333; line-height: 1.5">
@@ -242,69 +164,38 @@
           </div>
 
           <!-- OTP Modal -->
-          <div
-            #otpModel
-            class="modal fade"
-            tabindex="-1"
-            role="dialog"
-            aria-bs-hidden="true"
-            data-bs-backdrop="static"
-            data-bs-keyboard="false"
-          >
+          <div #otpModel class="modal fade" tabindex="-1" role="dialog" aria-bs-hidden="true" data-bs-backdrop="static"
+            data-bs-keyboard="false">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title">Verify Your Mobile Number</h5>
-                  <button
-                    type="button"
-                    class="btn-close position-absolute top-0 end-0 mt-3 me-3"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
+                  <button type="button" class="btn-close position-absolute top-0 end-0 mt-3 me-3"
+                    data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   <div>
                     You will receive an OTP on your mobile number.
                   </div>
-                  <input
-                    type="text"
-                    id="otpInput"
-                    name="otpInput"
-                    placeholder="Enter OTP"
-                    [(ngModel)]="formData.otp"
-                    (keypress)="validateNumberInput($event)"
-                    maxlength="4"
-                    style="border-color: #00000029"
-                  />
+                  <input type="text" id="otpInput" name="otpInput" placeholder="Enter OTP" [(ngModel)]="formData.otp"
+                    (keypress)="validateNumberInput($event)" maxlength="4" style="border-color: #00000029" />
                   <div *ngIf="otpError" class="mgs_error">
                     Please enter a valid OTP.
                   </div>
                 </div>
                 <div class="modal-footer border-0 flex-column text-center">
-                  <button
-                    type="button"
-                    class="btn reg_sub"
-                    (click)="verifyOTP()"
-                  >
-                  Verify
+                  <button type="button" class="btn reg_sub" (click)="verifyOTP()">
+                    Verify
                   </button>
                   <div>
-                    <label
-                      *ngIf="!isResendEnabled"
-                      class="resend-label mb-3"
-                      style="cursor: pointer"
-                    >
+                    <label *ngIf="!isResendEnabled" class="resend-label mb-3" style="cursor: pointer">
                       You will receive OTP within
                       <b style="color: #ff5444"> 00:{{ remainingTime }}</b>
                       seconds
                     </label>
-                    <div class="mb-3"  *ngIf="isResendEnabled">Did not get Verification OTP ?</div>
-                    <span
-                      *ngIf="isResendEnabled"
-                      style="cursor: pointer; border-bottom: 1px solid grey"
-                      (click)="resendOTP()"
-                      >Resend OTP</span
-                    >
+                    <div class="mb-3" *ngIf="isResendEnabled">Did not get Verification OTP ?</div>
+                    <span *ngIf="isResendEnabled" style="cursor: pointer; border-bottom: 1px solid grey"
+                      (click)="resendOTP()">Resend OTP</span>
                   </div>
                   <!-- <button type="button" [disabled]="!isResendEnabled" class="btn reg_sub" (click)="sendOTPToMobile()">
             Resend OTP
@@ -318,25 +209,13 @@
     </div>
   </div>
   <div class="container-fluid pt-5 slider-padding">
-    <ngx-slick-carousel
-      class="service_slide"
-      #slickModal="slick-carousel"
-      [config]="slideConfig"
-    >
-      <div
-        ngxSlickItem
-        *ngFor="let service of servicesimgss; let i = index"
-        class="d-flex"
-
-      >
-        <div
-          [ngClass]="{
+    <ngx-slick-carousel class="service_slide" #slickModal="slick-carousel" [config]="slideConfig">
+      <div ngxSlickItem *ngFor="let service of servicesimgss; let i = index" class="d-flex">
+        <div [ngClass]="{
             'active-img':
               formData.register_type === service.name &&
               formData.register_as === 'service-provider'
-          }"
-          class="image-wrapper"
-        >
+          }" class="image-wrapper">
           <img [src]="service.register_image" class="img-fluid" [alt]="service.name" />
           <div class="service-name">
             {{ service.name }}

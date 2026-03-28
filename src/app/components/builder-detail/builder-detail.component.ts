@@ -98,6 +98,12 @@ export class BuilderDetailComponent implements OnInit {
   is_token:boolean=false;
   checkToken:any;
 
+  // share URL data
+  url: string = '';
+  dynamicUrl: string = '';
+  tooltipVisible: boolean = false;
+  tooltipPosition: { top: string; left: string } = { top: '0px', left: '0px' };
+
   activeSection: string | undefined ='overview';
   constructor(
     public http: HttpClient,
@@ -164,7 +170,56 @@ export class BuilderDetailComponent implements OnInit {
     this.activeTab = tab;
     this.filterProjects();
   }
-  
+
+  setShareUrl(): void {
+    this.url = window.location.origin;
+    // builder-detail routes may be direct URL; using current location ensures correctness
+    this.dynamicUrl = window.location.href;
+  }
+
+  copyLink(event: MouseEvent) {
+    navigator.clipboard.writeText(this.dynamicUrl).then(
+      () => {
+        this.showTooltip(event);
+      },
+      (err) => {
+        console.error('Copy failed', err);
+      }
+    );
+  }
+
+  whatsappShare() {
+    const link = `https://wa.me/?text=${encodeURIComponent(this.dynamicUrl)}`;
+    window.open(link, '_blank');
+  }
+
+  facebookShare() {
+    const url = encodeURIComponent(this.dynamicUrl);
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    window.open(facebookUrl, '_blank');
+  }
+
+  emailShare() {
+    const subject = encodeURIComponent('Check this out');
+    const body = encodeURIComponent(`Here is something interesting: ${this.dynamicUrl}`);
+    const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
+    window.open(mailtoLink, '_blank');
+  }
+
+  showTooltip(event: MouseEvent): void {
+    const button = event.target as HTMLElement;
+    const buttonRect = button.getBoundingClientRect();
+    this.tooltipPosition = {
+      top: `${buttonRect.top - 50}px`,
+      left: `${buttonRect.left + 60}px`,
+    };
+
+    this.tooltipVisible = true;
+    setTimeout(() => {
+      this.tooltipVisible = false;
+    }, 1500);
+  }
+
   loadTopBuilders() {
     const locationCookie = localStorage.getItem('location');
 

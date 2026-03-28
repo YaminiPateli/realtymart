@@ -149,7 +149,7 @@ export class HeaderComponent implements AfterViewInit{
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
-
+  
   logout() {
     const token = localStorage.getItem('myrealtylogintoken');
 
@@ -186,7 +186,6 @@ export class HeaderComponent implements AfterViewInit{
         (position) => {
           this.latitude = position.coords.latitude;
           this.longitude = position.coords.longitude;
-
           this.locationFooter = this.latitude + ', ' + this.longitude;
         },
         (error) => {

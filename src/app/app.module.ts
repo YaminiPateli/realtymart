@@ -64,7 +64,7 @@ import { InvestmentHotspotComponent } from './components/investment-hotspot/inve
 import { TipsAndGuidesComponent } from './components/tips-and-guides/tips-and-guides.component';
 import { LocalitiesprojectlistingComponent } from './components/localitiesprojectlisting/localitiesprojectlisting.component';
 import { CustomAutocompleteComponent } from './components/custom-autocomplete/custom-autocomplete.component';
-import { ProjectFeaturedComponent } from './components/project-featured/project-featured.component';
+import { ProjectFeaturedComponent } from './components/project-featured-old/project-featured.component';
 import { LightboxModule } from 'ngx-lightbox';
 import { ShortlistedPropertiesComponent } from './components/shortlisted-properties/shortlisted-properties.component';
 import { ResearchInsightsComponent } from './components/research-insights/research-insights.component';
@@ -115,7 +115,7 @@ const routes: Routes = [
   { path: 'blog-details/:blogurl', component:  BlogDetailsComponent },
   { path: 'emi-calculator', component:  EmiCalculatorComponent },
   { path: 'property-details/:name/:id', component:  PropertyDetailsComponent },
-  { path: 'project-details/:name/:id/', component:  ProjectFeaturedComponent },
+  { path: 'project-details/:name/:id/', component:  ProjectApproveDetailComponent },
   { path: 'top-builders', component:  TopbuildersComponent },
   { path: 'verified-property-buy/:city', component:  VerifiedpropertyComponent },
   { path: 'verified-property-rent/:city', component:  VerifiedpropertyRentComponent },
@@ -135,7 +135,7 @@ const routes: Routes = [
   { path: 'tips-and-guides', component:  TipsAndGuidesComponent },
   { path: 'localities-projects/:localities', component:  LocalitiesprojectlistingComponent },
   { path: 'custom-autocomplete', component:  CustomAutocompleteComponent },
-  { path: 'project-details/:name/:id', component:  ProjectFeaturedComponent },
+  { path: 'project-details/:name/:id', component:  ProjectApproveDetailComponent },
   { path: 'shortlisted-properties', component:  ShortlistedPropertiesComponent },
   { path: 'research-insights', component:  ResearchInsightsComponent },
   { path: 'paying-guest-for/:type/:city', component:  PayingGuestForComponent },

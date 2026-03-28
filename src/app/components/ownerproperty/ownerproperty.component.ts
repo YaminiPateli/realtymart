@@ -14,9 +14,10 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Fancybox } from '@fancyapps/ui';
 import { ActivityTrackerService } from '../service/activitytracker.service';
-import { Router } from '@angular/router';
+import { Router,NavigationEnd } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 declare var bootstrap: any;
+import { filter } from 'rxjs/operators';
 
 interface City {
   cid: number;
@@ -82,15 +83,7 @@ export class OwnerpropertyComponent {
   itemsPerPage = 5;
   visiblePageStart: number = 1;
   visiblePageCount: number = 5;
-  // contact: any = {
-  //   property_main_img: null,
-  //   property_type: null,
-  //   property_bhk: null,
-  //   project_localities: null,
-  //   minprice: null,
-  //   maxprice: null,
-  //   name: null,
-  // };
+
   isSubmitting = false;
   url: any;
   dynamicUrl: any;
@@ -105,6 +98,8 @@ export class OwnerpropertyComponent {
   city: any;
   city1: City[] = [];
   validcityforselected: any;
+    breadcrumbs: { label: string, url: string }[] = [];
+
 
   constructor(
     private titleService: Title,
@@ -229,6 +224,7 @@ export class OwnerpropertyComponent {
   }
 
   ngOnInit() {
+   this.generateBreadcrumbs(this.router.url);
     const token = localStorage.getItem('myrealtylogintoken');
     if (token) {
       this.is_token = true;
@@ -243,6 +239,21 @@ export class OwnerpropertyComponent {
       this.formDataphone.termsContactAccepted = true;
     }
   }
+  generateBreadcrumbs(url: string) {
+  console.log("Current URL:", url);
+
+  const cleanUrl = url.split('?')[0];
+  const urlSegments = cleanUrl.split('/').filter(segment => segment);
+
+  let accumulatedUrl = '';
+  this.breadcrumbs = urlSegments.map(segment => {
+    accumulatedUrl += '/' + segment;
+    return {
+      label: this.formatLabel(segment),
+      url: accumulatedUrl
+    };
+  });
+}
   scrollToElement(element: Element) {
     const elementRect = element.getBoundingClientRect(); // Element's position relative to the viewport
     const absoluteElementTop = elementRect.top + window.scrollY; // Element's absolute position in the document
@@ -262,12 +273,7 @@ export class OwnerpropertyComponent {
       this.is_token = false;
     }
   }
-  // scrollToUpdatedContent() {
-  //   const element = document.querySelector('.maching-myproperties:nth-child');
-  //   if (element) {
-  //     element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  //   }
-  // }
+ 
   contactowner(propertyid: any) {
     this.http.get(`${this.apiUrl}contactowner/${propertyid}`).subscribe(
       (contactData: any) => {
@@ -278,30 +284,7 @@ export class OwnerpropertyComponent {
     );
   }
   submitForm() {
-    //     this.nameError = false;
-    //     this.phoneError = false;
-    //     this.emailError = false;
-    //     this.termsError = false;
-
-    //  if(!this.formData.username) {
-    //     this.nameError=true;
-    //   }
-    //   if(!this.formData.useremail)
-    //   {
-    //     this.emailError=true;
-    //   }
-    //   if(!this.formData.contact_no)
-    //   {
-    //     this.phoneError=true;
-    //   }
-    //   if (!this.formData.termsAccepted) {
-    //     this.termsError = true;
-    //   }
-
-    //   if(this.nameError || this.phoneError || this.emailError || this.termsError)
-    //   {
-    //     return;
-    //   }
+    
     this.spinner.show();
     const payload = {
       contact_no: this.formData.contact_no,
@@ -315,11 +298,7 @@ export class OwnerpropertyComponent {
       leads_type: 'contact-owner',
       leads_for: 'Property',
       location: this.city,
-      // project_Id:this.singleproject.id,
-      // leads_for:this.singleproject.property_for,
-      // receiver_user_id:this.singleproject.user_id,
-      // countrycode:'',
-      // request_price:0,
+    
     };
     const token = localStorage.getItem('myrealtylogintoken');
 
@@ -342,7 +321,7 @@ export class OwnerpropertyComponent {
               const modalInstance = bootstrap.Modal.getInstance(modalElement);
               modalInstance?.hide();
             }
-            this.resetForm();
+            // this.resetForm();
           }
         },
         (error) => {
@@ -446,16 +425,7 @@ export class OwnerpropertyComponent {
           setTimeout(() => {
             this.spinner.hide();
           }, 1000); // Adjust the delay as needed
-          // if (
-          //   this.nameError||
-          //   this.phoneError ||
-          //   this.emailError
-          // ) {
-          //   return;
-          // }
-          // else{
-          //   this.submitForm();
-          // }
+         
 
           this.spinner.hide();
         } else {
@@ -581,29 +551,7 @@ export class OwnerpropertyComponent {
   }
 
   submitFormPhone() {
-    // this.nameContactError = false;
-    // this.phoneContactError = false;
-    // this.emailContactError = false;
-    // this.termsContactError = false;
-
-    // if(!this.formDataphone.contactusername) {
-    //   this.nameContactError=true;
-    // }
-    // if(!this.formDataphone.contactuseremail)
-    // {
-    //   this.emailContactError=true;
-    // }
-    // if(!this.formDataphone.contactcontact_no)
-    // {
-    //   this.phoneContactError=true;
-    // }
-    // if (!this.formDataphone.termsContactAccepted) {
-    //   this.termsContactError = true;
-    // }
-    // if(this.nameContactError || this.phoneContactError || this.emailContactError || this.termsContactError)
-    // {
-    //   return;
-    // }
+    
     this.spinner.show();
     const payload = {
       contact_no: this.formDataphone.contactcontact_no,
@@ -886,9 +834,7 @@ export class OwnerpropertyComponent {
   // fancybox for images
 
   ngAfterViewInit(): void {
-    // Fancybox.bind('[data-fancybox="gallery"]', {
-    //   // Custom options if needed
-    // });
+   
     const fancyboxOptions = {
       Toolbar: false, // Fancybox v4 uses uppercase `Toolbar`
       infinite: true, // Instead of `loop`, use `infinite`
@@ -958,13 +904,8 @@ export class OwnerpropertyComponent {
     autoplay: true,
   };
 
-  // slideConfig1 = {
-  //   slidesToShow: 1,
-  //   slidesToScroll: 1,
-  //   infinite: true, // Instead of `loop`, use `infinite`
-  //   arrows: true,
-  //   // dots: true,
-  //   loop: true, // Enable looping
-  //     toolbar: true // Show toolbar
-  // };
+ 
+  formatLabel(segment: string): string {
+    return segment.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  }
 }

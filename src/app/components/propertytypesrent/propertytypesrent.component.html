@@ -64,17 +64,6 @@
                     <img src="{{ item1 }}" alt="Gallery" class="img-fluid" />
                   </a>
                 </div>
-
-                <!-- <div ngxSlickItem class="slide">
-                              <a routerLink="{{ item.property_main_img }}" data-fancybox="gallery">
-                                <img src="{{ item.property_main_img }}" alt="Gallery" class="img-fluid" />
-                              </a>
-                            </div>
-                            <div ngxSlickItem class="slide">
-                              <a routerLink="{{ item.property_main_img }}" data-fancybox="gallery">
-                                <img src="{{ item.property_main_img }}" alt="Gallery" class="img-fluid" />
-                              </a>
-                            </div> -->
               </ngx-slick-carousel>
 
               <span class="txt" *ngIf="item.property_img.length - 1 > 0"
@@ -97,9 +86,6 @@
                   {{ item.property_locality }}
                 </h3></a
               >
-
-              <!-- <p class="posted-day">Posted: {{ item.created_at |
-                                date : 'yyyy-MM-dd' }}</p> -->
 
               <a
                 class="our_share"
@@ -194,19 +180,11 @@
                 <h6 class="facility_title">Plot Area</h6>
                 <p class="project-text">{{ item.ploat_area }}</p>
               </div>
-              <!-- <div *ngIf="item.suitablefor !== null">
-                                <h6 class="facility_title">Suitable For</h6>
-                                <p class="project-text">{{ item.suitablefor
-                                    }}</p>
-                            </div> -->
+           
             </div>
-            <!-- <p class="each-person">For each person RS.2500 ::::3 roommates needed in Jivrajpark.</p> -->
-
+         
             <div class="save-get-no">
-              <!-- <div class="get-no">
-                                <a routerLink>Get Phone no.</a>
-                            </div> -->
-              <div class="get-no" *ngIf="item.property_price_show == 1">
+               <div class="get-no" *ngIf="item.property_price_show == 1">
                 <a
                   href="javascript:void(0)"
                   data-bs-toggle="modal"
@@ -228,21 +206,7 @@
             </div>
           </div>
 
-          <!-- <div class="col-lg-2 col-md-12 col-sm-12">
-                        <div class="price-maching">
-                            <p class="our-price" *ngIf="item.property_price_show == '0'">₹ {{ item.rent_amount }}</p>
-                            <img *ngIf="item.is_verified === '1'"
-                                src="../../../assets/images/verified.png" alt
-                                class="img-fluid mt-2">
-                            <h6 class="owner-name"
-                                *ngIf="item.is_verified === '1'"><span>Owner</span><br>
-                                {{ item.owner_name }}</h6>
-                            <h6 class="owner-name jrs"
-                                *ngIf="item.is_verified !== '1'"><span>Owner</span><br>
-                                {{ item.owner_name }}</h6>
-
-                        </div>
-                    </div> -->
+       
         </div>
       </div>
       <div class="loading-spinner" *ngIf="loading">
@@ -250,115 +214,7 @@
           <span class="visually-hidden">Loading...</span>
         </div>
       </div>
-      <!-- <div class="pagination-container">
-                <button (click)="previousPageGroup()" [disabled]="visiblePageStart === 1">«</button>
-
-                <button *ngFor="let page of getVisiblePages()"
-                        [class.active]="page === currentPage"
-                        (click)="goToPage(page)">
-                  {{ page }}
-                </button>
-
-                <button (click)="nextPageGroup()"
-                        [disabled]="visiblePageStart + visiblePageCount - 1 >= getTotalPages()">»</button>
-              </div> -->
-
-      <!-- <div class="sponsored" *ngIf="datacheck != false">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <a routerLink class="links-taps">
-                            <div class="sponsored-box">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <div class="sponsored-image">
-                                            <img
-                                                src="../../../assets/images/Sponsored.png"
-                                                alt class="img-fluid">
-                                            <p
-                                                class="sponsored-text">Sponsored</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <div class="right-box-sponsored">
-                                            <div class="sponsored-details">
-                                                <div class="sponsored-side-box">
-                                                    <div class="left-box">
-                                                        <h5
-                                                            class="property-names">Swati
-                                                            Crimson</h5>
-                                                        <p
-                                                            class="location-property">Thaltej,
-                                                            Ahmedabad</p>
-                                                    </div>
-                                                    <div class="right-box">
-                                                        <p
-                                                            class="marketed">Marketed
-                                                            by <br>Swati
-                                                            Procon</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p
-                                                class="sponsored-reat"><strong>Dholera
-                                                    SIR</strong></p>
-                                            <p class="plots-price">Residential
-                                                Plots <strong>₹ 5 Lac</strong>
-                                                onwards</p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <a routerLink class="links-taps">
-                            <div class="sponsored-box">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <div class="sponsored-image">
-                                            <img
-                                                src="../../../assets/images/Sponsored.png"
-                                                alt class="img-fluid">
-                                            <p
-                                                class="sponsored-text">Sponsored</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <div class="right-box-sponsored">
-                                            <div class="sponsored-details">
-                                                <div class="sponsored-side-box">
-                                                    <div class="left-box">
-                                                        <h5
-                                                            class="property-names">Swati
-                                                            Crimson</h5>
-                                                        <p
-                                                            class="location-property">Thaltej,
-                                                            Ahmedabad</p>
-                                                    </div>
-                                                    <div class="right-box">
-                                                        <p
-                                                            class="marketed">Marketed
-                                                            by <br>Swati
-                                                            Procon</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p
-                                                class="sponsored-reat"><strong>Dholera
-                                                    SIR</strong></p>
-                                            <p class="plots-price">Residential
-                                                Plots <strong>₹ 5 Lac</strong>
-                                                onwards</p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div> -->
+      
     </div>
   </section>
 </main>
@@ -459,19 +315,7 @@
 
           <div class="mt-3">
             <div class="row">
-              <!-- <div class="col-md-4">
-                            <select
-                              name="number-code"
-                              id="number-code"
-                              class="gold-form-input  my-0"
-                            >
-                              <option value="+91">+91</option>
-                              <option value="USA: +1">+1</option>
-                              <option value="UK: +44">+44</option>
-                              <option value="Mexico: +52">+52</option>
-                              <option value="China: +86">+86</option>
-                            </select>
-                          </div> -->
+             
               <div class="d-flex">
                 <input
                   type="tel"
@@ -488,14 +332,7 @@
                   (blur)="validatePhoneNumber($event)"
                   class="gold-form-input my-0"
                 />
-                <!-- <span
-                              class="verify-label"
-                              (click)="openOTPModal()"
-                              *ngIf="formData.contact_no && !phoneError"
-                              style="cursor: pointer; color: #ff5444; font-weight: bold; margin-left: 10px;"
-                            >
-                              Verify
-                            </span> -->
+             
               </div>
               <div *ngIf="phoneError" class="mgs_error">
                 Please enter a valid 10-digit number.
@@ -517,13 +354,8 @@
               for="compare"
               class="compares"
               style="display: inline-flex; gap: 5px"
-              >I Agree to RealtyMart Terms of Use
-              <!-- <span class="d-block"
-                          ><a
-                            routerlink="../terms-conditions"
-                            routerLink="/terms-conditions"
-                            >Terms of Use</a
-                          ></span> -->
+              >I Agree to RealtyMart <a routerLink="/terms-conditions" target="_blank">Terms of Use</a>
+              
             </label>
             <br />
           </div>
@@ -535,38 +367,7 @@
             {{ is_token ? "Submit Enquiry" : "Continue" }}
           </button>
         </form>
-        <!-- <form>
-                    <input type="text" id="Aname" ngmodel name="name"
-                        placeholder="Name" required class="gold-form-input">
-                    <input type="email" id="Aname" ngmodel name="name"
-                        placeholder="Email" required class="gold-form-input">
-                    <div
-                        class="pp-form__field pp-form__field--mobile">
-                        <div
-                            class="gold-form-input mb-0">
-                            <select name="isd" id="ownerISD">
-                                <option value="50"
-                                    selected="selected">IND +91</option>
-                                <option value="269">YUG +381</option>
-                                <option value="59">ZAF +27</option>
-                                <option value="271">ZWE +263</option>
-                            </select>
-
-                        </div>
-
-                        <input type="number" id="Aname" ngmodel name="name"
-                            placeholder="Mobile No." required
-                            class="gold-form-input mb-0">
-                    </div>
-                    <div class="check-compare"><input type="checkbox"
-                            id="compare" name="compare" value="compare add"
-                            class="mycheck"><label for="compare"
-                            class="compares">I Agree to RealtyMart Terms of Use
-                            <span><a routerLink="../terms-conditions">Terms of
-                                    Use</a></span></label><br>
-                    </div>
-                    <button class="pp-form__cta">Submit</button>
-                </form> -->
+      
       </div>
     </div>
   </div>
@@ -631,9 +432,6 @@
             >Resend OTP</span
           >
         </div>
-        <!-- <button type="button" [disabled]="!isResendEnabled" class="btn reg_sub" (click)="sendOTPToMobile()">
-            Resend OTP
-          </button> -->
       </div>
     </div>
   </div>
@@ -696,7 +494,7 @@
               <div>Facebook</div>
             </button>
           </div>
-          <div>
+          <!-- <div>
             <button class="btn" (click)="twitterShare()">
               <svg viewBox="0 0 64 64" width="56" height="56">
                 <circle cx="32" cy="32" r="32" fill="#000000"></circle>
@@ -707,7 +505,7 @@
               </svg>
               <div>Twitter</div>
             </button>
-          </div>
+          </div> -->
         </div>
         <div class="input-group">
           <div class="input-group">
@@ -807,22 +605,7 @@
           </div>
 
           <div class="mt-3">
-            <!-- <div class="gold-form-input mb-0"> -->
-            <!-- <select name="contactcountrycode" id="ownerISD" [(ngModel)]="formDataphone.contactcountrycode" required>
-          <option value="+91" selected="selected">+91</option>
-          </select> -->
-            <!-- <select
-                      name="number-code"
-                      id="number-code"
-                      class="gold-form-input my-0"
-                    >
-                      <option value="+91">+91</option>
-                      <option value="USA: +1">+1</option>
-                      <option value="UK: +44">+44</option>
-                      <option value="Mexico: +52">+52</option>
-                      <option value="China: +86">+86</option>
-                    </select> -->
-            <!-- </div> -->
+          
 
             <div class="d-flex align-items-center">
               <input
@@ -839,19 +622,7 @@
                 required
                 class="gold-form-input mb-0 my-0"
               />
-              <!-- <span
-                        class="verify-label"
-                        (click)="openContactOTPModal()"
-                        *ngIf="formDataphone.contactcontact_no && !phoneContactError"
-                        style="
-                          cursor: pointer;
-                          color: #ff5444;
-                          font-weight: bold;
-                          margin-left: 10px;
-                        "
-                      >
-                        Verify
-                      </span> -->
+          
             </div>
           </div>
           <div *ngIf="phoneContactError" class="mgs_error">
@@ -870,7 +641,7 @@
               class="mycheck"
             />
             <label for="compare" class="compares"
-              >I Agree to RealtyMart Terms of Use</label
+              >I Agree to RealtyMart <a routerLink="/terms-conditions" target="_blank">Terms of Use</a></label
             >
             <!-- <span><a routerLink="../terms-conditions">Terms of Use</a></span> <br /> -->
           </div>
@@ -956,9 +727,6 @@
             >Resend OTP</span
           >
         </div>
-        <!-- <button type="button" [disabled]="!isResendEnabled" class="btn reg_sub" (click)="sendOTPToMobile()">
-          Resend OTP
-          </button> -->
       </div>
     </div>
   </div>

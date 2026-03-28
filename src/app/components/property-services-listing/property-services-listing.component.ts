@@ -233,26 +233,6 @@ export class PropertyServicesListingComponent implements OnInit {
   };
 
   submitForm() {
-    // this.usernameError = false;
-    // this.contact_noError = false;
-    // this.useremailError = false;
-
-    // if(!this.formData.username) {
-    //   this.usernameError=true;
-    // }
-    // if(!this.formData.useremail)
-    // {
-    //   this.useremailError=true;
-    // }
-    // if(!this.formData.contact_no)
-    // {
-    //   this.contact_noError=true;
-    // }
-
-    // if(this.usernameError || this.contact_noError || this.useremailError)
-    // {
-    //   return;
-    // }
     const payload = {
       user_id: this.selectedUserId,
       sp_id: this.selectedCompanyId,
@@ -274,7 +254,7 @@ export class PropertyServicesListingComponent implements OnInit {
       .subscribe(
         (response: any) => {
           if (response.status === true) {
-            this.tost.success('Inquiry Addeded successfully!');
+            this.tost.success('Thank You for Your inquiry! We are Get in touch with you soon.');
             const modalElement = document.getElementById('interior-enquire');
             if (modalElement) {
               const modalInstance = bootstrap.Modal.getInstance(modalElement);
@@ -388,6 +368,8 @@ export class PropertyServicesListingComponent implements OnInit {
     this.http
       .post(`${this.apiUrl}genratespinquiryotp`, {
         contact_no: this.formData.contact_no,
+        sp_id: this.selectedCompanyId,
+        ps_id: this.selectedServiceProviderId,
       })
       .subscribe(
         (response: any) => {
@@ -404,6 +386,12 @@ export class PropertyServicesListingComponent implements OnInit {
             if (response.code === 101) {
               this.tost.warning(response.message);
             }
+          }
+          else if(response.data=='Not-Ok') {
+            this.tost.warning('Already OTP sent to this number.');
+            const modalElement = this.otpModel.nativeElement;
+              const modal = new bootstrap.Modal(modalElement);
+              modal.show();
           }
           else {
             this.contact_noError = true;

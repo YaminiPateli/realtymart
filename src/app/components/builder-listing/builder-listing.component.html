@@ -261,7 +261,7 @@
           <div class="check-compare mt-3">
             <input type="checkbox" [(ngModel)]="formData.termsAccepted" (change)="onTermsChange($event)"
               name="termsAccepted" id="compare" [disabled]="is_token" value="compare add" class="mycheck" />
-            <label for="compare" class="compares" style="display: inline-flex; gap:5px;">I Agree to RealtyMart Terms of Use
+            <label for="compare" class="compares" style="display: inline-flex; gap:5px;">I Agree to RealtyMart <a routerLink="../../terms-conditions" target="_blank">Terms of Use</a>
 
             </label>
             <br />

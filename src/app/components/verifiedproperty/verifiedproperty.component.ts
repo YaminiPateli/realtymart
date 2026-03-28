@@ -92,6 +92,8 @@ export class VerifiedpropertyComponent {
   isLoading: any;
   lastPage: any;
   scrollTimeout: any;
+      breadcrumbs: { label: string, url: string }[] = [];
+
   // contact: any = {
   //   property_main_img: null,
   //   property_type: null,
@@ -295,6 +297,8 @@ export class VerifiedpropertyComponent {
   // }
 
   ngOnInit() {
+       this.generateBreadcrumbs(this.router.url);
+
     const token = localStorage.getItem('myrealtylogintoken');
     if (token) {
       this.is_token = true;
@@ -314,6 +318,25 @@ export class VerifiedpropertyComponent {
         this.resetContactForm();
       });
     }
+  }
+
+    generateBreadcrumbs(url: string) {
+    console.log("Current URL:", url);
+  
+    const cleanUrl = url.split('?')[0];
+    const urlSegments = cleanUrl.split('/').filter(segment => segment);
+  
+    let accumulatedUrl = '';
+    this.breadcrumbs = urlSegments.map(segment => {
+      accumulatedUrl += '/' + segment;
+      return {
+        label: this.formatLabel(segment),
+        url: accumulatedUrl
+      };
+    });
+  }
+  formatLabel(segment: string): string {
+    return segment.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
   }
   getUrl(urlPart1: any, urlPart2: any) {
     this.url = window.location.origin;

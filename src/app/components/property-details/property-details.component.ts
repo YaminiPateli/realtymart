@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, HostListener } from '@angular/core';
 import { PropertydetailsService } from '../service/propertydetails.service';
 import { IsverifiedService } from '../service/isverified.service';
 import { ActivatedRoute } from '@angular/router';
@@ -14,6 +14,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Fancybox } from "@fancyapps/ui";
 import { ActivityTrackerService } from '../service/activitytracker.service';
 import { GeolocationService } from '../service/geolocation.service';
+import { SlickCarouselComponent } from 'ngx-slick-carousel';
+
 declare var bootstrap: any;
 declare const google: any;
 
@@ -31,6 +33,8 @@ interface City {
 export class PropertyDetailsComponent implements OnInit {
   @ViewChild('otpModel') otpModel!: ElementRef;
   @ViewChild('otpContactModel') otpContactModel!: ElementRef;
+   @ViewChild('mainSlider', { static: false }) mainSlider!: SlickCarouselComponent;
+  @ViewChild('thumbSlider', { static: false }) thumbSlider!: SlickCarouselComponent;
   private apiUrl: string = environment.apiUrl;
   private apiKey = 'AIzaSyD-iX9GMP2C8Tsz4hOM3qksvMHyzLSXLxA';
   private textSearchUrl = 'https://maps.googleapis.com/maps/api/place/textsearch/json';
@@ -57,7 +61,7 @@ export class PropertyDetailsComponent implements OnInit {
     property_for: '', // Initialize with an empty string,
     otp: '',
   };
-
+activeSection:any;
   singleproperty: any;
   singlepropertyData: any;
   verifyData: any;
@@ -95,6 +99,7 @@ export class PropertyDetailsComponent implements OnInit {
   city: string = '';
   city1:City[]=[];
   validcityforselected:any;
+  filteredGallery: string[] = [];
   constructor(
     private propertyDetailService: PropertydetailsService,
     private verifyservice: IsverifiedService,
@@ -117,7 +122,7 @@ export class PropertyDetailsComponent implements OnInit {
     dots: true,
     arrows: true,
     infinite: true,
-    // autoplay: true,s
+    // autoplay: true,
     prevArrow:
       "<img class='a-left control-c prev slick-prev' src='../assets/images/prev.svg'>",
     nextArrow:
@@ -165,7 +170,10 @@ export class PropertyDetailsComponent implements OnInit {
       this.formDataphone.contactuseremail = localStorage.getItem('email') || '';
       this.formDataphone.contactcontact_no = localStorage.getItem('contact_no') || '';
       this.formDataphone.termsContactAccepted = true;
+    
     }
+    this.observeSections();
+    this.detectActiveSectionOnScroll();
   }
   ngAfterViewInit(): void {
     Fancybox.bind('[data-fancybox="gallery"]', {
@@ -693,29 +701,7 @@ export class PropertyDetailsComponent implements OnInit {
   }
 
   submitFormPhone() {
-    // this.nameContactError = false;
-    // this.phoneContactError = false;
-    // this.emailContactError = false;
-    // this.termsContactError = false;
-
-    // if(!this.formDataphone.contactusername) {
-    //   this.nameContactError=true;
-    // }
-    // if(!this.formDataphone.contactuseremail)
-    // {
-    //   this.emailContactError=true;
-    // }
-    // if(!this.formDataphone.contactcontact_no)
-    // {
-    //   this.phoneContactError=true;
-    // }
-    // if (!this.formDataphone.termsContactAccepted) {
-    //   this.termsContactError = true;
-    // }
-    // if(this.nameContactError || this.phoneContactError || this.emailContactError || this.termsContactError)
-    // {
-    //   return;
-    // }
+    
     this.spinner.show();
     const payload = {
       propertyid: this.singleproperty.id,
@@ -934,8 +920,8 @@ export class PropertyDetailsComponent implements OnInit {
   // }
 
   slideConfig1 = {
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 2,
+    slidesToScroll: 1,
     dots: true,
     arrows: false,
     infinite: true,
@@ -944,8 +930,8 @@ export class PropertyDetailsComponent implements OnInit {
       {
         breakpoint: 1535,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -954,7 +940,7 @@ export class PropertyDetailsComponent implements OnInit {
         breakpoint: 1199,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -970,4 +956,117 @@ export class PropertyDetailsComponent implements OnInit {
       },
     ],
   };
+
+  mainSliderConfig = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    fade: true,
+    asNavFor: '.thumb-slider',
+  };
+
+  thumbSliderConfig = {
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    asNavFor: '.main-slider',
+    dots: false,
+    centerMode: true,
+    focusOnSelect: true,
+    infinity:true
+  };
+
+  goToSlide(index: number) {
+    this.mainSlider.slickGoTo(index);
+  }
+
+   observeSections() {
+      const sections = document.querySelectorAll('#description,#aboutProject,#amenities,#landmark,#nearbyProperties,#reviews');
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5, // Section is considered active if 50% is visible
+      };
+  
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            this.activeSection = entry.target.id;
+          }
+        });
+      }, observerOptions);
+      sections.forEach((section) => {
+        return observer.observe(section)});
+    }
+  
+    isManualScroll: boolean = false;
+    scrollToSection(sectionId: string): void {
+  const section = document.getElementById(sectionId);
+  const navbar = document.getElementById('navbar');
+
+  if (section && navbar) {
+    const navbarHeight = navbar.offsetHeight;
+    const sectionPosition = section.getBoundingClientRect().top + window.scrollY;
+    const scrollMargin = 130;
+    const scrollToPosition = sectionPosition - navbarHeight - scrollMargin;
+
+    // Set active tab first
+    this.activeSection = sectionId;
+
+    // Block scroll spy from changing it during animation
+    this.isManualScroll = true;
+
+    window.scrollTo({
+      top: scrollToPosition,
+      behavior: 'smooth',
+    });
+
+    // Allow scroll spy again after scroll finishes
+    setTimeout(() => {
+      this.isManualScroll = false;
+    }, 800); // 800ms is safe for smooth scroll
+  }
+}
+  
+  
+    @HostListener('window:scroll', ['$event'])
+    onWindowScroll(): void {
+      this.checkScroll()
+      this.detectActiveSectionOnScroll();
+    }
+    checkScroll() {
+      const navbar = document.getElementById("navbar");
+      const sticky = navbar?.offsetTop;
+  
+      if (window.pageYOffset > sticky!) {
+        navbar?.classList.add("sticky");
+      } else {
+        navbar?.classList.remove("sticky");
+      }
+    }
+    detectActiveSectionOnScroll(): void {
+      if (this.isManualScroll) return;
+      const sections = [
+        { id: 'description', element: document.getElementById('description') },
+        { id: 'aboutProject', element: document.getElementById('aboutProject') },
+        { id: 'amenities', element: document.getElementById('amenities') },
+        { id: 'landmark', element: document.getElementById('landmark') },
+        { id: 'nearbyProperties', element: document.getElementById('nearbyProperties') },
+        { id: 'reviews', element: document.getElementById('reviews') },
+      ];
+  
+      const navbar = document.getElementById('navbar');
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
+  
+      for (const section of sections) {
+        if (section.element) {
+          const rect = section.element.getBoundingClientRect();
+          const offset = rect.top - navbarHeight - 120; // Adjust this margin as needed
+  
+          if (offset <= 0 && rect.bottom > navbarHeight) {
+            this.activeSection = section.id;
+            break;
+          }
+        }
+      }
+    }
 }

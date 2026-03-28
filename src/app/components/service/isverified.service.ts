@@ -9,9 +9,13 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class IsverifiedService {
-  verifiedget() {
-    throw new Error('Method not implemented.');
+  verifiedget(): Observable<Verify[]> {
+    return this.httpClient.get<Verify[]>(this.apiUrl).pipe(
+      catchError(this.errorHandler)
+    );
   }
+
+  // errorHandler already defined above, removed duplicate
   private apiUrl: string = environment.apiUrl + 'isverified';
 
   constructor(private httpClient: HttpClient) {}

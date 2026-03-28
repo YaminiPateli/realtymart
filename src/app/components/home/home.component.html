@@ -44,13 +44,13 @@
                 PG
               </button>
             </li>
-            <!-- <li class="nav-item" role="presentation">
+            <li class="nav-item" role="presentation">
               <button class="nav-link" id="pills-Hostel-tab" data-bs-toggle="pill" data-bs-target="#pills-Hostel"
                 type="button" role="tab" aria-controls="pills-Hostel" aria-selected="false"
-                (click)="handleTabClick('hostel')">
-                Hostel
+                (click)="handleTabClick('commercial')">
+                Commercial
               </button>
-            </li> -->
+            </li>
           </ul>
           <form (ngSubmit)="onSubmit()" [formGroup]="myForm">
             <div class="tab-content profile-content" id="pills-tabContent">
@@ -59,35 +59,10 @@
                   <div class="location">
                     <img src="../../../assets/images/location-icon.svg" alt="" class="me-2" />
                     <div class="location_select">
-                      <!-- <ng-select
-                        placeholder="Enter Your City"
-                        bindLabel="name"
-                        [multiple]="true"
-                        [closeOnSelect]="true"
-                        bindValue="id"
-                        [searchable]="true"
-                        name="city"
-                        id="city"
-                        formControlName="selectcitysearch"
-                      >
-                      </ng-select> -->
-
                       <ng-select [items]="city1" bindLabel="cname" bindValue="cid" placeholder="Enter Your City"
                         [multiple]="false" formControlName="selectcitysearch">
                       </ng-select>
 
-                      <!-- <ng-select placeholder="Enter Your City"
-           bindLabel="name"
-           [multiple]="true"
-           [closeOnSelect]="true"
-           [closeOnOutsideClick]="true"
-           bindValue="id"
-           [searchable]="true"
-           name="city" id="city" formControlName="selectcitysearch">
-          <ng-option *ngFor="let car of cars" [value]="car.id">
-            {{ car.name }}
-          </ng-option>
-        </ng-select> -->
                     </div>
                   </div>
 
@@ -126,32 +101,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="mb-search-commercial">
-                          <div class="mb-search__property__title" (click)="commercial()">
-                            <label for="">Commercial</label>
-                          </div>
-                          <div class="mb-search__property__data" *ngIf="Commercialvisible">
-                            <div class="data-overflow">
-                              <div class="mb-search__property__item" *ngFor="
-                                  let propertycommercial of propertycommercial
-                                ">
-                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
-                                    selectedCommercialItems.includes(
-                                      propertycommercial.id
-                                    )
-                                  " name="bar_propertyType_new_buy" id="{{ propertycommercial.id }}"
-                                  title="{{ propertycommercial.name }}" (change)="
-                                    handleCommercialCheckboxChange(
-                                      $event,
-                                      propertycommercial.id
-                                    )
-                                  " />
-                                <label class="mb-search__property__item__label" for="{{ propertycommercial.id }}"
-                                  id="{{ propertycommercial.id }}">{{ propertycommercial.name }}</label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                      
                         <div class="mb-search-other w-100">
                           <div class="mb-search__property__title" (click)="OtherPropertyTypes()">
                             <label for="">Other Property Types</label>
@@ -508,33 +458,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="mb-search-commercial">
-                          <div class="mb-search__property__title" (click)="commercial()">
-                            <label for="">Commercial</label>
-                          </div>
-                          <div class="mb-search__property__data" *ngIf="Commercialvisible">
-                            <div class="data-overflow">
-                              <div class="mb-search__property__item" *ngFor="
-                                  let propertycommercial of propertycommercial
-                                ">
-                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
-                                    selectedCommercialItems.includes(
-                                      propertycommercial.id
-                                    )
-                                  " name="bar_propertyType_new_buy" id="rent_{{ propertycommercial.id }}"
-                                  title="{{ propertycommercial.name }}" (change)="
-                                    renthandleCommercialCheckboxChange(
-                                      $event,
-                                      +propertycommercial.id,
-                                      'rent'
-                                    )
-                                  " />
-                                <label class="mb-search__property__item__label" for="rent_{{ propertycommercial.id }}"
-                                  id="rent_{{ propertycommercial.id }}">{{ propertycommercial.name }}</label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                      
                         <div class="mb-search-other  w-100">
                           <div class="mb-search__property__title" (click)="OtherPropertyTypes()">
                             <label for="">Other Property Types</label>
@@ -852,34 +776,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="mb-search-commercial">
-                          <div class="mb-search__property__title" (click)="commercial()">
-                            <label for="">Commercial</label>
-                          </div>
-                          <div class="mb-search__property__data" *ngIf="Commercialvisible">
-                            <div class="data-overflow">
-                              <div class="mb-search__property__item" *ngFor="
-                                  let propertycommercial of propertycommercial
-                                ">
-                                <input class="mb-search__property__item__input" type="checkbox" [checked]="
-                                    selectedCommercialItems.includes(
-                                      propertycommercial.id
-                                    )
-                                  " name="bar_propertyType_new_buy" id="farmhouse_{{ propertycommercial.id }}"
-                                  title="{{ propertycommercial.name }}" (change)="
-                                    farmhousehandleCommercialCheckboxChange(
-                                      $event,
-                                      propertycommercial.id,
-                                      'farmhouse'
-                                    )
-                                  " />
-                                <label class="mb-search__property__item__label"
-                                  for="farmhouse_{{ propertycommercial.id }}"
-                                  id="farmhouse_{{ propertycommercial.id }}">{{ propertycommercial.name }}</label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        
                         <div class="mb-search-other  w-100">
                           <div class="mb-search__property__title  " (click)="OtherPropertyTypes()">
                             <label for="">Other Property Types</label>
@@ -1745,104 +1642,45 @@
                   <div class="location">
                     <img src="../../../assets/images/location-icon.svg" alt="" class="me-2" />
                     <div class="location_select">
-                      <!-- <ng-select
-                      placeholder="Enter Your City"
-                      bindLabel="name"
-                      [multiple]="true"
-                      [closeOnSelect]="true"
-                      bindValue="id"
-                      [searchable]="true"
-                      name="city"
-                      id="city"
-                      formControlName="selectcitysearch"
-                    >
-                    </ng-select> -->
-
                       <ng-select [multiple]="false" [items]="city1" bindLabel="cname" bindValue="cid"
                         placeholder="Enter Your City" formControlName="selectcitysearch">
                       </ng-select>
                     </div>
                   </div>
-
-                  <!-- <div class="location_search">
-                  <div class="input-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="What are you looking for?"
-                      aria-label="location"
-                      aria-describedby="basic-addon1"
-                    />
-                  </div>
-                </div> -->
-
-                  <div class="property_drop">
+                 <div class="property_drop">
                     <img src="../../../assets/images/property-icon.svg" class="me-2" alt="" />
 
-                    <div (click)="toggleDisplayDiv()" class="property_wrapper">
+                    <div (click)="toggleDisplayDivcom()" class="property_wrapper">
                       <p class="property_tabs" id="property_tabs_hostel">
-                        {{ propertyLabel }}
+                         {{propertyLabel}}
                       </p>
                     </div>
                     <div *ngIf="visible" class="ccc property_inner">
                       <div class="serch-propert">
-                        <div class="mb-search-residential">
-                          <div class="mb-search__property__title" (click)="residencial()">
-                            <label for="Gender">Gender</label>
-                          </div>
-                          <div class="mb-search__property__data" *ngIf="Residencialvisible">
+                       <div class="mb-search-commercial">
+                          <div class="mb-search-commercial">
+                          <div class="mb-search__property__data">
                             <div class="data-overflow">
-                              <div class="mb-search__property__item" *ngFor="let gender of genderHostelOptions">
-                                <input class="mb-search__property__item__input" type="checkbox"
-                                  [id]="'gender_hstl' + gender.id"
-                                  (change)="hostelCheckboxChange($event, gender.id, gender.name)" />
-                                <label class="mb-search__property__item__label" [for]="'gender_hstl' + gender.id">{{
-                                  gender.name }}</label>
+                              <div class="mb-search__property__item" *ngFor="
+                                  let propertycommercial of propertycommercial
+                                ">
+                                <input class="mb-search__property__item__input" type="checkbox" *ngIf="propertycommercial.id != 17" [checked]="
+                                    selectedCommercialItems.includes(
+                                      propertycommercial.id
+                                    )
+                                  " name="bar_propertyType_new_buy" id="{{ propertycommercial.id }}"
+                                  title="{{ propertycommercial.name }}" (change)="
+                                    handleCommercialCheckboxChange(
+                                      $event,
+                                      propertycommercial.id
+                                    )
+                                  " />
+                                <label class="mb-search__property__item__label" *ngIf="propertycommercial.id != 17" for="{{ propertycommercial.id }}"
+                                  id="{{ propertycommercial.id }}">{{ propertycommercial.name }}</label>
                               </div>
-                              <!-- <div class="mb-search__property__item">
-                                <input
-                                  class="mb-search__property__item__input"
-                                  type="checkbox"
-                                  name="bar_propertyType_new_pg"
-                                  id="hostel_2"
-                                  title="Girls"
-                                  (change)="
-                                    hostelCheckboxChange($event, 2, 'hostel')
-                                  "
-                                />
-                                <label
-                                  class="mb-search__property__item__label"
-                                  for="hostel_2"
-                                  id="hostel_label_2"
-                                  >Girls</label
-                                >
-                              </div> -->
                             </div>
                           </div>
                         </div>
-
-                        <!-- Section for Commercial checkboxes -->
-                        <div class="mb-search-commercial">
-                          <div class="mb-search__property__title" (click)="commercial()">
-                            <label for="Looking For">Looking For</label>
-                          </div>
-                          <div class="mb-search__property__data" *ngIf="Commercialvisible">
-                            <div class="data-overflow">
-                              <div class="mb-search__property__item" *ngFor="let propertyhostel of propertyhostel">
-                                <input class="mb-search__property__item__input" type="checkbox"
-                                  name="bar_propertyType_new_hostel" [id]="'hostel_' + propertyhostel.id"
-                                  title="hostel_{{ propertyhostel.name }}" (change)="
-                                    hostelCheckboxChange(
-                                      $event,
-                                      propertyhostel.id,
-                                      propertyhostel.name
-                                    )
-                                  " />
-                                <label class="mb-search__property__item__label" [for]="'hostel_' + propertyhostel.id"
-                                  [id]="'hostel_label_' + propertyhostel.id">{{ propertyhostel.name }}</label>
-                              </div>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -1999,132 +1837,12 @@
                 <div ngxSlickItem class="slide" *ngFor="let property of propertyServices">
                   <div class="allpropertyes">
                     <a target="_blank" routerLink="property-services/{{ property.prpsrcurl }}"><img src={{property.image}}
-                        alt={{property.name}} />
+                        alt={{property.name}} class="img_slider_serviceprovider" />
                       <p class="title-img-property">{{property.name}}</p>
                     </a>
                   </div>
                 </div>
-                <!-- <div ngxSlickItem class="slide">
-                  <div class="allpropertyes">
-                    <a routerLink="/property-services/Architect"
-                      ><img
-                        src="../../../assets/images/Architect.png"
-                        alt="Architect"
-                      />
-                      <p class="title-img-property">Architect</p>
-                    </a>
-                  </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                  <div class="allpropertyes">
-                    <a routerLink="/property-services/Civil"
-                      ><img
-                        src="../../../assets/images/Civil-Contractor.png"
-                        alt="Civil Contractor"
-                      />
-                      <p class="title-img-property">Civil Contractor</p>
-                    </a>
-                  </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                  <div class="allpropertyes">
-                    <a routerLink="/property-services/Property%20Lawyer"
-                      ><img
-                        src="../../../assets/images/Property-Lawyer.png"
-                        alt="Property Lawyer"
-                      />
-                      <p class="title-img-property">Property Lawyer</p>
-                    </a>
-                  </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                  <div class="allpropertyes">
-                    <a
-                      routerLink="/property-services/Building%20Material%20Supplier"
-                      ><img
-                        src="../../../assets/images/Building-Material.png"
-                        alt="Building Material "
-                      />
-                      <p class="title-img-property">
-                        Building Material Supplier
-                      </p>
-                    </a>
-                  </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                  <div class="allpropertyes">
-                    <a routerLink="/property-services/Home%20Loan%20Agency"
-                      ><img
-                        src="../../../assets/images/Home-Agency.png"
-                        alt="Home Loan Agency"
-                      />
-                      <p class="title-img-property">Home Loan Agency</p>
-                    </a>
-                  </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                  <div class="allpropertyes">
-                    <a routerLink="/property-services/Furniture"
-                      ><img
-                        src="../../../assets/images/Furniture.png"
-                        alt="Furniture"
-                      />
-                      <p class="title-img-property">Furniture</p>
-                    </a>
-                  </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                  <div class="allpropertyes">
-                    <a routerLink="/property-services/HSAC"
-                      ><img src="../../../assets/images/HSAC.png" alt="HSAC" />
-                      <p class="title-img-property">HVAC</p>
-                    </a>
-                  </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                  <div class="allpropertyes">
-                    <a routerLink="/property-services/Sanitary%20Ware"
-                      ><img
-                        src="../../../assets/images/Sanitary-Wear.png"
-                        alt="Sanitary Wear"
-                      />
-                      <p class="title-img-property">Sanitary Wear</p>
-                    </a>
-                  </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                  <div class="allpropertyes">
-                    <a routerLink="/property-services/RERA%20Consultants"
-                      ><img
-                        src="../../../assets/images/RERA-Consultants.png"
-                        alt="RERA Consultants"
-                      />
-                      <p class="title-img-property">RERA Consultants</p>
-                    </a>
-                  </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                  <div class="allpropertyes">
-                    <a routerLink="/property-services/Planters"
-                      ><img
-                        src="../../../assets/images/Planters.png"
-                        alt="Planters"
-                      />
-                      <p class="title-img-property">Planters</p>
-                    </a>
-                  </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                  <div class="allpropertyes">
-                    <a routerLink="/property-services/Plumber"
-                      ><img
-                        src="../../../assets/images/Plumber.png"
-                        alt="Plumber"
-                      />
-                      <p class="title-img-property">Plumber</p>
-                    </a>
-                  </div>
-                </div> -->
+              
               </ngx-slick-carousel>
             </div>
             <div class="property-services mt-5 mt-md-2">
@@ -2181,12 +1899,12 @@
                     <div class="deal-price">
                       <p class="main-price-one" *ngIf="hotdeal.property_price_show == 0">
                         <span class="me-3">Price:</span>₹
-                        {{ hotdeal.total_price !== null ? hotdeal.totalprice : hotdeal.rent_amount.toLocaleString()}}
+                        {{ hotdeal.total_price !== null ? hotdeal.total_price : hotdeal.rent_amount.toLocaleString() }}
                       </p>
                       <p style="cursor:pointer" class="main-price-one text-center"
                         *ngIf="hotdeal.property_price_show == 1" data-bs-toggle="modal"
                         data-bs-target="#contact-owner-prop"
-                        (click)="contactowner( hotdeal.propertysecondUrlPart); fetchProperty(hotdeal)">
+                        (click)="contactowner( hotdeal.propertysecondUrlPart ); fetchProperty(hotdeal)">
                         <span class="me-3">Call for Price</span>
                       </p>
                     </div>
@@ -2271,23 +1989,7 @@
   <section class="highlight-group" *ngIf="bannerbuilder">
     <div class="container">
       <div class="row">
-        <!-- <div class="col-lg-3 col-md-12 col-sm-12 pe-0 pe-lg-0 pe-md-3">
-          <div class="group-of-box">
-            <div class="group-view-project">
-              <img src="{{ bannerbuilder[0].logo }}" alt="" class="img-fluid" />
-            </div>
-
-            <div class="grouop-of-info">
-              <h3 class="group-property-names">{{ bannerbuilder[0].project_name }}</h3>
-              <p class="group-property-location">{{ bannerbuilder[0].super_area }}</p>
-              <p class="group-property-prices"><strong class="luxurious-price">₹ {{ bannerbuilder[0].price }}*</strong> <br />
-                {{ bannerbuilder[0].property_bhk }}</p>
-            </div>
-            <div class="group-view">
-              <a target="_blank" routerLink="project-details/{{ bannerbuilder[0].project_name }}/{{ bannerbuilder[0].id }}/{{ bannerbuilder[0].property_type }}">View projects</a>
-            </div>
-          </div>
-        </div> -->
+       
         <div class="col-lg-12 col-md-12 col-sm-12 ps-0 ps-lg-0 ps-md-3">
           <a target="_blank"
             routerLink="project-details/{{ bannerbuilder[0].projectfirstUrlPart }}/{{ bannerbuilder[0].projectsecondUrlPart }}">
@@ -2648,7 +2350,7 @@
                   <img src="{{ topbuilders.builder_logo }}" alt="" class="img-fluid" />
                 </div>
                 <div class="builder-details">
-                  <h4 class="builder-head">{{ topbuilders.name }}</h4>
+                  <h4 class="builder-head" style="text-wrap-mode: nowrap;max-width: 200px;">{{ topbuilders.name }}</h4>
                   <p class="build-sells">
                     Ongoing
                     <span class="items-building">{{
@@ -2749,13 +2451,8 @@
           <div class="check-compare mt-3">
             <input type="checkbox" [(ngModel)]="formData.termsAccepted" (change)="onTermsChange($event)"
               name="termsAccepted" id="compare" [disabled]="is_token" value="compare add" class="mycheck" />
-            <label for="compare" class="compares" style="display: inline-flex; gap:5px;">I Agree to RealtyMart Terms of Use
-              <!-- <span class="d-block"
-                                ><a
-                                  routerlink="../terms-conditions"
-                                  routerLink="/terms-conditions"
-                                  >Terms of Use</a
-                                ></span> -->
+            <label for="compare" class="compares" style="display: inline-flex; gap:5px;">I Agree to RealtyMart <a routerLink="/terms-conditions" target="_blank">Terms of Use</a>
+            
             </label>
             <br />
           </div>
@@ -2857,7 +2554,7 @@
           <div class="check-compare mt-3">
             <input type="checkbox" [(ngModel)]="formData.termsAccepted" (change)="onTermsChange($event)"
               name="termsAccepted" id="compare" [disabled]="is_token" value="compare add" class="mycheck" />
-            <label for="compare" class="compares" style="display: inline-flex; gap:5px;">I Agree to RealtyMart Terms of Use
+            <label for="compare" class="compares" style="display: inline-flex; gap:5px;">I Agree to RealtyMart <a routerLink="/terms-conditions" target="_blank">Terms of Use</a>
 
             </label>
             <br />

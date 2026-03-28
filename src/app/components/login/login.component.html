@@ -27,7 +27,7 @@
                 [disabled]="isMobileNumberDisabled"
                 name="contact_no"
                 pattern="^\d{10}$"
-                placeholder="Mobile No."
+                placeholder="Enter Mobile Number"
                 (keypress)="validateNumberInput($event)"
                 (input)="validContactNumber($event)"
                 required
@@ -67,6 +67,7 @@
             </div>
           </div>
         </form>
+        <a target="_blank" routerlink="/registration" class="dropdown-item  pt-2"  href="/registration">New to RealtyMart ? <span> Sign Up </span></a>
       </div>
     </div>
   </section>

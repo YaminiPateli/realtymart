@@ -228,6 +228,7 @@ export class PropertytypesbuyComponent {
 
           this.propertytype = this.propertytype || [];
           this.propertytype = [...this.propertytype, ...(response.responseData?.propertytypesbuyin?.data || []),];
+          this.original = [...this.propertytype, ...(response.responseData?.propertytypesbuyin?.data || []),];
         this.setMetaTags(
           response.meta.title,
           response.meta.description,
@@ -367,59 +368,63 @@ export class PropertytypesbuyComponent {
     this.isDropdownOpen = false;
     switch (option) {
       case 'Price - Low to High':
-        this.propertytypeData = this.propertytypeDataList.sort(
+        this.propertytype = this.propertytypeDataList.sort(
           (a: any, b: any) => this.sortByPrice(a, b)
         );
         break;
       case 'Price - High to Low':
-        this.propertytypeData = this.propertytypeDataList.sort(
+        this.propertytype = this.propertytypeDataList.sort(
           (a: any, b: any) => this.sortByPrice(b, a)
         );
         break;
       case 'Most Recent':
-        this.propertytypeData = this.propertytypeDataList.sort(
+        this.propertytype = this.propertytypeDataList.sort(
           (a: any, b: any) => this.sortByRecent(a, b)
         );
         break;
       case 'Relevance':
-        this.propertytypeData = this.original;
+        this.propertytype = this.original;
         break;
       default:
-        this.propertytypeData = this.original;
+        this.propertytype = this.original;
         break;
     }
   }
 
-  private convertToLac(priceString: string): number {
+   private convertToLac(priceString: string): number {
     if (!priceString) return 0;
+
+    // Remove non-numeric characters except dot and trim spaces
     let numericValue = parseFloat(priceString.replace(/[^0-9.]/g, '').trim());
 
     if (priceString.toLowerCase().includes('cr')) {
-      numericValue *= 100;
+      numericValue *= 100; // Convert Cr to LAC
     } else if (priceString.toLowerCase().includes('lac')) {
+      // Already in LAC, no conversion needed
     } else {
-      numericValue = numericValue / 100000;
+      // Assume numeric values are direct and in the base unit (e.g., thousands)
+      numericValue = numericValue / 100000; // Convert to LAC
     }
 
     return numericValue;
   }
 
   private sortByPrice(a: any, b: any): number {
-    const priceA = this.convertToLac(a.total_price);
-    const priceB = this.convertToLac(b.total_price);
+    const priceA = this.convertToLac(a.rent_amount);
+    const priceB = this.convertToLac(b.rent_amount);
 
     return priceA - priceB;
   }
 
   private sortByRecent(a: any, b: any): number {
-    const dateA = new Date(a.projectdetails.created_at).getTime();
-    const dateB = new Date(b.projectdetails.created_at).getTime();
+    const dateA = a?.created_at ? new Date(a.created_at).getTime() : 0;
+    const dateB = b?.created_at ? new Date(b.created_at).getTime() : 0;
 
     return dateB - dateA;
   }
 
   filterByPrice(minPrice: number, maxPrice: number): void {
-    this.filteredData = this.propertytypeDataList.filter(
+    this.filteredData = this.propertytype.filter(
       (property: { minprice: string; maxprice: string }) => {
         const propertyMinPrice = this.convertToLac(property.minprice);
         const propertyMaxPrice = this.convertToLac(property.maxprice);

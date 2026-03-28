@@ -18,3 +18,5 @@ describe('PropertyDetailsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+

@@ -1,9 +1,28 @@
 <main>
-  <section class="matching-banner position-relative">
+  <!-- <section class="matching-banner position-relative">
     <div class="container">
       <div class="banner-action">
         <h1 class="banner_title">Verified Properties</h1>
       </div>
+    </div>
+  </section> -->
+   <section class="position-relative">
+    <div class="container pt-2">
+      <nav aria-label="breadcrumb ">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a routerLink="/">Home</a>
+          </li>
+          <li *ngFor="let breadcrumb of breadcrumbs; let last = last" class="breadcrumb-item" [class.active]="last">
+            <ng-container *ngIf="!last">
+              <a [routerLink]="breadcrumb.url">{{ breadcrumb.label }}</a>
+            </ng-container>
+            <ng-container *ngIf="last">
+              {{ breadcrumb.label }}
+            </ng-container>
+          </li>
+        </ol>
+      </nav>
     </div>
   </section>
   <section class="property-off">
@@ -447,7 +466,7 @@
               for="compare"
               class="compares"
               style="display: inline-flex; gap: 5px"
-              >I Agree to RealtyMart Terms of Use
+              >I Agree to RealtyMart <a routerLink="../../terms-conditions" target="_blank">Terms of Use</a>
               <!-- <span class="d-block"
                           ><a
                             routerlink="../terms-conditions"
@@ -559,7 +578,7 @@
               <div>Facebook</div>
             </button>
           </div>
-          <div>
+          <!-- <div>
             <button class="btn" (click)="twitterShare()">
               <svg viewBox="0 0 64 64" width="56" height="56">
                 <circle cx="32" cy="32" r="32" fill="#000000"></circle>
@@ -570,7 +589,7 @@
               </svg>
               <div>Twitter</div>
             </button>
-          </div>
+          </div> -->
         </div>
         <div class="input-group">
           <div class="input-group">
@@ -730,7 +749,7 @@ data-bs-keyboard="false"
             class="mycheck"
           />
           <label for="compare" class="compares"
-            >I Agree to RealtyMart Terms of Use</label
+            >I Agree to RealtyMart <a routerLink="../../terms-conditions" target="_blank">Terms of Use</a></label
           >
           <!-- <span><a routerLink="../terms-conditions">Terms of Use</a></span> <br /> -->
         </div>

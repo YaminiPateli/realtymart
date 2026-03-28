@@ -311,34 +311,45 @@ export class NewlylaunchedComponent {
   //   return this.currentPage < this.getTotalPages() - 2;
   // }
   changeSortOption(option: string): void {
-    this.selectedSortOption = option;
-    this.isDropdownOpen = false;
-    switch (option) {
-      case 'Price - Low to High':
-        this.newlauchedproperty = this.newlauchedproperty.sort(
-          (a: any, b: any) =>
-            this.convertToLac(a.total_price) - this.convertToLac(b.total_price)
-        );
-        break;
-      case 'Price - High to Low':
-        this.newlauchedproperty = this.newlauchedproperty.sort(
-          (a: any, b: any) =>
-            this.convertToLac(b.total_price) - this.convertToLac(a.total_price)
-        );
-        break;
-      case 'Most Recent':
-        this.newlauchedproperty = this.newlauchedproperty.sort(
-          (a: any, b: any) => this.sortByRecent(a, b)
-        );
-        break;
-      case 'Relevance':
-        this.newlauchedproperty = [...this.original];
-        break;
-      default:
-        this.newlauchedproperty = [...this.original];
-        break;
-    }
+  this.selectedSortOption = option;
+  this.isDropdownOpen = false;
+
+  // Always work on a copy to trigger Angular change detection properly
+  let sorted = [...this.newlauchedproperty];
+
+  switch (option) {
+    case 'Price - Low to High':
+      sorted.sort((a: any, b: any) => {
+        const priceA = this.parsePrice(a.project_minimum_price);
+        const priceB = this.parsePrice(b.project_minimum_price);
+        if (priceA === 0 && priceB !== 0) return 1; // no value last
+        if (priceB === 0 && priceA !== 0) return -1;
+        return priceA - priceB;
+      });
+      break;
+
+    case 'Price - High to Low':
+      sorted.sort((a: any, b: any) => {
+        const priceA = this.parsePrice(a.project_minimum_price);
+        const priceB = this.parsePrice(b.project_minimum_price);
+        if (priceA === 0 && priceB !== 0) return 1; // no value last
+        if (priceB === 0 && priceA !== 0) return -1;
+        return priceB - priceA;
+      });
+      break;
+
+    case 'Most Recent':
+      sorted.sort((a: any, b: any) => this.sortByPossession(a, b));
+      break;
+
+    case 'Relevance':
+    default:
+      sorted = [...this.newlauchedproperty]; // show all data
+      break;
   }
+
+  this.newlauchedproperty = sorted; // assign new array reference
+}
 
   private convertToLac(priceString: string): number {
     if (!priceString) return 0;
@@ -366,6 +377,13 @@ export class NewlylaunchedComponent {
     const dateB = b?.created_at ? new Date(b.created_at).getTime() : 0;
 
     return dateB - dateA;
+  }
+
+  private sortByPossession(a: any, b: any): number {
+    const dateA = a?.project_possession_date ? new Date(a.project_possession_date).getTime() : 0;
+    const dateB = b?.project_possession_date ? new Date(b.project_possession_date).getTime() : 0;
+
+    return dateB - dateA; // most recent first
   }
 
   filterByPrice(minPrice: number, maxPrice: number): void {

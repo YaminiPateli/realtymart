@@ -1,5 +1,5 @@
 .float-widget {
-  position: fixed;
+  /* position: fixed; */
   right: calc((100vw - 1281px) / 2);
   width: 465px;
   min-height: 500px;
@@ -7,7 +7,7 @@
   box-shadow: 0 0 4px 0 #e0f2f0;
   border: 1px solid #b2dfd8;
   background-color: #fff;
-  transition: all 0.3s ease-in-out;
+  /* transition: all 0.3s ease-in-out; */
   overflow: hidden;
   padding: 24px;
   opacity: 1;
@@ -248,6 +248,7 @@ select[id="ownerISD"] {
 
   .float-widget {
     right: calc((100vw - 1158px) / 2);
+    position: static !important;
   }
 }
 

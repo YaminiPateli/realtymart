@@ -104,9 +104,9 @@
                   <li>
                     <a target="_blank" class="dropdown-item" routerLink="/investment-hotspot">Investment Hotspot</a>
                   </li>
-                  <li>
+                  <!-- <li>
                     <a target="_blank" class="dropdown-item" routerLink="/agents/{{ city }}">Find an Agent</a>
-                  </li>
+                  </li> -->
                 </div>
               </div>
             </ul>
@@ -174,9 +174,9 @@
                     <a target="_blank" class="dropdown-item" routerLink="/explore-localities/{{ city }}">Localities in {{ city
                       }}</a>
                   </li>
-                  <li>
+                  <!-- <li>
                     <a target="_blank" class="dropdown-item" routerLink="/agents/{{ city }}">Find an Agent</a>
-                  </li>
+                  </li> -->
                   <li>
                     <a target="_blank" class="dropdown-item" routerLink="/property-services">Property Services</a>
                   </li>
@@ -292,26 +292,29 @@
               </div>
             </ul>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" routerLink="javascript:void(0)" id="navbarDropdown"
+          <!-- <li class="nav-item dropdown"> -->
+            <!-- <a class="nav-link dropdown-toggle" routerLink="javascript:void(0)" id="navbarDropdown"
               data-bs-toggle="dropdown" role="button" aria-expanded="false" *ngIf="checkToken == null">
               Login
             </a>
             <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown"
               role="button" aria-expanded="false" *ngIf="checkToken != null">
               Logout
-            </a>
-            <ul class="dropdown-menu login-custom-dropdown" aria-labelledby="navbarDropdown">
+            </a> -->
+             <!-- <a 
+                class="nav-link dropdown-toggle" 
+                href="javascript:void(0)" 
+                id="navbarDropdownMenu" 
+                data-bs-toggle="dropdown" 
+                role="button"
+                aria-expanded="false"
+              >
+                {{ checkToken ? 'Logout' : 'Login' }}
+              </a> -->
+           <!-- <ul class="dropdown-menu login-custom-dropdown" aria-labelledby="navbarDropdown">
               <div class="row">
                 <div class="">
-                  <li>
-                    <a target="_blank" class="dropdown-item" *ngIf="checkToken != null" routerLink="/profiles">My
-                      Profile</a>
-                  </li>
-                  <li>
-                    <a target="_blank" class="dropdown-item" *ngIf="checkToken != null"
-                      routerLink="/shortlisted-properties">Shortlisted Properties</a>
-                  </li>
+                  
                   <li *ngIf="checkToken != null">
                     <a class="dropdown-item" (click)="logout()">Logout</a>
                   </li>
@@ -325,8 +328,45 @@
                   </li>
                 </div>
               </div>
-            </ul>
-          </li>
+            </ul> -->
+          <!-- </li>  -->
+           <li 
+              class="nav-item" 
+              [class.dropdown]="!checkToken"  
+            >
+
+              <!-- TOGGLE BUTTON -->
+              <a
+                class="nav-link"
+                [class.dropdown-toggle]="!checkToken"   
+                href="javascript:void(0)"
+                id="navbarDropdownMenu"
+                [attr.data-bs-toggle]="!checkToken ? 'dropdown' : null"
+                role="button"
+                aria-expanded="false"
+                (click)="checkToken && logout()"   
+              >
+                {{ checkToken ? 'Logout' : 'Login' }}
+              </a>
+
+              <!-- DROPDOWN (only visible when logged OUT) -->
+              <ul 
+                class="dropdown-menu login-custom-dropdown" 
+                *ngIf="!checkToken"
+                aria-labelledby="navbarDropdownMenu"
+              >
+                <li>
+                  <a class="dropdown-item" routerLink="/login">Login</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/registration">
+                    New to RealtyMart? <span>Sign Up</span>
+                  </a>
+                </li>
+              </ul>
+
+            </li>
+
         </ul>
       </div>
     </div>

@@ -8,130 +8,79 @@
             <!-- <h4 class="title-property m-0 pb-3">Property Related Services</h4> -->
             <form [formGroup]="submitForm" (ngSubmit)="propertyForm()">
               <div *ngIf="userRoleGet === null">
-              <h4 class="title-property m-0 pb-3">Personal Details</h4>
-              <div class="pp-form__fieldset pb-3">
-                <div class="pp-form__fieldset__heading mb-2">You are</div>
-                <input type="hidden" id="user__type" value />
-                <input type="hidden" id="prop__type" value />
-                <input type="hidden" id="ownerdashboardUrl" value />
-                <div class="pp-form__fieldset__wrap">
-                  <div
-                    class="pp-form__elem-radio"
-                    style="width: 90px; height: 44px"
-                  >
-                    <input
-                      class="pp-form__elem-radio__input"
-                      formControlName="owner_type"
-                      type="radio"
-                      id="Owner"
-                      autocomplete="off"
-                      [value]="'Owner'"
-                    />
+                <h4 class="title-property m-0 pb-3">Personal Details</h4>
+                <div class="pp-form__fieldset pb-3">
+                  <div class="pp-form__fieldset__heading mb-2">You are</div>
+                  <input type="hidden" id="user__type" value />
+                  <input type="hidden" id="prop__type" value />
+                  <input type="hidden" id="ownerdashboardUrl" value />
+                  <div class="pp-form__fieldset__wrap">
+                    <div class="pp-form__elem-radio" style="width: 90px; height: 44px">
+                      <input class="pp-form__elem-radio__input" formControlName="owner_type" type="radio" id="Owner"
+                        autocomplete="off" [value]="'Owner'" />
 
-                    <label class="pp-form__elem-radio__label" for="Owner">
-                      Owner
-                    </label>
-                  </div>
-                  <div
-                    class="pp-form__elem-radio"
-                    style="width: 86px; height: 44px"
-                  >
-                    <input
-                      class="pp-form__elem-radio__input"
-                      formControlName="owner_type"
-                      type="radio"
-                      id="Agent"
-                      autocomplete="off"
-                      [value]="'Agent'"
-                    />
-                    <label class="pp-form__elem-radio__label" for="Agent">
-                      Agent
-                    </label>
-                  </div>
-                  <div
-                    class="pp-form__elem-radio"
-                    style="width: 150px; height: 44px"
-                  >
-                    <input
-                      class="pp-form__elem-radio__input"
-                      formControlName="owner_type"
-                      type="radio"
-                      id="Property-Builder"
-                      autocomplete="off"
-                      [value]="'Property Builder'"
-                    />
-                    <label
-                      class="pp-form__elem-radio__label"
-                      for="Property-Builder"
-                    >
-                      Builder
-                    </label>
-                  </div>
-                  <div
-                    *ngIf="
+                      <label class="pp-form__elem-radio__label" for="Owner">
+                        Owner
+                      </label>
+                    </div>
+                    <div class="pp-form__elem-radio" style="width: 86px; height: 44px">
+                      <input class="pp-form__elem-radio__input" formControlName="owner_type" type="radio" id="Agent"
+                        autocomplete="off" [value]="'Agent'" />
+                      <label class="pp-form__elem-radio__label" for="Agent">
+                        Agent
+                      </label>
+                    </div>
+                    <div class="pp-form__elem-radio" style="width: 150px; height: 44px">
+                      <input class="pp-form__elem-radio__input" formControlName="owner_type" type="radio"
+                        id="Property-Builder" autocomplete="off" [value]="'Property Builder'" />
+                      <label class="pp-form__elem-radio__label" for="Property-Builder">
+                        Builder
+                      </label>
+                    </div>
+                    <div *ngIf="
                       submitForm.get('owner_type')?.invalid &&
                       (submitForm.get('owner_type')?.dirty ||
                         submitForm.get('owner_type')?.touched)
-                    "
-                  >
-                    <small class="text-danger">Owner Type is required</small>
+                    ">
+                      <small class="text-danger">Owner Type is required</small>
+                    </div>
                   </div>
-                </div>
-                <!-- <div *ngIf="userTypeError" class="mgs_error">
+                  <!-- <div *ngIf="userTypeError" class="mgs_error">
                   Please select user type.
                 </div> -->
-              </div>
-              <div class="mt-3">
-                <input
-                  type="text"
-                  id="Aname"
-                  formControlName="owner_name"
-                  placeholder="Enter Your Name"
-                  (keypress)="validateNameInput($event)"
-                  class="gold-form-input post_fm my-0"
-                />
-                <div
-                  *ngIf="submitForm.get('owner_name')?.invalid && (submitForm.get('owner_name')?.dirty ||
+                </div>
+                <div class="mt-3">
+                  <input type="text" id="Aname" formControlName="owner_name" placeholder="Enter Your Name"
+                    (keypress)="validateNameInput($event)" class="gold-form-input post_fm my-0" />
+                  <div *ngIf="submitForm.get('owner_name')?.invalid && (submitForm.get('owner_name')?.dirty ||
                       submitForm.get('owner_name')?.touched)" class="mgs_error">
-                  Please enter name.
+                    Please enter name.
+                  </div>
                 </div>
-              </div>
 
-              <div class="mt-3">
-                <input
-                  type="email"
-                  id="email"
-                  formControlName="owner_email"
-                  placeholder="Enter Your Email"
-                  (keypress)="validateEmailInput($event)"
-                  class="gold-form-input post_fm my-0"
-                />
-                <div *ngIf="submitForm.get('owner_email')?.invalid && (submitForm.get('owner_email')?.dirty ||
+                <div class="mt-3">
+                  <input type="email" id="email" formControlName="owner_email" placeholder="Enter Your Email"
+                    (keypress)="validateEmailInput($event)" class="gold-form-input post_fm my-0" />
+                  <div *ngIf="submitForm.get('owner_email')?.invalid && (submitForm.get('owner_email')?.dirty ||
                       submitForm.get('owner_email')?.touched)" class="mgs_error">
-                  Please enter a valid email.
+                    Please enter a valid email.
+                  </div>
                 </div>
-              </div>
 
-              <div class="mt-3">
-                <div class="row post_fm">
-                  <div class="col-md-6">
-                    <input
-                      type="number"
-                      id="goldNum"
-                      formControlName="owner_contact_no"
-                      placeholder="Enter Mobile Number"
-                      class="gold-form-input"
-                    />
-                    <div
-                      *ngIf="submitForm.get('owner_contact_no')?.invalid && (submitForm.get('owner_contact_no')?.dirty ||
+                <div class="mt-3">
+                  <div class="row post_fm">
+                    <div class="col-md-6">
+                      <input type="number" id="goldNum" formControlName="owner_contact_no"
+                        placeholder="Enter Mobile Number" class="gold-form-input" />
+                      <div *ngIf="submitForm.get('owner_contact_no')?.invalid && (submitForm.get('owner_contact_no')?.dirty ||
                           submitForm.get('owner_contact_no')?.touched)" class="mgs_error">
-                      Please enter contact number.
+                        Please enter contact number.
+                      </div>
+                      <br />
                     </div>
-                    <br />
                   </div>
                 </div>
               </div>
-            </div>
 
               <h4 class="title-property m-0 pb-3">Property Details</h4>
               <div class="pp-form__fieldset pb-3" id="prop_type">
@@ -141,47 +90,28 @@
 
                 <div class="pp-form__fieldset__wrap">
                   <div class="pp-form__elem-radio" style="width: 90px; height: 44px">
-                    <input
-                      class="pp-form__elem-radio__input"
-                      formControlName="property_for"
-                      type="radio"
-                      id="Sale"
-                      autocomplete="off"
-                      [value]="'Sell'"
-                      (change)="onPropertyFor($event)"
-                    />
+                    <input class="pp-form__elem-radio__input" formControlName="property_for" type="radio" id="Sale"
+                      autocomplete="off" [value]="'Sell'" (change)="onPropertyFor($event)" />
                     <label class="pp-form__elem-radio__label" for="Sale">Sell</label>
                   </div>
 
                   <div class="pp-form__elem-radio" style="width: 120px; height: 44px">
-                    <input
-                      class="pp-form__elem-radio__input"
-                      formControlName="property_for"
-                      type="radio"
-                      id="Rent"
-                      autocomplete="off"
-                      [value]="'Rent'"
-                      (change)="onPropertyFor($event)"
-                    />
+                    <input class="pp-form__elem-radio__input" formControlName="property_for" type="radio" id="Rent"
+                      autocomplete="off" [value]="'Rent'" (change)="onPropertyFor($event)" />
                     <label class="pp-form__elem-radio__label" for="Rent">Rent</label>
                   </div>
 
                   <div class="pp-form__elem-radio" style="width: 100px; height: 44px">
-                    <input
-                      class="pp-form__elem-radio__input"
-                      formControlName="property_for"
-                      type="radio"
-                      id="PGHostel"
-                      autocomplete="off"
-                      [value]="'PG/Hostel'"
-                      (change)="onPropertyFor($event)"
-                    />
+                    <input class="pp-form__elem-radio__input" formControlName="property_for" type="radio" id="PGHostel"
+                      autocomplete="off" [value]="'PG/Hostel'" (change)="onPropertyFor($event)" />
                     <label class="pp-form__elem-radio__label" for="PGHostel">PG</label>
                     <!-- <label class="pp-form__elem-radio__label" for="PGHostel">PG/Hostel</label> -->
                   </div>
                 </div>
 
-                <div *ngIf="submitForm.get('property_for')?.invalid && (submitForm.get('property_for')?.dirty || submitForm.get('property_for')?.touched)" class="mgs_error">
+                <div
+                  *ngIf="submitForm.get('property_for')?.invalid && (submitForm.get('property_for')?.dirty || submitForm.get('property_for')?.touched)"
+                  class="mgs_error">
                   Please select property for.
                 </div>
               </div>
@@ -189,26 +119,18 @@
 
               <div class="formValue posRel">
                 <div class="formCom">
-                  <select
-                    id="propertyType"
-                    formControlName="property_type"
-                    class="areaList gold-form-input post_fm"
-                    (change)="this.onChange($event)"
-                  >
+                  <select id="propertyType" formControlName="property_type" class="areaList gold-form-input post_fm"
+                    (change)="this.onChange($event)">
                     <option disabled value="">Select property type</option>
-                    <optgroup
-                      *ngFor="let type of getUniqueTypes()"
-                      [label]="type"
-                    >
-                      <option
-                        *ngFor="let data of this.getPropertiesByType(type)"
-                        [value]="data.id"
-                      >
+                    <optgroup *ngFor="let type of getUniqueTypes()" [label]="type">
+                      <option *ngFor="let data of this.getPropertiesByType(type)" [value]="data.id">
                         {{ data.name }}
                       </option>
                     </optgroup>
                   </select>
-                  <div *ngIf="submitForm.get('property_type')?.invalid && (submitForm.get('property_type')?.dirty || submitForm.get('property_type')?.touched)" class="mgs_error">
+                  <div
+                    *ngIf="submitForm.get('property_type')?.invalid && (submitForm.get('property_type')?.dirty || submitForm.get('property_type')?.touched)"
+                    class="mgs_error">
                     Please select property type.
                   </div>
                   <div class="unitBlockAreaDropDown" style="display: none">
@@ -217,20 +139,12 @@
                 </div>
                 <div class="valiDated" id="propertyTypeTick"></div>
                 <div class="clearAll"></div>
-                <div
-                  id="propertyTypeError"
-                  class="formErr"
-                  style="display: none"
-                >
+                <div id="propertyTypeError" class="formErr" style="display: none">
                   <span class="formErrArrow"></span>
                   <span>Error message goes here</span>
                 </div>
 
-                <div
-                  class="hint-coworking"
-                  id="hintcoworking"
-                  style="display: none"
-                >
+                <div class="hint-coworking" id="hintcoworking" style="display: none">
                   Rent out seats in a shared office space. Get paid per seat
                   basis.
                 </div>
@@ -242,147 +156,109 @@
                 <input type="hidden" id="property__status" value />
                 <input type="hidden" id="property__status" value />
                 <div class="pp-form__fieldset__wrap">
-                  <div
-                    class="pp-form__elem-radio"
-                    style="width: 90px; height: 44px"
-                  >
-                    <input
-                      class="pp-form__elem-radio__input"
-                      formControlName="property_status"
-                      type="radio"
-                      id="Featured"
-                      autocomplete="off"
-                      [value]="'Featured'"
-                    />
+                  <div class="pp-form__elem-radio" style="width: 90px; height: 44px">
+                    <input class="pp-form__elem-radio__input" formControlName="property_status" type="radio"
+                      id="Featured" autocomplete="off" [value]="'Featured'" />
 
                     <label class="pp-form__elem-radio__label" for="Featured">
                       Featured
                     </label>
                   </div>
-                  <div
-                    class="pp-form__elem-radio"
-                    style="width: 120px; height: 44px"
-                  >
-                    <input
-                      class="pp-form__elem-radio__input"
-                      formControlName="property_status"
-                      type="radio"
-                      id="Running"
-                      autocomplete="off"
-                      [value]="'Running'"
-                    />
+                  <div class="pp-form__elem-radio" style="width: 120px; height: 44px">
+                    <input class="pp-form__elem-radio__input" formControlName="property_status" type="radio"
+                      id="Running" autocomplete="off" [value]="'Running'" />
                     <label class="pp-form__elem-radio__label" for="Running">
                       Running
                     </label>
                   </div>
-                  <div
-                    class="pp-form__elem-radio"
-                    style="width: 100px; height: 44px"
-                  >
-                    <input
-                      class="pp-form__elem-radio__input"
-                      formControlName="property_status"
-                      type="radio"
-                      id="Complete"
-                      autocomplete="off"
-                      [value]="'Completed'"
-                    />
+                  <div class="pp-form__elem-radio" style="width: 100px; height: 44px">
+                    <input class="pp-form__elem-radio__input" formControlName="property_status" type="radio"
+                      id="Complete" autocomplete="off" [value]="'Completed'" />
                     <label class="pp-form__elem-radio__label" for="Complete">
                       Complete
                     </label>
                   </div>
-                  <div *ngIf="submitForm.get('property_status')?.invalid && (submitForm.get('property_status')?.dirty || submitForm.get('property_status')?.touched)" class="mgs_error">
+                  <div
+                    *ngIf="submitForm.get('property_status')?.invalid && (submitForm.get('property_status')?.dirty || submitForm.get('property_status')?.touched)"
+                    class="mgs_error">
                     Please select property status.
                   </div>
                 </div>
               </div>
 
-              <div class="col-md-4 mb-3" id="flatsCounts" [style.display]="['1'].includes(selectedPropertyType) ? 'block' : 'none'">
+              <div class="col-md-4 mb-3" id="flatsCounts"
+                [style.display]="['1'].includes(selectedPropertyType) ? 'block' : 'none'">
                 <div class="priceHeader ftltN">
                   Total No. of Flats in Your Society
                 </div>
                 <div class="flat_list_count">
                   <ul>
-                    <li
-                      (click)="selectFlatSociety('<50')"
-                      [ngClass]="{
+                    <li (click)="selectFlatSociety('<50')" [ngClass]="{
                         selectli: selectedFlatSociety === '<50'
-                      }"
-                    >
-                    <50
-                    </li>
-                    <li
-                      (click)="selectFlatSociety('50 - 100')"
-                      [ngClass]="{
+                      }">
+                      <50 </li>
+                    <li (click)="selectFlatSociety('50 - 100')" [ngClass]="{
                         selectli: selectedFlatSociety === '50 - 100'
-                      }"
-                    >
+                      }">
                       50 - 100
                     </li>
-                    <li
-                      (click)="selectFlatSociety('>100')"
-                      [ngClass]="{ selectli: selectedFlatSociety === '>100' }"
-                    >
+                    <li (click)="selectFlatSociety('>100')" [ngClass]="{ selectli: selectedFlatSociety === '>100' }">
                       >100
                     </li>
                   </ul>
                 </div>
-                <div *ngIf="submitForm.get('total_no_of_flats')?.invalid && (submitForm.get('total_no_of_flats')?.dirty || submitForm.get('total_no_of_flats')?.touched)" class="mgs_error">
+                <div
+                  *ngIf="submitForm.get('total_no_of_flats')?.invalid && (submitForm.get('total_no_of_flats')?.dirty || submitForm.get('total_no_of_flats')?.touched)"
+                  class="mgs_error">
                   Please select total no of flats.
                 </div>
               </div>
 
               <div class="property_loaction post_fm">
-                <h4 class="title-property m-0 pb-3">Property Location</h4>
+                <h4 class="title-property mt-4 pb-3">Property Location</h4>
 
-                <select
-                  formControlName="property_city"
-                  id="city"
-                  class="gold-form-input post_fm"
-                  (change)="onCityChange($event)"
-                >
-                  <option value disabled selected>Select City</option>
-                  <option *ngFor="let data of this.cities" [value]="data.id">
-                    {{ data.name }}
-                  </option>
-                </select>
-                <div *ngIf="submitForm.get('property_city')?.invalid && (submitForm.get('property_city')?.dirty || submitForm.get('property_city')?.touched)" class="mgs_error">
-                  Please select city.
+                <div class="formCom">
+                  <select formControlName="property_city" id="city" class="gold-form-input post_fm"
+                    (change)="onCityChange($event)">
+                    <option value disabled selected>Select City</option>
+                    <option *ngFor="let data of this.cities" [value]="data.id">
+                      {{ data.name }}
+                    </option>
+                  </select>
+                  <div
+                    *ngIf="submitForm.get('property_city')?.invalid && (submitForm.get('property_city')?.dirty || submitForm.get('property_city')?.touched)"
+                    class="mgs_error">
+                    Please select city.
+                  </div>
                 </div>
-                <select
-                  formControlName="property_locality"
-                  id="locality"
-                  class="gold-form-input post_fm"
-                  (change)="onLocalityChange($event)"
-                >
+                <div class="formCom">
+                    <select formControlName="property_locality" id="locality" class="gold-form-input post_fm"
+                  (change)="onLocalityChange($event)">
                   <option value disabled selected>Select Locality</option>
-                  <option
-                    *ngFor="let data of this.localities"
-                    [value]="data.id"
-                  >
+                  <option *ngFor="let data of this.localities" [value]="data.id">
                     {{ data.localities }}
                   </option>
                 </select>
-                <div *ngIf="submitForm.get('property_locality')?.invalid && (submitForm.get('property_locality')?.dirty || submitForm.get('property_locality')?.touched)" class="mgs_error">
+                <div
+                  *ngIf="submitForm.get('property_locality')?.invalid && (submitForm.get('property_locality')?.dirty || submitForm.get('property_locality')?.touched)"
+                  class="mgs_error">
                   Please select locality.
                 </div>
+                </div>
 
-                <select
-                formControlName="property_locality"
-                id="locality"
-                class="gold-form-input post_fm"
-              >
-                <option value disabled selected>Select Name of Project/Society</option>
-                <option
-                  *ngFor="let data of this.projectList"
-                  [value]="data.id"
-                >
-                  {{ data.project_name }}
-                </option>
-              </select>
-              <div *ngIf="submitForm.get('project_id')?.invalid && (submitForm.get('project_id')?.dirty || submitForm.get('project_id')?.touched)" class="mgs_error">
-                Please enter project or society.
-              </div>
+                <div class="formCom">
+                  <select formControlName="project_id" id="locality" class="gold-form-input post_fm">
+                  <option value disabled selected>Select Project</option>
+                  <option *ngFor="let data of this.projectList" [value]="data.id">
+                    {{ data.project_name }}
+                  </option>
+                </select>
+                <div
+                  *ngIf="submitForm.get('project_id')?.invalid && (submitForm.get('project_id')?.dirty || submitForm.get('project_id')?.touched)"
+                  class="mgs_error">
+                  Please enter project or society.
+                </div>
+                </div>
 
                 <!-- <div>
                   <label for="projectsociety">Name of Project/Society</label>
@@ -398,19 +274,17 @@
                   Please enter project or society.
                 </div> -->
 
-                <div>
+                <div class="formCom">
                   <label for="Address">Address</label>
-                  <input
-                    type="text"
-                    formControlName="property_address"
-                    id="Address"
-                    placeholder="Enter Address"
-                    class="gold-form-input"
-                  />
-                </div>
-                <div *ngIf="submitForm.get('property_address')?.invalid && (submitForm.get('property_address')?.dirty || submitForm.get('property_address')?.touched)" class="mgs_error">
+                  <input type="text" formControlName="property_address" id="Address" placeholder="Enter Address"
+                    class="gold-form-input" />
+                    <div
+                  *ngIf="submitForm.get('property_address')?.invalid && (submitForm.get('property_address')?.dirty || submitForm.get('property_address')?.touched)"
+                  class="mgs_error">
                   Please enter address.
                 </div>
+                </div>
+                
                 <!-- <div id="city">
                   <label for="City">City</label>
                   <input
@@ -422,76 +296,64 @@
                   />
                 </div> -->
 
-                <div id="landmarks">
+                <div id="landmarks" class="formCom">
                   <label for="Landmarks">Landmarks</label>
-                  <input
-                    type="text"
-                    formControlName="landmarks"
-                    id="Landmarks"
-                    placeholder="Enter Landmarks"
-                    class="gold-form-input"
-                  />
-                  <div *ngIf="submitForm.get('landmarks')?.invalid && (submitForm.get('landmarks')?.dirty || submitForm.get('landmarks')?.touched)" class="mgs_error">
+                  <input type="text" formControlName="landmarks" id="Landmarks" placeholder="Enter Landmarks"
+                    class="gold-form-input" />
+                  <div
+                    *ngIf="submitForm.get('landmarks')?.invalid && (submitForm.get('landmarks')?.dirty || submitForm.get('landmarks')?.touched)"
+                    class="mgs_error">
                     Please enter landmarks.
                   </div>
                 </div>
 
-                <div id="landzone" [style.display]="['4', '5', '8', '9', '16', '17', '18', '19', '20', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
+                <div id="landzone"
+                  [style.display]="['4', '5', '8', '9', '16', '17', '18', '19', '20', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
                   <label for="Land-Zone">Land Zone</label>
-                  <select
-                    formControlName="land_zone"
-                    id="Land-Zone"
-                    class="gold-form-input"
-                  >
+                  <select formControlName="land_zone" id="Land-Zone" class="gold-form-input">
                     <option value disabled selected>Select Land Zone</option>
-                    <option
-                      *ngFor="let data of this.landZone"
-                      [value]="data.propertylandzone"
-                    >
+                    <option *ngFor="let data of this.landZone" [value]="data.propertylandzone">
                       {{ data.propertylandzone }}
                     </option>
                   </select>
-                  <div *ngIf="submitForm.get('land_zone')?.invalid && (submitForm.get('land_zone')?.dirty || submitForm.get('land_zone')?.touched)" class="mgs_error">
+                  <div
+                    *ngIf="submitForm.get('land_zone')?.invalid && (submitForm.get('land_zone')?.dirty || submitForm.get('land_zone')?.touched)"
+                    class="mgs_error">
                     Please select landzone.
                   </div>
                 </div>
               </div>
 
-              <h4 class="title-property m-0 pb-3">Property Features</h4>
+              <h4 class="title-property mt-4 pb-3">Property Features</h4>
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 formCom">
                   <div class="priceHeader ftltN">Overlooking</div>
-                   <input
-                    type="text"
-                    formControlName="overlooking"
-                    id="overLooking"
-                    placeholder="Enter Overlooking"
-                    class="gold-form-input"
-                  />
-                  <div *ngIf="submitForm.get('overlooking')?.invalid && (submitForm.get('overlooking')?.dirty || submitForm.get('overlooking')?.touched)" class="mgs_error">
+                  <input type="text" formControlName="overlooking" id="overLooking" placeholder="Enter Overlooking"
+                    class="gold-form-input" />
+                  <div
+                    *ngIf="submitForm.get('overlooking')?.invalid && (submitForm.get('overlooking')?.dirty || submitForm.get('overlooking')?.touched)"
+                    class="mgs_error">
                     Please enter Overlooking.
                   </div>
                 </div>
 
-                <div class="col-md-6" id="lift" [style.display]="['1', '3', '4', '8', '10', '11', '12', '16', '18', '19', '20'].includes(selectedPropertyType) ? 'block' : 'none'">
+                <div class="col-md-6 formCom" id="lift"
+                  [style.display]="['1', '3', '4', '8', '10', '11', '12', '16', '18', '19', '20'].includes(selectedPropertyType) ? 'block' : 'none'">
                   <div class="priceHeader ftltN">Lift</div>
-                  <select
-                    formControlName="lift"
-                    class="gold-form-input"
-                  >
+                  <select formControlName="lift" class="gold-form-input">
                     <option value disabled selected>Select Lift</option>
-                    <option
-                      *ngFor="
+                    <option *ngFor="
                         let item of [
                           1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
                           17, 18, 19, 20
                         ]
-                      "
-                    >
+                      ">
                       {{ item }}
                     </option>
                   </select>
-                  <div *ngIf="submitForm.get('lift')?.invalid && (submitForm.get('lift')?.dirty || submitForm.get('lift')?.touched)" class="mgs_error">
+                  <div
+                    *ngIf="submitForm.get('lift')?.invalid && (submitForm.get('lift')?.dirty || submitForm.get('lift')?.touched)"
+                    class="mgs_error">
                     Please select lift.
                   </div>
                 </div>
@@ -501,32 +363,24 @@
 
                   <div class="modify_oop">
                     <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        formControlName="is_corner_property"
-                        id="yesOptionCornerProperty"
-                        value="1"
-                      />
+                      <input class="form-check-input" type="radio" formControlName="is_corner_property"
+                        id="yesOptionCornerProperty" value="1" />
                       <label class="form-check-label" for="yesOptionCornerProperty">
                         Yes
                       </label>
                     </div>
 
                     <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        formControlName="is_corner_property"
-                        id="noOptionCornerProperty"
-                        value="0"
-                      />
+                      <input class="form-check-input" type="radio" formControlName="is_corner_property"
+                        id="noOptionCornerProperty" value="0" />
                       <label class="form-check-label" for="noOptionCornerProperty">
                         No
                       </label>
                     </div>
                   </div>
-                  <div *ngIf="submitForm.get('is_corner_property')?.invalid && (submitForm.get('is_corner_property')?.dirty || submitForm.get('is_corner_property')?.touched)" class="mgs_error">
+                  <div
+                    *ngIf="submitForm.get('is_corner_property')?.invalid && (submitForm.get('is_corner_property')?.dirty || submitForm.get('is_corner_property')?.touched)"
+                    class="mgs_error">
                     Please select the is corner property
                   </div>
                 </div>
@@ -536,195 +390,155 @@
 
                   <div class="modify_oop">
                     <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        formControlName="is_road_facing"
-                        id="yesOptionRoadFacing"
-                        value="1"
-                      />
+                      <input class="form-check-input" type="radio" formControlName="is_road_facing"
+                        id="yesOptionRoadFacing" value="1" />
                       <label class="form-check-label" for="yesOptionRoadFacing">
                         Yes
                       </label>
                     </div>
 
                     <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        formControlName="is_road_facing"
-                        id="noOptionRoadFacing"
-                        value="0"
-                      />
+                      <input class="form-check-input" type="radio" formControlName="is_road_facing"
+                        id="noOptionRoadFacing" value="0" />
                       <label class="form-check-label" for="noOptionRoadFacing">
                         No
                       </label>
                     </div>
                   </div>
-                  <div *ngIf="submitForm.get('is_road_facing')?.invalid && (submitForm.get('is_road_facing')?.dirty || submitForm.get('is_road_facing')?.touched)" class="mgs_error">
+                  <div
+                    *ngIf="submitForm.get('is_road_facing')?.invalid && (submitForm.get('is_road_facing')?.dirty || submitForm.get('is_road_facing')?.touched)"
+                    class="mgs_error">
                     Please select the is road facing
                   </div>
                 </div>
 
-                <div class="col-md-6" id="totalunitsinput" [style.display]="['1', '3', '8', '10', '12', '16', '18', '19', '20'].includes(selectedPropertyType) ? 'block' : 'none'">
+                <div class="col-md-6" id="totalunitsinput"
+                  [style.display]="['1', '3', '8', '10', '12', '16', '18', '19', '20'].includes(selectedPropertyType) ? 'block' : 'none'">
                   <div class="priceHeader ftltN">Total Units</div>
-                  <input
-                    type="text"
-                    formControlName="total_units"
-                    placeholder="Enter Total Unit"
-                    class="gold-form-input"
-                  />
-                  <div *ngIf="submitForm.get('total_units')?.invalid && (submitForm.get('total_units')?.dirty || submitForm.get('total_units')?.touched)" class="mgs_error">
+                  <input type="text" formControlName="total_units" placeholder="Enter Total Unit"
+                    class="gold-form-input" />
+                  <div
+                    *ngIf="submitForm.get('total_units')?.invalid && (submitForm.get('total_units')?.dirty || submitForm.get('total_units')?.touched)"
+                    class="mgs_error">
                     Please enter total units.
                   </div>
                 </div>
 
-                <div id="notforplot" [style.display]="['1', '8', '10', '12', '16', '17', '18', '19', '20', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
+                <div id="notforplot"
+                  [style.display]="['1', '8', '10', '12', '16', '17', '18', '19', '20', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
                   <div class="col-md-6">
                     <div class="priceHeader ftltN">Total Towers</div>
-                    <input
-                      type="text"
-                      formControlName="total_towers"
-                      placeholder="Enter Total Towers"
-                      class="gold-form-input"
-                    />
-                    <div *ngIf="submitForm.get('total_towers')?.invalid && (submitForm.get('total_towers')?.dirty || submitForm.get('total_towers')?.touched)" class="mgs_error">
+                    <input type="text" formControlName="total_towers" placeholder="Enter Total Towers"
+                      class="gold-form-input" />
+                    <div
+                      *ngIf="submitForm.get('total_towers')?.invalid && (submitForm.get('total_towers')?.dirty || submitForm.get('total_towers')?.touched)"
+                      class="mgs_error">
                       Please enter total tower.
                     </div>
                   </div>
 
                   <div class="col-md-6">
                     <div class="priceHeader ftltN">Water Availability</div>
-                    <select
-                      formControlName="water_availability"
-                      class="gold-form-input"
-                    >
+                    <select formControlName="water_availability" class="gold-form-input">
                       <option value disabled selected>
                         Select Water Availability
                       </option>
-                      <option
-                        *ngFor="let item of [].constructor(24); let i = index"
-                        [value]="i + 1"
-                      >
+                      <option *ngFor="let item of [].constructor(24); let i = index" [value]="i + 1">
                         {{ i + 1 }} Hours Available
                       </option>
                     </select>
-                    <div *ngIf="submitForm.get('water_availability')?.invalid && (submitForm.get('water_availability')?.dirty || submitForm.get('water_availability')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('water_availability')?.invalid && (submitForm.get('water_availability')?.dirty || submitForm.get('water_availability')?.touched)"
+                      class="mgs_error">
                       Please select water Availability hour.
                     </div>
                   </div>
 
                   <div class="col-md-6">
                     <div class="priceHeader ftltN">Status of Electricity</div>
-                    <select
-                      formControlName="status_of_electricity"
-                      class="gold-form-input"
-                    >
+                    <select formControlName="status_of_electricity" class="gold-form-input">
                       <option value disabled selected>
                         Select Status of Electricity
                       </option>
                       <option>No/Rare Powercut</option>
-                      <option
-                        *ngFor="let item of [].constructor(24); let i = index"
-                        [value]="i + 1"
-                      >
+                      <option *ngFor="let item of [].constructor(24); let i = index" [value]="i + 1">
                         {{ i + 1 }} Hours Powercut
                       </option>
                     </select>
-                    <div *ngIf="submitForm.get('status_of_electricity')?.invalid && (submitForm.get('status_of_electricity')?.dirty || submitForm.get('status_of_electricity')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('status_of_electricity')?.invalid && (submitForm.get('status_of_electricity')?.dirty || submitForm.get('status_of_electricity')?.touched)"
+                      class="mgs_error">
                       Please select status of electricity.
                     </div>
                   </div>
 
-                    <div class="priceHeader ftltN">Floor No.</div>
-                    <div class="property_select_list">
-                      <ul>
-                        <li
-                          class="long_fild"
-                          [ngClass]="{
+                  <div class="priceHeader ftltN">Floor No.</div>
+                  <div class="property_select_list">
+                    <ul>
+                      <li class="long_fild" [ngClass]="{
                             selectli: 'Lower Basement' === selectedFloor
-                          }"
-                          (click)="selectFloor('Lower Basement', 'floor')"
-                        >
-                          Lower Basement
-                        </li>
-                        <li
-                          class="long_fild"
-                          [ngClass]="{
+                          }" (click)="selectFloor('Lower Basement', 'floor')">
+                        Lower Basement
+                      </li>
+                      <li class="long_fild" [ngClass]="{
                             selectli: 'Upper Basement' === selectedFloor
-                          }"
-                          (click)="selectFloor('Upper Basement', 'floor')"
-                        >
-                          Upper Basement
-                        </li>
-                        <li
-                          class="long_fild"
-                          [ngClass]="{ selectli: 'Ground' === selectedFloor }"
-                          (click)="selectFloor('Ground', 'floor')"
-                        >
-                          Ground
-                        </li>
-                        <li
-                          *ngFor="let num of [1, 2, 3, 4]"
-                          [ngClass]="{ selectli: num === selectedFloor }"
-                          (click)="selectFloor(num, 'floor')"
-                        >
-                          {{ num }}
+                          }" (click)="selectFloor('Upper Basement', 'floor')">
+                        Upper Basement
+                      </li>
+                      <li class="long_fild" [ngClass]="{ selectli: 'Ground' === selectedFloor }"
+                        (click)="selectFloor('Ground', 'floor')">
+                        Ground
+                      </li>
+                      <li *ngFor="let num of [1, 2, 3, 4]" [ngClass]="{ selectli: num === selectedFloor }"
+                        (click)="selectFloor(num, 'floor')">
+                        {{ num }}
+                      </li>
+                    </ul>
+                    <div class="custom-select" (click)="floorNotoggleDropdown()">
+                      <span [ngClass]="{
+                            selectli: showFloorSection && selectedFloorOption
+                          }">{{ floorNoselectedValue }}</span>
+                      <ul *ngIf="isfloorNoDropdownOpen">
+                        <li *ngFor="let option of floorNoOptions" (click)="selectFloorOption(option)">
+                          {{ option }}
                         </li>
                       </ul>
-                      <div class="custom-select" (click)="floorNotoggleDropdown()">
-                        <span
-                          [ngClass]="{
-                            selectli: showFloorSection && selectedFloorOption
-                          }"
-                          >{{ floorNoselectedValue }}</span
-                        >
-                        <ul *ngIf="isfloorNoDropdownOpen">
-                          <li
-                            *ngFor="let option of floorNoOptions"
-                            (click)="selectFloorOption(option)"
-                          >
-                            {{ option }}
-                          </li>
-                        </ul>
                     </div>
                   </div>
-                  <div *ngIf="submitForm.get('floor_no')?.invalid && (submitForm.get('floor_no')?.dirty || submitForm.get('floor_no')?.touched)" class="mgs_error">
+                  <div
+                    *ngIf="submitForm.get('floor_no')?.invalid && (submitForm.get('floor_no')?.dirty || submitForm.get('floor_no')?.touched)"
+                    class="mgs_error">
                     Please select floor.
                   </div>
                 </div>
 
-                <div id="forfarmhouses2" [style.display]="['1', '3', '4', '8', '10', '11', '12', '16', '18', '19', '20'].includes(selectedPropertyType) ? 'block' : 'none'">
+                <div id="forfarmhouses2"
+                  [style.display]="['1', '3', '4', '8', '10', '11', '12', '16', '18', '19', '20'].includes(selectedPropertyType) ? 'block' : 'none'">
                   <div class="priceHeader ftltN">Total Floors</div>
                   <div class="property_select_list">
                     <ul>
-                      <li
-                        *ngFor="
+                      <li *ngFor="
                           let num of [
                             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
                           ]
-                        "
-                        (click)="selectTotalFloor(num)"
-                        [ngClass]="{ selectli: selectedTotalFloor === num }"
-                      >
+                        " (click)="selectTotalFloor(num)" [ngClass]="{ selectli: selectedTotalFloor === num }">
                         {{ num }}
                       </li>
                     </ul>
                     <div class="custom-select" (click)="floortoggleDropdown()">
                       <span [ngClass]="{ selectli: selectedTotalFloorOption }">{{
                         totalFloorselectedValue
-                      }}</span>
+                        }}</span>
                       <ul *ngIf="isfloorDropdownOpen">
-                        <li
-                          *ngFor="let foption of flooroptions"
-                          (click)="selectTotalFloorDropdownOption(foption)"
-                        >
+                        <li *ngFor="let foption of flooroptions" (click)="selectTotalFloorDropdownOption(foption)">
                           {{ foption }}
                         </li>
                       </ul>
                     </div>
                   </div>
-                  <div *ngIf="submitForm.get('total_floor')?.invalid && (submitForm.get('total_floor')?.dirty || submitForm.get('total_floor')?.touched)" class="mgs_error">
+                  <div
+                    *ngIf="submitForm.get('total_floor')?.invalid && (submitForm.get('total_floor')?.dirty || submitForm.get('total_floor')?.touched)"
+                    class="mgs_error">
                     Please select total floor.
                   </div>
 
@@ -732,47 +546,35 @@
                   <div class="priceHeader ftltN">Furnishing Status</div>
                   <div class="property_select_list pb-3">
                     <ul>
-                      <li
-                        class="long_fild"
-                        (click)="selectFurnishType('Furnished')"
-                        [ngClass]="{
+                      <li class="long_fild" (click)="selectFurnishType('Furnished')" [ngClass]="{
                           selectli: selectedFurnishType === 'Furnished'
-                        }"
-                      >
+                        }">
                         Furnished
                       </li>
-                      <li
-                        class="long_fild"
-                        (click)="selectFurnishType('Unfurnished')"
-                        [ngClass]="{
+                      <li class="long_fild" (click)="selectFurnishType('Unfurnished')" [ngClass]="{
                           selectli: selectedFurnishType === 'Unfurnished'
-                        }"
-                      >
+                        }">
                         Unfurnished
                       </li>
-                      <li
-                        class="long_fild"
-                        (click)="selectFurnishType('Semi-Furnished')"
-                        [ngClass]="{
+                      <li class="long_fild" (click)="selectFurnishType('Semi-Furnished')" [ngClass]="{
                           selectli: selectedFurnishType === 'Semi-Furnished'
-                        }"
-                      >
+                        }">
                         Semi-Furnished
                       </li>
                     </ul>
                   </div>
-                  <div *ngIf="submitForm.get('furnishing_status')?.invalid && (submitForm.get('furnishing_status')?.dirty || submitForm.get('furnishing_status')?.touched)" class="mgs_error">
+                  <div
+                    *ngIf="submitForm.get('furnishing_status')?.invalid && (submitForm.get('furnishing_status')?.dirty || submitForm.get('furnishing_status')?.touched)"
+                    class="mgs_error">
                     Please select furnish type.
                   </div>
                 </div>
 
-                <div id="forfarmhouses3" [style.display]="['3', '4', '5', '9', '17', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
+                <div id="forfarmhouses3"
+                  [style.display]="['3', '4', '5', '9', '17', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
                   <div class="col-md-6">
                     <div class="priceHeader ftltN">No of open sides</div>
-                    <select
-                      formControlName="no_of_open_sides"
-                      class="gold-form-input"
-                    >
+                    <select formControlName="no_of_open_sides" class="gold-form-input">
                       <option value disabled selected>
                         select No of open sides
                       </option>
@@ -780,7 +582,9 @@
                         {{ item }}
                       </option>
                     </select>
-                    <div *ngIf="submitForm.get('no_of_open_sides')?.invalid && (submitForm.get('no_of_open_sides')?.dirty || submitForm.get('no_of_open_sides')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('no_of_open_sides')?.invalid && (submitForm.get('no_of_open_sides')?.dirty || submitForm.get('no_of_open_sides')?.touched)"
+                      class="mgs_error">
                       Please select number of open sides.
                     </div>
                   </div>
@@ -789,35 +593,30 @@
                     <div class="priceHeader ftltN">
                       Width of road facing the plot (in meters)
                     </div>
-                    <input
-                      type="text"
-                      formControlName="width_of_road_facing_the_plot"
-                      placeholder="Enter Width of road facing the plot"
-                      class="gold-form-input"
-                    />
-                    <div *ngIf="submitForm.get('width_of_road_facing_the_plot')?.invalid && (submitForm.get('width_of_road_facing_the_plot')?.dirty || submitForm.get('width_of_road_facing_the_plot')?.touched)" class="mgs_error">
+                    <input type="text" formControlName="width_of_road_facing_the_plot"
+                      placeholder="Enter Width of road facing the plot" class="gold-form-input" />
+                    <div
+                      *ngIf="submitForm.get('width_of_road_facing_the_plot')?.invalid && (submitForm.get('width_of_road_facing_the_plot')?.dirty || submitForm.get('width_of_road_facing_the_plot')?.touched)"
+                      class="mgs_error">
                       Please Enter Width of road facing plot.
                     </div>
                   </div>
                 </div>
 
-                <div id="forcommercialandresidentialplot" [style.display]="['5', '9', '17', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
+                <div id="forcommercialandresidentialplot"
+                  [style.display]="['5', '9', '17', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
                   <div class="col-md-4">
-                    <label
-                      _ngcontent-ng-c2223104581=""
-                      for="floors_allowed_for_construction"
-                      >Floors Allowed for construction</label
-                    >
-                    <select
-                      formControlName="floors_allowed_for_construction"
-                      class="gold-form-input"
-                    >
+                    <label _ngcontent-ng-c2223104581="" for="floors_allowed_for_construction">Floors Allowed for
+                      construction</label>
+                    <select formControlName="floors_allowed_for_construction" class="gold-form-input">
                       <option value disabled selected>Floor construction</option>
                       <option *ngFor="let item of floorOptions">
                         {{ item }}
                       </option>
                     </select>
-                    <div *ngIf="submitForm.get('floors_allowed_for_construction')?.invalid && (submitForm.get('floors_allowed_for_construction')?.dirty || submitForm.get('floors_allowed_for_construction')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('floors_allowed_for_construction')?.invalid && (submitForm.get('floors_allowed_for_construction')?.dirty || submitForm.get('floors_allowed_for_construction')?.touched)"
+                      class="mgs_error">
                       Please select floor construction.
                     </div>
                   </div>
@@ -826,32 +625,24 @@
                     <label class="form-label">Any Construction done</label>
                     <div class="modify_oop">
                       <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          formControlName="any_construction_done"
-                          id="yesOptionAnyConstruction"
-                          value="1"
-                        />
+                        <input class="form-check-input" type="radio" formControlName="any_construction_done"
+                          id="yesOptionAnyConstruction" value="1" />
                         <label class="form-check-label" for="yesOptionAnyConstruction">
                           Yes
                         </label>
                       </div>
 
                       <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          formControlName="any_construction_done"
-                          id="noOptionAnyConstruction"
-                          value="0"
-                        />
+                        <input class="form-check-input" type="radio" formControlName="any_construction_done"
+                          id="noOptionAnyConstruction" value="0" />
                         <label class="form-check-label" for="noOptionAnyConstruction">
                           No
                         </label>
                       </div>
                     </div>
-                    <div *ngIf="submitForm.get('any_construction_done')?.invalid && (submitForm.get('any_construction_done')?.dirty || submitForm.get('any_construction_done')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('any_construction_done')?.invalid && (submitForm.get('any_construction_done')?.dirty || submitForm.get('any_construction_done')?.touched)"
+                      class="mgs_error">
                       Please select Any Construction.
                     </div>
                   </div>
@@ -860,32 +651,24 @@
                     <label class="form-label">Boundary wall made</label>
                     <div class="modify_oop">
                       <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          formControlName="boundary_wall_made"
-                          id="yesOptionBoundary"
-                          value="1"
-                        />
+                        <input class="form-check-input" type="radio" formControlName="boundary_wall_made"
+                          id="yesOptionBoundary" value="1" />
                         <label class="form-check-label" for="yesOptionBoundary">
                           Yes
                         </label>
                       </div>
 
                       <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          formControlName="boundary_wall_made"
-                          id="noOptionBoundary"
-                          value="0"
-                        />
+                        <input class="form-check-input" type="radio" formControlName="boundary_wall_made"
+                          id="noOptionBoundary" value="0" />
                         <label class="form-check-label" for="noOptionBoundary">
                           No
                         </label>
                       </div>
                     </div>
-                    <div *ngIf="submitForm.get('boundary_wall_made')?.invalid && (submitForm.get('boundary_wall_made')?.dirty || submitForm.get('boundary_wall_made')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('boundary_wall_made')?.invalid && (submitForm.get('boundary_wall_made')?.dirty || submitForm.get('boundary_wall_made')?.touched)"
+                      class="mgs_error">
                       Please select is Boundary wall made.
                     </div>
                   </div>
@@ -895,71 +678,58 @@
 
                     <div class="modify_oop">
                       <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          formControlName="is_in_gated_colony"
-                          id="yesOptionGateColony"
-                          value="1"
-                        />
+                        <input class="form-check-input" type="radio" formControlName="is_in_gated_colony"
+                          id="yesOptionGateColony" value="1" />
                         <label class="form-check-label" for="yesOptionGateColony">
                           Yes
                         </label>
                       </div>
 
                       <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          formControlName="is_in_gated_colony"
-                          id="noOptionGateColony"
-                          value="0"
-                        />
+                        <input class="form-check-input" type="radio" formControlName="is_in_gated_colony"
+                          id="noOptionGateColony" value="0" />
                         <label class="form-check-label" for="noOptionGateColony">
                           No
                         </label>
                       </div>
                     </div>
-                    <div *ngIf="submitForm.get('is_in_gated_colony')?.invalid && (submitForm.get('is_in_gated_colony')?.dirty || submitForm.get('is_in_gated_colony')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('is_in_gated_colony')?.invalid && (submitForm.get('is_in_gated_colony')?.dirty || submitForm.get('is_in_gated_colony')?.touched)"
+                      class="mgs_error">
                       Please select GateColony.
                     </div>
                   </div>
                 </div>
 
-                <div id="forfarmhouses" [style.display]="['1', '3', '4', '10', '11', '12'].includes(selectedPropertyType) ? 'block' : 'none'">
+                <div id="forfarmhouses"
+                  [style.display]="['1', '3', '4', '10', '11', '12'].includes(selectedPropertyType) ? 'block' : 'none'">
                   <div class="col-md-4">
                     <div class="priceHeader ftltN">Bedrooms</div>
                     <div class="property_select_list">
                       <ul>
-                        <li
-                          *ngFor="let num of [1, 2, 3, 4]"
-                          [ngClass]="{ selectli: selectedBedRoom == num }"
-                          (click)="selectBedRoom(num, 'bedroom')"
-                        >
+                        <li *ngFor="let num of [1, 2, 3, 4]" [ngClass]="{ selectli: selectedBedRoom == num }"
+                          (click)="selectBedRoom(num, 'bedroom')">
                           {{ num }}
                         </li>
                       </ul>
                       <div class="custom-select" (click)="toggleDropdown()">
-                        <span
-                          [ngClass]="{ selectli: showSection && selectedOption }"
-                          >{{ selectedValue }}</span
-                        >
+                        <span [ngClass]="{ selectli: showSection && selectedOption }">{{ selectedValue }}</span>
                         <ul *ngIf="isDropdownOpen">
-                          <li
-                            *ngFor="let option of options"
-                            (click)="selectOption(option)"
-                          >
+                          <li *ngFor="let option of options" (click)="selectOption(option)">
                             {{ option }}
                           </li>
                         </ul>
                       </div>
                     </div>
-                    <div *ngIf="submitForm.get('bedroom')?.invalid && (submitForm.get('bedroom')?.dirty || submitForm.get('bedroom')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('bedroom')?.invalid && (submitForm.get('bedroom')?.dirty || submitForm.get('bedroom')?.touched)"
+                      class="mgs_error">
                       Please select number of bedrooms.
                     </div>
                   </div>
 
-                  <div class="bedroom_specification col-md-5" *ngIf="showSections && bedroomsize && bedroomsize.length > 0" style="margin-bottom: 20px">
+                  <div class="bedroom_specification col-md-5"
+                    *ngIf="showSections && bedroomsize && bedroomsize.length > 0" style="margin-bottom: 20px">
                     <h6>Specify bedroom sizes. - For example: 12 x 10 ft</h6>
 
                     <div class="bedroom-fields">
@@ -969,11 +739,8 @@
                     </div>
 
                     <div class="bed-list" formArrayName="bedroomsize">
-                      <div
-                        class="d-flex justify-content-between px-3 py-1"
-                        *ngFor="let bedroom of bedroomsize.controls; let i = index"
-                        [formGroupName]="i"
-                      >
+                      <div class="d-flex justify-content-between px-3 py-1"
+                        *ngFor="let bedroom of bedroomsize.controls; let i = index" [formGroupName]="i">
                         <div class="d-flex gap-1 align-items-center">
                           <p>Bedroom {{ numberOfBeds[i] }}</p>
                           <input type="text" formControlName="bedroom_length" />
@@ -990,93 +757,75 @@
                     <div class="priceHeader ftltN">Bathrooms</div>
                     <div class="property_select_list">
                       <ul>
-                        <li
-                          *ngFor="let num of [1, 2, 3]"
-                          (click)="selectBathRooms(num, 'bathrooms')"
-                          [ngClass]="{ selectli: selectedBathRoom === num }"
-                        >
+                        <li *ngFor="let num of [1, 2, 3]" (click)="selectBathRooms(num, 'bathrooms')"
+                          [ngClass]="{ selectli: selectedBathRoom === num }">
                           {{ num }}
                         </li>
                       </ul>
                       <div class="custom-select" (click)="bathRoomDropdown()">
-                        <span
-                          [ngClass]="{
+                        <span [ngClass]="{
                             selectli:
                               showBathRoomSection && selectedBathRoomOption
-                          }"
-                          >{{ selectBathRoomsValue }}</span
-                        >
+                          }">{{ selectBathRoomsValue }}</span>
                         <ul *ngIf="isbathRoomDropdownOpen">
-                          <li
-                            *ngFor="let option of bathRoomoptions"
-                            (click)="selectBathRoomOption(option)"
-                          >
+                          <li *ngFor="let option of bathRoomoptions" (click)="selectBathRoomOption(option)">
                             {{ option }}
                           </li>
                         </ul>
                       </div>
                     </div>
-                    <div *ngIf="submitForm.get('bathroom')?.invalid && (submitForm.get('bathroom')?.dirty || submitForm.get('bathroom')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('bathroom')?.invalid && (submitForm.get('bathroom')?.dirty || submitForm.get('bathroom')?.touched)"
+                      class="mgs_error">
                       Please select number of bathrooms.
                     </div>
                   </div>
                 </div>
 
-                <div id="forresidential" [style.display]="['1', '10', '12'].includes(selectedPropertyType) ? 'block' : 'none'">
+                <div id="forresidential"
+                  [style.display]="['1', '10', '12'].includes(selectedPropertyType) ? 'block' : 'none'">
                   <div class="col-md-4">
                     <div class="priceHeader ftltN">Balconies</div>
                     <div class="property_select_list">
                       <ul>
-                        <li
-                          *ngFor="let num of [0, 1, 2, 3]"
-                          (click)="selectBalconies(num, 'balconies')"
-                          [ngClass]="{ selectli: selectedBalcony === num }"
-                        >
+                        <li *ngFor="let num of [0, 1, 2, 3]" (click)="selectBalconies(num, 'balconies')"
+                          [ngClass]="{ selectli: selectedBalcony === num }">
                           {{ num }}
                         </li>
                       </ul>
                       <div class="custom-select" (click)="balconiesDropdown()">
-                        <span
-                          [ngClass]="{
+                        <span [ngClass]="{
                             selectli:
                               showBalconySection && selectedBalconiesOption
-                          }"
-                          >{{ selectedBalconiesValue }}</span
-                        >
+                          }">{{ selectedBalconiesValue }}</span>
                         <ul *ngIf="isbalconiDropdownOpen">
-                          <li
-                            *ngFor="let option of baconiesoptions"
-                            (click)="selectBalconiesOption(option)"
-                          >
+                          <li *ngFor="let option of baconiesoptions" (click)="selectBalconiesOption(option)">
                             {{ option }}
                           </li>
                         </ul>
                       </div>
                     </div>
-                    <div *ngIf="submitForm.get('balconies')?.invalid && (submitForm.get('balconies')?.dirty || submitForm.get('balconies')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('balconies')?.invalid && (submitForm.get('balconies')?.dirty || submitForm.get('balconies')?.touched)"
+                      class="mgs_error">
                       Please select number of balconies.
                     </div>
                   </div>
 
                   <div class="col-md-6">
                     <div class="priceHeader ftltN">Flooring</div>
-                    <input
-                      type="text"
-                      formControlName="flooring"
-                      placeholder="Enter Flooring"
-                      class="gold-form-input"
-                    />
-                    <div *ngIf="submitForm.get('flooring')?.invalid && (submitForm.get('flooring')?.dirty || submitForm.get('flooring')?.touched)" class="mgs_error">
+                    <input type="text" formControlName="flooring" placeholder="Enter Flooring"
+                      class="gold-form-input" />
+                    <div
+                      *ngIf="submitForm.get('flooring')?.invalid && (submitForm.get('flooring')?.dirty || submitForm.get('flooring')?.touched)"
+                      class="mgs_error">
                       Please Enter Flooring.
                     </div>
                   </div>
 
                   <div class="col-md-6">
                     <div class="priceHeader ftltN">Facing</div>
-                    <select
-                      formControlName="facing"
-                      class="gold-form-input"
-                    >
+                    <select formControlName="facing" class="gold-form-input">
                       <option value disabled selected>
                         Select Facing
                       </option>
@@ -1092,62 +841,54 @@
                       <option value="West-South">West-South</option>
                       <option value="West-East">West-East</option>
                     </select>
-                    <div *ngIf="submitForm.get('facing')?.invalid && (submitForm.get('facing')?.dirty || submitForm.get('facing')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('facing')?.invalid && (submitForm.get('facing')?.dirty || submitForm.get('facing')?.touched)"
+                      class="mgs_error">
                       Please select facing.
                     </div>
                   </div>
 
                   <div class="col-md-6">
                     <div class="priceHeader ftltN">Additional Rooms</div>
-                    <input
-                      type="text"
-                      formControlName="additional_rooms"
-                      placeholder="Enter Additional Rooms"
-                      class="gold-form-input"
-                    />
-                    <div *ngIf="submitForm.get('additional_rooms')?.invalid && (submitForm.get('additional_rooms')?.dirty || submitForm.get('additional_rooms')?.touched)" class="mgs_error">
+                    <input type="text" formControlName="additional_rooms" placeholder="Enter Additional Rooms"
+                      class="gold-form-input" />
+                    <div
+                      *ngIf="submitForm.get('additional_rooms')?.invalid && (submitForm.get('additional_rooms')?.dirty || submitForm.get('additional_rooms')?.touched)"
+                      class="mgs_error">
                       Please select additional Rooms.
                     </div>
                   </div>
 
                   <div class="col-md-6">
                     <div class="priceHeader ftltN">Car Parking Covered</div>
-                    <select
-                      formControlName="car_parking"
-                      class="gold-form-input"
-                    >
+                    <select formControlName="car_parking" class="gold-form-input">
                       <option value disabled selected>
                         Select Car Parking Covered
                       </option>
-                      <option
-                        *ngFor="let item of [].constructor(5); let i = index"
-                        [value]="i + 1"
-                      >
+                      <option *ngFor="let item of [].constructor(5); let i = index" [value]="i + 1">
                         {{ i + 1 }} covered
                       </option>
                     </select>
-                    <div *ngIf="submitForm.get('car_parking')?.invalid && (submitForm.get('car_parking')?.dirty || submitForm.get('car_parking')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('car_parking')?.invalid && (submitForm.get('car_parking')?.dirty || submitForm.get('car_parking')?.touched)"
+                      class="mgs_error">
                       Please select car parking covered.
                     </div>
                   </div>
 
                   <div class="col-md-6">
                     <div class="priceHeader ftltN">Car Parking Open</div>
-                    <select
-                      formControlName="car_parking_open"
-                      class="gold-form-input"
-                    >
+                    <select formControlName="car_parking_open" class="gold-form-input">
                       <option value disabled selected>
                         Select Car Parking Open
                       </option>
-                      <option
-                        *ngFor="let item of [].constructor(5); let i = index"
-                        [value]="i + 1"
-                      >
+                      <option *ngFor="let item of [].constructor(5); let i = index" [value]="i + 1">
                         {{ i + 1 }} open
                       </option>
                     </select>
-                    <div *ngIf="submitForm.get('car_parking_open')?.invalid && (submitForm.get('car_parking_open')?.dirty || submitForm.get('car_parking_open')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('car_parking_open')?.invalid && (submitForm.get('car_parking_open')?.dirty || submitForm.get('car_parking_open')?.touched)"
+                      class="mgs_error">
                       Please select car parking opened.
                     </div>
                   </div>
@@ -1155,163 +896,138 @@
 
                   <div class="col-md-6">
                     <label for="open_car_parking">Open Car Parking</label>
-                    <input
-                      type="text"
-                      id="open_car_parking"
-                      formControlName="open_car_parking"
-                      placeholder="Enter Open Car Parking"
-                      class="gold-form-input mb-2"
-                    />
-                    <div *ngIf="submitForm.get('open_car_parking')?.invalid && (submitForm.get('open_car_parking')?.dirty || submitForm.get('open_car_parking')?.touched)" class="mgs_error">
+                    <input type="text" id="open_car_parking" formControlName="open_car_parking"
+                      placeholder="Enter Open Car Parking" class="gold-form-input mb-2" />
+                    <div
+                      *ngIf="submitForm.get('open_car_parking')?.invalid && (submitForm.get('open_car_parking')?.dirty || submitForm.get('open_car_parking')?.touched)"
+                      class="mgs_error">
                       Please Enter Open Car Parking.
                     </div>
                   </div>
 
                   <div class="col-md-6">
                     <label for="open_car_parking_unit">Open Car Parking Unit</label><br />
-                    <select formControlName="open_car_parking_unit" id="open_car_parking_unit" class="gold-form-input post_fm">
+                    <select formControlName="open_car_parking_unit" id="open_car_parking_unit"
+                      class="gold-form-input post_fm">
                       <option value disabled selected>Select Open Car Parking Unit</option>
                       <option value="Free">Free</option>
                       <option value="1 Unit">1 Unit</option>
                       <option value="2 Unit">2 Unit</option>
                       <option value="3 Unit">3 Unit</option>
                     </select>
-                    <div *ngIf="submitForm.get('open_car_parking_unit')?.invalid && (submitForm.get('open_car_parking_unit')?.dirty || submitForm.get('open_car_parking_unit')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('open_car_parking_unit')?.invalid && (submitForm.get('open_car_parking_unit')?.dirty || submitForm.get('open_car_parking_unit')?.touched)"
+                      class="mgs_error">
                       Please Select Open Car Parking Unit
                     </div>
                   </div>
 
                   <div class="col-md-6">
                     <label for="open_car_parking_unit">Covered Car Parking Unit</label><br />
-                    <select formControlName="open_car_parking_unit" id="open_car_parking_unit" class="gold-form-input post_fm">
+                    <select formControlName="open_car_parking_unit" id="open_car_parking_unit"
+                      class="gold-form-input post_fm">
                       <option value disabled selected>Select Covered Car Parking Unit</option>
                       <option value="Free">Free</option>
                       <option value="1 Unit">1 Unit</option>
                       <option value="2 Unit">2 Unit</option>
                       <option value="3 Unit">3 Unit</option>
                     </select>
-                    <div *ngIf="submitForm.get('open_car_parking_unit')?.invalid && (submitForm.get('open_car_parking_unit')?.dirty || submitForm.get('open_car_parking_unit')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('open_car_parking_unit')?.invalid && (submitForm.get('open_car_parking_unit')?.dirty || submitForm.get('open_car_parking_unit')?.touched)"
+                      class="mgs_error">
                       Please Select Covered Car Parking Unit
                     </div>
                   </div>
-              </div>
-
-              <div id="forcommercialinput" [style.display]="['8', '16', '18', '19', '20'].includes(selectedPropertyType) ? 'block' : 'none'">
-                <div class="filde_commercial">
-                  <label class="form-label">Washroom</label>
-
-                  <div class="modify_oop">
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        formControlName="washroom"
-                        id="yesWashrooms"
-                        value="1"
-                      />
-                      <label class="form-check-label" for="yesWashrooms">
-                        Yes
-                      </label>
-                    </div>
-
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        formControlName="washroom"
-                        id="noWashrooms"
-                        value="0"
-                      />
-                      <label class="form-check-label" for="noWashrooms">
-                        No
-                      </label>
-                    </div>
-                  </div>
-                  <div *ngIf="submitForm.get('washroom')?.invalid && (submitForm.get('washroom')?.dirty || submitForm.get('washroom')?.touched)" class="mgs_error">
-                    Please select washRoom.
-                  </div>
                 </div>
 
-                <div class="filde_commercial">
-                  <label class="form-label">Personal Washroom</label>
+                <div id="forcommercialinput"
+                  [style.display]="['8', '16', '18', '19', '20'].includes(selectedPropertyType) ? 'block' : 'none'">
+                  <div class="filde_commercial">
+                    <label class="form-label">Washroom</label>
 
-                  <div class="modify_oop">
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        formControlName="personal_washroom"
-                        id="yesWashroom"
-                        value="1"
-                      />
-                      <label class="form-check-label" for="yesWashroom">
-                        Yes
-                      </label>
+                    <div class="modify_oop">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="washroom" id="yesWashrooms"
+                          value="1" />
+                        <label class="form-check-label" for="yesWashrooms">
+                          Yes
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="washroom" id="noWashrooms"
+                          value="0" />
+                        <label class="form-check-label" for="noWashrooms">
+                          No
+                        </label>
+                      </div>
                     </div>
-
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        formControlName="personal_washroom"
-                        id="noWashroom"
-                        value="0"
-                      />
-                      <label class="form-check-label" for="noWashroom">
-                        No
-                      </label>
+                    <div
+                      *ngIf="submitForm.get('washroom')?.invalid && (submitForm.get('washroom')?.dirty || submitForm.get('washroom')?.touched)"
+                      class="mgs_error">
+                      Please select washRoom.
                     </div>
                   </div>
-                  <div *ngIf="submitForm.get('personal_washroom')?.invalid && (submitForm.get('personal_washroom')?.dirty || submitForm.get('personal_washroom')?.touched)" class="mgs_error">
-                    Please select personal washRoom.
-                  </div>
-                </div>
 
-                <div class="filde_commercial">
-                  <label class="form-label">Pantry/Cafeteria</label>
+                  <div class="filde_commercial">
+                    <label class="form-label">Personal Washroom</label>
 
-                  <div class="modify_oop">
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        formControlName="pantry_cafeteria"
-                        id="yesDry"
-                        value="Dry"
-                      />
-                      <label class="form-check-label" for="yesDry"> Dry </label>
+                    <div class="modify_oop">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="personal_washroom"
+                          id="yesWashroom" value="1" />
+                        <label class="form-check-label" for="yesWashroom">
+                          Yes
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="personal_washroom" id="noWashroom"
+                          value="0" />
+                        <label class="form-check-label" for="noWashroom">
+                          No
+                        </label>
+                      </div>
                     </div>
-
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        formControlName="pantry_cafeteria"
-                        id="noWet"
-                        value="Wet"
-                      />
-                      <label class="form-check-label" for="noWet"> Wet </label>
-                    </div>
-
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        formControlName="pantry_cafeteria"
-                        id="noNot-avb"
-                        value="Not Available"
-                      />
-                      <label class="form-check-label" for="noNot-avb">
-                        Not Available
-                      </label>
+                    <div
+                      *ngIf="submitForm.get('personal_washroom')?.invalid && (submitForm.get('personal_washroom')?.dirty || submitForm.get('personal_washroom')?.touched)"
+                      class="mgs_error">
+                      Please select personal washRoom.
                     </div>
                   </div>
-                  <div *ngIf="submitForm.get('pantry_cafeteria')?.invalid && (submitForm.get('pantry_cafeteria')?.dirty || submitForm.get('pantry_cafeteria')?.touched)" class="mgs_error">
-                    Please select Pantry/Cafeteria .
+
+                  <div class="filde_commercial">
+                    <label class="form-label">Pantry/Cafeteria</label>
+
+                    <div class="modify_oop">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="pantry_cafeteria" id="yesDry"
+                          value="Dry" />
+                        <label class="form-check-label" for="yesDry"> Dry </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="pantry_cafeteria" id="noWet"
+                          value="Wet" />
+                        <label class="form-check-label" for="noWet"> Wet </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="pantry_cafeteria" id="noNot-avb"
+                          value="Not Available" />
+                        <label class="form-check-label" for="noNot-avb">
+                          Not Available
+                        </label>
+                      </div>
+                    </div>
+                    <div
+                      *ngIf="submitForm.get('pantry_cafeteria')?.invalid && (submitForm.get('pantry_cafeteria')?.dirty || submitForm.get('pantry_cafeteria')?.touched)"
+                      class="mgs_error">
+                      Please select Pantry/Cafeteria .
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
               <!-- commercial office space and show  -->
               <!-- <div>
@@ -1349,30 +1065,25 @@
               </div> -->
 
               <div class="area_property post_fm" id="area">
-              <h4 class="title-property m-0 pb-3" [style.display]="['1', '3', '4', '5', '8', '9', '10', '11', '12', '16', '17', '18', '19', '20', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
-                Area
-              </h4>
-                <div id="builtupareainput" [style.display]="['1', '3', '4', '8', '9', '10', '11', '12', '16', '17', '18', '19', '20', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label for="Built-up-Area">Built-up Area</label>
-                        <input
-                          type="text"
-                          id="Built-up-Area"
-                          formControlName="built_up_area"
-                          placeholder="Built-up Area"
-                          class="gold-form-input mb-0"
-                        />
-                        <div *ngIf="submitForm.get('built_up_area')?.invalid && (submitForm.get('built_up_area')?.dirty || submitForm.get('built_up_area')?.touched)" class="mgs_error">
-                          Please Enter builtup Area.
-                        </div>
+                <h4 class="title-property m-0 pb-3"
+                  [style.display]="['1', '3', '4', '5', '8', '9', '10', '11', '12', '16', '17', '18', '19', '20', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
+                  Area
+                </h4>
+                <div id="builtupareainput"
+                  [style.display]="['1', '3', '4', '8', '9', '10', '11', '12', '16', '17', '18', '19', '20', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="Built-up-Area">Built-up Area</label>
+                      <input type="text" id="Built-up-Area" formControlName="built_up_area" placeholder="Built-up Area"
+                        class="gold-form-input mb-0" />
+                      <div
+                        *ngIf="submitForm.get('built_up_area')?.invalid && (submitForm.get('built_up_area')?.dirty || submitForm.get('built_up_area')?.touched)"
+                        class="mgs_error">
+                        Please Enter builtup Area.
                       </div>
-                      <div class="col-md-6 mt-4">
-                        <select
-                          formControlName="built_up_area_in"
-                          id="Sq-m"
-                          class="gold-form-input mb-0"
-                        >
+                    </div>
+                    <div class="col-md-6 mt-4">
+                      <select formControlName="built_up_area_in" id="Sq-m" class="gold-form-input mb-0">
                         <option value="" selected disabled>Select Built-up Area in</option>
                         <option value="Sq-ft">Sq-ft</option>
                         <option value="Sq-yrd">Sq-yrd</option>
@@ -1392,81 +1103,73 @@
                         <option value="Perch">Perch</option>
                         <option value="Guntha">Guntha</option>
                         <option value="Are">Are</option>
-                        </select>
-                        <div *ngIf="submitForm.get('built_up_area_in')?.invalid && (submitForm.get('built_up_area_in')?.dirty || submitForm.get('built_up_area_in')?.touched)" class="mgs_error">
-                          Please Enter builtup Area in.
-                        </div>
+                      </select>
+                      <div
+                        *ngIf="submitForm.get('built_up_area_in')?.invalid && (submitForm.get('built_up_area_in')?.dirty || submitForm.get('built_up_area_in')?.touched)"
+                        class="mgs_error">
+                        Please Enter builtup Area in.
                       </div>
                     </div>
+                  </div>
                 </div>
-                <div id="superareainput" [style.display]="['1', '3', '4', '8', '9', '10', '11', '12', '16', '17', '18', '19', '20', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
+                <div id="superareainput"
+                  [style.display]="['1', '3', '4', '8', '9', '10', '11', '12', '16', '17', '18', '19', '20', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
                   <div class="row mt-3">
                     <div class="col-md-6">
                       <label for="Super-Area">Super Area</label>
-                      <input
-                        type="text"
-                        id="Super-Area"
-                        formControlName="super_area"
-                        placeholder="Super Area"
-                        class="gold-form-input mb-0"
-                      />
-                      <div *ngIf="submitForm.get('super_area')?.invalid && (submitForm.get('super_area')?.dirty || submitForm.get('super_area')?.touched)" class="mgs_error">
+                      <input type="text" id="Super-Area" formControlName="super_area" placeholder="Super Area"
+                        class="gold-form-input mb-0" />
+                      <div
+                        *ngIf="submitForm.get('super_area')?.invalid && (submitForm.get('super_area')?.dirty || submitForm.get('super_area')?.touched)"
+                        class="mgs_error">
                         Please Enter super Area.
                       </div>
                     </div>
                     <div class="col-md-6 mt-4">
-                      <select
-                        formControlName="super_area_in"
-                        id="Sq-m"
-                        class="gold-form-input mb-0"
-                      >
-                      <option value="" selected disabled>Select Super Area in</option>
-                      <option value="Sq-ft">Sq-ft</option>
-                      <option value="Sq-yrd">Sq-yrd</option>
-                      <option value="Sq-m">Sq-m</option>
-                      <option value="Acre">Acre</option>
-                      <option value="Bigha">Bigha</option>
-                      <option value="Hectare">Hectare</option>
-                      <option value="Marla">Marla</option>
-                      <option value="Kanal">Kanal</option>
-                      <option value="Biswa1">Biswa1</option>
-                      <option value="Biswa2">Biswa2</option>
-                      <option value="Ground">Ground</option>
-                      <option value="Rood">Rood</option>
-                      <option value="Chatak">Chatak</option>
-                      <option value="Kottah">Kottah</option>
-                      <option value="Cent">Cent</option>
-                      <option value="Perch">Perch</option>
-                      <option value="Guntha">Guntha</option>
-                      <option value="Are">Are</option>
+                      <select formControlName="super_area_in" id="Sq-m" class="gold-form-input mb-0">
+                        <option value="" selected disabled>Select Super Area in</option>
+                        <option value="Sq-ft">Sq-ft</option>
+                        <option value="Sq-yrd">Sq-yrd</option>
+                        <option value="Sq-m">Sq-m</option>
+                        <option value="Acre">Acre</option>
+                        <option value="Bigha">Bigha</option>
+                        <option value="Hectare">Hectare</option>
+                        <option value="Marla">Marla</option>
+                        <option value="Kanal">Kanal</option>
+                        <option value="Biswa1">Biswa1</option>
+                        <option value="Biswa2">Biswa2</option>
+                        <option value="Ground">Ground</option>
+                        <option value="Rood">Rood</option>
+                        <option value="Chatak">Chatak</option>
+                        <option value="Kottah">Kottah</option>
+                        <option value="Cent">Cent</option>
+                        <option value="Perch">Perch</option>
+                        <option value="Guntha">Guntha</option>
+                        <option value="Are">Are</option>
                       </select>
-                      <div *ngIf="submitForm.get('super_area_in')?.invalid && (submitForm.get('super_area_in')?.dirty || submitForm.get('super_area_in')?.touched)" class="mgs_error">
+                      <div
+                        *ngIf="submitForm.get('super_area_in')?.invalid && (submitForm.get('super_area_in')?.dirty || submitForm.get('super_area_in')?.touched)"
+                        class="mgs_error">
                         Please Enter super Area in.
                       </div>
                     </div>
                   </div>
                 </div>
-                <div id="areainput" [style.display]="['1', '3', '4', '8', '10', '11', '12', '18', '19'].includes(selectedPropertyType) ? 'block' : 'none'">
+                <div id="areainput"
+                  [style.display]="['1', '3', '4', '8', '10', '11', '12', '18', '19'].includes(selectedPropertyType) ? 'block' : 'none'">
                   <div class="row mt-3">
                     <div class="col-md-6">
                       <label for="Carpet-Area">Carpet Area</label>
-                      <input
-                        type="text"
-                        id="Carpet-Area"
-                        formControlName="carpet_area"
-                        placeholder="Carpet Area"
-                        class="gold-form-input mb-0"
-                      />
-                      <div *ngIf="submitForm.get('carpet_area')?.invalid && (submitForm.get('carpet_area')?.dirty || submitForm.get('carpet_area')?.touched)" class="mgs_error">
+                      <input type="text" id="Carpet-Area" formControlName="carpet_area" placeholder="Carpet Area"
+                        class="gold-form-input mb-0" />
+                      <div
+                        *ngIf="submitForm.get('carpet_area')?.invalid && (submitForm.get('carpet_area')?.dirty || submitForm.get('carpet_area')?.touched)"
+                        class="mgs_error">
                         Please Enter Carpet Area.
                       </div>
                     </div>
                     <div class="col-md-6 mt-4">
-                      <select
-                        formControlName="carpet_area_in"
-                        id="Sq-m"
-                        class="gold-form-input mb-0"
-                      >
+                      <select formControlName="carpet_area_in" id="Sq-m" class="gold-form-input mb-0">
                         <option value="" selected disabled>Select Carpet Area in</option>
                         <option value="Sq-ft">Sq-ft</option>
                         <option value="Sq-yrd">Sq-yrd</option>
@@ -1487,33 +1190,29 @@
                         <option value="Guntha">Guntha</option>
                         <option value="Are">Are</option>
                       </select>
-                      <div *ngIf="submitForm.get('carpet_area_in')?.invalid && (submitForm.get('carpet_area_in')?.dirty || submitForm.get('carpet_area_in')?.touched)" class="mgs_error">
+                      <div
+                        *ngIf="submitForm.get('carpet_area_in')?.invalid && (submitForm.get('carpet_area_in')?.dirty || submitForm.get('carpet_area_in')?.touched)"
+                        class="mgs_error">
                         Please Enter Carpet Area in.
                       </div>
                     </div>
                   </div>
                 </div>
-                <div id="Areacommercialinput" [style.display]="['3', '4', '8', '10', '11', '12', '16', '18', '19', '20'].includes(selectedPropertyType) ? 'block' : 'none'">
-                    <div class="row mt-3">
-                      <div class="col-md-6">
-                        <label for="covered-Area">Covered Area</label>
-                        <input
-                          type="text"
-                          id="covered-Area"
-                          formControlName="covered_area"
-                          placeholder="Covered Area"
-                          class="gold-form-input mb-0"
-                        />
-                        <div *ngIf="submitForm.get('covered_area')?.invalid && (submitForm.get('covered_area')?.dirty || submitForm.get('covered_area')?.touched)" class="mgs_error">
-                          Please Enter Covered Area.
-                        </div>
+                <div id="Areacommercialinput"
+                  [style.display]="['3', '4', '8', '10', '11', '12', '16', '18', '19', '20'].includes(selectedPropertyType) ? 'block' : 'none'">
+                  <div class="row mt-3">
+                    <div class="col-md-6">
+                      <label for="covered-Area">Covered Area</label>
+                      <input type="text" id="covered-Area" formControlName="covered_area" placeholder="Covered Area"
+                        class="gold-form-input mb-0" />
+                      <div
+                        *ngIf="submitForm.get('covered_area')?.invalid && (submitForm.get('covered_area')?.dirty || submitForm.get('covered_area')?.touched)"
+                        class="mgs_error">
+                        Please Enter Covered Area.
                       </div>
-                      <div class="col-md-6 mt-4">
-                        <select
-                          formControlName="covered_area_in"
-                          id="Sq-m"
-                          class="gold-form-input mb-0"
-                        >
+                    </div>
+                    <div class="col-md-6 mt-4">
+                      <select formControlName="covered_area_in" id="Sq-m" class="gold-form-input mb-0">
                         <option value="" selected disabled>Select Covered Area in</option>
                         <option value="Sq-ft">Sq-ft</option>
                         <option value="Sq-yrd">Sq-yrd</option>
@@ -1533,85 +1232,78 @@
                         <option value="Perch">Perch</option>
                         <option value="Guntha">Guntha</option>
                         <option value="Are">Are</option>
-                        </select>
-                        <div *ngIf="submitForm.get('covered_area_in')?.invalid && (submitForm.get('covered_area_in')?.dirty || submitForm.get('covered_area_in')?.touched)" class="mgs_error">
-                          Please Enter Covered Area in.
-                        </div>
+                      </select>
+                      <div
+                        *ngIf="submitForm.get('covered_area_in')?.invalid && (submitForm.get('covered_area_in')?.dirty || submitForm.get('covered_area_in')?.touched)"
+                        class="mgs_error">
+                        Please Enter Covered Area in.
                       </div>
                     </div>
+                  </div>
                 </div>
-                <div id="plottypeinputwithoutlenwid" [style.display]="['3', '4', '5', '9', '12', '17', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
+                <div id="plottypeinputwithoutlenwid"
+                  [style.display]="['3', '4', '5', '9', '12', '17', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
                   <div class="row mt-3">
                     <div class="col-md-6">
                       <label for="Super-Area">Plot Area</label>
-                      <input
-                        type="text"
-                        id="plot-Area"
-                        formControlName="ploat_area"
-                        placeholder="Plot Area"
-                        class="gold-form-input mb-0"
-                      />
-                      <div *ngIf="submitForm.get('ploat_area')?.invalid && (submitForm.get('ploat_area')?.dirty || submitForm.get('ploat_area')?.touched)" class="mgs_error">
+                      <input type="text" id="plot-Area" formControlName="ploat_area" placeholder="Plot Area"
+                        class="gold-form-input mb-0" />
+                      <div
+                        *ngIf="submitForm.get('ploat_area')?.invalid && (submitForm.get('ploat_area')?.dirty || submitForm.get('ploat_area')?.touched)"
+                        class="mgs_error">
                         Please Enter plot Area.
                       </div>
                     </div>
                     <div class="col-md-6 mt-4">
-                      <select
-                        formControlName="ploat_area_in"
-                        id="Sq-m"
-                        class="gold-form-input mb-0"
-                      >
-                      <option value="" selected disabled>Select Plot Area in</option>
-                      <option value="Sq-ft">Sq-ft</option>
-                      <option value="Sq-yrd">Sq-yrd</option>
-                      <option value="Sq-m">Sq-m</option>
-                      <option value="Acre">Acre</option>
-                      <option value="Bigha">Bigha</option>
-                      <option value="Hectare">Hectare</option>
-                      <option value="Marla">Marla</option>
-                      <option value="Kanal">Kanal</option>
-                      <option value="Biswa1">Biswa1</option>
-                      <option value="Biswa2">Biswa2</option>
-                      <option value="Ground">Ground</option>
-                      <option value="Rood">Rood</option>
-                      <option value="Chatak">Chatak</option>
-                      <option value="Kottah">Kottah</option>
-                      <option value="Cent">Cent</option>
-                      <option value="Perch">Perch</option>
-                      <option value="Guntha">Guntha</option>
-                      <option value="Are">Are</option>
+                      <select formControlName="ploat_area_in" id="Sq-m" class="gold-form-input mb-0">
+                        <option value="" selected disabled>Select Plot Area in</option>
+                        <option value="Sq-ft">Sq-ft</option>
+                        <option value="Sq-yrd">Sq-yrd</option>
+                        <option value="Sq-m">Sq-m</option>
+                        <option value="Acre">Acre</option>
+                        <option value="Bigha">Bigha</option>
+                        <option value="Hectare">Hectare</option>
+                        <option value="Marla">Marla</option>
+                        <option value="Kanal">Kanal</option>
+                        <option value="Biswa1">Biswa1</option>
+                        <option value="Biswa2">Biswa2</option>
+                        <option value="Ground">Ground</option>
+                        <option value="Rood">Rood</option>
+                        <option value="Chatak">Chatak</option>
+                        <option value="Kottah">Kottah</option>
+                        <option value="Cent">Cent</option>
+                        <option value="Perch">Perch</option>
+                        <option value="Guntha">Guntha</option>
+                        <option value="Are">Are</option>
                       </select>
-                      <div *ngIf="submitForm.get('ploat_area_in')?.invalid && (submitForm.get('ploat_area_in')?.dirty || submitForm.get('ploat_area_in')?.touched)" class="mgs_error">
+                      <div
+                        *ngIf="submitForm.get('ploat_area_in')?.invalid && (submitForm.get('ploat_area_in')?.dirty || submitForm.get('ploat_area_in')?.touched)"
+                        class="mgs_error">
                         Please Enter plot Area in.
                       </div>
                     </div>
                   </div>
                 </div>
-                <div id="plottypeinput" [style.display]="['3', '4', '5', '9', '12', '17', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
+                <div id="plottypeinput"
+                  [style.display]="['3', '4', '5', '9', '12', '17', '21'].includes(selectedPropertyType) ? 'block' : 'none'">
                   <div class="row mt-3">
                     <div class="col-md-6" id="PlotAreaLenght">
                       <label for="Super-Area">Plot Length (in ft)</label>
-                      <input
-                        type="text"
-                        id="plot-length"
-                        formControlName="plot_length"
-                        placeholder="Plot Length"
-                        class="gold-form-input mb-0"
-                      />
-                      <div *ngIf="submitForm.get('plot_length')?.invalid && (submitForm.get('plot_length')?.dirty || submitForm.get('plot_length')?.touched)" class="mgs_error">
+                      <input type="text" id="plot-length" formControlName="plot_length" placeholder="Plot Length"
+                        class="gold-form-input mb-0" />
+                      <div
+                        *ngIf="submitForm.get('plot_length')?.invalid && (submitForm.get('plot_length')?.dirty || submitForm.get('plot_length')?.touched)"
+                        class="mgs_error">
                         Please Enter Plot Length.
                       </div>
                     </div>
                     <div class="col-md-6" id="PlotAreaBreadth">
                       <label for="Super-Area">Plot Width (in ft)</label>
-                      <input
-                        type="text"
-                        id="plot-Breadth"
-                        formControlName="plot_width"
-                        placeholder="Plot Width"
-                        class="gold-form-input mb-0"
-                      />
-                      <div *ngIf="submitForm.get('plot_width')?.invalid && (submitForm.get('plot_width')?.dirty || submitForm.get('plot_width')?.touched)" class="mgs_error">
+                      <input type="text" id="plot-Breadth" formControlName="plot_width" placeholder="Plot Width"
+                        class="gold-form-input mb-0" />
+                      <div
+                        *ngIf="submitForm.get('plot_width')?.invalid && (submitForm.get('plot_width')?.dirty || submitForm.get('plot_width')?.touched)"
+                        class="mgs_error">
                         Please Enter Plot Width.
                       </div>
                     </div>
@@ -1620,51 +1312,45 @@
               </div>
 
               <div class="transaction" id="transactionheadertitle">
-                <h4 class="title-property m-0 pb-3">Transaction Type, Property Availability</h4>
+                <h4 class="title-property mt-4 pb-3">Transaction Type, Property Availability</h4>
                 <div id="transactiontypeclass">
-                  <div class="col-md-6" id="possessionstatusfornotaplot" [style.display]="['1', '3', '4', '8', '10', '11', '12', '16', '18', '19', '20'].includes(selectedPropertyType) ? 'block' : 'none'">
+                  <div class="col-md-6" id="possessionstatusfornotaplot"
+                    [style.display]="['1', '3', '4', '8', '10', '11', '12', '16', '18', '19', '20'].includes(selectedPropertyType) ? 'block' : 'none'">
                     <label for="Possession-Status">Possession Status</label>
-                    <select
-                      formControlName="possession_status"
-                      id="Possession-Status"
-                      class="gold-form-input"
-                      (change)="showpossessionstatus()"
-                    >
+                    <select formControlName="possession_status" id="Possession-Status" class="gold-form-input"
+                      (change)="showpossessionstatus()">
                       <option value disabled selected>Select Possession Status</option>
                       <option value="Under Construction">Under Construction</option>
                       <option value="Ready to Move">Ready to Move</option>
                     </select>
-                    <div *ngIf="submitForm.get('possession_status')?.invalid && (submitForm.get('possession_status')?.dirty || submitForm.get('possession_status')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('possession_status')?.invalid && (submitForm.get('possession_status')?.dirty || submitForm.get('possession_status')?.touched)"
+                      class="mgs_error">
                       Please Select Possession Status.
                     </div>
                   </div>
 
-                  <div class="col-md-6">
+                  <div class="col-md-6 formCom">
                     <label for="Possession-Status">Transaction Type</label>
-                    <select
-                      formControlName="transaction_type"
-                      id="Possession-Status"
-                      class="gold-form-input"
-                      (change)="ontransactiontype()"
-                    >
+                    <select formControlName="transaction_type" id="Possession-Status" class="gold-form-input"
+                      (change)="ontransactiontype()">
                       <option value disabled selected>Select Transaction Type</option>
                       <option value="ReSale">Resale</option>
                       <option value="New Property">New Property</option>
                     </select>
-                    <div *ngIf="submitForm.get('transaction_type')?.invalid && (submitForm.get('transaction_type')?.dirty || submitForm.get('transaction_type')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('transaction_type')?.invalid && (submitForm.get('transaction_type')?.dirty || submitForm.get('transaction_type')?.touched)"
+                      class="mgs_error">
                       Please Select Transaction Type.
                     </div>
                   </div>
                 </div>
                 <div class="pp-form__fieldset">
-                  <div id="underconstruction" *ngIf="selectedPropertyFor == 'Sell' || selectedPossessionStatus == 'Under Construction'">
-                    <div class="col-md-6">
+                  <div id="underconstruction"
+                    *ngIf="selectedPropertyFor == 'Sell' || selectedPossessionStatus == 'Under Construction'">
+                    <div class="col-md-6 formCom">
                       <label for="available-from-month">Month</label>
-                      <select
-                        formControlName="available_from_month"
-                        id="available-from-month"
-                        class="gold-form-input"
-                      >
+                      <select formControlName="available_from_month" id="available-from-month" class="gold-form-input">
                         <option value disabled selected>Select Month</option>
                         <option value="January">January</option>
                         <option value="February">February</option>
@@ -1679,21 +1365,21 @@
                         <option value="November">November</option>
                         <option value="December">December</option>
                       </select>
-                      <div *ngIf="submitForm.get('available_from_month')?.invalid && (submitForm.get('available_from_month')?.dirty || submitForm.get('available_from_month')?.touched)" class="mgs_error">
+                      <div
+                        *ngIf="submitForm.get('available_from_month')?.invalid && (submitForm.get('available_from_month')?.dirty || submitForm.get('available_from_month')?.touched)"
+                        class="mgs_error">
                         Please Select Month.
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 formCom">
                       <label for="available-from-year">Year</label>
-                      <select
-                        formControlName="available_from_year"
-                        id="available-from-year"
-                        class="gold-form-input"
-                      >
+                      <select formControlName="available_from_year" id="available-from-year" class="gold-form-input">
                         <option value disabled selected>Select Year</option>
                         <option *ngFor="let year of availableYears" [value]="year">{{ year }}</option>
                       </select>
-                      <div *ngIf="submitForm.get('available_from_year')?.invalid && (submitForm.get('available_from_year')?.dirty || submitForm.get('available_from_year')?.touched)" class="mgs_error">
+                      <div
+                        *ngIf="submitForm.get('available_from_year')?.invalid && (submitForm.get('available_from_year')?.dirty || submitForm.get('available_from_year')?.touched)"
+                        class="mgs_error">
                         Please Select Year.
                       </div>
                     </div>
@@ -1701,498 +1387,383 @@
 
                   <div id="avalblfrm" *ngIf="selectedPossessionStatus == 'Under Construction'">
                     <div class="pp-form__fieldset__heading mb-2">Available From</div>
-                      <input type="hidden" id="user__type" value />
-                      <input type="hidden" id="prop__type" value />
-                      <input type="hidden" id="ownerdashboardUrl" value />
-                      <div class="pp-form__fieldset__wrap">
-                        <div id="rentavlbldate">
-                          <div class="col-md-6">
-                            <div class="pp-form__elem-radio" style="width: 120px; height: 44px">
-                              <input
-                                class="pp-form__elem-radio__input"
-                                formControlName="avbldate"
-                                type="radio"
-                                id="SelectDate"
-                                (change)="onSelectionChange()"
-                                autocomplete="off"
-                                value="SelectDate"
-                              />
+                    <input type="hidden" id="user__type" value />
+                    <input type="hidden" id="prop__type" value />
+                    <input type="hidden" id="ownerdashboardUrl" value />
+                    <div class="pp-form__fieldset__wrap">
+                      <div id="rentavlbldate">
+                        <div class="col-md-6">
+                          <div class="pp-form__elem-radio" style="width: 120px; height: 44px">
+                            <input class="pp-form__elem-radio__input" formControlName="avbldate" type="radio"
+                              id="SelectDate" (change)="onSelectionChange()" autocomplete="off" value="SelectDate" />
 
-                              <label
-                                class="pp-form__elem-radio__label"
-                                for="SelectDate"
-                              >
-                                Select Date
-                              </label>
-                            </div>
+                            <label class="pp-form__elem-radio__label" for="SelectDate">
+                              Select Date
+                            </label>
+                          </div>
 
-                            <div class="pp-form__elem-radio" style="width: 120px; height: 44px">
-                              <input
-                                class="pp-form__elem-radio__input"
-                                formControlName="avbldate"
-                                type="radio"
-                                id="Immediately"
-                                (change)="onSelectionChange()"
-                                autocomplete="off"
-                                value="Immediately"
-                              />
-                              <label
-                                class="pp-form__elem-radio__label"
-                                for="Immediately"
-                                >Immediately
-                              </label>
-                            </div>
-                            <div *ngIf="submitForm.get('avbldate')?.invalid && (submitForm.get('avbldate')?.dirty || submitForm.get('avbldate')?.touched)" class="mgs_error">
-                              Please select Available From.
-                            </div>
+                          <div class="pp-form__elem-radio" style="width: 120px; height: 44px">
+                            <input class="pp-form__elem-radio__input" formControlName="avbldate" type="radio"
+                              id="Immediately" (change)="onSelectionChange()" autocomplete="off" value="Immediately" />
+                            <label class="pp-form__elem-radio__label" for="Immediately">Immediately
+                            </label>
+                          </div>
+                          <div
+                            *ngIf="submitForm.get('avbldate')?.invalid && (submitForm.get('avbldate')?.dirty || submitForm.get('avbldate')?.touched)"
+                            class="mgs_error">
+                            Please select Available From.
                           </div>
                         </div>
                       </div>
+                    </div>
                   </div>
 
-                      <div id="rentavlbldate2">
-                        <div class="col-md-6">
-                        <input
-                          *ngIf="selectedAvailabaleDate === 'SelectDate'"
-                          type="date"
-                          id="date"
-                          formControlName="available_from"
-                          class="gold-form-input post_fm mt-2"
-                        />
-                        <div *ngIf="submitForm.get('available_from')?.invalid && (submitForm.get('available_from')?.dirty || submitForm.get('available_from')?.touched)" class="mgs_error">
-                          Please select Date.
+                  <div id="rentavlbldate2">
+                    <div class="col-md-6">
+                      <input *ngIf="selectedAvailabaleDate === 'SelectDate'" type="date" id="date"
+                        formControlName="available_from" class="gold-form-input post_fm mt-2" />
+                      <div
+                        *ngIf="submitForm.get('available_from')?.invalid && (submitForm.get('available_from')?.dirty || submitForm.get('available_from')?.touched)"
+                        class="mgs_error">
+                        Please select Date.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="readytomove"
+                    *ngIf="selectedPossessionStatus == 'Ready to Move'  && selectedPropertyFor == 'Rent' || selectedPropertyFor == 'Sell'">
+                    <div class="col-md-6 formCom">
+                      <div class="pp-form__fieldset__wrap">
+                        <label for="Age of Construction">Age of Construction</label><br />
+                        <select formControlName="age_of_construction" id="Age of Construction"
+                          class="gold-form-input post_fm" (change)="ageofconstruction()">
+                          <option value="">Select Age Of Construction</option>
+                          <option value="New Construction">New Construction</option>
+                          <option value="Less than 5 years">Less than 5 years</option>
+                          <option value="5 to 10 years">5 to 10 years</option>
+                          <option value="10 to 15 years">10 to 15 years</option>
+                          <option value="15 to 20 years">15 to 20 years</option>
+                          <option value="Above 20 years">Above 20 years</option>
+                        </select>
+                        <div
+                          *ngIf="submitForm.get('age_of_construction')?.invalid && (submitForm.get('age_of_construction')?.dirty || submitForm.get('age_of_construction')?.touched)"
+                          class="mgs_error">
+                          Please select age Of Construction.
                         </div>
                       </div>
-                      </div>
+                    </div>
+                  </div>
 
-                      <div id="readytomove" *ngIf="selectedPossessionStatus == 'Ready to Move'  && selectedPropertyFor == 'Rent' || selectedPropertyFor == 'Sell'">
-                        <div class="col-md-6">
-                          <div class="pp-form__fieldset__wrap">
-                            <label for="Age of Construction">Age of Construction</label><br />
-                            <select formControlName="age_of_construction" id="Age of Construction" class="gold-form-input post_fm" (change)="ageofconstruction()">
-                              <option value="">Select Age Of Construction</option>
-                              <option value="New Construction">New Construction</option>
-                              <option value="Less than 5 years">Less than 5 years</option>
-                              <option value="5 to 10 years">5 to 10 years</option>
-                              <option value="10 to 15 years">10 to 15 years</option>
-                              <option value="15 to 20 years">15 to 20 years</option>
-                              <option value="Above 20 years">Above 20 years</option>
-                            </select>
-                            <div *ngIf="submitForm.get('age_of_construction')?.invalid && (submitForm.get('age_of_construction')?.dirty || submitForm.get('age_of_construction')?.touched)" class="mgs_error">
-                              Please select age Of Construction.
-                            </div>
-                          </div>
+                  <div id="leasedorreturn"
+                    *ngIf="selectedPropertyFor =='Sell' && selectedPossessionStatus == 'Ready to Move' && selectedAgeOfConstruction !== 'New Construction'">
+                    <div class="col-md-6">
+                      <div class="pp-form__fieldset__wrap">
+                        <div class="pp-form__fieldset__heading mb-2">Currently Leased Out</div>
+                        <div class="pp-form__elem-radio" style="width: 120px; height: 44px">
+                          <input class="pp-form__elem-radio__input" formControlName="currently_leased_out" type="radio"
+                            id="CurrentlyLeasedOutYes" (change)="onLeased()" autocomplete="off" value="1" />
+
+                          <label class="pp-form__elem-radio__label" for="CurrentlyLeasedOutYes">Yes</label>
                         </div>
-                      </div>
 
-                      <div id="leasedorreturn" *ngIf="selectedPropertyFor =='Sell' && selectedPossessionStatus == 'Ready to Move' && selectedAgeOfConstruction !== 'New Construction'">
-                        <div class="col-md-6">
-                          <div class="pp-form__fieldset__wrap">
-                            <div class="pp-form__fieldset__heading mb-2">Currently Leased Out</div>
-                            <div class="pp-form__elem-radio" style="width: 120px; height: 44px">
-                              <input
-                                class="pp-form__elem-radio__input"
-                                formControlName="currently_leased_out"
-                                type="radio"
-                                id="CurrentlyLeasedOutYes"
-                                (change)="onLeased()"
-                                autocomplete="off"
-                                value="1"
-                              />
-
-                              <label class="pp-form__elem-radio__label" for="CurrentlyLeasedOutYes">Yes</label>
-                            </div>
-
-                            <div class="pp-form__elem-radio" style="width: 120px; height: 44px">
-                              <input
-                                class="pp-form__elem-radio__input"
-                                formControlName="currently_leased_out"
-                                type="radio"
-                                id="CurrentlyLeasedOutNo"
-                                (change)="onLeased()"
-                                autocomplete="off"
-                                value="0"
-                              />
-                              <label class="pp-form__elem-radio__label" for="CurrentlyLeasedOutNo">No</label>
-                            </div>
-                            <div *ngIf="submitForm.get('avbldate')?.invalid && (submitForm.get('avbldate')?.dirty || submitForm.get('avbldate')?.touched)" class="mgs_error">
-                              Please select Available From.
-                            </div>
-                          </div>
-
-                          <div class="pp-form__fieldset__wrap">
-                            <div class="pp-form__fieldset__heading mb-2">Assured Returns</div>
-                            <div class="pp-form__elem-radio" style="width: 120px; height: 44px">
-                              <input
-                                class="pp-form__elem-radio__input"
-                                formControlName="assured_returns"
-                                type="radio"
-                                id="assured_returnsYes"
-                                (change)="onAssuredReturns()"
-                                autocomplete="off"
-                                value="1"
-                              />
-
-                              <label class="pp-form__elem-radio__label" for="assured_returnsYes">Yes</label>
-                            </div>
-
-                            <div class="pp-form__elem-radio" style="width: 120px; height: 44px">
-                              <input
-                                class="pp-form__elem-radio__input"
-                                formControlName="assured_returns"
-                                type="radio"
-                                id="assured_returnsNo"
-                                (change)="onSelectionChange()"
-                                autocomplete="off"
-                                value="0"
-                              />
-                              <label class="pp-form__elem-radio__label" for="assured_returnsNo">No</label>
-                            </div>
-                            <div *ngIf="submitForm.get('assured_returns')?.invalid && (submitForm.get('assured_returns')?.dirty || submitForm.get('assured_returns')?.touched)" class="mgs_error">
-                              Please select Assured Return.
-                            </div>
-                          </div>
+                        <div class="pp-form__elem-radio" style="width: 120px; height: 44px">
+                          <input class="pp-form__elem-radio__input" formControlName="currently_leased_out" type="radio"
+                            id="CurrentlyLeasedOutNo" (change)="onLeased()" autocomplete="off" value="0" />
+                          <label class="pp-form__elem-radio__label" for="CurrentlyLeasedOutNo">No</label>
+                        </div>
+                        <div
+                          *ngIf="submitForm.get('avbldate')?.invalid && (submitForm.get('avbldate')?.dirty || submitForm.get('avbldate')?.touched)"
+                          class="mgs_error">
+                          Please select Available From.
                         </div>
                       </div>
 
-                      <div id="currentlyleasedyes" *ngIf="isLeased == 1">
-                        <div class="col-md-6">
-                          <label for="whom_property_leased">To whom has the property been leased</label>
-                          <input
-                            type="text"
-                            formControlName="whom_property_leased"
-                            id="whom_property_leased"
-                            placeholder="Please specify whether your property has  be leased to a company or an individual"
-                            class="gold-form-input"
-                          />
-                          <div *ngIf="submitForm.get('whom_property_leased')?.invalid && (submitForm.get('whom_property_leased')?.dirty || submitForm.get('whom_property_leased')?.touched)" class="mgs_error">
-                            Please enter landmarks.
-                          </div>
+                      <div class="pp-form__fieldset__wrap">
+                        <div class="pp-form__fieldset__heading mb-2">Assured Returns</div>
+                        <div class="pp-form__elem-radio" style="width: 120px; height: 44px">
+                          <input class="pp-form__elem-radio__input" formControlName="assured_returns" type="radio"
+                            id="assured_returnsYes" (change)="onAssuredReturns()" autocomplete="off" value="1" />
+
+                          <label class="pp-form__elem-radio__label" for="assured_returnsYes">Yes</label>
                         </div>
 
-                        <div class="col-md-6">
-                          <label for="monthly_rent">Monthly Rent</label>
-                          <input
-                            type="text"
-                            formControlName="monthly_rent"
-                            id="monthly_rent"
-                            placeholder="Enter Monthly Rent"
-                            class="gold-form-input"
-                          />
-                          <div *ngIf="submitForm.get('monthly_rent')?.invalid && (submitForm.get('monthly_rent')?.dirty || submitForm.get('monthly_rent')?.touched)" class="mgs_error">
-                            Please Enter Monthly Rent.
-                          </div>
+                        <div class="pp-form__elem-radio" style="width: 120px; height: 44px">
+                          <input class="pp-form__elem-radio__input" formControlName="assured_returns" type="radio"
+                            id="assured_returnsNo" (change)="onSelectionChange()" autocomplete="off" value="0" />
+                          <label class="pp-form__elem-radio__label" for="assured_returnsNo">No</label>
                         </div>
-
-                        <div class="col-md-6">
-                          <label for="leased_on">Leased On</label>
-                          <input
-                            type="text"
-                            formControlName="leased_on"
-                            id="leased_on"
-                            placeholder="Enter Leased On"
-                            class="gold-form-input"
-                          />
-                          <div *ngIf="submitForm.get('leased_on')?.invalid && (submitForm.get('leased_on')?.dirty || submitForm.get('leased_on')?.touched)" class="mgs_error">
-                            Please Enter Leased On.
-                          </div>
-                        </div>
-
-                        <div class="col-md-6">
-                          <label for="ideal-busi">Current Business Sector</label>
-                          <select
-                            formControlName="current_business_sector"
-                            id="ideal-busi"
-                            class="gold-form-input"
-                            (change)="currentbusinesssector()"
-                          >
-                            <option value disabled selected>Select Current Business Sector</option>
-                            <option
-                              *ngFor="let data of this.BusinessSector"
-                              [value]="data.id"
-                            >
-                              {{ data.business_sector_name }}
-                            </option>
-                          </select>
-                          <div *ngIf="submitForm.get('current_business_sector')?.invalid && (submitForm.get('current_business_sector')?.dirty || submitForm.get('current_business_sector')?.touched)" class="mgs_error">
-                            Please enter Business sector.
-                          </div>
-                        </div>
-
-                        <div id="otherbusinesssectors" *ngIf="selectedCurrentBusinessSector == '39'">
-                          <div class="col-md-6">
-                            <label for="leased_on">Other Business Sector</label>
-                            <input
-                              type="text"
-                              formControlName="current_business_sector_other"
-                              id="leased_on"
-                              placeholder="Enter Other Business Sector"
-                              class="gold-form-input"
-                            />
-                            <div *ngIf="submitForm.get('current_business_sector_other')?.invalid && (submitForm.get('current_business_sector_other')?.dirty || submitForm.get('current_business_sector_other')?.touched)" class="mgs_error">
-                              Please Enter Other Business Sector.
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-md-6">
-                          <label for="in_business_since">In Business Since</label>
-                          <select
-                            formControlName="in_business_since"
-                            id="in_business_since"
-                            class="gold-form-input"
-                          >
-                            <option value disabled selected>Select In Business Since</option>
-                            <option *ngFor="let years of businessYears" [value]="years">{{ years }}</option>
-                          </select>
-                          <div *ngIf="submitForm.get('in_business_since')?.invalid && (submitForm.get('in_business_since')?.dirty || submitForm.get('in_business_since')?.touched)" class="mgs_error">
-                            Please Select In Business Since.
-                          </div>
+                        <div
+                          *ngIf="submitForm.get('assured_returns')?.invalid && (submitForm.get('assured_returns')?.dirty || submitForm.get('assured_returns')?.touched)"
+                          class="mgs_error">
+                          Please select Assured Return.
                         </div>
                       </div>
+                    </div>
+                  </div>
 
-                      <div id="assuredreturnsyes" *ngIf="selectedAssuredReturns == '1'">
-                        <div class="col-md-6">
-                          <label for="rate_of_return">Rate Of Return</label>
-                          <input
-                            type="text"
-                            formControlName="rate_of_return"
-                            id="rate_of_return"
-                            placeholder="Enter Rate Of Return"
-                            class="gold-form-input"
-                          />
-                          <div *ngIf="submitForm.get('rate_of_return')?.invalid && (submitForm.get('rate_of_return')?.dirty || submitForm.get('rate_of_return')?.touched)" class="mgs_error">
-                            Please Enter Rate Of Return.
-                          </div>
+                  <div id="currentlyleasedyes" *ngIf="isLeased == 1">
+                    <div class="col-md-6">
+                      <label for="whom_property_leased">To whom has the property been leased</label>
+                      <input type="text" formControlName="whom_property_leased" id="whom_property_leased"
+                        placeholder="Please specify whether your property has  be leased to a company or an individual"
+                        class="gold-form-input" />
+                      <div
+                        *ngIf="submitForm.get('whom_property_leased')?.invalid && (submitForm.get('whom_property_leased')?.dirty || submitForm.get('whom_property_leased')?.touched)"
+                        class="mgs_error">
+                        Please enter landmarks.
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="monthly_rent">Monthly Rent</label>
+                      <input type="text" formControlName="monthly_rent" id="monthly_rent"
+                        placeholder="Enter Monthly Rent" class="gold-form-input" />
+                      <div
+                        *ngIf="submitForm.get('monthly_rent')?.invalid && (submitForm.get('monthly_rent')?.dirty || submitForm.get('monthly_rent')?.touched)"
+                        class="mgs_error">
+                        Please Enter Monthly Rent.
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="leased_on">Leased On</label>
+                      <input type="text" formControlName="leased_on" id="leased_on" placeholder="Enter Leased On"
+                        class="gold-form-input" />
+                      <div
+                        *ngIf="submitForm.get('leased_on')?.invalid && (submitForm.get('leased_on')?.dirty || submitForm.get('leased_on')?.touched)"
+                        class="mgs_error">
+                        Please Enter Leased On.
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="ideal-busi">Current Business Sector</label>
+                      <select formControlName="current_business_sector" id="ideal-busi" class="gold-form-input"
+                        (change)="currentbusinesssector()">
+                        <option value disabled selected>Select Current Business Sector</option>
+                        <option *ngFor="let data of this.BusinessSector" [value]="data.id">
+                          {{ data.business_sector_name }}
+                        </option>
+                      </select>
+                      <div
+                        *ngIf="submitForm.get('current_business_sector')?.invalid && (submitForm.get('current_business_sector')?.dirty || submitForm.get('current_business_sector')?.touched)"
+                        class="mgs_error">
+                        Please enter Business sector.
+                      </div>
+                    </div>
+
+                    <div id="otherbusinesssectors" *ngIf="selectedCurrentBusinessSector == '39'">
+                      <div class="col-md-6">
+                        <label for="leased_on">Other Business Sector</label>
+                        <input type="text" formControlName="current_business_sector_other" id="leased_on"
+                          placeholder="Enter Other Business Sector" class="gold-form-input" />
+                        <div
+                          *ngIf="submitForm.get('current_business_sector_other')?.invalid && (submitForm.get('current_business_sector_other')?.dirty || submitForm.get('current_business_sector_other')?.touched)"
+                          class="mgs_error">
+                          Please Enter Other Business Sector.
                         </div>
                       </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="in_business_since">In Business Since</label>
+                      <select formControlName="in_business_since" id="in_business_since" class="gold-form-input">
+                        <option value disabled selected>Select In Business Since</option>
+                        <option *ngFor="let years of businessYears" [value]="years">{{ years }}</option>
+                      </select>
+                      <div
+                        *ngIf="submitForm.get('in_business_since')?.invalid && (submitForm.get('in_business_since')?.dirty || submitForm.get('in_business_since')?.touched)"
+                        class="mgs_error">
+                        Please Select In Business Since.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="assuredreturnsyes" *ngIf="selectedAssuredReturns == '1'">
+                    <div class="col-md-6">
+                      <label for="rate_of_return">Rate Of Return</label>
+                      <input type="text" formControlName="rate_of_return" id="rate_of_return"
+                        placeholder="Enter Rate Of Return" class="gold-form-input" />
+                      <div
+                        *ngIf="submitForm.get('rate_of_return')?.invalid && (submitForm.get('rate_of_return')?.dirty || submitForm.get('rate_of_return')?.touched)"
+                        class="mgs_error">
+                        Please Enter Rate Of Return.
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               <!-- This will be visible when top builder and rent/lease are selected -->
 
-              <div class="price_details">
-                <h4 class="title-property m-0 pb-3" *ngIf="selectedPropertyFor === 'Sell' && selectedTransactionType === 'New Property' && ['1', '3', '4', '5', '8', '10', '11', '12', '16', '18', '19', '20'].includes(selectedPropertyType) && totalcompletePrice == '0' && selectedPropertyFor == 'Sell' && totalcompletePrice == '1' && selectedPropertyFor == 'Rent'">Price Details</h4>
-                <div class="filde_commercial col-md-6" id="property_price">
+              <div class="price_details ">
+                <h4 class="title-property m-0 pb-3"
+                  *ngIf="selectedPropertyFor === 'Sell' && selectedTransactionType === 'New Property' && ['1', '3', '4', '5', '8', '10', '11', '12', '16', '18', '19', '20'].includes(selectedPropertyType) && totalcompletePrice == '0' && selectedPropertyFor == 'Sell' && totalcompletePrice == '1' && selectedPropertyFor == 'Rent'">
+                  Price Details</h4>
+                <div class="filde_commercial col-md-6 formCom" id="property_price">
                   <label class="form-label">Show Property Price</label>
 
                   <div class="modify_oop">
                     <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        formControlName="property_price_show"
-                        id="yesOptionPropertyPrice"
-                        value="0"
-                      />
+                      <input class="form-check-input" type="radio" formControlName="property_price_show"
+                        id="yesOptionPropertyPrice" value="0" />
                       <label class="form-check-label" for="yesOptionPropertyPrice">
                         Yes
                       </label>
                     </div>
 
                     <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        formControlName="property_price_show"
-                        id="noOptionPropertyPrice"
-                        value="1"
-                      />
+                      <input class="form-check-input" type="radio" formControlName="property_price_show"
+                        id="noOptionPropertyPrice" value="1" />
                       <label class="form-check-label" for="noOptionPropertyPrice">
                         No
                       </label>
                     </div>
-                    <div *ngIf="submitForm.get('property_price_show')?.invalid && (submitForm.get('property_price_show')?.dirty || submitForm.get('property_price_show')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('property_price_show')?.invalid && (submitForm.get('property_price_show')?.dirty || submitForm.get('property_price_show')?.touched)"
+                      class="mgs_error">
                       Please select is property price Show or not.
                     </div>
                   </div>
                 </div>
 
-                <div id="wishtoenter" *ngIf="selectedTransactionType === 'New Property' && ['1', '3', '4', '5', '8', '10', '11', '12', '16', '18', '19', '20'].includes(selectedPropertyType)">
+                <div id="wishtoenter"
+                  *ngIf="selectedTransactionType === 'New Property' && ['1', '3', '4', '5', '8', '10', '11', '12', '16', '18', '19', '20'].includes(selectedPropertyType)">
                   <label class="form-label">You Wish to Enter</label>
                   <div class="modify_oop">
                     <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        formControlName="cmpltprice"
-                        id="yesCmpltprice"
-                        value="0"
-                        (change)="totalandcompletePrice()"
-                      />
+                      <input class="form-check-input" type="radio" formControlName="cmpltprice" id="yesCmpltprice"
+                        value="0" (change)="totalandcompletePrice()" />
                       <label class="form-check-label" for="yesCmpltprice">Complete Price Details</label>
                     </div>
 
                     <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        formControlName="cmpltprice"
-                        id="noCmpltprice"
-                        value="1"
-                        (change)="totalandcompletePrice()"
-                      />
+                      <input class="form-check-input" type="radio" formControlName="cmpltprice" id="noCmpltprice"
+                        value="1" (change)="totalandcompletePrice()" />
                       <label class="form-check-label" for="noCmpltprice">Total Price Only</label>
                     </div>
                   </div>
                 </div>
 
-                <div id="cmpltprice-content" *ngIf="totalcompletePrice == '0'">
+                <div id="cmpltprice-content" class="formCom" *ngIf="totalcompletePrice == '0'">
                   <div class="col-md-6">
                     <label for="basic_price">Basic Price Per Sqft</label>
-                    <input
-                      type="text"
-                      formControlName="basic_price"
-                      id="basic_price"
-                      placeholder="Enter Basic Price Per Sqft"
-                      class="gold-form-input"
-                    />
-                    <div *ngIf="submitForm.get('basic_price')?.invalid && (submitForm.get('basic_price')?.dirty || submitForm.get('basic_price')?.touched)" class="mgs_error">
+                    <input type="text" formControlName="basic_price" id="basic_price"
+                      placeholder="Enter Basic Price Per Sqft" class="gold-form-input" />
+                    <div
+                      *ngIf="submitForm.get('basic_price')?.invalid && (submitForm.get('basic_price')?.dirty || submitForm.get('basic_price')?.touched)"
+                      class="mgs_error">
                       Please Enter Basic Price Per Sqft.
                     </div>
                   </div>
 
                   <div class="col-md-6">
                     <label for="floor_plc">Floor PLC Per Sqft</label>
-                    <input
-                      type="text"
-                      formControlName="floor_plc"
-                      id="floor_plc"
-                      placeholder="Enter Floor PLC Per Sqft"
-                      class="gold-form-input"
-                    />
-                    <div *ngIf="submitForm.get('floor_plc')?.invalid && (submitForm.get('floor_plc')?.dirty || submitForm.get('floor_plc')?.touched)" class="mgs_error">
+                    <input type="text" formControlName="floor_plc" id="floor_plc" placeholder="Enter Floor PLC Per Sqft"
+                      class="gold-form-input" />
+                    <div
+                      *ngIf="submitForm.get('floor_plc')?.invalid && (submitForm.get('floor_plc')?.dirty || submitForm.get('floor_plc')?.touched)"
+                      class="mgs_error">
                       Please Enter Floor PLC Per Sqft.
                     </div>
                   </div>
 
                   <div class="col-md-6">
                     <label for="facing_plc">Facing PLC Per Sqft</label>
-                    <input
-                      type="text"
-                      formControlName="facing_plc"
-                      id="facing_plc"
-                      placeholder="Enter Facing PLC Per Sqft"
-                      class="gold-form-input"
-                    />
-                    <div *ngIf="submitForm.get('facing_plc')?.invalid && (submitForm.get('facing_plc')?.dirty || submitForm.get('facing_plc')?.touched)" class="mgs_error">
+                    <input type="text" formControlName="facing_plc" id="facing_plc"
+                      placeholder="Enter Facing PLC Per Sqft" class="gold-form-input" />
+                    <div
+                      *ngIf="submitForm.get('facing_plc')?.invalid && (submitForm.get('facing_plc')?.dirty || submitForm.get('facing_plc')?.touched)"
+                      class="mgs_error">
                       Please Enter Facing PLC Per Sqft.
                     </div>
                   </div>
 
                   <div class="col-md-6">
                     <label for="total_price">Total Price</label>
-                    <input
-                      type="number"
-                      id="total_price"
-                      formControlName="total_price"
-                      placeholder="Enter Total price"
-                      class="gold-form-input mb-2"
-                      step="any"
-                    />
-                    <div *ngIf="submitForm.get('total_price')?.invalid && (submitForm.get('total_price')?.dirty || submitForm.get('total_price')?.touched)" class="mgs_error">
+                    <input type="number" id="total_price" formControlName="total_price" placeholder="Enter Total price"
+                      class="gold-form-input mb-2" step="any" />
+                    <div
+                      *ngIf="submitForm.get('total_price')?.invalid && (submitForm.get('total_price')?.dirty || submitForm.get('total_price')?.touched)"
+                      class="mgs_error">
                       Please Enter Price
                     </div>
                   </div>
 
-                  <div class="col-md-6">
+                  <div class="col-md-6 formCom">
                     <label for="lac_or_cr">Lac or Cr</label><br />
                     <select formControlName="lac_or_cr" id="lac_or_cr" class="gold-form-input post_fm">
                       <option value disabled selected>Select Lac or Cr</option>
                       <option value="Lac">Lac</option>
                       <option value="Cr">Cr</option>
                     </select>
-                    <div *ngIf="submitForm.get('lac_or_cr')?.invalid && (submitForm.get('lac_or_cr')?.dirty || submitForm.get('lac_or_cr')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('lac_or_cr')?.invalid && (submitForm.get('lac_or_cr')?.dirty || submitForm.get('lac_or_cr')?.touched)"
+                      class="mgs_error">
                       Please Select Price
                     </div>
                   </div>
                 </div>
 
                 <div id="totalprice-content" *ngIf="selectedPropertyFor == 'Sell' || totalcompletePrice == '1'">
-                  <div class="col-md-6">
+                  <div class="col-md-6 formCom">
                     <label for="Monthly Rent">Total Price</label>
-                    <input
-                      type="number"
-                      id="Monthly Rent"
-                      formControlName="total_price"
-                      placeholder="Enter Total price"
-                      class="gold-form-input mb-2"
-                    />
-                    <div *ngIf="submitForm.get('total_price')?.invalid && (submitForm.get('total_price')?.dirty || submitForm.get('total_price')?.touched)" class="mgs_error">
+                    <input type="number" id="Monthly Rent" formControlName="total_price" placeholder="Enter Total price"
+                      class="gold-form-input mb-2" />
+                    <div
+                      *ngIf="submitForm.get('total_price')?.invalid && (submitForm.get('total_price')?.dirty || submitForm.get('total_price')?.touched)"
+                      class="mgs_error">
                       Please Enter Price
                     </div>
                   </div>
 
-                  <div class="col-md-6">
+                  <div class="col-md-6 formCom">
                     <label for="Lac or Cr">Lac or Cr</label><br />
-                    <select
-                      formControlName="lac_or_cr"
-                      id="price_in"
-                      class="gold-form-input post_fm"
-                    >
+                    <select formControlName="lac_or_cr" id="price_in" class="gold-form-input post_fm">
                       <option value disabled selected>Select Lac or Cr</option>
                       <option value="Lac">Lac</option>
                       <option value="Cr">Cr</option>
                     </select>
-                    <div *ngIf="submitForm.get('lac_or_cr')?.invalid && (submitForm.get('lac_or_cr')?.dirty || submitForm.get('lac_or_cr')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('lac_or_cr')?.invalid && (submitForm.get('lac_or_cr')?.dirty || submitForm.get('lac_or_cr')?.touched)"
+                      class="mgs_error">
                       Please Select Lac Or Cr.
                     </div>
                   </div>
 
-                  <div class="col-md-12">
+                  <div class="col-md-12 formCom">
                     <label for="Maintenance Charges">Price per sq-ft</label>
                     <div class="rs_symbole">
                       <span class="input-group-addon">₹</span>
-                      <input
-                        type="number"
-                        id="price_sqft"
-                        formControlName="price_per_sq_ft"
-                        placeholder="Enter Price Per Sqft"
-                        class="gold-form-input ps-3"
-                      />
-                      <div *ngIf="submitForm.get('price_per_sq_ft')?.invalid && (submitForm.get('price_per_sq_ft')?.dirty || submitForm.get('price_per_sq_ft')?.touched)" class="mgs_error">
+                      <input type="number" id="price_sqft" formControlName="price_per_sq_ft"
+                        placeholder="Enter Price Per Sqft" class="gold-form-input ps-3" />
+                      <div
+                        *ngIf="submitForm.get('price_per_sq_ft')?.invalid && (submitForm.get('price_per_sq_ft')?.dirty || submitForm.get('price_per_sq_ft')?.touched)"
+                        class="mgs_error">
                         Please Enter price per Sqft
                       </div>
                     </div>
                   </div>
 
-                  <div class="pp-form__fieldset pb-3">
+                  <div class="pp-form__fieldset pb-3 formCom">
                     <div class="pp-form__fieldset__heading mb-2">Price Includes</div>
 
                     <div class="pp-form__fieldset__wrap">
                       <div class="pp-form__elem-radio" style="width: auto; height: 44px">
-                        <input
-                          class="pp-form__elem-radio__input"
-                          formControlName="price_includes"
-                          type="checkbox"
-                          id="PLC"
-                          autocomplete="off"
-                          [value]="'PLC'"
-                        />
+                        <input class="pp-form__elem-radio__input" formControlName="price_includes" type="checkbox"
+                          id="PLC" autocomplete="off" [value]="'PLC'" />
                         <label class="pp-form__elem-radio__label" for="PLC">PLC</label>
                       </div>
 
                       <div class="pp-form__elem-radio" style="width: auto; height: 44px">
-                        <input
-                          class="pp-form__elem-radio__input"
-                          formControlName="price_includes"
-                          type="checkbox"
-                          id="Car_Parking"
-                          autocomplete="off"
-                          [value]="'Car Parking'"
-                        />
+                        <input class="pp-form__elem-radio__input" formControlName="price_includes" type="checkbox"
+                          id="Car_Parking" autocomplete="off" [value]="'Car Parking'" />
                         <label class="pp-form__elem-radio__label" for="Car_Parking">Car Parking</label>
                       </div>
 
                       <div class="pp-form__elem-radio" style="width: auto; height: 44px">
-                        <input
-                          class="pp-form__elem-radio__input"
-                          formControlName="price_includes"
-                          type="checkbox"
-                          id="ClubMembership"
-                          autocomplete="off"
-                          [value]="'Club Membership'"
-                        />
+                        <input class="pp-form__elem-radio__input" formControlName="price_includes" type="checkbox"
+                          id="ClubMembership" autocomplete="off" [value]="'Club Membership'" />
                         <label class="pp-form__elem-radio__label" for="ClubMembership">Club Membership</label>
                       </div>
                     </div>
@@ -2236,58 +1807,52 @@
                     </div> -->
 
 
-                    <div *ngIf="submitForm.get('price_includes')?.invalid && (submitForm.get('price_includes')?.dirty || submitForm.get('price_includes')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('price_includes')?.invalid && (submitForm.get('price_includes')?.dirty || submitForm.get('price_includes')?.touched)"
+                      class="mgs_error">
                       Please select price includes.
                     </div>
                   </div>
 
 
-                  <div class="col-md-6">
+                  <div class="col-md-6 formCom">
                     <label for="token_amount">Booking/Token Amount</label>
                     <div class="rs_symbole">
                       <span class="input-group-addon">₹</span>
-                      <input
-                        type="number"
-                        id="token_amount"
-                        formControlName="booking_or_token_ammount"
-                        placeholder="Enter Booking/Token Amount"
-                        class="gold-form-input ps-3"
-                      />
+                      <input type="number" id="token_amount" formControlName="booking_or_token_ammount"
+                        placeholder="Enter Booking/Token Amount" class="gold-form-input ps-3" />
                     </div>
-                    <div *ngIf="submitForm.get('booking_or_token_ammount')?.invalid && (submitForm.get('booking_or_token_ammount')?.dirty || submitForm.get('booking_or_token_ammount')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('booking_or_token_ammount')?.invalid && (submitForm.get('booking_or_token_ammount')?.dirty || submitForm.get('booking_or_token_ammount')?.touched)"
+                      class="mgs_error">
                       Please Enter Booking/Token Amount
                     </div>
                   </div>
 
-                  <div class="col-md-6">
+                  <div class="col-md-6 formCom">
                     <label for="Lac or Cr">Thousand, Lac or Cr</label><br />
-                    <select
-                      formControlName="thousand_lac_or_cr"
-                      id="price_in_token"
-                      class="gold-form-input post_fm"
-                    >
+                    <select formControlName="thousand_lac_or_cr" id="price_in_token" class="gold-form-input post_fm">
                       <option value disabled selected>Select Thousand, Lac or Cr</option>
                       <option value="Thousand">Thousand</option>
                       <option value="Lac">Lac</option>
                       <option value="Cr">Cr</option>
                     </select>
-                    <div *ngIf="submitForm.get('thousand_lac_or_cr')?.invalid && (submitForm.get('thousand_lac_or_cr')?.dirty || submitForm.get('thousand_lac_or_cr')?.touched)" class="mgs_error">
-                       Please Select thousand, lac or cr
-                      </div>
+                    <div
+                      *ngIf="submitForm.get('thousand_lac_or_cr')?.invalid && (submitForm.get('thousand_lac_or_cr')?.dirty || submitForm.get('thousand_lac_or_cr')?.touched)"
+                      class="mgs_error">
+                      Please Select thousand, lac or cr
+                    </div>
                   </div>
                 </div>
 
                 <div id="sellproperty-content" *ngIf="selectedPropertyFor == 'Rent'">
-                  <div class="col-md-6">
+                  <div class="col-md-6 formCom">
                     <label for="Monthly Rent">Rent Amount</label>
-                    <input
-                      type="number"
-                      id="Monthly Rent"
-                      formControlName="rent_amount"
-                      placeholder="Enter Rent Amount"
-                      class="gold-form-input mb-2"
-                    />
-                    <div *ngIf="submitForm.get('rent_amount')?.invalid && (submitForm.get('rent_amount')?.dirty || submitForm.get('rent_amount')?.touched)" class="mgs_error">
+                    <input type="number" id="Monthly Rent" formControlName="rent_amount" placeholder="Enter Rent Amount"
+                      class="gold-form-input mb-2" />
+                    <div
+                      *ngIf="submitForm.get('rent_amount')?.invalid && (submitForm.get('rent_amount')?.dirty || submitForm.get('rent_amount')?.touched)"
+                      class="mgs_error">
                       Please Rent Amount
                     </div>
                   </div>
@@ -2296,15 +1861,12 @@
                     <label for="Security Amount">Security Amount</label>
                     <div class="rs_symbole">
                       <span class="input-group-addon">₹</span>
-                      <input
-                        type="number"
-                        id="Security Amount"
-                        formControlName="security_amount"
-                        placeholder="Enter Security Amount"
-                        class="gold-form-input ps-3"
-                      />
+                      <input type="number" id="Security Amount" formControlName="security_amount"
+                        placeholder="Enter Security Amount" class="gold-form-input ps-3" />
                     </div>
-                    <div *ngIf="submitForm.get('security_amount')?.invalid && (submitForm.get('security_amount')?.dirty || submitForm.get('security_amount')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('security_amount')?.invalid && (submitForm.get('security_amount')?.dirty || submitForm.get('security_amount')?.touched)"
+                      class="mgs_error">
                       Please Enter Security Amount
                     </div>
                   </div>
@@ -2313,15 +1875,12 @@
                     <label for="Maintenance Charges">Maintenance Charges</label>
                     <div class="rs_symbole">
                       <span class="input-group-addon">₹</span>
-                      <input
-                        type="number"
-                        id="Maintenance Charges"
-                        formControlName="maintanance_charges"
-                        placeholder="Maintenance Charges"
-                        class="gold-form-input ps-3"
-                      />
+                      <input type="number" id="Maintenance Charges" formControlName="maintanance_charges"
+                        placeholder="Maintenance Charges" class="gold-form-input ps-3" />
                     </div>
-                    <div *ngIf="submitForm.get('maintanance_charges')?.invalid && (submitForm.get('maintanance_charges')?.dirty || submitForm.get('maintanance_charges')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('maintanance_charges')?.invalid && (submitForm.get('maintanance_charges')?.dirty || submitForm.get('maintanance_charges')?.touched)"
+                      class="mgs_error">
                       Please Enter Maintanance Charges
                     </div>
                   </div>
@@ -2329,11 +1888,7 @@
 
                   <div class="col-md-6">
                     <label for="per">Maintenance Charges Per</label><br />
-                    <select
-                      formControlName="maintenance_charges_per"
-                      id="per"
-                      class="gold-form-input mb-3"
-                    >
+                    <select formControlName="maintenance_charges_per" id="per" class="gold-form-input mb-3">
                       <option value disabled selected>Select Maintanance Charges Per</option>
                       <option value="Monthly">Month</option>
                       <option value="Quarterly">Quarter</option>
@@ -2342,7 +1897,9 @@
                       <option value="Per sq. Unit Monthly">Sq. Unit Monthly</option>
                     </select>
 
-                    <div *ngIf="submitForm.get('maintenance_charges_per')?.invalid && (submitForm.get('maintenance_charges_per')?.dirty || submitForm.get('maintenance_charges_per')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('maintenance_charges_per')?.invalid && (submitForm.get('maintenance_charges_per')?.dirty || submitForm.get('maintenance_charges_per')?.touched)"
+                      class="mgs_error">
                       Please Enter Maintenance Charges Per
                     </div>
                   </div>
@@ -2350,33 +1907,27 @@
               </div>
 
               <div>
-                <h4 class="title-property pb-3">Property Description</h4>
+                <h4 class="title-property pb-3 ">Property Description</h4>
                 <div class="row">
-                  <div class="col-6">
-                    <textarea
-                      id="Monthly Rent"
-                      formControlName="property_description"
-                      placeholder="Description"
-                      rows="1"
-                      class="gold-form-input mb-3"
-                    ></textarea>
+                  <div class="col-6 formCom">
+                    <textarea id="Monthly Rent" formControlName="property_description" placeholder="Description"
+                      rows="1" class="gold-form-input"></textarea>
                   </div>
-                  <div *ngIf="submitForm.get('property_description')?.invalid && (submitForm.get('property_description')?.dirty || submitForm.get('property_description')?.touched)" class="mgs_error">
+                  <div
+                    *ngIf="submitForm.get('property_description')?.invalid && (submitForm.get('property_description')?.dirty || submitForm.get('property_description')?.touched)"
+                    class="mgs_error">
                     Please Enter Property Description
                   </div>
                   <div class="col-6">
-                    <textarea
-                      id="Monthly Rent"
-                      formControlName="property_facilities"
-                      placeholder="Facility"
-                      rows="1"
-                      class="gold-form-input mb-3"
-                    ></textarea>
+                    <textarea id="Monthly Rent" formControlName="property_facilities" placeholder="Facility" rows="1"
+                      class="gold-form-input"></textarea>
                   </div>
-                  <div *ngIf="submitForm.get('property_facilities')?.invalid && (submitForm.get('property_facilities')?.dirty || submitForm.get('property_facilities')?.touched)" class="mgs_error">
+                  <div
+                    *ngIf="submitForm.get('property_facilities')?.invalid && (submitForm.get('property_facilities')?.dirty || submitForm.get('property_facilities')?.touched)"
+                    class="mgs_error">
                     Please Enter Property Facilities
                   </div>
-                  <div class="col-6">
+                  <div class="col-6 formCom">
                     <div>
                       <label>Property Main Image</label>
                     </div>
@@ -2384,38 +1935,30 @@
                       Upload
                       <i class="fa-solid fa-upload custom-file-input"></i>
                     </label>
-                    <input
-                      type="file"
-                      formControlName="property_main_img"
-                      id="fileInput"
-                      accept="image/*"
-                      multiple
-                    />
+                    <input type="file" formControlName="property_main_img" id="fileInput" accept="image/*" multiple />
                     <div>
                       <img />
                     </div>
-                    <div *ngIf="submitForm.get('property_main_img')?.invalid && (submitForm.get('property_main_img')?.dirty || submitForm.get('property_main_img')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('property_main_img')?.invalid && (submitForm.get('property_main_img')?.dirty || submitForm.get('property_main_img')?.touched)"
+                      class="mgs_error">
                       Please Upload Property Main Images
                     </div>
                   </div>
-                  <div class="col-6">
+                  <div class="col-6 formCom">
                     <div>
                       <label>Property Images</label>
                     </div>
                     <label for="fileInput" class="custom-file-input">
                       Upload<i class="fa-solid fa-upload custom-file-input"></i>
                     </label>
-                    <input
-                      type="file"
-                      formControlName="property_img"
-                      id="fileInput"
-                      accept="image/*"
-                      multiple
-                    />
+                    <input type="file" formControlName="property_img" id="fileInput" accept="image/*" multiple />
                     <div>
                       <img />
                     </div>
-                    <div *ngIf="submitForm.get('property_img')?.invalid && (submitForm.get('property_img')?.dirty || submitForm.get('property_img')?.touched)" class="mgs_error">
+                    <div
+                      *ngIf="submitForm.get('property_img')?.invalid && (submitForm.get('property_img')?.dirty || submitForm.get('property_img')?.touched)"
+                      class="mgs_error">
                       Please Upload Property Images
                     </div>
                   </div>
@@ -2436,31 +1979,19 @@
                 even commercial property fast and immediately.
               </p>
               <div class="check-compare mb-3 mt-1">
-                <input
-                  type="checkbox"
-                  id="agree"
-                  formControlName="terms_conditions"
-                  value="agree"
-                  class="mycheck"
-                />
-                <label for="agree" class="compares"
-                  >I Agree to RealtyMart Terms of Use
-                  <span class="policy_links"
-                    ><a routerLink="../terms-conditions" target="_blank"
-                      >T&C &</a
-                    >
-                    <a routerLink="../privacy-policy" target="_blank"
-                      >Privacy Policy</a
-                    ></span
-                  ></label
-                ><br />
+                <input type="checkbox" id="agree" formControlName="terms_conditions" value="agree" class="mycheck" />
+                <label for="agree" class="compares">I Agree to RealtyMart <a routerLink="../../terms-conditions" target="_blank">Terms of Use</a>
+                  <span class="policy_links"><a routerLink="../terms-conditions" target="_blank">T&C &</a>
+                    <a routerLink="../privacy-policy" target="_blank">Privacy Policy</a></span></label><br />
               </div>
-              <div *ngIf="submitForm.get('terms_conditions')?.invalid && (submitForm.get('terms_conditions')?.dirty || submitForm.get('terms_conditions')?.touched)" class="mgs_error">
+              <div
+                *ngIf="submitForm.get('terms_conditions')?.invalid && (submitForm.get('terms_conditions')?.dirty || submitForm.get('terms_conditions')?.touched)"
+                class="mgs_error">
                 Please Accept Terms & Conditions
               </div>
 
               <button type="submit" class="contact-buy-btn mt-2 mb-3">
-               Post Property
+                Post Property
               </button>
               <!-- This part will remain there whenever any post comes to the property's page. -->
 

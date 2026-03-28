@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, ElementRef, HostListener, Input,OnInit, ViewChild  } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild  } from '@angular/core';
 import { Lightbox } from 'ngx-lightbox';
 import { ProjectApproveDetailsService } from '../service/projectapprovedetail.service';
+import { ProjectdetailsService } from '../service/projectdetails.service';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Location } from '@angular/common';
@@ -20,7 +21,7 @@ declare var bootstrap: any;
   templateUrl: './project-approve-detail.component.html',
   styleUrls: ['./project-approve-detail.component.css']
 })
-export class ProjectApproveDetailComponent implements OnInit,AfterViewInit  {
+export class ProjectApproveDetailComponent implements OnInit, AfterViewInit, OnDestroy  {
   @ViewChild('otpModel') otpModel!: ElementRef;
   @ViewChild('otpContactModel') otpContactModel!: ElementRef;
   private apiUrl: string = environment.apiUrl;
@@ -79,6 +80,7 @@ export class ProjectApproveDetailComponent implements OnInit,AfterViewInit  {
     private _lightbox: Lightbox,
     private route: ActivatedRoute,
     private projectApproveDetailService: ProjectApproveDetailsService,
+    private projectdetailsService: ProjectdetailsService,
     private http: HttpClient,
     private sponsorservice: IssponsoredService,
     private verifyservice: IsverifiedService,
@@ -249,10 +251,60 @@ export class ProjectApproveDetailComponent implements OnInit,AfterViewInit  {
 
   // Properties  slider
 
-  // Download Brochure otp
+  // ===== Brochure Form =====
+  brochureMode: string = 'brochure'; // 'brochure' | 'payment'
+  brochureFormData: any = { name: '', email: '', mobile: '', termsAccepted: false };
+  brochureNameError: boolean = false;
+  brochureEmailError: boolean = false;
+  brochureMobileError: boolean = false;
+  brochureTermsError: boolean = false;
+  brochureOtpVisible: boolean = false;
+  brochureOtp: string = '';
+  brochureOtpError: boolean = false;
 
+  // Download Brochure otp
   showOTP: boolean = false;
   otp: string = '';
+
+  // ===== Gallery =====
+  photoAlbum: any[] = [];
+  layoutAlbum: any[] = [];
+  videoAlbum: any[] = [];
+  galleryVisible: boolean = false;
+  galleryActiveTab: string = 'photos';
+  galleryActiveIndex: number = 0;
+  galleryZoom: number = 1;
+  galleryFormType: string = ''; // 'contact' | 'brochure' | 'payment' | ''
+
+  // ===== Gallery Inline Contact Form =====
+  galleryContactData: any = { name: '', email: '', mobile: '', termsAccepted: false };
+  galleryContactNameErr: boolean = false;
+  galleryContactEmailErr: boolean = false;
+  galleryContactMobileErr: boolean = false;
+  galleryContactTermsErr: boolean = false;
+  galleryContactOtpVisible: boolean = false;
+  galleryContactOtp: string = '';
+  galleryContactOtpErr: boolean = false;
+
+  get currentAlbum(): any[] {
+    if (this.galleryActiveTab === 'layout') return this.layoutAlbum;
+    if (this.galleryActiveTab === 'video') return this.videoAlbum;
+    return this.photoAlbum;
+  }
+
+  // ===== Reviews =====
+  projectReviews: any[] = [];
+  reviewFormData: any = { name: '', review: '', rating: 0 };
+  reviewNameError: boolean = false;
+  reviewTextError: boolean = false;
+  reviewRatingError: boolean = false;
+  hoveredReviewRating: number = 0;
+
+  get averageRating(): number {
+    if (!this.projectReviews.length) return 0;
+    const sum = this.projectReviews.reduce((acc: number, r: any) => acc + (Number(r.rating) || 0), 0);
+    return parseFloat((sum / this.projectReviews.length).toFixed(1));
+  }
 
 
 
@@ -734,6 +786,13 @@ export class ProjectApproveDetailComponent implements OnInit,AfterViewInit  {
 
 
   scrollToSection(sectionId: string): void {
+    // Clear any Bootstrap modal overflow-hidden left on body
+    document.body.classList.remove('modal-open');
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+    // Remove any lingering Bootstrap modal backdrop
+    document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+
     const section = document.getElementById(sectionId);
     const navbar = document.getElementById('navbar');
 
@@ -855,13 +914,44 @@ export class ProjectApproveDetailComponent implements OnInit,AfterViewInit  {
     const projectId : any= this.route.snapshot.paramMap.get('id');
 
     if (projectName && projectId) {
-      this.projectApproveDetailService
-        .getprojectapprovedetail(projectName,projectId)
+      this.projectdetailsService
+        .getprojectdetail1(projectName,projectId)
         .subscribe(
           (projectData: any) => {
             this.singleprojectData = projectData;
             this.singleproject = this.singleprojectData?.data;
-            console.log('singleproject', this.singleproject)
+            console.log('singleproject', this.singleproject);
+
+            // Populate gallery albums
+            const imageBaseUrl = 'https://realtymart.com/backend/public/images/';
+
+            // Project Photos tab: from 3d_project_images (comma-separated filenames)
+            const raw3dImages = this.singleproject?.['3d_project_images'];
+            if (typeof raw3dImages === 'string' && raw3dImages.trim()) {
+              this.photoAlbum = raw3dImages.split(',').map((f: string) => imageBaseUrl + '3d_project_images/' + f.trim()).filter((u: string) => u !== imageBaseUrl + '3d_project_images/');
+            } else if (Array.isArray(raw3dImages)) {
+              this.photoAlbum = raw3dImages;
+            } else {
+              this.photoAlbum = [];
+            }
+
+            // Layout Photos tab: from project_floor_plan_3d (already full URLs array)
+            const rawFloor3d = this.singleproject?.project_floor_plan_3d;
+            this.layoutAlbum = Array.isArray(rawFloor3d) ? rawFloor3d : [];
+
+            // Videos tab
+            this.videoAlbum = Array.isArray(this.singleproject?.project_video)
+              ? this.singleproject.project_video
+              : (this.singleproject?.project_video ? [this.singleproject.project_video] : []);
+
+            // Auto-select first tab that has content
+            if (this.photoAlbum.length > 0) this.galleryActiveTab = 'photos';
+            else if (this.layoutAlbum.length > 0) this.galleryActiveTab = 'layout';
+            else if (this.videoAlbum.length > 0) this.galleryActiveTab = 'video';
+
+            // Populate reviews
+            this.projectReviews = Array.isArray(this.singleproject?.project_reviews) ? this.singleproject.project_reviews : [];
+
             // Set meta tags and title
             this.setMetaTags(this.singleproject.project_meta_title, this.singleproject.project_meta_description, this.singleproject.image);
           },
@@ -992,6 +1082,298 @@ export class ProjectApproveDetailComponent implements OnInit,AfterViewInit  {
 
   getLandmarkEntries() {
     return Object.entries(this.singleproject.landmarksnearproject);
+  }
+
+  // ===== Brochure Form Methods =====
+  sendBrochureOTP() {
+    this.brochureNameError = !this.brochureFormData.name?.trim();
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$/;
+    this.brochureEmailError = !emailPattern.test(this.brochureFormData.email);
+    const mobilePattern = /^[0-9]{10}$/;
+    this.brochureMobileError = !mobilePattern.test(this.brochureFormData.mobile);
+    this.brochureTermsError = !this.brochureFormData.termsAccepted;
+
+    if (this.brochureNameError || this.brochureEmailError || this.brochureMobileError || this.brochureTermsError) return;
+
+    this.spinner.show();
+    this.http.post(`${this.apiUrl}genrateinquiryotp`, { contact_no: this.brochureFormData.mobile })
+      .subscribe((response: any) => {
+        this.spinner.hide();
+        if (response.data === 'ok' && response.status === true) {
+          this.brochureOtpVisible = true;
+          this.toastr.success('OTP sent successfully.');
+        } else {
+          this.toastr.error('Failed to send OTP.');
+        }
+      }, () => { this.spinner.hide(); this.toastr.error('Failed to send OTP.'); });
+  }
+
+  submitBrochure() {
+    if (!this.brochureOtp) { this.brochureOtpError = true; return; }
+    this.brochureOtpError = false;
+    this.http.post(`${this.apiUrl}verifyinquiryotp`, { contact_no: this.brochureFormData.mobile, otp: this.brochureOtp })
+      .subscribe((response: any) => {
+        if (response.status === true) {
+          const modalEl = document.getElementById('Brochure');
+          if (modalEl) bootstrap.Modal.getInstance(modalEl)?.hide();
+          this.galleryFormType = ''; // close gallery panel if open
+          const pdfUrl = this.singleproject?.project_brochure;
+          if (pdfUrl) {
+            window.open(pdfUrl, '_blank');
+          } else {
+            this.toastr.info('Brochure is not available.');
+          }
+          this.resetBrochureForm();
+        } else {
+          this.toastr.error('Wrong OTP. Please try again.');
+        }
+      });
+  }
+
+  resetBrochureForm() {
+    this.brochureFormData = { name: '', email: '', mobile: '', termsAccepted: false };
+    this.brochureOtp = '';
+    this.brochureOtpVisible = false;
+    this.brochureNameError = false;
+    this.brochureEmailError = false;
+    this.brochureMobileError = false;
+    this.brochureTermsError = false;
+    this.brochureOtpError = false;
+  }
+
+  // ===== Gallery Inline Contact Form Methods =====
+  openGalleryForm(type: string) {
+    this.galleryFormType = type;
+    if (type === 'contact') {
+      this.resetGalleryContactForm();
+    } else {
+      this.brochureMode = type; // 'brochure' or 'payment'
+      this.resetBrochureForm();
+    }
+  }
+
+  closeGalleryForm() {
+    this.galleryFormType = '';
+    this.resetGalleryContactForm();
+  }
+
+  resetGalleryContactForm() {
+    this.galleryContactData = { name: '', email: '', mobile: '', termsAccepted: false };
+    this.galleryContactNameErr = false;
+    this.galleryContactEmailErr = false;
+    this.galleryContactMobileErr = false;
+    this.galleryContactTermsErr = false;
+    this.galleryContactOtpVisible = false;
+    this.galleryContactOtp = '';
+    this.galleryContactOtpErr = false;
+  }
+
+  sendGalleryContactOTP() {
+    this.galleryContactNameErr = !this.galleryContactData.name?.trim();
+    const emailPat = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$/;
+    this.galleryContactEmailErr = !emailPat.test(this.galleryContactData.email);
+    const mobilePat = /^[0-9]{10}$/;
+    this.galleryContactMobileErr = !mobilePat.test(this.galleryContactData.mobile);
+    this.galleryContactTermsErr = !this.galleryContactData.termsAccepted;
+
+    if (this.galleryContactNameErr || this.galleryContactEmailErr || this.galleryContactMobileErr || this.galleryContactTermsErr) return;
+
+    this.spinner.show();
+    this.http.post(`${this.apiUrl}genrateinquiryotp`, { contact_no: this.galleryContactData.mobile })
+      .subscribe((res: any) => {
+        this.spinner.hide();
+        if (res?.data === 'ok' && res?.status === true) {
+          this.galleryContactOtpVisible = true;
+          this.toastr.success('OTP sent successfully.');
+        } else {
+          this.toastr.error('Failed to send OTP. Please try again.');
+        }
+      }, () => { this.spinner.hide(); this.toastr.error('Failed to send OTP.'); });
+  }
+
+  submitGalleryContact() {
+    if (!this.galleryContactOtp?.trim()) { this.galleryContactOtpErr = true; return; }
+    this.galleryContactOtpErr = false;
+
+    this.spinner.show();
+    this.http.post(`${this.apiUrl}verifyinquiryotp`, { contact_no: this.galleryContactData.mobile, otp: this.galleryContactOtp })
+      .subscribe((res: any) => {
+        if (res?.status === true) {
+          const token = localStorage.getItem('myrealtylogintoken');
+          const headers = new HttpHeaders()
+            .set('Authorization', `Bearer ${token}`)
+            .set('Accept', 'application/json');
+          const payload = {
+            contact_no: this.galleryContactData.mobile,
+            useremail: this.galleryContactData.email,
+            username: this.galleryContactData.name,
+            project_Id: this.singleproject?.id,
+            builder_id: '',
+            leads_type: 'Project',
+            leads_for: this.singleproject?.property_for,
+            receiver_user_id: this.singleproject?.user_id,
+            countrycode: '',
+            request_price: 0,
+          };
+          this.http.post(`${this.apiUrl}storeinquiry`, payload, { headers })
+            .subscribe((r: any) => {
+              this.spinner.hide();
+              if (r?.status === true) {
+                this.toastr.success('We have received your inquiry. Our team will get back to you within 24 working hours.');
+              }
+              this.galleryFormType = '';
+              this.resetGalleryContactForm();
+            }, () => { this.spinner.hide(); this.galleryFormType = ''; this.resetGalleryContactForm(); });
+        } else {
+          this.spinner.hide();
+          this.toastr.error('Wrong OTP. Please try again.');
+        }
+      }, () => { this.spinner.hide(); this.toastr.error('Something went wrong.'); });
+  }
+
+  // ===== Gallery Methods =====
+  openGallery(tab: string = 'photos', index: number = 0) {
+    // default to first available tab
+    if (tab === 'photos' && this.photoAlbum.length === 0) {
+      if (this.layoutAlbum.length > 0) tab = 'layout';
+      else if (this.videoAlbum.length > 0) tab = 'video';
+    }
+    this.galleryActiveTab = tab;
+    this.galleryActiveIndex = index;
+    this.galleryZoom = 1;
+    this.galleryFormType = '';
+    this.galleryVisible = true;
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('gallery-open');
+  }
+
+  closeGallery() {
+    this.galleryVisible = false;
+    this.galleryFormType = '';
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+    document.body.classList.remove('modal-open');
+    document.body.classList.remove('gallery-open');
+    document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+  }
+
+  ngOnDestroy(): void {
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+    document.body.classList.remove('modal-open');
+    document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+  }
+
+  setGalleryTab(tab: string) {
+    this.galleryActiveTab = tab;
+    this.galleryActiveIndex = 0;
+    this.galleryZoom = 1;
+  }
+
+  setGalleryImage(index: number) {
+    this.galleryActiveIndex = index;
+    this.galleryZoom = 1;
+  }
+
+  nextGalleryImage() {
+    if (this.currentAlbum.length === 0) return;
+    if (this.galleryActiveIndex < this.currentAlbum.length - 1) {
+      this.galleryActiveIndex++;
+    } else {
+      // auto advance to next tab
+      const tabs = this.availableTabs;
+      const currentTabIdx = tabs.indexOf(this.galleryActiveTab);
+      if (currentTabIdx < tabs.length - 1) {
+        this.galleryActiveTab = tabs[currentTabIdx + 1];
+        this.galleryActiveIndex = 0;
+      } else {
+        // wrap to first tab first image
+        this.galleryActiveTab = tabs[0];
+        this.galleryActiveIndex = 0;
+      }
+    }
+    this.galleryZoom = 1;
+  }
+
+  prevGalleryImage() {
+    if (this.currentAlbum.length === 0) return;
+    if (this.galleryActiveIndex > 0) {
+      this.galleryActiveIndex--;
+    } else {
+      // auto go to previous tab last image
+      const tabs = this.availableTabs;
+      const currentTabIdx = tabs.indexOf(this.galleryActiveTab);
+      if (currentTabIdx > 0) {
+        this.galleryActiveTab = tabs[currentTabIdx - 1];
+        this.galleryActiveIndex = this.currentAlbum.length - 1;
+      } else {
+        // wrap to last tab last image
+        this.galleryActiveTab = tabs[tabs.length - 1];
+        this.galleryActiveIndex = this.currentAlbum.length - 1;
+      }
+    }
+    this.galleryZoom = 1;
+  }
+
+  get availableTabs(): string[] {
+    const tabs: string[] = [];
+    if (this.photoAlbum.length > 0) tabs.push('photos');
+    if (this.layoutAlbum.length > 0) tabs.push('layout');
+    if (this.videoAlbum.length > 0) tabs.push('video');
+    return tabs;
+  }
+
+  zoomIn() {
+    if (this.galleryZoom < 3) this.galleryZoom = parseFloat((this.galleryZoom + 0.5).toFixed(1));
+  }
+
+  zoomOut() {
+    if (this.galleryZoom > 1) this.galleryZoom = parseFloat((this.galleryZoom - 0.5).toFixed(1));
+  }
+
+  // ===== Review Methods =====
+  openReviewModal() {
+    const modal = new bootstrap.Modal(document.getElementById('WriteReview'));
+    modal.show();
+  }
+
+  setReviewRating(n: number) {
+    this.reviewFormData.rating = n;
+    this.reviewRatingError = false;
+  }
+
+  submitReview() {
+    this.reviewNameError = !this.reviewFormData.name;
+    this.reviewTextError = !this.reviewFormData.review;
+    this.reviewRatingError = this.reviewFormData.rating === 0;
+    if (this.reviewNameError || this.reviewTextError || this.reviewRatingError) return;
+
+    const payload = {
+      project_id: this.singleproject.id,
+      name: this.reviewFormData.name,
+      review: this.reviewFormData.review,
+      rating: this.reviewFormData.rating,
+    };
+    this.http.post(`${this.apiUrl}storereview`, payload).subscribe(
+      (response: any) => {
+        if (response.status === true) {
+          this.toastr.success('Review submitted successfully!');
+          const modalEl = document.getElementById('WriteReview');
+          if (modalEl) bootstrap.Modal.getInstance(modalEl)?.hide();
+          this.projectReviews.unshift({ ...payload, created_at: new Date().toISOString() });
+          this.resetReviewForm();
+        }
+      },
+      (error) => { console.error('Error submitting review', error); }
+    );
+  }
+
+  resetReviewForm() {
+    this.reviewFormData = { name: '', review: '', rating: 0 };
+    this.reviewNameError = false;
+    this.reviewTextError = false;
+    this.reviewRatingError = false;
+    this.hoveredReviewRating = 0;
   }
   // toggleShowMore(category: string): void {
   //   this.showMore[category] = !this.showMore[category];

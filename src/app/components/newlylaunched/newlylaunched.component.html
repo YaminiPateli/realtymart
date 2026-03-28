@@ -1,11 +1,11 @@
 <main>
-  <section class="matching-banner position-relative">
+  <!-- <section class="matching-banner position-relative">
     <div class="container">
       <div class="banner-action">
         <h1 class="banner_title">Newly Lauched Projects</h1>
       </div>
     </div>
-  </section>
+  </section> -->
   <div class="sort_by container justify-content-end">
     <div class="col-lg-3 col-md-3 col-sm-12">
       <div class="tabs_sortby pt-4">
@@ -51,20 +51,8 @@
             aria-labelledby="pills-godrej-tab"
           >
             <div class="projections">
-              <div class="head-projections">
-                <!-- <div class="new-projection">
-                                <p>New Projects in {{projectincity[0].searchcity}}</p>
-                            </div> -->
-                <!-- <div class="sort-by">
-                                <label for="cars">Sort By:</label>
-                                <select id="cars" name="carlist" class="sort-select" form="carform">
-                                <option value="" disabled selected hidden>Relevance</option>
-                                <option value="Lorem">Lorem</option>
-                                <option value="Lorem">Lorem</option>
-                                <option value="Lorem">Lorem</option>
-                                <option value="Lorem">Lorem</option>
-                                </select>
-                            </div> -->
+              <!-- <div class="head-projections">
+               
 
                 <div class="tabs_sortby">
                   <div class="tabs_sortby--title" (click)="toggleDropdown()">
@@ -86,7 +74,7 @@
                     </ul>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="godrej-citys">
                 <div
                   class="citiys-planes"
@@ -131,7 +119,7 @@
                                     class="fa fa-sharp fa-light fa-location-dot"
                                     style="color: #bbbbbb"
                                   ></i></span
-                                >in {{ projectincity.prjlocalities }}
+                                >{{ projectincity.prjlocalities }}
                               </p>
                             </div>
                             <div
@@ -405,7 +393,7 @@
               for="compare"
               class="compares"
               style="display: inline-flex; gap: 5px"
-              >I Agree to RealtyMart Terms of Use
+              >I Agree to RealtyMart <a routerLink="../../terms-conditions" target="_blank">Terms of Use</a>
               <!-- <span class="d-block"
                         ><a
                           routerlink="../terms-conditions"
@@ -552,7 +540,7 @@
               <div>Facebook</div>
             </button>
           </div>
-          <div>
+          <!-- <div>
             <button class="btn" (click)="twitterShare()">
               <svg viewBox="0 0 64 64" width="56" height="56">
                 <circle cx="32" cy="32" r="32" fill="#000000"></circle>
@@ -563,7 +551,7 @@
               </svg>
               <div>Twitter</div>
             </button>
-          </div>
+          </div> -->
         </div>
         <div class="input-group">
           <div class="input-group">

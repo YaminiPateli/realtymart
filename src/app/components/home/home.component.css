@@ -63,6 +63,16 @@ width: 235px;
 #otpInput:focus {
   outline: none;
 }
+.img_slider_serviceprovider {
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.img_slider_serviceprovider:hover {
+    filter: sepia(1) saturate(35) hue-rotate(-15deg) brightness(0.85) contrast(1.1);
+    transition: filter 0.3s ease;
+}
 @media only screen and (max-width: 480px) {
   .budget-mm{gap: 0 }
 }

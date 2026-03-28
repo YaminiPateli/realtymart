@@ -122,29 +122,13 @@
                         <h3 class="companies-names">Services</h3>
                         <div class="row mt-3">
                             <div class="col-lg-3 col-md-6 mb-3 text-center" *ngFor="let service of singlecompany.PrtSrcSevices">
-                                <img class="img-fluid pb-2"
+                                <img class="img-fluid pb-2 serice_flow_img"
                                     src={{service.services_image}}
                                     alt>
                                 <p>{{service.services_name}}</p>
                             </div>
 
-                            <!-- <div class="col-lg-3 col-md-6 mb-3 text-center">
-                                <img class="img-fluid pb-2"
-                                    src="../../../assets/images/Residential.jpg"
-                                    alt>
-                                <p>Residential and Villas</p>
-                            </div>
-                            <div class="col-lg-3 col-md-6 mb-3 text-center">
-                                <img src="../../../assets/images/Urban.jpg" alt
-                                    class="img-fluid pb-2">
-                                <p>Urban Design and Master Training</p>
-                            </div>
-                            <div class="col-lg-3 col-md-6 mb-3 text-center">
-                                <img class="img-fluid pb-2"
-                                    src="../../../assets/images/Laisaning.jpg"
-                                    alt>
-                                <p>Government Approval and Laisaning</p>
-                            </div> -->
+                  
 
                         </div>
                     </div>
@@ -153,7 +137,7 @@
                         <h3 class="companies-names">Products</h3>
                         <div class="row mt-3">
                             <div class="col-lg-3 col-md-6 mb-3 text-center" *ngFor="let product of singlecompany.PrtSrcProducts">
-                                <img class="img-fluid pb-2"
+                                <img class="img-fluid pb-2 serice_flow_img"
                                     src={{product.products_image}}
                                     alt>
                                 <p>{{product.products_name}}</p>
@@ -204,108 +188,11 @@
                                     <p *ngIf="testimonial.testimonials_description !== null">{{testimonial.testimonials_description}}</p>
                                 </div>
                             </div>
-                            <!-- <div ngxSlickItem class="slide">
-                                <div class="our_say">
-                                    <div
-                                        class="says_mg d-flex justify-content-between align-items-center mb-2">
-                                        <img
-                                            src="../../../assets/images/shivalik-img.png"
-                                            alt
-                                            class="img-fluid  testimonials_logo ">
-                                        <img
-                                            src="../../../assets/images/Testimonials.png"
-                                            alt class="img-fluid">
-                                    </div>
-                                    <p>My experience with Noorani Architects has
-                                        been extremely positive and productive.
-                                        The NA team is a very talented and
-                                        innovative group of people with a huge
-                                        position for what they do. They provided
-                                        service with personal attention every
-                                        step of the way. I appreciate the team
-                                        for their marvelous work.</p>
-                                </div>
-                            </div>
-                            <div ngxSlickItem class="slide">
-                                <div class="our_say">
-                                    <div
-                                        class="says_mg d-flex justify-content-between align-items-center mb-2">
-                                        <img
-                                            src="../../../assets/images/shaligram-group.png"
-                                            alt
-                                            class="img-fluid testimonials_logo">
-                                        <img
-                                            src="../../../assets/images/Testimonials.png"
-                                            alt class="img-fluid">
-                                    </div>
-                                    <p>My experience with Noorani Architects has
-                                        been extremely positive and productive.
-                                        The NA team is a very talented and
-                                        innovative group of people with a huge
-                                        position for what they do. They provided
-                                        service with personal attention every
-                                        step of the way. I appreciate the team
-                                        for their marvelous work.</p>
-                                </div>
-                            </div> -->
+                          
                         </ngx-slick-carousel>
                     </div>
 
-                    <div class="review_head" id="reviews" *ngIf="googleReviews !== null">
-                        <h3 class="companies-names">Reviews</h3>
-                        <div class="review_box">
-                          <div class="row align-items-center">
-                            <div class="col-md-6 mb-2">
-                              <img src={{singlecompany.company_logo}} alt="" class="img-fluid">
-                            </div>
-                            <div class="col-md-6">
-                              <h4> Rating</h4>
-                              <div class="rating">
-                                <span class="rating-number">{{googleReviews?.rating}}</span>
-                                <div class="stars">
-                                  <div class="filled-stars" [ngStyle]="{ width: (googleReviews?.rating * 20) + '%' }"></div>
-                                  <div class="empty-stars"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row" *ngFor="let item of reviews">
-                          <div class="col-lg-2 mb-3">
-                              <img class="profile_photo_url img-fluid" [src]="item.profile_photo_url" alt="profile_photo">
-                          </div>
-                          <div class="col-lg-10 mb-3">
-                            <div class="info_write">
-                                <h3 class="author_name">{{item.author_name}}</h3>
-                                <div class="rating">
-                                    <div class="stars">
-                                      <div class="filled-stars"  [ngStyle]="{ width: (item.rating * 20) + '%' }"></div>
-                                      <div class="empty-stars"></div>
-                                    </div>
-                                    <span class="time_of_review">{{item.relative_time_description}}</span>
-                                  </div>
-                            </div>
-                              <p>{{item.text}}</p>
-                          </div>
-                          <!-- <div class="col-lg-2 mb-3">
-                              <img class="profile_photo_url img-fluid" src="../../../assets/images/demouser.png" alt="profile_photo_url">
-                          </div>
-                          <div class="col-lg-10 mb-3">
-                            <div class="info_write">
-                                <h3 class="author_name">Sammy Wiegand</h3>
-                                <div class="rating">
-                                    <div class="stars">
-                                      <div class="filled-stars" style="width: 96%;"></div>
-                                      <div class="empty-stars"></div>
-                                    </div>
-                                    <span class="time_of_review">a year ago</span>
-                                  </div>
-                            </div>
-                              <p>Lorem ipsum dolor sit amet consectetur. Enim ac lobortis euismod massa sed velit arcu eu et. Lorem ipsum rutrum id tortor massa. Sollicitudin morbi feugiat augue at mauris quam sagittis nunc sit. Faucibus vulputate tortor diam varius est. Pulvinar.</p>
-                          </div> -->
-                        </div>
-                      </div>
+                 
                 </div>
 
                 <div class="col-lg-4 mt-3">
@@ -330,50 +217,7 @@
                                           </div>
                                         </div>
                                       </ul>
-                                <!-- <ul class="business_hours list-unstyled">
-                                    <li>
-                                        <a>Business Hours</a>
-                                        <ul class="dropdown list-unstyled">
-                                            <p class="m-0"><b>Business
-                                                    Hours</b></p>
-                                            <div
-                                                class="d-flex gap-3 mt-2 justify-content-between">
-                                                <span>SAT (Today)</span>
-                                                <span>9:00 am - 10:00 pm</span>
-                                            </div>
-                                            <div
-                                                class="d-flex gap-3 mt-2 justify-content-between">
-                                                <span>SUN</span>
-                                                <span>9:00 am - 10:00 pm</span>
-                                            </div>
-                                            <div
-                                                class="d-flex gap-3 mt-2 justify-content-between">
-                                                <span>MON</span>
-                                                <span>9:00 am - 10:00 pm</span>
-                                            </div>
-                                            <div
-                                                class="d-flex gap-3 mt-2 justify-content-between">
-                                                <span>TUE</span>
-                                                <span>9:00 am - 10:00 pm</span>
-                                            </div>
-                                            <div
-                                                class="d-flex gap-3 mt-2 justify-content-between">
-                                                <span>WED</span>
-                                                <span>9:00 am - 10:00 pm</span>
-                                            </div>
-                                            <div
-                                                class="d-flex gap-3 mt-2 justify-content-between">
-                                                <span>THU</span>
-                                                <span>9:00 am - 10:00 pm</span>
-                                            </div>
-                                            <div
-                                                class="d-flex gap-3 mt-2 justify-content-between">
-                                                <span>FRI</span>
-                                                <span>9:00 am - 10:00 pm</span>
-                                            </div>
-                                        </ul>
-                                    </li>
-                                </ul> -->
+                               
                             </div>
 
                             <div class="some_info d-flex justify-content-between flex-wrap mt-3">
@@ -440,7 +284,7 @@
                         <h3 class="companies-names" *ngIf="singlecompany.company_name !== null">{{singlecompany.company_name}}</h3>
                     </div>
                     <div class="col-lg-7 d-flex align-items-center justify-content-between">
-                        <a href="javascript::void()"
+                        <a href="tel:7378373783"
                             class="directions d-inline-flex gap-2 align-items-center"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="24"
                                 height="24" viewBox="0 0 24 24" fill="none">
@@ -532,7 +376,7 @@
                                 </defs>
                             </svg> WhatsApp us</a>
 
-                        <a href="javascript::void()" class="send_enquiry d-inline-flex gap-2 align-items-center">
+                        <a href="javascript:void(0);" class="send_enquiry d-inline-flex gap-2 align-items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <g clip-path="url(#clip0_1748_301)">
                                   <mask id="mask0_1748_301" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-1" y="-1" width="25" height="25">
@@ -599,12 +443,12 @@
                 <div>Facebook</div>
               </button>
             </div>
-            <div>
+            <!-- <div>
               <button class="btn">
                 <svg viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="32" fill="#000000"></circle><path d="M 41.116 18.375 h 4.962 l -10.8405 12.39 l 12.753 16.86 H 38.005 l -7.821 -10.2255 L 21.235 47.625 H 16.27 l 11.595 -13.2525 L 15.631 18.375 H 25.87 l 7.0695 9.3465 z m -1.7415 26.28 h 2.7495 L 24.376 21.189 H 21.4255 z" fill="white"></path></svg>
                 <div>Twitter</div>
               </button>
-            </div>
+            </div> -->
           </div>
           <div class="input-group">
             <div class="input-group">

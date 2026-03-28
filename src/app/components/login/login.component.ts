@@ -132,8 +132,10 @@ export class LoginComponent {
       .subscribe(
         (response: any) => {
           if (response?.code == 1) {
-            this.toastr.error('This Mobile No Not Found!');
-          } else {
+            this.toastr.error('The mobile number you entered is not registered!');
+          } else if (response?.code == 2) {
+            this.toastr.error("Your Profile is under review. You can log in once it's approved.!");
+          }else{
             this.isMobileNumberDisabled = true;
             this.isOtpGenerated = true;
           }
